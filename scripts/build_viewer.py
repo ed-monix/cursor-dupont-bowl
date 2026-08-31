@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "scripts" / "lib"))
 
 import scoreboard  # noqa: E402  (reused: build_scoreboard_data, _stat_summary)
+import forum  # noqa: E402  (reused: read_thread)
 
 TEMPLATE = ROOT / "web" / "viewer.template.html"
 OUT = ROOT / "web" / "viewer.html"
@@ -39,6 +40,246 @@ def _load(path: pathlib.Path, default):
         return default
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+
+def _section(md_text: str, heading: str) -> str:
+    """Extract a markdown section by heading (## format).
+
+    Returns the content under the heading up to (but not including) the next
+    heading at the same or higher level. Returns "" if heading not found.
+    """
+    if not md_text or not heading:
+        return ""
+    lines = md_text.split("\n")
+    section_start = None
+    for i, line in enumerate(lines):
+        if line.strip().startswith("## ") and heading in line:
+            section_start = i + 1
+            break
+    if section_start is None:
+        return ""
+
+    section_lines = []
+    for i in range(section_start, len(lines)):
+        if lines[i].startswith("## ") or lines[i].startswith("# "):
+            break
+        section_lines.append(lines[i])
+    return "\n".join(section_lines).strip()
+
+
+def _frontmatter_description(path: pathlib.Path) -> str:
+    """Extract the description: line from YAML frontmatter.
+
+    Frontmatter is between --- markers at the start of a file.
+    Returns "" if file doesn't exist or has no description field.
+    """
+    if not path.exists():
+        return ""
+    with open(path, encoding="utf-8") as f:
+        content = f.read()
+
+    if not content.startswith("---"):
+        return ""
+
+    end_marker = content.find("\n---\n", 4)
+    if end_marker == -1:
+        return ""
+
+    frontmatter = content[4:end_marker]
+    for line in frontmatter.split("\n"):
+        if line.startswith("description:"):
+            # Extract the value after "description: "
+            desc = line[len("description:"):].strip()
+            # Remove quotes if present
+            if desc.startswith('"') and desc.endswith('"'):
+                desc = desc[1:-1]
+            elif desc.startswith("'") and desc.endswith("'"):
+                desc = desc[1:-1]
+            return desc
+    return ""
+
+
+def _load_feed(season: str, week: int) -> dict:
+    """Load the week's feed (tabloid, forum, recap).
+
+    Returns {"tabloid": str, "forum": [posts], "recap": str}.
+    Each forum post has {timestamp, team, post, name (pretty slug)}.
+    Raw strings — no escaping or markdown conversion.
+    """
+    # Tabloid
+    tabloid_path = ROOT / "state" / "news" / f"{season}-w{week:02d}.md"
+    tabloid = ""
+    if tabloid_path.exists():
+        with open(tabloid_path, encoding="utf-8") as f:
+            tabloid = f.read()
+
+    # Forum (newest first, with name added)
+    forum_posts = forum.read_thread(ROOT, week, season)
+    forum_posts_out = []
+    for post in reversed(forum_posts):  # reverse to newest first
+        post_with_name = dict(post)
+        post_with_name["name"] = pretty(post["team"])
+        forum_posts_out.append(post_with_name)
+
+    # Recap
+    recap_path = ROOT / "state" / "weeks" / f"{season}-w{week:02d}" / "recap.md"
+    recap = ""
+    if recap_path.exists():
+        with open(recap_path, encoding="utf-8") as f:
+            recap = f.read()
+
+    return {
+        "tabloid": tabloid,
+        "forum": forum_posts_out,
+        "recap": recap,
+    }
+
+
+def _load_guide(season: str) -> dict:
+    """Load the league guide (mission, rules, cast, howItRuns).
+
+    Returns {"mission": str, "rules": str, "cast": [...], "howItRuns": [...]}.
+    """
+    # Mission: paragraph(s) under ## Mission in README.md (up to next ##)
+    readme_path = ROOT / "README.md"
+    mission = ""
+    if readme_path.exists():
+        with open(readme_path, encoding="utf-8") as f:
+            readme_text = f.read()
+        mission = _section(readme_text, "Mission")
+
+    # Rules: verbatim contents of config/league-rules.md
+    rules_path = ROOT / "config" / "league-rules.md"
+    rules = ""
+    if rules_path.exists():
+        with open(rules_path, encoding="utf-8") as f:
+            rules = f.read()
+
+    # Cast: one per team + commissioner + media
+    standings_json = _load(ROOT / "state" / "standings.json", {"teams": {}})
+    teams_standing = standings_json.get("teams", {})
+
+    cast = []
+
+    # AI and human teams
+    teams_dir = ROOT / "teams"
+    if teams_dir.exists():
+        for team_dir in sorted(teams_dir.iterdir()):
+            if not team_dir.is_dir() or team_dir.name.startswith("_"):
+                continue
+            slug = team_dir.name
+            kind = "human" if slug in ("your-team", "wifes-team") else "ai"
+
+            # Record from standings
+            record = ""
+            team_standing = teams_standing.get(slug, {})
+            if team_standing:
+                w = team_standing.get("wins", 0)
+                l = team_standing.get("losses", 0)
+                t = team_standing.get("ties", 0)
+                record = f"{w}-{l}" + (f"-{t}" if t else "")
+
+            # Bio from Public bio section in general-manager.md
+            bio = "Signing in progress"
+            gm_path = team_dir / "general-manager.md"
+            if gm_path.exists():
+                with open(gm_path, encoding="utf-8") as f:
+                    gm_text = f.read()
+                bio_section = _section(gm_text, "Public bio")
+                if bio_section:
+                    # Take just the first paragraph (split on double newline or take the first line(s))
+                    paras = bio_section.split("\n\n")
+                    if paras and paras[0].strip():
+                        bio = paras[0].strip()
+
+            cast.append({
+                "slug": slug,
+                "name": pretty(slug),
+                "kind": kind,
+                "record": record,
+                "bio": bio,
+            })
+
+    # Commissioner
+    commissioner_path = ROOT / "agents" / "commissioner.md"
+    commissioner_bio = "Scrupulously fair, permanently unimpressed."
+    if commissioner_path.exists():
+        with open(commissioner_path, encoding="utf-8") as f:
+            commissioner_text = f.read()
+        # Extract first paragraph after the title (up to first blank line or ##)
+        lines = commissioner_text.split("\n")
+        bio_lines = []
+        in_bio = False
+        for line in lines:
+            if line.startswith("## Jurisdiction"):
+                break
+            if in_bio:
+                if not line.strip():
+                    break
+                bio_lines.append(line)
+            elif line.strip() and not line.startswith("#"):
+                in_bio = True
+                bio_lines.append(line)
+        if bio_lines:
+            commissioner_bio = "\n".join(bio_lines).strip()
+
+    cast.append({
+        "slug": "commissioner",
+        "name": "The Commissioner",
+        "kind": "official",
+        "record": "",
+        "bio": commissioner_bio,
+    })
+
+    # Media (Kris Jenner)
+    media_path = ROOT / "agents" / "media.md"
+    media_bio = "The league's media mogul and tabloid publisher."
+    if media_path.exists():
+        with open(media_path, encoding="utf-8") as f:
+            media_text = f.read()
+        # Extract first paragraph after the title (up to first blank line or ##)
+        lines = media_text.split("\n")
+        bio_lines = []
+        in_bio = False
+        for line in lines:
+            if line.startswith("## "):
+                break
+            if in_bio:
+                if not line.strip():
+                    break
+                bio_lines.append(line)
+            elif line.strip() and not line.startswith("#"):
+                in_bio = True
+                bio_lines.append(line)
+        if bio_lines:
+            media_bio = "\n".join(bio_lines).strip()
+
+    cast.append({
+        "slug": "media",
+        "name": "Kris Jenner",
+        "kind": "media",
+        "record": "",
+        "bio": media_bio,
+    })
+
+    # How it runs: descriptions from command frontmatter
+    how_it_runs = []
+    command_order = ["notes", "saturday", "sunday", "recap", "refresh-board"]
+    for cmd in command_order:
+        cmd_path = ROOT / ".claude" / "commands" / f"{cmd}.md"
+        desc = _frontmatter_description(cmd_path)
+        if desc:
+            how_it_runs.append({
+                "cmd": f"/{cmd}",
+                "desc": desc,
+            })
+
+    return {
+        "mission": mission,
+        "rules": rules,
+        "cast": cast,
+        "howItRuns": how_it_runs,
+    }
 
 
 # --- pure mappers (unit-tested) --------------------------------------------
@@ -111,7 +352,7 @@ def _rosters_for_week(season: str, week: int) -> dict:
     lineups.json (written by /sunday) is accepted as
     {slug: {"starters": {slot: pid}, ...}} or {slug: {"lineup": {...}}}.
     """
-    lp = WEEKS_DIR / f"{season}-w{week:02d}" / "lineups.json"
+    lp = ROOT / "state" / "weeks" / f"{season}-w{week:02d}" / "lineups.json"
     data = _load(lp, None)
     if isinstance(data, dict) and data:
         rosters = {}
@@ -136,8 +377,9 @@ def build_league_data(season: str) -> dict:
     official = set(standings_json.get("official_weeks", []))
 
     found_weeks = []
-    if WEEKS_DIR.exists():
-        for d in sorted(WEEKS_DIR.glob(f"{season}-w*")):
+    weeks_dir = ROOT / "state" / "weeks"
+    if weeks_dir.exists():
+        for d in sorted(weeks_dir.glob(f"{season}-w*")):
             if (d / "stats.json").exists():
                 try:
                     found_weeks.append(int(d.name.split("-w")[1]))
@@ -154,7 +396,7 @@ def build_league_data(season: str) -> dict:
     weeks_out = []
     for w in found_weeks:
         is_final = w in official
-        stats = _load(WEEKS_DIR / f"{season}-w{w:02d}" / "stats.json", {})
+        stats = _load(ROOT / "state" / "weeks" / f"{season}-w{w:02d}" / "stats.json", {})
         rosters = _rosters_for_week(season, w)
         board = scoreboard.build_scoreboard_data(schedule, rosters, stats, players, scoring, w)
         matchups = []
@@ -172,8 +414,19 @@ def build_league_data(season: str) -> dict:
                     rec.setdefault(h, {"w": 0, "l": 0, "t": 0})["t"] += 1
                     rec.setdefault(a, {"w": 0, "l": 0, "t": 0})["t"] += 1
             matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}))
-        weeks_out.append({"week": w, "status": "final" if is_final else "live",
-                          "matchups": matchups})
+
+        # Load feed (tabloid, forum, recap)
+        feed = _load_feed(season, w)
+
+        weeks_out.append({
+            "week": w,
+            "status": "final" if is_final else "live",
+            "matchups": matchups,
+            "feed": feed,
+        })
+
+    # Load guide (mission, rules, cast, howItRuns)
+    guide = _load_guide(season)
 
     return {
         "league": "The DuPont Bowl",
@@ -181,6 +434,7 @@ def build_league_data(season: str) -> dict:
         "weeks": weeks_out,
         "standings": viewer_standings(standings_json),
         "standingsThroughWeek": max(official) if official else 0,
+        "guide": guide,
         "updated": datetime.datetime.now().isoformat(),
     }
 

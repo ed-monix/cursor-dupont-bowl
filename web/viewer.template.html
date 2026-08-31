@@ -166,6 +166,41 @@
   .bseed.champ .bnum{color:var(--accent)}
   @media (max-width:640px){.bracket{grid-template-columns:1fr}}
 
+  /* Feed */
+  .feedcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin-bottom:12px}
+  .feedhd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;
+    padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .feedkicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+    font-weight:700}
+  .feedby{font-size:11px;color:var(--faint)}
+  .prose{white-space:pre-wrap;font-size:13px;line-height:1.55;color:var(--text)}
+  .feedempty{font-size:12.5px;color:var(--faint);font-style:italic}
+  .forumlist{display:flex;flex-direction:column;gap:13px}
+  .post{border-left:2px solid var(--border);padding:1px 0 1px 12px}
+  .postname{font-size:12.5px;font-weight:600;letter-spacing:-.01em}
+  .posttext{font-size:13px;color:var(--text);margin-top:2px;white-space:pre-wrap}
+
+  /* Guide */
+  .guidecard{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:16px 18px;margin-bottom:12px}
+  .gh{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    font-weight:600;margin:0 0 12px}
+  .castlist{display:flex;flex-direction:column}
+  .castrow{padding:11px 0;border-bottom:1px solid var(--border)}
+  .castrow:last-child{border-bottom:0}
+  .casttop{display:flex;align-items:baseline;gap:10px}
+  .castname{font-weight:600;letter-spacing:-.01em}
+  .castkind{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);
+    border:1px solid var(--border);border-radius:999px;padding:1px 7px}
+  .castrec{margin-left:auto;color:var(--muted);font-size:12px}
+  .castbio{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .howlist{display:flex;flex-direction:column;gap:9px}
+  .howrow{display:flex;gap:12px;align-items:baseline}
+  .howcmd{flex:0 0 auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+    color:var(--accent);background:var(--accent-soft);padding:2px 7px;border-radius:6px}
+  .howdesc{font-size:13px;color:var(--text)}
+
   footer{max-width:760px;margin:0 auto;padding:8px 24px 40px;color:var(--faint);
     font-size:11.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   a{color:var(--muted)}
@@ -188,8 +223,10 @@
   <div class="spacer"></div>
   <div class="seg" role="tablist">
     <button id="tab-scores" role="tab" aria-selected="true">Scores</button>
+    <button id="tab-feed" role="tab" aria-selected="false">Feed</button>
     <button id="tab-standings" role="tab" aria-selected="false">Standings</button>
     <button id="tab-bracket" role="tab" aria-selected="false">Bracket</button>
+    <button id="tab-guide" role="tab" aria-selected="false">Guide</button>
   </div>
 </div>
 
@@ -340,6 +377,49 @@
       '<p class="cutnote">Wild-card matchups are set by seed; later rounds project the higher seed to advance. Seeds 1–2 earn a first-round bye.</p>';
   }
 
+  function renderFeed(){
+    var w = LEAGUE.weeks[wIdx];
+    var f = (w && w.feed) || {tabloid:"", forum:[], recap:""};
+    document.getElementById("eyebrow").textContent = "The Feed · Week "+(w?w.week:"");
+    var posts = (f.forum||[]).map(function(p){
+      return '<div class="post"><div class="postname">'+esc(p.name||p.team)+'</div>'+
+             '<div class="posttext">'+esc(p.post||"")+'</div></div>';
+    }).join("");
+    view.innerHTML =
+      '<section class="feedcard"><div class="feedhd"><span class="feedkicker">The Tabloid</span>'+
+        '<span class="feedby">Kris Jenner</span></div>'+
+        (f.tabloid ? '<div class="prose">'+esc(f.tabloid)+'</div>'
+                   : '<div class="feedempty">No tabloid this week.</div>')+'</section>'+
+      '<section class="feedcard"><div class="feedhd"><span class="feedkicker">The Forum</span></div>'+
+        (posts ? '<div class="forumlist">'+posts+'</div>'
+               : '<div class="feedempty">Quiet week in the group chat.</div>')+'</section>'+
+      '<section class="feedcard"><div class="feedhd"><span class="feedkicker">The Recap</span>'+
+        '<span class="feedby">The Commissioner</span></div>'+
+        (f.recap ? '<div class="prose">'+esc(f.recap)+'</div>'
+                 : '<div class="feedempty">Not yet official.</div>')+'</section>';
+  }
+
+  function renderGuide(){
+    var g = LEAGUE.guide || {};
+    document.getElementById("eyebrow").textContent = "League Guide";
+    var KIND = {ai:"AI GM", human:"Human", official:"Commissioner", media:"Media"};
+    var cast = (g.cast||[]).map(function(c){
+      var rec = c.record ? '<span class="castrec num">'+esc(c.record)+'</span>' : '';
+      return '<div class="castrow"><div class="casttop"><span class="castname">'+esc(c.name)+'</span>'+
+             '<span class="castkind">'+esc(KIND[c.kind]||c.kind||"")+'</span>'+rec+'</div>'+
+             '<div class="castbio">'+esc(c.bio||"")+'</div></div>';
+    }).join("");
+    var how = (g.howItRuns||[]).map(function(h){
+      return '<div class="howrow"><code class="howcmd">'+esc(h.cmd)+'</code>'+
+             '<span class="howdesc">'+esc(h.desc)+'</span></div>';
+    }).join("");
+    view.innerHTML =
+      (g.mission ? '<section class="guidecard"><h2 class="gh">What this is</h2><div class="prose">'+esc(g.mission)+'</div></section>' : '')+
+      '<section class="guidecard"><h2 class="gh">The cast</h2><div class="castlist">'+cast+'</div></section>'+
+      (how ? '<section class="guidecard"><h2 class="gh">How the week runs</h2><div class="howlist">'+how+'</div></section>' : '')+
+      (g.rules ? '<section class="guidecard"><h2 class="gh">The rules</h2><div class="prose">'+esc(g.rules)+'</div></section>' : '');
+  }
+
   function setWeekLabel(){
     var w = LEAGUE.weeks[wIdx];
     document.getElementById("wklabel").textContent = "Week "+w.week;
@@ -352,12 +432,15 @@
 
   function render(){
     if(tab==="scores"){ setWeekLabel(); renderScores(); }
+    else if(tab==="feed"){ setWeekLabel(); renderFeed(); }
     else if(tab==="standings"){ renderStandings(); }
-    else { renderBracket(); }
-    document.querySelector(".weeknav").style.visibility = tab==="scores"?"visible":"hidden";
+    else if(tab==="bracket"){ renderBracket(); }
+    else { renderGuide(); }
+    var perWeek = (tab==="scores" || tab==="feed");
+    document.querySelector(".weeknav").style.visibility = perWeek ? "visible" : "hidden";
   }
 
-  var TABS = ["scores","standings","bracket"];
+  var TABS = ["scores","feed","standings","bracket","guide"];
   function selTab(t){
     tab=t;
     TABS.forEach(function(x){
@@ -369,7 +452,7 @@
   document.getElementById("next").onclick=function(){ if(wIdx<LEAGUE.weeks.length-1){wIdx++;render();} };
   TABS.forEach(function(x){ document.getElementById("tab-"+x).onclick=function(){ selTab(x); }; });
   document.addEventListener("keydown",function(e){
-    if(tab!=="scores")return;
+    if(tab!=="scores" && tab!=="feed")return;
     if(e.key==="ArrowLeft"&&wIdx>0){wIdx--;render();}
     if(e.key==="ArrowRight"&&wIdx<LEAGUE.weeks.length-1){wIdx++;render();}
   });
