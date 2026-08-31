@@ -128,3 +128,22 @@ refresh or tiny fetch loop — no build step, no framework.
 `make check` runs all pytest suites green; `make dryrun` executes a full fake
 week (Saturday, Sunday, recap) from committed fixtures; mock draft clean;
 scoreboard renders fixtures. Then owners schedule the real draft.
+
+## Resolved decisions & deviations (owner-signed, 2026-08-31)
+
+- **4.1 scoreboard is stdlib `http.server`, not Flask.** Signed off: Flask can't
+  be installed in the target environment (PyPI egress blocked) and the board
+  needs no framework. `requirements.txt` intentionally omits Flask. This
+  supersedes the "single-file Flask app" wording in 4.1.
+- **Playoffs use a fixed (non-reseeding) bracket** — seed 1 vs winner(4/5),
+  seed 2 vs winner(3/6). Signed off.
+- **A budget-short FAAB winner burns the player** (no pass-down to the next
+  bidder that week). Signed off — matches the literal §4 resolution.
+
+## Retroactive tickets (built ahead of the ticket, now tracked)
+
+- **`scripts/free_agents.py`** — derives `state/free-agents.json` (Phase-1-adjacent
+  data layer; implied by PLAN §8). Done + tested. Being extended per review R4.
+- **Interactive viewer** — `web/viewer.template.html` + `scripts/build_viewer.py`
+  + `/refresh-board` (shareable artifact league viewer). Done + tested; the
+  game-day refresh loop is documented in README. Formally a new Phase-4 ticket.

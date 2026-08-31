@@ -52,7 +52,7 @@ sync_sleeper.py trims to: position in {QB, RB, WR, TE, K, DEF} AND active=true.
 Returns league configuration. Used by `--settings` to extract scoring and roster structure.
 
 **Relevant keys:**
-- `scoring_settings` (object): scoring multipliers, e.g., `{"rec": 0.5, "pass_td": 4, "rush_yd": 0.1}`. Written as-is to `config/scoring.json`.
+- `scoring_settings` (object): scoring multipliers, e.g., `{"rec": 0.5, "pass_td": 4, "rush_yd": 0.1}`. Written as-is to `config/scoring.json`. Canonical DST/kicker tier keys are `pts_allow_35p` and `fgm_50p` (as in `config/scoring.default.json`); if a synced league ever uses a variant spelling (`pts_allow_35`, `fgm_50_59`), normalize to these so `scoring.py`'s numeric DST/K tier paths match the config.
 - `roster_positions` (array): roster slot config, e.g., `[{position: "QB"}, {position: "RB"}, ...]`. Written to `config/roster.json`.
 - `settings` (object): league metadata (e.g., league_size, payout). Written to `config/roster.json`.
 
@@ -72,12 +72,12 @@ Returns league configuration. Used by `--settings` to extract scoring and roster
     "pts_allow_14_20": 1.0,
     "pts_allow_21_27": 0.0,
     "pts_allow_28_34": -1.0,
-    "pts_allow_35": -4.0,
+    "pts_allow_35p": -4.0,
     "fgm_0_19": 3.0,
     "fgm_20_29": 3.0,
     "fgm_30_39": 3.0,
     "fgm_40_49": 4.0,
-    "fgm_50_59": 5.0,
+    "fgm_50p": 5.0,
     "xpm": 1.0,
     "xpa": 1.0
 }

@@ -69,9 +69,9 @@ plus the same ``rosters``/``players`` and, for every ``"won"`` claim, calls
 ``lib.rosters.apply_transaction`` (add with drop, when present) and builds
 one ``state/transactions.jsonl`` entry per applied claim::
 
-    {"timestamp": iso8601 str, "team": str, "action": "faab_add",
-     "players": {"add": id, "drop": id | None}, "bid": int,
-     "reasoning": str | None, "status": "applied"}
+    {"timestamp": iso8601 str, "team": str, "action": "waiver_claim",
+     "players": [add_id, drop_id?], "bid": int, "reasoning": str,
+     "status": "applied"}   # conforms to docs/schemas/transaction-entry.json
 
 It is also pure (returns updated rosters + entries; raises ValueError if a
 "won" claim is somehow illegal, propagated straight from
@@ -288,13 +288,19 @@ def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=N
         current["faab_remaining"] = current.get("faab_remaining", 0) - claim["bid"]
 
         updated[team] = apply_transaction(current, txn, players, roster_config)
+        # Conform to docs/schemas/transaction-entry.json: `action` from the enum,
+        # `players` a flat array of ids (add first, then the drop if any),
+        # `reasoning` always a string (never null).
+        player_ids = [claim["add"]]
+        if claim.get("drop") is not None:
+            player_ids.append(claim["drop"])
         entries.append({
             "timestamp": ts,
             "team": team,
-            "action": "faab_add",
-            "players": {"add": claim["add"], "drop": claim.get("drop")},
+            "action": "waiver_claim",
+            "players": player_ids,
             "bid": claim["bid"],
-            "reasoning": claim.get("reasoning"),
+            "reasoning": claim.get("reasoning") or "",
             "status": "applied",
         })
 

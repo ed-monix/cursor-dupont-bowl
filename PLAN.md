@@ -175,17 +175,74 @@ clean before draft day.
 
 ## 8. Data contracts (build agent: keep these stable)
 
-- `config/scoring.json` — Sleeper `scoring_settings` map, verbatim keys
-  (`rec`, `pass_td`, `rush_yd`, ...).
-- `state/players.json` — trimmed Sleeper players dump: id → {name, pos, team,
-  status, injury}. Refresh weekly (the full dump is ~5MB; trim to active
-  skill positions + K + DEF).
-- `teams/*/roster.json` — `{team, faab_remaining, starters: {slot: player_id},
-  bench: [], ir: []}`.
-- `state/transactions.jsonl` — append-only, one JSON object per action.
-- `state/free-agents.json` — derived: all rostered ids subtracted from player
-  pool, with projections attached.
-- Agent decision JSON schemas live in `docs/schemas/` (build task).
+State lives in files; git history is the league's permanent record. This is the
+**full** contract list — never add a state file without adding it here (CLAUDE.md
+build rule). Shapes below are authoritative; the JSON Schemas in `docs/schemas/`
+validate agent output.
+
+### Config
+- `config/scoring.json` — Sleeper `scoring_settings` map, verbatim keys (`rec`,
+  `pass_td`, `rush_yd`, `pts_allow_*`, `fgm_*`, ...). Falls back to
+  `config/scoring.default.json` (Sleeper standard half-PPR) when unsynced.
+- `config/roster.json` — as written by `sync_sleeper.py`:
+  `{roster_positions: [str,...], settings: {...}}`. Engine code that needs the
+  slot structure consumes it via `lib.rosters.roster_config_from_league()`, which
+  adapts it to the validator's `{starters: {slot: [pos,...]}, bench_slots,
+  ir_slots}` shape.
+
+### Core state
+- `state/players.json` — trimmed players dump: `id → {name, pos, team, status,
+  injury}`. Refreshed weekly (~5MB full dump; trimmed to active QB/RB/WR/TE/K/DEF).
+- `teams/*/roster.json` — `{team, faab_remaining, starters: {slot: player_id|null},
+  bench: [id,...], ir: [id,...]}`.
+- `state/schedule.json` — `{regular_season: {"1": [[home,away],...6 pairs], ...,
+  "14": ...}, playoffs: {"15": [...], "16": ..., "17": ...}}` (playoff pairings by
+  seed placeholder). Generated at draft.
+- `state/standings.json` — `{season, official_weeks: [int,...], teams: {slug:
+  {wins, losses, ties, points_for, points_against}}}`.
+- `state/transactions.jsonl` — append-only; one object per applied action,
+  conforming to `docs/schemas/transaction-entry.json`: `{timestamp, team, action
+  ∈ [add,drop,waiver_claim,trade], players: [id,...], bid: int|null, reasoning,
+  status ∈ [applied,rejected,flagged]}`.
+- `state/rulings.md` — commissioner rulings + GM-file edit counts (prose).
+
+### Derived state (regenerated from the above; never hand-edited)
+- `state/free-agents.json` — every unrostered player with context for the
+  Saturday board: `{id: {name, pos, team, status, injury, proj_pts, proj: {…few
+  raw projection keys…}, last_wk_pts}}`. `proj_pts` is the scored projection.
+- `state/league-board.json` — all 12 rosters resolved for scouting/trades:
+  `{slug: {starters: {slot: {id, name, pos, nfl, proj_pts}}, bench: [...], ir:
+  [...], faab_remaining}}`. Rosters + FAAB are public record (only GM files are
+  secret).
+
+### Per-week state (`state/weeks/<season>-w<NN>/`)
+- `projections.json`, `stats.json` — Sleeper API responses as-is `{id: {stats}}`.
+- `live-scores.json` — snapshot of the live scoreboard's per-player points
+  `{id: pts}`, written each poll; the Monday `/recap` reconciliation reads it.
+- `matchups.json` — scored matchups `{season, week, matchups: [{home, away,
+  home_score, away_score, home_lineup, away_lineup, winner}]}`.
+- `lineups.json` — each team's locked Sunday starters `{slug: {starters:
+  {slot: id}, justification, fallback}}`.
+- `faab-report.json` — the FAAB resolution report for the week (from `faab.py`).
+- `recap.md` — the commissioner's weekly recap column.
+
+### GM memory & the shared record (the personality substrate)
+- `teams/*/notes/2026-wNN.md` — owner notes (human input) plus the GM's replies.
+- `teams/*/press/2026-wNN.md` — the GM's public paper trail: note replies and
+  logged reasoning appended each run (read back as grudge fuel via the dossier).
+- `state/forum/2026-wNN.jsonl` — append-only weekly trash-talk thread, one post
+  per entry `{timestamp, team, post}`; at most one post per GM per run. Public
+  record; the commissioner blocks transactions, never speech.
+
+### Draft
+- `state/draft-log.jsonl` — one object per pick `{pick_no, round, team,
+  player_id, name, pos, commentary}`.
+- `state/draft-grades.md` — the commissioner's (unfair) draft-grades column.
+
+### Agent output
+- JSON Schemas in `docs/schemas/`: `saturday-decision`, `sunday-lineup`,
+  `trade-offer`, `trade-response`, `transaction-entry`. `saturday-decision` and
+  `sunday-lineup` carry an optional `forum_post` string.
 
 ## 9. Costs & model policy
 

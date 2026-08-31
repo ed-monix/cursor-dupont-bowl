@@ -305,12 +305,40 @@ def test_apply_won_claims_updates_roster_and_logs_transaction():
     assert entries == [{
         "timestamp": "2026-09-06T12:00:00+00:00",
         "team": "team-a",
-        "action": "faab_add",
-        "players": {"add": "fa_rb", "drop": "wr3"},
+        "action": "waiver_claim",
+        "players": ["fa_rb", "wr3"],
         "bid": 12,
         "reasoning": "upgrade bench",
         "status": "applied",
     }]
+
+
+def test_applied_entries_conform_to_transaction_schema():
+    """Cross-check: every transaction entry faab.py emits validates against
+    docs/schemas/transaction-entry.json (the league's declared log contract)."""
+    from lib.decisions import load_schema, validate
+
+    schema = load_schema("transaction-entry")
+    players = _full_players()
+    rosters = {"team-a": _full_roster("team-a", faab=50, bench=["wr3"])}
+    report = {"claims": [
+        {"team": "team-a", "add": "fa_rb", "drop": "wr3", "bid": 12,
+         "reasoning": "upgrade bench", "status": "won", "reason": "uncontested"},
+        {"team": "team-a", "add": "fa_wr", "drop": None, "bid": 0,
+         "reasoning": None, "status": "won", "reason": "free stash"},  # None reasoning
+    ]}
+
+    _, entries = faab.apply_won_claims(report, rosters, players, timestamp="2026-09-06T12:00:00+00:00")
+
+    assert len(entries) == 2
+    for e in entries:
+        assert validate(e, schema) == [], (e, validate(e, schema))
+    # add-first ordering; drop appended only when present.
+    assert entries[0]["action"] == "waiver_claim"
+    assert entries[0]["players"] == ["fa_rb", "wr3"]
+    assert entries[1]["players"] == ["fa_wr"]
+    # A null reasoning is coerced to the empty string (schema requires a string).
+    assert entries[1]["reasoning"] == ""
 
 
 def test_apply_won_claims_no_won_claims_is_a_no_op():
