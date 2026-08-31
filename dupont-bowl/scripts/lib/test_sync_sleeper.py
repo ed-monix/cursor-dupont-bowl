@@ -282,5 +282,32 @@ class TestNFLState(unittest.TestCase):
             self.assertEqual(result["week"], 5)
 
 
+class TestStandardSettings(unittest.TestCase):
+    """Test the no-reference-league standard settings path."""
+
+    def test_sync_settings_standard_writes_scoring_and_roster_without_league(self):
+        with tempfile.TemporaryDirectory() as tmp_path:
+            tmp_path = pathlib.Path(tmp_path)
+            (tmp_path / "config").mkdir()
+            # Provide the shipped default that the function promotes.
+            src = pathlib.Path(sync_sleeper.__file__).resolve().parents[1] / "config" / "scoring.default.json"
+            (tmp_path / "config" / "scoring.default.json").write_text(src.read_text())
+
+            with mock.patch.object(sync_sleeper, "ROOT", tmp_path):
+                sync_sleeper.sync_settings_standard()  # no league argument
+
+            scoring = json.loads((tmp_path / "config" / "scoring.json").read_text())
+            self.assertIn("rec", scoring)
+            self.assertIn("pass_td", scoring)
+            self.assertIn("rush_yd", scoring)
+            self.assertNotIn("_comment", scoring)  # underscore keys dropped
+
+            roster = json.loads((tmp_path / "config" / "roster.json").read_text())
+            self.assertEqual(roster["roster_positions"].count("BN"), 6)
+            self.assertEqual(roster["roster_positions"].count("IR"), 1)
+            self.assertIn("FLEX", roster["roster_positions"])
+            self.assertEqual(roster["settings"]["waiver_budget"], 100)
+
+
 if __name__ == "__main__":
     unittest.main()

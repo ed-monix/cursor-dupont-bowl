@@ -16,6 +16,8 @@ GAP (blocked on content): `make dryrun` end-to-end needs ≥3 sample GM files to
 --- Infra (Opus, integration) ---
 - Replaced 1.1's hardcoded-path conftest.py with a guarded no-op shim (only activates when `requests` unimportable; no-op in a real venv)
 - Added requirements.txt (requests, pytest; Flask intentionally omitted — scoreboard is stdlib)
+- scoreboard render_html redesigned: minimal, system-font, light/dark theme-aware (owner feedback); 3 render tests updated
+- sync_sleeper: `--settings` with no --league now activates Sleeper-standard scoring/roster (no reference league required — config/scoring.default.json IS the standard); config/scoring.json + config/roster.json committed as the active standard config
 2.1 faab | sonnet | fairness/tiebreak + atomic apply = correctness-critical | APPROVED (Opus re-verify: two-phase winner-then-apply correct, 4-team collision hand-worked, budget-deduction bug self-caught+fixed, 11 tests green). FLAG: budget-short winner "burns" the player (no pass-down) — confirm intent.
 2.2 score_week | haiku | mechanical: join lineups+stats via scoring lib, update standings | dispatched
 2.3 schedule | sonnet | algorithmic constraint (no repeat opponent before wk12) | APPROVED (Opus re-verify: circle method correct, 66 unique pairs by construction, 17 tests green). FLAG: playoffs use fixed non-reseeded bracket (PLAN.md unspecified) — confirm with owners.

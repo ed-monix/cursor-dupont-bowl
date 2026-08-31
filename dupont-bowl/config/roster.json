@@ -1,0 +1,27 @@
+{
+  "roster_positions": [
+    "QB",
+    "RB",
+    "RB",
+    "WR",
+    "WR",
+    "TE",
+    "FLEX",
+    "K",
+    "DEF",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "BN",
+    "IR"
+  ],
+  "settings": {
+    "num_teams": 12,
+    "playoff_teams": 6,
+    "playoff_week_start": 15,
+    "waiver_type": 2,
+    "waiver_budget": 100
+  }
+}

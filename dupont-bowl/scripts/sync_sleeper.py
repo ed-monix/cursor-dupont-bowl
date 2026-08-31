@@ -53,6 +53,28 @@ def sync_settings(league_id: str) -> None:
     print("wrote config/scoring.json, config/roster.json")
 
 
+def sync_settings_standard() -> None:
+    """Activate Sleeper-standard settings WITHOUT a reference league.
+
+    Sleeper's API only exposes scoring per-league (there is no "defaults"
+    endpoint), but config/scoring.default.json already encodes Sleeper's
+    standard half-PPR scoring verbatim. This promotes that shipped default to
+    the active config/scoring.json and writes the standard 12-team roster, so
+    no reference league needs to be created for standard play.
+    """
+    default = json.loads((ROOT / "config" / "scoring.default.json").read_text())
+    scoring = {k: v for k, v in default.items() if not k.startswith("_")}
+    (ROOT / "config" / "scoring.json").write_text(json.dumps(scoring, indent=2))
+    roster_positions = ["QB", "RB", "RB", "WR", "WR", "TE", "FLEX", "K", "DEF",
+                        "BN", "BN", "BN", "BN", "BN", "BN", "IR"]
+    (ROOT / "config" / "roster.json").write_text(json.dumps(
+        {"roster_positions": roster_positions,
+         "settings": {"num_teams": 12, "playoff_teams": 6,
+                      "playoff_week_start": 15, "waiver_type": 2,
+                      "waiver_budget": 100}}, indent=2))
+    print("wrote config/scoring.json + config/roster.json (Sleeper standard; no reference league)")
+
+
 def fetch_players_raw() -> dict:
     """Fetch raw players dump from Sleeper API (~5MB)."""
     r = requests.get(f"{API}/players/nfl", timeout=120)
@@ -128,7 +150,7 @@ def sync_stats(season: str, week: int) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description="Sync Sleeper data")
     ap.add_argument("--league", help="League ID for --settings")
-    ap.add_argument("--settings", action="store_true", help="Sync league settings")
+    ap.add_argument("--settings", action="store_true", help="Activate scoring/roster settings: with --league, mirror that league; without, use Sleeper standard (no reference league needed)")
     ap.add_argument("--players", action="store_true", help="Sync player list (cached 24h)")
     ap.add_argument("--projections", action="store_true", help="Sync weekly projections")
     ap.add_argument("--stats", action="store_true", help="Sync weekly stats")
@@ -139,9 +161,10 @@ def main() -> int:
     a = ap.parse_args()
 
     if a.settings:
-        if not a.league:
-            sys.exit("--settings requires --league <reference_league_id>")
-        sync_settings(a.league)
+        if a.league:
+            sync_settings(a.league)   # mirror a specific league's custom settings
+        else:
+            sync_settings_standard()  # standard half-PPR, no reference league needed
 
     if a.players:
         sync_players()
@@ -163,6 +186,8 @@ def main() -> int:
     if a.all:
         if a.league:
             sync_settings(a.league)
+        else:
+            sync_settings_standard()
         sync_players()
 
         state = get_nfl_state()

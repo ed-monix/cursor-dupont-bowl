@@ -246,8 +246,39 @@ def build_scoreboard_data(
     }
 
 
+def _starter_rows_html(starters: dict, scores: dict, players: dict) -> str:
+    """Compact per-starter rows for one team (slot, name, pos/team, points)."""
+    from html import escape
+
+    rows = ""
+    for slot, pid in starters.items():
+        if pid is None:
+            rows += (
+                '<div class="p empty"><span class="slot">'
+                f'{escape(str(slot))}</span>'
+                '<span class="pn">—</span><span class="pp">·</span></div>'
+            )
+            continue
+        info = players.get(pid, {})
+        name = escape(str(info.get("name", pid)))
+        pos = escape(str(info.get("pos", "?")))
+        nfl = escape(str(info.get("team") or "FA"))
+        pts = scores.get(pid, 0.0)
+        rows += (
+            '<div class="p">'
+            f'<span class="slot">{escape(str(slot))}</span>'
+            f'<span class="pn">{name}<span class="meta">{pos} · {nfl}</span></span>'
+            f'<span class="pp">{pts:.1f}</span>'
+            '</div>'
+        )
+    return rows
+
+
 def render_html(scoreboard_data: dict, players: dict) -> str:
-    """Render scoreboard data as plain HTML (no framework, no build step).
+    """Render scoreboard data as a clean, minimal, theme-aware HTML page.
+
+    No framework, no build step, no external assets (system fonts only), so it
+    renders instantly and works offline on localhost.
 
     Args:
         scoreboard_data: Output of build_scoreboard_data().
@@ -256,175 +287,121 @@ def render_html(scoreboard_data: dict, players: dict) -> str:
     Returns:
         HTML string with <meta http-equiv="refresh" content="60">.
     """
+    from html import escape
+
     week = scoreboard_data["week"]
     matchups = scoreboard_data["matchups"]
 
-    matchup_cards_html = ""
+    cards = ""
     for m in matchups:
-        home_slug = m["home_team"]["slug"]
-        away_slug = m["away_team"]["slug"]
-        home_total = m["home_team"]["total"]
-        away_total = m["away_team"]["total"]
-        leader_slug = m["leader_slug"]
+        home, away = m["home_team"], m["away_team"]
+        leader = m["leader_slug"]
 
-        home_starters = m["home_team"]["roster"].get("starters", {})
-        away_starters = m["away_team"]["roster"].get("starters", {})
-        home_scores = m["home_team"]["scores"]
-        away_scores = m["away_team"]["scores"]
-        home_yet_to_play = m["home_team"]["starters_yet_to_play"]
-        away_yet_to_play = m["away_team"]["starters_yet_to_play"]
+        def team_line(t):
+            is_leader = leader == t["slug"]
+            cls = "row win" if is_leader else ("row" if leader else "row tie")
+            mark = '<span class="lead">▸</span>' if is_leader else '<span class="lead"></span>'
+            ytp = t["starters_yet_to_play"]
+            ytp_html = f'<span class="ytp">{ytp} to play</span>' if ytp else ""
+            return (
+                f'<div class="{cls}">'
+                f'{mark}<span class="tn">{escape(str(t["slug"]))}</span>'
+                f'{ytp_html}<span class="ts">{t["total"]:.1f}</span>'
+                f'</div>'
+            )
 
-        # Render each starter line.
-        home_lines_html = ""
-        for slot, player_id in home_starters.items():
-            if player_id is None:
-                continue
-            pts = home_scores.get(player_id, 0.0)
-            player_info = players.get(player_id, {})
-            name = player_info.get("name", "Unknown")
-            pos = player_info.get("pos", "?")
-            nfl_team = player_info.get("team") or "?"
-            home_lines_html += f"    <div class='player-line'>{name} ({pos}, {nfl_team}): {pts:.1f}</div>\n"
+        home_detail = _starter_rows_html(
+            home["roster"].get("starters", {}), home["scores"], players)
+        away_detail = _starter_rows_html(
+            away["roster"].get("starters", {}), away["scores"], players)
 
-        away_lines_html = ""
-        for slot, player_id in away_starters.items():
-            if player_id is None:
-                continue
-            pts = away_scores.get(player_id, 0.0)
-            player_info = players.get(player_id, {})
-            name = player_info.get("name", "Unknown")
-            pos = player_info.get("pos", "?")
-            nfl_team = player_info.get("team") or "?"
-            away_lines_html += f"    <div class='player-line'>{name} ({pos}, {nfl_team}): {pts:.1f}</div>\n"
+        cards += (
+            '<section class="card">'
+            f'{team_line(home)}{team_line(away)}'
+            '<div class="detail">'
+            f'<div class="col">{home_detail}</div>'
+            f'<div class="col">{away_detail}</div>'
+            '</div>'
+            '</section>'
+        )
 
-        # Highlight leader.
-        home_leader_class = " leader" if leader_slug == home_slug else ""
-        away_leader_class = " leader" if leader_slug == away_slug else ""
+    if not cards:
+        cards = '<p class="empty-state">No matchups scheduled for this week yet.</p>'
 
-        matchup_html = f"""  <div class="matchup">
-    <div class="team home{home_leader_class}">
-      <div class="team-header">
-        <span class="team-name">{home_slug}</span>
-        <span class="team-total">{home_total:.1f}</span>
-      </div>
-      <div class="starters">
-{home_lines_html}      </div>
-      <div class="yet-to-play">Players yet to play: {home_yet_to_play}</div>
-    </div>
-    <div class="vs">vs</div>
-    <div class="team away{away_leader_class}">
-      <div class="team-header">
-        <span class="team-name">{away_slug}</span>
-        <span class="team-total">{away_total:.1f}</span>
-      </div>
-      <div class="starters">
-{away_lines_html}      </div>
-      <div class="yet-to-play">Players yet to play: {away_yet_to_play}</div>
-    </div>
-  </div>
-"""
-        matchup_cards_html += matchup_html
+    updated = datetime.now().strftime("%a %-I:%M %p")
 
-    html = f"""<!DOCTYPE html>
-<html>
+    return f"""<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh" content="60">
-  <title>DuPont Bowl Scoreboard - Week {week}</title>
+  <title>The DuPont Bowl · Week {week}</title>
   <style>
+    :root {{
+      --bg:#fafaf9; --card:#fff; --line:#eceae6; --text:#18181b;
+      --muted:#9a9a93; --faint:#c4c4bd; --accent:#1f7a4d;
+    }}
+    @media (prefers-color-scheme: dark) {{
+      :root {{
+        --bg:#111110; --card:#1a1a18; --line:#2a2a26; --text:#eeeeea;
+        --muted:#83837c; --faint:#4d4d47; --accent:#4cb885;
+      }}
+    }}
+    * {{ box-sizing:border-box; }}
     body {{
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-      margin: 0;
-      padding: 20px;
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      font-size:15px; line-height:1.4;
+      -webkit-font-smoothing:antialiased;
     }}
-    h1 {{
-      text-align: center;
-      margin-bottom: 30px;
-    }}
-    .scoreboard {{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 20px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }}
-    .matchup {{
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      display: flex;
-      overflow: hidden;
-    }}
-    .team {{
-      flex: 1;
-      padding: 15px;
-      border-right: 1px solid #ddd;
-    }}
-    .team.away {{
-      border-right: none;
-      border-left: 1px solid #ddd;
-    }}
-    .team.leader {{
-      background: #e8f5e9;
-      font-weight: bold;
-    }}
-    .team-header {{
-      display: flex;
-      justify-content: space-between;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }}
-    .team-name {{
-      text-transform: uppercase;
-    }}
-    .team-total {{
-      font-size: 20px;
-      color: #2196f3;
-    }}
-    .starters {{
-      margin: 10px 0;
-      font-size: 13px;
-    }}
-    .player-line {{
-      margin: 4px 0;
-      padding: 2px 0;
-    }}
-    .yet-to-play {{
-      font-size: 12px;
-      color: #999;
-      margin-top: 8px;
-      font-style: italic;
-    }}
-    .vs {{
-      align-self: center;
-      padding: 0 5px;
-      color: #999;
-      font-weight: bold;
-      border-left: 1px solid #ddd;
-      border-right: 1px solid #ddd;
-    }}
-    .refresh-info {{
-      text-align: center;
-      color: #999;
-      font-size: 12px;
-      margin-top: 30px;
-    }}
+    .wrap {{ max-width:640px; margin:0 auto; padding:40px 20px 64px; }}
+    header {{ display:flex; align-items:baseline; justify-content:space-between;
+      margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--line); }}
+    .brand {{ font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:13px; }}
+    .wk {{ color:var(--muted); font-size:13px; letter-spacing:.04em; }}
+    .card {{ background:var(--card); border:1px solid var(--line); border-radius:12px;
+      padding:14px 16px; margin-bottom:12px; }}
+    .row {{ display:flex; align-items:center; gap:10px; padding:6px 0; }}
+    .lead {{ width:12px; color:var(--accent); font-size:12px; }}
+    .tn {{ flex:0 0 auto; text-transform:uppercase; letter-spacing:.06em; font-size:14px;
+      color:var(--muted); font-weight:500; }}
+    .row.win .tn {{ color:var(--text); font-weight:600; }}
+    .ytp {{ margin-left:auto; margin-right:12px; font-size:11px; color:var(--faint);
+      letter-spacing:.02em; }}
+    .ts {{ margin-left:auto; font-variant-numeric:tabular-nums;
+      font-size:22px; font-weight:400; color:var(--muted); }}
+    .ytp + .ts {{ margin-left:0; }}
+    .row.win .ts {{ color:var(--text); font-weight:600; }}
+    .detail {{ display:grid; grid-template-columns:1fr 1fr; gap:0 20px;
+      margin-top:12px; padding-top:12px; border-top:1px solid var(--line); }}
+    .col {{ min-width:0; }}
+    .p {{ display:flex; align-items:baseline; gap:8px; padding:3px 0; font-size:12.5px; }}
+    .slot {{ flex:0 0 34px; color:var(--faint); font-size:10px; letter-spacing:.08em;
+      text-transform:uppercase; padding-top:1px; }}
+    .pn {{ flex:1 1 auto; min-width:0; white-space:nowrap; overflow:hidden;
+      text-overflow:ellipsis; }}
+    .pn .meta {{ color:var(--faint); font-size:11px; margin-left:6px; }}
+    .pp {{ flex:0 0 auto; font-variant-numeric:tabular-nums; color:var(--muted); }}
+    .p.empty .pn, .p.empty .pp {{ color:var(--faint); }}
+    footer {{ margin-top:24px; text-align:center; color:var(--faint); font-size:11px;
+      letter-spacing:.03em; }}
+    .empty-state {{ color:var(--muted); text-align:center; padding:40px 0; }}
+    @media (max-width:520px) {{ .detail {{ grid-template-columns:1fr; gap:0; }}
+      .col + .col {{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); }} }}
   </style>
 </head>
 <body>
-  <h1>DuPont Bowl Scoreboard - Week {week}</h1>
-  <div class="scoreboard">
-{matchup_cards_html}  </div>
-  <div class="refresh-info">
-    <p>Updates every 60 seconds. Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+  <div class="wrap">
+    <header>
+      <span class="brand">The DuPont Bowl</span>
+      <span class="wk">Week {week}</span>
+    </header>
+    {cards}
+    <footer>Live · refreshes every 60s · updated {escape(updated)} · unofficial until Monday</footer>
   </div>
 </body>
 </html>"""
-    return html
 
 
 # Thread-safe scoreboard cache.

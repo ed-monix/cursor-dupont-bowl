@@ -365,8 +365,8 @@ def test_render_html_basic(schedule, rosters, stats, players, scoring):
     assert "eagles" in html.lower()
     assert "46.0" in html  # Chiefs total
     assert "43.0" in html  # Eagles total
-    # Leader should have the "leader" class.
-    assert 'class="team home leader"' in html
+    # Leader's team row should carry the "win" class.
+    assert 'class="row win"' in html
 
 
 def test_render_html_playoff_bracket_guards_seed_placeholders(scoring, players):
@@ -415,13 +415,13 @@ def test_player_line_html_with_name_pos_team(schedule, rosters, stats, players, 
     board = scoreboard.build_scoreboard_data(schedule, rosters, stats, players, scoring, week)
     html = scoreboard.render_html(board, players)
 
-    # Check for specific player details in HTML.
+    # Check for specific player details in HTML (name + "pos · team" meta).
     # p1: Patrick Mahomes, QB, KC
     assert "Patrick Mahomes" in html
-    assert "(QB, KC)" in html
+    assert "QB · KC" in html
     # p3: Travis Kelce, TE, KC
     assert "Travis Kelce" in html
-    assert "(TE, KC)" in html
+    assert "TE · KC" in html
 
 
 def test_empty_scoreboard_renders(scoring, players):
@@ -436,8 +436,9 @@ def test_empty_scoreboard_renders(scoring, players):
 
     assert "<!DOCTYPE html>" in html
     assert "Week 1" in html
-    # Should have the scoreboard container but no matchup cards.
-    assert "class=\"scoreboard\"" in html
+    # No matchups -> the empty-state message, no matchup cards.
+    assert "class=\"empty-state\"" in html
+    assert "class=\"card\"" not in html
 
 
 # Tests for load_current_week() — bug fix and hardening.
