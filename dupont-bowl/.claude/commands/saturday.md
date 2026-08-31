@@ -21,14 +21,14 @@ python scripts/sync_sleeper.py --players
 python scripts/sync_sleeper.py --projections --week <WW>
 ```
 
-Then derive the **free-agent pool**: every player_id in `state/players.json` that
-is NOT on any `teams/*/roster.json` (starters + bench + ir, all teams), with its
-projection (`state/weeks/2026-w<WW>/projections.json`) attached. Write
-`state/free-agents.json` as `{player_id: {name, pos, team, proj_pts}}` where
-`proj_pts = scripts/lib/scoring.score_player(projection_row, scoring)`.
-> NOTE FOR REVIEW: there is no `scripts/free_agents.py` yet — this derivation is
-> currently done inline. If you want it deterministic and testable, add that
-> script as a follow-up ticket and call it here instead.
+Then derive the **free-agent pool** (a script decides this, not a judgment call):
+
+```bash
+python scripts/free_agents.py --week <WW>
+```
+
+This writes `state/free-agents.json` = `{player_id: {name, pos, team, proj_pts}}`
+for every player not on any roster, with this week's projected points attached.
 
 Build the **worst→best standings order** from `state/standings.json` (record,
 then points-for; the FAAB tiebreak input `faab.py` expects — a list of team

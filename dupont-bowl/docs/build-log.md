@@ -10,7 +10,7 @@
 3.2 mock draft harness | Opus | covered by /draft --mock (all-AI, no pauses)
 3.3 fallback paths | Saturday no-claims fallback in /saturday; Sunday best_legal_lineup (sonnet, dispatched) referenced in /sunday
 4.2 reconciliation | haiku (dispatched) | referenced in /recap
-GAP (flag to owner): no scripts/free_agents.py deriver — /saturday computes the free-agent pool inline; add a testable deriver script as a follow-up.
+free_agents deriver | Opus | CLOSED: added scripts/free_agents.py (derive_free_agents: rostered ids subtracted from player pool, proj_pts attached) + 4 tests; /saturday now calls it instead of inline derivation.
 GAP (blocked on content): `make dryrun` end-to-end needs ≥3 sample GM files to exercise the agent layer; Phase 5 GM content is deferred, so the full dry run waits on it. The deterministic script pipeline is already fully covered by pytest.
 
 --- Infra (Opus, integration) ---
