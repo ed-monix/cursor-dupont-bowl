@@ -224,6 +224,8 @@ validate agent output.
 - `lineups.json` — each team's locked Sunday starters `{slug: {starters:
   {slot: id}, justification, fallback}}`.
 - `faab-report.json` — the FAAB resolution report for the week (from `faab.py`).
+- `news-facts.json` — deterministic headline facts from `derive_news.py` (the
+  media agent's input for the weekly tabloid).
 - `recap.md` — the commissioner's weekly recap column.
 
 ### GM memory & the shared record (the personality substrate)
@@ -233,6 +235,10 @@ validate agent output.
 - `state/forum/2026-wNN.jsonl` — append-only weekly trash-talk thread, one post
   per entry `{timestamp, team, post}`; at most one post per GM per run. Public
   record; the commissioner blocks transactions, never speech.
+- `state/news/2026-wNN.md` — the media mogul's (`agents/media.md`) weekly
+  tabloid, published before the Saturday run from `news-facts.json` + any
+  owner-planted rumors. Public voice; she holds no powers and never reads a GM
+  file.
 
 ### Draft
 - `state/draft-log.jsonl` — one object per pick `{pick_no, round, team,

@@ -1,5 +1,5 @@
 ---
-description: Saturday roster run — waivers (FAAB), drops, and trade offers for the week
+description: Saturday roster run — tabloid drop, then waivers (FAAB), drops, and trade offers
 argument-hint: <week number, e.g. 5>
 ---
 
@@ -12,105 +12,131 @@ own `general-manager.md`), **notes are pressure not orders** (rule 2), **scripts
 decide facts** (rule 3), **everything is logged** (rule 4), **one commit per run**
 (rule 5), and **commissioner reviews before anything is applied** (rule 6).
 
-## 1. Sync fresh data (scripts decide facts)
+## 1. Sync + derive fresh data (scripts decide facts)
 
-Run, from the repo root:
+From the repo root:
 
 ```bash
 python scripts/sync_sleeper.py --players
 python scripts/sync_sleeper.py --projections --week <WW>
+python scripts/free_agents.py  --week <WW>   # state/free-agents.json (name,pos,team,status,injury,proj_pts,proj,last_wk_pts)
+python scripts/league_board.py --week <WW>   # state/league-board.json (all 12 rosters resolved — public, for scouting/trades)
+python scripts/derive_news.py  --week <WW>   # state/weeks/2026-w<WW>/news-facts.json (deterministic headline facts)
 ```
-
-Then derive the **free-agent pool** (a script decides this, not a judgment call):
-
-```bash
-python scripts/free_agents.py --week <WW>
-```
-
-This writes `state/free-agents.json` = `{player_id: {name, pos, team, proj_pts}}`
-for every player not on any roster, with this week's projected points attached.
 
 Build the **worst→best standings order** from `state/standings.json` (record,
-then points-for; the FAAB tiebreak input `faab.py` expects — a list of team
-slugs, worst first).
+then points-for) — the FAAB tiebreak input `faab.py` expects, a list of slugs,
+worst first.
 
-## 2. AI team decisions (one isolated subagent per team)
+## 2. Drop the tabloid (before anyone moves)
+
+Spawn the **Media Mogul** (`agents/media.md`, Kris Jenner) with PUBLIC RECORD
+only — `news-facts.json`, `state/transactions.jsonl`, last week's forum thread
+(`state/forum/2026-w<PREV>.jsonl`), `teams/*/press/`, recaps, standings, plus any
+owner-planted rumor lines. She writes `state/news/2026-w<WW>.md`, the front page
+every GM reads this week. She holds ZERO powers and NEVER sees a GM file.
+
+## 3. AI team decisions (one isolated subagent per team)
 
 For each AI team (every `teams/` dir except `_template`, `your-team`,
-`wifes-team`), in **reverse standings order** (worst-standing team first, for
-context only — bids are blind), spawn ONE subagent whose context is ONLY:
+`wifes-team`), in **reverse standings order** (context only — bids are blind),
+spawn ONE subagent whose context is ONLY that team's own material + public record:
 
-- that team's `teams/<slug>/general-manager.md` (NEVER another team's),
+- its `teams/<slug>/general-manager.md` (NEVER another team's),
 - its `teams/<slug>/roster.json`,
-- `state/standings.json` and its last box score (`state/weeks/2026-w<PREV>/matchups.json` if it exists),
-- its owner note `teams/<slug>/notes/2026-w<WW>.md` (if present) — framed explicitly as *sentiment it may obey, ignore, or spite*,
-- `state/free-agents.json` (with projections),
+- its **dossier** — `gm_dossier.build_dossier(root, slug, current_week=<WW>)`:
+  the last owner notes **and its own replies**, its own recent transactions (with
+  reasoning), recap lines that named it, and its record trajectory (its memory),
+- this week's **tabloid** `state/news/2026-w<WW>.md` and last week's **forum
+  thread** (`forum.read_thread`),
+- its owner note `teams/<slug>/notes/2026-w<WW>.md` (if present) — *sentiment it
+  may obey, ignore, or spite*,
+- `state/free-agents.json` (the waiver board) and `state/league-board.json`
+  (everyone's rosters, so it can scout a real trade target),
 - its next opponent from `state/schedule.json`.
 
-Instruct the subagent to reply with a single JSON object matching
-`docs/schemas/saturday-decision.json`:
-`{claims: [{add, drop, bid}], drops: [], trade_offer?, note_reply}`, plus its
-in-character reasoning. Claims are in priority order; bids are integers ≥ 0 and
-must not exceed the team's `faab_remaining`.
+**Beliefs first, projections are just an opinion (R7).** Instruct the agent to
+FIRST state its in-character read of the week — reacting to the tabloid, its
+owner note, the forum, and last week's result — and THEN choose moves consistent
+with that read. Frame `proj_pts` as *"the analytics department's opinion"*:
+evidence the GM may trust, discount, or resent per its philosophy and its Gut &
+Media-Diet sections. The goal is to win **the way THIS GM believes games are
+won** — never "maximize projected points."
 
-Parse each reply with `scripts/lib/decisions.parse_and_validate(raw, schema)`.
-On failure, **retry once** with the validation errors appended. If it still
-fails: that team makes **no claims/trades this week**, logged as
-`fallback: true` (PLAN.md §10, league-rules "Agent failure handling"). Quote
-every GM's reasoning verbatim into the log — it's the entertainment.
+Reply = one JSON object matching `docs/schemas/saturday-decision.json`:
+`{claims: [{add, drop, bid}], drops: [], trade_offer?, note_reply, forum_post?}`,
+plus in-character reasoning. Claims in priority order; bids are integers ≥ 0 and
+≤ the team's `faab_remaining`.
 
-## 3. Human team decisions
+Parse each reply with `decisions.parse_and_validate(raw, schema)`. On failure,
+**retry once** with the errors appended. If it still fails: no claims/trades this
+week, logged `fallback: true`. Quote every GM's reasoning verbatim — it's the
+entertainment.
 
-For `your-team` and `wifes-team`, PAUSE and prompt the human to type claims,
-drops, and any trade offer. Run their typed input through the SAME
+**Forum:** for any team that returned a `forum_post`, append it via
+`forum.append_post(root, <WW>, slug, post)` (one post per team per week).
+
+## 4. Human team decisions
+
+For `your-team` and `wifes-team`, PAUSE and prompt the human for claims, drops,
+any trade offer, and an optional forum post. Run their input through the SAME
 `saturday-decision` schema and the same deadline. No special treatment.
 
-## 4. Resolve FAAB (script decides)
+## 5. Resolve FAAB (script decides)
 
-Assemble all teams' claims into the claims JSON `faab.py` expects
-(`{team: [{add, drop, bid, reasoning}]}`) and the worst→best standings list, then:
+Assemble all claims into `{team: [{add, drop, bid, reasoning}]}` and the
+worst→best standings list, then:
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \
   --report-out state/weeks/2026-w<WW>/faab-report.json --dry-run
 ```
 
-Use `--dry-run` first to get the resolution report for the commissioner to
-review; do NOT apply yet. `faab.py` enforces the rules (highest bid; tie → worse
-standing; drop-consumption; budget). Never hand-resolve a bid.
+`--dry-run` first for the commissioner's review; do NOT apply yet. `faab.py`
+enforces the rules (highest bid; tie → worse standing; drop-consumption; budget).
+Never hand-resolve a bid.
 
-## 5. Trades
+## 6. Trades
 
-Enforce: max ONE outgoing offer per team per week; deadline end of week 11
-(reject offers from week 12 on). For each offer, give the TARGET team's agent
-(or human) one accept/reject/counter; on a counter, the offerer gets a final
-accept/reject. Isolation still holds — the target agent sees only its own GM
-file plus the offer terms. Validate any resulting roster swap with
-`scripts/lib/rosters.apply_transaction` (it refuses illegal results).
+Max ONE outgoing offer per team per week; deadline end of week 11 (reject from
+week 12 on). GMs now scout targets via `state/league-board.json`, so
+`trade_offer.in` names real players. For each offer, the TARGET team's agent (or
+human) gets one accept/reject/counter; on a counter, the offerer gets a final
+accept/reject — the target sees only its own GM file + the offer terms. Validate
+any swap with `rosters.apply_transaction` (it refuses illegal results).
 
-## 6. Commissioner review, then apply
+## 7. Commissioner review, then apply
 
-Spawn the Commissioner subagent (`agents/commissioner.md` — the ONE agent
-allowed to read every GM file). Give it the FAAB dry-run report, all decisions,
-and the trade outcomes. It BLOCKS only rule violations (illegal rosters, over-budget
-bids, nonexistent/duplicate players, second trade offers, out-of-window GM
-edits, unparseable-after-retry output) and must NOT block legal-but-dumb moves
-(chaos is legal). Record any ruling in `state/rulings.md`.
+Spawn the Commissioner (`agents/commissioner.md` — the ONE agent allowed to read
+every GM file; it and Kris Jenner maintain a professional loathing). Give it the
+FAAB dry-run report, all decisions, and trade outcomes. It BLOCKS only rule
+violations (illegal rosters, over-budget bids, nonexistent/duplicate players,
+second trade offers, out-of-window GM edits, unparseable-after-retry output) and
+must NOT block legal-but-dumb moves. Record rulings in `state/rulings.md`.
 
-Once the commissioner approves, apply for real:
+On approval, apply for real (no `--dry-run`):
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \
   --report-out state/weeks/2026-w<WW>/faab-report.json
 ```
 
-(no `--dry-run` — this applies won claims to rosters and appends to
-`state/transactions.jsonl`). Apply approved trades the same way. Every applied
-action must land in `state/transactions.jsonl` with timestamp, team, action,
-players, bid, reasoning, status.
+Apply approved trades the same way. Every applied action lands in
+`state/transactions.jsonl` (timestamp, team, action, players, bid, reasoning,
+status — schema `docs/schemas/transaction-entry.json`).
 
-## 7. Commit (exactly one)
+## 8. Write each GM's paper trail
 
-Stage the updated rosters, `state/transactions.jsonl`, `state/free-agents.json`,
-the FAAB report, and any ruling, and make ONE commit: `week <WW>: saturday`.
-Never commit mid-run.
+For every AI team, append its public output this run to
+`teams/<slug>/press/2026-w<WW>.md` via `gm_dossier.append_press(...)`: its
+`note_reply`, its logged claim/trade reasoning, and the outcome line (e.g. "won
+the bid at $23" / "lineup fell back — Hall of Shame" comes Sunday/Monday). This
+is the memory next week's dossier reads back.
+
+## 9. Commit (exactly one)
+
+Stage updated rosters, `state/transactions.jsonl`, `state/free-agents.json`,
+`state/league-board.json`, `state/news/2026-w<WW>.md`,
+`state/weeks/2026-w<WW>/{news-facts.json,faab-report.json}`,
+`state/forum/2026-w<WW>.jsonl`, updated `teams/*/press/`, and any ruling; ONE
+commit: `week <WW>: saturday`. Never commit mid-run.
