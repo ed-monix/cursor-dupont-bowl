@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "saturday-decision.json",
+  "title": "Saturday Decision",
+  "description": "An AI GM agent's Saturday roster-run output (PLAN.md §4 'Saturday AM — Roster run'): FAAB waiver claims, drops, an optional outgoing trade offer, and a reply to this week's owner note.",
+  "type": "object",
+  "required": ["claims", "drops", "note_reply"],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "description": "FAAB waiver claims, in priority order (highest priority first); processed by scripts/faab.py.",
+      "items": {
+        "type": "object",
+        "required": ["add", "drop", "bid"],
+        "properties": {
+          "add": {
+            "type": "string",
+            "description": "Free-agent player id to claim."
+          },
+          "drop": {
+            "type": ["string", "null"],
+            "description": "Roster player id to drop to make room, or null if none is needed."
+          },
+          "bid": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "FAAB bid in whole dollars, 0 <= bid <= remaining budget ($100/season)."
+          }
+        }
+      }
+    },
+    "drops": {
+      "type": "array",
+      "description": "Player ids to drop outright (no corresponding add).",
+      "items": {"type": "string"}
+    },
+    "trade_offer": {
+      "type": "object",
+      "description": "Optional outgoing trade offer; shaped like trade-offer.json ({to_team, out, in, message?}). Omit if not offering a trade this week (max one outgoing offer per team per week).",
+      "required": ["to_team", "out", "in"],
+      "properties": {
+        "to_team": {"type": "string"},
+        "out": {"type": "array", "items": {"type": "string"}},
+        "in": {"type": "array", "items": {"type": "string"}},
+        "message": {"type": "string"}
+      }
+    },
+    "note_reply": {
+      "type": "string",
+      "description": "In-character reply to the owner's note for this team this week (may be empty string if no note was left)."
+    }
+  },
+  "additionalProperties": false
+}

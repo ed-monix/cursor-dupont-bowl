@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sunday-lineup.json",
+  "title": "Sunday Lineup",
+  "description": "An AI GM agent's Sunday lineup-run output (PLAN.md §4 'Sunday AM — Lineup run'): the starting lineup plus a 1-paragraph in-character justification. Validated for legal slots by scripts/lib/rosters.validate_lineup before it is written to the team's roster.json.",
+  "type": "object",
+  "required": ["starters", "justification"],
+  "properties": {
+    "starters": {
+      "type": "object",
+      "description": "slot -> player_id, one entry per starter slot in teams/*/roster.json (e.g. QB, RB1, RB2, WR1, WR2, TE, FLEX, K, DEF). Every slot must be filled with a position-eligible player id (no nulls) for a lineup to be legal.",
+      "additionalProperties": {
+        "type": "string",
+        "description": "player_id starting in this slot."
+      }
+    },
+    "justification": {
+      "type": "string",
+      "description": "1-paragraph in-character explanation of the lineup choices, including any acknowledgment of starting a BYE/Out player."
+    }
+  },
+  "additionalProperties": false
+}

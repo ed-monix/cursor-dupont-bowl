@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "trade-offer.json",
+  "title": "Trade Offer",
+  "description": "A single team's outgoing trade offer to another team (PLAN.md §4 step 5: max one outgoing offer per team per week).",
+  "type": "object",
+  "required": ["to_team", "out", "in"],
+  "properties": {
+    "to_team": {
+      "type": "string",
+      "description": "Team slug of the offer's target (must match a teams/<slug> directory)."
+    },
+    "out": {
+      "type": "array",
+      "description": "Player ids the offering team gives up.",
+      "items": {"type": "string"}
+    },
+    "in": {
+      "type": "array",
+      "description": "Player ids the offering team wants back.",
+      "items": {"type": "string"}
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional in-character note attached to the offer."
+    }
+  },
+  "additionalProperties": false
+}
