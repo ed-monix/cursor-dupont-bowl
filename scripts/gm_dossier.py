@@ -376,6 +376,17 @@ def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026
     except Exception:
         trajectory = {"record": {}, "recent_results": []}
 
+    # This team's own seeded opinions of the rest of the cast (R10) — priors the
+    # lived record then layers on top. Its OWN file only; isolation holds.
+    opinions = {}
+    try:
+        op = pathlib.Path(root) / "teams" / slug / "opinions.json"
+        if op.exists():
+            with open(op, encoding="utf-8") as f:
+                opinions = json.load(f)
+    except Exception:
+        opinions = {}
+
     return {
         "team": slug,
         "season": season,
@@ -383,6 +394,7 @@ def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026
         "own_transactions": own_transactions,
         "recap_mentions": recap_mentions,
         "trajectory": trajectory,
+        "opinions": opinions,
     }
 
 

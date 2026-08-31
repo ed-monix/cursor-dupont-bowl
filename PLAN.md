@@ -232,6 +232,12 @@ validate agent output.
 - `teams/*/notes/2026-wNN.md` — owner notes (human input) plus the GM's replies.
 - `teams/*/press/2026-wNN.md` — the GM's public paper trail: note replies and
   logged reasoning appended each run (read back as grudge fuel via the dossier).
+- `teams/*/opinions.json` — this GM's seeded preseason opinion of every other
+  character (the 11 other GMs + `commissioner` + `media`), from `/gms-meeting`;
+  validated by `docs/schemas/gm-opinions.json`. Joins the team's dossier as
+  priors; agent-private (only its own GM and the commissioner load it);
+  rewritable under GM-file governance (3 edits/season, note windows, logged in
+  `state/rulings.md`).
 - `state/forum/2026-wNN.jsonl` — append-only weekly trash-talk thread, one post
   per entry `{timestamp, team, post}`; at most one post per GM per run. Public
   record; the commissioner blocks transactions, never speech.
@@ -247,8 +253,8 @@ validate agent output.
 
 ### Agent output
 - JSON Schemas in `docs/schemas/`: `saturday-decision`, `sunday-lineup`,
-  `trade-offer`, `trade-response`, `transaction-entry`. `saturday-decision` and
-  `sunday-lineup` carry an optional `forum_post` string.
+  `trade-offer`, `trade-response`, `transaction-entry`, `gm-opinions`.
+  `saturday-decision` and `sunday-lineup` carry an optional `forum_post` string.
 
 ## 9. Costs & model policy
 

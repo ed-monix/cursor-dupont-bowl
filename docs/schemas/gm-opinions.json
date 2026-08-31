@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gm-opinions.json",
+  "title": "GM Opinions",
+  "description": "teams/<slug>/opinions.json — this GM's seeded preseason opinion of every OTHER character (the 11 other GMs, plus 'commissioner' and 'media'), formed at /gms-meeting from public personas only. Keyed by counterpart slug. Joins the GM's own R1 dossier as priors; rewritable under GM-file governance (max 3 edits/season, note windows only, logged in state/rulings.md).",
+  "type": "object",
+  "minProperties": 1,
+  "additionalProperties": {
+    "type": "object",
+    "required": ["stance", "take", "hooks"],
+    "properties": {
+      "stance": {
+        "type": "string",
+        "description": "The working relationship going into the season.",
+        "enum": ["respect", "rival", "dismissive", "wary", "soft-spot", "unknown"]
+      },
+      "take": {
+        "type": "string",
+        "description": "One in-character sentence — quotable, will surface in forum posts and trade messages all season."
+      },
+      "hooks": {
+        "type": "array",
+        "description": "At least one MECHANICAL relationship rule (a vibe without a mechanic is decoration), e.g. 'never accept X's first offer', 'believes everything the tabloid prints about Y', 'checks Z's forum post before setting a lineup'.",
+        "items": {"type": "string"},
+        "minItems": 1
+      }
+    },
+    "additionalProperties": false
+  }
+}

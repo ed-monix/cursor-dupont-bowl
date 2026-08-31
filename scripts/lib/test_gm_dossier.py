@@ -383,7 +383,7 @@ def test_build_dossier_top_level_shape(tmp_path):
     dossier = gm_dossier.build_dossier(tmp_path, "team-chaos", season="2026", current_week=5)
 
     assert set(dossier.keys()) == {"team", "season", "notes", "own_transactions",
-                                    "recap_mentions", "trajectory"}
+                                    "recap_mentions", "trajectory", "opinions"}
     assert dossier["team"] == "team-chaos"
     assert dossier["season"] == "2026"
     assert isinstance(dossier["notes"], list)
@@ -409,6 +409,31 @@ def test_build_dossier_default_current_week_and_weeks_back(tmp_path):
 
     assert dossier["team"] == "team-chaos"
     assert dossier["season"] == "2026"
+
+
+def test_build_dossier_includes_own_opinions(tmp_path):
+    """R10: the dossier carries this team's own opinions.json (priors), and
+    only its own — never another team's view of it."""
+    (tmp_path / "teams" / "the-quant").mkdir(parents=True)
+    (tmp_path / "teams" / "the-gambler").mkdir(parents=True)
+    ops = {"the-gambler": {"stance": "wary", "take": "All action, no discipline.",
+                           "hooks": ["never accept the-gambler's first offer"]},
+           "media": {"stance": "dismissive", "take": "I do not read the tabloid.",
+                     "hooks": ["ignores every rumor"]}}
+    (tmp_path / "teams" / "the-quant" / "opinions.json").write_text(json.dumps(ops))
+    (tmp_path / "teams" / "the-gambler" / "opinions.json").write_text(
+        json.dumps({"the-quant": {"stance": "rival", "take": "Nerd.",
+                                  "hooks": ["overbid the-quant's targets"]}}))
+
+    d = gm_dossier.build_dossier(tmp_path, "the-quant", season="2026", current_week=5)
+    assert d["opinions"] == ops                # its own file, verbatim
+    assert "the-quant" not in d["opinions"]    # not the-gambler's view of it
+
+
+def test_build_dossier_opinions_empty_when_absent(tmp_path):
+    (tmp_path / "teams" / "solo").mkdir(parents=True)
+    d = gm_dossier.build_dossier(tmp_path, "solo", season="2026", current_week=2)
+    assert d["opinions"] == {}
 
 
 if __name__ == "__main__":
