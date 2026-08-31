@@ -74,3 +74,120 @@ def test_accepts_list_of_rosters_not_just_dict():
 def test_rostered_player_ids_spans_starters_bench_ir():
     ids = free_agents.rostered_player_ids(make_rosters())
     assert ids == {"p_qb", "p_rb", "p_bench", "p_ir"}
+
+
+def test_status_and_injury_carried_from_players():
+    """Verify that status and injury fields from players.json are included in output."""
+    players = {
+        "fa_healthy": {"name": "Healthy WR", "pos": "WR", "team": "AAA", "status": "active", "injury": None},
+        "fa_injured": {"name": "Injured RB", "pos": "RB", "team": "BBB", "status": "out", "injury": "hamstring"},
+    }
+    rosters = {}
+    projections = {}
+    fa = free_agents.derive_free_agents(players, rosters, projections, SCORING)
+
+    assert fa["fa_healthy"]["status"] == "active"
+    assert fa["fa_healthy"]["injury"] is None
+    assert fa["fa_injured"]["status"] == "out"
+    assert fa["fa_injured"]["injury"] == "hamstring"
+
+
+def test_proj_contains_whitelisted_keys_by_position():
+    """Verify that proj dict contains only whitelisted keys present in the projection row."""
+    players = {
+        "qb": {"name": "QB", "pos": "QB", "team": "AAA"},
+        "rb": {"name": "RB", "pos": "RB", "team": "BBB"},
+        "wr": {"name": "WR", "pos": "WR", "team": "CCC"},
+        "te": {"name": "TE", "pos": "TE", "team": "DDD"},
+        "k": {"name": "K", "pos": "K", "team": "EEE"},
+        "def": {"name": "DEF", "pos": "DEF", "team": "FFF"},
+    }
+    projections = {
+        # QB: has pass_yd, pass_td (whitelisted), pass_int (whitelisted), but no rush_yd
+        "qb": {"pass_yd": 250, "pass_td": 2, "pass_int": 1, "pass_cmp": 20},
+        # RB: has rush_yd, rec (whitelisted), but not rush_td or rec_yd
+        "rb": {"rush_yd": 60, "rec": 3, "rush_cmp": 1},
+        # WR: has rec, rec_yd, rec_td (all whitelisted)
+        "wr": {"rec": 8, "rec_yd": 120, "rec_td": 1},
+        # TE: has rec, rec_yd (whitelisted), no rec_td
+        "te": {"rec": 4, "rec_yd": 50},
+        # K: has fgm, fga, xpm (all whitelisted)
+        "k": {"fgm": 2, "fga": 3, "xpm": 1},
+        # DEF: has pts_allow, sack (whitelisted), no int
+        "def": {"pts_allow": 18, "sack": 7},
+    }
+    rosters = {}
+    fa = free_agents.derive_free_agents(players, rosters, projections, SCORING)
+
+    # QB proj: pass_yd, pass_td, pass_int present; pass_cmp and rush_yd excluded
+    assert set(fa["qb"]["proj"].keys()) == {"pass_yd", "pass_td", "pass_int"}
+    assert fa["qb"]["proj"]["pass_yd"] == 250
+    assert fa["qb"]["proj"]["pass_td"] == 2
+    assert fa["qb"]["proj"]["pass_int"] == 1
+
+    # RB proj: rush_yd, rec present; rush_td and rec_yd not in row; rush_cmp excluded
+    assert set(fa["rb"]["proj"].keys()) == {"rush_yd", "rec"}
+    assert fa["rb"]["proj"]["rush_yd"] == 60
+    assert fa["rb"]["proj"]["rec"] == 3
+
+    # WR proj: all three whitelisted keys present
+    assert set(fa["wr"]["proj"].keys()) == {"rec", "rec_yd", "rec_td"}
+    assert fa["wr"]["proj"]["rec"] == 8
+    assert fa["wr"]["proj"]["rec_yd"] == 120
+    assert fa["wr"]["proj"]["rec_td"] == 1
+
+    # TE proj: rec, rec_yd present; rec_td not in row
+    assert set(fa["te"]["proj"].keys()) == {"rec", "rec_yd"}
+    assert fa["te"]["proj"]["rec"] == 4
+    assert fa["te"]["proj"]["rec_yd"] == 50
+
+    # K proj: all three whitelisted keys present
+    assert set(fa["k"]["proj"].keys()) == {"fgm", "fga", "xpm"}
+    assert fa["k"]["proj"]["fgm"] == 2
+    assert fa["k"]["proj"]["fga"] == 3
+    assert fa["k"]["proj"]["xpm"] == 1
+
+    # DEF proj: pts_allow, sack present; int not in row
+    assert set(fa["def"]["proj"].keys()) == {"pts_allow", "sack"}
+    assert fa["def"]["proj"]["pts_allow"] == 18
+    assert fa["def"]["proj"]["sack"] == 7
+
+
+def test_last_wk_pts_computed_from_prior_stats():
+    """Verify that last_wk_pts is computed from prior_stats when provided."""
+    players = {
+        "fa": {"name": "Free Agent", "pos": "WR", "team": "AAA"},
+    }
+    rosters = {}
+    projections = {"fa": {"rec": 8, "rec_yd": 100, "rec_td": 1}}
+    prior_stats = {
+        "fa": {"rec": 6, "rec_yd": 90},  # 0.5*6 + 0.1*90 = 3 + 9 = 12.0
+    }
+
+    fa = free_agents.derive_free_agents(players, rosters, projections, SCORING, prior_stats)
+    assert fa["fa"]["last_wk_pts"] == 12.0
+
+
+def test_last_wk_pts_none_when_prior_stats_omitted():
+    """Verify that last_wk_pts is None when prior_stats is not provided."""
+    players = {
+        "fa": {"name": "Free Agent", "pos": "WR", "team": "AAA"},
+    }
+    rosters = {}
+    projections = {"fa": {"rec": 8, "rec_yd": 100, "rec_td": 1}}
+
+    fa = free_agents.derive_free_agents(players, rosters, projections, SCORING)
+    assert fa["fa"]["last_wk_pts"] is None
+
+
+def test_last_wk_pts_none_when_player_not_in_prior_stats():
+    """Verify that last_wk_pts is None when the player is not in prior_stats."""
+    players = {
+        "fa": {"name": "Free Agent", "pos": "WR", "team": "AAA"},
+    }
+    rosters = {}
+    projections = {"fa": {"rec": 8, "rec_yd": 100, "rec_td": 1}}
+    prior_stats = {}  # fa is not in prior_stats
+
+    fa = free_agents.derive_free_agents(players, rosters, projections, SCORING, prior_stats)
+    assert fa["fa"]["last_wk_pts"] is None

@@ -526,3 +526,76 @@ def test_load_current_week_list_with_non_int():
             week = scoreboard.load_current_week(2026)
             # int("three") raises ValueError, guard catches it and returns 1
             assert week == 1
+
+
+def test_extract_live_scores_from_fixture(schedule, rosters, stats, players, scoring):
+    """Verify extract_live_scores returns flat {pid: pts} without 'total'."""
+    week = 1
+    board = scoreboard.build_scoreboard_data(schedule, rosters, stats, players, scoring, week)
+    live_scores = scoreboard.extract_live_scores(board)
+
+    # Verify it's a flat dict of player_id -> points.
+    assert isinstance(live_scores, dict)
+
+    # Should contain all starters that have scores.
+    # From fixture: p1, p2, p3 (Chiefs), p4, p5, p6 (Eagles), p7, p8 (Dolphins),
+    # p9, p10 (Bills), p11, p12 (Ravens).
+    expected_players = {"p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12"}
+    assert set(live_scores.keys()) == expected_players
+
+    # Verify no "total" key is included.
+    assert "total" not in live_scores
+
+    # Spot-check a few values match the fixture stats.
+    assert live_scores["p1"] == pytest.approx(18.0, abs=0.01)  # Mahomes
+    assert live_scores["p3"] == pytest.approx(14.5, abs=0.01)  # Kelce
+    assert live_scores["p9"] == pytest.approx(19.2, abs=0.01)  # Josh Allen
+
+
+def test_extract_live_scores_with_no_matchups():
+    """Verify extract_live_scores handles empty scoreboard gracefully."""
+    empty_board = {"week": 1, "matchups": []}
+    live_scores = scoreboard.extract_live_scores(empty_board)
+
+    assert live_scores == {}
+
+
+def test_extract_live_scores_excludes_total_key(schedule, rosters, stats, players, scoring):
+    """Verify extract_live_scores explicitly excludes 'total' from scores."""
+    week = 1
+    board = scoreboard.build_scoreboard_data(schedule, rosters, stats, players, scoring, week)
+
+    # Verify that each matchup's scores dict contains a "total" key.
+    for matchup in board["matchups"]:
+        assert "total" in matchup["home_team"]["scores"]
+        assert "total" in matchup["away_team"]["scores"]
+
+    # But extract_live_scores should not include it.
+    live_scores = scoreboard.extract_live_scores(board)
+    assert "total" not in live_scores
+
+
+def test_persist_live_scores_to_disk():
+    """Verify live scores can be written to and read from disk."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        week_dir = Path(tmpdir) / "2026-w01"
+        week_dir.mkdir(parents=True, exist_ok=True)
+        live_scores_path = week_dir / "live-scores.json"
+
+        # Simulate extracted live scores.
+        live_scores = {
+            "p1": 18.0,
+            "p2": 13.5,
+            "p3": 14.5,
+        }
+
+        # Write to disk.
+        with open(live_scores_path, "w") as f:
+            json.dump(live_scores, f)
+
+        # Read back and verify.
+        with open(live_scores_path) as f:
+            loaded = json.load(f)
+
+        assert loaded == live_scores
+        assert "total" not in loaded

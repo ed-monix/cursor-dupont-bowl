@@ -5,3 +5,6 @@ __pycache__/
 
 # generated viewer output
 web/viewer.html
+
+# stray virtualenvs from tooling
+.venv/

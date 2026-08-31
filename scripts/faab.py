@@ -102,7 +102,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
-from lib.rosters import apply_transaction, save_roster  # noqa: E402
+from lib.rosters import apply_transaction, roster_config_from_league, save_roster  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -353,7 +353,13 @@ def main() -> int:
     roster_config = None
     if args.roster_config:
         with open(args.roster_config, encoding="utf-8") as f:
-            roster_config = json.load(f)
+            league_cfg = json.load(f)
+        # config/roster.json is {"roster_positions": [...], "settings": {...}}
+        # (sync_sleeper.py's shape), not the {"starters": ..., "bench_slots": ...,
+        # "ir_slots": ...} shape lib.rosters' validators consume -- adapt it so a
+        # synced league's actual slots are honored instead of silently falling
+        # through to the hardcoded defaults.
+        roster_config = roster_config_from_league(league_cfg)
 
     rosters_dir = pathlib.Path(args.rosters_dir)
     rosters = _load_rosters(rosters_dir)

@@ -48,6 +48,10 @@
     "note_reply": {
       "type": "string",
       "description": "In-character reply to the owner's note for this team this week (may be empty string if no note was left)."
+    },
+    "forum_post": {
+      "type": "string",
+      "description": "Optional trash-talk post for the week's forum (state/forum/2026-wNN.jsonl). Appended during Saturday run; at most one post per team per week."
     }
   },
   "additionalProperties": false

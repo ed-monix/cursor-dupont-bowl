@@ -8,6 +8,7 @@ from lib.rosters import (
     apply_transaction,
     best_legal_lineup,
     duplicate_players_across_teams,
+    roster_config_from_league,
     slot_position_ok,
     validate_lineup,
     validate_roster,
@@ -325,3 +326,104 @@ def test_best_legal_lineup_missing_position_leaves_slot_none_without_raising():
     assert result["starters"]["TE"] == "p_te1"
     assert result["starters"]["DEF"] == "p_def1"
     assert result["starters"]["FLEX"] == "p_rb3"
+
+
+# --- roster_config_from_league: adapts config/roster.json's flat shape -------
+
+STANDARD_ROSTER_POSITIONS = [
+    "QB", "RB", "RB", "WR", "WR", "TE", "FLEX", "K", "DEF",
+    "BN", "BN", "BN", "BN", "BN", "BN", "IR",
+]
+
+
+def test_roster_config_from_league_standard_shape():
+    league_cfg = {
+        "roster_positions": STANDARD_ROSTER_POSITIONS,
+        "settings": {"num_teams": 12},
+    }
+
+    config = roster_config_from_league(league_cfg)
+
+    assert config["starters"] == {
+        "QB": ["QB"],
+        "RB1": ["RB"],
+        "RB2": ["RB"],
+        "WR1": ["WR"],
+        "WR2": ["WR"],
+        "TE": ["TE"],
+        "FLEX": ["RB", "WR", "TE"],
+        "K": ["K"],
+        "DEF": ["DEF"],
+    }
+    assert config["bench_slots"] == 6
+    assert config["ir_slots"] == 1
+
+
+def test_roster_config_from_league_nondefault_shape_extra_te_and_superflex():
+    # A non-default league: two TE slots, a SUPER_FLEX instead of FLEX, and
+    # 5 bench spots instead of 6 -- the adapter must carry all of that
+    # through rather than silently falling back to standard.
+    league_cfg = {
+        "roster_positions": [
+            "QB", "RB", "RB", "WR", "WR", "TE", "TE", "SUPER_FLEX", "K", "DEF",
+            "BN", "BN", "BN", "BN", "BN", "IR",
+        ],
+        "settings": {"num_teams": 10},
+    }
+
+    config = roster_config_from_league(league_cfg)
+
+    assert config["starters"]["TE1"] == ["TE"]
+    assert config["starters"]["TE2"] == ["TE"]
+    assert "TE" not in config["starters"]  # numbered once TE repeats, no bare "TE" left
+    assert config["starters"]["SUPER_FLEX"] == ["QB", "RB", "WR", "TE"]
+    assert config["bench_slots"] == 5
+    assert config["ir_slots"] == 1
+
+
+def test_roster_config_from_league_unknown_flex_token_defaults_to_rb_wr_te():
+    league_cfg = {
+        "roster_positions": ["QB", "RB", "WR", "TE", "MEGA_FLEX", "BN"],
+        "settings": {},
+    }
+
+    config = roster_config_from_league(league_cfg)
+
+    assert config["starters"]["MEGA_FLEX"] == ["RB", "WR", "TE"]
+    assert config["bench_slots"] == 1
+    assert config["ir_slots"] == 0
+
+
+def test_roster_built_to_superflex_adapted_config_passes_validation():
+    players = make_players(
+        p_qb2={"name": "QB Two", "pos": "QB", "team": "BBB", "status": "Active", "injury": None}
+    )
+    league_cfg = {
+        "roster_positions": [
+            "QB", "RB", "RB", "WR", "WR", "TE", "TE", "SUPER_FLEX", "K", "DEF",
+            "BN", "BN", "BN", "BN", "BN", "IR",
+        ],
+        "settings": {"num_teams": 10},
+    }
+    roster_config = roster_config_from_league(league_cfg)
+
+    # SUPER_FLEX accepts a second QB -- rejected by a plain FLEX slot.
+    assert slot_position_ok("SUPER_FLEX", "QB", roster_config) is True
+    assert slot_position_ok("FLEX", "QB", roster_config) is False  # no FLEX in this league at all
+
+    roster = make_roster(starters={
+        "QB": "p_qb1", "RB1": "p_rb1", "RB2": "p_rb2",
+        "WR1": "p_wr1", "WR2": "p_wr2",
+        "TE1": "p_te1", "TE2": "p_te2",
+        "SUPER_FLEX": "p_qb2",
+        "K": "p_k1", "DEF": "p_def1",
+    })
+    # make_roster()'s defaults use bare "TE"/"FLEX" keys, which aren't part
+    # of this custom config's slots (TE1/TE2/SUPER_FLEX instead) -- drop them
+    # so `starters` matches exactly what roster_config expects.
+    del roster["starters"]["FLEX"]
+    del roster["starters"]["TE"]
+
+    ok, errors = validate_roster(roster, players, roster_config)
+    assert ok is True
+    assert errors == []

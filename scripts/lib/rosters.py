@@ -25,6 +25,11 @@ Any key it omits falls back to the standard shape above. Passing None (the
 default everywhere) uses the standard shape outright — this is the expected
 mode until `config/roster.json` exists.
 
+`config/roster.json` itself (as written by sync_sleeper.py) is a different,
+flatter shape -- `{"roster_positions": [str, ...], "settings": {...}}` --
+and is NOT accepted directly as `roster_config`. Convert it first with
+`roster_config_from_league()` below.
+
 Transaction shapes accepted by `apply_transaction`:
 
     {"type": "add", "player": id, "to": "bench" | "ir" | <starter slot>,
@@ -70,6 +75,104 @@ DEFAULT_STARTER_SLOTS = {
 }
 DEFAULT_BENCH_LIMIT = 6
 DEFAULT_IR_LIMIT = 1
+
+
+_FLEX_ELIGIBILITY = {
+    "FLEX": ["RB", "WR", "TE"],
+    "SUPER_FLEX": ["QB", "RB", "WR", "TE"],
+    "WRRB_FLEX": ["RB", "WR"],
+    "REC_FLEX": ["WR", "TE"],
+}
+
+
+def roster_config_from_league(league_cfg):
+    """Adapt `config/roster.json` (as written by sync_sleeper.py) into the
+    `roster_config` shape `_starter_slots`/`_bench_limit`/`_ir_limit` (and
+    therefore `validate_roster`/`validate_lineup`/`apply_transaction`/
+    `best_legal_lineup`) already consume::
+
+        {"starters": {slot: [allowed_pos, ...], ...},
+         "bench_slots": int, "ir_slots": int}
+
+    Input is the raw dict `{"roster_positions": [str, ...], "settings": {...}}`
+    (PLAN.md §8). `settings` is accepted but not read -- only
+    `roster_positions` maps to the starters/bench/ir shape.
+
+    `roster_positions` is a flat, ordered list of Sleeper roster slot
+    tokens, one per roster spot. It is walked in order and split three ways:
+
+    - A single-position token (QB, RB, WR, TE, K, DEF, or any other
+      unrecognized token) becomes a starter slot named after itself, with
+      that position as its sole eligibility (`[token]`). Repeated tokens
+      get numeric suffixes in the order encountered: the first RB -> RB1,
+      the second -> RB2, etc.; a lone (non-repeated) token keeps its bare
+      name (e.g. QB -> QB, not QB1).
+    - A recognized flex token becomes a starter slot (numbered the same
+      way on repeats) whose eligibility is looked up in
+      `_FLEX_ELIGIBILITY`: FLEX -> [RB, WR, TE], SUPER_FLEX ->
+      [QB, RB, WR, TE], WRRB_FLEX -> [RB, WR], REC_FLEX -> [WR, TE]. Any
+      other multi-flex-shaped token Sleeper might send is not specially
+      recognized here, so it falls through to the "unknown token" rule
+      below -- which for a flex-sounding name is exactly the safe
+      default (RB/WR/TE) requested for unrecognized multi-flex tokens.
+    - `BN` increments `bench_slots` and `IR` increments `ir_slots`; neither
+      becomes a starter slot. `TAXI` is recognized and ignored (no taxi
+      squad concept in this league). Any other unrecognized *non-flex*
+      single token still becomes its own one-eligibility starter slot per
+      the first bullet, since there is no separate "unknown non-starter"
+      category to fall into.
+
+    Pure, stdlib only. Returns a plain dict; does not mutate `league_cfg`.
+    """
+    starter_slots = {}
+    seen_counts = {}
+    bench_slots = 0
+    ir_slots = 0
+
+    positions = league_cfg.get("roster_positions") or []
+
+    # First pass: count occurrences of each starter-producing token so a
+    # token that appears exactly once keeps its bare name (QB, not QB1)
+    # while a repeated one gets numbered from 1.
+    total_counts = {}
+    for token in positions:
+        if token in ("BN", "IR", "TAXI"):
+            continue
+        total_counts[token] = total_counts.get(token, 0) + 1
+
+    for token in positions:
+        if token == "BN":
+            bench_slots += 1
+            continue
+        if token == "IR":
+            ir_slots += 1
+            continue
+        if token == "TAXI":
+            continue
+
+        seen_counts[token] = seen_counts.get(token, 0) + 1
+        if total_counts[token] > 1:
+            slot_name = f"{token}{seen_counts[token]}"
+        else:
+            slot_name = token
+
+        if token in _FLEX_ELIGIBILITY:
+            eligible = list(_FLEX_ELIGIBILITY[token])
+        elif token in ("QB", "RB", "WR", "TE", "K", "DEF"):
+            eligible = [token]
+        else:
+            # Unknown token: multi-flex-shaped names fall back to the
+            # standard RB/WR/TE flex; anything else is treated as its own
+            # single eligible position.
+            eligible = ["RB", "WR", "TE"] if "FLEX" in token else [token]
+
+        starter_slots[slot_name] = eligible
+
+    return {
+        "starters": starter_slots,
+        "bench_slots": bench_slots,
+        "ir_slots": ir_slots,
+    }
 
 
 def _starter_slots(roster_config):

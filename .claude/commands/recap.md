@@ -35,13 +35,23 @@ Spawn the Commissioner (`agents/commissioner.md`) — the only agent that reads
 everything. It writes `state/weeks/2026-w<WW>/recap.md` in its own voice (dry,
 procedural, faintly funereal; never an exclamation point). Give it: the scored
 matchups, updated standings, this week's `transactions.jsonl` slice, every
-`fallback: true` lineup, and the reconciliation records. The recap must include
-(PLAN.md §4, commissioner.md duties):
+`fallback: true` lineup, the reconciliation records, and this week's forum
+thread (`state/forum/2026-w<WW>.jsonl`). The recap must include
+(PLAN.md §4 + §10, commissioner.md duties):
 
 - results with scores and a one-line note per game,
 - the week's single best and single worst decision (quote the GM's own logged
   reasoning against them where deserved),
+- **Most In-Character Move of the Week** — the award PLAN §10 names as the
+  anti-convergence incentive: the move that most expressed a GM's stated
+  personality/biases, quoting its reasoning,
+- **Least In-Character Move** — its inverse: the GM who quietly started the
+  highest projection at every slot and made the safe, boring play gets called
+  out for it (publicly scoring blandness is what keeps ten agents from
+  collapsing into one optimizer),
 - the **Hall of Shame**: every `fallback: true` team,
+- **Quote of the Week** — the best line from the forum thread (the incentive to
+  bring material, not volume),
 - trade and waiver commentary (flag lopsided-but-legal moves; never void them),
 - the current standings table,
 - any live-vs-final drift worth mocking,

@@ -528,36 +528,38 @@ def set_cached_scoreboard(data: dict) -> None:
         _scoreboard_data = data
 
 
+def extract_live_scores(scoreboard_data: dict) -> dict:
+    """Extract live per-player scores from scoreboard data.
+
+    Walks every matchup's home_team and away_team scores dicts and returns
+    a flat {player_id: points} for all starters, excluding the "total" key.
+    This is the snapshot that reconciliation will diff against finals.
+
+    Args:
+        scoreboard_data: Output of build_scoreboard_data().
+
+    Returns:
+        dict mapping player_id (str) -> points (float). The "total" key is not included.
+    """
+    live_scores = {}
+    for matchup in scoreboard_data.get("matchups", []):
+        for team_key in ["home_team", "away_team"]:
+            scores = matchup[team_key].get("scores", {})
+            for player_id, points in scores.items():
+                if player_id != "total":
+                    live_scores[player_id] = points
+    return live_scores
+
+
 def poll_loop(season: int, week: int) -> None:
     """Background thread: poll stats and update scoreboard every 45s/10min.
 
-    Game-day heuristic: always 45s during the current week (v1 approximation).
-    Outside the current week, poll every 10 min.
+    Game-day heuristic: any starter has stats -> 45s; otherwise 10min.
     """
     # Load schedule and rosters once at startup.
     schedule = load_json(REPO_ROOT / "state" / "schedule.json", {"regular_season": {}})
     schedule_key = "playoffs" if week >= 15 else "regular_season"
     week_matchups = schedule.get(schedule_key, {}).get(str(week), [])
-
-    # Collect all rostered starters' NFL teams for game-day detection.
-    rostered_nfl_teams = set()
-    for home_slug, away_slug in week_matchups:
-        if not home_slug.startswith("seed_"):
-            home_roster = load_json(TEAMS_DIR / home_slug / "roster.json", {})
-            for player_id in home_roster.get("starters", {}).values():
-                if player_id:
-                    players = load_json(REPO_ROOT / "state" / "players.json", {})
-                    nfl_team = players.get(player_id, {}).get("team")
-                    if nfl_team:
-                        rostered_nfl_teams.add(nfl_team)
-        if not away_slug.startswith("seed_"):
-            away_roster = load_json(TEAMS_DIR / away_slug / "roster.json", {})
-            for player_id in away_roster.get("starters", {}).values():
-                if player_id:
-                    players = load_json(REPO_ROOT / "state" / "players.json", {})
-                    nfl_team = players.get(player_id, {}).get("team")
-                    if nfl_team:
-                        rostered_nfl_teams.add(nfl_team)
 
     # Main poll loop.
     while not _poll_stop_event.is_set():
@@ -577,17 +579,25 @@ def poll_loop(season: int, week: int) -> None:
         scoreboard = build_scoreboard_data(schedule, rosters_dict, stats, players, scoring, week)
         set_cached_scoreboard(scoreboard)
 
-        # Game-day heuristic v1: check if any started starters' NFL teams have begun
-        # their game (i.e., have stats). For simplicity, we'll use a 45s poll if
-        # any starter has appeared in stats, else 10min (or always 45s during week).
+        # Persist live scores to disk for reconciliation (recap step).
+        live_scores = extract_live_scores(scoreboard)
+        week_dir = STATE_DIR / "weeks" / f"{season}-w{week:02d}"
+        week_dir.mkdir(parents=True, exist_ok=True)
+        live_scores_path = week_dir / "live-scores.json"
+        with open(live_scores_path, "w") as f:
+            json.dump(live_scores, f)
+
+        # Game-day heuristic: check if any starter has stats. This is the
+        # stats-presence version; the schedule-based variant from PLAN 4.1 is
+        # intentionally not implemented.
         has_game_started = any(pid in stats for pid in [
             pid for team_roster in rosters_dict.values()
             for pid in team_roster.get("starters", {}).values()
             if pid
         ])
 
-        # For v1: during the current week, always use 45s. Outside, use 10min.
-        poll_interval = 45 if has_game_started else 600  # 45s on game day, 10min otherwise
+        # Poll interval: 45s on game day (any starter has stats), 10min otherwise.
+        poll_interval = 45 if has_game_started else 600
 
         # Wait with interruption support.
         _poll_stop_event.wait(poll_interval)
