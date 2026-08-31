@@ -1,0 +1,14 @@
+{
+  "team-a": [
+    {"add": "fa-1", "drop": "bn-a2", "bid": 20, "reasoning": "Freeman looked live in camp; worth a real bid."}
+  ],
+  "team-b": [
+    {"add": "fa-1", "drop": "bn-b2", "bid": 20, "reasoning": "Matching the market on Freeman, we need the depth more."}
+  ],
+  "team-c": [
+    {"add": "fa-2", "drop": "bn-c1", "bid": 15, "reasoning": "Gaines is a clear early-down upgrade over Colby."}
+  ],
+  "team-d": [
+    {"add": "fa-2", "drop": "bn-d1", "bid": 10, "reasoning": "Speculative add, won't break the bank on it."}
+  ]
+}

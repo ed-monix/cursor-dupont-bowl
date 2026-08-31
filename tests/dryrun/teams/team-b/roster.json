@@ -1,0 +1,17 @@
+{
+  "team": "Team B",
+  "faab_remaining": 100,
+  "starters": {
+    "QB": "qb-b",
+    "RB1": "rb-b1",
+    "RB2": "rb-b2",
+    "WR1": "wr-b1",
+    "WR2": "wr-b2",
+    "TE": "te-b",
+    "FLEX": "flex-b",
+    "K": "k-b",
+    "DEF": "def-b"
+  },
+  "bench": ["bn-b1", "bn-b2"],
+  "ir": []
+}

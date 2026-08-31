@@ -1,0 +1,56 @@
+{
+  "qb-a": {"name": "Ace Quarterman", "pos": "QB", "team": "KC", "status": "Active", "injury": null},
+  "qb-b": {"name": "Bo Passwell", "pos": "QB", "team": "BUF", "status": "Active", "injury": null},
+  "qb-c": {"name": "Cal Throwman", "pos": "QB", "team": "SF", "status": "Active", "injury": null},
+  "qb-d": {"name": "Dex Armstrong", "pos": "QB", "team": "DAL", "status": "Active", "injury": null},
+
+  "rb-a1": {"name": "Ray Burston", "pos": "RB", "team": "KC", "status": "Active", "injury": null},
+  "rb-a2": {"name": "Rico Backfield", "pos": "RB", "team": "KC", "status": "Active", "injury": null},
+  "rb-b1": {"name": "Bruno Carrier", "pos": "RB", "team": "BUF", "status": "Active", "injury": null},
+  "rb-b2": {"name": "Baxter Runn", "pos": "RB", "team": "BUF", "status": "Active", "injury": null},
+  "rb-c1": {"name": "Cole Dasher", "pos": "RB", "team": "SF", "status": "Active", "injury": null},
+  "rb-c2": {"name": "Cash Sprint", "pos": "RB", "team": "SF", "status": "Active", "injury": null},
+  "rb-d1": {"name": "Duke Gainer", "pos": "RB", "team": "DAL", "status": "Active", "injury": null},
+  "rb-d2": {"name": "Dash Coleman", "pos": "RB", "team": "DAL", "status": "Active", "injury": null},
+
+  "wr-a1": {"name": "Wes Ramirez", "pos": "WR", "team": "KC", "status": "Active", "injury": null},
+  "wr-a2": {"name": "Wyatt Anderson", "pos": "WR", "team": "KC", "status": "Active", "injury": null},
+  "wr-b1": {"name": "Wade Bishop", "pos": "WR", "team": "BUF", "status": "Active", "injury": null},
+  "wr-b2": {"name": "Wallace Burke", "pos": "WR", "team": "BUF", "status": "Active", "injury": null},
+  "wr-c1": {"name": "Wells Carter", "pos": "WR", "team": "SF", "status": "Active", "injury": null},
+  "wr-c2": {"name": "Wyman Cross", "pos": "WR", "team": "SF", "status": "Active", "injury": null},
+  "wr-d1": {"name": "Weston Drake", "pos": "WR", "team": "DAL", "status": "Active", "injury": null},
+  "wr-d2": {"name": "Warren Dunn", "pos": "WR", "team": "DAL", "status": "Active", "injury": null},
+
+  "te-a": {"name": "Tate Anders", "pos": "TE", "team": "KC", "status": "Active", "injury": null},
+  "te-b": {"name": "Tucker Boone", "pos": "TE", "team": "BUF", "status": "Active", "injury": null},
+  "te-c": {"name": "Trent Cassidy", "pos": "TE", "team": "SF", "status": "Active", "injury": null},
+  "te-d": {"name": "Toby Diaz", "pos": "TE", "team": "DAL", "status": "Active", "injury": null},
+
+  "flex-a": {"name": "Finn Alden", "pos": "WR", "team": "KC", "status": "Active", "injury": null},
+  "flex-b": {"name": "Felix Barlow", "pos": "WR", "team": "BUF", "status": "Active", "injury": null},
+  "flex-c": {"name": "Ford Castillo", "pos": "WR", "team": "SF", "status": "Active", "injury": null},
+  "flex-d": {"name": "Frank Delgado", "pos": "WR", "team": "DAL", "status": "Active", "injury": null},
+
+  "k-a": {"name": "Kip Alonso", "pos": "K", "team": "KC", "status": "Active", "injury": null},
+  "k-b": {"name": "Kai Beckett", "pos": "K", "team": "BUF", "status": "Active", "injury": null},
+  "k-c": {"name": "Knox Carver", "pos": "K", "team": "SF", "status": "Active", "injury": null},
+  "k-d": {"name": "Kellan Dade", "pos": "K", "team": "DAL", "status": "Active", "injury": null},
+
+  "def-a": {"name": "Kansas City Defense", "pos": "DEF", "team": "KC", "status": "Active", "injury": null},
+  "def-b": {"name": "Buffalo Defense", "pos": "DEF", "team": "BUF", "status": "Active", "injury": null},
+  "def-c": {"name": "San Francisco Defense", "pos": "DEF", "team": "SF", "status": "Active", "injury": null},
+  "def-d": {"name": "Dallas Defense", "pos": "DEF", "team": "DAL", "status": "Active", "injury": null},
+
+  "bn-a1": {"name": "Ben Archer", "pos": "RB", "team": "KC", "status": "Active", "injury": null},
+  "bn-a2": {"name": "Blake Ashford", "pos": "WR", "team": "KC", "status": "Active", "injury": null},
+  "bn-b1": {"name": "Bryce Booker", "pos": "RB", "team": "BUF", "status": "Active", "injury": null},
+  "bn-b2": {"name": "Billy Bracken", "pos": "WR", "team": "BUF", "status": "Active", "injury": null},
+  "bn-c1": {"name": "Chase Colby", "pos": "RB", "team": "SF", "status": "Active", "injury": null},
+  "bn-c2": {"name": "Corey Cade", "pos": "WR", "team": "SF", "status": "Active", "injury": null},
+  "bn-d1": {"name": "Drew Dobbins", "pos": "RB", "team": "DAL", "status": "Active", "injury": null},
+  "bn-d2": {"name": "Dane Dorsey", "pos": "WR", "team": "DAL", "status": "Active", "injury": null},
+
+  "fa-1": {"name": "Free Agent Freeman", "pos": "WR", "team": "NYJ", "status": "Active", "injury": null},
+  "fa-2": {"name": "Free Agent Gaines", "pos": "RB", "team": "MIA", "status": "Active", "injury": null}
+}

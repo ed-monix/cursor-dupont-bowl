@@ -1,0 +1,34 @@
+{
+  "team-a": {
+    "starters": {
+      "QB": "qb-a", "RB1": "rb-a1", "RB2": "rb-a2",
+      "WR1": "wr-a1", "WR2": "wr-a2", "TE": "te-a",
+      "FLEX": "flex-a", "K": "k-a", "DEF": "def-a"
+    },
+    "justification": "Ace stays hot off a clean week of practice; no changes to a lineup that's working."
+  },
+  "team-b": {
+    "starters": {
+      "QB": "qb-b", "RB1": "rb-b1", "RB2": "rb-b2",
+      "WR1": "wr-b1", "WR2": "wr-b2", "TE": "te-b",
+      "FLEX": "flex-b", "K": "k-b", "DEF": "def-b"
+    },
+    "justification": "Rolling with the board as projected; nothing here to overthink."
+  },
+  "team-c": {
+    "starters": {
+      "QB": "qb-c", "RB1": "rb-c1", "RB2": "rb-c2",
+      "WR1": "wr-c1", "WR2": "wr-c2", "TE": "te-c",
+      "FLEX": "flex-c", "K": "k-c", "DEF": "def-c"
+    },
+    "justification": "Best players available start; the waiver pickup rides the bench this week."
+  },
+  "team-d": {
+    "starters": {
+      "QB": "qb-d", "RB1": "rb-d1", "RB2": "rb-d2",
+      "WR1": "wr-d1", "WR2": "wr-d2", "TE": "te-d",
+      "FLEX": "wr-d1", "K": "k-d", "DEF": "def-d"
+    },
+    "justification": "Doubling down on Drake by slotting him into the flex too -- he's simply the best player on the roster."
+  }
+}

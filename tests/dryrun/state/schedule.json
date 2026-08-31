@@ -1,0 +1,7 @@
+{
+  "season": 2026,
+  "regular_season": {
+    "1": [["team-a", "team-b"], ["team-c", "team-d"]]
+  },
+  "playoffs": {}
+}
