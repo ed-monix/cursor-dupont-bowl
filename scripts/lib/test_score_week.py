@@ -576,8 +576,9 @@ def test_cli_help():
     # setting up a temp directory structure, but we can verify the script
     # is syntactically correct.
     import subprocess
+    script = Path(__file__).resolve().parents[1] / "score_week.py"
     result = subprocess.run(
-        ["python3", "/home/user/dupont-bowl/dupont-bowl/scripts/score_week.py", "--help"],
+        ["python3", str(script), "--help"],
         capture_output=True,
         text=True,
     )
