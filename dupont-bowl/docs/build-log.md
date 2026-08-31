@@ -6,6 +6,13 @@
 2.2 score_week | haiku | REWORK→APPROVED (Opus re-verify caught: load_schedule incompatible with schedule_gen's {regular_season/playoffs} shape; idempotency test proved only determinism). Rework fixed both: load_schedule reads real shape + playoff placeholder guard; fold_if_not_official extracted + truly-idempotent test; schedule_gen integration test added. 80 tests green.
 4.1 scoreboard | haiku | STDLIB http.server (Flask unavailable: PyPI egress blocked) — spec deviation flagged to owner | REWORK→APPROVED (Opus re-verify caught load_current_week crash: read official_weeks as dict but score_week writes a list → AttributeError at startup). Rework fixed + hardened fetch except + 7 new tests. Full suite 95 green.
 
+3.1 slash commands | Opus (kept in-session per ROUTING) | DRAFTED .claude/commands/{notes,saturday,sunday,recap,draft}.md — needs human review. Honor CLAUDE.md hard rules (isolation, notes-as-pressure, scripts-decide-facts, one-commit, commissioner-last).
+3.2 mock draft harness | Opus | covered by /draft --mock (all-AI, no pauses)
+3.3 fallback paths | Saturday no-claims fallback in /saturday; Sunday best_legal_lineup (sonnet, dispatched) referenced in /sunday
+4.2 reconciliation | haiku (dispatched) | referenced in /recap
+GAP (flag to owner): no scripts/free_agents.py deriver — /saturday computes the free-agent pool inline; add a testable deriver script as a follow-up.
+GAP (blocked on content): `make dryrun` end-to-end needs ≥3 sample GM files to exercise the agent layer; Phase 5 GM content is deferred, so the full dry run waits on it. The deterministic script pipeline is already fully covered by pytest.
+
 --- Infra (Opus, integration) ---
 - Replaced 1.1's hardcoded-path conftest.py with a guarded no-op shim (only activates when `requests` unimportable; no-op in a real venv)
 - Added requirements.txt (requests, pytest; Flask intentionally omitted — scoreboard is stdlib)

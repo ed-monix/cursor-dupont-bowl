@@ -6,6 +6,7 @@ import pytest
 
 from lib.rosters import (
     apply_transaction,
+    best_legal_lineup,
     duplicate_players_across_teams,
     slot_position_ok,
     validate_lineup,
@@ -204,3 +205,123 @@ def test_apply_transaction_rejects_position_ineligible_starter_slot():
     with pytest.raises(ValueError):
         apply_transaction(roster, txn, players)
     assert roster == original
+
+
+# --- AC (3.3): best_legal_lineup -- deterministic Sunday fallback ------------
+
+# Simple, single-key scoring so a projected stat line's point value is
+# transparent in every test below: {"proj_pts": N} scores as exactly N.
+SIMPLE_SCORING = {"proj_pts": 1.0}
+
+
+def _lineup_fixture():
+    """Players/roster/projections for a pool with a clear best at every
+    position, so the expected optimal lineup (including FLEX) is obvious.
+    """
+    players = make_players()
+    roster = make_roster(bench=["p_wr3", "p_te2"])  # rest of default starters, see make_roster()
+
+    projections = {
+        "p_qb1": {"proj_pts": 20},
+        "p_rb1": {"proj_pts": 15},  # best RB -> RB1
+        "p_rb2": {"proj_pts": 12},  # 2nd best RB -> RB2
+        "p_rb3": {"proj_pts": 6},   # 3rd RB, leftover FLEX candidate
+        "p_wr1": {"proj_pts": 14},  # best WR -> WR1
+        "p_wr2": {"proj_pts": 11},  # 2nd best WR -> WR2
+        "p_wr3": {"proj_pts": 8},   # 3rd WR, leftover FLEX candidate (bench)
+        "p_te1": {"proj_pts": 9},   # best TE -> TE
+        "p_te2": {"proj_pts": 3},   # 2nd TE, leftover FLEX candidate (bench)
+        "p_k1": {"proj_pts": 5},
+        "p_def1": {"proj_pts": 7},
+    }
+    return players, roster, projections
+
+
+def test_best_legal_lineup_optimal_at_every_slot_and_flex_takes_best_leftover():
+    players, roster, projections = _lineup_fixture()
+
+    result = best_legal_lineup(roster, players, projections, SIMPLE_SCORING)
+
+    starters = result["starters"]
+    assert starters["QB"] == "p_qb1"
+    assert starters["RB1"] == "p_rb1"
+    assert starters["RB2"] == "p_rb2"
+    assert starters["WR1"] == "p_wr1"
+    assert starters["WR2"] == "p_wr2"
+    assert starters["TE"] == "p_te1"
+    assert starters["K"] == "p_k1"
+    assert starters["DEF"] == "p_def1"
+
+    # FLEX: once RB1/RB2 (p_rb1, p_rb2), WR1/WR2 (p_wr1, p_wr2) and TE
+    # (p_te1) are taken, the only RB/WR/TE left in the pool are
+    # p_rb3 (6 pts), p_wr3 (8 pts) and p_te2 (3 pts). p_wr3 has the
+    # highest projection of that leftover group, so FLEX must be p_wr3
+    # -- not p_rb3 (higher position priority doesn't matter, points do)
+    # and not p_te2 (a worse leftover than either).
+    assert starters["FLEX"] == "p_wr3"
+
+    # everyone not started lands on the bench; original roster untouched
+    assert set(result["bench"]) == {"p_rb3", "p_te2"}
+    assert roster["bench"] == ["p_wr3", "p_te2"]
+
+
+def test_best_legal_lineup_output_passes_validate_lineup():
+    players, roster, projections = _lineup_fixture()
+
+    result = best_legal_lineup(roster, players, projections, SIMPLE_SCORING)
+
+    ok, errors = validate_lineup(result, players)
+    assert ok is True
+    assert errors == []
+
+
+def test_best_legal_lineup_tie_broken_by_lower_player_id():
+    players = {
+        "q_zzz": {"name": "Z QB", "pos": "QB"},
+        "q_aaa": {"name": "A QB", "pos": "QB"},
+    }
+    # Deliberately listed with the *higher* id first in bench order, so a
+    # pass would only be correct if the tie-break -- not list/dict order
+    # -- is what decides the winner.
+    roster = {
+        "team": "tie-team",
+        "faab_remaining": 0,
+        "starters": {},
+        "bench": ["q_zzz", "q_aaa"],
+        "ir": [],
+    }
+    projections = {
+        "q_zzz": {"proj_pts": 10},
+        "q_aaa": {"proj_pts": 10},  # exactly tied with q_zzz
+    }
+
+    result = best_legal_lineup(roster, players, projections, SIMPLE_SCORING)
+
+    assert result["starters"]["QB"] == "q_aaa"  # lower player_id wins the tie
+
+
+def test_best_legal_lineup_missing_position_leaves_slot_none_without_raising():
+    players = make_players()
+    roster = make_roster(starters={"K": None})  # p_k1 excluded from the pool entirely -> no K in the pool
+    projections = {
+        "p_qb1": {"proj_pts": 20},
+        "p_rb1": {"proj_pts": 15},
+        "p_rb2": {"proj_pts": 12},
+        "p_rb3": {"proj_pts": 6},
+        "p_wr1": {"proj_pts": 14},
+        "p_wr2": {"proj_pts": 11},
+        "p_te1": {"proj_pts": 9},
+        "p_def1": {"proj_pts": 7},
+    }
+
+    result = best_legal_lineup(roster, players, projections, SIMPLE_SCORING)
+
+    assert result["starters"]["K"] is None
+    # the rest of the lineup still fills normally
+    assert result["starters"]["QB"] == "p_qb1"
+    assert result["starters"]["RB1"] == "p_rb1"
+    assert result["starters"]["RB2"] == "p_rb2"
+    assert result["starters"]["WR1"] == "p_wr1"
+    assert result["starters"]["TE"] == "p_te1"
+    assert result["starters"]["DEF"] == "p_def1"
+    assert result["starters"]["FLEX"] == "p_rb3"

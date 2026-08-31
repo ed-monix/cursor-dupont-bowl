@@ -55,6 +55,8 @@ from __future__ import annotations
 import copy
 import json
 
+from lib.scoring import score_player
+
 DEFAULT_STARTER_SLOTS = {
     "QB": {"QB"},
     "RB1": {"RB"},
@@ -328,4 +330,90 @@ def apply_transaction(roster, txn, players, roster_config=None):
     if not ok:
         raise ValueError("resulting roster is invalid: " + "; ".join(errors))
 
+    return new_roster
+
+
+def best_legal_lineup(roster, players, projections, scoring, roster_config=None):
+    """Deterministic Sunday fallback: the highest-projected legal lineup
+    (PLAN.md §4, TASKS.md 3.3) built purely from the roster already on
+    hand -- no network, no agent call.
+
+    Player pool: every player currently in a (non-null) starter slot plus
+    everyone on the bench. `ir` is excluded -- IR players are injured /
+    ineligible and are never auto-started. Each pool player's projected
+    points is `score_player(projections.get(pid, {}), scoring)`; a player
+    with no projection entry scores 0.0 rather than raising.
+
+    Greedy fill, in slot order QB, RB1, RB2, WR1, WR2, TE, K, DEF, then
+    FLEX last: each slot takes the highest-projected not-yet-used pool
+    player eligible for it. This is optimal for the fixed slot structure
+    -- every non-FLEX slot's eligible position is disjoint from every
+    other non-FLEX slot's (a QB can never fill an RB slot, etc.), so
+    filling them first can never take a player another non-FLEX slot
+    needed. FLEX (RB/WR/TE) is filled last from whatever is left, which
+    is exactly "the best remaining RB/WR/TE not already started" -- no
+    swap between any two slots could raise the lineup's total.
+
+    Ties in projected points are broken by ASCII/string sort of
+    player_id (lower id wins), so the result is stable across runs given
+    the same inputs.
+
+    Returns a NEW roster dict (deep copy of `roster`): `starters` is
+    fully replaced with the computed lineup, every pool player not
+    started ends up on `bench`, and `ir` is carried over untouched. If
+    the pool has no eligible player left for a required slot (e.g. no K
+    survived to the pool), that slot is left `None` -- this function
+    never raises for an incomplete pool; callers should run
+    `validate_lineup` on the result if they need to know whether it's
+    game-ready.
+    """
+    new_roster = copy.deepcopy(roster)
+    slots = _starter_slots(roster_config)
+
+    pool_ids = []
+    for pid in (roster.get("starters") or {}).values():
+        if pid is not None:
+            pool_ids.append(pid)
+    for pid in roster.get("bench", []) or []:
+        pool_ids.append(pid)
+    # de-dupe while keeping the pool a plain set of candidates -- a
+    # player should never legitimately appear in both starters and
+    # bench, but don't let a malformed roster double-count one.
+    pool_ids = list(dict.fromkeys(pool_ids))
+
+    def projected_points(pid):
+        return score_player(projections.get(pid, {}) or {}, scoring)
+
+    # Sort once: best projection first, lower player_id breaking ties.
+    pool_sorted = sorted(pool_ids, key=lambda pid: (-projected_points(pid), pid))
+
+    def position_of(pid):
+        return players.get(pid, {}).get("pos")
+
+    used = set()
+
+    def fill_slot(allowed_positions):
+        for pid in pool_sorted:
+            if pid in used:
+                continue
+            if position_of(pid) in allowed_positions:
+                used.add(pid)
+                return pid
+        return None
+
+    new_starters = {}
+    # Non-FLEX slots first, in their declared order; FLEX (or any slot
+    # whose eligible positions aren't a single position -- i.e. more
+    # than one allowed position, matching FLEX's RB/WR/TE shape) last,
+    # so it only ever draws from what specific slots didn't need.
+    flex_slots = [slot for slot, allowed in slots.items() if len(allowed) != 1]
+    single_pos_slots = [slot for slot in slots if slot not in flex_slots]
+
+    for slot in single_pos_slots:
+        new_starters[slot] = fill_slot(slots[slot])
+    for slot in flex_slots:
+        new_starters[slot] = fill_slot(slots[slot])
+
+    new_roster["starters"] = new_starters
+    new_roster["bench"] = [pid for pid in pool_sorted if pid not in used]
     return new_roster
