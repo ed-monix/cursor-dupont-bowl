@@ -219,6 +219,18 @@ def build_scoreboard_data(
             if pid is not None and pid not in stats
         )
 
+        # Raw stat line per starter that has one (a player absent here has not
+        # played yet). Lets the render show the production behind the points,
+        # so a viewer can tell whether the board is in sync with the latest.
+        home_stat_lines = {
+            pid: stats[pid] for pid in home_starters.values()
+            if pid is not None and pid in stats
+        }
+        away_stat_lines = {
+            pid: stats[pid] for pid in away_starters.values()
+            if pid is not None and pid in stats
+        }
+
         matchup = {
             "week": week,
             "matchup_id": matchup_id,
@@ -228,6 +240,7 @@ def build_scoreboard_data(
                 "scores": home_scores,
                 "total": home_total,
                 "starters_yet_to_play": home_yet_to_play,
+                "stat_lines": home_stat_lines,
             },
             "away_team": {
                 "slug": away_slug,
@@ -235,6 +248,7 @@ def build_scoreboard_data(
                 "scores": away_scores,
                 "total": away_total,
                 "starters_yet_to_play": away_yet_to_play,
+                "stat_lines": away_stat_lines,
             },
             "leader_slug": leader_slug,
         }
@@ -246,39 +260,125 @@ def build_scoreboard_data(
     }
 
 
-def _starter_rows_html(starters: dict, scores: dict, players: dict) -> str:
-    """Compact per-starter rows for one team (slot, name, pos/team, points)."""
+def _stat_summary(pos: str, s: dict) -> str:
+    """Compact human-readable stat line for one player, so a viewer can see the
+    production behind the points (and tell whether it's in sync with the latest).
+    Empty for a player with no stats yet."""
+    if not s:
+        return ""
+
+    def n(k):
+        return int(round(s.get(k, 0) or 0))
+
+    parts = []
+    if pos == "QB":
+        if n("pass_yd") or n("pass_td"):
+            parts.append(f'{n("pass_yd")} pass yd')
+        if n("pass_td"):
+            parts.append(f'{n("pass_td")} pass TD')
+        if n("pass_int"):
+            parts.append(f'{n("pass_int")} INT')
+        if n("rush_yd"):
+            parts.append(f'{n("rush_yd")} rush yd')
+        if n("rush_td"):
+            parts.append(f'{n("rush_td")} rush TD')
+    elif pos == "RB":
+        if n("rush_yd") or n("rush_td"):
+            parts.append(f'{n("rush_yd")} rush yd')
+        if n("rush_td"):
+            parts.append(f'{n("rush_td")} TD')
+        if n("rec"):
+            parts.append(f'{n("rec")} rec, {n("rec_yd")} yd')
+        if n("rec_td"):
+            parts.append(f'{n("rec_td")} rec TD')
+    elif pos in ("WR", "TE"):
+        if n("rec") or n("rec_yd"):
+            parts.append(f'{n("rec")} rec, {n("rec_yd")} yd')
+        if n("rec_td"):
+            parts.append(f'{n("rec_td")} TD')
+        if n("rush_yd"):
+            parts.append(f'{n("rush_yd")} rush yd')
+    elif pos == "K":
+        fg = n("fgm_0_19") + n("fgm_20_29") + n("fgm_30_39") + n("fgm_40_49") + n("fgm_50p")
+        if fg:
+            parts.append(f'{fg} FG')
+        if n("xpm"):
+            parts.append(f'{n("xpm")} XP')
+    elif pos == "DEF":
+        if "pts_allow" in s:
+            parts.append(f'{n("pts_allow")} pa')
+        if n("sack"):
+            parts.append(f'{n("sack")} sk')
+        if n("int"):
+            parts.append(f'{n("int")} INT')
+        if n("fum_rec"):
+            parts.append(f'{n("fum_rec")} FR')
+        if n("def_td"):
+            parts.append(f'{n("def_td")} TD')
+    return ", ".join(parts)
+
+
+def _side_html(team: dict, players: dict, state: str, badge: str) -> str:
+    """One team's column: header (name over score) then its starters, each with
+    a stat line. `state` is 'win' | 'lose' | 'tie'; `badge` is the sub-header
+    line (e.g. 'Leading by 12.4' or '2 yet to play')."""
     from html import escape
+
+    starters = team["roster"].get("starters", {})
+    scores = team["scores"]
+    stat_lines = team.get("stat_lines", {})
 
     rows = ""
     for slot, pid in starters.items():
         if pid is None:
             rows += (
-                '<div class="p empty"><span class="slot">'
-                f'{escape(str(slot))}</span>'
-                '<span class="pn">—</span><span class="pp">·</span></div>'
+                '<div class="p out"><span class="slot">'
+                f'{escape(str(slot))}</span><span class="pmid"><span class="pn">—</span></span>'
+                '<span class="pp">·</span></div>'
             )
             continue
         info = players.get(pid, {})
         name = escape(str(info.get("name", pid)))
-        pos = escape(str(info.get("pos", "?")))
+        pos = str(info.get("pos", "?"))
         nfl = escape(str(info.get("team") or "FA"))
         pts = scores.get(pid, 0.0)
+        played = pid in stat_lines
+        if played:
+            stat = escape(_stat_summary(pos, stat_lines[pid])) or "in play"
+            pp = f'{pts:.1f}'
+            out_cls = ""
+        else:
+            stat = "yet to play"
+            pp = "–"
+            out_cls = " out"
         rows += (
-            '<div class="p">'
+            f'<div class="p{out_cls}">'
             f'<span class="slot">{escape(str(slot))}</span>'
-            f'<span class="pn">{name}<span class="meta">{pos} · {nfl}</span></span>'
-            f'<span class="pp">{pts:.1f}</span>'
+            f'<span class="pmid"><span class="pn">{name} <span class="meta">{escape(pos)} · {nfl}</span></span>'
+            f'<span class="stat">{stat}</span></span>'
+            f'<span class="pp">{pp}</span>'
             '</div>'
         )
-    return rows
+
+    return (
+        f'<div class="side {state}">'
+        '<div class="head">'
+        f'<span class="tn">{escape(str(team["slug"]))}</span>'
+        f'<span class="ts">{team["total"]:.1f}</span>'
+        '</div>'
+        f'<div class="sub">{badge}</div>'
+        f'<div class="players">{rows}</div>'
+        '</div>'
+    )
 
 
 def render_html(scoreboard_data: dict, players: dict) -> str:
     """Render scoreboard data as a clean, minimal, theme-aware HTML page.
 
-    No framework, no build step, no external assets (system fonts only), so it
-    renders instantly and works offline on localhost.
+    Two columns per matchup — each team's name and score sit directly over that
+    team's players, each with a stat line. The leader is emphasized (tinted
+    column, accent score, winning margin). No framework, no external assets
+    (system fonts only), so it renders instantly and works offline on localhost.
 
     Args:
         scoreboard_data: Output of build_scoreboard_data().
@@ -292,37 +392,34 @@ def render_html(scoreboard_data: dict, players: dict) -> str:
     week = scoreboard_data["week"]
     matchups = scoreboard_data["matchups"]
 
+    def badge(team, is_leader, is_tie, margin):
+        bits = []
+        if is_leader:
+            bits.append(f'<span class="lead">Leading by {margin:.1f}</span>')
+        elif is_tie:
+            bits.append('<span class="lead tieflag">Tied</span>')
+        ytp = team["starters_yet_to_play"]
+        if ytp:
+            bits.append(f'<span class="ytp">{ytp} yet to play</span>')
+        return "".join(bits) or "&nbsp;"
+
     cards = ""
     for m in matchups:
         home, away = m["home_team"], m["away_team"]
         leader = m["leader_slug"]
+        is_tie = leader is None
+        margin = abs(home["total"] - away["total"])
 
-        def team_line(t):
-            is_leader = leader == t["slug"]
-            cls = "row win" if is_leader else ("row" if leader else "row tie")
-            mark = '<span class="lead">▸</span>' if is_leader else '<span class="lead"></span>'
-            ytp = t["starters_yet_to_play"]
-            ytp_html = f'<span class="ytp">{ytp} to play</span>' if ytp else ""
-            return (
-                f'<div class="{cls}">'
-                f'{mark}<span class="tn">{escape(str(t["slug"]))}</span>'
-                f'{ytp_html}<span class="ts">{t["total"]:.1f}</span>'
-                f'</div>'
-            )
-
-        home_detail = _starter_rows_html(
-            home["roster"].get("starters", {}), home["scores"], players)
-        away_detail = _starter_rows_html(
-            away["roster"].get("starters", {}), away["scores"], players)
+        home_state = "win" if leader == home["slug"] else ("tie" if is_tie else "lose")
+        away_state = "win" if leader == away["slug"] else ("tie" if is_tie else "lose")
 
         cards += (
             '<section class="card">'
-            f'{team_line(home)}{team_line(away)}'
-            '<div class="detail">'
-            f'<div class="col">{home_detail}</div>'
-            f'<div class="col">{away_detail}</div>'
-            '</div>'
-            '</section>'
+            + _side_html(home, players, home_state,
+                         badge(home, home_state == "win", is_tie, margin))
+            + _side_html(away, players, away_state,
+                         badge(away, away_state == "win", is_tie, margin))
+            + '</section>'
         )
 
     if not cards:
@@ -340,55 +437,63 @@ def render_html(scoreboard_data: dict, players: dict) -> str:
   <style>
     :root {{
       --bg:#fafaf9; --card:#fff; --line:#eceae6; --text:#18181b;
-      --muted:#9a9a93; --faint:#c4c4bd; --accent:#1f7a4d;
+      --muted:#9a9a93; --faint:#c2c2bb; --accent:#1f7a4d; --winbg:#f3f8f4;
     }}
     @media (prefers-color-scheme: dark) {{
       :root {{
         --bg:#111110; --card:#1a1a18; --line:#2a2a26; --text:#eeeeea;
-        --muted:#83837c; --faint:#4d4d47; --accent:#4cb885;
+        --muted:#83837c; --faint:#4f4f48; --accent:#59c793; --winbg:#17251d;
       }}
     }}
     * {{ box-sizing:border-box; }}
     body {{
       margin:0; background:var(--bg); color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      font-size:15px; line-height:1.4;
-      -webkit-font-smoothing:antialiased;
+      font-size:15px; line-height:1.4; -webkit-font-smoothing:antialiased;
     }}
-    .wrap {{ max-width:640px; margin:0 auto; padding:40px 20px 64px; }}
+    .wrap {{ max-width:720px; margin:0 auto; padding:40px 20px 64px; }}
     header {{ display:flex; align-items:baseline; justify-content:space-between;
-      margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--line); }}
+      margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--line); }}
     .brand {{ font-weight:600; letter-spacing:.14em; text-transform:uppercase; font-size:13px; }}
     .wk {{ color:var(--muted); font-size:13px; letter-spacing:.04em; }}
-    .card {{ background:var(--card); border:1px solid var(--line); border-radius:12px;
-      padding:14px 16px; margin-bottom:12px; }}
-    .row {{ display:flex; align-items:center; gap:10px; padding:6px 0; }}
-    .lead {{ width:12px; color:var(--accent); font-size:12px; }}
-    .tn {{ flex:0 0 auto; text-transform:uppercase; letter-spacing:.06em; font-size:14px;
-      color:var(--muted); font-weight:500; }}
-    .row.win .tn {{ color:var(--text); font-weight:600; }}
-    .ytp {{ margin-left:auto; margin-right:12px; font-size:11px; color:var(--faint);
-      letter-spacing:.02em; }}
-    .ts {{ margin-left:auto; font-variant-numeric:tabular-nums;
-      font-size:22px; font-weight:400; color:var(--muted); }}
-    .ytp + .ts {{ margin-left:0; }}
-    .row.win .ts {{ color:var(--text); font-weight:600; }}
-    .detail {{ display:grid; grid-template-columns:1fr 1fr; gap:0 20px;
-      margin-top:12px; padding-top:12px; border-top:1px solid var(--line); }}
-    .col {{ min-width:0; }}
-    .p {{ display:flex; align-items:baseline; gap:8px; padding:3px 0; font-size:12.5px; }}
-    .slot {{ flex:0 0 34px; color:var(--faint); font-size:10px; letter-spacing:.08em;
-      text-transform:uppercase; padding-top:1px; }}
-    .pn {{ flex:1 1 auto; min-width:0; white-space:nowrap; overflow:hidden;
+    .card {{ display:grid; grid-template-columns:1fr 1fr; background:var(--card);
+      border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:12px; }}
+    .side {{ padding:16px 18px; }}
+    .side + .side {{ border-left:1px solid var(--line); }}
+    .side.win {{ background:var(--winbg); box-shadow:inset 0 2px 0 var(--accent); }}
+    .head {{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }}
+    .tn {{ text-transform:uppercase; letter-spacing:.06em; font-size:14px;
+      color:var(--muted); font-weight:500; overflow:hidden; text-overflow:ellipsis;
+      white-space:nowrap; }}
+    .ts {{ font-variant-numeric:tabular-nums; font-size:24px; font-weight:400;
+      color:var(--muted); }}
+    .side.win .tn {{ color:var(--text); font-weight:700; }}
+    .side.win .ts {{ color:var(--accent); font-weight:700; font-size:28px; }}
+    .sub {{ min-height:15px; margin:2px 0 12px; font-size:11px; letter-spacing:.02em; }}
+    .lead {{ color:var(--accent); font-weight:600; }}
+    .lead.tieflag {{ color:var(--muted); font-weight:500; }}
+    .ytp {{ color:var(--faint); margin-left:8px; }}
+    .players {{ border-top:1px solid var(--line); padding-top:4px; }}
+    .p {{ display:grid; grid-template-columns:30px 1fr auto; column-gap:8px;
+      align-items:baseline; padding:5px 0; }}
+    .slot {{ color:var(--faint); font-size:10px; letter-spacing:.06em;
+      text-transform:uppercase; }}
+    .pmid {{ min-width:0; }}
+    .pn {{ display:block; font-size:13px; white-space:nowrap; overflow:hidden;
       text-overflow:ellipsis; }}
-    .pn .meta {{ color:var(--faint); font-size:11px; margin-left:6px; }}
-    .pp {{ flex:0 0 auto; font-variant-numeric:tabular-nums; color:var(--muted); }}
-    .p.empty .pn, .p.empty .pp {{ color:var(--faint); }}
+    .pn .meta {{ color:var(--faint); font-size:11px; }}
+    .stat {{ display:block; color:var(--muted); font-size:10.5px; letter-spacing:.01em;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }}
+    .pp {{ font-variant-numeric:tabular-nums; font-size:13px; color:var(--text); }}
+    .p.out .pn, .p.out .pp {{ color:var(--faint); }}
+    .p.out .stat {{ color:var(--faint); font-style:italic; }}
     footer {{ margin-top:24px; text-align:center; color:var(--faint); font-size:11px;
       letter-spacing:.03em; }}
     .empty-state {{ color:var(--muted); text-align:center; padding:40px 0; }}
-    @media (max-width:520px) {{ .detail {{ grid-template-columns:1fr; gap:0; }}
-      .col + .col {{ margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); }} }}
+    @media (max-width:560px) {{
+      .card {{ grid-template-columns:1fr; }}
+      .side + .side {{ border-left:none; border-top:1px solid var(--line); }}
+    }}
   </style>
 </head>
 <body>

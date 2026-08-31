@@ -365,8 +365,8 @@ def test_render_html_basic(schedule, rosters, stats, players, scoring):
     assert "eagles" in html.lower()
     assert "46.0" in html  # Chiefs total
     assert "43.0" in html  # Eagles total
-    # Leader's team row should carry the "win" class.
-    assert 'class="row win"' in html
+    # Leader's team column should carry the "win" state.
+    assert 'class="side win"' in html
 
 
 def test_render_html_playoff_bracket_guards_seed_placeholders(scoring, players):
