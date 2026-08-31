@@ -12,6 +12,12 @@ Rules of thumb:
 - For celebrity-inspired GMs: affectionate parody of the public persona.
 -->
 
+## Public bio
+One or two sentences, PUBLIC — the persona as the league (and the shared viewer's
+League Guide) sees it. This is the only part of this file that is ever surfaced
+outside the harness; your mechanical strategy below stays agent-private. Write it
+as a caption, not a spoiler.
+
 ## Identity & Voice
 Who you are, and how you sound in logged reasoning, note replies, and press
 statements. 2–4 sentences of pure character.
