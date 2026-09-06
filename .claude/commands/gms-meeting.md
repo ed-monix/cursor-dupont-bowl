@@ -47,11 +47,20 @@ Retry once on failure. Write each to `teams/<slug>/opinions.json`.
 
 ## 3. Kris holds the meeting too
 
-Spawn the media mogul (`agents/media.md`) with the same public cast sheet to
-produce her **coverage priors** on all 12 GMs — her early Golden Child candidates
-and who she has already decided is boring — and fold them into a Week-1 "Season
-Preview" front page at `state/news/2026-w01.md`. The commissioner needs no
-opinions file: it has already seen everything and expects the worst, uniformly.
+First gather real preseason X buzz for her (optional, never blocks):
+
+```bash
+python scripts/fetch_buzz.py --week 1   # state/news/buzz/2026-w01.md if a source is available
+```
+
+Then spawn the media mogul (`agents/media.md`) with the same public cast sheet
+— plus the week-1 buzz file if it exists (sentiment only; Sleeper stays the
+sole source of facts) — to produce her **coverage priors** on all 12 GMs: her
+early Golden Child candidates and who she has already decided is boring,
+folded into a Week-1 "Season Preview" front page at `state/news/2026-w01.md`,
+with the real preseason hype cycle as her raw material. The commissioner needs
+no opinions file: it has already seen everything and expects the worst,
+uniformly.
 
 ## 4. How opinions flow
 
