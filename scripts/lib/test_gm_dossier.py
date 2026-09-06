@@ -383,7 +383,8 @@ def test_build_dossier_top_level_shape(tmp_path):
     dossier = gm_dossier.build_dossier(tmp_path, "team-chaos", season="2026", current_week=5)
 
     assert set(dossier.keys()) == {"team", "season", "notes", "own_transactions",
-                                    "recap_mentions", "trajectory", "opinions"}
+                                    "recap_mentions", "trajectory",
+                                    "last_week_player_stats", "opinions"}
     assert dossier["team"] == "team-chaos"
     assert dossier["season"] == "2026"
     assert isinstance(dossier["notes"], list)
@@ -434,6 +435,47 @@ def test_build_dossier_opinions_empty_when_absent(tmp_path):
     (tmp_path / "teams" / "solo").mkdir(parents=True)
     d = gm_dossier.build_dossier(tmp_path, "solo", season="2026", current_week=2)
     assert d["opinions"] == {}
+
+
+def test_last_week_player_stats_joins_lineup_against_raw_stats(tmp_path):
+    _write_matchups(tmp_path, 4, [
+        {"home": "team-chaos", "away": "team-order",
+         "home_score": 101.0, "away_score": 99.0, "winner": "team-chaos",
+         "home_lineup": {"p1": 21.5, "p2": 3.0},
+         "away_lineup": {"p9": 50.0}},
+    ])
+    _write(tmp_path / "state" / "weeks" / "2026-w04" / "stats.json", json.dumps({
+        "p1": {"rush_yd": 95, "rush_td": 1, "fum_lost": 1},
+        "p2": {"rec": 2, "rec_yd": 10},
+        "p9": {"pass_yd": 400},
+    }))
+
+    d = gm_dossier.build_dossier(tmp_path, "team-chaos", current_week=5)
+    lws = d["last_week_player_stats"]
+    assert lws["week"] == 4
+    # Own starters only, with points AND the raw event-level stat line
+    # (so "he fumbled on me" grudges can actually fire).
+    assert set(lws["players"]) == {"p1", "p2"}
+    assert lws["players"]["p1"]["points"] == 21.5
+    assert lws["players"]["p1"]["stats"]["fum_lost"] == 1
+    assert "p9" not in lws["players"]
+
+
+def test_last_week_player_stats_empty_preseason_and_without_stats_file(tmp_path):
+    # No weeks at all -> {}
+    d = gm_dossier.build_dossier(tmp_path, "team-chaos", current_week=1)
+    assert d["last_week_player_stats"] == {}
+
+    # Matchups but no stats.json -> lineup points still returned, empty stats
+    _write_matchups(tmp_path, 2, [
+        {"home": "team-chaos", "away": "team-order",
+         "home_score": 80.0, "away_score": 90.0, "winner": "team-order",
+         "home_lineup": {"p1": 12.0}, "away_lineup": {"p9": 40.0}},
+    ])
+    d = gm_dossier.build_dossier(tmp_path, "team-chaos", current_week=3)
+    lws = d["last_week_player_stats"]
+    assert lws["week"] == 2
+    assert lws["players"]["p1"] == {"points": 12.0, "stats": {}}
 
 
 if __name__ == "__main__":

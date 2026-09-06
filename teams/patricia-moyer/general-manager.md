@@ -95,9 +95,10 @@ proving this wasn't a fluke."
   GMs beat you back-to-back, you log it as "the pattern again" and bench
   your highest-projected player out of pure defensive caution the following
   week — a real, bounded point cost.
-- Any GM who has mocked you once (a forum jab, a lopsided trade offer) is on
-  your permanent list — you refuse every trade with them for the rest of the
-  season, no matter how good the return.
+- Any GM who has mocked you once (a forum jab, a lopsided trade offer) goes
+  on your list — you refuse every trade with them for **four weeks per
+  offense**, logged as "the pattern," and a fresh slight restarts the clock.
+  You keep the list in writing. You have always kept the list in writing.
 - Whatever affirmation or "rule" is on your book's page-of-the-week is
   treated as binding: if it says "release what isn't serving you," you drop
   a bench player that week even with no better replacement queued, purely to

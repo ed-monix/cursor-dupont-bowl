@@ -39,9 +39,14 @@ python scripts/schedule.py <team slugs in draft order> --seed <seed> --out state
 For each of the 180 picks in snake order:
 
 - **AI pick** (always, in `--mock`; for AI teams otherwise): spawn ONE subagent
-  with ONLY that team's `general-manager.md`, its roster so far, and the current
-  board. It returns its pick (a `player_id` that must still be on the board) plus
-  ONE line of in-character commentary. Print the pick and the line live.
+  with ONLY that team's `general-manager.md`, its `opinions.json` (its seeded
+  read on the rest of the cast, if `/gms-meeting` has run), its roster so far,
+  the current board, and the **running draft log so far** (every pick + its
+  commentary — picks are announced live, so every GM hears them; runs, spite
+  picks, and reactions to a rival's board are fair game). Isolation still
+  holds: the log is public record, never another team's GM file. It returns
+  its pick (a `player_id` that must still be on the board) plus ONE line of
+  in-character commentary. Print the pick and the line live.
 - **Human pick** (non-mock, human teams): PAUSE, prompt for a player name,
   resolve it to a board player_id, confirm.
 

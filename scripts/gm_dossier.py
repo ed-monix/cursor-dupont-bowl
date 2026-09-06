@@ -315,6 +315,50 @@ def _collect_trajectory(root: pathlib.Path, slug: str, season: str,
     return {"record": record, "recent_results": results}
 
 
+def _collect_last_week_player_stats(root: pathlib.Path, slug: str, season: str,
+                                     current_week: Optional[int]) -> dict:
+    """Per-starter raw stat lines for this team's most recent scored week.
+
+    Several GM biases trigger on box-score EVENTS, not points ("he fumbled
+    on me", "a costly pick") -- matchups.json carries per-player points only,
+    so this joins the team's most recent lineup (home_lineup/away_lineup)
+    against that same week's stats.json for the raw lines.
+
+    Returns {"week": int, "players": {player_id: {"points": float,
+    "stats": {raw stat keys...}}}} for the newest week that has both files
+    and this team in a matchup, or {} when there is no such week yet.
+    """
+    weeks_dir = root / "state" / "weeks"
+    weeks = _recent_week_numbers(weeks_dir, season, current_week, 1, _WEEK_DIR_RE)
+
+    for wk in reversed(weeks):  # newest first
+        week_dir = weeks_dir / f"{season}-w{_week_str(wk)}"
+        matchups_text = _read_text(week_dir / "matchups.json")
+        stats_text = _read_text(week_dir / "stats.json")
+        if not matchups_text:
+            continue
+        try:
+            data = json.loads(matchups_text)
+            stats = json.loads(stats_text) if stats_text else {}
+        except (json.JSONDecodeError, ValueError):
+            continue
+
+        for m in data.get("matchups", []) if isinstance(data, dict) else []:
+            if m.get("home") == slug:
+                lineup = m.get("home_lineup") or {}
+            elif m.get("away") == slug:
+                lineup = m.get("away_lineup") or {}
+            else:
+                continue
+            players = {
+                pid: {"points": pts, "stats": stats.get(pid, {}) or {}}
+                for pid, pts in lineup.items()
+            }
+            return {"week": wk, "players": players}
+
+    return {}
+
+
 def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026",
                    current_week: Optional[Union[int, str]] = None, weeks_back: int = 3) -> dict:
     """Assemble THIS TEAM's own bounded context: the feud thread, its own
@@ -334,6 +378,10 @@ def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026
                   {"week": int, "opponent": str, "result": "W"|"L"|"T"|None,
                    "score": float, "opponent_score": float}, ...
               ]  # <= weeks_back
+          },
+          "last_week_player_stats": {          # {} until a week is scored
+              "week": int,
+              "players": {player_id: {"points": float, "stats": {...raw}}}
           }
         }
 
@@ -376,6 +424,14 @@ def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026
     except Exception:
         trajectory = {"record": {}, "recent_results": []}
 
+    # Raw stat lines for the last scored week's own starters, so event-keyed
+    # grudges (fumbles, costly picks) have something concrete to fire on.
+    try:
+        last_week_player_stats = _collect_last_week_player_stats(
+            root, slug, season, week_int)
+    except Exception:
+        last_week_player_stats = {}
+
     # This team's own seeded opinions of the rest of the cast (R10) — priors the
     # lived record then layers on top. Its OWN file only; isolation holds.
     opinions = {}
@@ -394,6 +450,7 @@ def build_dossier(root: Union[str, pathlib.Path], slug: str, season: str = "2026
         "own_transactions": own_transactions,
         "recap_mentions": recap_mentions,
         "trajectory": trajectory,
+        "last_week_player_stats": last_week_player_stats,
         "opinions": opinions,
     }
 
