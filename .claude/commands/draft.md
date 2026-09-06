@@ -45,16 +45,29 @@ python scripts/schedule.py <team slugs in draft order> --seed <seed> --out state
 
 For each of the 180 picks in snake order:
 
-- **Every pick, every team**: spawn ONE subagent
-  with ONLY that team's `general-manager.md`, its `opinions.json` (its seeded
-  read on the rest of the cast, if `/gms-meeting` has run), its roster so far,
-  the current board, and the **running draft log so far** (every pick + its
-  commentary — picks are announced live, so every GM hears them; runs, spite
-  picks, and reactions to a rival's board are fair game). Isolation still
-  holds: the log is public record, never another team's GM file. It returns
-  its pick (a `player_id` that must still be on the board) plus ONE line of
-  in-character commentary. Print the pick and the line live. There are no
-  human picks — the owners' GMs draft for them.
+- **Every pick, every team**: spawn ONE subagent with ONLY that team's
+  `general-manager.md`, its roster so far, and the public context below.
+  Isolation still holds: the log is public record, never another team's GM
+  file. It returns its pick (a `player_id` that must still be on the board)
+  plus ONE line of in-character commentary (25 words max). Print both live.
+  There are no human picks — the owners' GMs draft for them.
+
+**Token diet (required — the full board is ~3,000 players and 180 picks will
+burn millions of tokens without it):**
+
+- **Board slice, never the full pool:** the top 60 available by projected
+  points PLUS the top 12 available at each of QB/RB/WR/TE and top 3 K/DEF
+  (name, pos, NFL team, proj only). No GM ever picks outside that slice; if
+  one insists on a name not in it, resolve the name against the full board
+  in the harness, not by widening the context.
+- **Draft log slice:** the last 24 picks verbatim (two rounds of reactions,
+  runs, and spite material) plus a one-line per-team summary of position
+  counts drafted so far — never the full log.
+- **Opinions:** full `opinions.json` for rounds 1–3 (rivalries shape the
+  early board); from round 4 on, a compact one-line stance map
+  (`team: stance`) instead.
+- **Rounds 11–15, accelerated:** board slice trimmed to the top 40 relevant,
+  no draft log — just the per-team position-counts summary.
 
 Validate EVERY pick before accepting it (`scripts/lib/rosters`): the player must
 be on the board (never drafted twice — reject and re-prompt/re-ask on a dupe),
