@@ -72,10 +72,13 @@ works on phones). Three tabs:
 - **Standings** — records, points for/against, and the 6-team playoff cut.
 - **Bracket** — a playoff forecast seeded from the current standings.
 
-### Refreshing it on Sundays
+### Keeping it fresh
 
 The artifact can't call Sleeper itself (it's sandboxed), so it's kept live by
-re-publishing it with fresh data. `scripts/build_viewer.py` renders
+re-publishing it with fresh data. Every state-changing run — the draft,
+`/saturday`, `/sunday`, `/recap` — ends by rebuilding the viewer and
+republishing the artifact in place, so the shared link tracks the league
+automatically. The loop below is only for live scoring during the games. `scripts/build_viewer.py` renders
 `web/viewer.html` from committed league state; `/refresh-board` runs the whole
 pass (sync stats → build → republish the artifact in place, same URL). For
 ~10-minute updates during games, run it as a loop from an interactive Claude

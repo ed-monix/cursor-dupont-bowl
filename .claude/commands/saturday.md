@@ -142,3 +142,12 @@ Stage updated rosters, `state/transactions.jsonl`, `state/free-agents.json`,
 `state/weeks/2026-w<WW>/{news-facts.json,faab-report.json}`,
 `state/forum/2026-w<WW>.jsonl`, updated `teams/*/press/`, and any ruling; ONE
 commit: `week <WW>: saturday`. Never commit mid-run.
+
+## 9. Refresh the shared board (after the commit)
+
+The published viewer must reflect this run: build `web/viewer.html`
+(`python scripts/build_viewer.py --season 2026`) and republish the artifact in
+place per `.claude/commands/refresh-board.md` step 4 (skip its stats sync —
+this run just synced). No git action — `web/viewer.html` is gitignored. If this
+session lacks the Artifact tool, say so and tell the owner to run
+`/refresh-board` from an interactive session so the board isn't left stale.

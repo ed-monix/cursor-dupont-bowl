@@ -82,3 +82,12 @@ to `state/weeks/2026-w<WW>/lineups.json`. Append each GM's justification (and a
 Stage updated rosters, `state/weeks/2026-w<WW>/lineups.json`,
 `state/forum/2026-w<WW>.jsonl`, and updated `teams/*/press/`; ONE commit:
 `week <WW>: sunday`.
+
+## 5. Refresh the shared board (after the commit)
+
+Build `web/viewer.html` (`python scripts/build_viewer.py --season 2026`) and
+republish the artifact in place per `.claude/commands/refresh-board.md` step 4,
+so the locked lineups are on the board before kickoff. No git action. If this
+session lacks the Artifact tool, say so and tell the owner to run
+`/refresh-board` from an interactive session. (During the games themselves,
+the ~10-minute live loop — `/loop 10m /refresh-board` — takes over.)

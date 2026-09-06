@@ -78,6 +78,12 @@ rejected with the reason; the agent picks again. Append every pick to
 Stage all rosters, `state/schedule.json`, `state/draft-log.jsonl`,
 `state/draft-grades.md`; ONE commit: `draft` (or `draft (mock)` for `--mock`).
 
+Then (real draft only, not `--mock`): build `web/viewer.html`
+(`python scripts/build_viewer.py --season 2026`) and republish the artifact in
+place per `.claude/commands/refresh-board.md` step 4 — the league's first look
+at the board should be draft night. If this session lacks the Artifact tool,
+say so and tell the owner to run `/refresh-board`.
+
 ## Dress-rehearsal requirement
 
 Before the real draft, a full 15-round `--mock` must complete clean: all 180
