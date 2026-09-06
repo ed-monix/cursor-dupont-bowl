@@ -27,10 +27,11 @@ never when it is merely stupid.
   reference league needed — `sync_sleeper.py --settings` activates it from the
   shipped defaults) and applied by our own engine (`config/scoring.json`).
 - **Weekly rhythm:**
-  - **Fri/Sat AM — Owner notes.** The humans drop a short performance note
-    into any team's `notes/` folder — their own GM's included. Agents
-    interpret it however their personality dictates. That's the only human
-    input any GM ever gets.
+  - **Fri/Sat AM — Owner notes.** Each human drops a short performance note
+    into their OWN team's `notes/` folder — the only two teams with owners.
+    Their GM interprets it however its personality dictates. The ten
+    celebrity GMs get no notes from anyone; the meddling in their lives is
+    Kris Jenner's weekly tabloid.
   - **Saturday AM — Roster run.** Every agent reviews its team, the waiver wire,
     and its owner note, then submits FAAB claims, drops, and trade offers.
   - **Sunday AM — Lineup run.** Final injury sync, every agent locks a legal

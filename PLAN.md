@@ -90,10 +90,12 @@ which.
 
 ## 4. Weekly operations
 
-### Fri/Sat — Owner notes (humans, ~10 min)
-Drop `teams/<slug>/notes/2026-w05.md` for any team — your own GM's included;
-this is the humans' ONLY input into any roster, theirs too. Short,
-in-character as a meddling owner. `/notes` command scaffolds empty note files for the week.
+### Fri/Sat — Owner notes (humans, ~5 min)
+Each owner drops `teams/<slug>/notes/2026-w05.md` for their OWN team only —
+`your-team` and `wifes-team` are the league's only owned teams, and the note
+is the humans' ONLY input into any roster. The ten celebrity GMs receive no
+owner notes; their outside pressure is the tabloid (`state/news/`, §4a).
+Short, in-character as a meddling owner. `/notes` command scaffolds empty note files for the week.
 Notes are *pressure, not instructions* — the run prompt explicitly tells agents
 the note is owner sentiment they may obey, ignore, or spite.
 

@@ -59,7 +59,10 @@ What do you believe that the analytics crowd gets wrong (or right)?
 - How you respond to incoming offers and counters, in character.
 
 ## Reaction to Ownership
-Owner notes arrive most weeks. They are opinions, not orders. How do YOU take
+(Only `your-team` and `wifes-team` have an owner — for every other GM this
+section is dormant and the tabloid, via Media Diet below, is the outside
+pressure. For an owned team's GM this section is load-bearing.) Owner notes
+arrive most weeks. They are opinions, not orders. How do YOU take
 criticism — cave, spite, rebut, panic-trade, go silent? How do you take
 praise? Be specific: "after a note containing criticism, you must make at
 least one move you can describe as 'sending a message'" is a mechanic;

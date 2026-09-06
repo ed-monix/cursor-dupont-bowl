@@ -14,7 +14,9 @@
   agent — the owners watch. Validator enforces one-K/one-DEF max at draft.
 
 ## Weekly deadlines
-- Owner notes: in `notes/` by Friday 11:59 PM — any team, your own included.
+- Owner notes: in `notes/` by Friday 11:59 PM — each owner to their OWN team
+  only (`your-team`, `wifes-team`). The other ten GMs have no owner; their
+  meddling arrives via the tabloid.
 - Roster run (waivers/trades): Saturday AM, all 12 GMs.
 - Lineup run: Sunday AM, before the early slate. Lineups then freeze; there
   are no in-day swaps for anyone — owners have no lever to swap with.
@@ -32,8 +34,9 @@
 
 ## The GMs
 - Every team is governed solely by its `general-manager.md` — the owners'
-  teams included. Owner notes are the only in-season human input to ANY
-  roster, and agents may interpret them freely.
+  teams included. Owner notes (to the two owned teams only) are the only
+  in-season human input to ANY roster, and agents may interpret them freely.
+  The ten unowned GMs' outside pressure is the weekly tabloid.
 - GM file edits: max 3 per team per season, only during a note window
   (Fri–Sat). Formatting/bug fixes that don't change strategy are free at the
   commissioner's discretion. All edits logged in `state/rulings.md`.

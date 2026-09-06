@@ -1,16 +1,18 @@
 ---
-description: Scaffold empty owner-note files for the week (the owners' only input to any GM — their own included)
+description: Scaffold owner-note files for the week — the owners' two teams ONLY (the tabloid meddles with everyone else)
 argument-hint: <week number, e.g. 5>
 ---
 
 # /notes — scaffold owner notes for week $ARGUMENTS
 
-Owner notes are the meddling-owner mechanic: the ONLY in-season human input
-ANY GM ever receives — including the owners' own two teams, whose GMs read
-their owner's note with exactly the same freedom as everyone else (PLAN.md §4,
-CLAUDE.md rules 2 and 7). They are *pressure, not orders* — each GM interprets
-its note in character and may obey, ignore, or spite it. This command just
-creates the empty files for the humans to fill in before the Saturday run.
+Owner notes are the meddling-owner mechanic, and they go ONLY to the two
+teams the humans actually own — `your-team` and `wifes-team`. Each owner
+writes to their own GM, whose reading of the note is as free as anyone
+else's: obey, ignore, or spite (PLAN.md §4, CLAUDE.md rules 2 and 7). The
+ten celebrity GMs get NO owner notes — nobody owns them; their outside
+pressure is Kris Jenner's tabloid (`state/news/`), which meddles with
+everyone. Notes are *pressure, not orders*. This command just creates the
+empty files for the owners to fill in before the Saturday run.
 
 Season is 2026 unless the repo's data says otherwise. Let `WW` be the two-digit,
 zero-padded week from `$ARGUMENTS` (e.g. `5` → `05`). If `$ARGUMENTS` is empty,
@@ -18,10 +20,10 @@ ask the human which week, then proceed.
 
 Do this:
 
-1. **List the teams.** Every directory under `teams/` except `_template` gets
-   a note file — the owners' own two teams included (their GMs answer to
-   their owners like anyone else).
-2. **For each team**, if `teams/<slug>/notes/2026-w<WW>.md` does not already
+1. **The owner teams only:** `teams/your-team` and `teams/wifes-team`. No
+   other team gets a note file — the celebrity GMs answer to no owner, and
+   creating note files for them is a mistake to report, not repeat.
+2. **For each of the two**, if `teams/<slug>/notes/2026-w<WW>.md` does not already
    exist, create it from this stub (create the `notes/` folder if missing).
    Never overwrite an existing note — if it exists, leave it and report that.
 
