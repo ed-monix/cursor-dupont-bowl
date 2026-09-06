@@ -17,6 +17,7 @@ import datetime
 import json
 import pathlib
 import sys
+from typing import Optional
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -31,8 +32,31 @@ WEEKS_DIR = ROOT / "state" / "weeks"
 
 
 def pretty(slug: str) -> str:
-    """Human display name from a team slug (until GM files carry a name)."""
+    """Human display name from a team slug (fallback when no franchise name)."""
     return str(slug).replace("-", " ").title()
+
+
+def team_names() -> dict:
+    """{slug: franchise name} for every team whose roster.json carries a
+    non-empty "name" (the name that GM chose). Teams without one are omitted,
+    so callers fall back to pretty(slug)."""
+    out = {}
+    for rp in sorted((ROOT / "teams").glob("*/roster.json")):
+        if rp.parent.name.startswith("_"):
+            continue
+        try:
+            with open(rp, encoding="utf-8") as f:
+                name = (json.load(f).get("name") or "").strip()
+        except (json.JSONDecodeError, ValueError, OSError):
+            name = ""
+        if name:
+            out[rp.parent.name] = name
+    return out
+
+
+def _display_name(slug: str, names: Optional[dict]) -> str:
+    """Franchise name if the team chose one, else the prettified slug."""
+    return (names or {}).get(slug) or pretty(slug)
 
 
 def _load(path: pathlib.Path, default):
@@ -99,7 +123,7 @@ def _frontmatter_description(path: pathlib.Path) -> str:
     return ""
 
 
-def _load_feed(season: str, week: int) -> dict:
+def _load_feed(season: str, week: int, names: Optional[dict] = None) -> dict:
     """Load the week's feed (tabloid, forum, recap).
 
     Returns {"tabloid": str, "forum": [posts], "recap": str}.
@@ -118,7 +142,7 @@ def _load_feed(season: str, week: int) -> dict:
     forum_posts_out = []
     for post in reversed(forum_posts):  # reverse to newest first
         post_with_name = dict(post)
-        post_with_name["name"] = pretty(post["team"])
+        post_with_name["name"] = _display_name(post["team"], names)
         forum_posts_out.append(post_with_name)
 
     # Recap
@@ -135,7 +159,7 @@ def _load_feed(season: str, week: int) -> dict:
     }
 
 
-def _load_guide(season: str) -> dict:
+def _load_guide(season: str, names: Optional[dict] = None) -> dict:
     """Load the league guide (mission, rules, cast, howItRuns).
 
     Returns {"mission": str, "rules": str, "cast": [...], "howItRuns": [...]}.
@@ -194,7 +218,7 @@ def _load_guide(season: str) -> dict:
 
             cast.append({
                 "slug": slug,
-                "name": pretty(slug),
+                "name": _display_name(slug, names),
                 "kind": kind,
                 "record": record,
                 "bio": bio,
@@ -308,12 +332,12 @@ def viewer_starters(team: dict, players: dict) -> list:
     return out
 
 
-def viewer_matchup(m: dict, players: dict, recmap: dict) -> dict:
+def viewer_matchup(m: dict, players: dict, recmap: dict, names: Optional[dict] = None) -> dict:
     """Map a build_scoreboard_data matchup to the viewer's shape."""
     def side(t):
         return {
             "slug": t["slug"],
-            "name": pretty(t["slug"]),
+            "name": _display_name(t["slug"], names),
             "total": round(t["total"], 2),
             "record": recmap.get(t["slug"], "0-0"),
             "starters": viewer_starters(t, players),
@@ -324,11 +348,11 @@ def viewer_matchup(m: dict, players: dict, recmap: dict) -> dict:
     return {"home": side(m["home_team"]), "away": side(m["away_team"]), "leader": leader}
 
 
-def viewer_standings(standings_json: dict) -> list:
+def viewer_standings(standings_json: dict, names: Optional[dict] = None) -> list:
     """Map state/standings.json to the viewer's sorted standings list."""
     teams = standings_json.get("teams", {})
     rows = [{
-        "slug": s, "name": pretty(s),
+        "slug": s, "name": _display_name(s, names),
         "w": t.get("wins", 0), "l": t.get("losses", 0), "t": t.get("ties", 0),
         "pf": round(t.get("points_for", 0.0), 1),
         "pa": round(t.get("points_against", 0.0), 1),
@@ -370,6 +394,7 @@ def _rosters_for_week(season: str, week: int) -> dict:
 
 
 def build_league_data(season: str) -> dict:
+    names = team_names()  # {slug: franchise name}; missing -> pretty(slug)
     players = _load(ROOT / "state" / "players.json", {})
     scoring = _load_scoring()
     schedule = _load(ROOT / "state" / "schedule.json", {"regular_season": {}, "playoffs": {}})
@@ -413,10 +438,10 @@ def build_league_data(season: str) -> dict:
                 else:
                     rec.setdefault(h, {"w": 0, "l": 0, "t": 0})["t"] += 1
                     rec.setdefault(a, {"w": 0, "l": 0, "t": 0})["t"] += 1
-            matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}))
+            matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}, names))
 
         # Load feed (tabloid, forum, recap)
-        feed = _load_feed(season, w)
+        feed = _load_feed(season, w, names)
 
         weeks_out.append({
             "week": w,
@@ -426,13 +451,13 @@ def build_league_data(season: str) -> dict:
         })
 
     # Load guide (mission, rules, cast, howItRuns)
-    guide = _load_guide(season)
+    guide = _load_guide(season, names)
 
     return {
         "league": "The DuPont Bowl",
         "season": int(season) if str(season).isdigit() else season,
         "weeks": weeks_out,
-        "standings": viewer_standings(standings_json),
+        "standings": viewer_standings(standings_json, names),
         "standingsThroughWeek": max(official) if official else 0,
         "guide": guide,
         "updated": datetime.datetime.now().isoformat(),

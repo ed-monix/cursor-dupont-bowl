@@ -1,4 +1,18 @@
-{"team": "kardashian", "faab_remaining": 100,
- "starters": {"QB": null, "RB1": null, "RB2": null, "WR1": null, "WR2": null,
-              "TE": null, "FLEX": null, "K": null, "DEF": null},
- "bench": [], "ir": []}
+{
+ "team": "kardashian",
+ "name": "The Golden Child Drop",
+ "faab_remaining": 100,
+ "starters": {
+  "QB": null,
+  "RB1": null,
+  "RB2": null,
+  "WR1": null,
+  "WR2": null,
+  "TE": null,
+  "FLEX": null,
+  "K": null,
+  "DEF": null
+ },
+ "bench": [],
+ "ir": []
+}

@@ -1,4 +1,18 @@
-{"team": "costanza", "faab_remaining": 100,
- "starters": {"QB": null, "RB1": null, "RB2": null, "WR1": null, "WR2": null,
-              "TE": null, "FLEX": null, "K": null, "DEF": null},
- "bench": [], "ir": []}
+{
+ "team": "costanza",
+ "name": "Vandelay Vengeance",
+ "faab_remaining": 100,
+ "starters": {
+  "QB": null,
+  "RB1": null,
+  "RB2": null,
+  "WR1": null,
+  "WR2": null,
+  "TE": null,
+  "FLEX": null,
+  "K": null,
+  "DEF": null
+ },
+ "bench": [],
+ "ir": []
+}

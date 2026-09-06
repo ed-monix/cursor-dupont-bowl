@@ -63,6 +63,24 @@ def test_pretty_name():
     assert build_viewer.pretty("last-place-luxury") == "Last Place Luxury"
 
 
+def test_display_name_prefers_franchise_name_over_pretty():
+    names = {"rinna": "Reunion Special"}
+    # A team that chose a name shows it; one that didn't falls back to pretty.
+    assert build_viewer._display_name("rinna", names) == "Reunion Special"
+    assert build_viewer._display_name("your-team", names) == "Your Team"
+    assert build_viewer._display_name("rinna", None) == "Rinna"
+
+
+def test_viewer_matchup_uses_franchise_names_when_provided():
+    home = make_team("dynamos", 100.0, {"p1": 100.0}, {"p1": {"pass_yd": 250}}, {"QB": "p1"})
+    away = make_team("wagon", 80.0, {"p2": 80.0}, {"p2": {"rush_yd": 120}}, {"RB1": "p2"})
+    m = {"home_team": home, "away_team": away, "leader_slug": "dynamos"}
+    v = build_viewer.viewer_matchup(m, PLAYERS, {"dynamos": "3-0", "wagon": "1-2"},
+                                    {"dynamos": "The Dynamo Drop"})
+    assert v["home"]["name"] == "The Dynamo Drop"  # franchise name
+    assert v["away"]["name"] == "Wagon"            # no name -> pretty fallback
+
+
 # --- Tests for helper functions (Section, Frontmatter) ----------------------
 
 
