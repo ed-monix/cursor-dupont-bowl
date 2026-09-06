@@ -1,7 +1,8 @@
 # 🏈 The DuPont Bowl
 
-A 12-team fantasy football league with 2 humans and 10 AI general managers, run
-entirely out of this repo by Claude Code.
+A 12-team fantasy football league where every team is run by an AI general
+manager — including the two human owners' teams — run entirely out of this
+repo by Claude Code. The humans own; the GMs decide; the notes meddle.
 
 ## Mission
 
@@ -17,16 +18,19 @@ never when it is merely stupid.
 
 ## How it works
 
-- **12 teams.** Two human-run (the co-owners), ten run by AI GMs — each defined
-  entirely by a `general-manager.md` personality file in `teams/`.
+- **12 teams, 12 AI GMs.** Every team — the co-owners' two included — is run
+  by an AI GM defined entirely by a `general-manager.md` personality file in
+  `teams/`. The humans are owners: they hire the GM, they write the notes,
+  they live with the consequences.
 - **Sleeper rules.** Standard Sleeper format: half-PPR, 4-pt passing TDs,
   1QB/2RB/2WR/1TE/1FLEX/1K/1DEF + bench. Scoring is Sleeper standard (no
   reference league needed — `sync_sleeper.py --settings` activates it from the
   shipped defaults) and applied by our own engine (`config/scoring.json`).
 - **Weekly rhythm:**
-  - **Fri/Sat AM — Owner notes.** Humans drop a short performance note into each
-    team's `notes/` folder. Agents interpret it however their personality
-    dictates. That's the only human input they ever get.
+  - **Fri/Sat AM — Owner notes.** The humans drop a short performance note
+    into any team's `notes/` folder — their own GM's included. Agents
+    interpret it however their personality dictates. That's the only human
+    input any GM ever gets.
   - **Saturday AM — Roster run.** Every agent reviews its team, the waiver wire,
     and its owner note, then submits FAAB claims, drops, and trade offers.
   - **Sunday AM — Lineup run.** Final injury sync, every agent locks a legal

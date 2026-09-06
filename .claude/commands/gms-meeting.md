@@ -15,14 +15,16 @@ from who the others publicly *are*, never from another team's `general-manager.m
 ## 1. Build the public cast sheet
 
 Assemble the **public** roster of the league's 14 characters: for each AI GM and
-each human team, its display name + `## Public bio` line (from
-`teams/<slug>/general-manager.md`, or the owner for human teams); plus **The
+each team, its display name + `## Public bio` line (from
+`teams/<slug>/general-manager.md` — every team has a GM file, the owners'
+two included); plus **The
 Commissioner** (`agents/commissioner.md`) and **Kris Jenner, the media mogul**
 (`agents/media.md`). Public bios only — never the mechanical strategy below them.
 
-## 2. Each GM forms its opinions (one isolated subagent per AI team)
+## 2. Each GM forms its opinions (one isolated subagent per team — all 12)
 
-For each AI team, spawn ONE subagent whose context is ONLY its own
+For each team (the owners' two included — their GMs hold opinions like
+anyone else), spawn ONE subagent whose context is ONLY its own
 `general-manager.md` plus the cast sheet (everyone else's public bio — NEVER
 another GM file). Instruct it to form an initial working opinion of every other
 character: the 11 other GMs, the commissioner, and the media mogul. It may draw

@@ -213,6 +213,7 @@ def _load_guide(season: str, names: Optional[dict] = None,
             if not team_dir.is_dir() or team_dir.name.startswith("_"):
                 continue
             slug = team_dir.name
+            # Every team is GM-run; the owners' two are just human-owned.
             kind = "human" if slug in ("your-team", "wifes-team") else "ai"
 
             # Record from standings

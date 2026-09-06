@@ -36,11 +36,12 @@ only — `news-facts.json`, `state/transactions.jsonl`, last week's forum thread
 owner-planted rumor lines. She writes `state/news/2026-w<WW>.md`, the front page
 every GM reads this week. She holds ZERO powers and NEVER sees a GM file.
 
-## 3. AI team decisions (one isolated subagent per team)
+## 3. GM decisions (one isolated subagent per team — ALL 12 teams)
 
-For each AI team (every `teams/` dir except `_template`, `your-team`,
-`wifes-team`), in **reverse standings order** (context only — bids are blind),
-spawn ONE subagent whose context is ONLY that team's own material + public record:
+For each team (every `teams/` dir except `_template` — the owners' teams run
+through their GMs exactly like everyone else), in **reverse standings order**
+(context only — bids are blind), spawn ONE subagent whose context is ONLY
+that team's own material + public record:
 
 - its `teams/<slug>/general-manager.md` (NEVER another team's),
 - its `teams/<slug>/roster.json`,
@@ -76,13 +77,7 @@ entertainment.
 **Forum:** for any team that returned a `forum_post`, append it via
 `forum.append_post(root, <WW>, slug, post)` (one post per team per week).
 
-## 4. Human team decisions
-
-For `your-team` and `wifes-team`, PAUSE and prompt the human for claims, drops,
-any trade offer, and an optional forum post. Run their input through the SAME
-`saturday-decision` schema and the same deadline. No special treatment.
-
-## 5. Resolve FAAB (script decides)
+## 4. Resolve FAAB (script decides)
 
 Assemble all claims into `{team: [{add, drop, bid, reasoning}]}` and the
 worst→best standings list, then:
@@ -96,16 +91,16 @@ python scripts/faab.py --claims <claims.json> --standings <standings.json> \
 enforces the rules (highest bid; tie → worse standing; drop-consumption; budget).
 Never hand-resolve a bid.
 
-## 6. Trades
+## 5. Trades
 
 Max ONE outgoing offer per team per week; deadline end of week 11 (reject from
 week 12 on). GMs now scout targets via `state/league-board.json`, so
-`trade_offer.in` names real players. For each offer, the TARGET team's agent (or
-human) gets one accept/reject/counter; on a counter, the offerer gets a final
+`trade_offer.in` names real players. For each offer, the TARGET team's GM agent
+gets one accept/reject/counter; on a counter, the offerer gets a final
 accept/reject — the target sees only its own GM file + the offer terms. Validate
 any swap with `rosters.apply_transaction` (it refuses illegal results).
 
-## 7. Commissioner review, then apply
+## 6. Commissioner review, then apply
 
 Spawn the Commissioner (`agents/commissioner.md` — the ONE agent allowed to read
 every GM file; it and Kris Jenner maintain a professional loathing). Give it the
@@ -125,15 +120,15 @@ Apply approved trades the same way. Every applied action lands in
 `state/transactions.jsonl` (timestamp, team, action, players, bid, reasoning,
 status — schema `docs/schemas/transaction-entry.json`).
 
-## 8. Write each GM's paper trail
+## 7. Write each GM's paper trail
 
-For every AI team, append its public output this run to
+For every team, append its GM's public output this run to
 `teams/<slug>/press/2026-w<WW>.md` via `gm_dossier.append_press(...)`: its
 `note_reply`, its logged claim/trade reasoning, and the outcome line (e.g. "won
 the bid at $23" / "lineup fell back — Hall of Shame" comes Sunday/Monday). This
 is the memory next week's dossier reads back.
 
-## 9. Commit (exactly one)
+## 8. Commit (exactly one)
 
 Stage updated rosters, `state/transactions.jsonl`, `state/free-agents.json`,
 `state/league-board.json`, `state/news/2026-w<WW>.md`,

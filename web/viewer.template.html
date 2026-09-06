@@ -442,7 +442,7 @@
   function renderGuide(){
     var g = LEAGUE.guide || {};
     document.getElementById("eyebrow").textContent = "League Guide";
-    var KIND = {ai:"AI GM", human:"Human", official:"Commissioner", media:"Media"};
+    var KIND = {ai:"AI GM", human:"AI GM · Human-owned", official:"Commissioner", media:"Media"};
     var cast = (g.cast||[]).map(function(c){
       var rec = c.record ? '<span class="castrec num">'+esc(c.record)+'</span>' : '';
       return '<div class="castrow"><div class="casttop"><span class="castname">'+esc(c.name)+'</span>'+

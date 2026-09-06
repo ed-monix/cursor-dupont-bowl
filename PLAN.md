@@ -77,9 +77,11 @@ celebrity teams: affectionate caricature — personality, vibes, and public
 persona translated into *mechanical* biases (what they overpay for, what they
 refuse to roster, how they take criticism).
 
-**Humans:** `your-team` and `wifes-team` have no GM file; moves are typed
-directly to Claude Code and pass through the same validator, deadlines, and
-FAAB process as everyone else.
+**Owner teams:** `your-team` and `wifes-team` are run by their own GM agents
+like every other team — same GM-file contract, isolation, validators,
+deadlines, and FAAB process. The humans are owners, not managers: they never
+type moves; they influence their GM the same way they influence anyone
+else's — owner notes, which their GM is free to obey, ignore, or spite.
 
 **Edit rule:** each AI team's GM file may be rewritten up to 3 times in-season,
 only during note windows (the git commit is the record). Bug fixes to broken
@@ -89,32 +91,34 @@ which.
 ## 4. Weekly operations
 
 ### Fri/Sat — Owner notes (humans, ~10 min)
-Drop `teams/<slug>/notes/2026-w05.md` for any team you own. Short, in-character
-as a meddling owner. `/notes` command scaffolds empty note files for the week.
+Drop `teams/<slug>/notes/2026-w05.md` for any team — your own GM's included;
+this is the humans' ONLY input into any roster, theirs too. Short,
+in-character as a meddling owner. `/notes` command scaffolds empty note files for the week.
 Notes are *pressure, not instructions* — the run prompt explicitly tells agents
 the note is owner sentiment they may obey, ignore, or spite.
 
 ### Saturday AM — Roster run (`/saturday`)
 1. Sync: injuries, projections, free-agent pool.
-2. Each AI agent (reverse standings order for context, but bids are blind)
-   outputs JSON: `{claims: [{add, drop, bid}], drops: [], trade_offer?, note_reply}`.
-3. Humans submit their claims to the same deadline.
-4. FAAB resolution script: highest bid wins; ties → worse standing wins; a team
+2. Each GM agent — all 12 teams (reverse standings order for context, but
+   bids are blind) — outputs JSON:
+   `{claims: [{add, drop, bid}], drops: [], trade_offer?, note_reply}`.
+3. FAAB resolution script: highest bid wins; ties → worse standing wins; a team
    can't win two claims that need the same drop. Budget $100/season, min bid $0.
-5. Trades: an offer targets one team; the target agent gets one
+4. Trades: an offer targets one team; the target agent gets one
    accept/reject/counter; offerer gets final accept/reject on a counter. Max one
    outgoing offer per team per week. Trade deadline end of week 11.
-6. Commissioner reviews everything (see §5), then the validator applies
+5. Commissioner reviews everything (see §5), then the validator applies
    approved transactions to rosters and appends to `state/transactions.jsonl`
    (every entry: timestamp, team, action, players, bid, reasoning, status).
 
 ### Sunday AM — Lineup run (`/sunday`)
 1. Final injury/inactives sync.
-2. Each agent sets a lineup + 1-paragraph in-character justification.
+2. Each GM agent — all 12 teams — sets a lineup + 1-paragraph in-character
+   justification.
 3. Validator: legal slots, no BYE/Out starters without acknowledgment. One
    retry on failure, then fallback = highest-projected legal lineup (logged as
    `fallback: true` — public shame in the recap).
-4. Lineups freeze. Humans lock by the same run.
+4. Lineups freeze for everyone.
 
 ### Monday/Tuesday — Results (`/recap`)
 1. Pull final stats, score all matchups with `score_week.py`, reconcile any
@@ -150,10 +154,11 @@ watching:
 
 1. `sync_sleeper.py --players --projections` for the board (ADP from Sleeper).
 2. Randomized snake order, 15 rounds, 180 picks.
-3. AI picks: subagent per pick with only that team's GM file + board + own
-   roster; outputs pick + one line of in-character commentary, printed live.
-4. Human picks: Claude Code prompts you, you type a name, validator confirms.
-5. Output: all `roster.json` files, `state/draft-log.jsonl`,
+3. Every pick is a GM pick — all 12 teams: subagent per pick with only that
+   team's GM file + board + own roster (+ the public running draft log);
+   outputs pick + one line of in-character commentary, printed live. The
+   humans watch their own GM draft their team, which is the entertainment.
+4. Output: all `roster.json` files, `state/draft-log.jsonl`,
    `state/schedule.json`, and a commissioner draft-grades column (guaranteed to
    be unfair).
 

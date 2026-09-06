@@ -1,15 +1,18 @@
 ---
-description: Run the draft — 15-round snake, AI GMs pick in character, humans pick live (--mock for all-AI)
+description: Run the draft — 15-round snake, all 12 GMs pick in character while the owners watch (--mock for the dress rehearsal)
 argument-hint: [--mock]
 ---
 
 # /draft — the DuPont Bowl draft $ARGUMENTS
 
 Runs the one-time preseason draft (PLAN.md §6). 12 teams, 15-round snake, 180
-picks. If `$ARGUMENTS` contains `--mock`, run ALL 12 teams as AI with NO human
-pauses (the dress-rehearsal mode from TASKS.md 3.2) — otherwise `your-team` and
-`wifes-team` pick via live human input. Hard rules still apply, above all
-**isolation**: a picking agent sees ONLY its own `general-manager.md`.
+picks — **every pick is made by that team's GM agent**, the owners' two teams
+included; the humans watch their GMs draft for them. `--mock` in `$ARGUMENTS`
+is the dress rehearsal (TASKS.md 3.2): identical flow, committed as a mock.
+Hard rules still apply, above all **isolation**: a picking agent sees ONLY
+its own `general-manager.md`. If `teams/your-team` or `teams/wifes-team`'s
+GM file still carries its PLACEHOLDER banner, STOP and ask the owner for the
+persona before drafting.
 
 ## 1. Build the board
 
@@ -42,7 +45,7 @@ python scripts/schedule.py <team slugs in draft order> --seed <seed> --out state
 
 For each of the 180 picks in snake order:
 
-- **AI pick** (always, in `--mock`; for AI teams otherwise): spawn ONE subagent
+- **Every pick, every team**: spawn ONE subagent
   with ONLY that team's `general-manager.md`, its `opinions.json` (its seeded
   read on the rest of the cast, if `/gms-meeting` has run), its roster so far,
   the current board, and the **running draft log so far** (every pick + its
@@ -50,15 +53,14 @@ For each of the 180 picks in snake order:
   picks, and reactions to a rival's board are fair game). Isolation still
   holds: the log is public record, never another team's GM file. It returns
   its pick (a `player_id` that must still be on the board) plus ONE line of
-  in-character commentary. Print the pick and the line live.
-- **Human pick** (non-mock, human teams): PAUSE, prompt for a player name,
-  resolve it to a board player_id, confirm.
+  in-character commentary. Print the pick and the line live. There are no
+  human picks — the owners' GMs draft for them.
 
 Validate EVERY pick before accepting it (`scripts/lib/rosters`): the player must
 be on the board (never drafted twice — reject and re-prompt/re-ask on a dupe),
 and the resulting roster must stay legal, including the draft cap of **one K and
 one DEF max** (league-rules "Draft"). A pick that can't be placed legally is
-rejected with the reason; the agent/human picks again. Append every pick to
+rejected with the reason; the agent picks again. Append every pick to
 `state/draft-log.jsonl`: `{pick_no, round, team, player_id, name, pos, commentary}`.
 
 ## 4. Finalize

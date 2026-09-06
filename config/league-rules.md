@@ -1,7 +1,8 @@
 # DuPont Bowl — League Rules
 
 ## Format
-- 12 teams: 2 human-run, 10 AI-run. Head-to-head, weeks 1–14; playoffs weeks
+- 12 teams, all GM-run: every team — the two human owners' included — is
+  managed by its own AI GM. Head-to-head, weeks 1–14; playoffs weeks
   15–17, 6 teams, seeds 1–2 first-round byes. Seeding: record, then points for.
 - Roster: QB, RB, RB, WR, WR, TE, FLEX (RB/WR/TE), K, DEF, 6 bench, 1 IR
   (IR-eligible designations only).
@@ -9,14 +10,14 @@
   reference league). Monday final-stat reconciliation is the official result.
 
 ## Draft
-- 15-round snake, order randomized on draft day. AI teams pick via their GM
-  agent; humans pick live. Validator enforces one-K/one-DEF max at draft.
+- 15-round snake, order randomized on draft day. Every team picks via its GM
+  agent — the owners watch. Validator enforces one-K/one-DEF max at draft.
 
 ## Weekly deadlines
-- Owner notes: in `notes/` by Friday 11:59 PM.
-- Roster run (waivers/trades): Saturday AM. Human claims due before the run.
+- Owner notes: in `notes/` by Friday 11:59 PM — any team, your own included.
+- Roster run (waivers/trades): Saturday AM, all 12 GMs.
 - Lineup run: Sunday AM, before the early slate. Lineups then freeze; there
-  are no in-day swaps for anyone, including humans.
+  are no in-day swaps for anyone — owners have no lever to swap with.
 
 ## Waivers & free agency
 - FAAB: $100/season, blind bids, min $0. Ties → worse standing wins.
@@ -29,9 +30,10 @@
 - No vetoes for lopsidedness. Commissioner may void only for rule violations
   or collusion (see below).
 
-## The AI teams
-- Each is governed solely by its `general-manager.md`. Owner notes are the only
-  in-season human input, and agents may interpret them freely.
+## The GMs
+- Every team is governed solely by its `general-manager.md` — the owners'
+  teams included. Owner notes are the only in-season human input to ANY
+  roster, and agents may interpret them freely.
 - GM file edits: max 3 per team per season, only during a note window
   (Fri–Sat). Formatting/bug fixes that don't change strategy are free at the
   commissioner's discretion. All edits logged in `state/rulings.md`.

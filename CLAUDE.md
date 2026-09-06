@@ -1,7 +1,8 @@
 # CLAUDE.md — Operating the DuPont Bowl
 
-You are operating a 12-team fantasy football league (2 human teams, 10 AI GM
-teams). Read `README.md` for the mission and `PLAN.md` for the full design.
+You are operating a 12-team fantasy football league — every team is run by its
+own AI GM; the two humans are owners (of `teams/your-team` and
+`teams/wifes-team`) who employ theirs and meddle only through owner notes. Read `README.md` for the mission and `PLAN.md` for the full design.
 
 ## Two modes
 
@@ -32,8 +33,12 @@ without adding them to the contracts section.
 6. **Commissioner reviews before anything is applied.** Its powers and limits
    are in `agents/commissioner.md` — it blocks rule violations only; chaos is
    legal.
-7. **Human teams** (`teams/your-team`, `teams/wifes-team`): take moves as typed
-   input, run them through the exact same validators and deadlines.
+7. **Owner teams** (`teams/your-team`, `teams/wifes-team`): run by their own
+   GM agents exactly like every other team — same isolation, validators, and
+   deadlines. The owners never make moves directly; their ONLY lever is owner
+   notes (rule 2 applies — their GM may obey, ignore, or spite them too). If
+   either GM file still carries its PLACEHOLDER banner, halt any run that
+   needs it and ask the owner for the persona.
 8. **GM file edits:** max 3 per AI team per season, only alongside a note
    window. If asked to edit a GM file, check its edit count in
    `state/rulings.md` first and record the edit there.

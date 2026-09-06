@@ -80,16 +80,18 @@ Already stubbed with working settings/players sync. Finish it.
 
 ### 3.1 Slash commands in `.claude/commands/`
 Flesh out the stubs: `/draft`, `/saturday`, `/sunday`, `/recap`, `/notes`.
-Each must: run syncs first, spawn one subagent per AI team with ONLY that
-team's context (never another team's GM file), pipe outputs through
-`decisions.py` + validators, invoke the commissioner last, end with a single
-git commit `week NN: <run name>`. Human-team prompts pause for typed input.
+Each must: run syncs first, spawn one subagent per team (ALL 12 are GM-run —
+the owners' two included) with ONLY that team's context (never another
+team's GM file), pipe outputs through `decisions.py` + validators, invoke
+the commissioner last, end with a single git commit `week NN: <run name>`.
+(Owner-model change 2026-09-06: no human pauses anywhere — owners meddle via
+notes only.)
 - AC: a scripted dry run (fake week, 3 sample teams) completes each command
   end-to-end with zero manual fixes; reviewed by owner.
 
 ### 3.2 Mock draft harness
-- `/draft` must support `--mock` (all 12 teams AI, no pauses). Produce
-  draft-log, rosters, schedule.
+- `/draft` must support `--mock` (the dress rehearsal; the real draft is now
+  also all-GM, no pauses). Produce draft-log, rosters, schedule.
 - AC: full 15-round mock completes; all rosters validate; no player drafted
   twice.
 
