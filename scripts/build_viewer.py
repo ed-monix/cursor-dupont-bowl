@@ -16,6 +16,7 @@ import argparse
 import datetime
 import json
 import pathlib
+import re
 import sys
 from typing import Optional
 
@@ -57,6 +58,25 @@ def team_names() -> dict:
 def _display_name(slug: str, names: Optional[dict]) -> str:
     """Franchise name if the team chose one, else the prettified slug."""
     return (names or {}).get(slug) or pretty(slug)
+
+
+def gm_names() -> dict:
+    """{slug: GM person name} from each team's general-manager.md title line
+    '# General Manager: <name>'. Human-slot teams (no GM file) are omitted, so
+    callers render no GM subtitle for them."""
+    out = {}
+    for gp in sorted((ROOT / "teams").glob("*/general-manager.md")):
+        if gp.parent.name.startswith("_"):
+            continue
+        try:
+            with open(gp, encoding="utf-8") as f:
+                first = f.readline()
+        except OSError:
+            continue
+        m = re.match(r"#\s*General Manager:\s*(.+?)\s*$", first)
+        if m:
+            out[gp.parent.name] = m.group(1).strip()
+    return out
 
 
 def _load(path: pathlib.Path, default):
@@ -159,7 +179,8 @@ def _load_feed(season: str, week: int, names: Optional[dict] = None) -> dict:
     }
 
 
-def _load_guide(season: str, names: Optional[dict] = None) -> dict:
+def _load_guide(season: str, names: Optional[dict] = None,
+                gms: Optional[dict] = None) -> dict:
     """Load the league guide (mission, rules, cast, howItRuns).
 
     Returns {"mission": str, "rules": str, "cast": [...], "howItRuns": [...]}.
@@ -219,6 +240,7 @@ def _load_guide(season: str, names: Optional[dict] = None) -> dict:
             cast.append({
                 "slug": slug,
                 "name": _display_name(slug, names),
+                "gm": (gms or {}).get(slug),
                 "kind": kind,
                 "record": record,
                 "bio": bio,
@@ -306,6 +328,65 @@ def _load_guide(season: str, names: Optional[dict] = None) -> dict:
     }
 
 
+def load_draft_log(path: pathlib.Path) -> list:
+    """Read a draft-log.jsonl into a list of pick dicts (bad lines skipped)."""
+    picks = []
+    if not path.exists():
+        return picks
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                picks.append(json.loads(line))
+            except (json.JSONDecodeError, ValueError):
+                pass
+    return picks
+
+
+def draft_from_log(picks: list, names: Optional[dict] = None,
+                   gms: Optional[dict] = None) -> dict:
+    """Shape a list of draft-log picks into the viewer's draft board:
+    {"hasDraft": bool, "rounds": [{"round": int, "picks": [...]}, ...]}, ordered
+    by overall pick, grouped by round. Each pick carries the franchise name and
+    (when the team has a GM file) the GM's name. Pure."""
+    if not picks:
+        return {"hasDraft": False, "rounds": []}
+    picks = sorted(picks, key=lambda p: p.get("pick_no") or 0)
+    rounds: list = []
+    by_round: dict = {}
+    for p in picks:
+        r = p.get("round") or 0
+        slug = p.get("team") or p.get("slug")
+        bucket = by_round.get(r)
+        if bucket is None:
+            bucket = {"round": r, "picks": []}
+            by_round[r] = bucket
+            rounds.append(bucket)
+        seq = len(bucket["picks"]) + 1
+        bucket["picks"].append({
+            "overall": p.get("pick_no"),
+            "label": f"{r}.{seq:02d}",
+            "slug": slug,
+            "team": _display_name(slug, names),
+            "gm": (gms or {}).get(slug),
+            "player": p.get("name"),
+            "pos": p.get("pos"),
+            "nfl": p.get("nfl"),
+            "commentary": p.get("commentary") or "",
+        })
+    return {"hasDraft": True, "rounds": rounds}
+
+
+def _load_draft(season: str, names: Optional[dict] = None,
+                gms: Optional[dict] = None) -> dict:
+    """Load the real draft board from state/draft-log.jsonl (empty until the
+    draft has run). season is accepted for symmetry; the log is season-global."""
+    picks = load_draft_log(ROOT / "state" / "draft-log.jsonl")
+    return draft_from_log(picks, names, gms)
+
+
 # --- pure mappers (unit-tested) --------------------------------------------
 
 def viewer_starters(team: dict, players: dict) -> list:
@@ -332,12 +413,14 @@ def viewer_starters(team: dict, players: dict) -> list:
     return out
 
 
-def viewer_matchup(m: dict, players: dict, recmap: dict, names: Optional[dict] = None) -> dict:
+def viewer_matchup(m: dict, players: dict, recmap: dict, names: Optional[dict] = None,
+                   gms: Optional[dict] = None) -> dict:
     """Map a build_scoreboard_data matchup to the viewer's shape."""
     def side(t):
         return {
             "slug": t["slug"],
             "name": _display_name(t["slug"], names),
+            "gm": (gms or {}).get(t["slug"]),
             "total": round(t["total"], 2),
             "record": recmap.get(t["slug"], "0-0"),
             "starters": viewer_starters(t, players),
@@ -348,11 +431,12 @@ def viewer_matchup(m: dict, players: dict, recmap: dict, names: Optional[dict] =
     return {"home": side(m["home_team"]), "away": side(m["away_team"]), "leader": leader}
 
 
-def viewer_standings(standings_json: dict, names: Optional[dict] = None) -> list:
+def viewer_standings(standings_json: dict, names: Optional[dict] = None,
+                     gms: Optional[dict] = None) -> list:
     """Map state/standings.json to the viewer's sorted standings list."""
     teams = standings_json.get("teams", {})
     rows = [{
-        "slug": s, "name": _display_name(s, names),
+        "slug": s, "name": _display_name(s, names), "gm": (gms or {}).get(s),
         "w": t.get("wins", 0), "l": t.get("losses", 0), "t": t.get("ties", 0),
         "pf": round(t.get("points_for", 0.0), 1),
         "pa": round(t.get("points_against", 0.0), 1),
@@ -395,6 +479,7 @@ def _rosters_for_week(season: str, week: int) -> dict:
 
 def build_league_data(season: str) -> dict:
     names = team_names()  # {slug: franchise name}; missing -> pretty(slug)
+    gms = gm_names()      # {slug: GM person name}; human slots omitted
     players = _load(ROOT / "state" / "players.json", {})
     scoring = _load_scoring()
     schedule = _load(ROOT / "state" / "schedule.json", {"regular_season": {}, "playoffs": {}})
@@ -438,7 +523,7 @@ def build_league_data(season: str) -> dict:
                 else:
                     rec.setdefault(h, {"w": 0, "l": 0, "t": 0})["t"] += 1
                     rec.setdefault(a, {"w": 0, "l": 0, "t": 0})["t"] += 1
-            matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}, names))
+            matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}, names, gms))
 
         # Load feed (tabloid, forum, recap)
         feed = _load_feed(season, w, names)
@@ -451,15 +536,17 @@ def build_league_data(season: str) -> dict:
         })
 
     # Load guide (mission, rules, cast, howItRuns)
-    guide = _load_guide(season, names)
+    guide = _load_guide(season, names, gms)
+    draft = _load_draft(season, names, gms)
 
     return {
         "league": "The DuPont Bowl",
         "season": int(season) if str(season).isdigit() else season,
         "weeks": weeks_out,
-        "standings": viewer_standings(standings_json, names),
+        "standings": viewer_standings(standings_json, names, gms),
         "standingsThroughWeek": max(official) if official else 0,
         "guide": guide,
+        "draft": draft,
         "updated": datetime.datetime.now().isoformat(),
     }
 

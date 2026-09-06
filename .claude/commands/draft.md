@@ -18,11 +18,15 @@ python scripts/sync_sleeper.py --players
 python scripts/sync_sleeper.py --projections --week 1
 ```
 
-Board = all skill players + K/DEF with projected points
-(`scripts/lib/scoring.score_player` over each projection row) and Sleeper ADP
-(the `adp_*` fields in `projections.json`), sorted best-first. A player leaves
-the board the instant it is drafted — the board is the single source of "who is
-still available."
+Board = all skill players + K/DEF, **ranked by Sleeper ADP** — the `adp_dd_ppr`
+field in `projections.json`, ascending (lowest ADP = best available first). ADP
+is the draft-realistic order; do NOT sort the board by projected points.
+Single-week projected points badly over-rank QBs (a Week-1 points sort puts ~10
+QBs in the top 15), so points are shown **alongside** each player for context —
+half-PPR via `scripts/lib/scoring.score_player` over the projection row — but
+ADP is the sort key. Players with no `adp_dd_ppr` fall to the bottom (undrafted
+depth). A player leaves the board the instant it is drafted — the board is the
+single source of "who is still available."
 
 ## 2. Draft order + schedule
 

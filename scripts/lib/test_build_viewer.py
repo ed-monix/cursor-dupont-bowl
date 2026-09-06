@@ -76,9 +76,42 @@ def test_viewer_matchup_uses_franchise_names_when_provided():
     away = make_team("wagon", 80.0, {"p2": 80.0}, {"p2": {"rush_yd": 120}}, {"RB1": "p2"})
     m = {"home_team": home, "away_team": away, "leader_slug": "dynamos"}
     v = build_viewer.viewer_matchup(m, PLAYERS, {"dynamos": "3-0", "wagon": "1-2"},
-                                    {"dynamos": "The Dynamo Drop"})
+                                    {"dynamos": "The Dynamo Drop"}, {"dynamos": "Kim K"})
     assert v["home"]["name"] == "The Dynamo Drop"  # franchise name
+    assert v["home"]["gm"] == "Kim K"              # gm subtitle
     assert v["away"]["name"] == "Wagon"            # no name -> pretty fallback
+    assert v["away"]["gm"] is None                 # no gm file -> no subtitle
+
+
+def test_viewer_standings_carries_gm():
+    standings_json = {"teams": {
+        "a": {"wins": 1, "losses": 0, "ties": 0, "points_for": 100.0, "points_against": 90.0},
+    }}
+    rows = build_viewer.viewer_standings(standings_json, {"a": "Team A"}, {"a": "GM A"})
+    assert rows[0]["name"] == "Team A" and rows[0]["gm"] == "GM A"
+
+
+def test_draft_from_log_groups_by_round_and_enriches():
+    picks = [
+        {"pick_no": 2, "round": 1, "team": "b", "name": "Bijan Robinson", "pos": "RB",
+         "nfl": "ATL", "commentary": "Yeah, him."},
+        {"pick_no": 1, "round": 1, "team": "a", "name": "Jahmyr Gibbs", "pos": "RB",
+         "nfl": "DET", "commentary": "A sign pick."},
+        {"pick_no": 3, "round": 2, "team": "b", "name": "Chase Brown", "pos": "RB",
+         "nfl": "CIN", "commentary": ""},
+    ]
+    d = build_viewer.draft_from_log(picks, {"a": "Team A", "b": "Team B"}, {"a": "GM A"})
+    assert d["hasDraft"] is True
+    assert [r["round"] for r in d["rounds"]] == [1, 2]
+    r1 = d["rounds"][0]["picks"]
+    assert [p["overall"] for p in r1] == [1, 2]          # sorted by pick_no
+    assert r1[0]["label"] == "1.01" and r1[0]["team"] == "Team A" and r1[0]["gm"] == "GM A"
+    assert r1[1]["gm"] is None                            # team b has no gm map entry
+    assert d["rounds"][1]["picks"][0]["label"] == "2.01"
+
+
+def test_draft_from_log_empty_when_no_picks():
+    assert build_viewer.draft_from_log([]) == {"hasDraft": False, "rounds": []}
 
 
 # --- Tests for helper functions (Section, Frontmatter) ----------------------

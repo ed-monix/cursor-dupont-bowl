@@ -201,6 +201,36 @@
     color:var(--accent);background:var(--accent-soft);padding:2px 7px;border-radius:6px}
   .howdesc{font-size:13px;color:var(--text)}
 
+  /* GM subtitle under a team name */
+  .tgm{font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .team.lose .tgm{color:var(--faint)}
+  .stteam .stname{display:block}
+  .stgm{display:block;font-size:11px;color:var(--faint);font-weight:400;margin-top:1px}
+  .castgm{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px}
+
+  /* Draft */
+  .draftcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:14px 16px;margin-bottom:12px}
+  .draftlist{display:flex;flex-direction:column}
+  .drow{display:grid;grid-template-columns:44px 1fr 1fr;gap:12px;align-items:baseline;
+    padding:9px 2px;border-bottom:1px solid var(--border)}
+  .drow:last-child{border-bottom:0}
+  .dpick{color:var(--faint);font-size:12px;font-weight:600}
+  .dteam{min-width:0}
+  .dtname{font-weight:600;letter-spacing:-.01em;font-size:13px;display:block;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dgm{display:block;font-size:11px;color:var(--faint);font-weight:400}
+  .dplayer{min-width:0}
+  .dpname{font-size:13px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dpmeta{font-size:11px;color:var(--faint)}
+  .dcomment{grid-column:2 / 4;font-size:12px;color:var(--muted);font-style:italic;
+    margin-top:3px;line-height:1.4}
+  @media (max-width:560px){
+    .drow{grid-template-columns:38px 1fr}
+    .dplayer{grid-column:2}.dcomment{grid-column:1 / 3}
+  }
+
   footer{max-width:760px;margin:0 auto;padding:8px 24px 40px;color:var(--faint);
     font-size:11.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   a{color:var(--muted)}
@@ -226,6 +256,7 @@
     <button id="tab-feed" role="tab" aria-selected="false">Feed</button>
     <button id="tab-standings" role="tab" aria-selected="false">Standings</button>
     <button id="tab-bracket" role="tab" aria-selected="false">Bracket</button>
+    <button id="tab-draft" role="tab" aria-selected="false">Draft</button>
     <button id="tab-guide" role="tab" aria-selected="false">Guide</button>
   </div>
 </div>
@@ -245,8 +276,8 @@
   "use strict";
   var LEAGUE = JSON.parse(document.getElementById("league-data").textContent);
   var view = document.getElementById("view");
-  var wIdx = LEAGUE.weeks.length - 1;      // default to latest week
-  var tab = "scores";
+  var wIdx = Math.max(0, LEAGUE.weeks.length - 1);   // default to latest week
+  var tab = LEAGUE.weeks.length ? "scores" : "guide"; // preseason opens on Guide
   var openMatch = {};                       // remember expanded rows per week
 
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){
@@ -283,6 +314,7 @@
       '<button class="matchhead" data-i="'+i+'" aria-expanded="'+isOpen+'">'+
         '<div class="team home'+(awayWin?" lose":"")+'">'+
           '<span class="tname">'+esc(m.home.name)+'</span>'+
+          (m.home.gm?'<span class="tgm">'+esc(m.home.gm)+'</span>':'')+
           '<span class="trec num">'+esc(m.home.record)+'</span></div>'+
         '<div class="scorebox">'+
           '<span class="pts num'+(homeWin?" win accent":"")+'">'+m.home.total.toFixed(1)+'</span>'+
@@ -291,6 +323,7 @@
         '</div>'+
         '<div class="team away'+(homeWin?" lose":"")+'">'+
           '<span class="tname">'+esc(m.away.name)+'</span>'+
+          (m.away.gm?'<span class="tgm">'+esc(m.away.gm)+'</span>':'')+
           '<span class="trec num">'+esc(m.away.record)+'</span></div>'+
         '<span class="chev">›</span>'+
       '</button>'+
@@ -301,6 +334,12 @@
 
   function renderScores(){
     var w = LEAGUE.weeks[wIdx];
+    if(!w){
+      document.getElementById("eyebrow").textContent = "Scores";
+      view.innerHTML = '<section class="draftcard"><div class="feedempty">'+
+        'The season hasn’t kicked off yet — see the Draft and Guide tabs.</div></section>';
+      return;
+    }
     document.getElementById("eyebrow").textContent =
       w.matchups.length+" matchups" + (w.status==="live" ? " · updating live" : "");
     view.innerHTML = w.matchups.map(function(m,i){
@@ -324,7 +363,8 @@
       var cut = idx===5 ? " cut" : "";           // top-6 make the playoffs
       return '<tr class="'+cut+'">'+
         '<td class="l rank num'+(idx<2?" pf":"")+'">'+(idx+1)+'</td>'+
-        '<td class="l stteam">'+esc(t.name)+'</td>'+
+        '<td class="l stteam"><span class="stname">'+esc(t.name)+'</span>'+
+          (t.gm?'<span class="stgm">'+esc(t.gm)+'</span>':'')+'</td>'+
         '<td class="rec num">'+t.w+'-'+t.l+(t.t?"-"+t.t:"")+'</td>'+
         '<td class="num">'+t.pf.toFixed(1)+'</td>'+
         '<td class="num">'+t.pa.toFixed(1)+'</td>'+
@@ -407,6 +447,7 @@
       var rec = c.record ? '<span class="castrec num">'+esc(c.record)+'</span>' : '';
       return '<div class="castrow"><div class="casttop"><span class="castname">'+esc(c.name)+'</span>'+
              '<span class="castkind">'+esc(KIND[c.kind]||c.kind||"")+'</span>'+rec+'</div>'+
+             (c.gm?'<div class="castgm">'+esc(c.gm)+'</div>':'')+
              '<div class="castbio">'+esc(c.bio||"")+'</div></div>';
     }).join("");
     var how = (g.howItRuns||[]).map(function(h){
@@ -420,8 +461,40 @@
       (g.rules ? '<section class="guidecard"><h2 class="gh">The rules</h2><div class="prose">'+esc(g.rules)+'</div></section>' : '');
   }
 
+  function renderDraft(){
+    var d = LEAGUE.draft || {hasDraft:false, rounds:[]};
+    document.getElementById("eyebrow").textContent = "Draft Results";
+    if(!d.hasDraft){
+      view.innerHTML = '<section class="draftcard"><div class="feedempty">'+
+        'The draft hasn’t run yet — every pick and the GM’s reasoning shows up here once the board is set.'+
+        '</div></section>';
+      return;
+    }
+    view.innerHTML = d.rounds.map(function(r){
+      var rows = r.picks.map(function(p){
+        var gm = p.gm ? '<span class="dgm">'+esc(p.gm)+'</span>' : '';
+        var meta = p.pos ? '<span class="dpmeta"> · '+esc(p.pos)+(p.nfl?' · '+esc(p.nfl):'')+'</span>' : '';
+        var com = p.commentary ? '<div class="dcomment">“'+esc(p.commentary)+'”</div>' : '';
+        return '<div class="drow">'+
+          '<span class="dpick num">'+esc(p.label)+'</span>'+
+          '<div class="dteam"><span class="dtname">'+esc(p.team)+'</span>'+gm+'</div>'+
+          '<div class="dplayer"><span class="dpname">'+esc(p.player||"—")+meta+'</span></div>'+
+          com+'</div>';
+      }).join("");
+      return '<section class="draftcard"><h2 class="gh">Round '+esc(r.round)+'</h2>'+
+             '<div class="draftlist">'+rows+'</div></section>';
+    }).join("");
+  }
+
   function setWeekLabel(){
     var w = LEAGUE.weeks[wIdx];
+    if(!w){
+      document.getElementById("wklabel").textContent = "Preseason";
+      document.getElementById("wkstatus").innerHTML = "";
+      document.getElementById("prev").disabled = true;
+      document.getElementById("next").disabled = true;
+      return;
+    }
     document.getElementById("wklabel").textContent = "Week "+w.week;
     document.getElementById("wkstatus").innerHTML = w.status==="live"
       ? '<span class="pill live"><span class="dot"></span>Live</span>'
@@ -435,12 +508,13 @@
     else if(tab==="feed"){ setWeekLabel(); renderFeed(); }
     else if(tab==="standings"){ renderStandings(); }
     else if(tab==="bracket"){ renderBracket(); }
+    else if(tab==="draft"){ renderDraft(); }
     else { renderGuide(); }
     var perWeek = (tab==="scores" || tab==="feed");
     document.querySelector(".weeknav").style.visibility = perWeek ? "visible" : "hidden";
   }
 
-  var TABS = ["scores","feed","standings","bracket","guide"];
+  var TABS = ["scores","feed","standings","bracket","draft","guide"];
   function selTab(t){
     tab=t;
     TABS.forEach(function(x){
@@ -463,7 +537,7 @@
        " · live board refreshes every 20 min · unofficial until Monday")
     : "";
 
-  render();
+  selTab(tab);   // sync tab highlight with the default (Guide in preseason)
 
   // In-season, the Sunday refresh loop re-publishes this artifact with fresh
   // data; a viewer's page reloads to pick up the new version. Off in the demo.
