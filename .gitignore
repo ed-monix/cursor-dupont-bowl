@@ -8,3 +8,6 @@ web/viewer.html
 
 # stray virtualenvs from tooling
 .venv/
+
+# secrets — never commit keys (GROK_API_KEY lives in the environment)
+.env

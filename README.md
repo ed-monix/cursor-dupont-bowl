@@ -94,6 +94,9 @@ session and stop it when the games end:
 ```bash
 pip install -r requirements.txt
 python scripts/sync_sleeper.py --settings   # Sleeper-standard scoring/roster (no reference league)
+# Optional: set GROK_API_KEY in the environment for real X buzz in the weekly
+# tabloid (or paste a buzz file by hand; without either, the tabloid runs on
+# derived + planted headlines — the league never depends on it).
 claude   # then: /draft to run the draft, /saturday and /sunday weekly
 # Game-day live board (either or both):
 #   /loop 10m /refresh-board       # in a Claude session — refreshes the shareable viewer artifact

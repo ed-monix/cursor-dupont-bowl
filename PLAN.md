@@ -250,8 +250,14 @@ validate agent output.
   record; the commissioner blocks transactions, never speech.
 - `state/news/2026-wNN.md` — the media mogul's (`agents/media.md`) weekly
   tabloid, published before the Saturday run from `news-facts.json` + any
-  owner-planted rumors. Public voice; she holds no powers and never reads a GM
-  file.
+  owner-planted rumors + the week's buzz file when present. Public voice; she
+  holds no powers and never reads a GM file.
+- `state/news/buzz/2026-wNN.md` — OPTIONAL weekly real-world X buzz for the
+  tabloid (`scripts/fetch_buzz.py`): the owner-pasted file wins; else one xAI
+  API call with live X search when `GROK_API_KEY` is set; else absent and the
+  run proceeds without it. Sentiment only — no script or validator ever reads
+  it, Sleeper remains the sole source of facts, and GMs only ever see the
+  mogul's rewrite, never this file.
 
 ### Draft
 - `state/draft-log.jsonl` — one object per pick `{pick_no, round, team,

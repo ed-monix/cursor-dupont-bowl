@@ -8,6 +8,10 @@
   (IR-eligible designations only).
 - Scoring: `config/scoring.json` (Sleeper standard half-PPR; synced from the
   reference league). Monday final-stat reconciliation is the official result.
+- Sleeper's sync is the SOLE source of facts — injuries, statuses, stats,
+  scores. Real-world X buzz and the tabloid are sentiment only: no script,
+  validator, or ruling may cite them, and where they contradict Sleeper,
+  Sleeper wins (the contradiction is, at most, a storyline).
 
 ## Draft
 - 15-round snake, order randomized on draft day. Every team picks via its GM
