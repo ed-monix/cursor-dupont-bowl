@@ -29,6 +29,9 @@
 ## Trades
 - One outgoing offer per team per week. Target may accept / reject / counter
   once; offerer then accepts or rejects the counter. Deadline: end of week 11.
+- Trades are player-for-player ONLY. Draft picks (current or future) and
+  FAAB dollars are not tradable assets — an offer including either is
+  invalid and blocked.
 - No vetoes for lopsidedness. Commissioner may void only for rule violations
   or collusion (see below).
 
