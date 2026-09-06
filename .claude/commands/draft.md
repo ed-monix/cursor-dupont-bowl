@@ -55,6 +55,22 @@ For each of the 180 picks in snake order:
 **Token diet (required — the full board is ~3,000 players and 180 picks will
 burn millions of tokens without it):**
 
+- **Inline-only subagents — this is the big one.** The ORCHESTRATOR builds
+  the dieted context below and pastes it into the subagent's prompt as text.
+  The subagent's instructions must say: everything you need is in this
+  prompt; do NOT read files, run commands, or use tools; reply with ONLY the
+  pick JSON + one line. A pick agent that Reads `state/players.json` or
+  `projections.json` itself reloads the full pool into its own window and
+  defeats the entire diet (~50K+/pick observed when this happens).
+- **Wishlist mode for rounds 9–15 (one spawn per GM, not per pick):** at the
+  top of round 9, spawn all 12 GMs in parallel; each gets its roster,
+  remaining needs, and a top-80 board slice, and returns a RANKED list of
+  ~25 targets for its remaining picks with one line of commentary per
+  target. Fill rounds 9–15 in snake order from the wishlists — highest-ranked
+  still-available name, validator on every pick as usual; re-spawn a GM only
+  when its list runs dry or a pick is rejected. 12 spawns instead of 84; the
+  per-target lines still print live.
+
 - **Board slice, never the full pool:** the top 60 available by projected
   points PLUS the top 12 available at each of QB/RB/WR/TE and top 3 K/DEF
   (name, pos, NFL team, proj only). No GM ever picks outside that slice; if
