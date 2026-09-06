@@ -20,9 +20,16 @@ Hard rule (config/league-rules.md): Sleeper is the sole source of FACTS
 no script reads it, no validator trusts it, and GMs only ever see it after
 Kris rewrites it into `state/news/<season>-wNN.md`.
 
-Env: GROK_API_KEY (required for API mode), GROK_MODEL (default "grok-4"),
-GROK_API_URL (default https://api.x.ai/v1/chat/completions — override for
-tests or proxies).
+API note: xAI retired Live Search (`search_parameters` on chat/completions
+returns 410 Gone). The current path is the Agent Tools API — POST
+/v1/responses with `tools: [{"type": "x_search"}]`; the model runs the X
+search server-side and the answer text comes back in the Responses shape
+(top-level `output_text`, or `output[]` message items with `output_text`
+content parts).
+
+Env: GROK_API_KEY (required for API mode), GROK_MODEL (default "grok-4.6"),
+GROK_API_URL (default https://api.x.ai/v1/responses — override for tests or
+proxies).
 """
 from __future__ import annotations
 
@@ -34,9 +41,9 @@ import sys
 import requests
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DEFAULT_API_URL = "https://api.x.ai/v1/chat/completions"
-DEFAULT_MODEL = "grok-4"
-TIMEOUT_SECONDS = 90
+DEFAULT_API_URL = "https://api.x.ai/v1/responses"
+DEFAULT_MODEL = "grok-4.6"
+TIMEOUT_SECONDS = 120  # an agentic X search can take a while
 
 PROMPT = (
     "List the 10-15 biggest NFL fantasy football storylines and player buzz "
@@ -53,21 +60,38 @@ def buzz_path(root: pathlib.Path, week: int, season: str = "2026") -> pathlib.Pa
     return root / "state" / "news" / "buzz" / f"{season}-w{week:02d}.md"
 
 
+def _extract_output_text(data: dict) -> str:
+    """Pull the answer text out of a Responses API payload. Prefers the
+    top-level `output_text` convenience field; else concatenates the
+    `output_text` content parts of `output[]` message items."""
+    text = data.get("output_text")
+    if isinstance(text, str) and text.strip():
+        return text.strip()
+
+    parts = []
+    for item in data.get("output") or []:
+        if not isinstance(item, dict) or item.get("type") != "message":
+            continue
+        for part in item.get("content") or []:
+            if isinstance(part, dict) and part.get("type") == "output_text":
+                t = part.get("text")
+                if isinstance(t, str):
+                    parts.append(t)
+    combined = "\n".join(p for p in parts if p.strip()).strip()
+    if not combined:
+        raise ValueError("no output text in response")
+    return combined
+
+
 def fetch_from_api(week: int, season: str, api_key: str,
                     model: str | None = None, api_url: str | None = None) -> str:
-    """One xAI chat-completions call with live X search. Returns the model's
-    text. Raises on any HTTP/shape problem — the caller decides that failure
-    means 'no buzz this week', never a crashed run."""
+    """One xAI Responses API call with the x_search agent tool. Returns the
+    model's text. Raises on any HTTP/shape problem — the caller decides that
+    failure means 'no buzz this week', never a crashed run."""
     body = {
         "model": model or os.environ.get("GROK_MODEL", DEFAULT_MODEL),
-        "messages": [
-            {"role": "user", "content": PROMPT.format(week=week, season=season)},
-        ],
-        "search_parameters": {
-            "mode": "on",
-            "sources": [{"type": "x"}],
-            "max_search_results": 25,
-        },
+        "input": PROMPT.format(week=week, season=season),
+        "tools": [{"type": "x_search"}],
     }
     resp = requests.post(
         api_url or os.environ.get("GROK_API_URL", DEFAULT_API_URL),
@@ -76,11 +100,7 @@ def fetch_from_api(week: int, season: str, api_key: str,
         timeout=TIMEOUT_SECONDS,
     )
     resp.raise_for_status()
-    data = resp.json()
-    content = data["choices"][0]["message"]["content"]
-    if not isinstance(content, str) or not content.strip():
-        raise ValueError("empty completion content")
-    return content.strip()
+    return _extract_output_text(resp.json())
 
 
 def gather_buzz(root: pathlib.Path, week: int, season: str = "2026") -> tuple[str, str]:
@@ -107,7 +127,7 @@ def gather_buzz(root: pathlib.Path, week: int, season: str = "2026") -> tuple[st
 
     path.parent.mkdir(parents=True, exist_ok=True)
     header = (
-        f"# X buzz — {season} week {week:02d} (source: grok live search)\n\n"
+        f"# X buzz — {season} week {week:02d} (source: grok x_search)\n\n"
         "<!-- Sentiment only. Sleeper remains the sole source of facts; the\n"
         "tabloid may spin this, no script or validator ever reads it. -->\n\n"
     )

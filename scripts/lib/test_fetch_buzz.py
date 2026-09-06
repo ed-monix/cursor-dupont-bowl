@@ -30,7 +30,18 @@ class _FakeResponse:
 
 
 def _ok_payload(text="- Everyone is furious about the Bears offensive line."):
-    return {"choices": [{"message": {"content": text}}]}
+    # Responses API convenience field.
+    return {"output_text": text}
+
+
+def _ok_payload_items_only(text="- CMC hype is out of control."):
+    # Responses API without the convenience field: output[] message items.
+    return {"output": [
+        {"type": "x_search_call", "status": "completed"},
+        {"type": "message", "content": [
+            {"type": "output_text", "text": text},
+        ]},
+    ]}
 
 
 def test_manual_file_short_circuits_and_is_never_overwritten(tmp_path, monkeypatch):
@@ -69,18 +80,31 @@ def test_api_success_writes_header_and_content(tmp_path, monkeypatch):
     status, detail = fetch_buzz.gather_buzz(tmp_path, 5)
     assert status == "api"
     text = fetch_buzz.buzz_path(tmp_path, 5).read_text()
-    assert "source: grok live search" in text
+    assert "source: grok x_search" in text
     assert "furious about the Bears" in text
     # Sentiment-only guard is written into the file itself.
     assert "sole source of facts" in text
-    # The call carried the key and asked X live search.
+    # The call carried the key and asked for the x_search agent tool.
     assert captured["headers"]["Authorization"] == "Bearer k"
-    assert captured["json"]["search_parameters"]["sources"] == [{"type": "x"}]
+    assert captured["json"]["tools"] == [{"type": "x_search"}]
+    assert "input" in captured["json"]
+
+
+def test_api_success_via_output_items_without_convenience_field(tmp_path, monkeypatch):
+    monkeypatch.setenv("GROK_API_KEY", "k")
+    monkeypatch.setattr(
+        fetch_buzz.requests, "post",
+        lambda *a, **kw: _FakeResponse(payload=_ok_payload_items_only()))
+
+    status, _ = fetch_buzz.gather_buzz(tmp_path, 6)
+    assert status == "api"
+    assert "CMC hype" in fetch_buzz.buzz_path(tmp_path, 6).read_text()
 
 
 @pytest.mark.parametrize("failure", [
     lambda *a, **kw: _FakeResponse(status=500),
-    lambda *a, **kw: _FakeResponse(payload={"choices": []}),
+    lambda *a, **kw: _FakeResponse(status=410),  # a future endpoint retirement
+    lambda *a, **kw: _FakeResponse(payload={"output": []}),
     lambda *a, **kw: _FakeResponse(payload=_ok_payload("   ")),
     lambda *a, **kw: (_ for _ in ()).throw(
         fetch_buzz.requests.ConnectionError("no route")),
