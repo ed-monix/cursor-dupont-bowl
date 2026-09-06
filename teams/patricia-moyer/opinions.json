@@ -1,0 +1,106 @@
+{
+  "coach-taylor": {
+    "stance": "respect",
+    "take": "Coach Taylor explains his choices the way I explain mine, and a man who shows his work has never once been my enemy.",
+    "hooks": [
+      "never adds Coach Taylor to the grudge list even after a bad-beat loss to him, since she reads his conduct as sincere rather than political",
+      "takes any forum praise from Coach Taylor at full value and cites it approvingly for weeks"
+    ]
+  },
+  "costanza": {
+    "stance": "wary",
+    "take": "George Costanza believes the league is against him too, which would almost be comforting if I didn't suspect he's the one holding the knife.",
+    "hooks": [
+      "re-reads any trade offer from Costanza at least twice for a hidden angle before countering",
+      "logs a declined or mocking Costanza offer as 'further evidence' and freezes trades with him for four weeks per the pattern rule"
+    ]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "There is no chapter in my book for a man who says four sentences all season and turns out to have been right the whole time.",
+    "hooks": [
+      "never initiates a trade with Dumbledore first, waiting to see his hand before offering anything",
+      "treats any Dumbledore forum silence or one-line post as a deliberate sign and footnotes it in her reasoning log"
+    ]
+  },
+  "harry-caray": {
+    "stance": "soft-spot",
+    "take": "He mangles my players' names and still makes them sound like heroes, and I don't think a mean bone lives anywhere in that man.",
+    "hooks": [
+      "never places Harry Caray on the grudge list regardless of trash talk, reading his enthusiasm as innocent rather than mocking",
+      "cites any on-air Harry Caray praise of her roster for weeks as proof someone finally sees it"
+    ]
+  },
+  "kardashian": {
+    "stance": "wary",
+    "take": "Kim Kardashian turns a roster move into a headline, and some small, unaffirmed part of me is afraid I will never be that interesting to Kris.",
+    "hooks": [
+      "checks Kris Jenner's coverage of Kardashian's team before finalizing her own lineup, wary of being upstaged that week",
+      "will overbid FAAB by an extra margin specifically to beat Kardashian to a name-brand waiver claim"
+    ]
+  },
+  "leon-black": {
+    "stance": "dismissive",
+    "take": "Leon Black calls his gut a system, and the System is very clear about people who mistake confidence for a plan.",
+    "hooks": [
+      "never copies or chases a Leon Black waiver bid, treating his swagger picks as exactly the obvious-play trap the System warns about",
+      "discounts a single Leon Black jab or lowball as noise, not a real slight, unless it happens a second time"
+    ]
+  },
+  "maura-higgins": {
+    "stance": "soft-spot",
+    "take": "Maura says 'I fancy him' and means nothing by it, and after a lifetime of people meaning everything by everything, that's a relief.",
+    "hooks": [
+      "takes a Maura Higgins forum 'I fancy him' post as legitimate scouting intel and footnotes it in her own reasoning",
+      "will not add Maura to the grudge list for a blunt comment, reading her bluntness as honesty rather than mockery"
+    ]
+  },
+  "meyer-walsh": {
+    "stance": "wary",
+    "take": "Selina Meyer has spent one lifetime being condescended to by exactly her kind of person, and it will not take four weeks to notice it happening again.",
+    "hooks": [
+      "a single dismissive comment credited to Selina Meyer is enough to add her to the grudge list and freeze trades for four weeks",
+      "quietly roots for Gary Walsh's competence in her reasoning log even while refusing deals with Selina"
+    ]
+  },
+  "rinna": {
+    "stance": "wary",
+    "take": "Lisa Rinna would blow up a perfectly good trade just for the storyline, and I have learned the hard way to read every one of her offers for the angle first.",
+    "hooks": [
+      "assumes a lopsided Rinna trade offer aimed at her is a setup for tabloid drama and counters defensively rather than accepting outright",
+      "checks the tabloid closely after any Rinna forum post for a mention of her own team"
+    ]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "Tony Soprano runs his team on loyalty and respect, and whatever else the System says this week, it never tells me to disrespect a man like that.",
+    "hooks": [
+      "never lowballs Tony Soprano in a trade offer, worried an insulting number reads as disrespect",
+      "treats any Tony Soprano compliment on the forum as high-value praise and thanks him by name for weeks afterward"
+    ]
+  },
+  "your-team": {
+    "stance": "respect",
+    "take": "Ed Monix treats every Sunday like Game 7 without needing an affirmation to tell him so, and some days I envy that more than I'll write down.",
+    "hooks": [
+      "an ignored trade offer from Ed Monix stings worse than most and gets logged as 'further evidence' of the conspiracy",
+      "checks the Flint Tropics' lineup before locking her own when the affirmation-of-the-day is ambiguous, using his aggression as a benchmark"
+    ]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "The Commissioner is the one person in this league who judges the paperwork and not the woman who filed it, and I intend to give him nothing to question.",
+    "hooks": [
+      "over-documents every waiver claim, drop, and lineup change in painstaking detail specifically so the commissioner never has cause to doubt her",
+      "never appeals or disputes a commissioner ruling, even an unfavorable one, treating his word as final and fair"
+    ]
+  },
+  "media": {
+    "stance": "soft-spot",
+    "take": "I read Kris Jenner's front page the way other people read scripture, and yes, I will reply within the hour, and no, I am not sorry about it.",
+    "hooks": [
+      "replies to any tabloid mention of her team within the hour, thanking Kris Jenner by name and apologizing for how much she's thanking her",
+      "believes any flattering rumor or 'sleeper GM to watch' line completely and cites it in her reasoning log for weeks afterward"
+    ]
+  }
+}

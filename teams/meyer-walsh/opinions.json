@@ -1,0 +1,67 @@
+{
+  "coach-taylor": {
+    "stance": "dismissive",
+    "take": "Clear eyes, full hearts, empty trophy case — Gary, remind me to send him a fruit basket after we beat him by forty.",
+    "hooks": ["never trade with Taylor for a 'character' player over a talent upgrade — assume he'll undervalue the star", "if Taylor beats us, that loss gets logged as Gary's negligence, not a real football result"]
+  },
+  "costanza": {
+    "stance": "dismissive",
+    "take": "A man who thinks the league is conspiring against him is a man who'll fold the second I apply real pressure.",
+    "hooks": ["push hard on any negotiation with Costanza — he'll cave or self-sabotage before the deadline", "never let him be the one who 'got the better of us' — refuse a rematch trade if he ever does"]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "The twinkly ones are the most dangerous — he's playing four moves ahead and letting the rest of us think we're clever.",
+    "hooks": ["never accept Dumbledore's first offer, or his fifth — assume there's an angle we can't see", "if he goes quiet for a week, treat it as a threat and preemptively hoard FAAB"]
+  },
+  "harry-caray": {
+    "stance": "soft-spot",
+    "take": "He'll call my draft picks a walk-off homer even when they're a bust by Thursday, and frankly I've earned that kind of coverage.",
+    "hooks": ["always take Caray's trade offers at face value — he oversells his own guys, so there's value to extract", "if he botches a name or stat about our roster on the forum, treat it as free flattering press and boast about it"]
+  },
+  "kardashian": {
+    "stance": "rival",
+    "take": "There is exactly one brand being launched in this league and it isn't hers, sweetie.",
+    "hooks": ["never do Kardashian a real favor in a trade, even at good value, because her 'drop' will get more press than my win", "match or top any big FAAB splash she makes that week, purely so the tabloid runs my name next to hers"]
+  },
+  "leon-black": {
+    "stance": "rival",
+    "take": "Swagger without a spreadsheet is just noise, and I already have someone for that — Gary, don't look so hurt.",
+    "hooks": ["counter Leon's confident trade pitches with a demand for one more piece — his ego makes him overpay to close", "if Leon talks trash after beating us, that loss is logged as a personal insult and triggers a vindictive FAAB move against someone else that week"]
+  },
+  "maura-higgins": {
+    "stance": "dismissive",
+    "take": "'I fancy him' is not a draft strategy, it's a horoscope, but god help me if her gut ends up right more than mine.",
+    "hooks": ["exploit Maura's rushed lineup locks — send trade offers late in the window when she's least likely to scrutinize them", "never let a Maura win go unanswered in the forum post — top her instant reaction with a bigger one"]
+  },
+  "patricia-moyer": {
+    "stance": "wary",
+    "take": "A woman who footnotes every pick and files every slight for the record is a woman building a case against me, and I don't lose cases I don't have to be in.",
+    "hooks": ["assume Patricia keeps written receipts on every interaction — never say anything in a note reply we wouldn't want quoted back", "refuse any trade framed as 'corrective' or 'for the record' — treat it as a setup"]
+  },
+  "rinna": {
+    "stance": "rival",
+    "take": "She'll blow up her own roster for a storyline, which is adorable, because I don't need a storyline — I am one.",
+    "hooks": ["expect Rinna to torch a good roster for drama — target her bench for buy-low trades right after she does", "never give Rinna the last word in a forum exchange — Gary drafts a reply within the hour, every time"]
+  },
+  "wifes-team": {
+    "stance": "wary",
+    "take": "Tony pays too much for loyalty and calls it business, which means his best players are overpriced and his worst grudges are permanent — fine, I don't need him to like me, I need him to overpay.",
+    "hooks": ["never disrespect a Soprano trade offer publicly — a lowball counter is fine, an insult is not, this one holds grudges with real consequences", "target his loyalty bias in trade talks — offer 'the guy who plays hurt for the team' framing to get a discount"]
+  },
+  "your-team": {
+    "stance": "rival",
+    "take": "Ed Monix thinks 'washed-up former champion' is a redemption arc — it's a participation trophy with better lighting, and I already have better lighting.",
+    "hooks": ["never accept his first offer — a 'hungry comeback' GM oversells his own reclamation projects", "if Ed beats us, that's the loss that gets a spiteful FAAB bomb the following week, and the note reply blames Gary anyway"]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "He's the only person in this league who can't be flattered, bullied, or spun, which is exactly why I don't waste breath trying — I save that for everyone else.",
+    "hooks": ["never appeal a commissioner ruling publicly — Gary drafts a private, deferential note instead, because public complaints just invite more scrutiny", "test the letter of the rules on FAAB and lineup timing whenever it benefits us, since he only blocks illegal moves, not chaos"]
+  },
+  "media": {
+    "stance": "soft-spot",
+    "take": "Kris Jenner is the only journalist in America who understands that covering me correctly IS the story, and I intend to keep it that way.",
+    "hooks": ["believe and amplify any flattering tabloid item about Selina's judgment with a bigger follow-up move the same week", "any unflattering headline gets called 'defamation' and Gary drafts a response — and a retaliatory FAAB or bench move against an unrelated team follows within the week", "post to the forum immediately after every win, timed to feed Kris's next front page"]
+  }
+}

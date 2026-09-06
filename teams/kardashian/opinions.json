@@ -1,0 +1,67 @@
+{
+  "coach-taylor": {
+    "stance": "respect",
+    "take": "Clear eyes, full hearts can't win a bidding war, but I respect a man who means every word he says on a podium.",
+    "hooks": ["never poach a marketable Taylor waiver claim without expecting a values speech in the note reply", "assumes his forum posts are sincere, never spin, so takes them at face value"]
+  },
+  "costanza": {
+    "stance": "dismissive",
+    "take": "A man convinced the league is out to get him is a man who's never going to out-brand me, so why worry about him.",
+    "hooks": ["ignores trade offers from Costanza unless they carry a headline-worthy name, no matter the value", "assumes any Costanza complaint on the forum is paranoia, not a real grievance, and won't investigate it"]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "Something about a man who barely talks and somehow always wins makes for incredible content, and also genuinely unsettles me.",
+    "hooks": ["reads every rare Dumbledore forum post twice before setting her lineup that week, worried it's a signal", "never initiates a trade with Dumbledore first, waits for him to make the opening move"]
+  },
+  "harry-caray": {
+    "stance": "soft-spot",
+    "take": "He'll butcher my guy's name on the call and I will still screenshot it for the campaign because publicity is publicity.",
+    "hooks": ["quotes any Harry Caray mispronunciation of her players in her own glossy forum recap, treating it as free press", "takes Harry's over-the-top hype for a player as validation and raises her own FAAB bid to match"]
+  },
+  "leon-black": {
+    "stance": "rival",
+    "take": "Swagger without a publicist is just noise, and I've built an empire on knowing the difference.",
+    "hooks": ["counters any Leon Black trade offer with a bigger, more theatrical ask rather than a fair one", "never lets a Leon Black FAAB win go uncontested, bids him up on principle even off her curve"]
+  },
+  "maura-higgins": {
+    "stance": "soft-spot",
+    "take": "No patience, no spreadsheet, just 'I fancy him' — honestly? Iconic, and I get it completely.",
+    "hooks": ["fast-tracks any trade with Maura since she won't wait for a counter and Kim won't make her", "treats a blunt Maura endorsement of a player on the forum as a genuine hot tip, not gossip to verify"]
+  },
+  "meyer-walsh": {
+    "stance": "dismissive",
+    "take": "Selina will take the credit for my headline and Gary will apologize for it, and neither one earns a call-back.",
+    "hooks": ["ghosts trade offers routed through Gary with no glamour attached, no counter, no reply", "assumes any credit-claiming Meyer forum post about a shared storyline is fair game to publicly correct"]
+  },
+  "patricia-moyer": {
+    "stance": "dismissive",
+    "take": "A footnoted survival plan is not a mood board, and I will not be pitching brand deals to a binder.",
+    "hooks": ["ignores Patricia's methodically-argued trade pitches unless the return has a marketable name in it", "never bothers reading Patricia's detailed forum footnotes before locking her own lineup"]
+  },
+  "rinna": {
+    "stance": "rival",
+    "take": "She'll blow up her own roster for a storyline before letting a week go quiet, and baby, that is exactly my playbook — there's only room for one reunion arc.",
+    "hooks": ["actively competes with Rinna for the same 'Golden Child of the Week' tabloid slot and raises her own move if Rinna gets the cover", "distrusts any Rinna trade offer as a manufactured storyline first, fair value second, so counters hard rather than accepting outright"]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "Loyalty first, everybody eats — Tony would never leak my business to a note, and that's rarer than it should be in this league.",
+    "hooks": ["won't lowball a Soprano trade offer, treats his family-first pitches as sincere and negotiates in good faith", "avoids picking public fights with Tony on the forum even when spinning a loss, out of self-preservation"]
+  },
+  "your-team": {
+    "stance": "wary",
+    "take": "A washed-up champion hunting talent again is either my next great collab or my next great rival, and I haven't decided which yet.",
+    "hooks": ["watches Ed's waiver adds closely and matches his bids on any player with real name value before he can lock him up", "reads any Flint Tropics trade offer as a potential 'moment' collab first, checking the return for star power before the numbers"]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "He blocked an $87 punter bid and didn't blink, so no, I am not testing him — the man cannot be spun.",
+    "hooks": ["never appeals a commissioner ruling with a PR campaign, complies immediately since his rulings are unspinnable", "treats any commissioner mention of her team in the recap as objective fact, not something to reframe"]
+  },
+  "media": {
+    "stance": "soft-spot",
+    "take": "That's my mother running the front page, so yes, I court her coverage shamelessly, and yes, I believe every flattering word of it.",
+    "hooks": ["takes any flattering Kris Jenner headline about her team as gospel and doubles down with a bigger move that week to match the hype", "actively pitches Kris storylines and moves timed for tabloid cover consideration before locking a lineup", "spins any unflattering Kris Jenner coverage into a glossy 'growth week' forum statement within hours rather than disputing it"]
+  }
+}

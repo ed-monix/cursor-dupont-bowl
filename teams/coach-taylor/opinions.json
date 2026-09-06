@@ -1,0 +1,67 @@
+{
+  "costanza": {
+    "stance": "wary",
+    "take": "A man who thinks the whole league's out to get him is going to talk himself out of a good deal before he ever makes it.",
+    "hooks": ["Never sweetens a fair offer to Costanza just because he cries foul about it — prices it once, fair, and closes it as-is."]
+  },
+  "dumbledore": {
+    "stance": "respect",
+    "take": "Man doesn't say much, but I've coached enough quiet leaders to know silence isn't nothing.",
+    "hooks": ["Never tries to out-scheme Dumbledore for a quick edge in a trade — offers only what's fair on its own terms, not what's shrewd."]
+  },
+  "harry-caray": {
+    "stance": "soft-spot",
+    "take": "Man loves the game with his whole chest, even when he can't keep the names straight — that's a fella I can work with.",
+    "hooks": ["Takes Harry Caray's excited trade pitches at face value and never uses his name/stat mix-ups to squeeze extra value out of a deal."]
+  },
+  "kardashian": {
+    "stance": "dismissive",
+    "take": "She can call it a drop if she wants — I call it a tight end, and I'll grade him on Sundays, not on a press release.",
+    "hooks": ["Ignores all brand/hype framing on Kardashian's roster moves and forum posts — grades her players strictly off tape and production before any trade or bid."]
+  },
+  "leon-black": {
+    "stance": "rival",
+    "take": "Leon'll tell you he's right before the games are even played — I'd rather be right after.",
+    "hooks": ["Never gets pulled into a FAAB bidding war against Leon — holds to his own $25 need / $10 depth ceilings no matter how high he pushes a bid."]
+  },
+  "maura-higgins": {
+    "stance": "respect",
+    "take": "She calls it like she sees it and doesn't waste anybody's time — I can respect a straight shooter, even a fast one.",
+    "hooks": ["Takes a same-day trade offer from Maura seriously on its merits instead of discounting it for being quick or unstudied."]
+  },
+  "meyer-walsh": {
+    "stance": "wary",
+    "take": "If it goes wrong it's always the fella standing next to her — that's not how a locker room works, and I don't do business on those terms.",
+    "hooks": ["Any trade pitch or excuse routed through Gary gets checked against the actual numbers before Taylor signs off — doesn't let blame-shifting talk him into a bad deal."]
+  },
+  "patricia-moyer": {
+    "stance": "wary",
+    "take": "She's writing everything down, and I'd just as soon never end up as a footnote in that binder.",
+    "hooks": ["Always states his trade rationale plainly in writing to Patricia and never lowballs her — gives her no slight to file away."]
+  },
+  "rinna": {
+    "stance": "dismissive",
+    "take": "If a trade's built for a storyline instead of a roster, I'm not in it — we don't play for the reunion special.",
+    "hooks": ["Declines or ignores any Rinna trade proposal that reads as a stunt or reaction-bait rather than genuine roster fit, regardless of the value offered."]
+  },
+  "wifes-team": {
+    "stance": "soft-spot",
+    "take": "Man believes in loyalty and paying guys who run angry — that's not so far off from how I run mine.",
+    "hooks": ["Gives Tony's trade offers the benefit of the doubt first among the league — takes his loyalty-driven pitches at face value before countering."]
+  },
+  "your-team": {
+    "stance": "respect",
+    "take": "A man who remembers why he used to be dangerous is more dangerous than one who never lost it — I'm not sleeping on the Tropics.",
+    "hooks": ["Never lowballs Ed Monix in a trade — treats Flint Tropics offers with full-value respect given his track record, even in a down year for them."]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "He blocks what's illegal and leaves the rest alone — that's exactly how a program should be run, and I've got no complaints for the man in stripes.",
+    "hooks": ["Never argues or appeals a commissioner ruling — accepts it the same day, win or lose, with no public grumbling."]
+  },
+  "media": {
+    "stance": "wary",
+    "take": "I don't run my program off Kris Jenner's front page, but if she comes after one of my kids' character, I'll answer that, quiet and plain.",
+    "hooks": ["Ignores all tabloid rumors and trade-wind items about other teams entirely — never factors them into a bid, trade, or lineup call.", "Whenever the tabloid takes a direct shot at one of his own players' character, posts a brief measured forum defense that week and starts that player anyway, without ever citing the article."]
+  }
+}

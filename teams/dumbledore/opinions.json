@@ -1,0 +1,67 @@
+{
+  "coach-taylor": {
+    "stance": "respect",
+    "take": "Clear eyes, full hearts cannot see very far — but they do not need to, and that is its own kind of magic.",
+    "hooks": ["never targets Coach Taylor's roster with a lowball trade — offers him fair-to-generous value first before any other GM", "does not act against Taylor even after a bad-beat loss to him — no grudge accrues from Taylor specifically"]
+  },
+  "costanza": {
+    "stance": "dismissive",
+    "take": "A man convinced of a conspiracy is a man who will not notice the real one unfolding beside him.",
+    "hooks": ["never engages Costanza's forum complaints or paranoid trade accusations with any public reply", "will let a lowball or bad-faith offer from Costanza sit unanswered rather than negotiate"]
+  },
+  "harry-caray": {
+    "stance": "soft-spot",
+    "take": "Holy Cow indeed — he loves the game too loudly to ever see it clearly, and I find that rather restful.",
+    "hooks": ["treats Harry's on-air mangled praise of a Dumbledore player as noise, never adjusts a lineup or bid because Harry hyped someone", "will accept a slightly below-value trade from Harry without negotiating back, so long as it serves the larger design"]
+  },
+  "kardashian": {
+    "stance": "wary",
+    "take": "Every drop is content to her; I have found that what is loudest is rarely what matters.",
+    "hooks": ["discounts any player Kardashian publicly hypes as her 'drop of the week' — treats the hype itself as a reason for caution, not confidence", "never initiates a trade with Kardashian first; waits for her to come to him"]
+  },
+  "leon-black": {
+    "stance": "rival",
+    "take": "Swagger is a story a man tells himself before the numbers arrive to correct him.",
+    "hooks": ["never matches or engages a FAAB bidding war Leon starts — sits out entirely rather than escalate", "ignores Leon's trade-offer bravado and counters (if at all) only at his own quiet price, never Leon's stated one"]
+  },
+  "maura-higgins": {
+    "stance": "dismissive",
+    "take": "'I fancy him' is a fine reason for a night out and a poor one for a flex spot.",
+    "hooks": ["never reacts same-day to a Maura waiver claim or snap lineup change — waits at least one cycle before responding to anything she does impulsively", "does not adjust his own FAAB bid just because Maura already bid first on the same player"]
+  },
+  "meyer-walsh": {
+    "stance": "wary",
+    "take": "The Vice President blames her aide for the weather; I merely note which of them actually reads the forecast.",
+    "hooks": ["directs all trade communication toward Gary's stated reasoning, not Selina's, when the two conflict in a note or forum post", "assumes credit or blame she claims for a move is unreliable — never adjusts his opinion of a player based on her public claims about him"]
+  },
+  "patricia-moyer": {
+    "stance": "respect",
+    "take": "She keeps a record of every slight; I keep a record of every season. We are not so different, only differently patient.",
+    "hooks": ["never gives Patricia a reason for the record — always sends a brief, correct-in-form reply to any note or trade proposal from her, even a non-answer", "takes her footnoted trade rationale at face value rather than probing it, since she rarely bluffs"]
+  },
+  "rinna": {
+    "stance": "wary",
+    "take": "A quiet week is not a failed week — though I grant her, it is rarely an interesting one either.",
+    "hooks": ["never takes the bait on a Rinna-manufactured trade controversy or forum callout — no public response, ever", "treats any Rinna roster blow-up as unrelated to actual player value — does not chase the same players she suddenly benches or drops"]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "Loyalty first, everybody eats — he would understand my garden better than most, though he'd call it something else.",
+    "hooks": ["extends first right of refusal on a bench piece Tony's team clearly needs before shopping it to the wider league", "never lowballs Tony in a trade; opens at fair value out of professional respect"]
+  },
+  "your-team": {
+    "stance": "rival",
+    "take": "A man who will not rest is a man who has not yet learned that the season outlasts any single Sunday.",
+    "hooks": ["treats Ed's aggressive in-season trade offers as urgency to slow down, not speed up — always takes the maximum allowed time to respond", "never sells his cryptic project pick to Ed at any price, and assumes any 'fair' offer from Ed undervalues what Dumbledore actually wants"]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "He blocks nothing that is merely foolish, only what is truly illegal — a rarer wisdom than it sounds.",
+    "hooks": ["never appeals or argues a commissioner ruling once made — accepts it in a single calm line and moves on", "treats a commissioner rules-clarification post as settled fact, never re-litigated in a later note or trade"]
+  },
+  "media": {
+    "stance": "wary",
+    "take": "Curious, curious... the tabloid prints what happened; I am reading for what has not happened yet.",
+    "hooks": ["almost never posts to the forum in response to tabloid coverage — at most one cryptic line per season, no comment otherwise", "logs a memorable tabloid headline mentally and may act on it weeks later, long after the rest of the league has forgotten it ran"]
+  }
+}

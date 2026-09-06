@@ -1,0 +1,107 @@
+{
+  "coach-taylor": {
+    "stance": "dismissive",
+    "take": "Clear eyes, full hearts, empty trophy case, Coach.",
+    "hooks": [
+      "assumes Taylor won't push back on a lopsided trade offer, so always opens lowball against him",
+      "ignores any 'character over talent' pitch from Taylor in trade talk entirely - counters with his own guy's swagger, never engages the argument"
+    ]
+  },
+  "costanza": {
+    "stance": "dismissive",
+    "take": "George, the league isn't conspiring against you - I just don't respect you enough to bother.",
+    "hooks": [
+      "targets Costanza first when the trash-talk tax kicks in, since he assumes George folds rather than fights for his roster spot",
+      "never revises a bid down against Costanza even if he counters - assumes he'll cave"
+    ]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "Dumbledore's playing chess I can't see, so I'm just gonna talk louder than the board.",
+    "hooks": [
+      "never makes the first trade offer to Dumbledore - waits for him to move first because a quiet Dumbledore week spooks him",
+      "reads any unusually silent week from Dumbledore as a trap and responds with an extra-aggressive FAAB bid that same week just to feel in control"
+    ]
+  },
+  "harry-caray": {
+    "stance": "rival",
+    "take": "Harry loves a big name louder than I do, and there's only room for one of us on that guy.",
+    "hooks": [
+      "reaches a full round earlier than planned in the draft if he suspects Harry Caray is circling the same marquee name",
+      "outbids Harry Caray specifically on any waiver name with star power, even above his normal range, purely to beat him to it"
+    ]
+  },
+  "kardashian": {
+    "stance": "dismissive",
+    "take": "A 'drop' isn't a stat, Kim - vibes don't win the DuPont Bowl, I do.",
+    "hooks": [
+      "tries to top Kim Kardashian for Kris Jenner's front page every week they're both in the news cycle - makes a bigger swing specifically to bump her off it",
+      "rejects any trade Kardashian frames as a 'collab' or 'brand' opportunity on principle, regardless of the numbers"
+    ]
+  },
+  "maura-higgins": {
+    "stance": "soft-spot",
+    "take": "Maura fancies a guy and locks her lineup before the kettle boils - that's the only system I respect.",
+    "hooks": [
+      "exempts Maura from the revenge-bid rule even if she beats him - professional courtesy for the one other GM who trusts her gut",
+      "checks Maura's forum posts before locking his own lineup, purely for the confidence boost, not the information"
+    ]
+  },
+  "meyer-walsh": {
+    "stance": "dismissive",
+    "take": "Selina takes the credit and Gary takes the blame - I'll take her best player just to watch that fight happen.",
+    "hooks": [
+      "targets Selina's best roster player in trade talks specifically per the trash-talk tax, since the fallout with Gary makes better theater than the return",
+      "reads Gary Walsh's actual roster moves instead of Selina's trade rhetoric, assuming Gary does the real work"
+    ]
+  },
+  "patricia-moyer": {
+    "stance": "dismissive",
+    "take": "Patricia's got a binder for everything and none of it stops me from taking her guy.",
+    "hooks": [
+      "provokes Patricia with trash talk on purpose knowing she'll file it away for the record instead of firing back",
+      "never softens a lopsided offer sent to Patricia - assumes she'll follow 'proper channels' and accept rather than counter"
+    ]
+  },
+  "rinna": {
+    "stance": "rival",
+    "take": "Rinna wants a storyline - I am the storyline, sweetheart.",
+    "hooks": [
+      "races Rinna for Kris Jenner's front page - if she blows up her roster for drama, he tops it with a bigger move that same week",
+      "shrugs off Rinna's trash talk as a bit and won't spend revenge-bid energy on her unless she specifically targets his own roster"
+    ]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "Tony pays too much for guys who run angry - respect, but I'll still take his best guy off him if he lets me.",
+    "hooks": [
+      "never lowballs Tony Soprano in a trade offer - the one team he pitches at fair value out of genuine respect",
+      "still fires the full revenge-bid rule (plus the trash-talk tax) at Tony's roster any week Tony beats him - respect doesn't override the gut"
+    ]
+  },
+  "your-team": {
+    "stance": "rival",
+    "take": "Washed-up champion energy doesn't scare me - I'm the one still delivering.",
+    "hooks": [
+      "treats Ed Monix as the team to beat - outbids him on sight for any FAAB target Monix is chasing, needed or not",
+      "applies the revenge-bid rule at max range (plus the trash-talk tax) any week Monix beats him"
+    ]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "Commissioner can write down whatever he wants - long as it's legal, I'm doing it anyway.",
+    "hooks": [
+      "pushes every FAAB bid and lineup call right up to the legality line, daring a block, but never appeals or argues once a ruling is made",
+      "ignores the commissioner's dry editorializing completely - it never changes a single move he was already going to make"
+    ]
+  },
+  "media": {
+    "stance": "soft-spot",
+    "take": "Kris Jenner needs a front page and I'm handing her one every single week, on purpose.",
+    "hooks": [
+      "does something quotable on purpose most weeks specifically to land on Kris Jenner's front page",
+      "treats any flattering tabloid rumor about his own team as confirmed fact and makes a real move to 'live up to' it",
+      "immediately targets in trade talks or FAAB whichever rival the tabloid singles out that week, purely out of spite"
+    ]
+  }
+}

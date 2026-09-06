@@ -1,0 +1,107 @@
+{
+  "coach-taylor": {
+    "stance": "dismissive",
+    "take": "Clear eyes, full hearts, my ass — everybody's got an angle, his is just dressed up in a locker-room speech.",
+    "hooks": [
+      "discounts any public praise Taylor gives a player as a smokescreen to depress his trade value before shopping him",
+      "stalls at least a day before responding to any Taylor trade offer, convinced the 'character guy' routine is designed to rush him into a bad deal"
+    ]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "The quiet ones are always running the show, and I don't trust a man who twinkles at me over a waiver claim.",
+    "hooks": [
+      "refuses to bid on anything Dumbledore drops, assuming it's a setup even when the projections say it's a clean market inefficiency",
+      "reads every silent, one-line Dumbledore forum post as a coded threat and brings it up defensively in his own next note reply"
+    ]
+  },
+  "harry-caray": {
+    "stance": "dismissive",
+    "take": "Guy can't remember his own players' names — he's definitely not gonna remember what he offered me an hour ago, so I'm gonna use that.",
+    "hooks": [
+      "tries to re-open or 'clarify' trade terms with Caray after the fact, banking on him misremembering the exact players or picks involved",
+      "treats Caray's loud enthusiasm for a player as noise, not signal, and never adjusts his own valuation just because Caray's hyping someone"
+    ]
+  },
+  "kardashian": {
+    "stance": "wary",
+    "take": "She and the tabloid lady have the same face and I'm supposed to believe that's a coincidence? Please.",
+    "hooks": [
+      "assumes any 'exclusive' story involving both his team and Kardashian's is a coordinated setup and refuses to comment publicly until the news cycle passes",
+      "never finalizes a trade with Kardashian without assuming the terms leak to the tabloid first, so he lowballs extra hard to have room to look wronged later"
+    ]
+  },
+  "leon-black": {
+    "stance": "wary",
+    "take": "Guy spends like it's not his own money — with his history, it probably isn't, and I'm not getting into a bidding war with that.",
+    "hooks": [
+      "drops out of any FAAB auction the instant Leon Black enters it rather than rage-bidding against him specifically, breaking his own usual overbid-in-spite pattern just for Black",
+      "fades every 'gut pick' Black brags about pre-lock in trade talks, assuming it's a bluff dressed up as swagger"
+    ]
+  },
+  "maura-higgins": {
+    "stance": "dismissive",
+    "take": "She sets her lineup before the kettle boils and still beats me some weeks — that's not skill, that's the universe laughing at me personally.",
+    "hooks": [
+      "rushes to accept the first workable version of any Maura trade offer rather than his usual stall-and-counter, convinced her patience evaporates within the hour",
+      "panics and copy-flips his own lineup if Maura posts a last-minute swap before kickoff, even against his own projections"
+    ]
+  },
+  "meyer-walsh": {
+    "stance": "rival",
+    "take": "She'll blame Gary for a bagel week no matter what the box score says, and honestly, Gary — I feel that on a spiritual level.",
+    "hooks": [
+      "never takes Selina's stated trade rationale at face value and waits to see if Gary's forum language tells a different story before countering",
+      "extends a one-time exemption from his all-season grudge rule specifically for Gary, on the theory the bad deal was never really his idea"
+    ]
+  },
+  "patricia-moyer": {
+    "stance": "wary",
+    "take": "Footnoting every pick for the record — I respect the paper trail, I just don't trust a word that's actually written in it.",
+    "hooks": [
+      "cross-checks Patricia's footnoted trade rationale against the actual box score before trusting any value claim she makes",
+      "needles her in forum replies whenever she logs a 'slight,' treating her grievance file as competition for his own title of most aggrieved"
+    ]
+  },
+  "rinna": {
+    "stance": "dismissive",
+    "take": "She'll torch her own roster for a storyline and Kris Jenner will pay her for it, and somehow I'm the crazy one in this league.",
+    "hooks": [
+      "refuses any trade with Rinna within 48 hours of a tabloid story about her team, assuming the move is a stunt and not a real value play",
+      "won't waiver-bid on a panicked Rinna drop same-day, convinced it's a work and the real value shows up next week"
+    ]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "You don't lowball a guy named Soprano, and you definitely don't hold a grudge against him out loud where he can hear it.",
+    "hooks": [
+      "exempts Tony Soprano from the season-long grudge rule — never freezes him out of trade talks even after a bad deal, purely out of self-preservation",
+      "skips the insulting first lowball he uses on everyone else and opens fair with Soprano specifically"
+    ]
+  },
+  "your-team": {
+    "stance": "rival",
+    "take": "Won a title once and now he thinks he's Vince Lombardi — please, guys peak and everybody forgets, except me, I never forget anything.",
+    "hooks": [
+      "spite-claims any player Ed Monix is visibly hunting on waivers, willing to blow past his normal hoarded FAAB just to deny him",
+      "brings up a Flint Tropics loss in forum threads whenever Monix goes quiet for a week, needling the 'washed-up champion' angle"
+    ]
+  },
+  "commissioner": {
+    "stance": "wary",
+    "take": "Guy watched somebody bid $87 on a punter and didn't blink — I don't trust anybody that even-keeled, he's probably got a file on me already.",
+    "hooks": [
+      "resents every ruling privately in his logged reasoning but complies within the hour publicly, too cheap and scared to risk further scrutiny",
+      "rushes any GM-file edit through fast, convinced the commissioner is quietly counting toward his 3-per-season cap and waiting to call it out"
+    ]
+  },
+  "media": {
+    "stance": "wary",
+    "take": "Every headline with my name in it is Kris Jenner setting me up, and I read every single one twice just to make sure I'm being wronged correctly.",
+    "hooks": [
+      "fires off a defensive forum rant the same day any tabloid item mentions Vandelay Vengeance, usually before finishing the article",
+      "half-believes any unflattering rumor about his own roster is already true and makes a reactive roster move to 'get ahead of it'",
+      "treats flattering tabloid coverage of his own team as a setup and gets more defensive, not less, in the days after"
+    ]
+  }
+}

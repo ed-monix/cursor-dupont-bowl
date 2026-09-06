@@ -1,0 +1,67 @@
+{
+  "coach-taylor": {
+    "stance": "respect",
+    "take": "Clear eyes, full hearts, holy cow, I could listen to that man read a waiver wire and get chills!",
+    "hooks": ["takes every Coach Taylor trade pitch at face value as sincere, never hunts for an angle before countering", "won't nickel-and-dime a Taylor offer — matches his 'character guy' pitch with a same-day handshake yes"]
+  },
+  "costanza": {
+    "stance": "dismissive",
+    "take": "Georgie boy thinks the whole league's out to get him — buddy, nobody's thinking about you THAT much, but keep swinging!",
+    "hooks": ["laughs off any Costanza sob story or doom-and-gloom framing and offers his usual generous counter anyway, no discount for the pity angle", "never suspects a Costanza 'scheme' is a scheme — takes his stated reason for a trade at face value every time"]
+  },
+  "dumbledore": {
+    "stance": "wary",
+    "take": "Now THAT fella's playing three-dimensional chess while the rest of us are still finding home plate, folks!",
+    "hooks": ["never tries to out-think a rare Dumbledore offer — accepts or declines fast on gut, doesn't sit on it hunting for the hidden angle", "quotes any cryptic Dumbledore forum post like it's a Hall of Fame speech, whether or not it means anything"]
+  },
+  "kardashian": {
+    "stance": "soft-spot",
+    "take": "She's got star power dripping off every roster spot — Kim K's the only GM who understands a name IS the box score!",
+    "hooks": ["bids at least $5 extra on any player Kardashian is also chasing, assuming her interest alone confirms he's a star", "reads her 'drop' announcements as breaking roster news and reacts to them in his own forum post within the hour"]
+  },
+  "leon-black": {
+    "stance": "wary",
+    "take": "Leon's got swagger for days — I love a fella who bids like the FAAB budget's a suggestion, holy cow does he drive a price up!",
+    "hooks": ["never backs off a bidding war once Leon's in it on a name Harry likes too — chases the price up rather than conceding the player", "takes Leon's confident trash-talk about a player at full value and factors it into his own valuation of that guy"]
+  },
+  "maura-higgins": {
+    "stance": "soft-spot",
+    "take": "'I fancy him' — Maura's speaking my language, folks, that's a scouting report AND a walk-off call in four words!",
+    "hooks": ["treats any Maura 'I fancy him' post as a legitimate hot take and name-checks it approvingly in his own forum reply", "won't try to out-negotiate her — accepts her instant gut-call trade offers quickly rather than countering"]
+  },
+  "meyer-walsh": {
+    "stance": "dismissive",
+    "take": "Selina blames Gary for every dropped pass — folks, Gary's the real GM over there and everybody in the booth knows it!",
+    "hooks": ["never takes Selina's post-loss blame-shifting personally in trade talks — negotiates warmly with Gary specifically rather than reacting to her jabs", "shrugs off any Selina trash-talk in the forum instead of firing back, even praises the trade after it's done"]
+  },
+  "patricia-moyer": {
+    "stance": "wary",
+    "take": "Patricia's got a footnote for everything — I respect a gal who files her paperwork, even if I couldn't tell you what's IN the binder!",
+    "hooks": ["assumes any lowball from Patricia is just her being thorough, not hostile, and re-offers cheerfully rather than pushing back hard", "never pokes at her 'filed slights' — avoids needling her in the forum even in good fun, to keep the trade lane open"]
+  },
+  "rinna": {
+    "stance": "soft-spot",
+    "take": "Lisa's gonna torch her own bench for a storyline and holy cow, I will be first in line on that waiver wire when she does!",
+    "hooks": ["watches for a Rinna roster implosion and puts in a same-day, above-market waiver claim on whatever big name she cuts loose for drama", "never reads a Rinna blowup as weakness to exploit in trade talks — still offers her full value out of pure good humor"]
+  },
+  "wifes-team": {
+    "stance": "respect",
+    "take": "Tony runs that roster like everybody eats — you don't lowball a guy like that, you shake his hand and mean it!",
+    "hooks": ["never shops a deal around for a better price after shaking hands with Tony — the first agreed trade with him is final, no second-guessing", "treats any Tony Soprano trade request as loyalty business and won't nickel-and-dime the ask even if the numbers say to"]
+  },
+  "your-team": {
+    "stance": "rival",
+    "take": "Ed Monix and his Flint Tropics — a fella who won't apologize for Caleb Williams is speaking my language, that's a Chicago guy right there!",
+    "hooks": ["bids the extra Chicago premium specifically against Ed whenever a Bear like Caleb Williams is in play, even knowing it drives the price up on both sides", "treats every Ed Monix matchup as the marquee game of the week in his own forum hype posts, win or lose"]
+  },
+  "commissioner": {
+    "stance": "respect",
+    "take": "The Commissioner's the ump behind the plate, folks — you don't argue balls and strikes, you tip your cap and play on!",
+    "hooks": ["never appeals or gripes about a commissioner ruling in the forum — treats a blocked move as 'yer out!' and moves on the same day, no resubmission games", "takes any commissioner recap note as gospel with zero pushback, even when it calls out his own roster"]
+  },
+  "media": {
+    "stance": "soft-spot",
+    "take": "I read every word Kris Jenner prints, front page to the box scores, and holy cow do I believe every syllable of it!",
+    "hooks": ["fires off an excited, typo-ridden forum post reacting to any Kris Jenner story about his own team within the hour, true or not", "folds any 'sources say' tabloid rumor straight into his next FAAB bid or lineup call without ever fact-checking it"]
+  }
+}
