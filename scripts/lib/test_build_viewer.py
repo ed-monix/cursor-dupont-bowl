@@ -114,6 +114,111 @@ def test_draft_from_log_empty_when_no_picks():
     assert build_viewer.draft_from_log([]) == {"hasDraft": False, "rounds": []}
 
 
+def test_viewer_roster_resolves_ids_and_orders_starters():
+    roster = {
+        "team": "dynamos",
+        "faab_remaining": 62,
+        "starters": {"WR1": "p3", "QB": "p1", "RB1": "p2", "RB2": None},
+        "bench": ["p2"],
+        "ir": [],
+    }
+    v = build_viewer.viewer_roster(roster, PLAYERS, {"dynamos": "The Dynamo Drop"},
+                                   {"dynamos": "Kim K"})
+    assert v["slug"] == "dynamos" and v["name"] == "The Dynamo Drop" and v["gm"] == "Kim K"
+    assert v["faabRemaining"] == 62
+    # starters come back in the canonical QB/RB/WR/... slot order, not insertion order
+    assert [r["slot"] for r in v["starters"]] == ["QB", "RB1", "RB2", "WR1"]
+    empty_slot = next(r for r in v["starters"] if r["slot"] == "RB2")
+    assert empty_slot["id"] is None and empty_slot["name"] is None
+    filled = next(r for r in v["starters"] if r["slot"] == "QB")
+    assert filled["name"] == "Star QB" and filled["pos"] == "QB" and filled["nfl"] == "KC"
+    assert v["bench"] == [{"id": "p2", "name": "Bell Cow", "pos": "RB", "nfl": "DET"}]
+    assert v["ir"] == []
+
+
+def test_viewer_roster_falls_back_to_pretty_name_without_franchise_name():
+    roster = {"team": "your-team", "starters": {}, "bench": [], "ir": []}
+    v = build_viewer.viewer_roster(roster, PLAYERS)
+    assert v["name"] == "Your Team" and v["gm"] is None
+
+
+def test_viewer_schedule_resolves_regular_season_names():
+    schedule_json = {
+        "regular_season": {"2": [["a", "b"]], "1": [["b", "a"]]},
+        "playoffs": {},
+    }
+    s = build_viewer.viewer_schedule(schedule_json, {"a": "Team A", "b": "Team B"})
+    assert [w["week"] for w in s["regularSeason"]] == [1, 2]   # sorted numerically
+    assert s["regularSeason"][0]["matchups"] == [{"home": "Team B", "away": "Team A"}]
+    assert s["regularSeason"][1]["matchups"] == [{"home": "Team A", "away": "Team B"}]
+
+
+def test_viewer_schedule_playoff_placeholders_pretty_printed():
+    schedule_json = {
+        "regular_season": {},
+        "playoffs": {
+            "15": [["seed_3", "seed_6"]],
+            "16": [["seed_1", "winner_15_2"]],
+        },
+    }
+    s = build_viewer.viewer_schedule(schedule_json)
+    assert s["playoffs"][0] == {"week": 15, "matchups": [{"home": "Seed 3", "away": "Seed 6"}]}
+    assert s["playoffs"][1]["matchups"][0]["away"] == "Winner of Wk15 #2"
+
+
+def test_viewer_schedule_resolves_playoff_team_slug_once_seeded():
+    # once a placeholder is overwritten with a real team slug, it renders as
+    # a franchise name like any other pairing.
+    schedule_json = {"regular_season": {}, "playoffs": {"17": [["a", "b"]]}}
+    s = build_viewer.viewer_schedule(schedule_json, {"a": "Team A", "b": "Team B"})
+    assert s["playoffs"][0]["matchups"] == [{"home": "Team A", "away": "Team B"}]
+
+
+def test_load_rosters_reads_every_team_skips_template():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        (root / "teams" / "team-a").mkdir(parents=True)
+        (root / "teams" / "team-b").mkdir(parents=True)
+        (root / "teams" / "_template").mkdir(parents=True)
+
+        (root / "teams" / "team-a" / "roster.json").write_text(json.dumps({
+            "team": "team-a", "faab_remaining": 100,
+            "starters": {"QB": "p1"}, "bench": ["p2"], "ir": [],
+        }))
+        (root / "teams" / "team-b" / "roster.json").write_text(json.dumps({
+            "team": "team-b", "faab_remaining": 40,
+            "starters": {"QB": None}, "bench": [], "ir": [],
+        }))
+        (root / "teams" / "_template" / "roster.json").write_text(json.dumps({
+            "team": "_template", "starters": {}, "bench": [], "ir": [],
+        }))
+
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            rosters = build_viewer._load_rosters(PLAYERS, {"team-a": "Team A"})
+        finally:
+            build_viewer.ROOT = original_root
+
+        assert rosters["hasRosters"] is True
+        slugs = [t["slug"] for t in rosters["teams"]]
+        assert slugs == ["team-a", "team-b"]           # _template excluded
+        assert rosters["teams"][0]["name"] == "Team A"
+
+
+def test_load_rosters_empty_before_draft():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        (root / "teams" / "_template").mkdir(parents=True)
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            rosters = build_viewer._load_rosters(PLAYERS)
+        finally:
+            build_viewer.ROOT = original_root
+        assert rosters == {"hasRosters": False, "teams": []}
+
+
 # --- Tests for helper functions (Section, Frontmatter) ----------------------
 
 

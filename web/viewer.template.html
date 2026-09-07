@@ -231,6 +231,38 @@
     .dplayer{grid-column:2}.dcomment{grid-column:1 / 3}
   }
 
+  /* Rosters */
+  .teampicker{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+  .teampill{border:1px solid var(--border);background:var(--panel);color:var(--muted);
+    font-size:12.5px;font-weight:500;padding:6px 12px;border-radius:999px;transition:.13s}
+  .teampill:hover{color:var(--text);border-color:var(--border-strong)}
+  .teampill[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);
+    border-color:transparent;font-weight:600}
+  .rostercard{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:14px 16px;margin-bottom:12px}
+  .rosterhd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px}
+  .rname{font-weight:700;letter-spacing:-.01em;font-size:15px}
+  .rgm{font-size:12px;color:var(--muted);margin-top:1px}
+  .rfaab{font-size:11.5px;color:var(--faint)}
+  .rrow{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:baseline;
+    padding:7px 2px;border-bottom:1px solid var(--border)}
+  .rrow:last-child{border-bottom:0}
+  .rslot{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
+  .rpname{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rpname.empty{color:var(--faint);font-style:italic}
+  .rpmeta{color:var(--faint);font-size:11px;text-align:right;white-space:nowrap}
+
+  /* Schedule */
+  .schedcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:12px 16px;margin-bottom:10px}
+  .schedwk{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    font-weight:600;margin:0 0 8px}
+  .schedrow{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;
+    padding:6px 2px;font-size:13px}
+  .schedrow+.schedrow{border-top:1px solid var(--border)}
+  .schedaway{text-align:right}
+  .schedvs{color:var(--faint);font-size:11px}
+
   footer{max-width:760px;margin:0 auto;padding:8px 24px 40px;color:var(--faint);
     font-size:11.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   a{color:var(--muted)}
@@ -256,6 +288,8 @@
     <button id="tab-feed" role="tab" aria-selected="false">Feed</button>
     <button id="tab-standings" role="tab" aria-selected="false">Standings</button>
     <button id="tab-bracket" role="tab" aria-selected="false">Bracket</button>
+    <button id="tab-schedule" role="tab" aria-selected="false">Schedule</button>
+    <button id="tab-rosters" role="tab" aria-selected="false">Rosters</button>
     <button id="tab-draft" role="tab" aria-selected="false">Draft</button>
     <button id="tab-guide" role="tab" aria-selected="false">Guide</button>
   </div>
@@ -279,6 +313,7 @@
   var wIdx = Math.max(0, LEAGUE.weeks.length - 1);   // default to latest week
   var tab = LEAGUE.weeks.length ? "scores" : "guide"; // preseason opens on Guide
   var openMatch = {};                       // remember expanded rows per week
+  var rosterIdx = 0;                        // which team the Rosters tab shows
 
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
@@ -417,6 +452,72 @@
       '<p class="cutnote">Wild-card matchups are set by seed; later rounds project the higher seed to advance. Seeds 1–2 earn a first-round bye.</p>';
   }
 
+  function renderSchedule(){
+    var s = LEAGUE.schedule || {regularSeason:[], playoffs:[]};
+    document.getElementById("eyebrow").textContent = "Season Schedule";
+    if(!s.regularSeason.length && !s.playoffs.length){
+      view.innerHTML = '<section class="schedcard"><div class="feedempty">'+
+        'No schedule yet — it’s generated on draft day.</div></section>';
+      return;
+    }
+    function weekCard(w, playoff){
+      var rows = w.matchups.map(function(m){
+        return '<div class="schedrow">'+
+          '<span class="schedaway">'+esc(m.home)+'</span>'+
+          '<span class="schedvs">vs</span>'+
+          '<span>'+esc(m.away)+'</span></div>';
+      }).join("");
+      var label = playoff ? ("Playoffs · Week "+w.week) : ("Week "+w.week);
+      return '<section class="schedcard"><p class="schedwk">'+label+'</p>'+rows+'</section>';
+    }
+    view.innerHTML =
+      s.regularSeason.map(function(w){ return weekCard(w, false); }).join("")+
+      s.playoffs.map(function(w){ return weekCard(w, true); }).join("");
+  }
+
+  function rosterSlotRow(p){
+    var name = p.name ? esc(p.name) : "—";
+    var meta = p.name ? esc(p.pos)+' · '+esc(p.nfl) : "";
+    return '<div class="rrow">'+
+      '<span class="rslot">'+esc(p.slot||"")+'</span>'+
+      '<span class="rpname'+(p.name?"":" empty")+'">'+name+'</span>'+
+      '<span class="rpmeta">'+meta+'</span></div>';
+  }
+
+  function renderRosters(){
+    var r = LEAGUE.rosters || {hasRosters:false, teams:[]};
+    document.getElementById("eyebrow").textContent = "Rosters";
+    if(!r.hasRosters){
+      view.innerHTML = '<section class="rostercard"><div class="feedempty">'+
+        'No rosters yet — they fill in once the draft has run.</div></section>';
+      return;
+    }
+    if(rosterIdx >= r.teams.length) rosterIdx = 0;
+    var pills = r.teams.map(function(t,i){
+      return '<button class="teampill" data-i="'+i+'" aria-selected="'+(i===rosterIdx)+'">'+
+        esc(t.name)+'</button>';
+    }).join("");
+    var t = r.teams[rosterIdx];
+    var faab = (t.faabRemaining!=null) ? '<span class="rfaab num">FAAB $'+t.faabRemaining+'</span>' : "";
+    var starters = t.starters.map(rosterSlotRow).join("");
+    var bench = t.bench.map(function(p){ return rosterSlotRow(p); }).join("");
+    var ir = t.ir.map(function(p){ return rosterSlotRow(p); }).join("");
+    view.innerHTML =
+      '<div class="teampicker">'+pills+'</div>'+
+      '<div class="rostercard"><div class="rosterhd">'+
+        '<div><div class="rname">'+esc(t.name)+'</div>'+
+        (t.gm?'<div class="rgm">'+esc(t.gm)+'</div>':'')+'</div>'+faab+'</div>'+
+        starters+'</div>'+
+      (bench ? '<div class="rostercard"><p class="schedwk">Bench</p>'+bench+'</div>' : '')+
+      (ir ? '<div class="rostercard"><p class="schedwk">IR</p>'+ir+'</div>' : '');
+    view.querySelectorAll(".teampill").forEach(function(b){
+      b.addEventListener("click",function(){
+        rosterIdx = +b.getAttribute("data-i");
+        renderRosters();
+      });
+    });
+  }
+
   function renderFeed(){
     var w = LEAGUE.weeks[wIdx];
     var f = (w && w.feed) || {tabloid:"", forum:[], recap:""};
@@ -508,13 +609,15 @@
     else if(tab==="feed"){ setWeekLabel(); renderFeed(); }
     else if(tab==="standings"){ renderStandings(); }
     else if(tab==="bracket"){ renderBracket(); }
+    else if(tab==="schedule"){ renderSchedule(); }
+    else if(tab==="rosters"){ renderRosters(); }
     else if(tab==="draft"){ renderDraft(); }
     else { renderGuide(); }
     var perWeek = (tab==="scores" || tab==="feed");
     document.querySelector(".weeknav").style.visibility = perWeek ? "visible" : "hidden";
   }
 
-  var TABS = ["scores","feed","standings","bracket","draft","guide"];
+  var TABS = ["scores","feed","standings","bracket","schedule","rosters","draft","guide"];
   function selTab(t){
     tab=t;
     TABS.forEach(function(x){

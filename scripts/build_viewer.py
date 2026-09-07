@@ -446,6 +446,82 @@ def viewer_standings(standings_json: dict, names: Optional[dict] = None,
     return rows
 
 
+_SLOT_ORDER = ["QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "K", "DEF"]
+
+
+def _slot_index(slot: str) -> int:
+    return _SLOT_ORDER.index(slot) if slot in _SLOT_ORDER else len(_SLOT_ORDER)
+
+
+def viewer_roster(roster: dict, players: dict, names: Optional[dict] = None,
+                  gms: Optional[dict] = None) -> dict:
+    """Map one team's roster.json (ids only) into the viewer's roster shape,
+    resolving every player id to {id, name, pos, nfl}. Pure."""
+    slug = roster.get("team")
+
+    def resolve(pid):
+        info = players.get(pid, {}) if pid is not None else {}
+        return {
+            "id": pid,
+            "name": info.get("name", pid) if pid is not None else None,
+            "pos": info.get("pos", "?") if pid is not None else "",
+            "nfl": (info.get("team") or "FA") if pid is not None else "",
+        }
+
+    starters = [
+        dict(resolve(pid), slot=slot)
+        for slot, pid in (roster.get("starters") or {}).items()
+    ]
+    starters.sort(key=lambda r: _slot_index(r["slot"]))
+    bench = [resolve(pid) for pid in (roster.get("bench") or [])]
+    ir = [resolve(pid) for pid in (roster.get("ir") or [])]
+
+    return {
+        "slug": slug,
+        "name": _display_name(slug, names),
+        "gm": (gms or {}).get(slug),
+        "faabRemaining": roster.get("faab_remaining"),
+        "starters": starters,
+        "bench": bench,
+        "ir": ir,
+    }
+
+
+def _playoff_label(token: str, names: Optional[dict] = None) -> str:
+    """Pretty-print a playoffs.json placeholder token ('seed_3', 'winner_15_2')
+    until it resolves to a real team slug; real slugs get the franchise name."""
+    if token.startswith("seed_"):
+        return "Seed " + token.split("_", 1)[1]
+    if token.startswith("winner_"):
+        parts = token.split("_")
+        if len(parts) == 3:
+            return f"Winner of Wk{parts[1]} #{parts[2]}"
+    return _display_name(token, names)
+
+
+def viewer_schedule(schedule_json: dict, names: Optional[dict] = None) -> dict:
+    """Map state/schedule.json into the viewer's schedule shape: every
+    regular-season week's matchups with resolved franchise names, and every
+    playoffs week with its (placeholder, pre-seeding) labels. Pure."""
+    def week_list(section: dict, label_fn) -> list:
+        out = []
+        for wk in sorted(section.keys(), key=lambda k: int(k)):
+            pairs = section[wk] or []
+            out.append({
+                "week": int(wk),
+                "matchups": [
+                    {"home": label_fn(h), "away": label_fn(a)} for h, a in pairs
+                ],
+            })
+        return out
+
+    regular = week_list(schedule_json.get("regular_season", {}) or {},
+                        lambda slug: _display_name(slug, names))
+    playoffs = week_list(schedule_json.get("playoffs", {}) or {},
+                         lambda token: _playoff_label(token, names))
+    return {"regularSeason": regular, "playoffs": playoffs}
+
+
 # --- assembly (reads league state) -----------------------------------------
 
 def _load_scoring():
@@ -476,6 +552,22 @@ def _rosters_for_week(season: str, week: int) -> dict:
             continue
         rosters[rp.parent.name] = _load(rp, {})
     return rosters
+
+
+def _load_rosters(players: dict, names: Optional[dict] = None,
+                  gms: Optional[dict] = None) -> dict:
+    """Load every team's current teams/*/roster.json into the viewer's roster
+    shape (empty until the draft has run)."""
+    teams = []
+    for rp in sorted((ROOT / "teams").glob("*/roster.json")):
+        if rp.parent.name.startswith("_"):
+            continue
+        roster = _load(rp, {})
+        if not roster:
+            continue
+        teams.append(viewer_roster(roster, players, names, gms))
+    teams.sort(key=lambda t: t["name"])
+    return {"hasRosters": bool(teams), "teams": teams}
 
 
 def build_league_data(season: str) -> dict:
@@ -539,6 +631,8 @@ def build_league_data(season: str) -> dict:
     # Load guide (mission, rules, cast, howItRuns)
     guide = _load_guide(season, names, gms)
     draft = _load_draft(season, names, gms)
+    rosters = _load_rosters(players, names, gms)
+    schedule_view = viewer_schedule(schedule, names)
 
     return {
         "league": "The DuPont Bowl",
@@ -548,6 +642,8 @@ def build_league_data(season: str) -> dict:
         "standingsThroughWeek": max(official) if official else 0,
         "guide": guide,
         "draft": draft,
+        "rosters": rosters,
+        "schedule": schedule_view,
         "updated": datetime.datetime.now().isoformat(),
     }
 
