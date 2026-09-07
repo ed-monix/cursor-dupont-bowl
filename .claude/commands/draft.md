@@ -70,6 +70,16 @@ burn millions of tokens without it):**
   still-available name, validator on every pick as usual; re-spawn a GM only
   when its list runs dry or a pick is rejected. 12 spawns instead of 84; the
   per-target lines still print live.
+- **Orchestrator economics (the hidden floor):** every turn the orchestrating
+  session takes re-reads its own full context (~35–45K), so a pick that costs
+  the orchestrator 3–4 turns costs ~50K regardless of how thin the subagent
+  is. Keep it to ONE orchestrator turn per pick (build slice + spawn +
+  validate + log + announce together), batch whole rounds into one turn in
+  wishlist mode, and `/compact` between rounds — the draft log lives on disk,
+  old transcript turns are dead weight. For a `--mock`, prefer wishlist mode
+  from round 3 on: the AC is 180 legal picks and valid rosters, not theater.
+  For the real draft, run pick-by-pick where the theater pays (rounds ~1–5)
+  and wishlist the back half.
 
 - **Board slice, never the full pool:** the top 60 available by projected
   points PLUS the top 12 available at each of QB/RB/WR/TE and top 3 K/DEF
