@@ -1,18 +1,24 @@
 {
- "team": "costanza",
- "name": "Vandelay Vengeance",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "10222",
+    "4983",
+    "6819",
+    "8136",
+    "11624",
+    "8142"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "TEN",
+    "FLEX": "5892",
+    "K": "6083",
+    "QB": "13221",
+    "RB1": "8138",
+    "RB2": "8150",
+    "TE": "9484",
+    "WR1": "7569",
+    "WR2": "8112"
+  },
+  "team": "costanza"
 }

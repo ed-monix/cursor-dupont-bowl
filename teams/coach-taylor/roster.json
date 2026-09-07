@@ -1,18 +1,24 @@
 {
- "team": "coach-taylor",
- "name": "Clear Eyes Full Hearts",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "4217",
+    "5022",
+    "11581",
+    "12529",
+    "8408",
+    "11586"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "LAC",
+    "FLEX": "5927",
+    "K": "7839",
+    "QB": "13175",
+    "RB1": "12507",
+    "RB2": "7021",
+    "TE": "5012",
+    "WR1": "9493",
+    "WR2": "7547"
+  },
+  "team": "coach-taylor"
 }

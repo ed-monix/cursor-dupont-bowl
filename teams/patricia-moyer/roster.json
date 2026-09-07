@@ -1,18 +1,24 @@
 {
- "team": "patricia-moyer",
- "name": "The Corrective Action Plan",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "11584",
+    "3214",
+    "12545",
+    "11583",
+    "9480",
+    "8172"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "KC",
+    "FLEX": "8228",
+    "K": "8259",
+    "QB": "4943",
+    "RB1": "9221",
+    "RB2": "8151",
+    "TE": "7553",
+    "WR1": "6801",
+    "WR2": "7525"
+  },
+  "team": "patricia-moyer"
 }

@@ -1,4 +1,24 @@
-{"team": "wifes-team", "name": "Eastern Market Ducks", "faab_remaining": 100,
- "starters": {"QB": null, "RB1": null, "RB2": null, "WR1": null, "WR2": null,
-              "TE": null, "FLEX": null, "K": null, "DEF": null},
- "bench": [], "ir": []}
+{
+  "bench": [
+    "8155",
+    "12506",
+    "7002",
+    "8110",
+    "5849",
+    "6768"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "SEA",
+    "FLEX": "7588",
+    "K": "11539",
+    "QB": "11563",
+    "RB1": "9226",
+    "RB2": "9224",
+    "TE": "10859",
+    "WR1": "9504",
+    "WR2": "7587"
+  },
+  "team": "wifes-team"
+}

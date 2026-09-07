@@ -1,18 +1,24 @@
 {
- "team": "dumbledore",
- "name": "The Room of Requirement",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "9487",
+    "3163",
+    "8131",
+    "11603",
+    "8676",
+    "8111"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "DEN",
+    "FLEX": "11646",
+    "K": "12185",
+    "QB": "11566",
+    "RB1": "6813",
+    "RB2": "13286",
+    "TE": "12518",
+    "WR1": "8137",
+    "WR2": "8144"
+  },
+  "team": "dumbledore"
 }

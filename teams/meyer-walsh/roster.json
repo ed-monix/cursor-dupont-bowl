@@ -1,18 +1,24 @@
 {
- "team": "meyer-walsh",
- "name": "The Selina Doctrine",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "11620",
+    "8134",
+    "7523",
+    "421",
+    "11834",
+    "9228"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "PIT",
+    "FLEX": "5846",
+    "K": "2747",
+    "QB": "4984",
+    "RB1": "7543",
+    "RB2": "1408",
+    "TE": "1466",
+    "WR1": "6786",
+    "WR2": "7526"
+  },
+  "team": "meyer-walsh"
 }

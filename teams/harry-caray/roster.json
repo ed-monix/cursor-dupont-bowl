@@ -1,18 +1,24 @@
 {
- "team": "harry-caray",
- "name": "Holy Cow Backfield!",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "9756",
+    "11628",
+    "8121",
+    "5947",
+    "5872",
+    "8161"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "BAL",
+    "FLEX": "2449",
+    "K": "12015",
+    "QB": "4881",
+    "RB1": "9509",
+    "RB2": "6790",
+    "TE": "6462",
+    "WR1": "9997",
+    "WR2": "8146"
+  },
+  "team": "harry-caray"
 }
