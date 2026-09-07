@@ -1,18 +1,24 @@
 {
- "team": "maura-higgins",
- "name": "Fancy Him, Hun",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "3294",
+    "6797",
+    "4892",
+    "6804",
+    "10213",
+    "2505"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "JAX",
+    "FLEX": "11632",
+    "K": "11533",
+    "QB": "8183",
+    "RB1": "4034",
+    "RB2": "11651",
+    "TE": "8210",
+    "WR1": "9488",
+    "WR2": "8148"
+  },
+  "team": "maura-higgins"
 }

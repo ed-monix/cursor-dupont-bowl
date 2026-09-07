@@ -1,18 +1,24 @@
 {
- "team": "rinna",
- "name": "Reunion Special",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "12517",
+    "12490",
+    "5045",
+    "5001",
+    "13298",
+    "9758"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "LAR",
+    "FLEX": "8130",
+    "K": "3451",
+    "QB": "11564",
+    "RB1": "13287",
+    "RB2": "7611",
+    "TE": "11604",
+    "WR1": "2216",
+    "WR2": "13279"
+  },
+  "team": "rinna"
 }

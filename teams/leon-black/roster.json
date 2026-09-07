@@ -1,18 +1,24 @@
 {
- "team": "leon-black",
- "name": "Gut Feeling, Zero Regrets",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "2133",
+    "10232",
+    "9754",
+    "7594",
+    "12501",
+    "4046"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "LV",
+    "FLEX": "8167",
+    "K": "12711",
+    "QB": "6770",
+    "RB1": "3198",
+    "RB2": "6806",
+    "TE": "8074",
+    "WR1": "7564",
+    "WR2": "10229"
+  },
+  "team": "leon-black"
 }

@@ -1,4 +1,24 @@
-{"team": "your-team", "name": "Flint Tropics", "faab_remaining": 100,
- "starters": {"QB": null, "RB1": null, "RB2": null, "WR1": null, "WR2": null,
-              "TE": null, "FLEX": null, "K": null, "DEF": null},
- "bench": [], "ir": []}
+{
+  "bench": [
+    "12512",
+    "12533",
+    "5967",
+    "5844",
+    "7567",
+    "4199"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "DET",
+    "FLEX": "9500",
+    "K": "11792",
+    "QB": "11560",
+    "RB1": "12527",
+    "RB2": "12481",
+    "TE": "10236",
+    "WR1": "5859",
+    "WR2": "12519"
+  },
+  "team": "your-team"
+}

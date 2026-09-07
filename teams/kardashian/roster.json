@@ -1,18 +1,24 @@
 {
- "team": "kardashian",
- "name": "The Golden Child Drop",
- "faab_remaining": 100,
- "starters": {
-  "QB": null,
-  "RB1": null,
-  "RB2": null,
-  "WR1": null,
-  "WR2": null,
-  "TE": null,
-  "FLEX": null,
-  "K": null,
-  "DEF": null
- },
- "bench": [],
- "ir": []
+  "bench": [
+    "12508",
+    "12514",
+    "4037",
+    "11631",
+    "8126",
+    "5870"
+  ],
+  "faab_remaining": 100,
+  "ir": [],
+  "starters": {
+    "DEF": "PHI",
+    "FLEX": "11635",
+    "K": "13545",
+    "QB": "6904",
+    "RB1": "4866",
+    "RB2": "12489",
+    "TE": "7926",
+    "WR1": "6794",
+    "WR2": "12526"
+  },
+  "team": "kardashian"
 }
