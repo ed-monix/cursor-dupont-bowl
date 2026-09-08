@@ -234,6 +234,9 @@ validate agent output.
 - `news-facts.json` — deterministic headline facts from `derive_news.py` (the
   media agent's input for the weekly tabloid).
 - `recap.md` — the commissioner's weekly recap column.
+- `commissioner-memo.md` — week 01 only: the pre-kickoff `/cutdown` memo
+  (league-office corrections, script-derived roster-imbalance facts, and the
+  window's one-time provisions, all also logged in `state/rulings.md`).
 
 ### GM memory & the shared record (the personality substrate)
 - `teams/*/notes/2026-wNN.md` — owner notes (human input) plus the GM's replies.

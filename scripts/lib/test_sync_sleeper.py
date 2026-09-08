@@ -113,6 +113,14 @@ class TestPlayersSync(unittest.TestCase):
                             "status": "Out",
                             "injury_status": "IR",
                         },
+                        "5": {
+                            "full_name": "Retired Legend",
+                            "position": "RB",
+                            "active": True,  # stale flag — Sleeper keeps it
+                            "team": None,    # ...but no NFL team: must be cut
+                            "status": "Inactive",
+                            "injury_status": None,
+                        },
                     }
 
                     with mock.patch("sync_sleeper.fetch_players_raw") as mock_fetch:
@@ -129,6 +137,7 @@ class TestPlayersSync(unittest.TestCase):
                 self.assertIn("2", players)
                 self.assertNotIn("3", players)
                 self.assertNotIn("4", players)
+                self.assertNotIn("5", players)  # teamless retiree excluded
                 self.assertEqual(players["1"]["name"], "Patrick Mahomes")
                 self.assertEqual(players["1"]["pos"], "QB")
                 self.assertEqual(players["2"]["pos"], "TE")

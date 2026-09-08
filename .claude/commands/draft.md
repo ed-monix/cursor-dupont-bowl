@@ -67,9 +67,14 @@ burn millions of tokens without it):**
   remaining needs, and a top-80 board slice, and returns a RANKED list of
   ~25 targets for its remaining picks with one line of commentary per
   target. Fill rounds 9–15 in snake order from the wishlists — highest-ranked
-  still-available name, validator on every pick as usual; re-spawn a GM only
-  when its list runs dry or a pick is rejected. 12 spawns instead of 84; the
-  per-target lines still print live.
+  still-available name, validator on every pick as usual. **Exhaustion rule
+  (lesson from the 2026 draft): NEVER silently auto-pick "best available."**
+  A wishlist must be sized to cover the GM's remaining picks with buffer
+  (~25 names for 7 picks) and the wishlist prompt must state the team's
+  remaining positional needs (open starter slots, K/DEF still owed) so lists
+  don't stack one position. When a list runs dry or a pick is rejected,
+  RE-SPAWN that GM with its updated roster and a fresh board slice — the
+  pick must always be the character's choice, not the harness's.
 - **Orchestrator economics (the hidden floor):** every turn the orchestrating
   session takes re-reads its own full context (~35–45K), so a pick that costs
   the orchestrator 3–4 turns costs ~50K regardless of how thin the subagent

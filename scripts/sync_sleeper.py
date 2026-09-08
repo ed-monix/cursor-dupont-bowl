@@ -96,10 +96,14 @@ def sync_players() -> None:
         cache_file.write_text(json.dumps(players_data))
         print(f"cached players to {cache_file}")
 
-    # Trim to active skill positions + K + DEF
+    # Trim to active skill positions + K + DEF. Requiring a non-null NFL
+    # `team` matters as much as `active`: Sleeper's active flag is stale for
+    # long-retired players (Le'Veon Bell types), but they all carry
+    # team=null — a player with no NFL team cannot score and must never
+    # reach the draft board or the free-agent pool.
     trimmed = {}
     for pid, p in players_data.items():
-        if p.get("position") in KEEP_POS and p.get("active"):
+        if p.get("position") in KEEP_POS and p.get("active") and p.get("team"):
             trimmed[pid] = {
                 "name": p.get("full_name") or f'{p.get("first_name","")} {p.get("last_name","")}'.strip(),
                 "pos": p["position"],
