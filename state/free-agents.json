@@ -1,0 +1,8202 @@
+{
+ "6918": {
+  "name": "Salvon Ahmed",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11649": {
+  "name": "Kendall Milton",
+  "pos": "RB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6783": {
+  "name": "Jerry Jeudy",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.08,
+  "proj": {
+   "rec": 2.67,
+   "rec_yd": 38.75,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "13600": {
+  "name": "Tyren Montgomery",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11616": {
+  "name": "Jacob Cowing",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.02,
+  "proj": {
+   "rec": 0.01,
+   "rec_yd": 0.1,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "11439": {
+  "name": "Jaleel McLaughlin",
+  "pos": "RB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13302": {
+  "name": "Adam Randall",
+  "pos": "RB",
+  "team": "BAL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11629": {
+  "name": "Devontez Walker",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.72,
+  "proj": {
+   "rec": 0.62,
+   "rec_yd": 9.01,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "13295": {
+  "name": "Behren Morton",
+  "pos": "QB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12493": {
+  "name": "Oronde Gadsden",
+  "pos": "TE",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.96,
+  "proj": {
+   "rec": 1.71,
+   "rec_yd": 23.2,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "12699": {
+  "name": "LaJohntay Wester",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.21,
+  "proj": {
+   "rec": 0.07,
+   "rec_yd": 0.92,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "11304": {
+  "name": "E.J. Jenkins",
+  "pos": "TE",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "19": {
+  "name": "Joe Flacco",
+  "pos": "QB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4054": {
+  "name": "Mo Alie-Cox",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.01,
+  "proj": {
+   "rec": 0.5,
+   "rec_yd": 5.16,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "12848": {
+  "name": "Josh Kelly",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8698": {
+  "name": "Jake Tonges",
+  "pos": "TE",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.72,
+  "proj": {
+   "rec": 0.85,
+   "rec_yd": 8.74,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "12971": {
+  "name": "Ke'Shawn Williams",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6016": {
+  "name": "Dax Raymond",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11157": {
+  "name": "Brycen Tremayne",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8116": {
+  "name": "Pierre Strong",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7585": {
+  "name": "Davis Mills",
+  "pos": "QB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "2359": {
+  "name": "Ameer Abdullah",
+  "pos": "RB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.31,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.1,
+   "rush_yd": 0.81,
+   "rec_yd": 0.63
+  },
+  "last_wk_pts": null
+ },
+ "5854": {
+  "name": "Drew Lock",
+  "pos": "QB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7593": {
+  "name": "Trey Sermon",
+  "pos": "RB",
+  "team": "ATL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11579": {
+  "name": "Audric Estime",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.37,
+  "proj": {
+   "rush_td": 0.05,
+   "rec": 0.25,
+   "rush_yd": 7.48,
+   "rec_yd": 1.61
+  },
+  "last_wk_pts": null
+ },
+ "HOU": {
+  "name": "Houston Texans",
+  "pos": "DEF",
+  "team": "HOU",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.41,
+  "proj": {
+   "int": 0.75,
+   "pts_allow": 22.75,
+   "sack": 2.25
+  },
+  "last_wk_pts": null
+ },
+ "13301": {
+  "name": "Antonio Williams",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.53,
+  "proj": {
+   "rec": 1.13,
+   "rec_yd": 13.57,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "11636": {
+  "name": "Johnny Wilson",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7828": {
+  "name": "Noah Gray",
+  "pos": "TE",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.38,
+  "proj": {
+   "rec": 1.81,
+   "rec_yd": 18.19,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "NE": {
+  "name": "New England Patriots",
+  "pos": "DEF",
+  "team": "NE",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.91,
+  "proj": {
+   "int": 0.7,
+   "pts_allow": 23.75,
+   "sack": 2.37
+  },
+  "last_wk_pts": null
+ },
+ "11557": {
+  "name": "Joe Milton",
+  "pos": "QB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13898": {
+  "name": "Corey Rucker",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5995": {
+  "name": "Justice Hill",
+  "pos": "RB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.5,
+  "proj": {
+   "rush_td": 0.13,
+   "rec": 1.45,
+   "rush_yd": 14.09,
+   "rec_yd": 10.48
+  },
+  "last_wk_pts": null
+ },
+ "12925": {
+  "name": "Jamaal Pritchett",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7262": {
+  "name": "Jalen Morton",
+  "pos": "QB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8119": {
+  "name": "Jahan Dotson",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.05,
+  "proj": {
+   "rec": 1.59,
+   "rec_yd": 21.61,
+   "rec_td": 0.18
+  },
+  "last_wk_pts": null
+ },
+ "13418": {
+  "name": "Robert Henry",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12542": {
+  "name": "Efton Chism",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.08,
+  "proj": {
+   "rec": 0.04,
+   "rec_yd": 0.61,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "7049": {
+  "name": "Jauan Jennings",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.77,
+  "proj": {
+   "rec": 2.63,
+   "rec_yd": 35.74,
+   "rec_td": 0.31
+  },
+  "last_wk_pts": null
+ },
+ "11610": {
+  "name": "Malik Washington",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.7,
+  "proj": {
+   "rec": 3.38,
+   "rec_yd": 31.11,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "10228": {
+  "name": "Charlie Jones",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "829": {
+  "name": "Andy Dalton",
+  "pos": "QB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11370": {
+  "name": "Chris Brooks",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.37,
+  "proj": {
+   "rush_td": 0.11,
+   "rec": 1.45,
+   "rush_yd": 15.49,
+   "rec_yd": 8.98
+  },
+  "last_wk_pts": null
+ },
+ "11574": {
+  "name": "Dylan Laube",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.66,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.34,
+   "rush_yd": 0.81,
+   "rec_yd": 2.27
+  },
+  "last_wk_pts": null
+ },
+ "6323": {
+  "name": "Andrew Beck",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8111": {
+  "name": "Cade Otton",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.87,
+  "proj": {
+   "rec": 3.15,
+   "rec_yd": 31.58,
+   "rec_td": 0.19
+  },
+  "last_wk_pts": null
+ },
+ "3269": {
+  "name": "Chris Moore",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13554": {
+  "name": "CJ Williams",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13270": {
+  "name": "CJ Daniels",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.77,
+  "proj": {
+   "rec": 0.71,
+   "rec_yd": 9.13,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "11647": {
+  "name": "Kimani Vidal",
+  "pos": "RB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.18,
+  "proj": {
+   "rush_td": 0.03,
+   "rec": 0.19,
+   "rush_yd": 7.16,
+   "rec_yd": 1.5
+  },
+  "last_wk_pts": null
+ },
+ "6045": {
+  "name": "Gary Jennings",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13273": {
+  "name": "Josh Cuevas",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.71,
+  "proj": {
+   "rec": 0.35,
+   "rec_yd": 3.55,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "13282": {
+  "name": "Jack Endries",
+  "pos": "TE",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.52,
+  "proj": {
+   "rec": 0.28,
+   "rec_yd": 2.56,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "4227": {
+  "name": "Harrison Butker",
+  "pos": "K",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.4,
+  "proj": {
+   "fgm": 1.82,
+   "xpm": 2.51,
+   "fga": 2.13
+  },
+  "last_wk_pts": null
+ },
+ "8484": {
+  "name": "Ko Kieft",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.03,
+  "proj": {
+   "rec": 0.02,
+   "rec_yd": 0.19,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "9510": {
+  "name": "Lew Nichols",
+  "pos": "RB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11571": {
+  "name": "Isaiah Davis",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 4.14,
+  "proj": {
+   "rush_td": 0.12,
+   "rec": 1.22,
+   "rush_yd": 15.11,
+   "rec_yd": 9.0
+  },
+  "last_wk_pts": null
+ },
+ "13079": {
+  "name": "Jahdae Walker",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.73,
+  "proj": {
+   "rec": 0.69,
+   "rec_yd": 9.66,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13047": {
+  "name": "Jacardia Wright",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13318": {
+  "name": "Noah Thomas",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13380": {
+  "name": "Brenen Thompson",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 1.06,
+  "proj": {
+   "rec": 0.46,
+   "rec_yd": 5.95,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "2944": {
+  "name": "Matt LaCosse",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13400": {
+  "name": "Justin Joly",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13421": {
+  "name": "Eli Raridon",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.62,
+  "proj": {
+   "rec": 1.94,
+   "rec_yd": 18.66,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "12961": {
+  "name": "Ryan Fitzgerald",
+  "pos": "K",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.03,
+  "proj": {
+   "fgm": 1.67,
+   "xpm": 2.22,
+   "fga": 1.97
+  },
+  "last_wk_pts": null
+ },
+ "10955": {
+  "name": "Chad Ryland",
+  "pos": "K",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.46,
+  "proj": {
+   "fgm": 1.57,
+   "xpm": 1.98,
+   "fga": 1.86
+  },
+  "last_wk_pts": null
+ },
+ "7933": {
+  "name": "Alex Kessman",
+  "pos": "K",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5957": {
+  "name": "Isaac Nauta",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13268": {
+  "name": "Elijah Sarratt",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.79,
+  "proj": {
+   "rec": 0.33,
+   "rec_yd": 4.48,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "12535": {
+  "name": "Isaac TeSlaa",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.15,
+  "proj": {
+   "rec": 1.66,
+   "rec_yd": 22.8,
+   "rec_td": 0.17
+  },
+  "last_wk_pts": null
+ },
+ "12491": {
+  "name": "Corey Kiner",
+  "pos": "RB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.19,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.0,
+   "rush_yd": 1.24,
+   "rec_yd": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "6130": {
+  "name": "Devin Singletary",
+  "pos": "RB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.81,
+  "proj": {
+   "rush_td": 0.03,
+   "rec": 0.14,
+   "rush_yd": 4.12,
+   "rec_yd": 0.86
+  },
+  "last_wk_pts": null
+ },
+ "5004": {
+  "name": "Ito Smith",
+  "pos": "RB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12356": {
+  "name": "Jabari Small",
+  "pos": "RB",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13905": {
+  "name": "Omari Evans",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7538": {
+  "name": "Zach Wilson",
+  "pos": "QB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13347": {
+  "name": "Demond Claiborne",
+  "pos": "RB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.88,
+  "proj": {
+   "rush_td": 0.02,
+   "rec": 0.35,
+   "rush_yd": 2.42,
+   "rec_yd": 2.18
+  },
+  "last_wk_pts": null
+ },
+ "12475": {
+  "name": "Ricky White",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8154": {
+  "name": "Brian Robinson",
+  "pos": "RB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.66,
+  "proj": {
+   "rush_td": 0.17,
+   "rec": 0.75,
+   "rush_yd": 24.51,
+   "rec_yd": 5.36
+  },
+  "last_wk_pts": null
+ },
+ "11806": {
+  "name": "Casey Washington",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7583": {
+  "name": "Sam Ehlinger",
+  "pos": "QB",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13438": {
+  "name": "DeaMonte Trayanum",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4744": {
+  "name": "Barrett Burns",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5121": {
+  "name": "Braxton Berrios",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7093": {
+  "name": "Adrian Killins",
+  "pos": "RB",
+  "team": "DEN",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "IND": {
+  "name": "Indianapolis Colts",
+  "pos": "DEF",
+  "team": "IND",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.0,
+  "proj": {
+   "int": 0.63,
+   "pts_allow": 25.75,
+   "sack": 2.1
+  },
+  "last_wk_pts": null
+ },
+ "8147": {
+  "name": "John Metchie",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.78,
+  "proj": {
+   "rec": 1.38,
+   "rec_yd": 14.57,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13342": {
+  "name": "John Michael Gyllenborg",
+  "pos": "TE",
+  "team": "KC",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11592": {
+  "name": "Erick All",
+  "pos": "TE",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.37,
+  "proj": {
+   "rec": 1.28,
+   "rec_yd": 11.91,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "7496": {
+  "name": "Nick Westbrook-Ikhine",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3634": {
+  "name": "Kalif Raymond",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.17,
+  "proj": {
+   "rec": 1.58,
+   "rec_yd": 16.85,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "5773": {
+  "name": "KhaDarel Hodge",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11520": {
+  "name": "Lucky Jackson",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13833": {
+  "name": "Dominic Zvada",
+  "pos": "K",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.26,
+  "proj": {
+   "fgm": 1.56,
+   "xpm": 2.12,
+   "fga": 1.93
+  },
+  "last_wk_pts": null
+ },
+ "4574": {
+  "name": "Cooper Rush",
+  "pos": "QB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9998": {
+  "name": "Hendon Hooker",
+  "pos": "QB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13516": {
+  "name": "Max Bredeson",
+  "pos": "RB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.07,
+  "proj": {
+   "rush_td": 0.0,
+   "rec": 0.05,
+   "rush_yd": 0.04,
+   "rec_yd": 0.37
+  },
+  "last_wk_pts": null
+ },
+ "5906": {
+  "name": "Dawson Knox",
+  "pos": "TE",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.05,
+  "proj": {
+   "rec": 1.82,
+   "rec_yd": 20.59,
+   "rec_td": 0.18
+  },
+  "last_wk_pts": null
+ },
+ "7812": {
+  "name": "Simi Fehoko",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7066": {
+  "name": "K.J. Osborn",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "1979": {
+  "name": "Blake Bortles",
+  "pos": "QB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "260": {
+  "name": "Josh Johnson",
+  "pos": "QB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13557": {
+  "name": "Athan Kaliakmanis",
+  "pos": "QB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13846": {
+  "name": "Jack Velling",
+  "pos": "TE",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10220": {
+  "name": "Will Mallory",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13249": {
+  "name": "Thomas Gordon",
+  "pos": "TE",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8205": {
+  "name": "Isiah Pacheco",
+  "pos": "RB",
+  "team": "DET",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7842": {
+  "name": "Luke Farrell",
+  "pos": "TE",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.5,
+  "proj": {
+   "rec": 0.27,
+   "rec_yd": 2.49,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "7048": {
+  "name": "Benny LeMay",
+  "pos": "RB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3239": {
+  "name": "Bronson Kaufusi",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11280": {
+  "name": "Brady Russell",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11589": {
+  "name": "Trey Benson",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13173": {
+  "name": "Jimmy Holiday",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13749": {
+  "name": "Kole Wilson",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10867": {
+  "name": "Jake Bobo",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "ARI": {
+  "name": "Arizona Cardinals",
+  "pos": "DEF",
+  "team": "ARI",
+  "status": null,
+  "injury": null,
+  "proj_pts": 2.9,
+  "proj": {
+   "int": 0.44,
+   "pts_allow": 28.75,
+   "sack": 1.86
+  },
+  "last_wk_pts": null
+ },
+ "3286": {
+  "name": "Demarcus Robinson",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.41,
+  "proj": {
+   "rec": 0.87,
+   "rec_yd": 12.9,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "11608": {
+  "name": "Isaiah Williams",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.12,
+  "proj": {
+   "rec": 1.09,
+   "rec_yd": 11.19,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "12524": {
+  "name": "Shedeur Sanders",
+  "pos": "QB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8177": {
+  "name": "Grant Calcaterra",
+  "pos": "TE",
+  "team": "PHI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8125": {
+  "name": "Calvin Austin",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7746": {
+  "name": "Austin Trammell",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13422": {
+  "name": "Jaren Kanak",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8117": {
+  "name": "Jalen Tolbert",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.7,
+  "proj": {
+   "rec": 1.13,
+   "rec_yd": 15.14,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "12792": {
+  "name": "Garrett Greene",
+  "pos": "QB",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "812": {
+  "name": "Lee Smith",
+  "pos": "TE",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11633": {
+  "name": "Jamari Thrash",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6386": {
+  "name": "Alex Bachman",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4443": {
+  "name": "Pharaoh Brown",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11237": {
+  "name": "Jacob Saylors",
+  "pos": "RB",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.39,
+  "proj": {
+   "rush_td": 0.15,
+   "rec": 0.36,
+   "rush_yd": 19.56,
+   "rec_yd": 2.5
+  },
+  "last_wk_pts": null
+ },
+ "8414": {
+  "name": "Britain Covey",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8523": {
+  "name": "Nick Muse",
+  "pos": "TE",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9501": {
+  "name": "DeMario Douglas",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.22,
+  "proj": {
+   "rec": 2.42,
+   "rec_yd": 29.73,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "8180": {
+  "name": "Jalen Nailor",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.96,
+  "proj": {
+   "rec": 2.67,
+   "rec_yd": 40.28,
+   "rec_td": 0.24
+  },
+  "last_wk_pts": null
+ },
+ "1737": {
+  "name": "Case Keenum",
+  "pos": "QB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9486": {
+  "name": "Dontayvion Wicks",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.56,
+  "proj": {
+   "rec": 2.65,
+   "rec_yd": 35.14,
+   "rec_td": 0.28
+  },
+  "last_wk_pts": null
+ },
+ "NYJ": {
+  "name": "New York Jets",
+  "pos": "DEF",
+  "team": "NYJ",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.11,
+  "proj": {
+   "int": 0.61,
+   "pts_allow": 20.5,
+   "sack": 2.95
+  },
+  "last_wk_pts": null
+ },
+ "13199": {
+  "name": "Montorie Foster",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12455": {
+  "name": "Brashard Smith",
+  "pos": "RB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.73,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.25,
+   "rush_yd": 2.95,
+   "rec_yd": 1.86
+  },
+  "last_wk_pts": null
+ },
+ "10937": {
+  "name": "Jake Moody",
+  "pos": "K",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13428": {
+  "name": "Joey Aguilar",
+  "pos": "QB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13349": {
+  "name": "Eli Stowers",
+  "pos": "TE",
+  "team": "PHI",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.79,
+  "proj": {
+   "rec": 0.41,
+   "rec_yd": 4.03,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "11618": {
+  "name": "Jalen McMillan",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 6.18,
+  "proj": {
+   "rec": 2.34,
+   "rec_yd": 32.51,
+   "rec_td": 0.28
+  },
+  "last_wk_pts": null
+ },
+ "13430": {
+  "name": "RJ Maryland",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4219": {
+  "name": "Jeremy McNichols",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13202": {
+  "name": "Dalevon Campbell",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10983": {
+  "name": "Sean Clifford",
+  "pos": "QB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12941": {
+  "name": "Bryson Nesbit",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "827": {
+  "name": "Tyrod Taylor",
+  "pos": "QB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6650": {
+  "name": "Chase McLaughlin",
+  "pos": "K",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.21,
+  "proj": {
+   "fgm": 1.86,
+   "xpm": 2.48,
+   "fga": 2.17
+  },
+  "last_wk_pts": null
+ },
+ "4137": {
+  "name": "James Conner",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13432": {
+  "name": "Khalil Dinkins",
+  "pos": "TE",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8145": {
+  "name": "Jeremy Ruckert",
+  "pos": "TE",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.71,
+  "proj": {
+   "rec": 0.4,
+   "rec_yd": 3.3,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "11261": {
+  "name": "Andre Szmyt",
+  "pos": "K",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.73,
+  "proj": {
+   "fgm": 1.38,
+   "xpm": 1.76,
+   "fga": 1.65
+  },
+  "last_wk_pts": null
+ },
+ "13264": {
+  "name": "Dohnte Meyers",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13330": {
+  "name": "Kenyon Sadiq",
+  "pos": "TE",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.18,
+  "proj": {
+   "rec": 1.71,
+   "rec_yd": 16.39,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "9506": {
+  "name": "Sean Tucker",
+  "pos": "RB",
+  "team": "TB",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.67,
+  "proj": {
+   "rush_td": 0.23,
+   "rec": 0.23,
+   "rush_yd": 19.09,
+   "rec_yd": 1.62
+  },
+  "last_wk_pts": null
+ },
+ "7607": {
+  "name": "Michael Carter",
+  "pos": "RB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7599": {
+  "name": "Jermar Jefferson",
+  "pos": "RB",
+  "team": "MIN",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12897": {
+  "name": "Nathan Carter",
+  "pos": "RB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5223": {
+  "name": "Caleb Scott",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12509": {
+  "name": "Tre' Harris",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 4.77,
+  "proj": {
+   "rec": 2.27,
+   "rec_yd": 27.91,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "14020": {
+  "name": "Dean Patterson",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13272": {
+  "name": "Carson Beck",
+  "pos": "QB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12700": {
+  "name": "Gavin Bartholomew",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3271": {
+  "name": "Tyler Higbee",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.68,
+  "proj": {
+   "rec": 0.82,
+   "rec_yd": 8.52,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "12761": {
+  "name": "Jordan Moore",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11638": {
+  "name": "Ricky Pearsall",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13292": {
+  "name": "Lake McRee",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13582": {
+  "name": "Anthony Smith",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6659": {
+  "name": "Craig Reynolds",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12487": {
+  "name": "Terrance Ferguson",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.01,
+  "proj": {
+   "rec": 1.34,
+   "rec_yd": 14.98,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "DAL": {
+  "name": "Dallas Cowboys",
+  "pos": "DEF",
+  "team": "DAL",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.12,
+  "proj": {
+   "int": 0.75,
+   "pts_allow": 22.5,
+   "sack": 2.64
+  },
+  "last_wk_pts": null
+ },
+ "10221": {
+  "name": "Ronnie Bell",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5973": {
+  "name": "Josh Oliver",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.96,
+  "proj": {
+   "rec": 1.03,
+   "rec_yd": 10.29,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13603": {
+  "name": "Gregory Desrosiers",
+  "pos": "RB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11650": {
+  "name": "Luke McCaffrey",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4195": {
+  "name": "Jake Elliott",
+  "pos": "K",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.99,
+  "proj": {
+   "fgm": 1.62,
+   "xpm": 2.44,
+   "fga": 1.87
+  },
+  "last_wk_pts": null
+ },
+ "13296": {
+  "name": "Caleb Douglas",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.45,
+  "proj": {
+   "rec": 1.86,
+   "rec_yd": 25.63,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "11895": {
+  "name": "Mason Tipton",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11630": {
+  "name": "Roman Wilson",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.66,
+  "proj": {
+   "rec": 0.69,
+   "rec_yd": 8.97,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "7083": {
+  "name": "Tyler Huntley",
+  "pos": "QB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12735": {
+  "name": "Caleb Lohner",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8135": {
+  "name": "Treylon Burks",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.62,
+  "proj": {
+   "rec": 0.72,
+   "rec_yd": 8.39,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "7694": {
+  "name": "Tommy Tremble",
+  "pos": "TE",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.73,
+  "proj": {
+   "rec": 0.94,
+   "rec_yd": 8.36,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "10215": {
+  "name": "Jake Haener",
+  "pos": "QB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11597": {
+  "name": "Theo Johnson",
+  "pos": "TE",
+  "team": "NYG",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.4,
+  "proj": {
+   "rec": 1.6,
+   "rec_yd": 18.24,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "11576": {
+  "name": "Braelon Allen",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.55,
+  "proj": {
+   "rush_td": 0.15,
+   "rec": 0.52,
+   "rush_yd": 18.22,
+   "rec_yd": 4.1
+  },
+  "last_wk_pts": null
+ },
+ "13325": {
+  "name": "Jordan Hudson",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7596": {
+  "name": "Elijah Moore",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8799": {
+  "name": "Zaire Mitchell-Paden",
+  "pos": "TE",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9511": {
+  "name": "Keaton Mitchell",
+  "pos": "RB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 5.95,
+  "proj": {
+   "rush_td": 0.16,
+   "rec": 1.25,
+   "rush_yd": 30.88,
+   "rec_yd": 8.97
+  },
+  "last_wk_pts": null
+ },
+ "13311": {
+  "name": "Chris Bell",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.37,
+  "proj": {
+   "rec": 1.51,
+   "rec_yd": 18.99,
+   "rec_td": 0.12
+  },
+  "last_wk_pts": null
+ },
+ "7521": {
+  "name": "Chris Blair",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12543": {
+  "name": "Tahj Brooks",
+  "pos": "RB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.06,
+  "proj": {
+   "rush_td": 0.04,
+   "rec": 0.25,
+   "rush_yd": 4.18,
+   "rec_yd": 1.77
+  },
+  "last_wk_pts": null
+ },
+ "13299": {
+  "name": "Nate Boerkircher",
+  "pos": "TE",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.14,
+  "proj": {
+   "rec": 0.61,
+   "rec_yd": 5.94,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "8208": {
+  "name": "Tyler Badie",
+  "pos": "RB",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.83,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.44,
+   "rush_yd": 1.36,
+   "rec_yd": 2.91
+  },
+  "last_wk_pts": null
+ },
+ "1604": {
+  "name": "Nick Williams",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "WAS": {
+  "name": "Washington Commanders",
+  "pos": "DEF",
+  "team": "WAS",
+  "status": null,
+  "injury": null,
+  "proj_pts": 4.27,
+  "proj": {
+   "int": 0.53,
+   "pts_allow": 24.5,
+   "sack": 2.07
+  },
+  "last_wk_pts": null
+ },
+ "8225": {
+  "name": "Daniel Bellinger",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.89,
+  "proj": {
+   "rec": 1.99,
+   "rec_yd": 21.15,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "5938": {
+  "name": "Lil'Jordan Humphrey",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.66,
+  "proj": {
+   "rec": 0.73,
+   "rec_yd": 8.76,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "12504": {
+  "name": "Kaleb Johnson",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.29,
+  "proj": {
+   "rush_td": 0.14,
+   "rec": 0.5,
+   "rush_yd": 16.99,
+   "rec_yd": 3.38
+  },
+  "last_wk_pts": null
+ },
+ "12079": {
+  "name": "Treyton Welch",
+  "pos": "TE",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12474": {
+  "name": "Woody Marks",
+  "pos": "RB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 7.34,
+  "proj": {
+   "rush_td": 0.22,
+   "rec": 1.43,
+   "rush_yd": 35.7,
+   "rec_yd": 11.13
+  },
+  "last_wk_pts": null
+ },
+ "11644": {
+  "name": "Cody Schrader",
+  "pos": "RB",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6465": {
+  "name": "Thomas Ives",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8206": {
+  "name": "Skylar Thompson",
+  "pos": "QB",
+  "team": "BAL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12171": {
+  "name": "British Brooks",
+  "pos": "RB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8013": {
+  "name": "Tim Jones",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13074": {
+  "name": "Isaiah Neyor",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13415": {
+  "name": "Haynes King",
+  "pos": "QB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6185": {
+  "name": "Easton Stick",
+  "pos": "QB",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7562": {
+  "name": "Tutu Atwell",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.08,
+  "proj": {
+   "rec": 0.04,
+   "rec_yd": 0.54,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "7149": {
+  "name": "Tommy Stevens",
+  "pos": "TE",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8132": {
+  "name": "Tyler Allgeier",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 7.88,
+  "proj": {
+   "rush_td": 0.3,
+   "rec": 1.18,
+   "rush_yd": 43.13,
+   "rec_yd": 8.56
+  },
+  "last_wk_pts": null
+ },
+ "12523": {
+  "name": "Jimmy Horn",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.56,
+  "proj": {
+   "rec": 0.64,
+   "rec_yd": 6.44,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "13401": {
+  "name": "Michael Trigg",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8254": {
+  "name": "Julius Chestnut",
+  "pos": "RB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.25,
+  "proj": {
+   "rush_td": 0.0,
+   "rec": 0.08,
+   "rush_yd": 0.91,
+   "rec_yd": 0.58
+  },
+  "last_wk_pts": null
+ },
+ "8107": {
+  "name": "Nikola Kalinic",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8157": {
+  "name": "Bailey Zappe",
+  "pos": "QB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8223": {
+  "name": "Velus Jones",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7535": {
+  "name": "Hunter Long",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12482": {
+  "name": "Savion Williams",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8088": {
+  "name": "Kalif Jackson",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13423": {
+  "name": "Eli Heidenreich",
+  "pos": "RB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11959": {
+  "name": "Bryce Oliver",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13424": {
+  "name": "Seth McGowan",
+  "pos": "RB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.65,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.37,
+   "rush_yd": 7.72,
+   "rec_yd": 2.36
+  },
+  "last_wk_pts": null
+ },
+ "8253": {
+  "name": "Deven Thompkins",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8861": {
+  "name": "Irv Charles",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4351": {
+  "name": "Tim Patrick",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.55,
+  "proj": {
+   "rec": 0.24,
+   "rec_yd": 3.15,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "13335": {
+  "name": "Cole Payton",
+  "pos": "QB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9220": {
+  "name": "Evan Hull",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11596": {
+  "name": "Ben Sinnott",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.95,
+  "proj": {
+   "rec": 0.52,
+   "rec_yd": 4.48,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "1706": {
+  "name": "Jack Doyle",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4926": {
+  "name": "Nick Schuessler",
+  "pos": "QB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8143": {
+  "name": "Jerome Ford",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12496": {
+  "name": "Tai Felton",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.43,
+  "proj": {
+   "rec": 0.79,
+   "rec_yd": 7.17,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "12656": {
+  "name": "Robbie Ouzts",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6847": {
+  "name": "Devin Duvernay",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.48,
+  "proj": {
+   "rec": 0.21,
+   "rec_yd": 2.37,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "13321": {
+  "name": "Dan Villari",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13968": {
+  "name": "Drew Stevens",
+  "pos": "K",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.44,
+  "proj": {
+   "fgm": 1.55,
+   "xpm": 2.32,
+   "fga": 1.9
+  },
+  "last_wk_pts": null
+ },
+ "10226": {
+  "name": "Andrei Iosivas",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.6,
+  "proj": {
+   "rec": 1.73,
+   "rec_yd": 24.51,
+   "rec_td": 0.19
+  },
+  "last_wk_pts": null
+ },
+ "13116": {
+  "name": "Tre Watson",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12765": {
+  "name": "Keleki Latu",
+  "pos": "TE",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11617": {
+  "name": "Malachi Corley",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.15,
+  "proj": {
+   "rec": 0.04,
+   "rec_yd": 0.47,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "TB": {
+  "name": "Tampa Bay Buccaneers",
+  "pos": "DEF",
+  "team": "TB",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.0,
+  "proj": {
+   "int": 0.59,
+   "pts_allow": 27.0,
+   "sack": 2.2
+  },
+  "last_wk_pts": null
+ },
+ "4981": {
+  "name": "Calvin Ridley",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.56,
+  "proj": {
+   "rec": 1.94,
+   "rec_yd": 32.55,
+   "rec_td": 0.22
+  },
+  "last_wk_pts": null
+ },
+ "13417": {
+  "name": "De'Zhaun Stribling",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 5.74,
+  "proj": {
+   "rec": 2.29,
+   "rec_yd": 31.3,
+   "rec_td": 0.22
+  },
+  "last_wk_pts": null
+ },
+ "10224": {
+  "name": "Brayden Willis",
+  "pos": "TE",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8160": {
+  "name": "Kenny Pickett",
+  "pos": "QB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9479": {
+  "name": "Darnell Washington",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.73,
+  "proj": {
+   "rec": 1.9,
+   "rec_yd": 19.99,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "11577": {
+  "name": "Will Shipley",
+  "pos": "RB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.94,
+  "proj": {
+   "rush_td": 0.02,
+   "rec": 0.39,
+   "rush_yd": 2.36,
+   "rec_yd": 2.7
+  },
+  "last_wk_pts": null
+ },
+ "12540": {
+  "name": "Chimere Dike",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.61,
+  "proj": {
+   "rec": 1.17,
+   "rec_yd": 12.88,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "CLE": {
+  "name": "Cleveland Browns",
+  "pos": "DEF",
+  "team": "CLE",
+  "status": null,
+  "injury": null,
+  "proj_pts": 4.43,
+  "proj": {
+   "int": 0.52,
+   "pts_allow": 24.5,
+   "sack": 1.87
+  },
+  "last_wk_pts": null
+ },
+ "13307": {
+  "name": "Marlin Klein",
+  "pos": "TE",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.13,
+  "proj": {
+   "rec": 1.2,
+   "rec_yd": 10.51,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "6699": {
+  "name": "Gunner Olszewski",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4263": {
+  "name": "Elijah McGuire",
+  "pos": "RB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7591": {
+  "name": "Justin Fields",
+  "pos": "QB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8170": {
+  "name": "James Mitchell",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5119": {
+  "name": "Jason Sanders",
+  "pos": "K",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8076": {
+  "name": "Michael Bandy",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12756": {
+  "name": "Stephen Gosnell",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12048": {
+  "name": "George Holani",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.95,
+  "proj": {
+   "rush_td": 0.2,
+   "rec": 1.29,
+   "rush_yd": 18.96,
+   "rec_yd": 8.3
+  },
+  "last_wk_pts": null
+ },
+ "12888": {
+  "name": "Dalen Cambre",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13353": {
+  "name": "Chris Brazzell",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12641": {
+  "name": "Jaylin Lane",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.91,
+  "proj": {
+   "rec": 0.62,
+   "rec_yd": 9.66,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "13696": {
+  "name": "Ja'Mori Maclin",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7536": {
+  "name": "Quintin Morris",
+  "pos": "TE",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.4,
+  "proj": {
+   "rec": 0.19,
+   "rec_yd": 1.88,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "13339": {
+  "name": "Davon Booth",
+  "pos": "RB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8142": {
+  "name": "Alec Pierce",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 7.63,
+  "proj": {
+   "rec": 2.43,
+   "rec_yd": 46.97,
+   "rec_td": 0.28
+  },
+  "last_wk_pts": null
+ },
+ "6964": {
+  "name": "Sean McKeon",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11648": {
+  "name": "Kedon Slovis",
+  "pos": "QB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3976": {
+  "name": "Mitchell Trubisky",
+  "pos": "QB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13416": {
+  "name": "Roman Hemby",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13356": {
+  "name": "Trebor Pena",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13674": {
+  "name": "Chris Hilton",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4066": {
+  "name": "Evan Engram",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.99,
+  "proj": {
+   "rec": 1.9,
+   "rec_yd": 16.39,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13670": {
+  "name": "Harrison Wallace",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3048": {
+  "name": "Chris Manhertz",
+  "pos": "TE",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.26,
+  "proj": {
+   "rec": 0.14,
+   "rec_yd": 1.32,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "12787": {
+  "name": "Josh Williams",
+  "pos": "RB",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8227": {
+  "name": "Teagan Quitoriano",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11565": {
+  "name": "J.J. McCarthy",
+  "pos": "QB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8220": {
+  "name": "Sincere McCormick",
+  "pos": "RB",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13285": {
+  "name": "Malachi Fields",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.54,
+  "proj": {
+   "rec": 2.4,
+   "rec_yd": 29.99,
+   "rec_td": 0.22
+  },
+  "last_wk_pts": null
+ },
+ "6271": {
+  "name": "Olamide Zaccheaus",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.93,
+  "proj": {
+   "rec": 1.77,
+   "rec_yd": 20.45,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "13392": {
+  "name": "Jeff Caldwell",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6866": {
+  "name": "KJ Hill",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10225": {
+  "name": "Jonathan Mingo",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12470": {
+  "name": "Riley Leonard",
+  "pos": "QB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12473": {
+  "name": "Mitchell Evans",
+  "pos": "TE",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.83,
+  "proj": {
+   "rec": 0.43,
+   "rec_yd": 4.32,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "ATL": {
+  "name": "Atlanta Falcons",
+  "pos": "DEF",
+  "team": "ATL",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.19,
+  "proj": {
+   "int": 0.6,
+   "pts_allow": 22.5,
+   "sack": 2.25
+  },
+  "last_wk_pts": null
+ },
+ "13277": {
+  "name": "CJ Donaldson",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12460": {
+  "name": "Antwane Wells",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "CAR": {
+  "name": "Carolina Panthers",
+  "pos": "DEF",
+  "team": "CAR",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.42,
+  "proj": {
+   "int": 0.64,
+   "pts_allow": 25.0,
+   "sack": 2.26
+  },
+  "last_wk_pts": null
+ },
+ "13042": {
+  "name": "Xavier Guillory",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13414": {
+  "name": "Kaelon Black",
+  "pos": "RB",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.81,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.32,
+   "rush_yd": 9.8,
+   "rec_yd": 2.07
+  },
+  "last_wk_pts": null
+ },
+ "11082": {
+  "name": "Ben Sims",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8755": {
+  "name": "Kaden Davis",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12495": {
+  "name": "Ollie Gordon",
+  "pos": "RB",
+  "team": "MIA",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 2.33,
+  "proj": {
+   "rush_td": 0.1,
+   "rec": 0.64,
+   "rush_yd": 7.61,
+   "rec_yd": 4.12
+  },
+  "last_wk_pts": null
+ },
+ "4602": {
+  "name": "Robert Tonyan",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.04,
+  "proj": {
+   "rec": 0.03,
+   "rec_yd": 0.29,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "4189": {
+  "name": "Eric Saubert",
+  "pos": "TE",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.34,
+  "proj": {
+   "rec": 0.21,
+   "rec_yd": 1.79,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "12863": {
+  "name": "Andrew Armstrong",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5133": {
+  "name": "Tyler Conklin",
+  "pos": "TE",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8917": {
+  "name": "KaVontae Turpin",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.18,
+  "proj": {
+   "rec": 0.98,
+   "rec_yd": 14.17,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "11655": {
+  "name": "Tyrone Tracy",
+  "pos": "RB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.59,
+  "proj": {
+   "rush_td": 0.1,
+   "rec": 0.97,
+   "rush_yd": 16.36,
+   "rec_yd": 6.44
+  },
+  "last_wk_pts": null
+ },
+ "12775": {
+  "name": "Max Brosmer",
+  "pos": "QB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12901": {
+  "name": "Patrick Herbert",
+  "pos": "TE",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9494": {
+  "name": "Marvin Mims",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.62,
+  "proj": {
+   "rec": 1.57,
+   "rec_yd": 18.52,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "11559": {
+  "name": "Michael Penix",
+  "pos": "QB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13279": {
+  "name": "Carnell Tate",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 9.8,
+  "proj": {
+   "rec": 3.99,
+   "rec_yd": 57.32,
+   "rec_td": 0.34
+  },
+  "last_wk_pts": null
+ },
+ "4993": {
+  "name": "Mike Gesicki",
+  "pos": "TE",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.03,
+  "proj": {
+   "rec": 2.77,
+   "rec_yd": 26.85,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "12928": {
+  "name": "Amar Johnson",
+  "pos": "RB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12113": {
+  "name": "Thomas Yassmin",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11627": {
+  "name": "Troy Franklin",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.25,
+  "proj": {
+   "rec": 0.92,
+   "rec_yd": 11.27,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "1592": {
+  "name": "Darren Fells",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3868": {
+  "name": "Jalen Richard",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13151": {
+  "name": "Nick Kallerup",
+  "pos": "TE",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6869": {
+  "name": "Adam Trautman",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.72,
+  "proj": {
+   "rec": 0.81,
+   "rec_yd": 8.39,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "13830": {
+  "name": "Kyle Dixon",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11292": {
+  "name": "Tommy DeVito",
+  "pos": "QB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12511": {
+  "name": "Will Howard",
+  "pos": "QB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8002": {
+  "name": "Shane Buechele",
+  "pos": "QB",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13355": {
+  "name": "DJ Rogers",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8207": {
+  "name": "Tyler Goodson",
+  "pos": "RB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "1945": {
+  "name": "Chris Boswell",
+  "pos": "K",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.03,
+  "proj": {
+   "fgm": 1.93,
+   "xpm": 2.24,
+   "fga": 2.24
+  },
+  "last_wk_pts": null
+ },
+ "12457": {
+  "name": "Jaydon Blue",
+  "pos": "RB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12548": {
+  "name": "Lenny Krieg",
+  "pos": "K",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7039": {
+  "name": "Cody White",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4177": {
+  "name": "Mack Hollins",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.96,
+  "proj": {
+   "rec": 1.26,
+   "rec_yd": 16.53,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "13825": {
+  "name": "Malik McClain",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5848": {
+  "name": "Marquise Brown",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.65,
+  "proj": {
+   "rec": 1.11,
+   "rec_yd": 14.16,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "11371": {
+  "name": "Julian Hill",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8250": {
+  "name": "Tay Martin",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13662": {
+  "name": "Will Pauling",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12715": {
+  "name": "Thomas Fidone",
+  "pos": "TE",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10857": {
+  "name": "Stetson Bennett",
+  "pos": "QB",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9229": {
+  "name": "Anthony Richardson",
+  "pos": "QB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11994": {
+  "name": "Kameron Johnson",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.43,
+  "proj": {
+   "rec": 0.16,
+   "rec_yd": 2.06,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "10227": {
+  "name": "Payne Durham",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.44,
+  "proj": {
+   "rec": 0.21,
+   "rec_yd": 2.17,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "10214": {
+  "name": "Davis Allen",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.65,
+  "proj": {
+   "rec": 0.34,
+   "rec_yd": 2.97,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "4179": {
+  "name": "Joshua Dobbs",
+  "pos": "QB",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10866": {
+  "name": "Aidan O'Connell",
+  "pos": "QB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12499": {
+  "name": "Elic Ayomanor",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.46,
+  "proj": {
+   "rec": 0.92,
+   "rec_yd": 13.81,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13013": {
+  "name": "Mark Redman",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11201": {
+  "name": "Blake Whiteheart",
+  "pos": "TE",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.14,
+  "proj": {
+   "rec": 0.57,
+   "rec_yd": 5.58,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "13595": {
+  "name": "Cash Jones",
+  "pos": "RB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11299": {
+  "name": "Zavier Scott",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13779": {
+  "name": "Al-Jay Henderson",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12151": {
+  "name": "Julian Hicks",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4039": {
+  "name": "Cooper Kupp",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.48,
+  "proj": {
+   "rec": 2.81,
+   "rec_yd": 36.09,
+   "rec_td": 0.24
+  },
+  "last_wk_pts": null
+ },
+ "7610": {
+  "name": "Trey Lance",
+  "pos": "QB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12483": {
+  "name": "Jack Bech",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.61,
+  "proj": {
+   "rec": 1.6,
+   "rec_yd": 20.1,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "NO": {
+  "name": "New Orleans Saints",
+  "pos": "DEF",
+  "team": "NO",
+  "status": null,
+  "injury": null,
+  "proj_pts": 3.27,
+  "proj": {
+   "int": 0.52,
+   "pts_allow": 28.25,
+   "sack": 2.01
+  },
+  "last_wk_pts": null
+ },
+ "13313": {
+  "name": "Emmanuel Henderson",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7568": {
+  "name": "Brevin Jordan",
+  "pos": "TE",
+  "team": "HOU",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "14041": {
+  "name": "Anderson Castle",
+  "pos": "RB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5985": {
+  "name": "Foster Moreau",
+  "pos": "TE",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.63,
+  "proj": {
+   "rec": 0.29,
+   "rec_yd": 3.06,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "GB": {
+  "name": "Green Bay Packers",
+  "pos": "DEF",
+  "team": "GB",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.12,
+  "proj": {
+   "int": 0.7,
+   "pts_allow": 24.0,
+   "sack": 2.46
+  },
+  "last_wk_pts": null
+ },
+ "13429": {
+  "name": "Seydou Traore",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.65,
+  "proj": {
+   "rec": 0.35,
+   "rec_yd": 3.52,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "10234": {
+  "name": "Derius Davis",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.14,
+  "proj": {
+   "rec": 0.05,
+   "rec_yd": 0.47,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "7531": {
+  "name": "Feleipe Franks",
+  "pos": "TE",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.05,
+  "proj": {
+   "rec": 0.02,
+   "rec_yd": 0.18,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "11786": {
+  "name": "Cam Little",
+  "pos": "K",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.53,
+  "proj": {
+   "fgm": 2.0,
+   "xpm": 2.71,
+   "fga": 2.32
+  },
+  "last_wk_pts": null
+ },
+ "10444": {
+  "name": "Cedric Tillman",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7090": {
+  "name": "Darnell Mooney",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.72,
+  "proj": {
+   "rec": 1.89,
+   "rec_yd": 29.14,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "12480": {
+  "name": "Moliki Matavao",
+  "pos": "TE",
+  "team": "NO",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10210": {
+  "name": "Cameron Latu",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "2306": {
+  "name": "Jameis Winston",
+  "pos": "QB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4924": {
+  "name": "Zach Terrell",
+  "pos": "QB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13032": {
+  "name": "Marshall Lang",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "1479": {
+  "name": "Keenan Allen",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.4,
+  "proj": {
+   "rec": 3.04,
+   "rec_yd": 36.16,
+   "rec_td": 0.21
+  },
+  "last_wk_pts": null
+ },
+ "3258": {
+  "name": "Nick Vannett",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12477": {
+  "name": "Kurtis Rourke",
+  "pos": "QB",
+  "team": "SF",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7204": {
+  "name": "Reggie Gilliam",
+  "pos": "RB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13394": {
+  "name": "Josh Cameron",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.4,
+  "proj": {
+   "rec": 0.11,
+   "rec_yd": 1.39,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "6167": {
+  "name": "Jordan Scarlett",
+  "pos": "RB",
+  "team": "MIA",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11595": {
+  "name": "Jared Wiley",
+  "pos": "TE",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12531": {
+  "name": "Trevor Etienne",
+  "pos": "RB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13705": {
+  "name": "Ty Pezza",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12539": {
+  "name": "Arian Smith",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.25,
+  "proj": {
+   "rec": 0.1,
+   "rec_yd": 1.16,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "6147": {
+  "name": "Clayton Thorson",
+  "pos": "QB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13275": {
+  "name": "Ty Simpson",
+  "pos": "QB",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7087": {
+  "name": "Jonathan Ward",
+  "pos": "RB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12969": {
+  "name": "Lan Larison",
+  "pos": "RB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8423": {
+  "name": "Brittain Brown",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11653": {
+  "name": "Charlie Smyth",
+  "pos": "K",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13320": {
+  "name": "Zachariah Branch",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.1,
+  "proj": {
+   "rec": 0.97,
+   "rec_yd": 11.31,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "12541": {
+  "name": "Dont'e Thornton",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12732": {
+  "name": "Dominic Lovett",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7891": {
+  "name": "Brock Wright",
+  "pos": "TE",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.08,
+  "proj": {
+   "rec": 1.12,
+   "rec_yd": 10.2,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "13269": {
+  "name": "Fernando Mendoza",
+  "pos": "QB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13420": {
+  "name": "Bryce Lance",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.08,
+  "proj": {
+   "rec": 0.93,
+   "rec_yd": 11.4,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "11593": {
+  "name": "Brevyn Spann-Ford",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.0,
+  "proj": {
+   "rec": 0.52,
+   "rec_yd": 4.97,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "12634": {
+  "name": "Jordan Watkins",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.2,
+  "proj": {
+   "rec": 0.09,
+   "rec_yd": 0.96,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "13124": {
+  "name": "Jeremiah Webb",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7103": {
+  "name": "Tavien Feaster",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4930": {
+  "name": "Franko House",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13405": {
+  "name": "Kaytron Allen",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.99,
+  "proj": {
+   "rush_td": 0.04,
+   "rec": 0.13,
+   "rush_yd": 5.6,
+   "rec_yd": 0.84
+  },
+  "last_wk_pts": null
+ },
+ "8181": {
+  "name": "Connor Heyward",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.79,
+  "proj": {
+   "rush_td": 0.02,
+   "rec": 0.27,
+   "rush_yd": 1.79,
+   "rec_yd": 2.4
+  },
+  "last_wk_pts": null
+ },
+ "2078": {
+  "name": "Odell Beckham",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.32,
+  "proj": {
+   "rec": 0.6,
+   "rec_yd": 7.2,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "12062": {
+  "name": "Cam Grandy",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11474": {
+  "name": "Dylan Drummond",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13413": {
+  "name": "Cyrus Allen",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.38,
+  "proj": {
+   "rec": 0.58,
+   "rec_yd": 7.85,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "12829": {
+  "name": "Coleman Owen",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12773": {
+  "name": "DJ Uiagalelei",
+  "pos": "QB",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12718": {
+  "name": "Konata Mumpfield",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.69,
+  "proj": {
+   "rec": 0.32,
+   "rec_yd": 3.45,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "9481": {
+  "name": "Luke Musgrave",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13419": {
+  "name": "Jaydn Ott",
+  "pos": "RB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12939": {
+  "name": "Anthony Tyus",
+  "pos": "RB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8129": {
+  "name": "Dameon Pierce",
+  "pos": "RB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13281": {
+  "name": "Jordyn Tyson",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13303": {
+  "name": "Cade Klubnik",
+  "pos": "QB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13962": {
+  "name": "Cameron Dorner",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4147": {
+  "name": "Samaje Perine",
+  "pos": "RB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.72,
+  "proj": {
+   "rush_td": 0.15,
+   "rec": 1.55,
+   "rush_yd": 17.85,
+   "rec_yd": 9.84
+  },
+  "last_wk_pts": null
+ },
+ "12538": {
+  "name": "Brady Cook",
+  "pos": "QB",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13010": {
+  "name": "Jordan Waters",
+  "pos": "RB",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7720": {
+  "name": "Kene Nwangwu",
+  "pos": "RB",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.08,
+  "proj": {
+   "rush_td": 0.0,
+   "rec": 0.01,
+   "rush_yd": 0.64,
+   "rec_yd": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13726": {
+  "name": "Camden Brown",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12536": {
+  "name": "Jaylin Noel",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 4.18,
+  "proj": {
+   "rec": 1.78,
+   "rec_yd": 22.33,
+   "rec_td": 0.17
+  },
+  "last_wk_pts": null
+ },
+ "12492": {
+  "name": "Pat Bryant",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.93,
+  "proj": {
+   "rec": 2.73,
+   "rec_yd": 35.06,
+   "rec_td": 0.17
+  },
+  "last_wk_pts": null
+ },
+ "6826": {
+  "name": "Cole Kmet",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.56,
+  "proj": {
+   "rec": 1.96,
+   "rec_yd": 18.6,
+   "rec_td": 0.12
+  },
+  "last_wk_pts": null
+ },
+ "11058": {
+  "name": "Blake Grupe",
+  "pos": "K",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.78,
+  "proj": {
+   "fgm": 1.65,
+   "xpm": 2.3,
+   "fga": 1.95
+  },
+  "last_wk_pts": null
+ },
+ "13276": {
+  "name": "Omar Cooper",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.34,
+  "proj": {
+   "rec": 1.21,
+   "rec_yd": 18.83,
+   "rec_td": 0.12
+  },
+  "last_wk_pts": null
+ },
+ "11210": {
+  "name": "Malik Heath",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13121": {
+  "name": "Ben Yurosek",
+  "pos": "TE",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.2,
+  "proj": {
+   "rec": 0.1,
+   "rec_yd": 0.87,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "3678": {
+  "name": "Wil Lutz",
+  "pos": "K",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.13,
+  "proj": {
+   "fgm": 1.74,
+   "xpm": 2.4,
+   "fga": 2.04
+  },
+  "last_wk_pts": null
+ },
+ "1984": {
+  "name": "Allen Hurns",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13760": {
+  "name": "Jaden Bradley",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6540": {
+  "name": "DeAndre Thompkins",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12217": {
+  "name": "Shawn Bowman",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13804": {
+  "name": "Kansei Matsuzawa",
+  "pos": "K",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6001": {
+  "name": "Drew Sample",
+  "pos": "TE",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.64,
+  "proj": {
+   "rec": 0.92,
+   "rec_yd": 8.16,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "7757": {
+  "name": "Ben Skowronek",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8583": {
+  "name": "Stone Smartt",
+  "pos": "TE",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13343": {
+  "name": "Vinny Anthony",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12984": {
+  "name": "CJ Dippre",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9508": {
+  "name": "Tyjae Spears",
+  "pos": "RB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.8,
+  "proj": {
+   "rush_td": 0.2,
+   "rec": 2.69,
+   "rush_yd": 23.0,
+   "rec_yd": 16.33
+  },
+  "last_wk_pts": null
+ },
+ "11570": {
+  "name": "Rasheen Ali",
+  "pos": "RB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.21,
+  "proj": {
+   "rush_td": 0.0,
+   "rec": 0.08,
+   "rush_yd": 0.44,
+   "rec_yd": 0.65
+  },
+  "last_wk_pts": null
+ },
+ "12534": {
+  "name": "Kyle Monangai",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 6.87,
+  "proj": {
+   "rush_td": 0.25,
+   "rec": 1.12,
+   "rush_yd": 35.31,
+   "rec_yd": 8.95
+  },
+  "last_wk_pts": null
+ },
+ "8195": {
+  "name": "Ronnie Rivers",
+  "pos": "RB",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.17,
+  "proj": {
+   "rush_td": 0.01,
+   "rec": 0.02,
+   "rush_yd": 0.89,
+   "rec_yd": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13890": {
+  "name": "Michael Briscoe",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12154": {
+  "name": "Messiah Swinson",
+  "pos": "TE",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "1642": {
+  "name": "Levine Toilolo",
+  "pos": "TE",
+  "team": "NYG",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13597": {
+  "name": "Matthew Caldwell",
+  "pos": "QB",
+  "team": "LAR",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13533": {
+  "name": "Barion Brown",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.18,
+  "proj": {
+   "rec": 1.05,
+   "rec_yd": 11.76,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "5189": {
+  "name": "Eddy Pineiro",
+  "pos": "K",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.37,
+  "proj": {
+   "fgm": 1.8,
+   "xpm": 2.54,
+   "fga": 2.11
+  },
+  "last_wk_pts": null
+ },
+ "13337": {
+  "name": "Emmett Johnson",
+  "pos": "RB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.44,
+  "proj": {
+   "rush_td": 0.12,
+   "rec": 0.78,
+   "rush_yd": 15.68,
+   "rec_yd": 5.41
+  },
+  "last_wk_pts": null
+ },
+ "2118": {
+  "name": "Eric Ebron",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6290": {
+  "name": "Scotty Miller",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13150": {
+  "name": "Darius Cooper",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.42,
+  "proj": {
+   "rec": 0.2,
+   "rec_yd": 1.95,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "5127": {
+  "name": "Kyle Allen",
+  "pos": "QB",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12497": {
+  "name": "Tory Horton",
+  "pos": "WR",
+  "team": "SEA",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 2.88,
+  "proj": {
+   "rec": 1.21,
+   "rec_yd": 15.92,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "12469": {
+  "name": "Dylan Sampson",
+  "pos": "RB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.68,
+  "proj": {
+   "rush_td": 0.1,
+   "rec": 2.05,
+   "rush_yd": 20.42,
+   "rec_yd": 15.31
+  },
+  "last_wk_pts": null
+ },
+ "13336": {
+  "name": "Dane Key",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4274": {
+  "name": "David Moore",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13179": {
+  "name": "Ja'seem Reed",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13425": {
+  "name": "Jalon Daniels",
+  "pos": "QB",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8219": {
+  "name": "Jelani Woods",
+  "pos": "TE",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "MIA": {
+  "name": "Miami Dolphins",
+  "pos": "DEF",
+  "team": "MIA",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.54,
+  "proj": {
+   "int": 0.57,
+   "pts_allow": 22.0,
+   "sack": 2.78
+  },
+  "last_wk_pts": null
+ },
+ "13297": {
+  "name": "Reggie Virgil",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.29,
+  "proj": {
+   "rec": 0.56,
+   "rec_yd": 7.13,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "7075": {
+  "name": "Charlie Woerner",
+  "pos": "TE",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.59,
+  "proj": {
+   "rec": 0.36,
+   "rec_yd": 2.93,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "12502": {
+  "name": "Gunnar Helm",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.73,
+  "proj": {
+   "rec": 2.98,
+   "rec_yd": 27.96,
+   "rec_td": 0.24
+  },
+  "last_wk_pts": null
+ },
+ "7571": {
+  "name": "Rashod Bateman",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.37,
+  "proj": {
+   "rec": 2.35,
+   "rec_yd": 35.85,
+   "rec_td": 0.26
+  },
+  "last_wk_pts": null
+ },
+ "13120": {
+  "name": "Jacoby Jones",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12210": {
+  "name": "Cole Burgess",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13577": {
+  "name": "Dallen Bentley",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8924": {
+  "name": "Thomas Odukoya",
+  "pos": "TE",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4950": {
+  "name": "Christian Kirk",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12472": {
+  "name": "Raheim Sanders",
+  "pos": "RB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.09,
+  "proj": {
+   "rush_td": 0.0,
+   "rec": 0.02,
+   "rush_yd": 0.62,
+   "rec_yd": 0.15
+  },
+  "last_wk_pts": null
+ },
+ "12865": {
+  "name": "AJ Henning",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13316": {
+  "name": "Eric Rivers",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4454": {
+  "name": "Kendrick Bourne",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.89,
+  "proj": {
+   "rec": 1.78,
+   "rec_yd": 23.43,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "12498": {
+  "name": "Mason Taylor",
+  "pos": "TE",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.38,
+  "proj": {
+   "rec": 2.53,
+   "rec_yd": 23.4,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "10218": {
+  "name": "Xavier Hutchinson",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.49,
+  "proj": {
+   "rec": 1.39,
+   "rec_yd": 19.15,
+   "rec_td": 0.14
+  },
+  "last_wk_pts": null
+ },
+ "6154": {
+  "name": "David Sills",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6931": {
+  "name": "DeeJay Dallas",
+  "pos": "RB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11623": {
+  "name": "Jordan Whittington",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.51,
+  "proj": {
+   "rec": 0.24,
+   "rec_yd": 2.35,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "4995": {
+  "name": "Ian Thomas",
+  "pos": "TE",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.24,
+  "proj": {
+   "rec": 0.12,
+   "rec_yd": 1.16,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "9225": {
+  "name": "Tank Bigsby",
+  "pos": "RB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.58,
+  "proj": {
+   "rush_td": 0.16,
+   "rec": 0.78,
+   "rush_yd": 22.87,
+   "rec_yd": 6.06
+  },
+  "last_wk_pts": null
+ },
+ "13411": {
+  "name": "Zavion Thomas",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.66,
+  "proj": {
+   "rec": 1.17,
+   "rec_yd": 14.23,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13407": {
+  "name": "Carson Towt",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13348": {
+  "name": "J'Mari Taylor",
+  "pos": "RB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "BUF": {
+  "name": "Buffalo Bills",
+  "pos": "DEF",
+  "team": "BUF",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.82,
+  "proj": {
+   "int": 0.73,
+   "pts_allow": 21.75,
+   "sack": 2.42
+  },
+  "last_wk_pts": null
+ },
+ "9757": {
+  "name": "Kendre Miller",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 1.56,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.36,
+   "rush_yd": 6.88,
+   "rec_yd": 2.34
+  },
+  "last_wk_pts": null
+ },
+ "7670": {
+  "name": "Joshua Palmer",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.63,
+  "proj": {
+   "rec": 0.68,
+   "rec_yd": 10.48,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "12547": {
+  "name": "Kyle Williams",
+  "pos": "WR",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.22,
+  "proj": {
+   "rec": 0.08,
+   "rec_yd": 1.02,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "3333": {
+  "name": "Temarrick Hemingway",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8123": {
+  "name": "Hassan Haskins",
+  "pos": "RB",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3161": {
+  "name": "Carson Wentz",
+  "pos": "QB",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12705": {
+  "name": "Graham Mertz",
+  "pos": "QB",
+  "team": "HOU",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7600": {
+  "name": "Pat Freiermuth",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.82,
+  "proj": {
+   "rec": 2.99,
+   "rec_yd": 29.48,
+   "rec_td": 0.23
+  },
+  "last_wk_pts": null
+ },
+ "8527": {
+  "name": "Dareke Young",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.35,
+  "proj": {
+   "rec": 0.17,
+   "rec_yd": 2.05,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "11199": {
+  "name": "Emari Demercado",
+  "pos": "RB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12860": {
+  "name": "Theo Wease",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4922": {
+  "name": "Garrett Scantling",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12486": {
+  "name": "Dillon Gabriel",
+  "pos": "QB",
+  "team": "CLE",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10212": {
+  "name": "Josh Whyle",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.3,
+  "proj": {
+   "rec": 0.72,
+   "rec_yd": 6.36,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "11381": {
+  "name": "Travis Vokolek",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11729": {
+  "name": "Sione Vaki",
+  "pos": "RB",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.44,
+  "proj": {
+   "rush_td": 0.02,
+   "rec": 0.05,
+   "rush_yd": 2.63,
+   "rec_yd": 0.31
+  },
+  "last_wk_pts": null
+ },
+ "11562": {
+  "name": "Spencer Rattler",
+  "pos": "QB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8230": {
+  "name": "Ty Chandler",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6011": {
+  "name": "Gardner Minshew",
+  "pos": "QB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "SF": {
+  "name": "San Francisco 49ers",
+  "pos": "DEF",
+  "team": "SF",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.15,
+  "proj": {
+   "int": 0.64,
+   "pts_allow": 25.75,
+   "sack": 2.15
+  },
+  "last_wk_pts": null
+ },
+ "6136": {
+  "name": "Jarrett Stidham",
+  "pos": "QB",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12494": {
+  "name": "Kyle McCord",
+  "pos": "QB",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11626": {
+  "name": "Xavier Legette",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 2.5,
+  "proj": {
+   "rec": 1.04,
+   "rec_yd": 12.98,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "11582": {
+  "name": "Carson Steele",
+  "pos": "RB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11637": {
+  "name": "Keon Coleman",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.64,
+  "proj": {
+   "rec": 1.34,
+   "rec_yd": 19.89,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "9489": {
+  "name": "Justin Shorter",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11573": {
+  "name": "Frank Gore",
+  "pos": "RB",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13408": {
+  "name": "Tanner Koziol",
+  "pos": "TE",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.99,
+  "proj": {
+   "rec": 0.5,
+   "rec_yd": 4.99,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "12817": {
+  "name": "Jake Briningstool",
+  "pos": "TE",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5857": {
+  "name": "Noah Fant",
+  "pos": "TE",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.66,
+  "proj": {
+   "rec": 1.44,
+   "rec_yd": 13.44,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "12500": {
+  "name": "Quinn Ewers",
+  "pos": "QB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5154": {
+  "name": "Trent Sherfield",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12520": {
+  "name": "Xavier Restrepo",
+  "pos": "WR",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8204": {
+  "name": "Bo Melton",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.64,
+  "proj": {
+   "rec": 0.66,
+   "rec_yd": 8.24,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13477": {
+  "name": "Colbie Young",
+  "pos": "WR",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.19,
+  "proj": {
+   "rec": 0.95,
+   "rec_yd": 11.51,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "12521": {
+  "name": "Elijah Arroyo",
+  "pos": "TE",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.19,
+  "proj": {
+   "rec": 1.43,
+   "rec_yd": 17.59,
+   "rec_td": 0.12
+  },
+  "last_wk_pts": null
+ },
+ "12484": {
+  "name": "Jayden Higgins",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7595": {
+  "name": "Tylan Wallace",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.48,
+  "proj": {
+   "rec": 0.22,
+   "rec_yd": 2.52,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "13645": {
+  "name": "Michael Wortham",
+  "pos": "WR",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13404": {
+  "name": "Garrett Nussmeier",
+  "pos": "QB",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11942": {
+  "name": "Colson Yankoff",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13436": {
+  "name": "Kentrel Bullock",
+  "pos": "RB",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3202": {
+  "name": "Austin Hooper",
+  "pos": "TE",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.14,
+  "proj": {
+   "rec": 1.11,
+   "rec_yd": 11.01,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "11377": {
+  "name": "Tyrell Shavers",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8202": {
+  "name": "Michael Woods",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11600": {
+  "name": "Ja'Tavion Sanders",
+  "pos": "TE",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.18,
+  "proj": {
+   "rec": 0.71,
+   "rec_yd": 5.85,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "12713": {
+  "name": "Andy Borregales",
+  "pos": "K",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.13,
+  "proj": {
+   "fgm": 1.64,
+   "xpm": 2.4,
+   "fga": 1.99
+  },
+  "last_wk_pts": null
+ },
+ "9230": {
+  "name": "Tanner McKee",
+  "pos": "QB",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5008": {
+  "name": "Durham Smythe",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.67,
+  "proj": {
+   "rec": 0.36,
+   "rec_yd": 3.68,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "9754": {
+  "name": "Quentin Johnston",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 9.39,
+  "proj": {
+   "rec": 3.42,
+   "rec_yd": 50.08,
+   "rec_td": 0.42
+  },
+  "last_wk_pts": null
+ },
+ "NYG": {
+  "name": "New York Giants",
+  "pos": "DEF",
+  "team": "NYG",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.17,
+  "proj": {
+   "int": 0.63,
+   "pts_allow": 25.5,
+   "sack": 2.21
+  },
+  "last_wk_pts": null
+ },
+ "13288": {
+  "name": "Nicholas Singleton",
+  "pos": "RB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.53,
+  "proj": {
+   "rush_td": 0.07,
+   "rec": 0.11,
+   "rush_yd": 9.43,
+   "rec_yd": 0.7
+  },
+  "last_wk_pts": null
+ },
+ "6453": {
+  "name": "D.J. Montgomery",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12503": {
+  "name": "Isaiah Bond",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.87,
+  "proj": {
+   "rec": 0.56,
+   "rec_yd": 9.67,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "13433": {
+  "name": "Riley Nowakowski",
+  "pos": "TE",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.36,
+  "proj": {
+   "rec": 0.22,
+   "rec_yd": 1.93,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "13210": {
+  "name": "Drake Dabney",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7618": {
+  "name": "Micah Simon",
+  "pos": "WR",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11625": {
+  "name": "Adonai Mitchell",
+  "pos": "WR",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.49,
+  "proj": {
+   "rec": 1.96,
+   "rec_yd": 33.47,
+   "rec_td": 0.19
+  },
+  "last_wk_pts": null
+ },
+ "12389": {
+  "name": "Hayden Rucci",
+  "pos": "TE",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13274": {
+  "name": "Germie Bernard",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.39,
+  "proj": {
+   "rec": 1.91,
+   "rec_yd": 24.28,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "12471": {
+  "name": "DJ Giddens",
+  "pos": "RB",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.19,
+  "proj": {
+   "rush_td": 0.02,
+   "rec": 0.4,
+   "rush_yd": 5.09,
+   "rec_yd": 2.61
+  },
+  "last_wk_pts": null
+ },
+ "12467": {
+  "name": "Jordan James",
+  "pos": "RB",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.53,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.28,
+   "rush_yd": 8.07,
+   "rec_yd": 1.84
+  },
+  "last_wk_pts": null
+ },
+ "13305": {
+  "name": "Mike Washington",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.25,
+  "proj": {
+   "rush_td": 0.15,
+   "rec": 0.9,
+   "rush_yd": 20.44,
+   "rec_yd": 5.76
+  },
+  "last_wk_pts": null
+ },
+ "6529": {
+  "name": "Chris Myarick",
+  "pos": "TE",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12938": {
+  "name": "Jackson Meeks",
+  "pos": "TE",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4937": {
+  "name": "Al Riles",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "650": {
+  "name": "Nick Folk",
+  "pos": "K",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.07,
+  "proj": {
+   "fgm": 1.63,
+   "xpm": 2.28,
+   "fga": 1.87
+  },
+  "last_wk_pts": null
+ },
+ "11762": {
+  "name": "Anthony Gould",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7602": {
+  "name": "Kylen Granson",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.11,
+  "proj": {
+   "rec": 0.07,
+   "rec_yd": 0.79,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "12516": {
+  "name": "Kalel Mullings",
+  "pos": "RB",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12357": {
+  "name": "David Martin-Robinson",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "3668": {
+  "name": "Joshua Perkins",
+  "pos": "TE",
+  "team": "NYJ",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13315": {
+  "name": "Dean Connors",
+  "pos": "RB",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6039": {
+  "name": "Ty Johnson",
+  "pos": "RB",
+  "team": "BUF",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 3.43,
+  "proj": {
+   "rush_td": 0.09,
+   "rec": 1.06,
+   "rush_yd": 10.63,
+   "rec_yd": 8.13
+  },
+  "last_wk_pts": null
+ },
+ "6803": {
+  "name": "Brandon Aiyuk",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": "DNR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12544": {
+  "name": "LeQuint Allen",
+  "pos": "RB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 2.25,
+  "proj": {
+   "rush_td": 0.03,
+   "rec": 1.06,
+   "rush_yd": 5.53,
+   "rec_yd": 6.45
+  },
+  "last_wk_pts": null
+ },
+ "13870": {
+  "name": "Quentin Moore",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11421": {
+  "name": "Ryan Miller",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4144": {
+  "name": "Jonnu Smith",
+  "pos": "TE",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.75,
+  "proj": {
+   "rec": 1.55,
+   "rec_yd": 13.15,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "13346": {
+  "name": "Denzel Boston",
+  "pos": "WR",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.44,
+  "proj": {
+   "rec": 2.68,
+   "rec_yd": 37.82,
+   "rec_td": 0.21
+  },
+  "last_wk_pts": null
+ },
+ "8249": {
+  "name": "Lucas Krull",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13712": {
+  "name": "Hayden Large",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13345": {
+  "name": "Jonah Coleman",
+  "pos": "RB",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.43,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.8,
+   "rush_yd": 9.68,
+   "rec_yd": 4.85
+  },
+  "last_wk_pts": null
+ },
+ "11168": {
+  "name": "Xavier Smith",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.87,
+  "proj": {
+   "rec": 0.35,
+   "rec_yd": 4.75,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "6853": {
+  "name": "Van Jefferson",
+  "pos": "WR",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13293": {
+  "name": "Ja'Kobi Lane",
+  "pos": "WR",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.29,
+  "proj": {
+   "rec": 1.65,
+   "rec_yd": 25.06,
+   "rec_td": 0.16
+  },
+  "last_wk_pts": null
+ },
+ "8489": {
+  "name": "Drew Ogletree",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.34,
+  "proj": {
+   "rec": 0.19,
+   "rec_yd": 1.89,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "8801": {
+  "name": "Dennis Houston",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Inactive",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11851": {
+  "name": "Carter Bradley",
+  "pos": "QB",
+  "team": "JAX",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6528": {
+  "name": "Joey Slye",
+  "pos": "K",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.99,
+  "proj": {
+   "fgm": 1.73,
+   "xpm": 2.13,
+   "fga": 2.07
+  },
+  "last_wk_pts": null
+ },
+ "13122": {
+  "name": "Carter Runyon",
+  "pos": "TE",
+  "team": "LV",
+  "status": "Active",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8168": {
+  "name": "Skyy Moore",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.15,
+  "proj": {
+   "rec": 0.07,
+   "rec_yd": 0.83,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "9497": {
+  "name": "Jalin Hyatt",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "CHI": {
+  "name": "Chicago Bears",
+  "pos": "DEF",
+  "team": "CHI",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.02,
+  "proj": {
+   "int": 0.75,
+   "pts_allow": 22.0,
+   "sack": 2.56
+  },
+  "last_wk_pts": null
+ },
+ "9492": {
+  "name": "Trey Palmer",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8122": {
+  "name": "Zonovan Knight",
+  "pos": "RB",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11508": {
+  "name": "Princeton Fant",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13402": {
+  "name": "Skyler Bell",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.9,
+  "proj": {
+   "rec": 0.37,
+   "rec_yd": 4.5,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "8127": {
+  "name": "Charlie Kolar",
+  "pos": "TE",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.18,
+  "proj": {
+   "rec": 1.67,
+   "rec_yd": 16.34,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "12883": {
+  "name": "Joshua Simon",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6175": {
+  "name": "Kerrith Whyte",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4718": {
+  "name": "Dare Ogunbowale",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7559": {
+  "name": "Ihmir Smith-Marsette",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5744": {
+  "name": "Eldridge Massington",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8200": {
+  "name": "Kevin Austin",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7528": {
+  "name": "Najee Harris",
+  "pos": "RB",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.52,
+  "proj": {
+   "rush_td": 0.15,
+   "rec": 0.47,
+   "rush_yd": 20.07,
+   "rec_yd": 2.81
+  },
+  "last_wk_pts": null
+ },
+ "CIN": {
+  "name": "Cincinnati Bengals",
+  "pos": "DEF",
+  "team": "CIN",
+  "status": null,
+  "injury": null,
+  "proj_pts": 5.58,
+  "proj": {
+   "int": 0.72,
+   "pts_allow": 23.5,
+   "sack": 2.54
+  },
+  "last_wk_pts": null
+ },
+ "9482": {
+  "name": "Michael Mayer",
+  "pos": "TE",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.07,
+  "proj": {
+   "rec": 1.75,
+   "rec_yd": 16.76,
+   "rec_td": 0.09
+  },
+  "last_wk_pts": null
+ },
+ "138": {
+  "name": "Ben Roethlisberger",
+  "pos": "QB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "2020": {
+  "name": "Cairo Santos",
+  "pos": "K",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.47,
+  "proj": {
+   "fgm": 1.85,
+   "xpm": 2.55,
+   "fga": 2.16
+  },
+  "last_wk_pts": null
+ },
+ "7042": {
+  "name": "Tyler Bass",
+  "pos": "K",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.03,
+  "proj": {
+   "fgm": 1.66,
+   "xpm": 2.55,
+   "fga": 1.96
+  },
+  "last_wk_pts": null
+ },
+ "8800": {
+  "name": "Malik Davis",
+  "pos": "RB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.26,
+  "proj": {
+   "rush_td": 0.2,
+   "rec": 0.58,
+   "rush_yd": 21.96,
+   "rec_yd": 4.1
+  },
+  "last_wk_pts": null
+ },
+ "14038": {
+  "name": "Trayvon Rudolph",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13278": {
+  "name": "Max Klare",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.32,
+  "proj": {
+   "rec": 0.68,
+   "rec_yd": 6.82,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "11558": {
+  "name": "Sam Hartman",
+  "pos": "QB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10235": {
+  "name": "Roschon Johnson",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.26,
+  "proj": {
+   "rush_td": 0.02,
+   "rush_yd": 1.44
+  },
+  "last_wk_pts": null
+ },
+ "3155": {
+  "name": "Laquon Treadwell",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8162": {
+  "name": "Sam Howell",
+  "pos": "QB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13434": {
+  "name": "Will Kacmarek",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.17,
+  "proj": {
+   "rec": 1.75,
+   "rec_yd": 16.3,
+   "rec_td": 0.11
+  },
+  "last_wk_pts": null
+ },
+ "6012": {
+  "name": "Travis Homer",
+  "pos": "RB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4349": {
+  "name": "Taquan Mizzell",
+  "pos": "RB",
+  "team": "NYG",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8041": {
+  "name": "Shane Zylstra",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4035": {
+  "name": "Alvin Kamara",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 2.9,
+  "proj": {
+   "rush_td": 0.1,
+   "rec": 0.83,
+   "rush_yd": 13.11,
+   "rec_yd": 4.76
+  },
+  "last_wk_pts": null
+ },
+ "8756": {
+  "name": "Brandon Johnson",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11320": {
+  "name": "Nikko Remigio",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.1,
+  "proj": {
+   "rec": 0.04,
+   "rec_yd": 0.68,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "13308": {
+  "name": "Bauer Sharp",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11716": {
+  "name": "Tip Reiman",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13319": {
+  "name": "Oscar Delp",
+  "pos": "TE",
+  "team": "NO",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 1.81,
+  "proj": {
+   "rec": 1.02,
+   "rec_yd": 9.4,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "11783": {
+  "name": "Ryan Flournoy",
+  "pos": "WR",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.0,
+  "proj": {
+   "rec": 2.54,
+   "rec_yd": 33.1,
+   "rec_td": 0.21
+  },
+  "last_wk_pts": null
+ },
+ "4683": {
+  "name": "Aaron Bailey",
+  "pos": "QB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10871": {
+  "name": "Luke Schoonmaker",
+  "pos": "TE",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.18,
+  "proj": {
+   "rec": 0.64,
+   "rec_yd": 6.17,
+   "rec_td": 0.04
+  },
+  "last_wk_pts": null
+ },
+ "11435": {
+  "name": "Emanuel Wilson",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.32,
+  "proj": {
+   "rush_td": 0.09,
+   "rec": 0.29,
+   "rush_yd": 13.15,
+   "rec_yd": 1.97
+  },
+  "last_wk_pts": null
+ },
+ "12746": {
+  "name": "JP Richardson",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "10231": {
+  "name": "Elijah Higgins",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.44,
+  "proj": {
+   "rec": 1.38,
+   "rec_yd": 12.73,
+   "rec_td": 0.08
+  },
+  "last_wk_pts": null
+ },
+ "4972": {
+  "name": "Mason Rudolph",
+  "pos": "QB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9227": {
+  "name": "Israel Abanikanda",
+  "pos": "RB",
+  "team": "DAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11113": {
+  "name": "Joel Wilson",
+  "pos": "TE",
+  "team": "TEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5970": {
+  "name": "Greg Dortch",
+  "pos": "WR",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13075": {
+  "name": "Myles Price",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11433": {
+  "name": "Nate Adkins",
+  "pos": "TE",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.26,
+  "proj": {
+   "rec": 0.14,
+   "rec_yd": 1.29,
+   "rec_td": 0.01
+  },
+  "last_wk_pts": null
+ },
+ "9502": {
+  "name": "Tank Dell",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "2307": {
+  "name": "Marcus Mariota",
+  "pos": "QB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11056": {
+  "name": "Jared Wayne",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6149": {
+  "name": "Darius Slayton",
+  "pos": "WR",
+  "team": "NYG",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8214": {
+  "name": "Cole Turner",
+  "pos": "TE",
+  "team": "MIA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4017": {
+  "name": "Deshaun Watson",
+  "pos": "QB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 14.1,
+  "proj": {
+   "pass_yd": 207.56,
+   "pass_int": 0.74,
+   "pass_td": 1.23,
+   "rush_yd": 11.16
+  },
+  "last_wk_pts": null
+ },
+ "4464": {
+  "name": "Nick Mullens",
+  "pos": "QB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13011": {
+  "name": "Brennan Presley",
+  "pos": "WR",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13329": {
+  "name": "Malik Benson",
+  "pos": "WR",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {
+   "rec": 0.0,
+   "rec_yd": 0.04,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "8139": {
+  "name": "Zamir White",
+  "pos": "RB",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11588": {
+  "name": "Jawhar Jordan",
+  "pos": "RB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5095": {
+  "name": "Daniel Carlson",
+  "pos": "K",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 6.21,
+  "proj": {
+   "fgm": 1.76,
+   "xpm": 2.37,
+   "fga": 2.07
+  },
+  "last_wk_pts": null
+ },
+ "13630": {
+  "name": "Evan Svoboda",
+  "pos": "TE",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12510": {
+  "name": "Jalen Milroe",
+  "pos": "QB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11963": {
+  "name": "Chris Collier",
+  "pos": "RB",
+  "team": "LV",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11034": {
+  "name": "Jalen Brooks",
+  "pos": "WR",
+  "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.2,
+  "proj": {
+   "rec": 0.51,
+   "rec_yd": 6.41,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "12045": {
+  "name": "Jack Westover",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6451": {
+  "name": "Stephen Carlson",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12670": {
+  "name": "KeAndre Lambert-Smith",
+  "pos": "WR",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.74,
+  "proj": {
+   "rec": 0.33,
+   "rec_yd": 3.71,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "13306": {
+  "name": "Taylen Green",
+  "pos": "QB",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11256": {
+  "name": "Tyson Bagent",
+  "pos": "QB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13770": {
+  "name": "J. Michael Sturdivant",
+  "pos": "WR",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11911": {
+  "name": "Jeshaun Jones",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": "Sus",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4490": {
+  "name": "Wyatt Houston",
+  "pos": "TE",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13317": {
+  "name": "Ted Hurst",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.61,
+  "proj": {
+   "rec": 1.03,
+   "rec_yd": 14.37,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13435": {
+  "name": "Joe Royer",
+  "pos": "TE",
+  "team": "CLE",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7865": {
+  "name": "Brandon Smith",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13580": {
+  "name": "Carsen Ryan",
+  "pos": "TE",
+  "team": "CLE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5850": {
+  "name": "Josh Jacobs",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": "NA",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "9753": {
+  "name": "Zach Charbonnet",
+  "pos": "RB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": "PUP",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12267": {
+  "name": "Qadir Ismail",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4314": {
+  "name": "Johnny Mundt",
+  "pos": "TE",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.79,
+  "proj": {
+   "rec": 0.4,
+   "rec_yd": 4.07,
+   "rec_td": 0.03
+  },
+  "last_wk_pts": null
+ },
+ "7527": {
+  "name": "Mac Jones",
+  "pos": "QB",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13350": {
+  "name": "Joe Fagnano",
+  "pos": "QB",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13491": {
+  "name": "Kaden Wetjen",
+  "pos": "WR",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.09,
+  "proj": {
+   "rec": 0.04,
+   "rec_yd": 0.49,
+   "rec_td": 0.0
+  },
+  "last_wk_pts": null
+ },
+ "13289": {
+  "name": "Drew Allar",
+  "pos": "QB",
+  "team": "PIT",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6588": {
+  "name": "Tom Kennedy",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13338": {
+  "name": "Kevin Coleman",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.19,
+  "proj": {
+   "rec": 1.07,
+   "rec_yd": 12.34,
+   "rec_td": 0.07
+  },
+  "last_wk_pts": null
+ },
+ "13322": {
+  "name": "Sam Roush",
+  "pos": "TE",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.51,
+  "proj": {
+   "rec": 0.84,
+   "rec_yd": 7.88,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "13314": {
+  "name": "Luke Altmyer",
+  "pos": "QB",
+  "team": "DET",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "8176": {
+  "name": "Danny Gray",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11643": {
+  "name": "Jaylen Wright",
+  "pos": "RB",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.45,
+  "proj": {
+   "rush_td": 0.06,
+   "rec": 0.63,
+   "rush_yd": 10.69,
+   "rec_yd": 4.87
+  },
+  "last_wk_pts": null
+ },
+ "13827": {
+  "name": "Tanner Arkin",
+  "pos": "TE",
+  "team": "NE",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12658": {
+  "name": "Jackson Hawes",
+  "pos": "TE",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.72,
+  "proj": {
+   "rec": 0.92,
+   "rec_yd": 8.97,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "13602": {
+  "name": "Jack Strand",
+  "pos": "QB",
+  "team": "ATL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12788": {
+  "name": "Will Sheppard",
+  "pos": "WR",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11506": {
+  "name": "Jalen Moreno-Cropper",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12797": {
+  "name": "Ahmani Marshall",
+  "pos": "RB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "4033": {
+  "name": "David Njoku",
+  "pos": "TE",
+  "team": "LAC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.17,
+  "proj": {
+   "rec": 1.61,
+   "rec_yd": 15.86,
+   "rec_td": 0.13
+  },
+  "last_wk_pts": null
+ },
+ "13621": {
+  "name": "Dillon Bell",
+  "pos": "WR",
+  "team": "MIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13324": {
+  "name": "Matt Hibner",
+  "pos": "TE",
+  "team": "BAL",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.47,
+  "proj": {
+   "rec": 0.72,
+   "rec_yd": 7.52,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "13861": {
+  "name": "Daniel Sobkowicz",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "5409": {
+  "name": "Tanner Hudson",
+  "pos": "TE",
+  "team": "CIN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13663": {
+  "name": "Wesley Grimes",
+  "pos": "WR",
+  "team": "SF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "12889": {
+  "name": "Beaux Collins",
+  "pos": "WR",
+  "team": "ATL",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11068": {
+  "name": "Mitch Tinsley",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11575": {
+  "name": "Ray Davis",
+  "pos": "RB",
+  "team": "BUF",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 3.54,
+  "proj": {
+   "rush_td": 0.1,
+   "rec": 0.7,
+   "rush_yd": 18.23,
+   "rec_yd": 5.47
+  },
+  "last_wk_pts": null
+ },
+ "12485": {
+  "name": "Tez Johnson",
+  "pos": "WR",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 2.23,
+  "proj": {
+   "rec": 0.86,
+   "rec_yd": 11.46,
+   "rec_td": 0.1
+  },
+  "last_wk_pts": null
+ },
+ "13981": {
+  "name": "Kolbe Katsis",
+  "pos": "WR",
+  "team": "DEN",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13541": {
+  "name": "Lewis Bond",
+  "pos": "WR",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13913": {
+  "name": "Patrick Gurd",
+  "pos": "TE",
+  "team": "LV",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13879": {
+  "name": "Jameson Geers",
+  "pos": "TE",
+  "team": "ARI",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13437": {
+  "name": "Noah Whittington",
+  "pos": "RB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6992": {
+  "name": "Michael Warren",
+  "pos": "RB",
+  "team": "DET",
+  "status": "Inactive",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "7716": {
+  "name": "John Bates",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": "Questionable",
+  "proj_pts": 1.69,
+  "proj": {
+   "rec": 0.9,
+   "rec_yd": 8.75,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "13333": {
+  "name": "Deion Burks",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.65,
+  "proj": {
+   "rec": 0.33,
+   "rec_yd": 3.69,
+   "rec_td": 0.02
+  },
+  "last_wk_pts": null
+ },
+ "5638": {
+  "name": "Shaq Roland",
+  "pos": "WR",
+  "team": "CHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6427": {
+  "name": "Ashton Dulin",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.62,
+  "proj": {
+   "rec": 0.71,
+   "rec_yd": 8.61,
+   "rec_td": 0.06
+  },
+  "last_wk_pts": null
+ },
+ "6828": {
+  "name": "AJ Dillon",
+  "pos": "RB",
+  "team": "CAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11820": {
+  "name": "Devin Culp",
+  "pos": "TE",
+  "team": "TB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "MIN": {
+  "name": "Minnesota Vikings",
+  "pos": "DEF",
+  "team": "MIN",
+  "status": null,
+  "injury": null,
+  "proj_pts": 6.51,
+  "proj": {
+   "int": 0.77,
+   "pts_allow": 22.5,
+   "sack": 2.59
+  },
+  "last_wk_pts": null
+ },
+ "11599": {
+  "name": "Cade Stover",
+  "pos": "TE",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.36,
+  "proj": {
+   "rec": 0.73,
+   "rec_yd": 6.5,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "8188": {
+  "name": "Tyquan Thornton",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.26,
+  "proj": {
+   "rec": 1.43,
+   "rec_yd": 24.03,
+   "rec_td": 0.19
+  },
+  "last_wk_pts": null
+ },
+ "4936": {
+  "name": "Skyler Howard",
+  "pos": "QB",
+  "team": "SEA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "6865": {
+  "name": "Colby Parkinson",
+  "pos": "TE",
+  "team": "LAR",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.34,
+  "proj": {
+   "rec": 2.16,
+   "rec_yd": 20.59,
+   "rec_td": 0.2
+  },
+  "last_wk_pts": null
+ },
+ "13294": {
+  "name": "Makai Lemon",
+  "pos": "WR",
+  "team": "PHI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 4.93,
+  "proj": {
+   "rec": 2.14,
+   "rec_yd": 27.31,
+   "rec_td": 0.18
+  },
+  "last_wk_pts": null
+ },
+ "7922": {
+  "name": "Riley Patterson",
+  "pos": "K",
+  "team": "MIA",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.34,
+  "proj": {
+   "fgm": 1.45,
+   "xpm": 1.68,
+   "fga": 1.73
+  },
+  "last_wk_pts": null
+ },
+ "12505": {
+  "name": "Jalen Royals",
+  "pos": "WR",
+  "team": "KC",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 1.29,
+  "proj": {
+   "rec": 0.51,
+   "rec_yd": 7.17,
+   "rec_td": 0.05
+  },
+  "last_wk_pts": null
+ },
+ "3309": {
+  "name": "Wendell Smallwood",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13412": {
+  "name": "Kendrick Law",
+  "pos": "WR",
+  "team": "DET",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ }
+}
