@@ -1,126 +1,99 @@
 {
- "claims": [
-  {
-   "team": "coach-taylor",
-   "add": "1166",
-   "drop": null,
-   "bid": 25,
-   "reasoning": "Kirk Cousins - a pro who has shown up and done his job everywhere; $25 is our genuine-need ceiling, panic spending isn't how we run a program",
-   "reason": "highest bid $25 (next best $17)",
-   "status": "won"
-  },
-  {
-   "team": "coach-taylor",
-   "add": "12522",
-   "drop": null,
-   "bid": 15,
-   "reasoning": "Ward - zero-star kid who earned his way to the top of a draft; that story matters",
-   "status": "lost",
-   "reason": "outbid on 12522: leon-black bid $41 (your bid $15)"
-  },
-  {
-   "team": "costanza",
-   "add": "1166",
-   "drop": null,
-   "bid": 17,
-   "reasoning": "Cousins is the most anonymous possible way to be wrong; seventeen because fifteen is the number they're expecting",
-   "status": "lost",
-   "reason": "outbid on 1166: coach-taylor bid $25 (your bid $17)"
-  },
-  {
-   "team": "costanza",
-   "add": "3257",
-   "drop": "8142",
-   "bid": 4,
-   "reasoning": "Brissett behind him, Pierce out the door",
-   "reason": "uncontested claim, bid $4",
-   "status": "won"
-  },
-  {
-   "team": "costanza",
-   "add": "1373",
-   "drop": null,
-   "bid": 2,
-   "reasoning": "Geno behind THAT - a man who has been to zero quarterbacks does not go back to zero quarterbacks",
-   "reason": "uncontested claim, bid $2",
-   "status": "won"
-  },
-  {
-   "team": "harry-caray",
-   "add": "8132",
-   "drop": "8121",
-   "bid": 11,
-   "reasoning": "A friendly eleven bucks on Tyler Allgeier of the Cardinals - sorry Romeo, you can't win 'em all, kid!",
-   "status": "skipped",
-   "reason": "drop player 8121 not on roster (already gone)"
-  },
-  {
-   "team": "leon-black",
-   "add": "12522",
-   "drop": "9754",
-   "bid": 41,
-   "reasoning": "Buying the entire quarterback aisle - Ward first. Now the only QB store in town is Leon's",
-   "reason": "highest bid $41 (next best $15)",
-   "status": "won"
-  },
-  {
-   "team": "leon-black",
-   "add": "96",
-   "drop": "10232",
-   "bid": 26,
-   "reasoning": "Rodgers too. Taylor and Costanza can shop at my prices",
-   "status": "lost",
-   "reason": "outbid on 96: rinna bid $55 (your bid $26)"
-  },
-  {
-   "team": "meyer-walsh",
-   "add": "10219",
-   "drop": "11834",
-   "bid": 21,
-   "reasoning": "Gary: a small sensible $21 on Chris Rodriguez, which she called adorable",
-   "status": "lost",
-   "reason": "outbid on 10219: dumbledore bid $38 (your bid $21)"
-  },
-  {
-   "team": "dumbledore",
-   "add": "10219",
-   "drop": null,
-   "bid": 38,
-   "reasoning": "More gold than sense allows on a running back nobody in this league has said aloud in a month. Ask me again in October.",
-   "reason": "highest bid $38 (next best $21)",
-   "status": "won"
-  },
-  {
-   "team": "rinna",
-   "add": "96",
-   "drop": "13279",
-   "bid": 55,
-   "reasoning": "$55 on Aaron Rodgers when I already have two starting QBs, because some legends aren't about need, they're about NOISE. Carnell Tate can walk the plank \u2014 you weren't generating content, baby.",
-   "reason": "highest bid $55 (next best $37)",
-   "status": "won"
-  },
-  {
-   "team": "patricia-moyer",
-   "add": "96",
-   "drop": "8172",
-   "bid": 37,
-   "reasoning": "Aaron Rodgers - a man the whole league wrote off who is still proving he doesn't need their permission. I have literally highlighted that chapter. Dropping Dulcich: release what isn't serving you.",
-   "status": "lost",
-   "reason": "outbid on 96: rinna bid $55 (your bid $37)"
+  "claims": [
+    {
+      "add": "4017",
+      "bid": 37,
+      "drop": "3214",
+      "reason": "outbid on 4017: rinna bid $58 (your bid $37)",
+      "reasoning": "Holy cow, DE-SHAUN WATSON, that's a Hall of Fame arm \u2014 I want him in my dugout.",
+      "status": "lost",
+      "team": "harry-caray"
+    },
+    {
+      "add": "12474",
+      "bid": 32,
+      "drop": null,
+      "reason": "uncontested claim, bid $32",
+      "reasoning": "A Texans rookie on national TV writes his own headline.",
+      "status": "won",
+      "team": "kardashian"
+    },
+    {
+      "add": "9511",
+      "bid": 6,
+      "drop": null,
+      "reason": "uncontested claim, bid $6",
+      "reasoning": "A lottery ticket on a highlight reel I've already seen go viral once.",
+      "status": "won",
+      "team": "kardashian"
+    },
+    {
+      "add": "96",
+      "bid": 32,
+      "drop": "12711",
+      "reason": "uncontested claim, bid $32",
+      "reasoning": "Rodgers and Watson are both still sitting on the wire \u2014 buying both, cutting my kicker to do it.",
+      "status": "won",
+      "team": "leon-black"
+    },
+    {
+      "add": "4017",
+      "bid": 18,
+      "drop": null,
+      "reason": "outbid on 4017: rinna bid $58 (your bid $18)",
+      "reasoning": "Owning the entire quarterback position.",
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "13279",
+      "bid": 32,
+      "drop": "8172",
+      "reason": "highest bid $32 (next best $7)",
+      "reasoning": "Tate confirmed himself the moment I noticed the surname. $18 over my own estimate, on purpose, as a statement.",
+      "status": "won",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "4017",
+      "bid": 58,
+      "drop": "11604",
+      "reason": "insufficient FAAB: bid $58 exceeds remaining $45",
+      "reasoning": "A goose egg with no plotline is the one unforgivable stat in my building.",
+      "status": "skipped",
+      "team": "rinna"
+    },
+    {
+      "add": "13279",
+      "bid": 7,
+      "drop": "7587",
+      "reason": "outbid on 13279: patricia-moyer bid $32 (your bid $7)",
+      "reasoning": "Giving Dyami Brown a proper burial, bringing in a body that can actually catch a football.",
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "7600",
+      "bid": 6,
+      "drop": "7567",
+      "reason": "uncontested claim, bid $6",
+      "reasoning": "My cabinet's stacked at running back and bare at tight end \u2014 that's not a crisis, that's a Tuesday.",
+      "status": "won",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 75,
+    "costanza": 94,
+    "dumbledore": 62,
+    "harry-caray": 100,
+    "kardashian": 62,
+    "leon-black": 27,
+    "maura-higgins": 100,
+    "meyer-walsh": 100,
+    "patricia-moyer": 68,
+    "rinna": 45,
+    "wifes-team": 100,
+    "your-team": 94
   }
- ],
- "remaining_budget": {
-  "coach-taylor": 75,
-  "costanza": 94,
-  "harry-caray": 100,
-  "kardashian": 100,
-  "leon-black": 59,
-  "meyer-walsh": 100,
-  "maura-higgins": 100,
-  "dumbledore": 62,
-  "rinna": 45,
-  "patricia-moyer": 100,
-  "wifes-team": 100,
-  "your-team": 100
- }
 }

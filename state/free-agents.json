@@ -27,9 +27,9 @@
   "injury": null,
   "proj_pts": 6.08,
   "proj": {
-   "rec": 2.67,
    "rec_yd": 38.75,
-   "rec_td": 0.14
+   "rec_td": 0.14,
+   "rec": 2.67
   },
   "last_wk_pts": null
  },
@@ -48,12 +48,12 @@
   "pos": "WR",
   "team": "SF",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.02,
   "proj": {
-   "rec": 0.01,
    "rec_yd": 0.1,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.01
   },
   "last_wk_pts": null
  },
@@ -82,12 +82,12 @@
   "pos": "WR",
   "team": "BAL",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 1.72,
   "proj": {
-   "rec": 0.62,
    "rec_yd": 9.01,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.62
   },
   "last_wk_pts": null
  },
@@ -96,7 +96,7 @@
   "pos": "QB",
   "team": "NE",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -109,9 +109,9 @@
   "injury": null,
   "proj_pts": 3.96,
   "proj": {
-   "rec": 1.71,
    "rec_yd": 23.2,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.71
   },
   "last_wk_pts": null
  },
@@ -123,9 +123,9 @@
   "injury": null,
   "proj_pts": 0.21,
   "proj": {
-   "rec": 0.07,
    "rec_yd": 0.92,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.07
   },
   "last_wk_pts": null
  },
@@ -157,9 +157,9 @@
   "injury": null,
   "proj_pts": 1.01,
   "proj": {
-   "rec": 0.5,
    "rec_yd": 5.16,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.5
   },
   "last_wk_pts": null
  },
@@ -181,9 +181,9 @@
   "injury": null,
   "proj_pts": 1.72,
   "proj": {
-   "rec": 0.85,
    "rec_yd": 8.74,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.85
   },
   "last_wk_pts": null
  },
@@ -214,7 +214,11 @@
   "status": "Active",
   "injury": null,
   "proj_pts": 0.0,
-  "proj": {},
+  "proj": {
+   "rec_yd": 0.04,
+   "rec_td": 0.0,
+   "rec": 0.0
+  },
   "last_wk_pts": null
  },
  "8116": {
@@ -245,10 +249,10 @@
   "injury": null,
   "proj_pts": 0.31,
   "proj": {
+   "rec_yd": 0.63,
    "rush_td": 0.01,
-   "rec": 0.1,
    "rush_yd": 0.81,
-   "rec_yd": 0.63
+   "rec": 0.1
   },
   "last_wk_pts": null
  },
@@ -277,13 +281,13 @@
   "pos": "RB",
   "team": "NO",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 1.37,
   "proj": {
+   "rec_yd": 1.61,
    "rush_td": 0.05,
-   "rec": 0.25,
    "rush_yd": 7.48,
-   "rec_yd": 1.61
+   "rec": 0.25
   },
   "last_wk_pts": null
  },
@@ -295,9 +299,9 @@
   "injury": null,
   "proj_pts": 6.41,
   "proj": {
-   "int": 0.75,
    "pts_allow": 22.75,
-   "sack": 2.25
+   "sack": 2.25,
+   "int": 0.75
   },
   "last_wk_pts": null
  },
@@ -309,9 +313,9 @@
   "injury": null,
   "proj_pts": 2.53,
   "proj": {
-   "rec": 1.13,
    "rec_yd": 13.57,
-   "rec_td": 0.09
+   "rec_td": 0.09,
+   "rec": 1.13
   },
   "last_wk_pts": null
  },
@@ -333,9 +337,9 @@
   "injury": null,
   "proj_pts": 3.38,
   "proj": {
-   "rec": 1.81,
    "rec_yd": 18.19,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.81
   },
   "last_wk_pts": null
  },
@@ -347,9 +351,9 @@
   "injury": null,
   "proj_pts": 5.91,
   "proj": {
-   "int": 0.7,
    "pts_allow": 23.75,
-   "sack": 2.37
+   "sack": 2.37,
+   "int": 0.7
   },
   "last_wk_pts": null
  },
@@ -381,10 +385,10 @@
   "injury": null,
   "proj_pts": 4.5,
   "proj": {
+   "rec_yd": 10.48,
    "rush_td": 0.13,
-   "rec": 1.45,
    "rush_yd": 14.09,
-   "rec_yd": 10.48
+   "rec": 1.45
   },
   "last_wk_pts": null
  },
@@ -416,9 +420,9 @@
   "injury": null,
   "proj_pts": 4.05,
   "proj": {
-   "rec": 1.59,
    "rec_yd": 21.61,
-   "rec_td": 0.18
+   "rec_td": 0.18,
+   "rec": 1.59
   },
   "last_wk_pts": null
  },
@@ -437,13 +441,9 @@
   "pos": "WR",
   "team": "NE",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.08,
-  "proj": {
-   "rec": 0.04,
-   "rec_yd": 0.61,
-   "rec_td": 0.0
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "7049": {
@@ -454,9 +454,9 @@
   "injury": null,
   "proj_pts": 6.77,
   "proj": {
-   "rec": 2.63,
    "rec_yd": 35.74,
-   "rec_td": 0.31
+   "rec_td": 0.31,
+   "rec": 2.63
   },
   "last_wk_pts": null
  },
@@ -468,9 +468,9 @@
   "injury": null,
   "proj_pts": 6.7,
   "proj": {
-   "rec": 3.38,
    "rec_yd": 31.11,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 3.38
   },
   "last_wk_pts": null
  },
@@ -502,10 +502,10 @@
   "injury": null,
   "proj_pts": 4.37,
   "proj": {
+   "rec_yd": 8.98,
    "rush_td": 0.11,
-   "rec": 1.45,
    "rush_yd": 15.49,
-   "rec_yd": 8.98
+   "rec": 1.45
   },
   "last_wk_pts": null
  },
@@ -515,12 +515,12 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.66,
+  "proj_pts": 0.64,
   "proj": {
+   "rec_yd": 2.15,
    "rush_td": 0.01,
-   "rec": 0.34,
-   "rush_yd": 0.81,
-   "rec_yd": 2.27
+   "rush_yd": 0.87,
+   "rec": 0.32
   },
   "last_wk_pts": null
  },
@@ -542,10 +542,20 @@
   "injury": null,
   "proj_pts": 5.87,
   "proj": {
-   "rec": 3.15,
    "rec_yd": 31.58,
-   "rec_td": 0.19
+   "rec_td": 0.19,
+   "rec": 3.15
   },
+  "last_wk_pts": null
+ },
+ "13957": {
+  "name": "Kenny Fletcher",
+  "pos": "TE",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "3269": {
@@ -576,9 +586,9 @@
   "injury": null,
   "proj_pts": 1.77,
   "proj": {
-   "rec": 0.71,
    "rec_yd": 9.13,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.71
   },
   "last_wk_pts": null
  },
@@ -590,21 +600,11 @@
   "injury": null,
   "proj_pts": 1.18,
   "proj": {
+   "rec_yd": 1.5,
    "rush_td": 0.03,
-   "rec": 0.19,
    "rush_yd": 7.16,
-   "rec_yd": 1.5
+   "rec": 0.19
   },
-  "last_wk_pts": null
- },
- "6045": {
-  "name": "Gary Jennings",
-  "pos": "WR",
-  "team": "LAC",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "13273": {
@@ -615,9 +615,9 @@
   "injury": null,
   "proj_pts": 0.71,
   "proj": {
-   "rec": 0.35,
    "rec_yd": 3.55,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.35
   },
   "last_wk_pts": null
  },
@@ -629,9 +629,9 @@
   "injury": null,
   "proj_pts": 0.52,
   "proj": {
-   "rec": 0.28,
    "rec_yd": 2.56,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.28
   },
   "last_wk_pts": null
  },
@@ -643,9 +643,9 @@
   "injury": null,
   "proj_pts": 6.4,
   "proj": {
-   "fgm": 1.82,
    "xpm": 2.51,
-   "fga": 2.13
+   "fga": 2.13,
+   "fgm": 1.82
   },
   "last_wk_pts": null
  },
@@ -657,9 +657,9 @@
   "injury": null,
   "proj_pts": 0.03,
   "proj": {
-   "rec": 0.02,
    "rec_yd": 0.19,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.02
   },
   "last_wk_pts": null
  },
@@ -678,13 +678,13 @@
   "pos": "RB",
   "team": "NYJ",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 4.14,
   "proj": {
+   "rec_yd": 9.0,
    "rush_td": 0.12,
-   "rec": 1.22,
    "rush_yd": 15.11,
-   "rec_yd": 9.0
+   "rec": 1.22
   },
   "last_wk_pts": null
  },
@@ -696,9 +696,9 @@
   "injury": null,
   "proj_pts": 1.73,
   "proj": {
-   "rec": 0.69,
    "rec_yd": 9.66,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.69
   },
   "last_wk_pts": null
  },
@@ -730,9 +730,9 @@
   "injury": "Questionable",
   "proj_pts": 1.06,
   "proj": {
-   "rec": 0.46,
    "rec_yd": 5.95,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.46
   },
   "last_wk_pts": null
  },
@@ -764,9 +764,9 @@
   "injury": null,
   "proj_pts": 3.62,
   "proj": {
-   "rec": 1.94,
    "rec_yd": 18.66,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.94
   },
   "last_wk_pts": null
  },
@@ -778,9 +778,9 @@
   "injury": null,
   "proj_pts": 6.03,
   "proj": {
-   "fgm": 1.67,
    "xpm": 2.22,
-   "fga": 1.97
+   "fga": 1.97,
+   "fgm": 1.67
   },
   "last_wk_pts": null
  },
@@ -790,11 +790,11 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.46,
+  "proj_pts": 5.49,
   "proj": {
-   "fgm": 1.57,
    "xpm": 1.98,
-   "fga": 1.86
+   "fga": 1.87,
+   "fgm": 1.58
   },
   "last_wk_pts": null
  },
@@ -826,9 +826,9 @@
   "injury": null,
   "proj_pts": 0.79,
   "proj": {
-   "rec": 0.33,
    "rec_yd": 4.48,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.33
   },
   "last_wk_pts": null
  },
@@ -840,9 +840,9 @@
   "injury": null,
   "proj_pts": 4.15,
   "proj": {
-   "rec": 1.66,
    "rec_yd": 22.8,
-   "rec_td": 0.17
+   "rec_td": 0.17,
+   "rec": 1.66
   },
   "last_wk_pts": null
  },
@@ -852,12 +852,12 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.19,
+  "proj_pts": 2.34,
   "proj": {
-   "rush_td": 0.01,
-   "rec": 0.0,
-   "rush_yd": 1.24,
-   "rec_yd": 0.04
+   "rec_yd": 3.08,
+   "rush_td": 0.08,
+   "rush_yd": 11.74,
+   "rec": 0.4
   },
   "last_wk_pts": null
  },
@@ -869,10 +869,10 @@
   "injury": null,
   "proj_pts": 0.81,
   "proj": {
+   "rec_yd": 0.86,
    "rush_td": 0.03,
-   "rec": 0.14,
    "rush_yd": 4.12,
-   "rec_yd": 0.86
+   "rec": 0.14
   },
   "last_wk_pts": null
  },
@@ -924,10 +924,10 @@
   "injury": null,
   "proj_pts": 0.88,
   "proj": {
+   "rec_yd": 2.18,
    "rush_td": 0.02,
-   "rec": 0.35,
    "rush_yd": 2.42,
-   "rec_yd": 2.18
+   "rec": 0.35
   },
   "last_wk_pts": null
  },
@@ -949,10 +949,10 @@
   "injury": null,
   "proj_pts": 4.66,
   "proj": {
+   "rec_yd": 5.36,
    "rush_td": 0.17,
-   "rec": 0.75,
    "rush_yd": 24.51,
-   "rec_yd": 5.36
+   "rec": 0.75
   },
   "last_wk_pts": null
  },
@@ -1024,9 +1024,9 @@
   "injury": null,
   "proj_pts": 5.0,
   "proj": {
-   "int": 0.63,
    "pts_allow": 25.75,
-   "sack": 2.1
+   "sack": 2.1,
+   "int": 0.63
   },
   "last_wk_pts": null
  },
@@ -1038,9 +1038,9 @@
   "injury": null,
   "proj_pts": 2.78,
   "proj": {
-   "rec": 1.38,
    "rec_yd": 14.57,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 1.38
   },
   "last_wk_pts": null
  },
@@ -1062,9 +1062,9 @@
   "injury": null,
   "proj_pts": 2.37,
   "proj": {
-   "rec": 1.28,
    "rec_yd": 11.91,
-   "rec_td": 0.09
+   "rec_td": 0.09,
+   "rec": 1.28
   },
   "last_wk_pts": null
  },
@@ -1086,9 +1086,9 @@
   "injury": null,
   "proj_pts": 3.17,
   "proj": {
-   "rec": 1.58,
    "rec_yd": 16.85,
-   "rec_td": 0.09
+   "rec_td": 0.09,
+   "rec": 1.58
   },
   "last_wk_pts": null
  },
@@ -1120,9 +1120,9 @@
   "injury": null,
   "proj_pts": 6.26,
   "proj": {
-   "fgm": 1.56,
    "xpm": 2.12,
-   "fga": 1.93
+   "fga": 1.93,
+   "fgm": 1.56
   },
   "last_wk_pts": null
  },
@@ -1154,10 +1154,10 @@
   "injury": null,
   "proj_pts": 0.07,
   "proj": {
+   "rec_yd": 0.37,
    "rush_td": 0.0,
-   "rec": 0.05,
    "rush_yd": 0.04,
-   "rec_yd": 0.37
+   "rec": 0.05
   },
   "last_wk_pts": null
  },
@@ -1169,9 +1169,9 @@
   "injury": null,
   "proj_pts": 4.05,
   "proj": {
-   "rec": 1.82,
    "rec_yd": 20.59,
-   "rec_td": 0.18
+   "rec_td": 0.18,
+   "rec": 1.82
   },
   "last_wk_pts": null
  },
@@ -1273,9 +1273,9 @@
   "injury": null,
   "proj_pts": 0.5,
   "proj": {
-   "rec": 0.27,
    "rec_yd": 2.49,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.27
   },
   "last_wk_pts": null
  },
@@ -1355,11 +1355,11 @@
   "team": "ARI",
   "status": null,
   "injury": null,
-  "proj_pts": 2.9,
+  "proj_pts": 2.91,
   "proj": {
-   "int": 0.44,
-   "pts_allow": 28.75,
-   "sack": 1.86
+   "pts_allow": 28.5,
+   "sack": 1.87,
+   "int": 0.44
   },
   "last_wk_pts": null
  },
@@ -1371,9 +1371,9 @@
   "injury": null,
   "proj_pts": 2.41,
   "proj": {
-   "rec": 0.87,
    "rec_yd": 12.9,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 0.87
   },
   "last_wk_pts": null
  },
@@ -1385,9 +1385,9 @@
   "injury": null,
   "proj_pts": 2.12,
   "proj": {
-   "rec": 1.09,
    "rec_yd": 11.19,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 1.09
   },
   "last_wk_pts": null
  },
@@ -1449,9 +1449,9 @@
   "injury": null,
   "proj_pts": 2.7,
   "proj": {
-   "rec": 1.13,
    "rec_yd": 15.14,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 1.13
   },
   "last_wk_pts": null
  },
@@ -1479,6 +1479,16 @@
   "name": "Jamari Thrash",
   "pos": "WR",
   "team": "CLE",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "13964": {
+  "name": "Myles Montgomery",
+  "pos": "RB",
+  "team": "NE",
   "status": "Inactive",
   "injury": "IR",
   "proj_pts": 0.0,
@@ -1513,10 +1523,10 @@
   "injury": null,
   "proj_pts": 3.39,
   "proj": {
+   "rec_yd": 2.5,
    "rush_td": 0.15,
-   "rec": 0.36,
    "rush_yd": 19.56,
-   "rec_yd": 2.5
+   "rec": 0.36
   },
   "last_wk_pts": null
  },
@@ -1546,11 +1556,11 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.22,
+  "proj_pts": 5.28,
   "proj": {
-   "rec": 2.42,
    "rec_yd": 29.73,
-   "rec_td": 0.14
+   "rec_td": 0.14,
+   "rec": 2.42
   },
   "last_wk_pts": null
  },
@@ -1560,11 +1570,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.96,
+  "proj_pts": 8.0,
   "proj": {
-   "rec": 2.67,
-   "rec_yd": 40.28,
-   "rec_td": 0.24
+   "rec_yd": 46.64,
+   "rec_td": 0.27,
+   "rec": 3.09
   },
   "last_wk_pts": null
  },
@@ -1586,9 +1596,9 @@
   "injury": null,
   "proj_pts": 6.56,
   "proj": {
-   "rec": 2.65,
    "rec_yd": 35.14,
-   "rec_td": 0.28
+   "rec_td": 0.28,
+   "rec": 2.65
   },
   "last_wk_pts": null
  },
@@ -1598,11 +1608,11 @@
   "team": "NYJ",
   "status": null,
   "injury": null,
-  "proj_pts": 6.11,
+  "proj_pts": 7.04,
   "proj": {
-   "int": 0.61,
-   "pts_allow": 20.5,
-   "sack": 2.95
+   "pts_allow": 20.0,
+   "sack": 2.92,
+   "int": 0.6
   },
   "last_wk_pts": null
  },
@@ -1624,10 +1634,10 @@
   "injury": null,
   "proj_pts": 0.73,
   "proj": {
+   "rec_yd": 1.86,
    "rush_td": 0.01,
-   "rec": 0.25,
    "rush_yd": 2.95,
-   "rec_yd": 1.86
+   "rec": 0.25
   },
   "last_wk_pts": null
  },
@@ -1659,9 +1669,9 @@
   "injury": "Questionable",
   "proj_pts": 0.79,
   "proj": {
-   "rec": 0.41,
    "rec_yd": 4.03,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.41
   },
   "last_wk_pts": null
  },
@@ -1673,20 +1683,10 @@
   "injury": "Questionable",
   "proj_pts": 6.18,
   "proj": {
-   "rec": 2.34,
    "rec_yd": 32.51,
-   "rec_td": 0.28
+   "rec_td": 0.28,
+   "rec": 2.34
   },
-  "last_wk_pts": null
- },
- "13430": {
-  "name": "RJ Maryland",
-  "pos": "TE",
-  "team": "GB",
-  "status": "Inactive",
-  "injury": "Questionable",
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "4219": {
@@ -1747,9 +1747,9 @@
   "injury": null,
   "proj_pts": 6.21,
   "proj": {
-   "fgm": 1.86,
    "xpm": 2.48,
-   "fga": 2.17
+   "fga": 2.17,
+   "fgm": 1.86
   },
   "last_wk_pts": null
  },
@@ -1781,9 +1781,9 @@
   "injury": null,
   "proj_pts": 0.71,
   "proj": {
-   "rec": 0.4,
    "rec_yd": 3.3,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.4
   },
   "last_wk_pts": null
  },
@@ -1795,10 +1795,20 @@
   "injury": null,
   "proj_pts": 4.73,
   "proj": {
-   "fgm": 1.38,
    "xpm": 1.76,
-   "fga": 1.65
+   "fga": 1.65,
+   "fgm": 1.38
   },
+  "last_wk_pts": null
+ },
+ "13816": {
+  "name": "Mark Gronowski",
+  "pos": "QB",
+  "team": "HOU",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "13264": {
@@ -1816,12 +1826,12 @@
   "pos": "TE",
   "team": "NYJ",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 3.18,
   "proj": {
-   "rec": 1.71,
    "rec_yd": 16.39,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.71
   },
   "last_wk_pts": null
  },
@@ -1833,10 +1843,10 @@
   "injury": "Questionable",
   "proj_pts": 3.67,
   "proj": {
+   "rec_yd": 1.62,
    "rush_td": 0.23,
-   "rec": 0.23,
    "rush_yd": 19.09,
-   "rec_yd": 1.62
+   "rec": 0.23
   },
   "last_wk_pts": null
  },
@@ -1860,16 +1870,6 @@
   "proj": {},
   "last_wk_pts": null
  },
- "12897": {
-  "name": "Nathan Carter",
-  "pos": "RB",
-  "team": "KC",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
  "5223": {
   "name": "Caleb Scott",
   "pos": "WR",
@@ -1885,12 +1885,12 @@
   "pos": "WR",
   "team": "LAC",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 4.77,
   "proj": {
-   "rec": 2.27,
    "rec_yd": 27.91,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 2.27
   },
   "last_wk_pts": null
  },
@@ -1932,9 +1932,9 @@
   "injury": null,
   "proj_pts": 1.68,
   "proj": {
-   "rec": 0.82,
    "rec_yd": 8.52,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.82
   },
   "last_wk_pts": null
  },
@@ -1993,12 +1993,12 @@
   "pos": "TE",
   "team": "LAR",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 3.01,
   "proj": {
-   "rec": 1.34,
    "rec_yd": 14.98,
-   "rec_td": 0.14
+   "rec_td": 0.14,
+   "rec": 1.34
   },
   "last_wk_pts": null
  },
@@ -2010,9 +2010,9 @@
   "injury": null,
   "proj_pts": 6.12,
   "proj": {
-   "int": 0.75,
    "pts_allow": 22.5,
-   "sack": 2.64
+   "sack": 2.64,
+   "int": 0.75
   },
   "last_wk_pts": null
  },
@@ -2034,9 +2034,9 @@
   "injury": null,
   "proj_pts": 1.96,
   "proj": {
-   "rec": 1.03,
    "rec_yd": 10.29,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 1.03
   },
   "last_wk_pts": null
  },
@@ -2068,9 +2068,9 @@
   "injury": null,
   "proj_pts": 5.99,
   "proj": {
-   "fgm": 1.62,
    "xpm": 2.44,
-   "fga": 1.87
+   "fga": 1.87,
+   "fgm": 1.62
   },
   "last_wk_pts": null
  },
@@ -2082,9 +2082,9 @@
   "injury": null,
   "proj_pts": 4.45,
   "proj": {
-   "rec": 1.86,
    "rec_yd": 25.63,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 1.86
   },
   "last_wk_pts": null
  },
@@ -2106,9 +2106,9 @@
   "injury": null,
   "proj_pts": 1.66,
   "proj": {
-   "rec": 0.69,
    "rec_yd": 8.97,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.69
   },
   "last_wk_pts": null
  },
@@ -2140,9 +2140,9 @@
   "injury": null,
   "proj_pts": 1.62,
   "proj": {
-   "rec": 0.72,
    "rec_yd": 8.39,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.72
   },
   "last_wk_pts": null
  },
@@ -2154,9 +2154,9 @@
   "injury": null,
   "proj_pts": 1.73,
   "proj": {
-   "rec": 0.94,
    "rec_yd": 8.36,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.94
   },
   "last_wk_pts": null
  },
@@ -2175,12 +2175,12 @@
   "pos": "TE",
   "team": "NYG",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 3.4,
   "proj": {
-   "rec": 1.6,
    "rec_yd": 18.24,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.6
   },
   "last_wk_pts": null
  },
@@ -2192,10 +2192,10 @@
   "injury": null,
   "proj_pts": 3.55,
   "proj": {
+   "rec_yd": 4.1,
    "rush_td": 0.15,
-   "rec": 0.52,
    "rush_yd": 18.22,
-   "rec_yd": 4.1
+   "rec": 0.52
   },
   "last_wk_pts": null
  },
@@ -2237,10 +2237,10 @@
   "injury": "Questionable",
   "proj_pts": 5.95,
   "proj": {
+   "rec_yd": 8.97,
    "rush_td": 0.16,
-   "rec": 1.25,
    "rush_yd": 30.88,
-   "rec_yd": 8.97
+   "rec": 1.25
   },
   "last_wk_pts": null
  },
@@ -2252,9 +2252,9 @@
   "injury": null,
   "proj_pts": 3.37,
   "proj": {
-   "rec": 1.51,
    "rec_yd": 18.99,
-   "rec_td": 0.12
+   "rec_td": 0.12,
+   "rec": 1.51
   },
   "last_wk_pts": null
  },
@@ -2276,10 +2276,10 @@
   "injury": null,
   "proj_pts": 1.06,
   "proj": {
+   "rec_yd": 1.77,
    "rush_td": 0.04,
-   "rec": 0.25,
    "rush_yd": 4.18,
-   "rec_yd": 1.77
+   "rec": 0.25
   },
   "last_wk_pts": null
  },
@@ -2291,9 +2291,9 @@
   "injury": null,
   "proj_pts": 1.14,
   "proj": {
-   "rec": 0.61,
    "rec_yd": 5.94,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.61
   },
   "last_wk_pts": null
  },
@@ -2305,10 +2305,10 @@
   "injury": null,
   "proj_pts": 0.83,
   "proj": {
+   "rec_yd": 2.91,
    "rush_td": 0.01,
-   "rec": 0.44,
    "rush_yd": 1.36,
-   "rec_yd": 2.91
+   "rec": 0.44
   },
   "last_wk_pts": null
  },
@@ -2330,9 +2330,9 @@
   "injury": null,
   "proj_pts": 4.27,
   "proj": {
-   "int": 0.53,
    "pts_allow": 24.5,
-   "sack": 2.07
+   "sack": 2.07,
+   "int": 0.53
   },
   "last_wk_pts": null
  },
@@ -2344,9 +2344,9 @@
   "injury": null,
   "proj_pts": 3.89,
   "proj": {
-   "rec": 1.99,
    "rec_yd": 21.15,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.99
   },
   "last_wk_pts": null
  },
@@ -2358,9 +2358,9 @@
   "injury": null,
   "proj_pts": 1.66,
   "proj": {
-   "rec": 0.73,
    "rec_yd": 8.76,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.73
   },
   "last_wk_pts": null
  },
@@ -2372,10 +2372,10 @@
   "injury": null,
   "proj_pts": 3.29,
   "proj": {
+   "rec_yd": 3.38,
    "rush_td": 0.14,
-   "rec": 0.5,
    "rush_yd": 16.99,
-   "rec_yd": 3.38
+   "rec": 0.5
   },
   "last_wk_pts": null
  },
@@ -2397,10 +2397,10 @@
   "injury": null,
   "proj_pts": 7.34,
   "proj": {
+   "rec_yd": 11.13,
    "rush_td": 0.22,
-   "rec": 1.43,
    "rush_yd": 35.7,
-   "rec_yd": 11.13
+   "rec": 1.43
   },
   "last_wk_pts": null
  },
@@ -2469,7 +2469,7 @@
   "pos": "QB",
   "team": "CAR",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -2492,9 +2492,9 @@
   "injury": null,
   "proj_pts": 0.08,
   "proj": {
-   "rec": 0.04,
    "rec_yd": 0.54,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.04
   },
   "last_wk_pts": null
  },
@@ -2516,10 +2516,10 @@
   "injury": null,
   "proj_pts": 7.88,
   "proj": {
+   "rec_yd": 8.56,
    "rush_td": 0.3,
-   "rec": 1.18,
    "rush_yd": 43.13,
-   "rec_yd": 8.56
+   "rec": 1.18
   },
   "last_wk_pts": null
  },
@@ -2531,9 +2531,9 @@
   "injury": null,
   "proj_pts": 1.56,
   "proj": {
-   "rec": 0.64,
    "rec_yd": 6.44,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.64
   },
   "last_wk_pts": null
  },
@@ -2555,10 +2555,10 @@
   "injury": null,
   "proj_pts": 0.25,
   "proj": {
+   "rec_yd": 0.58,
    "rush_td": 0.0,
-   "rec": 0.08,
    "rush_yd": 0.91,
-   "rec_yd": 0.58
+   "rec": 0.08
   },
   "last_wk_pts": null
  },
@@ -2632,16 +2632,6 @@
   "proj": {},
   "last_wk_pts": null
  },
- "11959": {
-  "name": "Bryce Oliver",
-  "pos": "WR",
-  "team": "CLE",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
  "13424": {
   "name": "Seth McGowan",
   "pos": "RB",
@@ -2650,10 +2640,10 @@
   "injury": null,
   "proj_pts": 1.65,
   "proj": {
+   "rec_yd": 2.36,
    "rush_td": 0.06,
-   "rec": 0.37,
    "rush_yd": 7.72,
-   "rec_yd": 2.36
+   "rec": 0.37
   },
   "last_wk_pts": null
  },
@@ -2682,12 +2672,12 @@
   "pos": "WR",
   "team": "NYJ",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 0.55,
   "proj": {
-   "rec": 0.24,
    "rec_yd": 3.15,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.24
   },
   "last_wk_pts": null
  },
@@ -2716,12 +2706,12 @@
   "pos": "TE",
   "team": "WAS",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.95,
   "proj": {
-   "rec": 0.52,
    "rec_yd": 4.48,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.52
   },
   "last_wk_pts": null
  },
@@ -2763,9 +2753,9 @@
   "injury": null,
   "proj_pts": 1.43,
   "proj": {
-   "rec": 0.79,
    "rec_yd": 7.17,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.79
   },
   "last_wk_pts": null
  },
@@ -2787,9 +2777,9 @@
   "injury": null,
   "proj_pts": 0.48,
   "proj": {
-   "rec": 0.21,
    "rec_yd": 2.37,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.21
   },
   "last_wk_pts": null
  },
@@ -2811,9 +2801,9 @@
   "injury": null,
   "proj_pts": 6.44,
   "proj": {
-   "fgm": 1.55,
    "xpm": 2.32,
-   "fga": 1.9
+   "fga": 1.9,
+   "fgm": 1.55
   },
   "last_wk_pts": null
  },
@@ -2825,9 +2815,9 @@
   "injury": null,
   "proj_pts": 4.6,
   "proj": {
-   "rec": 1.73,
    "rec_yd": 24.51,
-   "rec_td": 0.19
+   "rec_td": 0.19,
+   "rec": 1.73
   },
   "last_wk_pts": null
  },
@@ -2859,9 +2849,9 @@
   "injury": null,
   "proj_pts": 0.15,
   "proj": {
-   "rec": 0.04,
    "rec_yd": 0.47,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.04
   },
   "last_wk_pts": null
  },
@@ -2873,9 +2863,9 @@
   "injury": null,
   "proj_pts": 5.0,
   "proj": {
-   "int": 0.59,
    "pts_allow": 27.0,
-   "sack": 2.2
+   "sack": 2.2,
+   "int": 0.59
   },
   "last_wk_pts": null
  },
@@ -2887,9 +2877,9 @@
   "injury": null,
   "proj_pts": 5.56,
   "proj": {
-   "rec": 1.94,
    "rec_yd": 32.55,
-   "rec_td": 0.22
+   "rec_td": 0.22,
+   "rec": 1.94
   },
   "last_wk_pts": null
  },
@@ -2898,12 +2888,12 @@
   "pos": "WR",
   "team": "SF",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 5.74,
   "proj": {
-   "rec": 2.29,
    "rec_yd": 31.3,
-   "rec_td": 0.22
+   "rec_td": 0.22,
+   "rec": 2.29
   },
   "last_wk_pts": null
  },
@@ -2935,9 +2925,9 @@
   "injury": null,
   "proj_pts": 3.73,
   "proj": {
-   "rec": 1.9,
    "rec_yd": 19.99,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.9
   },
   "last_wk_pts": null
  },
@@ -2949,10 +2939,10 @@
   "injury": null,
   "proj_pts": 0.94,
   "proj": {
+   "rec_yd": 2.7,
    "rush_td": 0.02,
-   "rec": 0.39,
    "rush_yd": 2.36,
-   "rec_yd": 2.7
+   "rec": 0.39
   },
   "last_wk_pts": null
  },
@@ -2964,9 +2954,9 @@
   "injury": null,
   "proj_pts": 2.61,
   "proj": {
-   "rec": 1.17,
    "rec_yd": 12.88,
-   "rec_td": 0.09
+   "rec_td": 0.09,
+   "rec": 1.17
   },
   "last_wk_pts": null
  },
@@ -2978,9 +2968,9 @@
   "injury": null,
   "proj_pts": 4.43,
   "proj": {
-   "int": 0.52,
    "pts_allow": 24.5,
-   "sack": 1.87
+   "sack": 1.87,
+   "int": 0.52
   },
   "last_wk_pts": null
  },
@@ -2992,9 +2982,9 @@
   "injury": null,
   "proj_pts": 2.13,
   "proj": {
-   "rec": 1.2,
    "rec_yd": 10.51,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 1.2
   },
   "last_wk_pts": null
  },
@@ -3076,10 +3066,10 @@
   "injury": null,
   "proj_pts": 4.95,
   "proj": {
+   "rec_yd": 8.3,
    "rush_td": 0.2,
-   "rec": 1.29,
    "rush_yd": 18.96,
-   "rec_yd": 8.3
+   "rec": 1.29
   },
   "last_wk_pts": null
  },
@@ -3111,9 +3101,9 @@
   "injury": null,
   "proj_pts": 1.91,
   "proj": {
-   "rec": 0.62,
    "rec_yd": 9.66,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.62
   },
   "last_wk_pts": null
  },
@@ -3135,9 +3125,9 @@
   "injury": null,
   "proj_pts": 0.4,
   "proj": {
-   "rec": 0.19,
    "rec_yd": 1.88,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.19
   },
   "last_wk_pts": null
  },
@@ -3156,12 +3146,12 @@
   "pos": "WR",
   "team": "IND",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 7.63,
   "proj": {
-   "rec": 2.43,
    "rec_yd": 46.97,
-   "rec_td": 0.28
+   "rec_td": 0.28,
+   "rec": 2.43
   },
   "last_wk_pts": null
  },
@@ -3190,7 +3180,7 @@
   "pos": "QB",
   "team": "TEN",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -3233,9 +3223,9 @@
   "injury": null,
   "proj_pts": 2.99,
   "proj": {
-   "rec": 1.9,
    "rec_yd": 16.39,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 1.9
   },
   "last_wk_pts": null
  },
@@ -3257,9 +3247,9 @@
   "injury": null,
   "proj_pts": 0.26,
   "proj": {
-   "rec": 0.14,
    "rec_yd": 1.32,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.14
   },
   "last_wk_pts": null
  },
@@ -3309,11 +3299,11 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.54,
+  "proj_pts": 5.67,
   "proj": {
-   "rec": 2.4,
-   "rec_yd": 29.99,
-   "rec_td": 0.22
+   "rec_yd": 30.48,
+   "rec_td": 0.23,
+   "rec": 2.43
   },
   "last_wk_pts": null
  },
@@ -3325,9 +3315,9 @@
   "injury": null,
   "proj_pts": 3.93,
   "proj": {
-   "rec": 1.77,
    "rec_yd": 20.45,
-   "rec_td": 0.14
+   "rec_td": 0.14,
+   "rec": 1.77
   },
   "last_wk_pts": null
  },
@@ -3379,9 +3369,9 @@
   "injury": null,
   "proj_pts": 0.83,
   "proj": {
-   "rec": 0.43,
    "rec_yd": 4.32,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.43
   },
   "last_wk_pts": null
  },
@@ -3391,11 +3381,11 @@
   "team": "ATL",
   "status": null,
   "injury": null,
-  "proj_pts": 5.19,
+  "proj_pts": 5.27,
   "proj": {
-   "int": 0.6,
-   "pts_allow": 22.5,
-   "sack": 2.25
+   "pts_allow": 23.0,
+   "sack": 2.27,
+   "int": 0.61
   },
   "last_wk_pts": null
  },
@@ -3427,9 +3417,9 @@
   "injury": null,
   "proj_pts": 5.42,
   "proj": {
-   "int": 0.64,
    "pts_allow": 25.0,
-   "sack": 2.26
+   "sack": 2.26,
+   "int": 0.64
   },
   "last_wk_pts": null
  },
@@ -3451,10 +3441,10 @@
   "injury": null,
   "proj_pts": 1.81,
   "proj": {
+   "rec_yd": 2.07,
    "rush_td": 0.06,
-   "rec": 0.32,
    "rush_yd": 9.8,
-   "rec_yd": 2.07
+   "rec": 0.32
   },
   "last_wk_pts": null
  },
@@ -3484,12 +3474,12 @@
   "team": "MIA",
   "status": "Active",
   "injury": "Questionable",
-  "proj_pts": 2.33,
+  "proj_pts": 2.31,
   "proj": {
+   "rec_yd": 4.12,
    "rush_td": 0.1,
-   "rec": 0.64,
-   "rush_yd": 7.61,
-   "rec_yd": 4.12
+   "rush_yd": 7.43,
+   "rec": 0.64
   },
   "last_wk_pts": null
  },
@@ -3501,9 +3491,9 @@
   "injury": null,
   "proj_pts": 0.04,
   "proj": {
-   "rec": 0.03,
    "rec_yd": 0.29,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.03
   },
   "last_wk_pts": null
  },
@@ -3515,9 +3505,9 @@
   "injury": null,
   "proj_pts": 0.34,
   "proj": {
-   "rec": 0.21,
    "rec_yd": 1.79,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.21
   },
   "last_wk_pts": null
  },
@@ -3549,9 +3539,9 @@
   "injury": null,
   "proj_pts": 3.18,
   "proj": {
-   "rec": 0.98,
    "rec_yd": 14.17,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.98
   },
   "last_wk_pts": null
  },
@@ -3560,13 +3550,13 @@
   "pos": "RB",
   "team": "NYG",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 3.59,
   "proj": {
+   "rec_yd": 6.44,
    "rush_td": 0.1,
-   "rec": 0.97,
    "rush_yd": 16.36,
-   "rec_yd": 6.44
+   "rec": 0.97
   },
   "last_wk_pts": null
  },
@@ -3598,9 +3588,9 @@
   "injury": "Questionable",
   "proj_pts": 3.62,
   "proj": {
-   "rec": 1.57,
    "rec_yd": 18.52,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.57
   },
   "last_wk_pts": null
  },
@@ -3619,12 +3609,12 @@
   "pos": "WR",
   "team": "TEN",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 9.8,
   "proj": {
-   "rec": 3.99,
    "rec_yd": 57.32,
-   "rec_td": 0.34
+   "rec_td": 0.34,
+   "rec": 3.99
   },
   "last_wk_pts": null
  },
@@ -3636,9 +3626,9 @@
   "injury": null,
   "proj_pts": 5.03,
   "proj": {
-   "rec": 2.77,
    "rec_yd": 26.85,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 2.77
   },
   "last_wk_pts": null
  },
@@ -3670,9 +3660,9 @@
   "injury": null,
   "proj_pts": 2.25,
   "proj": {
-   "rec": 0.92,
    "rec_yd": 11.27,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 0.92
   },
   "last_wk_pts": null
  },
@@ -3701,7 +3691,7 @@
   "pos": "TE",
   "team": "SEA",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -3714,9 +3704,9 @@
   "injury": null,
   "proj_pts": 1.72,
   "proj": {
-   "rec": 0.81,
    "rec_yd": 8.39,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.81
   },
   "last_wk_pts": null
  },
@@ -3786,11 +3776,11 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.03,
+  "proj_pts": 6.05,
   "proj": {
-   "fgm": 1.93,
-   "xpm": 2.24,
-   "fga": 2.24
+   "xpm": 2.26,
+   "fga": 2.26,
+   "fgm": 1.95
   },
   "last_wk_pts": null
  },
@@ -3830,11 +3820,11 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.96,
+  "proj_pts": 3.01,
   "proj": {
-   "rec": 1.26,
    "rec_yd": 16.53,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.26
   },
   "last_wk_pts": null
  },
@@ -3856,9 +3846,9 @@
   "injury": null,
   "proj_pts": 2.65,
   "proj": {
-   "rec": 1.11,
    "rec_yd": 14.16,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.11
   },
   "last_wk_pts": null
  },
@@ -3878,8 +3868,12 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.07,
+  "proj": {
+   "rec_yd": 0.54,
+   "rec_td": 0.0,
+   "rec": 0.04
+  },
   "last_wk_pts": null
  },
  "13662": {
@@ -3930,9 +3924,9 @@
   "injury": null,
   "proj_pts": 0.43,
   "proj": {
-   "rec": 0.16,
    "rec_yd": 2.06,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.16
   },
   "last_wk_pts": null
  },
@@ -3944,9 +3938,9 @@
   "injury": null,
   "proj_pts": 0.44,
   "proj": {
-   "rec": 0.21,
    "rec_yd": 2.17,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.21
   },
   "last_wk_pts": null
  },
@@ -3955,12 +3949,12 @@
   "pos": "TE",
   "team": "LAR",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.65,
   "proj": {
-   "rec": 0.34,
    "rec_yd": 2.97,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.34
   },
   "last_wk_pts": null
  },
@@ -3992,9 +3986,9 @@
   "injury": null,
   "proj_pts": 2.46,
   "proj": {
-   "rec": 0.92,
    "rec_yd": 13.81,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 0.92
   },
   "last_wk_pts": null
  },
@@ -4016,9 +4010,9 @@
   "injury": null,
   "proj_pts": 1.14,
   "proj": {
-   "rec": 0.57,
    "rec_yd": 5.58,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.57
   },
   "last_wk_pts": null
  },
@@ -4070,9 +4064,9 @@
   "injury": null,
   "proj_pts": 6.48,
   "proj": {
-   "rec": 2.81,
    "rec_yd": 36.09,
-   "rec_td": 0.24
+   "rec_td": 0.24,
+   "rec": 2.81
   },
   "last_wk_pts": null
  },
@@ -4092,11 +4086,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.61,
+  "proj_pts": 4.23,
   "proj": {
-   "rec": 1.6,
-   "rec_yd": 20.1,
-   "rec_td": 0.13
+   "rec_yd": 23.67,
+   "rec_td": 0.15,
+   "rec": 1.88
   },
   "last_wk_pts": null
  },
@@ -4108,9 +4102,9 @@
   "injury": null,
   "proj_pts": 3.27,
   "proj": {
-   "int": 0.52,
    "pts_allow": 28.25,
-   "sack": 2.01
+   "sack": 2.01,
+   "int": 0.52
   },
   "last_wk_pts": null
  },
@@ -4152,9 +4146,9 @@
   "injury": null,
   "proj_pts": 0.63,
   "proj": {
-   "rec": 0.29,
    "rec_yd": 3.06,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.29
   },
   "last_wk_pts": null
  },
@@ -4166,9 +4160,9 @@
   "injury": null,
   "proj_pts": 6.12,
   "proj": {
-   "int": 0.7,
    "pts_allow": 24.0,
-   "sack": 2.46
+   "sack": 2.46,
+   "int": 0.7
   },
   "last_wk_pts": null
  },
@@ -4180,9 +4174,9 @@
   "injury": null,
   "proj_pts": 0.65,
   "proj": {
-   "rec": 0.35,
    "rec_yd": 3.52,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.35
   },
   "last_wk_pts": null
  },
@@ -4194,9 +4188,9 @@
   "injury": null,
   "proj_pts": 0.14,
   "proj": {
-   "rec": 0.05,
    "rec_yd": 0.47,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.05
   },
   "last_wk_pts": null
  },
@@ -4208,9 +4202,9 @@
   "injury": null,
   "proj_pts": 0.05,
   "proj": {
-   "rec": 0.02,
    "rec_yd": 0.18,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.02
   },
   "last_wk_pts": null
  },
@@ -4222,9 +4216,9 @@
   "injury": null,
   "proj_pts": 6.53,
   "proj": {
-   "fgm": 2.0,
    "xpm": 2.71,
-   "fga": 2.32
+   "fga": 2.32,
+   "fgm": 2.0
   },
   "last_wk_pts": null
  },
@@ -4244,11 +4238,11 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.72,
+  "proj_pts": 4.96,
   "proj": {
-   "rec": 1.89,
-   "rec_yd": 29.14,
-   "rec_td": 0.14
+   "rec_yd": 30.42,
+   "rec_td": 0.15,
+   "rec": 1.98
   },
   "last_wk_pts": null
  },
@@ -4310,9 +4304,9 @@
   "injury": null,
   "proj_pts": 6.4,
   "proj": {
-   "rec": 3.04,
    "rec_yd": 36.16,
-   "rec_td": 0.21
+   "rec_td": 0.21,
+   "rec": 3.04
   },
   "last_wk_pts": null
  },
@@ -4331,7 +4325,7 @@
   "pos": "QB",
   "team": "SF",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -4342,8 +4336,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.24,
+  "proj": {
+   "rec_yd": 0.9,
+   "rush_td": 0.0,
+   "rush_yd": 0.42,
+   "rec": 0.09
+  },
   "last_wk_pts": null
  },
  "13394": {
@@ -4354,9 +4353,9 @@
   "injury": null,
   "proj_pts": 0.4,
   "proj": {
-   "rec": 0.11,
    "rec_yd": 1.39,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.11
   },
   "last_wk_pts": null
  },
@@ -4384,7 +4383,7 @@
   "name": "Trevor Etienne",
   "pos": "RB",
   "team": "CAR",
-  "status": "Active",
+  "status": "Inactive",
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
@@ -4408,9 +4407,9 @@
   "injury": null,
   "proj_pts": 0.25,
   "proj": {
-   "rec": 0.1,
    "rec_yd": 1.16,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.1
   },
   "last_wk_pts": null
  },
@@ -4450,8 +4449,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.92,
+  "proj": {
+   "rec_yd": 2.24,
+   "rush_td": 0.02,
+   "rush_yd": 2.88,
+   "rec": 0.33
+  },
   "last_wk_pts": null
  },
  "8423": {
@@ -4479,12 +4483,12 @@
   "pos": "WR",
   "team": "ATL",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 2.1,
   "proj": {
-   "rec": 0.97,
    "rec_yd": 11.31,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.97
   },
   "last_wk_pts": null
  },
@@ -4516,9 +4520,9 @@
   "injury": null,
   "proj_pts": 2.08,
   "proj": {
-   "rec": 1.12,
    "rec_yd": 10.2,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 1.12
   },
   "last_wk_pts": null
  },
@@ -4540,9 +4544,9 @@
   "injury": null,
   "proj_pts": 2.08,
   "proj": {
-   "rec": 0.93,
    "rec_yd": 11.4,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.93
   },
   "last_wk_pts": null
  },
@@ -4554,9 +4558,9 @@
   "injury": null,
   "proj_pts": 1.0,
   "proj": {
-   "rec": 0.52,
    "rec_yd": 4.97,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.52
   },
   "last_wk_pts": null
  },
@@ -4568,9 +4572,9 @@
   "injury": null,
   "proj_pts": 0.2,
   "proj": {
-   "rec": 0.09,
    "rec_yd": 0.96,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.09
   },
   "last_wk_pts": null
  },
@@ -4612,10 +4616,10 @@
   "injury": null,
   "proj_pts": 0.99,
   "proj": {
+   "rec_yd": 0.84,
    "rush_td": 0.04,
-   "rec": 0.13,
    "rush_yd": 5.6,
-   "rec_yd": 0.84
+   "rec": 0.13
   },
   "last_wk_pts": null
  },
@@ -4625,12 +4629,12 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.79,
+  "proj_pts": 0.73,
   "proj": {
+   "rec_yd": 2.27,
    "rush_td": 0.02,
-   "rec": 0.27,
-   "rush_yd": 1.79,
-   "rec_yd": 2.4
+   "rush_yd": 1.92,
+   "rec": 0.26
   },
   "last_wk_pts": null
  },
@@ -4640,11 +4644,11 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.32,
+  "proj_pts": 1.78,
   "proj": {
-   "rec": 0.6,
-   "rec_yd": 7.2,
-   "rec_td": 0.05
+   "rec_yd": 9.6,
+   "rec_td": 0.07,
+   "rec": 0.8
   },
   "last_wk_pts": null
  },
@@ -4676,20 +4680,10 @@
   "injury": null,
   "proj_pts": 1.38,
   "proj": {
-   "rec": 0.58,
    "rec_yd": 7.85,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.58
   },
-  "last_wk_pts": null
- },
- "12829": {
-  "name": "Coleman Owen",
-  "pos": "WR",
-  "team": "IND",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "12773": {
@@ -4710,9 +4704,9 @@
   "injury": null,
   "proj_pts": 0.69,
   "proj": {
-   "rec": 0.32,
    "rec_yd": 3.45,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.32
   },
   "last_wk_pts": null
  },
@@ -4794,10 +4788,10 @@
   "injury": null,
   "proj_pts": 4.72,
   "proj": {
+   "rec_yd": 9.84,
    "rush_td": 0.15,
-   "rec": 1.55,
    "rush_yd": 17.85,
-   "rec_yd": 9.84
+   "rec": 1.55
   },
   "last_wk_pts": null
  },
@@ -4829,10 +4823,10 @@
   "injury": null,
   "proj_pts": 0.08,
   "proj": {
+   "rec_yd": 0.07,
    "rush_td": 0.0,
-   "rec": 0.01,
    "rush_yd": 0.64,
-   "rec_yd": 0.07
+   "rec": 0.01
   },
   "last_wk_pts": null
  },
@@ -4851,12 +4845,12 @@
   "pos": "WR",
   "team": "HOU",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 4.18,
   "proj": {
-   "rec": 1.78,
    "rec_yd": 22.33,
-   "rec_td": 0.17
+   "rec_td": 0.17,
+   "rec": 1.78
   },
   "last_wk_pts": null
  },
@@ -4868,9 +4862,9 @@
   "injury": null,
   "proj_pts": 5.93,
   "proj": {
-   "rec": 2.73,
    "rec_yd": 35.06,
-   "rec_td": 0.17
+   "rec_td": 0.17,
+   "rec": 2.73
   },
   "last_wk_pts": null
  },
@@ -4882,9 +4876,9 @@
   "injury": null,
   "proj_pts": 3.56,
   "proj": {
-   "rec": 1.96,
    "rec_yd": 18.6,
-   "rec_td": 0.12
+   "rec_td": 0.12,
+   "rec": 1.96
   },
   "last_wk_pts": null
  },
@@ -4894,11 +4888,11 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.78,
+  "proj_pts": 5.69,
   "proj": {
-   "fgm": 1.65,
-   "xpm": 2.3,
-   "fga": 1.95
+   "xpm": 2.28,
+   "fga": 1.93,
+   "fgm": 1.64
   },
   "last_wk_pts": null
  },
@@ -4910,9 +4904,9 @@
   "injury": null,
   "proj_pts": 3.34,
   "proj": {
-   "rec": 1.21,
    "rec_yd": 18.83,
-   "rec_td": 0.12
+   "rec_td": 0.12,
+   "rec": 1.21
   },
   "last_wk_pts": null
  },
@@ -4930,14 +4924,10 @@
   "name": "Ben Yurosek",
   "pos": "TE",
   "team": "MIN",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.2,
-  "proj": {
-   "rec": 0.1,
-   "rec_yd": 0.87,
-   "rec_td": 0.01
-  },
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "3678": {
@@ -4948,9 +4938,9 @@
   "injury": null,
   "proj_pts": 6.13,
   "proj": {
-   "fgm": 1.74,
    "xpm": 2.4,
-   "fga": 2.04
+   "fga": 2.04,
+   "fgm": 1.74
   },
   "last_wk_pts": null
  },
@@ -5012,9 +5002,9 @@
   "injury": null,
   "proj_pts": 1.64,
   "proj": {
-   "rec": 0.92,
    "rec_yd": 8.16,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.92
   },
   "last_wk_pts": null
  },
@@ -5023,7 +5013,7 @@
   "pos": "WR",
   "team": "PIT",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -5066,10 +5056,10 @@
   "injury": null,
   "proj_pts": 6.8,
   "proj": {
+   "rec_yd": 16.33,
    "rush_td": 0.2,
-   "rec": 2.69,
    "rush_yd": 23.0,
-   "rec_yd": 16.33
+   "rec": 2.69
   },
   "last_wk_pts": null
  },
@@ -5081,10 +5071,10 @@
   "injury": null,
   "proj_pts": 0.21,
   "proj": {
+   "rec_yd": 0.65,
    "rush_td": 0.0,
-   "rec": 0.08,
    "rush_yd": 0.44,
-   "rec_yd": 0.65
+   "rec": 0.08
   },
   "last_wk_pts": null
  },
@@ -5093,13 +5083,13 @@
   "pos": "RB",
   "team": "CHI",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 6.87,
   "proj": {
+   "rec_yd": 8.95,
    "rush_td": 0.25,
-   "rec": 1.12,
    "rush_yd": 35.31,
-   "rec_yd": 8.95
+   "rec": 1.12
   },
   "last_wk_pts": null
  },
@@ -5111,10 +5101,10 @@
   "injury": null,
   "proj_pts": 0.17,
   "proj": {
+   "rec_yd": 0.1,
    "rush_td": 0.01,
-   "rec": 0.02,
    "rush_yd": 0.89,
-   "rec_yd": 0.1
+   "rec": 0.02
   },
   "last_wk_pts": null
  },
@@ -5166,9 +5156,9 @@
   "injury": null,
   "proj_pts": 2.18,
   "proj": {
-   "rec": 1.05,
    "rec_yd": 11.76,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 1.05
   },
   "last_wk_pts": null
  },
@@ -5180,9 +5170,9 @@
   "injury": null,
   "proj_pts": 6.37,
   "proj": {
-   "fgm": 1.8,
    "xpm": 2.54,
-   "fga": 2.11
+   "fga": 2.11,
+   "fgm": 1.8
   },
   "last_wk_pts": null
  },
@@ -5194,10 +5184,10 @@
   "injury": null,
   "proj_pts": 3.44,
   "proj": {
+   "rec_yd": 5.41,
    "rush_td": 0.12,
-   "rec": 0.78,
    "rush_yd": 15.68,
-   "rec_yd": 5.41
+   "rec": 0.78
   },
   "last_wk_pts": null
  },
@@ -5229,9 +5219,9 @@
   "injury": null,
   "proj_pts": 0.42,
   "proj": {
-   "rec": 0.2,
    "rec_yd": 1.95,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.2
   },
   "last_wk_pts": null
  },
@@ -5250,13 +5240,9 @@
   "pos": "WR",
   "team": "SEA",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.88,
-  "proj": {
-   "rec": 1.21,
-   "rec_yd": 15.92,
-   "rec_td": 0.11
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "12469": {
@@ -5267,10 +5253,10 @@
   "injury": null,
   "proj_pts": 5.68,
   "proj": {
+   "rec_yd": 15.31,
    "rush_td": 0.1,
-   "rec": 2.05,
    "rush_yd": 20.42,
-   "rec_yd": 15.31
+   "rec": 2.05
   },
   "last_wk_pts": null
  },
@@ -5330,11 +5316,11 @@
   "team": "MIA",
   "status": null,
   "injury": null,
-  "proj_pts": 5.54,
+  "proj_pts": 5.55,
   "proj": {
-   "int": 0.57,
-   "pts_allow": 22.0,
-   "sack": 2.78
+   "pts_allow": 21.75,
+   "sack": 2.79,
+   "int": 0.57
   },
   "last_wk_pts": null
  },
@@ -5346,9 +5332,9 @@
   "injury": null,
   "proj_pts": 1.29,
   "proj": {
-   "rec": 0.56,
    "rec_yd": 7.13,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.56
   },
   "last_wk_pts": null
  },
@@ -5360,9 +5346,9 @@
   "injury": null,
   "proj_pts": 0.59,
   "proj": {
-   "rec": 0.36,
    "rec_yd": 2.93,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.36
   },
   "last_wk_pts": null
  },
@@ -5374,9 +5360,9 @@
   "injury": null,
   "proj_pts": 5.73,
   "proj": {
-   "rec": 2.98,
    "rec_yd": 27.96,
-   "rec_td": 0.24
+   "rec_td": 0.24,
+   "rec": 2.98
   },
   "last_wk_pts": null
  },
@@ -5388,30 +5374,10 @@
   "injury": null,
   "proj_pts": 6.37,
   "proj": {
-   "rec": 2.35,
    "rec_yd": 35.85,
-   "rec_td": 0.26
+   "rec_td": 0.26,
+   "rec": 2.35
   },
-  "last_wk_pts": null
- },
- "13120": {
-  "name": "Jacoby Jones",
-  "pos": "WR",
-  "team": "WAS",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
- "12210": {
-  "name": "Cole Burgess",
-  "pos": "WR",
-  "team": "PIT",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "13577": {
@@ -5452,21 +5418,11 @@
   "injury": null,
   "proj_pts": 0.09,
   "proj": {
+   "rec_yd": 0.15,
    "rush_td": 0.0,
-   "rec": 0.02,
    "rush_yd": 0.62,
-   "rec_yd": 0.15
+   "rec": 0.02
   },
-  "last_wk_pts": null
- },
- "12865": {
-  "name": "AJ Henning",
-  "pos": "WR",
-  "team": "MIA",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "13316": {
@@ -5487,9 +5443,9 @@
   "injury": null,
   "proj_pts": 3.89,
   "proj": {
-   "rec": 1.78,
    "rec_yd": 23.43,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.78
   },
   "last_wk_pts": null
  },
@@ -5501,9 +5457,9 @@
   "injury": null,
   "proj_pts": 4.38,
   "proj": {
-   "rec": 2.53,
    "rec_yd": 23.4,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 2.53
   },
   "last_wk_pts": null
  },
@@ -5515,9 +5471,9 @@
   "injury": null,
   "proj_pts": 3.49,
   "proj": {
-   "rec": 1.39,
    "rec_yd": 19.15,
-   "rec_td": 0.14
+   "rec_td": 0.14,
+   "rec": 1.39
   },
   "last_wk_pts": null
  },
@@ -5525,7 +5481,7 @@
   "name": "David Sills",
   "pos": "WR",
   "team": "TB",
-  "status": "Active",
+  "status": "Inactive",
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
@@ -5549,9 +5505,9 @@
   "injury": null,
   "proj_pts": 0.51,
   "proj": {
-   "rec": 0.24,
    "rec_yd": 2.35,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.24
   },
   "last_wk_pts": null
  },
@@ -5561,11 +5517,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.24,
+  "proj_pts": 1.46,
   "proj": {
-   "rec": 0.12,
-   "rec_yd": 1.16,
-   "rec_td": 0.01
+   "rec_yd": 7.59,
+   "rec_td": 0.05,
+   "rec": 0.81
   },
   "last_wk_pts": null
  },
@@ -5577,10 +5533,10 @@
   "injury": null,
   "proj_pts": 4.58,
   "proj": {
+   "rec_yd": 6.06,
    "rush_td": 0.16,
-   "rec": 0.78,
    "rush_yd": 22.87,
-   "rec_yd": 6.06
+   "rec": 0.78
   },
   "last_wk_pts": null
  },
@@ -5592,9 +5548,9 @@
   "injury": null,
   "proj_pts": 2.66,
   "proj": {
-   "rec": 1.17,
    "rec_yd": 14.23,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 1.17
   },
   "last_wk_pts": null
  },
@@ -5626,9 +5582,9 @@
   "injury": null,
   "proj_pts": 5.82,
   "proj": {
-   "int": 0.73,
    "pts_allow": 21.75,
-   "sack": 2.42
+   "sack": 2.42,
+   "int": 0.73
   },
   "last_wk_pts": null
  },
@@ -5637,13 +5593,13 @@
   "pos": "RB",
   "team": "NO",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 1.56,
   "proj": {
+   "rec_yd": 2.34,
    "rush_td": 0.06,
-   "rec": 0.36,
    "rush_yd": 6.88,
-   "rec_yd": 2.34
+   "rec": 0.36
   },
   "last_wk_pts": null
  },
@@ -5655,9 +5611,9 @@
   "injury": null,
   "proj_pts": 1.63,
   "proj": {
-   "rec": 0.68,
    "rec_yd": 10.48,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.68
   },
   "last_wk_pts": null
  },
@@ -5667,11 +5623,11 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.22,
+  "proj_pts": 0.33,
   "proj": {
-   "rec": 0.08,
    "rec_yd": 1.02,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.08
   },
   "last_wk_pts": null
  },
@@ -5723,9 +5679,9 @@
   "injury": null,
   "proj_pts": 5.82,
   "proj": {
-   "rec": 2.99,
    "rec_yd": 29.48,
-   "rec_td": 0.23
+   "rec_td": 0.23,
+   "rec": 2.99
   },
   "last_wk_pts": null
  },
@@ -5735,11 +5691,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.35,
+  "proj_pts": 0.78,
   "proj": {
-   "rec": 0.17,
-   "rec_yd": 2.05,
-   "rec_td": 0.01
+   "rec_yd": 4.23,
+   "rec_td": 0.03,
+   "rec": 0.35
   },
   "last_wk_pts": null
  },
@@ -5791,9 +5747,9 @@
   "injury": null,
   "proj_pts": 1.3,
   "proj": {
-   "rec": 0.72,
    "rec_yd": 6.36,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.72
   },
   "last_wk_pts": null
  },
@@ -5815,10 +5771,10 @@
   "injury": null,
   "proj_pts": 0.44,
   "proj": {
+   "rec_yd": 0.31,
    "rush_td": 0.02,
-   "rec": 0.05,
    "rush_yd": 2.63,
-   "rec_yd": 0.31
+   "rec": 0.05
   },
   "last_wk_pts": null
  },
@@ -5860,9 +5816,9 @@
   "injury": null,
   "proj_pts": 5.15,
   "proj": {
-   "int": 0.64,
    "pts_allow": 25.75,
-   "sack": 2.15
+   "sack": 2.15,
+   "int": 0.64
   },
   "last_wk_pts": null
  },
@@ -5891,12 +5847,12 @@
   "pos": "WR",
   "team": "CAR",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 2.5,
   "proj": {
-   "rec": 1.04,
    "rec_yd": 12.98,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.04
   },
   "last_wk_pts": null
  },
@@ -5915,12 +5871,12 @@
   "pos": "WR",
   "team": "BUF",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 3.64,
   "proj": {
-   "rec": 1.34,
    "rec_yd": 19.89,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 1.34
   },
   "last_wk_pts": null
  },
@@ -5952,9 +5908,9 @@
   "injury": null,
   "proj_pts": 0.99,
   "proj": {
-   "rec": 0.5,
    "rec_yd": 4.99,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.5
   },
   "last_wk_pts": null
  },
@@ -5976,9 +5932,9 @@
   "injury": null,
   "proj_pts": 2.66,
   "proj": {
-   "rec": 1.44,
    "rec_yd": 13.44,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 1.44
   },
   "last_wk_pts": null
  },
@@ -6020,9 +5976,9 @@
   "injury": null,
   "proj_pts": 1.64,
   "proj": {
-   "rec": 0.66,
    "rec_yd": 8.24,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 0.66
   },
   "last_wk_pts": null
  },
@@ -6034,9 +5990,9 @@
   "injury": null,
   "proj_pts": 2.19,
   "proj": {
-   "rec": 0.95,
    "rec_yd": 11.51,
-   "rec_td": 0.09
+   "rec_td": 0.09,
+   "rec": 0.95
   },
   "last_wk_pts": null
  },
@@ -6048,9 +6004,9 @@
   "injury": null,
   "proj_pts": 3.19,
   "proj": {
-   "rec": 1.43,
    "rec_yd": 17.59,
-   "rec_td": 0.12
+   "rec_td": 0.12,
+   "rec": 1.43
   },
   "last_wk_pts": null
  },
@@ -6072,9 +6028,9 @@
   "injury": null,
   "proj_pts": 0.48,
   "proj": {
-   "rec": 0.22,
    "rec_yd": 2.52,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.22
   },
   "last_wk_pts": null
  },
@@ -6126,9 +6082,9 @@
   "injury": null,
   "proj_pts": 2.14,
   "proj": {
-   "rec": 1.11,
    "rec_yd": 11.01,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 1.11
   },
   "last_wk_pts": null
  },
@@ -6142,16 +6098,6 @@
   "proj": {},
   "last_wk_pts": null
  },
- "8202": {
-  "name": "Michael Woods",
-  "pos": "WR",
-  "team": "DEN",
-  "status": "Inactive",
-  "injury": "Questionable",
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
  "11600": {
   "name": "Ja'Tavion Sanders",
   "pos": "TE",
@@ -6160,9 +6106,9 @@
   "injury": null,
   "proj_pts": 1.18,
   "proj": {
-   "rec": 0.71,
    "rec_yd": 5.85,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.71
   },
   "last_wk_pts": null
  },
@@ -6174,9 +6120,9 @@
   "injury": null,
   "proj_pts": 6.13,
   "proj": {
-   "fgm": 1.64,
    "xpm": 2.4,
-   "fga": 1.99
+   "fga": 1.99,
+   "fgm": 1.64
   },
   "last_wk_pts": null
  },
@@ -6198,9 +6144,9 @@
   "injury": null,
   "proj_pts": 0.67,
   "proj": {
-   "rec": 0.36,
    "rec_yd": 3.68,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.36
   },
   "last_wk_pts": null
  },
@@ -6212,9 +6158,9 @@
   "injury": null,
   "proj_pts": 9.39,
   "proj": {
-   "rec": 3.42,
    "rec_yd": 50.08,
-   "rec_td": 0.42
+   "rec_td": 0.42,
+   "rec": 3.42
   },
   "last_wk_pts": null
  },
@@ -6226,9 +6172,9 @@
   "injury": null,
   "proj_pts": 5.17,
   "proj": {
-   "int": 0.63,
    "pts_allow": 25.5,
-   "sack": 2.21
+   "sack": 2.21,
+   "int": 0.63
   },
   "last_wk_pts": null
  },
@@ -6240,10 +6186,10 @@
   "injury": null,
   "proj_pts": 1.53,
   "proj": {
+   "rec_yd": 0.7,
    "rush_td": 0.07,
-   "rec": 0.11,
    "rush_yd": 9.43,
-   "rec_yd": 0.7
+   "rec": 0.11
   },
   "last_wk_pts": null
  },
@@ -6265,9 +6211,9 @@
   "injury": null,
   "proj_pts": 1.87,
   "proj": {
-   "rec": 0.56,
    "rec_yd": 9.67,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 0.56
   },
   "last_wk_pts": null
  },
@@ -6279,9 +6225,9 @@
   "injury": null,
   "proj_pts": 0.36,
   "proj": {
-   "rec": 0.22,
    "rec_yd": 1.93,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.22
   },
   "last_wk_pts": null
  },
@@ -6313,9 +6259,9 @@
   "injury": null,
   "proj_pts": 5.49,
   "proj": {
-   "rec": 1.96,
    "rec_yd": 33.47,
-   "rec_td": 0.19
+   "rec_td": 0.19,
+   "rec": 1.96
   },
   "last_wk_pts": null
  },
@@ -6337,9 +6283,9 @@
   "injury": null,
   "proj_pts": 4.39,
   "proj": {
-   "rec": 1.91,
    "rec_yd": 24.28,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 1.91
   },
   "last_wk_pts": null
  },
@@ -6351,10 +6297,10 @@
   "injury": null,
   "proj_pts": 1.19,
   "proj": {
+   "rec_yd": 2.61,
    "rush_td": 0.02,
-   "rec": 0.4,
    "rush_yd": 5.09,
-   "rec_yd": 2.61
+   "rec": 0.4
   },
   "last_wk_pts": null
  },
@@ -6366,10 +6312,10 @@
   "injury": null,
   "proj_pts": 1.53,
   "proj": {
+   "rec_yd": 1.84,
    "rush_td": 0.06,
-   "rec": 0.28,
    "rush_yd": 8.07,
-   "rec_yd": 1.84
+   "rec": 0.28
   },
   "last_wk_pts": null
  },
@@ -6379,12 +6325,12 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.25,
+  "proj_pts": 5.22,
   "proj": {
-   "rush_td": 0.15,
-   "rec": 0.9,
-   "rush_yd": 20.44,
-   "rec_yd": 5.76
+   "rec_yd": 9.17,
+   "rush_td": 0.16,
+   "rush_yd": 21.85,
+   "rec": 1.43
   },
   "last_wk_pts": null
  },
@@ -6424,11 +6370,11 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.07,
+  "proj_pts": 6.09,
   "proj": {
-   "fgm": 1.63,
-   "xpm": 2.28,
-   "fga": 1.87
+   "xpm": 2.3,
+   "fga": 1.89,
+   "fgm": 1.65
   },
   "last_wk_pts": null
  },
@@ -6450,9 +6396,9 @@
   "injury": null,
   "proj_pts": 0.11,
   "proj": {
-   "rec": 0.07,
    "rec_yd": 0.79,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.07
   },
   "last_wk_pts": null
  },
@@ -6504,10 +6450,10 @@
   "injury": "Questionable",
   "proj_pts": 3.43,
   "proj": {
+   "rec_yd": 8.13,
    "rush_td": 0.09,
-   "rec": 1.06,
    "rush_yd": 10.63,
-   "rec_yd": 8.13
+   "rec": 1.06
   },
   "last_wk_pts": null
  },
@@ -6529,21 +6475,11 @@
   "injury": "Questionable",
   "proj_pts": 2.25,
   "proj": {
+   "rec_yd": 6.45,
    "rush_td": 0.03,
-   "rec": 1.06,
    "rush_yd": 5.53,
-   "rec_yd": 6.45
+   "rec": 1.06
   },
-  "last_wk_pts": null
- },
- "13870": {
-  "name": "Quentin Moore",
-  "pos": "TE",
-  "team": "WAS",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "11421": {
@@ -6564,9 +6500,9 @@
   "injury": null,
   "proj_pts": 2.75,
   "proj": {
-   "rec": 1.55,
    "rec_yd": 13.15,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.55
   },
   "last_wk_pts": null
  },
@@ -6578,9 +6514,9 @@
   "injury": null,
   "proj_pts": 6.44,
   "proj": {
-   "rec": 2.68,
    "rec_yd": 37.82,
-   "rec_td": 0.21
+   "rec_td": 0.21,
+   "rec": 2.68
   },
   "last_wk_pts": null
  },
@@ -6612,10 +6548,10 @@
   "injury": null,
   "proj_pts": 2.43,
   "proj": {
+   "rec_yd": 4.85,
    "rush_td": 0.06,
-   "rec": 0.8,
    "rush_yd": 9.68,
-   "rec_yd": 4.85
+   "rec": 0.8
   },
   "last_wk_pts": null
  },
@@ -6627,9 +6563,9 @@
   "injury": null,
   "proj_pts": 0.87,
   "proj": {
-   "rec": 0.35,
    "rec_yd": 4.75,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.35
   },
   "last_wk_pts": null
  },
@@ -6651,9 +6587,9 @@
   "injury": null,
   "proj_pts": 4.29,
   "proj": {
-   "rec": 1.65,
    "rec_yd": 25.06,
-   "rec_td": 0.16
+   "rec_td": 0.16,
+   "rec": 1.65
   },
   "last_wk_pts": null
  },
@@ -6662,12 +6598,12 @@
   "pos": "TE",
   "team": "IND",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 0.34,
   "proj": {
-   "rec": 0.19,
    "rec_yd": 1.89,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.19
   },
   "last_wk_pts": null
  },
@@ -6681,27 +6617,17 @@
   "proj": {},
   "last_wk_pts": null
  },
- "11851": {
-  "name": "Carter Bradley",
-  "pos": "QB",
-  "team": "JAX",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
  "6528": {
   "name": "Joey Slye",
   "pos": "K",
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.99,
+  "proj_pts": 5.91,
   "proj": {
-   "fgm": 1.73,
-   "xpm": 2.13,
-   "fga": 2.07
+   "xpm": 2.11,
+   "fga": 2.05,
+   "fgm": 1.72
   },
   "last_wk_pts": null
  },
@@ -6723,9 +6649,9 @@
   "injury": null,
   "proj_pts": 0.15,
   "proj": {
-   "rec": 0.07,
    "rec_yd": 0.83,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.07
   },
   "last_wk_pts": null
  },
@@ -6747,9 +6673,9 @@
   "injury": null,
   "proj_pts": 6.02,
   "proj": {
-   "int": 0.75,
    "pts_allow": 22.0,
-   "sack": 2.56
+   "sack": 2.56,
+   "int": 0.75
   },
   "last_wk_pts": null
  },
@@ -6783,6 +6709,16 @@
   "proj": {},
   "last_wk_pts": null
  },
+ "13208": {
+  "name": "Kyrese Rowan",
+  "pos": "WR",
+  "team": "NO",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
  "13402": {
   "name": "Skyler Bell",
   "pos": "WR",
@@ -6791,9 +6727,9 @@
   "injury": null,
   "proj_pts": 0.9,
   "proj": {
-   "rec": 0.37,
    "rec_yd": 4.5,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.37
   },
   "last_wk_pts": null
  },
@@ -6805,20 +6741,10 @@
   "injury": null,
   "proj_pts": 3.18,
   "proj": {
-   "rec": 1.67,
    "rec_yd": 16.34,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.67
   },
-  "last_wk_pts": null
- },
- "12883": {
-  "name": "Joshua Simon",
-  "pos": "TE",
-  "team": "WAS",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": null
  },
  "6175": {
@@ -6845,6 +6771,16 @@
   "name": "Ihmir Smith-Marsette",
   "pos": "WR",
   "team": "ARI",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
+ "11748": {
+  "name": "Bub Means",
+  "pos": "WR",
+  "team": "CLE",
   "status": "Active",
   "injury": null,
   "proj_pts": 0.0,
@@ -6879,10 +6815,10 @@
   "injury": null,
   "proj_pts": 3.52,
   "proj": {
+   "rec_yd": 2.81,
    "rush_td": 0.15,
-   "rec": 0.47,
    "rush_yd": 20.07,
-   "rec_yd": 2.81
+   "rec": 0.47
   },
   "last_wk_pts": null
  },
@@ -6894,9 +6830,9 @@
   "injury": null,
   "proj_pts": 5.58,
   "proj": {
-   "int": 0.72,
    "pts_allow": 23.5,
-   "sack": 2.54
+   "sack": 2.54,
+   "int": 0.72
   },
   "last_wk_pts": null
  },
@@ -6906,11 +6842,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.07,
+  "proj_pts": 5.58,
   "proj": {
-   "rec": 1.75,
-   "rec_yd": 16.76,
-   "rec_td": 0.09
+   "rec_yd": 30.38,
+   "rec_td": 0.16,
+   "rec": 3.17
   },
   "last_wk_pts": null
  },
@@ -6932,9 +6868,9 @@
   "injury": null,
   "proj_pts": 6.47,
   "proj": {
-   "fgm": 1.85,
    "xpm": 2.55,
-   "fga": 2.16
+   "fga": 2.16,
+   "fgm": 1.85
   },
   "last_wk_pts": null
  },
@@ -6946,9 +6882,9 @@
   "injury": null,
   "proj_pts": 6.03,
   "proj": {
-   "fgm": 1.66,
    "xpm": 2.55,
-   "fga": 1.96
+   "fga": 1.96,
+   "fgm": 1.66
   },
   "last_wk_pts": null
  },
@@ -6960,10 +6896,10 @@
   "injury": null,
   "proj_pts": 4.26,
   "proj": {
+   "rec_yd": 4.1,
    "rush_td": 0.2,
-   "rec": 0.58,
    "rush_yd": 21.96,
-   "rec_yd": 4.1
+   "rec": 0.58
   },
   "last_wk_pts": null
  },
@@ -6985,9 +6921,9 @@
   "injury": null,
   "proj_pts": 1.32,
   "proj": {
-   "rec": 0.68,
    "rec_yd": 6.82,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.68
   },
   "last_wk_pts": null
  },
@@ -7042,9 +6978,9 @@
   "injury": null,
   "proj_pts": 3.17,
   "proj": {
-   "rec": 1.75,
    "rec_yd": 16.3,
-   "rec_td": 0.11
+   "rec_td": 0.11,
+   "rec": 1.75
   },
   "last_wk_pts": null
  },
@@ -7086,10 +7022,10 @@
   "injury": "Questionable",
   "proj_pts": 2.9,
   "proj": {
+   "rec_yd": 4.76,
    "rush_td": 0.1,
-   "rec": 0.83,
    "rush_yd": 13.11,
-   "rec_yd": 4.76
+   "rec": 0.83
   },
   "last_wk_pts": null
  },
@@ -7111,9 +7047,9 @@
   "injury": null,
   "proj_pts": 0.1,
   "proj": {
-   "rec": 0.04,
    "rec_yd": 0.68,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.04
   },
   "last_wk_pts": null
  },
@@ -7145,9 +7081,9 @@
   "injury": "Questionable",
   "proj_pts": 1.81,
   "proj": {
-   "rec": 1.02,
    "rec_yd": 9.4,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 1.02
   },
   "last_wk_pts": null
  },
@@ -7159,9 +7095,9 @@
   "injury": null,
   "proj_pts": 6.0,
   "proj": {
-   "rec": 2.54,
    "rec_yd": 33.1,
-   "rec_td": 0.21
+   "rec_td": 0.21,
+   "rec": 2.54
   },
   "last_wk_pts": null
  },
@@ -7183,9 +7119,9 @@
   "injury": null,
   "proj_pts": 1.18,
   "proj": {
-   "rec": 0.64,
    "rec_yd": 6.17,
-   "rec_td": 0.04
+   "rec_td": 0.04,
+   "rec": 0.64
   },
   "last_wk_pts": null
  },
@@ -7197,10 +7133,10 @@
   "injury": null,
   "proj_pts": 2.32,
   "proj": {
+   "rec_yd": 1.97,
    "rush_td": 0.09,
-   "rec": 0.29,
    "rush_yd": 13.15,
-   "rec_yd": 1.97
+   "rec": 0.29
   },
   "last_wk_pts": null
  },
@@ -7220,11 +7156,11 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.44,
+  "proj_pts": 2.42,
   "proj": {
-   "rec": 1.38,
    "rec_yd": 12.73,
-   "rec_td": 0.08
+   "rec_td": 0.08,
+   "rec": 1.38
   },
   "last_wk_pts": null
  },
@@ -7286,9 +7222,9 @@
   "injury": null,
   "proj_pts": 0.26,
   "proj": {
-   "rec": 0.14,
    "rec_yd": 1.29,
-   "rec_td": 0.01
+   "rec_td": 0.01,
+   "rec": 0.14
   },
   "last_wk_pts": null
  },
@@ -7307,7 +7243,7 @@
   "pos": "QB",
   "team": "WAS",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7316,16 +7252,6 @@
   "name": "Jared Wayne",
   "pos": "WR",
   "team": "HOU",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
- },
- "6149": {
-  "name": "Darius Slayton",
-  "pos": "WR",
-  "team": "NYG",
   "status": "Active",
   "injury": null,
   "proj_pts": 0.0,
@@ -7351,8 +7277,8 @@
   "proj_pts": 14.1,
   "proj": {
    "pass_yd": 207.56,
-   "pass_int": 0.74,
    "pass_td": 1.23,
+   "pass_int": 0.74,
    "rush_yd": 11.16
   },
   "last_wk_pts": null
@@ -7383,11 +7309,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
+  "proj_pts": 0.77,
   "proj": {
-   "rec": 0.0,
-   "rec_yd": 0.04,
-   "rec_td": 0.0
+   "rec_yd": 4.21,
+   "rec_td": 0.03,
+   "rec": 0.34
   },
   "last_wk_pts": null
  },
@@ -7419,9 +7345,9 @@
   "injury": null,
   "proj_pts": 6.21,
   "proj": {
-   "fgm": 1.76,
    "xpm": 2.37,
-   "fga": 2.07
+   "fga": 2.07,
+   "fgm": 1.76
   },
   "last_wk_pts": null
  },
@@ -7440,7 +7366,7 @@
   "pos": "QB",
   "team": "SEA",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7463,9 +7389,9 @@
   "injury": null,
   "proj_pts": 1.2,
   "proj": {
-   "rec": 0.51,
    "rec_yd": 6.41,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.51
   },
   "last_wk_pts": null
  },
@@ -7497,9 +7423,9 @@
   "injury": null,
   "proj_pts": 0.74,
   "proj": {
-   "rec": 0.33,
    "rec_yd": 3.71,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.33
   },
   "last_wk_pts": null
  },
@@ -7518,7 +7444,7 @@
   "pos": "QB",
   "team": "CHI",
   "status": "Active",
-  "injury": null,
+  "injury": "Questionable",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7561,9 +7487,9 @@
   "injury": null,
   "proj_pts": 2.61,
   "proj": {
-   "rec": 1.03,
    "rec_yd": 14.37,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 1.03
   },
   "last_wk_pts": null
  },
@@ -7635,9 +7561,9 @@
   "injury": null,
   "proj_pts": 0.79,
   "proj": {
-   "rec": 0.4,
    "rec_yd": 4.07,
-   "rec_td": 0.03
+   "rec_td": 0.03,
+   "rec": 0.4
   },
   "last_wk_pts": null
  },
@@ -7669,9 +7595,9 @@
   "injury": null,
   "proj_pts": 0.09,
   "proj": {
-   "rec": 0.04,
    "rec_yd": 0.49,
-   "rec_td": 0.0
+   "rec_td": 0.0,
+   "rec": 0.04
   },
   "last_wk_pts": null
  },
@@ -7703,9 +7629,9 @@
   "injury": null,
   "proj_pts": 2.19,
   "proj": {
-   "rec": 1.07,
    "rec_yd": 12.34,
-   "rec_td": 0.07
+   "rec_td": 0.07,
+   "rec": 1.07
   },
   "last_wk_pts": null
  },
@@ -7717,9 +7643,9 @@
   "injury": null,
   "proj_pts": 1.51,
   "proj": {
-   "rec": 0.84,
    "rec_yd": 7.88,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.84
   },
   "last_wk_pts": null
  },
@@ -7751,10 +7677,10 @@
   "injury": null,
   "proj_pts": 2.45,
   "proj": {
+   "rec_yd": 4.87,
    "rush_td": 0.06,
-   "rec": 0.63,
    "rush_yd": 10.69,
-   "rec_yd": 4.87
+   "rec": 0.63
   },
   "last_wk_pts": null
  },
@@ -7776,9 +7702,9 @@
   "injury": null,
   "proj_pts": 1.72,
   "proj": {
-   "rec": 0.92,
    "rec_yd": 8.97,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.92
   },
   "last_wk_pts": null
  },
@@ -7830,9 +7756,9 @@
   "injury": null,
   "proj_pts": 3.17,
   "proj": {
-   "rec": 1.61,
    "rec_yd": 15.86,
-   "rec_td": 0.13
+   "rec_td": 0.13,
+   "rec": 1.61
   },
   "last_wk_pts": null
  },
@@ -7854,9 +7780,9 @@
   "injury": null,
   "proj_pts": 1.47,
   "proj": {
-   "rec": 0.72,
    "rec_yd": 7.52,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.72
   },
   "last_wk_pts": null
  },
@@ -7901,7 +7827,7 @@
   "last_wk_pts": null
  },
  "11068": {
-  "name": "Mitch Tinsley",
+  "name": "Mitchell Tinsley",
   "pos": "WR",
   "team": "HOU",
   "status": "Active",
@@ -7918,10 +7844,10 @@
   "injury": null,
   "proj_pts": 3.54,
   "proj": {
+   "rec_yd": 5.47,
    "rush_td": 0.1,
-   "rec": 0.7,
    "rush_yd": 18.23,
-   "rec_yd": 5.47
+   "rec": 0.7
   },
   "last_wk_pts": null
  },
@@ -7933,9 +7859,9 @@
   "injury": null,
   "proj_pts": 2.23,
   "proj": {
-   "rec": 0.86,
    "rec_yd": 11.46,
-   "rec_td": 0.1
+   "rec_td": 0.1,
+   "rec": 0.86
   },
   "last_wk_pts": null
  },
@@ -8004,12 +7930,12 @@
   "pos": "TE",
   "team": "WAS",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": null,
   "proj_pts": 1.69,
   "proj": {
-   "rec": 0.9,
    "rec_yd": 8.75,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.9
   },
   "last_wk_pts": null
  },
@@ -8021,10 +7947,20 @@
   "injury": null,
   "proj_pts": 0.65,
   "proj": {
-   "rec": 0.33,
    "rec_yd": 3.69,
-   "rec_td": 0.02
+   "rec_td": 0.02,
+   "rec": 0.33
   },
+  "last_wk_pts": null
+ },
+ "13949": {
+  "name": "Damon Bankston",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "5638": {
@@ -8045,9 +7981,9 @@
   "injury": null,
   "proj_pts": 1.62,
   "proj": {
-   "rec": 0.71,
    "rec_yd": 8.61,
-   "rec_td": 0.06
+   "rec_td": 0.06,
+   "rec": 0.71
   },
   "last_wk_pts": null
  },
@@ -8057,8 +7993,13 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.28,
+  "proj": {
+   "rec_yd": 0.49,
+   "rush_td": 0.01,
+   "rush_yd": 1.33,
+   "rec": 0.08
+  },
   "last_wk_pts": null
  },
  "11820": {
@@ -8079,9 +8020,9 @@
   "injury": null,
   "proj_pts": 6.51,
   "proj": {
-   "int": 0.77,
    "pts_allow": 22.5,
-   "sack": 2.59
+   "sack": 2.59,
+   "int": 0.77
   },
   "last_wk_pts": null
  },
@@ -8093,9 +8034,9 @@
   "injury": null,
   "proj_pts": 1.36,
   "proj": {
-   "rec": 0.73,
    "rec_yd": 6.5,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.73
   },
   "last_wk_pts": null
  },
@@ -8107,9 +8048,9 @@
   "injury": null,
   "proj_pts": 4.26,
   "proj": {
-   "rec": 1.43,
    "rec_yd": 24.03,
-   "rec_td": 0.19
+   "rec_td": 0.19,
+   "rec": 1.43
   },
   "last_wk_pts": null
  },
@@ -8131,9 +8072,9 @@
   "injury": null,
   "proj_pts": 4.34,
   "proj": {
-   "rec": 2.16,
    "rec_yd": 20.59,
-   "rec_td": 0.2
+   "rec_td": 0.2,
+   "rec": 2.16
   },
   "last_wk_pts": null
  },
@@ -8145,9 +8086,9 @@
   "injury": null,
   "proj_pts": 4.93,
   "proj": {
-   "rec": 2.14,
    "rec_yd": 27.31,
-   "rec_td": 0.18
+   "rec_td": 0.18,
+   "rec": 2.14
   },
   "last_wk_pts": null
  },
@@ -8157,11 +8098,11 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.34,
+  "proj_pts": 5.38,
   "proj": {
-   "fgm": 1.45,
-   "xpm": 1.68,
-   "fga": 1.73
+   "xpm": 1.69,
+   "fga": 1.74,
+   "fgm": 1.45
   },
   "last_wk_pts": null
  },
@@ -8173,9 +8114,9 @@
   "injury": null,
   "proj_pts": 1.29,
   "proj": {
-   "rec": 0.51,
    "rec_yd": 7.17,
-   "rec_td": 0.05
+   "rec_td": 0.05,
+   "rec": 0.51
   },
   "last_wk_pts": null
  },

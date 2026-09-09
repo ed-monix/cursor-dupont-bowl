@@ -4,15 +4,16 @@
     "7594",
     "12501",
     "4046",
-    "12522"
+    "12522",
+    "96"
   ],
-  "faab_remaining": 59,
+  "faab_remaining": 27,
   "ir": [],
   "name": "Gut Feeling, Zero Regrets",
   "starters": {
     "DEF": "LV",
     "FLEX": "8167",
-    "K": "12711",
+    "K": null,
     "QB": "6770",
     "RB1": "3198",
     "RB2": "6806",
