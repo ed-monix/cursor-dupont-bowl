@@ -30,6 +30,12 @@ public record — Sunday is the run people watch, so give it something to REACT 
 
 - its `teams/<slug>/general-manager.md` (NEVER another team's) and `roster.json`,
 - the refreshed `state/players.json` (so it sees injury/BYE/Out flags),
+- **its own slice of `state/league-board.json`** (rebuild it first —
+  `python scripts/league_board.py --week <WW>` — if the Saturday run already
+  did this week's, this is a no-op re-derive): every rostered player already
+  resolved to `{id, name, pos, nfl, proj_pts}`. This is the projection data
+  the "beliefs first" framing below tells the agent to react to — without it
+  there is nothing to trust, discount, or resent,
 - its **dossier** (`gm_dossier.build_dossier(root, slug, current_week=<WW>)`),
 - **this week's owner note** and **its own Saturday `note_reply`**,
 - **last week's box score** (`state/weeks/2026-w<PREV>/matchups.json`) and
