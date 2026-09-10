@@ -393,6 +393,75 @@ def test_load_feed_handles_missing_files():
             build_viewer.ROOT = original_root
 
 
+# --- Tests for build_league_data's week-visibility gate ---------------------
+
+
+def _minimal_league_fixture(root):
+    """Bare-minimum files build_league_data needs to run without crashing."""
+    (root / "state" / "weeks").mkdir(parents=True)
+    (root / "state" / "news").mkdir(parents=True)
+    (root / "state" / "forum").mkdir(parents=True)
+    (root / "config").mkdir(parents=True)
+    (root / "teams" / "_template").mkdir(parents=True)
+    (root / "state" / "players.json").write_text("{}")
+    (root / "state" / "schedule.json").write_text(json.dumps(
+        {"regular_season": {}, "playoffs": {}}))
+    (root / "state" / "standings.json").write_text(json.dumps(
+        {"teams": {}, "official_weeks": []}))
+
+
+def test_found_weeks_shows_week_with_tabloid_but_no_stats():
+    """A week with a Saturday tabloid but no stats.json (games not yet played)
+    must still surface — hiding it until Monday's recap was the reported bug."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        _minimal_league_fixture(root)
+        (root / "state" / "weeks" / "2026-w01").mkdir(parents=True)
+        (root / "state" / "news" / "2026-w01.md").write_text("# Tabloid\nContent")
+
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            data = build_viewer.build_league_data("2026")
+        finally:
+            build_viewer.ROOT = original_root
+
+        assert [w["week"] for w in data["weeks"]] == [1]
+
+
+def test_found_weeks_shows_week_with_only_forum_no_week_dir():
+    """A forum thread can exist with no state/weeks/<w>/ directory at all yet."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        _minimal_league_fixture(root)
+        (root / "state" / "forum" / "2026-w01.jsonl").write_text(
+            '{"timestamp": "2026-08-01T10:00:00Z", "team": "a", "post": "hi"}\n')
+
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            data = build_viewer.build_league_data("2026")
+        finally:
+            build_viewer.ROOT = original_root
+
+        assert [w["week"] for w in data["weeks"]] == [1]
+
+
+def test_found_weeks_empty_before_any_content():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        _minimal_league_fixture(root)
+
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            data = build_viewer.build_league_data("2026")
+        finally:
+            build_viewer.ROOT = original_root
+
+        assert data["weeks"] == []
+
+
 # --- Tests for Guide Loader --------------------------------------------------
 
 

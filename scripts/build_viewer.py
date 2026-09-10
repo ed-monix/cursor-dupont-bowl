@@ -579,15 +579,39 @@ def build_league_data(season: str) -> dict:
     standings_json = _load(ROOT / "state" / "standings.json", {"teams": {}, "official_weeks": []})
     official = set(standings_json.get("official_weeks", []))
 
+    # A week belongs in the viewer as soon as there's anything to show for
+    # it — stats (scores), or Feed content (tabloid/forum/recap) that exists
+    # well before kickoff. Gating on stats.json alone hid the whole week,
+    # Feed included, until Monday's /recap — exactly backwards, since the
+    # Saturday tabloid and forum are meant to be read before the games.
     found_weeks = []
     weeks_dir = ROOT / "state" / "weeks"
+    news_dir = ROOT / "state" / "news"
+    forum_dir = ROOT / "state" / "forum"
     if weeks_dir.exists():
         for d in sorted(weeks_dir.glob(f"{season}-w*")):
-            if (d / "stats.json").exists():
-                try:
-                    found_weeks.append(int(d.name.split("-w")[1]))
-                except ValueError:
-                    pass
+            try:
+                w = int(d.name.split("-w")[1])
+            except ValueError:
+                continue
+            has_stats = (d / "stats.json").exists()
+            has_feed = ((news_dir / f"{season}-w{w:02d}.md").exists()
+                        or (forum_dir / f"{season}-w{w:02d}.jsonl").exists()
+                        or (d / "recap.md").exists())
+            if has_stats or has_feed:
+                found_weeks.append(w)
+    # A week's tabloid/forum can also exist with no state/weeks/<w> dir at
+    # all yet (e.g. before any sync has run for that week) — catch those too.
+    for d, pattern in ((news_dir, f"{season}-w*.md"), (forum_dir, f"{season}-w*.jsonl")):
+        if not d.exists():
+            continue
+        for f in d.glob(pattern):
+            try:
+                w = int(f.stem.split("-w")[1])
+            except ValueError:
+                continue
+            if w not in found_weeks:
+                found_weeks.append(w)
     found_weeks.sort()
 
     rec = {}   # running W/L/T for through-week records
