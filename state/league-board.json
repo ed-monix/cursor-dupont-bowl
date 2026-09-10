@@ -545,10 +545,24 @@
     "pos": "TE",
     "nfl": "HOU",
     "proj_pts": 7.41
+   },
+   {
+    "id": "12474",
+    "name": "Woody Marks",
+    "pos": "RB",
+    "nfl": "HOU",
+    "proj_pts": 7.34
+   },
+   {
+    "id": "9511",
+    "name": "Keaton Mitchell",
+    "pos": "RB",
+    "nfl": "LAC",
+    "proj_pts": 5.95
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 62
  },
  "leon-black": {
   "starters": {
@@ -566,13 +580,7 @@
     "nfl": "GB",
     "proj_pts": 11.72
    },
-   "K": {
-    "id": "12711",
-    "name": "Tyler Loop",
-    "pos": "K",
-    "nfl": "BAL",
-    "proj_pts": 7.05
-   },
+   "K": null,
    "QB": {
     "id": "6770",
     "name": "Joe Burrow",
@@ -625,18 +633,25 @@
     "proj_pts": 9.35
    },
    {
-    "id": "7594",
-    "name": "Chuba Hubbard",
-    "pos": "RB",
-    "nfl": "CAR",
-    "proj_pts": 9.46
-   },
-   {
     "id": "12501",
     "name": "Matthew Golden",
     "pos": "WR",
     "nfl": "GB",
     "proj_pts": 8.26
+   },
+   {
+    "id": "12522",
+    "name": "Cam Ward",
+    "pos": "QB",
+    "nfl": "TEN",
+    "proj_pts": 15.07
+   },
+   {
+    "id": "12711",
+    "name": "Tyler Loop",
+    "pos": "K",
+    "nfl": "BAL",
+    "proj_pts": 7.05
    },
    {
     "id": "4046",
@@ -646,11 +661,11 @@
     "proj_pts": 17.12
    },
    {
-    "id": "12522",
-    "name": "Cam Ward",
-    "pos": "QB",
-    "nfl": "TEN",
-    "proj_pts": 15.07
+    "id": "7594",
+    "name": "Chuba Hubbard",
+    "pos": "RB",
+    "nfl": "CAR",
+    "proj_pts": 9.46
    }
   ],
   "ir": [],
@@ -978,22 +993,22 @@
     "proj_pts": 6.56
    },
    {
-    "id": "8172",
-    "name": "Greg Dulcich",
-    "pos": "TE",
-    "nfl": "MIA",
-    "proj_pts": 5.91
-   },
-   {
     "id": "8121",
     "name": "Romeo Doubs",
     "pos": "WR",
     "nfl": "NE",
     "proj_pts": 8.73
+   },
+   {
+    "id": "13279",
+    "name": "Carnell Tate",
+    "pos": "WR",
+    "nfl": "TEN",
+    "proj_pts": 9.8
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 68
  },
  "rinna": {
   "starters": {
@@ -1310,21 +1325,21 @@
     "proj_pts": 9.17
    },
    {
-    "id": "7567",
-    "name": "Kenny Gainwell",
-    "pos": "RB",
-    "nfl": "TB",
-    "proj_pts": 8.14
-   },
-   {
     "id": "11628",
     "name": "Marvin Harrison",
     "pos": "WR",
     "nfl": "ARI",
     "proj_pts": 9.01
+   },
+   {
+    "id": "7600",
+    "name": "Pat Freiermuth",
+    "pos": "TE",
+    "nfl": "PIT",
+    "proj_pts": 5.82
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 94
  }
 }

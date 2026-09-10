@@ -1,25 +1,24 @@
 {
   "bench": [
     "10232",
-    "7594",
     "12501",
-    "4046",
     "12522",
-    "96"
+    "4046",
+    "7594"
   ],
-  "faab_remaining": 27,
+  "faab_remaining": 59,
   "ir": [],
   "name": "Gut Feeling, Zero Regrets",
   "starters": {
-    "DEF": "LV",
-    "FLEX": "8167",
-    "K": null,
     "QB": "6770",
     "RB1": "3198",
     "RB2": "6806",
-    "TE": "12517",
     "WR1": "7564",
-    "WR2": "10229"
+    "WR2": "10229",
+    "TE": "12517",
+    "FLEX": "8167",
+    "K": "12711",
+    "DEF": "LV"
   },
   "team": "leon-black"
 }

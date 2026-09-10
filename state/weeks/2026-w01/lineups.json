@@ -1,0 +1,182 @@
+{
+  "coach-taylor": {
+    "starters": {
+      "QB": "5870",
+      "RB1": "12507",
+      "RB2": "7021",
+      "WR1": "9493",
+      "WR2": "7547",
+      "TE": "5012",
+      "FLEX": "5927",
+      "K": "7839",
+      "DEF": "LAC"
+    },
+    "justification": "The tabloid wants to make Wednesday's quarterback scramble the whole story \u2014 that was a board problem, and boards get fixed, it never touched the locker room. Reunion Special can call two tight ends a 'hostage situation' and light $55 on Rodgers for noise, that's their business; I don't run my program off headlines, theirs or mine. My QB answer is Daniel Jones, and it's not because a spreadsheet says Lawrence's number is a couple points higher this week \u2014 Jones spent years getting written off and kept chopping anyway, and when I traded for a guy with that kind of makeup I don't bench him for a rookie projection, so Lawrence and Cousins hold the clipboard. Everywhere else the board holds as built: Hampton and Dowdle in the backfield, Nacua and St. Brown outside, McLaurin's earned that flex spot with every route he runs, Andrews at tight end, McPherson and the Chargers defense doing their jobs like they always do. Clear eyes, full hearts, we play Sunday.",
+    "fallback": false
+  },
+  "costanza": {
+    "starters": {
+      "QB": "4892",
+      "RB1": "8136",
+      "RB2": "8150",
+      "WR1": "7569",
+      "WR2": "8112",
+      "TE": "9484",
+      "FLEX": "5892",
+      "K": "6083",
+      "DEF": "TEN"
+    },
+    "justification": "They're calling me the 'Golden Child.' GOLDEN CHILD. Nobody writes that about a man they're not planning to embarrass in six weeks. So don't tell me the universe isn't laughing. My gut said start Herbert, but I inverted it and I'm starting Mayfield instead. Kraft, Gay, and the Titans D are one-man boards.",
+    "fallback": false
+  },
+  "dumbledore": {
+    "starters": {
+      "QB": "3163",
+      "RB1": "6813",
+      "RB2": "13286",
+      "WR1": "8137",
+      "WR2": "8144",
+      "TE": "12518",
+      "FLEX": "8146",
+      "K": "12185",
+      "DEF": "DEN"
+    },
+    "justification": "Leon Black has already declared the week won. Jared Goff's story is not finished; this is the week it plays. Garrett Wilson has a part to play. Curious, curious, how little of this anyone else will understand until much later.",
+    "fallback": false
+  },
+  "harry-caray": {
+    "starters": {
+      "QB": "4881",
+      "RB1": "9509",
+      "RB2": "6790",
+      "WR1": "9997",
+      "WR2": "9756",
+      "TE": "8131",
+      "FLEX": "2449",
+      "K": "12015",
+      "DEF": "BAL"
+    },
+    "justification": "HOLY COW League, Opening Sunday! Lamar Jackson's my Opening Day starter, Bijan Robinson right there with him. Zay Flowers is Questionable but starting. Isaiah Likely gets the tight end nod.",
+    "fallback": false
+  },
+  "kardashian": {
+    "starters": {
+      "QB": "6904",
+      "RB1": "4866",
+      "RB2": "12489",
+      "WR1": "6794",
+      "WR2": "12526",
+      "TE": "4217",
+      "FLEX": "11635",
+      "K": "13545",
+      "DEF": "PHI"
+    },
+    "justification": "Kris put a quote about us on the front page. Kittle starts despite Questionable \u2014 he's the acquisition of the press release. Saquon, Jefferson non-negotiable.",
+    "fallback": false
+  },
+  "leon-black": {
+    "starters": {
+      "QB": "6770",
+      "RB1": "3198",
+      "RB2": "6806",
+      "WR1": "7564",
+      "WR2": "10229",
+      "TE": "12517",
+      "FLEX": "8167",
+      "K": "12711",
+      "DEF": "LV"
+    },
+    "justification": "I own the quarterback aisle. Burrow's my guy, Chase catches everything. Mahomes sits with his questionable tag. My K slot is empty \u2014 I cut my kicker to go buy Rodgers and Watson, that's a league office problem now, not mine. [League office correction: the Rodgers claim that cost me my kicker turned out to be void \u2014 Tyler Loop is back, so he starts.]",
+    "fallback": false
+  },
+  "maura-higgins": {
+    "starters": {
+      "QB": "8183",
+      "RB1": "4034",
+      "RB2": "8138",
+      "WR1": "9488",
+      "WR2": "8148",
+      "TE": "8210",
+      "FLEX": "11632",
+      "K": "11533",
+      "DEF": "JAX"
+    },
+    "justification": "Guerendo's PUP with a zero next to his name, benched. James Cook comes in. Nabers is questionable but starting anyway, gorgeous on tape.",
+    "fallback": false
+  },
+  "meyer-walsh": {
+    "starters": {
+      "QB": "4984",
+      "RB1": "7543",
+      "RB2": "8408",
+      "WR1": "6786",
+      "WR2": "7526",
+      "TE": "1466",
+      "FLEX": "5846",
+      "K": "2747",
+      "DEF": "PIT"
+    },
+    "justification": "TreVeyon Henderson is marked OUT \u2014 actually out, and I am not gifting Ed Monix a zero out of stubbornness, so Jordan Mason starts in his place.",
+    "fallback": false
+  },
+  "patricia-moyer": {
+    "starters": {
+      "QB": "4943",
+      "RB1": "9221",
+      "RB2": "8151",
+      "WR1": "6801",
+      "WR2": "7525",
+      "TE": "7553",
+      "FLEX": "13279",
+      "K": "8259",
+      "DEF": "KC"
+    },
+    "justification": "Beliefs first. My affirmation-of-the-day was 'let the quiet ones prove themselves,' so Carnell Tate starts over Jaylen Warren in FLEX.",
+    "fallback": false
+  },
+  "rinna": {
+    "starters": {
+      "QB": "96",
+      "RB1": "13287",
+      "RB2": "7611",
+      "WR1": "2216",
+      "WR2": "5045",
+      "TE": "8130",
+      "FLEX": "12490",
+      "K": "3451",
+      "DEF": "LAR"
+    },
+    "justification": "Rodgers starts, Maye sits. Bowers is Doubtful and projected zero, so McBride slides to TE and Tuten gets called up to FLEX.",
+    "fallback": false
+  },
+  "wifes-team": {
+    "starters": {
+      "QB": "11563",
+      "RB1": "9226",
+      "RB2": "9224",
+      "WR1": "9504",
+      "WR2": "6819",
+      "TE": "10859",
+      "FLEX": "7588",
+      "K": "11539",
+      "DEF": "SEA"
+    },
+    "justification": "Dyami Brown's a flat zero \u2014 standing on the sideline in street clothes ain't scoring me points, so Pittman comes off the bench.",
+    "fallback": false
+  },
+  "your-team": {
+    "starters": {
+      "QB": "11560",
+      "RB1": "12527",
+      "RB2": "12481",
+      "WR1": "5859",
+      "WR2": "12519",
+      "TE": "10236",
+      "FLEX": "12512",
+      "K": "11792",
+      "DEF": "DET"
+    },
+    "justification": "Caleb starts, no discussion, he's the whole sport. Jeanty and Skattebo stay put. Downs sits: Judkins has more juice in his legs than a slot receiver running safe underneath routes.",
+    "fallback": false
+  }
+}

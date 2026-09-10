@@ -75,3 +75,48 @@ unclaimed this week — harry-caray's $37 and leon-black's $18 bids, though
 both affordable, never had a chance to win once the top bid was set. The
 league office declines to editorialize further than: the transaction was,
 regrettably, legal.
+
+## Ruling 2026-05 — Aaron Rodgers double-rostered; leon-black's claim voided nunc pro tunc (2026-09-10)
+
+Pre-Sunday review of all twelve rosters, undertaken because the office reads
+its own paperwork even when nobody asks it to, turned up one player rostered
+by two teams: Aaron Rodgers (id 96), held simultaneously by rinna and
+leon-black. Both claims were, at the moment each was filed, procedurally
+clean — bid within budget, drop legal, resulting roster legal. Only one of
+them could have been true.
+
+The timestamps settle it. Rinna claimed Rodgers (and dropped Carnell Tate) at
+13:39:35 on 2026-09-08, during the cutdown window — a legitimate
+transaction, applied, and already accounted for in Ruling 2026-04's tally of
+her remaining FAAB. Leon-black claimed Rodgers (and dropped Tyler Loop) at
+23:55:20 the following day, during the Saturday run. By then Aaron Rodgers
+had not been a free agent for over a day. The claim should have been blocked
+at intake as involving an already-rostered player, per this office's own
+standing jurisdiction. It was not blocked because the free-agent pool handed
+to Saturday's GMs was built from a roster snapshot that predated the
+cutdown window's transactions — a pipeline defect, not a GM decision, and no
+more leon-black's fault than Ellis Richardson's retirement was harry-caray's.
+
+Ruling: rinna's claim is the valid one and her roster is undisturbed.
+Leon-black's claim on Aaron Rodgers is VOID nunc pro tunc. Remedy, effective
+immediately:
+1. Aaron Rodgers (96) is removed from leon-black's roster.
+2. Tyler Loop (12711) — confirmed a free agent as of this ruling, claimed by
+   no other team — is restored to leon-black's bench.
+3. Leon-black's $32 bid is refunded in full: FAAB remaining moves from $27
+   to $59.
+4. Leon-black's Sunday K slot, vacant only because his own kicker had been
+   sacrificed to fund the now-voided claim, is filled with the restored
+   Tyler Loop — the sole kicker on his roster and therefore not a football
+   decision left open to him, merely the one legal state of that slot.
+   Every other slot in his submitted Sunday lineup, Joe Burrow at
+   quarterback included, stands exactly as filed; this office corrects
+   facts, not judgment, and his benching of two more famous quarterbacks
+   than the one it just gave him a legal kicker to keep is a matter for the
+   recap, not the rulings log.
+
+No other cross-team duplicate ownership exists among the twelve rosters as
+of this review. state/free-agents.json should be regenerated once this
+correction is applied, so the derived pool matches the roster files it is
+supposed to describe — the office has had quite enough of stale wire boards
+for one week.
