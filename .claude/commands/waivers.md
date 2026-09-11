@@ -23,11 +23,16 @@ python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
 That writes `state/weeks/2026-w<WW>/packs/public.json` and
-`packs/<slug>.json`. Celebrity GMs are **Grok Bots**: paste
-`python scripts/grok_bots.py prompt --week <WW> --run waivers --slug <slug>`
-into that Bot (tools off). Owned GMs (`your-team`, `wifes-team`) are the
-same prompt in **Cursor**, never on the shared Bot disk. Reply = schema JSON
-only. Roster: `python scripts/grok_bots.py check` and `run-sheet`.
+`packs/<slug>.json`. Celebrity GMs are **Grok Bots**: one command, not 12
+pastes:
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind waivers
+```
+
+Owned GMs (`your-team`, `wifes-team`) stay in **Cursor** (`prompt`), never
+on the shared Bot disk. Reply = schema JSON only. Roster:
+`python scripts/grok_bots.py check`.
 
 GMs never see `state/news/buzz/`. One Scout (`fetch_buzz.py` / owner paste)
 writes buzz; Media rewrites the tabloid; then GMs read the tabloid only.
@@ -63,11 +68,13 @@ python scripts/gm_pack.py --week <WW> --run waivers
 
 ## 3. GM decisions — Grok Bots + two Cursor owned GMs
 
-`python scripts/grok_bots.py run-sheet --week <WW> --run waivers`
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind waivers
+```
 
-For every celebrity slug: paste that Bot's prompt, tools off. For
-`your-team` and `wifes-team`: Cursor pack-only (same prompt command).
-Reverse-standings order is context only; bids are blind.
+Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
+For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
+order is context only; bids are blind.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver
@@ -92,10 +99,13 @@ Do not apply yet.
 
 ## 5. Trades
 
-Max one outgoing offer per team; deadline end of week 11. Target GM gets
-its own pack + the offer JSON (tools off — Grok Bot or Cursor per roster).
-Counter → original offerer once.
-Validate with `apply_transaction`.
+Max one outgoing offer per team; deadline end of week 11. After the harness
+validates the offer, dispatch **only the target**:
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind trades \
+  --slug <target> --offer <offer.json>
+```
 
 ## 6. Commissioner review, then apply
 

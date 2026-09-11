@@ -6,30 +6,29 @@ computer (Cursor pack-only this trial).
 
 xAI: every Bot on one account shares one VM. Do not clone this repo there.
 Do not copy `teams/*/general-manager.md` or `opinions.json` onto disk.
-Each GM turn is a pack pasted into chat (`scripts/grok_bots.py prompt`).
+Personality travels in the weekly pack (`general_manager_md`).
 
-## Create (once), in the Grok Bot app
-
-1. New chat → Create new agent.
-2. Edit Profile. Paste stdout of:
+The weekly clock is the orchestrator, not 12 paste windows:
 
 ```bash
-python scripts/grok_bots.py check
-python scripts/grok_bots.py list
-python scripts/grok_bots.py profile costanza
+python scripts/grok_bots.py ensure
+python scripts/grok_bots.py dispatch --week N --kind waivers
+python scripts/faab.py ...   # after commissioner review
 ```
 
-3. Enable the matching skill from this folder (`skill-gm.md` for every GM).
-4. Repeat for every `grok_bot` row in `config/grok-bots.json`.
-5. Optionally paste the Bot's share URL into that row's `share_url`.
+`ensure` / `dispatch` talk to the unofficial Grok Bot desktop gateway
+(typically `http://127.0.0.1:1340`, token in `sand-data/gateway.json`).
+Set `GROKBOT_GATEWAY_URL` and `SAND_GATEWAY_TOKEN`. This Cloud Agent
+cannot reach that socket until Cursor Desktop MCP or a self-hosted
+worker on the Mac is wired.
 
-## Weekly turn
+## Create (once)
 
-```bash
-python scripts/gm_pack.py --week N --run waivers
-python scripts/grok_bots.py run-sheet --week N --run waivers
-python scripts/grok_bots.py prompt --week N --run waivers --slug costanza
-```
+Prefer `python scripts/grok_bots.py ensure` so ids land on
+`gateway_agent_id`. Manual app create still works: Edit Profile from
+`python scripts/grok_bots.py profile costanza`, enable `bots/skill-gm.md`.
 
-Paste the prompt into that Bot. Tools off. Save JSON to
-`state/weeks/2026-wNN/decisions/<slug>.json`. Then `faab.py` / `lineups.py`.
+## Isolation
+
+Never mount the league repo on the Bot computer. Never copy GM files
+there. Tools off on every GM turn. Owned GMs stay `product: cursor`.

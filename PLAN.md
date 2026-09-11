@@ -30,7 +30,7 @@ The repo **is** the league. There is no server, no database, no hosted app.
 Orchestrator (Cursor)
   ├─ runs sync + gm_pack.py (public pack + 12 private packs)
   ├─ Scout Bot + Media Bot (buzz → tabloid); GMs never see buzz/
-  ├─ 10 Grok Bot GM turns + 2 Cursor owned-GM turns (pack only)
+  ├─ grok_bots.py dispatch (10 Grok Bot GMs) + 2 Cursor owned-GM turns
   │     → state/weeks/.../decisions/<slug>.json
   ├─ validators (faab.py, lineups.py)
   ├─ Commissioner Bot reviews; scripts apply
@@ -207,8 +207,9 @@ validate agent output.
 - `config/grok-bots.json` — Bot roster: `{version, isolation, roles[]}`. Each
   role has `id`, `kind` (scout|media|commissioner|gm), `product`
   (grok_bot|cursor), `computer` (shared|none), and isolation flags. Owned
-  teams must be `off_shared_disk`. `share_url` is optional (filled after the
-  Bot exists in the Grok Bot app). Validated by `scripts/grok_bots.py check`.
+  teams must be `off_shared_disk`. `share_url` and `gateway_agent_id` are
+  optional (filled after `grok_bots.py ensure` or a manual Bot create).
+  Validated by `scripts/grok_bots.py check`.
 - `config/roster.json` — as written by `sync_sleeper.py`:
   `{roster_positions: [str,...], settings: {...}}`. Engine code that needs the
   slot structure consumes it via `lib.rosters.roster_config_from_league()`, which
@@ -306,8 +307,9 @@ The GM file is the only personality variable. Volume is **not** cheap:
 Commissioner, every week. Do not plan that volume on Claude-in-Cursor.
 
 Token diet (required): `scripts/gm_pack.py` builds one public pack and one
-private pack per GM. Celebrity GM turns are Grok Bots (pack pasted in chat,
-tools off). Owned GMs are Cursor pack-only, off the shared Bot disk. Never
+private pack per GM. Celebrity GM turns are Grok Bots (`grok_bots.py dispatch`
+via the desktop gateway; tools off). Owned GMs are Cursor pack-only, off
+the shared Bot disk. Never
 `players.json`, never another GM file, never `buzz/`. One Scout writes buzz.
 Scripts do math. Composer is for mechanical file transforms only.
 Do not plan that volume on Claude-in-Cursor.

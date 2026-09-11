@@ -1,9 +1,9 @@
 """Build the public + private GM packs (token diet for /waivers and /lineups).
 
 GMs never receive `state/players.json` or another team's `general-manager.md`.
-The orchestrator pastes pack JSON (or the rendered prompt) into a Grok Bot
-(celebrity GMs) or a Cursor turn (owned GMs) with tools disabled. Scripts
-read the fat files; agents do not.
+The orchestrator sends pack JSON (rendered prompt) to a Grok Bot via
+`grok_bots.py dispatch` (celebrity GMs) or a Cursor turn (owned GMs),
+tools disabled. Scripts read the fat files; agents do not.
 
 Public pack (one per week, shared): tabloid, trimmed free agents, compact
 league board, NFL games this week, standings slice, forum thread, schedule

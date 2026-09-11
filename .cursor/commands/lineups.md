@@ -41,12 +41,14 @@ python scripts/gm_pack.py --week <WW> --run lineups --window <early|main>
 
 ## 2. GM lineups (Grok Bots + two Cursor owned GMs)
 
-`python scripts/grok_bots.py run-sheet --week <WW> --run lineups --window <W>`
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
+```
 
-Each celebrity Bot (and each owned GM in Cursor) pastes
-`python scripts/grok_bots.py prompt --week <WW> --run lineups --window <W> --slug <slug>`
-and replies with `docs/schemas/sunday-lineup.json`. Beliefs first;
-projections are an opinion. Owned teams stay off the shared Bot disk.
+Celebrity replies: `docs/schemas/sunday-lineup.json` into
+`decisions/<slug>.lineup-<W>.json`. Owned GMs (`your-team`, `wifes-team`)
+use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
+are an opinion.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window

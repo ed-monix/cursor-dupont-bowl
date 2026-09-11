@@ -1,8 +1,8 @@
 """Grok Bot roster + isolation checks (config/grok-bots.json).
 
-Grok Bots on one xAI account share one computer. This module does not
-create Bots (the Grok Bot app does). It loads the roster, refuses owned
-teams on the shared disk, and points the orchestrator at pack prompts.
+Grok Bots on one xAI account share one computer. Creation can go through
+the Grok Bot app or `grok_bots.py ensure` via the local gateway. Isolation
+is pack-in-chat (tools off), not files on the shared disk.
 """
 from __future__ import annotations
 
@@ -26,6 +26,12 @@ def load_roster(root: Union[str, Path]) -> dict:
     if not isinstance(data, dict) or not isinstance(data.get("roles"), list):
         raise ValueError(f"{path} must have a roles array")
     return data
+
+
+def write_roster(root: Union[str, Path], roster: dict) -> Path:
+    path = config_path(root)
+    path.write_text(json.dumps(roster, indent=2) + "\n", encoding="utf-8")
+    return path
 
 
 def roles(roster: dict, kind: Optional[str] = None) -> list:
@@ -194,6 +200,6 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
     lines.append(
         "Shared computer: other Bots can see anything you save to disk. "
         "Do not write GM files, opinions.json, players.json, or buzz drafts "
-        "to the computer. Paste-only."
+        "to the computer. Packs arrive in chat only."
     )
     return "\n".join(lines) + "\n"
