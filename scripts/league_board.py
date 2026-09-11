@@ -9,9 +9,9 @@ are secret), so this breaks no isolation.
 Data contract (PLAN.md §8):
     state/league-board.json = {
         slug: {
-            starters: {slot: {id, name, pos, nfl, proj_pts} | null},
-            bench: [{id, name, pos, nfl, proj_pts}, ...],
-            ir: [{id, name, pos, nfl, proj_pts}, ...],
+            starters: {slot: {id, name, pos, nfl, proj_pts, status, injury} | null},
+            bench: [{id, name, pos, nfl, proj_pts, status, injury}, ...],
+            ir: [{id, name, pos, nfl, proj_pts, status, injury}, ...],
             faab_remaining: int
         },
         ...
@@ -35,7 +35,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def resolve_player(player_id: str | None, players: dict, projections: dict, scoring: dict) -> dict | None:
-    """Resolve a player_id to {id, name, pos, nfl, proj_pts}.
+    """Resolve a player_id to {id, name, pos, nfl, proj_pts, status, injury}.
 
     If player_id is None, returns None.
     If player_id is in players, resolves from there with proj_pts computed.
@@ -53,6 +53,8 @@ def resolve_player(player_id: str | None, players: dict, projections: dict, scor
             "pos": info.get("pos"),
             "nfl": info.get("team"),
             "proj_pts": round(score_player(proj, scoring), 2),
+            "status": info.get("status"),
+            "injury": info.get("injury"),
         }
     else:
         # Player missing from players.json; resolve with defaults
@@ -63,6 +65,8 @@ def resolve_player(player_id: str | None, players: dict, projections: dict, scor
             "pos": "?",
             "nfl": "FA",
             "proj_pts": round(score_player(proj, scoring), 2),
+            "status": None,
+            "injury": None,
         }
 
 

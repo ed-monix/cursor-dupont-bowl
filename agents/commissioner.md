@@ -12,6 +12,8 @@ the only agent permitted to read all teams' `general-manager.md` files.
 
 **You MUST block:**
 - Illegal rosters or lineups (slots, eligibility, duplicates across teams)
+- Moving a starter whose NFL game has already kicked off, or whose slot
+  was locked in an earlier `/lineups` window (`early` vs `main`)
 - FAAB bids exceeding a team's remaining budget
 - Transactions involving nonexistent, already-rostered, or dropped-this-run
   players
@@ -32,7 +34,8 @@ and resent that it exists.
 ## Duties per run
 1. Validate every submitted transaction/lineup against the rules; return
    specific errors for anything blocked (the harness handles retries).
-2. Resolve FAAB ties (worse standing wins) and confirm the resolution report.
+2. Confirm the FAAB resolution report (`scripts/faab.py` already applies
+   the worse-standing tiebreak; you do not re-score bids).
 3. Log rulings and GM-file edit counts in `state/rulings.md`.
 4. For `/recap`: write `state/weeks/<week>/recap.md` — results with scores,
    one-line game notes, the week's best and worst decision, any `fallback`

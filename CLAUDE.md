@@ -12,7 +12,9 @@ follow `docs/ROUTING.md` — Opus triages `TASKS.md` and dispatches to the
 Respect the data contracts in `PLAN.md` §8. Never invent new state files
 without adding them to the contracts section.
 
-**League ops mode** (in-season): run the slash commands in `.claude/commands/`.
+**League ops mode** (in-season): run the slash commands in `.claude/commands/`
+and `.cursor/commands/` — `/waivers`, `/lineups`, `/recap`, `/notes`.
+(`/saturday` and `/sunday` are retired aliases.)
 
 ## Hard rules — always
 
@@ -28,8 +30,8 @@ without adding them to the contracts section.
 4. **Everything is logged:** every agent decision (with its in-character
    reasoning) goes to `state/transactions.jsonl` or the week folder. If it
    isn't logged, it didn't happen.
-5. **One commit per run**, message `week NN: saturday|sunday|recap|notes` (or
-   `draft`). Never commit mid-run.
+5. **One commit per run**, message `week NN: waivers|lineups-early|lineups-main|recap|notes`
+   (or `draft`). A week may have two lineup commits. Never commit mid-run.
 6. **Commissioner reviews before anything is applied.** Its powers and limits
    are in `agents/commissioner.md` — it blocks rule violations only; chaos is
    legal.

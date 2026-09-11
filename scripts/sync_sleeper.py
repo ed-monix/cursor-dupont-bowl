@@ -6,6 +6,7 @@ Usage:
   python scripts/sync_sleeper.py --players
   python scripts/sync_sleeper.py --projections --week <N> [--season <S>]
   python scripts/sync_sleeper.py --stats --week <N> [--season <S>]
+  python scripts/sync_sleeper.py --schedule --week <N> [--season <S>]
   python scripts/sync_sleeper.py --all [--league <id>] [--week <N>] [--season <S>]
 """
 import argparse, json, pathlib, sys, time
@@ -13,6 +14,8 @@ import requests
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 API = "https://api.sleeper.app/v1"
+# Undocumented NFL schedule (not under /v1). Used for lineup windows.
+SCHEDULE_API = "https://api.sleeper.app/schedule/nfl/regular"
 KEEP_POS = {"QB", "RB", "WR", "TE", "K", "DEF"}
 CACHE_DIR = ROOT / ".cache"
 PLAYERS_CACHE_FILE = CACHE_DIR / "players_nfl.json"
@@ -137,6 +140,43 @@ def sync_projections(season: str, week: int) -> None:
     print(f"wrote {out} ({len(data)} rows)")
 
 
+def fetch_nfl_schedule(season: str) -> list:
+    """Full regular-season NFL games: [{status, date, home, week, game_id, away}, ...]."""
+    r = requests.get(f"{SCHEDULE_API}/{season}", timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    if not isinstance(data, list):
+        raise ValueError("NFL schedule response was not a list")
+    return data
+
+
+def compact_schedule_game(game: dict) -> dict:
+    return {
+        "status": game.get("status"),
+        "date": game.get("date"),
+        "home": game.get("home"),
+        "away": game.get("away"),
+        "week": game.get("week"),
+        "game_id": game.get("game_id"),
+    }
+
+
+def sync_schedule(season: str, week: int | None = None) -> None:
+    """Write state/nfl-schedule.json and, if week given, that week's nfl-games.json."""
+    raw = fetch_nfl_schedule(season)
+    compact = [compact_schedule_game(g) for g in raw if isinstance(g, dict)]
+    out = ROOT / "state" / "nfl-schedule.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(compact, indent=1))
+    print(f"wrote {out} ({len(compact)} games)")
+    if week is not None:
+        week_games = [g for g in compact if g.get("week") == week]
+        week_dir = ensure_week_dir(season, week)
+        wout = week_dir / "nfl-games.json"
+        wout.write_text(json.dumps(week_games, indent=1))
+        print(f"wrote {wout} ({len(week_games)} games)")
+
+
 def sync_stats(season: str, week: int) -> None:
     """Fetch and write state/weeks/<season>-w<NN>/stats.json."""
     url = f"{API}/stats/nfl/regular/{season}/{week}"
@@ -158,7 +198,9 @@ def main() -> int:
     ap.add_argument("--players", action="store_true", help="Sync player list (cached 24h)")
     ap.add_argument("--projections", action="store_true", help="Sync weekly projections")
     ap.add_argument("--stats", action="store_true", help="Sync weekly stats")
-    ap.add_argument("--week", type=int, help="Week number for projections/stats")
+    ap.add_argument("--schedule", action="store_true",
+                    help="Sync NFL game dates/status for lineup windows")
+    ap.add_argument("--week", type=int, help="Week number for projections/stats/schedule slice")
     ap.add_argument("--season", help="Season (default: current from /state/nfl)")
     ap.add_argument("--all", action="store_true", help="Run settings (if league given), players, and current week projections+stats")
 
@@ -187,6 +229,13 @@ def main() -> int:
         if a.stats:
             sync_stats(season, a.week)
 
+    if a.schedule:
+        season = a.season
+        if not season:
+            state = get_nfl_state()
+            season = state["season"]
+        sync_schedule(season, a.week)
+
     if a.all:
         if a.league:
             sync_settings(a.league)
@@ -200,8 +249,9 @@ def main() -> int:
 
         sync_projections(season, week)
         sync_stats(season, week)
+        sync_schedule(season, week)
 
-    if not any([a.settings, a.players, a.projections, a.stats, a.all]):
+    if not any([a.settings, a.players, a.projections, a.stats, a.schedule, a.all]):
         ap.print_help()
 
     return 0

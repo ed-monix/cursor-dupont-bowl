@@ -436,10 +436,15 @@ def apply_transaction(roster, txn, players, roster_config=None):
     return new_roster
 
 
-def best_legal_lineup(roster, players, projections, scoring, roster_config=None):
-    """Deterministic Sunday fallback: the highest-projected legal lineup
+def best_legal_lineup(roster, players, projections, scoring, roster_config=None,
+                      frozen_starters=None):
+    """Deterministic lineup fallback: the highest-projected legal lineup
     (PLAN.md §4, TASKS.md 3.3) built purely from the roster already on
     hand -- no network, no agent call.
+
+    `frozen_starters` is an optional `{slot: player_id}` of slots that must
+    stay put (already locked by an earlier `/lineups` window or a kicked
+    NFL game). Those players are seated first and removed from the pool.
 
     Player pool: every player currently in a (non-null) starter slot plus
     everyone on the bench. `ir` is excluded -- IR players are injured /
@@ -494,6 +499,11 @@ def best_legal_lineup(roster, players, projections, scoring, roster_config=None)
         return players.get(pid, {}).get("pos")
 
     used = set()
+    new_starters = {}
+    for slot, pid in (frozen_starters or {}).items():
+        if pid:
+            new_starters[slot] = pid
+            used.add(pid)
 
     def fill_slot(allowed_positions):
         for pid in pool_sorted:
@@ -504,18 +514,17 @@ def best_legal_lineup(roster, players, projections, scoring, roster_config=None)
                 return pid
         return None
 
-    new_starters = {}
-    # Non-FLEX slots first, in their declared order; FLEX (or any slot
-    # whose eligible positions aren't a single position -- i.e. more
-    # than one allowed position, matching FLEX's RB/WR/TE shape) last,
-    # so it only ever draws from what specific slots didn't need.
+    new_starters = dict(new_starters)
+    # Non-FLEX slots first; FLEX last so it only draws leftover RB/WR/TE.
     flex_slots = [slot for slot, allowed in slots.items() if len(allowed) != 1]
     single_pos_slots = [slot for slot in slots if slot not in flex_slots]
 
     for slot in single_pos_slots:
-        new_starters[slot] = fill_slot(slots[slot])
+        if slot not in new_starters:
+            new_starters[slot] = fill_slot(slots[slot])
     for slot in flex_slots:
-        new_starters[slot] = fill_slot(slots[slot])
+        if slot not in new_starters:
+            new_starters[slot] = fill_slot(slots[slot])
 
     new_roster["starters"] = new_starters
     new_roster["bench"] = [pid for pid in pool_sorted if pid not in used]

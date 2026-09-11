@@ -18,17 +18,23 @@
   agent — the owners watch. Validator enforces one-K/one-DEF max at draft.
 
 ## Weekly deadlines
-- Owner notes: in `notes/` by Friday 11:59 PM — each owner to their OWN team
-  only (`your-team`, `wifes-team`). The other ten GMs have no owner; their
-  meddling arrives via the tabloid.
-- Roster run (waivers/trades): Saturday AM, all 12 GMs.
-- Lineup run: Sunday AM, before the early slate. Lineups then freeze; there
-  are no in-day swaps for anyone — owners have no lever to swap with.
+- Owner notes: in `notes/` before the week's `/waivers` run — each owner to
+  their OWN team only (`your-team`, `wifes-team`). The other ten GMs have
+  no owner; their meddling arrives via the tabloid.
+- Roster run (waivers/trades): `/waivers`, once before the week's first
+  kickoff. No mid-week pickups.
+- Lineups: `/lineups <week> early` before Tue–Sat NFL games (TNF and any
+  Wednesday/Friday/Saturday kickoffs); `/lineups <week> main` before the
+  Sunday slate so late injury news can move players who have not yet
+  played. A starter whose NFL game has kicked off is frozen. There are no
+  in-game swaps — owners have no lever to swap with.
 
 ## Waivers & free agency
 - FAAB: $100/season, blind bids, min $0. Ties → worse standing wins.
   Unspent FAAB has no value. No mid-week pickups — all adds happen in the
-  Saturday run (yes, this means Thursday-night injuries hurt; chaos clause).
+  `/waivers` run (yes, this means a Thursday injury after waivers process
+  hurts; chaos clause). Sunday `/lineups` can still bench that player if
+  they have not yet kicked off.
 
 ## Trades
 - One outgoing offer per team per week. Target may accept / reject / counter

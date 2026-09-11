@@ -11,3 +11,6 @@ web/viewer.html
 
 # secrets — never commit keys (GROK_API_KEY lives in the environment)
 .env
+
+# derived GM packs (rebuild: python scripts/gm_pack.py --week N)
+state/weeks/*/packs/

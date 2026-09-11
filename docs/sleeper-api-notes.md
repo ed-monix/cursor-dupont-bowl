@@ -176,3 +176,8 @@ Include: `rec`, `rec_yd`, `rec_td`, `pass_yd`, `pass_td`, `pass_int`, `rush_yd`,
 - `state/players.json`: Trimmed Sleeper players dump: `{id: {name, pos, team, status, injury}}`.
 - `state/weeks/<season>-w<NN>/projections.json`: API response as-is: `{player_id: {stats}}`.
 - `state/weeks/<season>-w<NN>/stats.json`: API response as-is: `{player_id: {stats}}`.
+- `state/nfl-schedule.json` and `state/weeks/<season>-w<NN>/nfl-games.json`:
+  compact NFL games from the undocumented
+  `GET https://api.sleeper.app/schedule/nfl/regular/<season>` list
+  (`status`, `date`, `home`, `away`, `week`, `game_id`). Used only for
+  `/lineups` windows — not a source of fantasy scores.

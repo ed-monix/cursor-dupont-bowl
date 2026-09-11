@@ -18,7 +18,7 @@ def test_resolve_player_none():
 def test_resolve_player_in_players():
     """A player_id in players.json is resolved with name/pos/nfl."""
     players = {
-        "p1": {"name": "Alice", "pos": "QB", "team": "KC"}
+        "p1": {"name": "Alice", "pos": "QB", "team": "KC", "status": "Active", "injury": "Questionable"}
     }
     projections = {
         "p1": {"pass_yd": 250, "pass_td": 1}
@@ -33,6 +33,8 @@ def test_resolve_player_in_players():
     assert result["nfl"] == "KC"
     # proj_pts = 250 * 0.04 + 1 * 4 = 10 + 4 = 14.0
     assert result["proj_pts"] == 14.0
+    assert result["status"] == "Active"
+    assert result["injury"] == "Questionable"
 
 
 def test_resolve_player_missing_from_players():

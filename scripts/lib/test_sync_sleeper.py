@@ -275,6 +275,32 @@ class TestProjectionsAndStats(unittest.TestCase):
                 self.assertIn("12345", data)
 
 
+class TestNFLSchedule(unittest.TestCase):
+    def test_sync_schedule_writes_season_and_week_slice(self):
+        with tempfile.TemporaryDirectory() as tmp_path:
+            tmp_path = pathlib.Path(tmp_path)
+            with mock.patch.object(sync_sleeper, "ROOT", tmp_path):
+                payload = [
+                    {"status": "pre_game", "date": "2026-09-10", "home": "KC",
+                     "away": "LAC", "week": 1, "game_id": "g1", "extra": "drop-me"},
+                    {"status": "pre_game", "date": "2026-09-17", "home": "DET",
+                     "away": "CHI", "week": 2, "game_id": "g2"},
+                ]
+                with mock.patch("sync_sleeper.requests.get") as mock_get:
+                    mock_get.return_value.json.return_value = payload
+                    mock_get.return_value.raise_for_status = lambda: None
+                    sync_sleeper.sync_schedule("2026", week=1)
+
+                season_file = tmp_path / "state" / "nfl-schedule.json"
+                data = json.loads(season_file.read_text())
+                self.assertEqual(len(data), 2)
+                self.assertNotIn("extra", data[0])
+                week_file = tmp_path / "state" / "weeks" / "2026-w01" / "nfl-games.json"
+                week_games = json.loads(week_file.read_text())
+                self.assertEqual(len(week_games), 1)
+                self.assertEqual(week_games[0]["home"], "KC")
+
+
 class TestNFLState(unittest.TestCase):
     """Test NFL state fetching."""
 

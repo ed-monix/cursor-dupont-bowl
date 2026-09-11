@@ -12,11 +12,9 @@ The repo **is** the league. There is no server, no database, no hosted app.
 - **State = files.** Rosters, free agents, standings, matchups, and the
   transaction log are JSON/JSONL files in `state/` and `teams/`. Git history is
   the league's permanent, tamper-evident record.
-- **Claude Code = harness.** Weekly operations are slash commands in
-  `.claude/commands/`. Each command is a prompt that tells Claude Code which
-  scripts to run, which agents to invoke (via the Task tool / subagents, one
-  per team so GM files stay private from each other), and what to write back
-  to `state/`.
+- **Claude / Cursor = harness.** Weekly operations are slash commands in
+  `.claude/commands/` and `.cursor/commands/`. Packs keep GM context small;
+  isolation is pack-only + tools off (prompt honor is not enough on a shared disk).
 - **Python scripts = the deterministic parts.** Anything that must be exactly
   right — scoring math, roster legality, FAAB resolution, Sleeper syncing —
   is a script, not a judgment call. Agents decide; scripts validate and apply.
@@ -27,15 +25,13 @@ The repo **is** the league. There is no server, no database, no hosted app.
 ### Division of labor per weekly run
 
 ```
-Claude Code (orchestrator)
-  ├─ runs sync scripts (fresh data)
-  ├─ spawns one subagent per AI team:
-  │    context = general-manager.md + roster + standings + last box score
-  │              + owner note + free agents w/ projections + next matchup
-  │    output  = decisions as structured JSON + in-character reasoning
-  ├─ runs validator on every decision (legality, budget, roster limits)
-  ├─ spawns the Commissioner subagent (review, FAAB resolution, recap)
-  └─ commits results: updated rosters, transactions.jsonl, recap.md
+Orchestrator
+  ├─ runs sync + gm_pack.py (public pack + 12 private packs)
+  ├─ one Scout / Media turn (buzz → tabloid); GMs never see buzz/
+  ├─ 12 inline GM turns (tools off, pack only) → decisions/<slug>.json
+  ├─ validators (faab.py, rosters, lineup_windows)
+  ├─ Commissioner reviews; scripts apply
+  └─ one git commit per run
 ```
 
 ## 2. League format (Sleeper standard)
@@ -99,30 +95,44 @@ Short, in-character as a meddling owner. `/notes` command scaffolds empty note f
 Notes are *pressure, not instructions* — the run prompt explicitly tells agents
 the note is owner sentiment they may obey, ignore, or spite.
 
-### Saturday AM — Roster run (`/saturday`)
-1. Sync: injuries, projections, free-agent pool.
-2. Each GM agent — all 12 teams (reverse standings order for context, but
-   bids are blind) — outputs JSON:
+### Waivers — Roster run (`/waivers`)
+Once per week, before the first kickoff (typically Tue/Wed — not "Saturday").
+1. Sync: injuries, projections, NFL game dates (`--schedule`), free-agent pool.
+2. Build dieted packs (`scripts/gm_pack.py`). One Scout writes optional X buzz;
+   Media rewrites the tabloid; GMs never see `buzz/` or `players.json`.
+3. Each GM — all 12 teams, inline pack, tools off — outputs JSON matching
+   `docs/schemas/saturday-decision.json` (waiver decision schema):
    `{claims: [{add, drop, bid}], drops: [], trade_offer?, note_reply}`.
-3. FAAB resolution script: highest bid wins; ties → worse standing wins; a team
+   Write each to `state/weeks/<season>-w<NN>/decisions/<slug>.json`.
+4. FAAB resolution script: highest bid wins; ties → worse standing wins; a team
    can't win two claims that need the same drop. Budget $100/season, min bid $0.
-4. Trades: an offer targets one team; the target agent gets one
-   accept/reject/counter; offerer gets final accept/reject on a counter. Max one
-   outgoing offer per team per week. Trade deadline end of week 11.
-5. Commissioner reviews everything (see §5), then the validator applies
-   approved transactions to rosters and appends to `state/transactions.jsonl`
-   (every entry: timestamp, team, action, players, bid, reasoning, status).
+5. Trades: validate the offer in the harness **before** spawning the target.
+   Target gets one accept/reject/counter; offerer gets final accept/reject on a
+   counter. Max one outgoing offer per team per week. Trade deadline end of week 11.
+6. Commissioner reviews everything (see §5), then the validator applies
+   approved transactions to rosters and appends to `state/transactions.jsonl`.
+   The commissioner does not apply FAAB itself.
 
-### Sunday AM — Lineup run (`/sunday`)
-1. Final injury/inactives sync.
-2. Each GM agent — all 12 teams — sets a lineup + 1-paragraph in-character
-   justification.
-3. Validator: legal slots, no BYE/Out starters without acknowledgment. One
-   retry on failure, then fallback = highest-projected legal lineup (logged as
-   `fallback: true` — public shame in the recap).
-4. Lineups freeze for everyone.
+### Lineups — per NFL window (`/lineups`)
+NFL games are not only on Sunday. Run this command **twice** most weeks:
 
-### Monday/Tuesday — Results (`/recap`)
+- `early` — before Tuesday–Saturday kickoffs (TNF, and any Wed/Fri/Sat games).
+  Only those slots freeze.
+- `main` — before the Sunday slate, after late injury news. Sunday and Monday
+  (MNF) slots freeze. Already-frozen early slots cannot move. A game that has
+  already kicked (`in_game` / `complete`) is frozen even if a window was skipped.
+
+1. Injury/inactives + schedule sync. Rebuild packs. Do **not** give GMs
+   `players.json`; status/injury/window are on the pack's board rows.
+2. Each GM sets a full legal lineup + 1-paragraph justification.
+3. `scripts/lib/lineup_windows.merge_lineup` decides which slots actually
+   change. Validator: legal slots, no BYE/Out starters without acknowledgment.
+   One retry, then fallback = highest-projected legal lineup that **keeps
+   frozen slots**, logged `fallback: true`.
+4. A week may have two lineup commits: `week NN: lineups-early` and
+   `week NN: lineups-main`.
+
+### Results (`/recap`)
 1. Pull final stats, score all matchups with `score_week.py`, reconcile any
    live-feed drift, update `state/standings.json`.
 2. Commissioner writes `state/weeks/2026-w05/recap.md`: results, best/worst
@@ -218,9 +228,11 @@ validate agent output.
   Saturday board: `{id: {name, pos, team, status, injury, proj_pts, proj: {…few
   raw projection keys…}, last_wk_pts}}`. `proj_pts` is the scored projection.
 - `state/league-board.json` — all 12 rosters resolved for scouting/trades:
-  `{slug: {starters: {slot: {id, name, pos, nfl, proj_pts}}, bench: [...], ir:
+  `{slug: {starters: {slot: {id, name, pos, nfl, proj_pts, status, injury}}, bench: [...], ir:
   [...], faab_remaining}}`. Rosters + FAAB are public record (only GM files are
   secret).
+- `state/nfl-schedule.json` — compact regular-season NFL games from
+  `sync_sleeper.py --schedule` (`date, status, home, away, week, game_id`).
 
 ### Per-week state (`state/weeks/<season>-w<NN>/`)
 - `projections.json`, `stats.json` — Sleeper API responses as-is `{id: {stats}}`.
@@ -228,8 +240,15 @@ validate agent output.
   `{id: pts}`, written each poll; the Monday `/recap` reconciliation reads it.
 - `matchups.json` — scored matchups `{season, week, matchups: [{home, away,
   home_score, away_score, home_lineup, away_lineup, winner}]}`.
-- `lineups.json` — each team's locked Sunday starters `{slug: {starters:
-  {slot: id}, justification, fallback}}`.
+- `lineups.json` — starters plus lock state `{slug: {starters: {slot: id},
+  locked_slots: {slot: {player_id, window, nfl, game_date, kicked}},
+  windows_run: ["early"|"main", ...], justification, justifications, fallback}}`.
+  A week may accumulate two `/lineups` windows.
+- `nfl-games.json` — that week's slice of `state/nfl-schedule.json`.
+- `packs/` — derived GM packs (`public.json`, `<slug>.json`, `sizes.json`).
+  Regenerated by `scripts/gm_pack.py`; GMs consume these instead of `players.json`.
+- `decisions/<slug>.json` — validated waiver JSON; lineup windows write
+  `<slug>.lineup-early.json` / `<slug>.lineup-main.json`. Harness cache; scripts apply.
 - `faab-report.json` — the FAAB resolution report for the week (from `faab.py`).
 - `news-facts.json` — deterministic headline facts from `derive_news.py` (the
   media agent's input for the weekly tabloid).
@@ -252,7 +271,7 @@ validate agent output.
   per entry `{timestamp, team, post}`; at most one post per GM per run. Public
   record; the commissioner blocks transactions, never speech.
 - `state/news/2026-wNN.md` — the media mogul's (`agents/media.md`) weekly
-  tabloid, published before the Saturday run from `news-facts.json` + any
+  tabloid, published before the `/waivers` run from `news-facts.json` + any
   owner-planted rumors + the week's buzz file when present. Public voice; she
   holds no powers and never reads a GM file.
 - `state/news/buzz/2026-wNN.md` — OPTIONAL weekly real-world X buzz for the
@@ -274,12 +293,16 @@ validate agent output.
 
 ## 9. Costs & model policy
 
-All 10 GM agents run on the same model, same temperature, context assembled by
-the same template — the GM file is the only variable. Rough volume: draft
-(150 AI picks) + 17 weeks × 10 teams × 2 runs ≈ ~3,600 agent calls/season.
-At Claude Code subscription usage this is background noise; via API, budget
-tens of dollars. Use a top-tier model for GM/commissioner turns (personality
-is the product); the build agent for `TASKS.md` can be a cheaper model.
+The GM file is the only personality variable. Volume is **not** cheap:
+12 GMs × (waivers + two lineup windows + trade responses) plus Media and
+Commissioner, every week. Do not plan that volume on Claude-in-Cursor.
+
+Token diet (required): `scripts/gm_pack.py` builds one public pack and one
+private pack per GM. GM turns are inline, tools off — never `players.json`,
+never another GM file, never `buzz/`. One Scout writes buzz. Scripts do math.
+Composer is for mechanical file transforms only.
+
+Personality stays the product: do not flatten to "start the highest projection."
 
 ## 10. Risks & mitigations
 

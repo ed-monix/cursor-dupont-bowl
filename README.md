@@ -27,15 +27,13 @@ never when it is merely stupid.
   reference league needed — `sync_sleeper.py --settings` activates it from the
   shipped defaults) and applied by our own engine (`config/scoring.json`).
 - **Weekly rhythm:**
-  - **Fri/Sat AM — Owner notes.** Each human drops a short performance note
-    into their OWN team's `notes/` folder — the only two teams with owners.
-    Their GM interprets it however its personality dictates. The ten
-    celebrity GMs get no notes from anyone; the meddling in their lives is
-    Kris Jenner's weekly tabloid.
-  - **Saturday AM — Roster run.** Every agent reviews its team, the waiver wire,
-    and its owner note, then submits FAAB claims, drops, and trade offers.
-  - **Sunday AM — Lineup run.** Final injury sync, every agent locks a legal
-    starting lineup with in-character reasoning.
+  - **Owner notes** before `/waivers` — each human writes to their OWN
+    team's `notes/` folder. Celebrity GMs get Kris Jenner's tabloid instead.
+  - **`/waivers`** — FAAB claims, drops, and trade offers (once, before the
+    week's first kickoff).
+  - **`/lineups early`** — lock starters whose NFL games are Tue–Sat (TNF).
+  - **`/lineups main`** — lock the rest after late injury news (Sun/Mon).
+    Already-kicked games stay frozen.
 - **The Commissioner** (`agents/commissioner.md`) is its own agent: it validates
   every transaction, resolves FAAB ties, blocks only rule violations, and
   writes a weekly recap column.
@@ -49,6 +47,7 @@ never when it is merely stupid.
 
 | Path | What it is |
 |---|---|
+| `AGENTS.md` | Cursor / Bot operating rules (packs, isolation, command names) |
 | `PLAN.md` | The full build & operations plan |
 | `TASKS.md` | Phased build tasks (hand these to the build agent) |
 | `CLAUDE.md` | Operating instructions for Claude Code sessions |
@@ -56,9 +55,9 @@ never when it is merely stupid.
 | `agents/commissioner.md` | The commissioner agent definition |
 | `teams/` | One folder per team: GM file, roster, owner notes |
 | `state/` | League state: free agents, standings, matchups, transaction log |
-| `scripts/` | Sleeper sync, scoring/FAAB/schedule engine, live scoreboard, viewer builder |
+| `scripts/` | Sleeper sync, scoring/FAAB/schedule engine, live scoreboard, viewer builder, GM packs |
 | `web/` | `viewer.template.html` — the interactive league viewer (Scores, Standings, Bracket) |
-| `.claude/commands/` | `/draft`, `/saturday`, `/sunday`, `/recap`, `/notes`, `/refresh-board` |
+| `.claude/commands/` and `.cursor/commands/` | `/waivers`, `/lineups`, `/recap`, `/notes`, `/refresh-board`, `/draft` |
 
 ## Live viewer
 
@@ -76,7 +75,7 @@ works on phones). Three tabs:
 
 The artifact can't call Sleeper itself (it's sandboxed), so it's kept live by
 re-publishing it with fresh data. Every state-changing run — the draft,
-`/saturday`, `/sunday`, `/recap` — ends by rebuilding the viewer and
+`/waivers`, `/lineups`, `/recap` — ends by rebuilding the viewer and
 republishing the artifact in place, so the shared link tracks the league
 automatically. The loop below is only for live scoring during the games. `scripts/build_viewer.py` renders
 `web/viewer.html` from committed league state; `/refresh-board` runs the whole
@@ -100,7 +99,7 @@ python scripts/sync_sleeper.py --settings   # Sleeper-standard scoring/roster (n
 # Optional: set GROK_API_KEY in the environment for real X buzz in the weekly
 # tabloid (or paste a buzz file by hand; without either, the tabloid runs on
 # derived + planted headlines — the league never depends on it).
-claude   # then: /draft to run the draft, /saturday and /sunday weekly
+claude   # then: /draft to run the draft, /waivers and /lineups weekly
 # Game-day live board (either or both):
 #   /loop 10m /refresh-board       # in a Claude session — refreshes the shareable viewer artifact
 #   python scripts/scoreboard.py   # local board at http://localhost:8080

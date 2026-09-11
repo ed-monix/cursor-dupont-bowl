@@ -266,6 +266,17 @@ def test_best_legal_lineup_optimal_at_every_slot_and_flex_takes_best_leftover():
     assert roster["bench"] == ["p_wr3", "p_te2"]
 
 
+def test_best_legal_lineup_respects_frozen_starters():
+    """A locked Thursday TE stays even if a higher-projected TE sits on the bench."""
+    players, roster, projections = _lineup_fixture()
+    result = best_legal_lineup(
+        roster, players, projections, SIMPLE_SCORING,
+        frozen_starters={"TE": "p_te2"},
+    )
+    assert result["starters"]["TE"] == "p_te2"
+    assert result["starters"]["QB"] == "p_qb1"
+
+
 def test_best_legal_lineup_output_passes_validate_lineup():
     players, roster, projections = _lineup_fixture()
 
