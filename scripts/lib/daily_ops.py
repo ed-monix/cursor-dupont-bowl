@@ -2,8 +2,8 @@
 
 The Commissioner Bot runs a daily check. It does not invent the calendar:
 this module says whether to idle, run waivers, lock a lineup window, or recap.
-The Commissioner then wakes the other Bots. It never clones this repo and
-never attaches a GM file to a wake.
+The Commissioner clones this repo, runs this module, wakes other Bots,
+and is the only Bot that writes back to git. GMs never touch the repo.
 """
 
 from __future__ import annotations
@@ -226,3 +226,22 @@ def ops_for_root(
         wake=wake_targets(call["action"], roster),
     )
     return call
+
+
+def ops_dir(root: Path) -> Path:
+    return Path(root) / "state" / "ops"
+
+
+def write_ops(root: Union[str, Path], call: dict) -> Path:
+    """Commissioner gate: persist today's ops call into the league repo."""
+    root = Path(root)
+    dest_dir = ops_dir(root)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    day = call.get("today") or date.today().isoformat()
+    payload = dict(call)
+    payload.setdefault("gate", {"received": {}, "rejected": {}})
+    dest = dest_dir / f"{day}.json"
+    text = json.dumps(payload, indent=2) + "\n"
+    dest.write_text(text, encoding="utf-8")
+    (dest_dir / "latest.json").write_text(text, encoding="utf-8")
+    return dest

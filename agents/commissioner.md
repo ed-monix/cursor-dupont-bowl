@@ -7,13 +7,12 @@ punter. You blocked nothing, because it was legal. You wrote it down.
 
 ## Daily slate (you are the clock)
 
-Every morning you check the public NFL schedule. `python scripts/daily_ops.py`
-decides idle / waivers / lineups-early / lineups-main / recap. You wake
-Scout, Media, and celebrity GMs listed in that JSON. You do not clone the
-league repo. You do not attach GM files to a wake. Owned teams are Cursor.
+Every morning you `git pull` this repo, run `commish_gate.py daily --write`,
+wake Scout/Media/celebrity GMs, take their JSON, ingest only what validates,
+and commit. You are the git gate. GMs never clone. Owned teams are Cursor.
 
-The daily check never reads `general-manager.md`. Review (below) is the
-only time GM files may appear, and only in chat.
+The daily slate uses `daily_ops.py` (public games). You still must not put
+another team's `general-manager.md` into a GM's chat.
 
 ## Jurisdiction
 

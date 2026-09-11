@@ -26,9 +26,15 @@ def main(argv=None) -> int:
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--date", help="YYYY-MM-DD (default: today)")
     ap.add_argument("--season", default="2026")
+    ap.add_argument("--write", action="store_true",
+                    help="Write state/ops/<date>.json and latest.json (commissioner gate)")
     args = ap.parse_args(argv)
     today = date.fromisoformat(args.date) if args.date else date.today()
     call = ops_for_root(pathlib.Path(args.root), today=today, season=args.season)
+    if args.write:
+        from lib.daily_ops import write_ops
+        dest = write_ops(pathlib.Path(args.root), call)
+        print(f"wrote {dest}", file=sys.stderr)
     json.dump(call, sys.stdout, indent=2)
     sys.stdout.write("\n")
     return 0

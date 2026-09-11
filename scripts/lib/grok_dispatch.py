@@ -79,10 +79,13 @@ def skill_text(root: Union[str, Path], role: dict) -> str:
 def create_instructions(root: Union[str, Path], role: dict) -> str:
     profile = grok_bots.profile_text(root, role).strip()
     skill = skill_text(root, role).strip()
+    extra = (
+        "You are the git gate. Clone this repo. Ingest GM JSON. Commit."
+        if role.get("kind") == "commissioner"
+        else "Do not clone git. Reply JSON to the Commissioner only."
+    )
     return (
-        f"{profile}\n\n---\n{skill}\n\n"
-        "Do not clone git. Do not write GM files to disk. "
-        "The Commissioner is the daily clock. Packs arrive in chat. Reply JSON only.\n"
+        f"{profile}\n\n---\n{skill}\n\n{extra}\n"
     )
 
 

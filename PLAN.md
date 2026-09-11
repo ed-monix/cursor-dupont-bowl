@@ -15,8 +15,8 @@ The repo **is** the league. There is no server, no database, no hosted app.
 - **Grok Bots + Cursor = harness.** Celebrity GMs, Scout, Media, and the
   Commissioner are Grok Bots (`config/grok-bots.json`). Owned GMs stay in
   Cursor. Slash commands in `.cursor/commands/` orchestrate: scripts build
-  packs; Bots get pack-in-chat (tools off). Do not clone this repo onto the
-  shared Grok Bot computer.
+  packs; the Commissioner Bot is the git gate (clone, ingest, commit). GMs
+  report to the Commissioner, never to git.
 - **Python scripts = the deterministic parts.** Anything that must be exactly
   right — scoring math, roster legality, FAAB resolution, Sleeper syncing —
   is a script, not a judgment call. Agents decide; scripts validate and apply.
@@ -27,10 +27,12 @@ The repo **is** the league. There is no server, no database, no hosted app.
 ### Division of labor per weekly run
 
 ```
-Commissioner Bot (daily 09:00 ET, Grok cloud)
-  ├─ daily_ops.py (public NFL slate → idle|waivers|lineups-early|lineups-main|recap)
-  ├─ wakes Scout / Media / celebrity GMs (no GM files on the ping)
-  └─ Cursor Cloud Agent sends each GM its pack; scripts apply; one git commit
+Commissioner Bot (daily 09:00 ET) — git gate
+  ├─ git pull league repo
+  ├─ commish_gate.py daily --write  →  state/ops/YYYY-MM-DD.json
+  ├─ ping GMs with packs; GMs reply to Commissioner only
+  ├─ commish_gate.py ingest         →  decisions/ if valid
+  └─ commit. Cloud Agents read git from there.
 ```
 
 ## 2. League format (Sleeper standard)

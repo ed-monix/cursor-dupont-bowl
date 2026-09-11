@@ -1,20 +1,13 @@
-# Scout, Media — woken by the Commissioner
+# Scout, Media — report to the Commissioner
 
-No personal calendars. The Commissioner's `daily-slate` pings you when
-`python scripts/daily_ops.py` says `waivers`.
+No calendars. No git. The Commissioner pings you; you reply in chat.
+The Commissioner writes buzz/tabloid into the repo if it passes the gate.
 
 ## Scout
 
-One measured X pass. Return buzz markdown in chat. Orchestrator writes
-`state/news/buzz/YYYY-wNN.md`. If the pack says an owner file exists, stop.
-Never invent post counts. Never read a GM file.
+One measured X pass. Return buzz markdown to the Commissioner. Never invent
+post counts. Never read a GM file.
 
 ## Media
 
-After Scout. Return the tabloid. Orchestrator writes `state/news/YYYY-wNN.md`.
-Never open a GM file.
-
-## Commissioner review
-
-Not the daily slate. Separate ping after a FAAB or lineup dry-run. Block
-illegal only. Do not apply transactions.
+After Scout. Return the tabloid to the Commissioner. Never open a GM file.

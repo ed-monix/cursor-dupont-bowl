@@ -238,13 +238,9 @@ def extract_reply_text(payload: Any, agent: dict[str, Any] | None = None) -> str
 
 
 def enablement_text() -> str:
-    return """The clock is the Commissioner Bot (Grok cloud), not a Mac.
+    return """The Commissioner is the git gate.
 
-Daily: python scripts/daily_ops.py
-  → POST that public JSON to the Commissioner's daily-slate webhook
-  → Commissioner wakes GMs; orchestrator sends each GM its pack
-
-GMs have no calendars. Owned teams stay on Cursor.
-
-Mac gateway (GROKBOT_GATEWAY_URL) is optional leftover, not the product.
+Daily: git pull, python scripts/commish_gate.py daily --write,
+ping GMs, ingest replies, commit. GMs never clone.
+Cloud Agents read state/ops/ and decisions/ after that.
 """

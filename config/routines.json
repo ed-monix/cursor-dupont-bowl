@@ -1,6 +1,6 @@
 {
   "timezone": "America/New_York",
-  "clock": "The Commissioner runs one daily slate check. Scripts (daily_ops.py) decide the action from public NFL games. The Commissioner wakes other Bots. GMs have no calendars. Nothing runs on a Mac. Bots do not clone this repo.",
+  "clock": "The Commissioner clones the league repo daily, runs commish_gate.py, wakes GMs, verifies their JSON, and is the only Bot that commits. GMs report to the Commissioner, never to git.",
   "routines": [
     {
       "id": "daily-slate",

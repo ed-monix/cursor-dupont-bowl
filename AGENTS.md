@@ -8,9 +8,9 @@ Git is the tamper-evident record. Do not write to Sleeper.
   (`config/grok-bots.json`, `bots/`).
 - Owned GMs (`your-team`, `wifes-team`): **Cursor**, pack-only. They stay
   off the shared Grok Bot computer.
-- Orchestrator (Cursor Cloud Agent): public slate via `daily_ops.py`, packs,
-  apply with `faab.py` / `lineups.py`, one git commit. The Commissioner Bot
-  is the daily clock and wakes GMs. Do not run this league off a Mac.
+- Orchestrator: the **Commissioner Grok Bot** clones the repo daily, wakes
+  GMs, verifies their JSON, and commits. Cursor Cloud Agents read git after
+  that (apply FAAB/lineups, notes, recap follow-up). Owned GMs stay Cursor.
 
 
 ## Roles
@@ -34,9 +34,10 @@ A GM turn may only be given the pack from `scripts/gm_pack.py` for that slug
 `state/players.json`, never another `general-manager.md` or `opinions.json`.
 Never search X.
 
-Grok Bots on one account share one cloud computer. Do not clone this repo
-onto that disk. Do not copy GM files there. Isolation is pack-in-chat.
-`python scripts/grok_bots.py check` must stay green.
+Grok Bots on one account share one cloud computer. **Only the Commissioner**
+clones this repo. GMs never git; they report JSON to the Commissioner, who
+is the gate (`commish_gate.py ingest`). Do not copy other teams' GM files
+into a GM chat. `python scripts/grok_bots.py check` must stay green.
 
 ## Commands
 - `/grok-bots` — roster, commissioner clock, daily ops

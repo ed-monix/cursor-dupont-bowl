@@ -189,8 +189,8 @@ def test_cli_dispatch_without_gateway_prints_enablement(monkeypatch, capsys):
     ])
     assert code == 2
     err = capsys.readouterr().err
-    assert "daily_ops.py" in err
-    assert "Commissioner Bot" in enablement_text()
+    assert "commish_gate.py" in err
+    assert "git gate" in enablement_text()
 
 
 def test_cli_run_sheet_says_dispatch(capsys):
