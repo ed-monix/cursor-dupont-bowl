@@ -23,10 +23,11 @@ python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
 That writes `state/weeks/2026-w<WW>/packs/public.json` and
-`packs/<slug>.json`. Each GM subagent is **inline-only**: paste
-`python scripts/gm_pack.py --week <WW> --team <slug> --run waivers --prompt`
-(or the written pack) and say: everything you need is in this prompt; do
-NOT read files, run commands, or use tools. Reply with schema JSON only.
+`packs/<slug>.json`. Celebrity GMs are **Grok Bots**: paste
+`python scripts/grok_bots.py prompt --week <WW> --run waivers --slug <slug>`
+into that Bot (tools off). Owned GMs (`your-team`, `wifes-team`) are the
+same prompt in **Cursor**, never on the shared Bot disk. Reply = schema JSON
+only. Roster: `python scripts/grok_bots.py check` and `run-sheet`.
 
 GMs never see `state/news/buzz/`. One Scout (`fetch_buzz.py` / owner paste)
 writes buzz; Media rewrites the tabloid; then GMs read the tabloid only.
@@ -50,20 +51,23 @@ use the documented proxy in `state/rulings.md`.
 
 ## 2. Tabloid (before anyone moves)
 
-Spawn Media (`agents/media.md`) with PUBLIC RECORD only: `news-facts.json`,
-this week's buzz file if present, last week's forum, last recap, standings.
-She writes `state/news/2026-w<WW>.md`. Rebuild packs after she publishes so
-GMs see the tabloid. NEVER a GM file. Rebuild:
+Message the **Kris Jenner** Grok Bot (`bots/skill-media.md`, `agents/media.md`)
+with PUBLIC RECORD only: `news-facts.json`, this week's buzz file if present,
+last week's forum, last recap, standings. She writes
+`state/news/2026-w<WW>.md`. Rebuild packs after she publishes so GMs see the
+tabloid. NEVER a GM file. Rebuild:
 
 ```bash
 python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
-## 3. GM decisions — 12 inline packs, tools off
+## 3. GM decisions — Grok Bots + two Cursor owned GMs
 
-For every `teams/` slug except `_template`, spawn ONE subagent with ONLY
-that team's pack (never another GM file). Reverse-standings order is
-context only; bids are blind.
+`python scripts/grok_bots.py run-sheet --week <WW> --run waivers`
+
+For every celebrity slug: paste that Bot's prompt, tools off. For
+`your-team` and `wifes-team`: Cursor pack-only (same prompt command).
+Reverse-standings order is context only; bids are blind.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver
@@ -89,13 +93,16 @@ Do not apply yet.
 ## 5. Trades
 
 Max one outgoing offer per team; deadline end of week 11. Target GM gets
-its own pack + the offer JSON (tools off). Counter → original offerer once.
+its own pack + the offer JSON (tools off — Grok Bot or Cursor per roster).
+Counter → original offerer once.
 Validate with `apply_transaction`.
 
 ## 6. Commissioner review, then apply
 
-Commissioner (`agents/commissioner.md`) reviews the dry-run + decision JSON.
-Blocks only illegal. Does **not** apply FAAB or mutate rosters. Then:
+Commissioner Grok Bot (`bots/skill-commish.md`, `agents/commissioner.md`)
+reviews the dry-run + decision JSON. GM files in chat only, never left on
+the shared disk. Blocks only illegal. Does **not** apply FAAB or mutate
+rosters. Then:
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \

@@ -21,10 +21,11 @@ never when it is merely stupid.
 
 ## How it works
 
-- **12 teams, 12 AI GMs.** Every team — the co-owners' two included — is run
-  by an AI GM defined entirely by a `general-manager.md` personality file in
-  `teams/`. The humans are owners: they hire the GM, they write the notes,
-  they live with the consequences.
+- **12 teams, 12 AI GMs.** Celebrity GMs run as Grok Bots
+  (`config/grok-bots.json`). The two owned teams (`your-team`, `wifes-team`)
+  stay off that shared Bot computer and run pack-only in Cursor. Humans are
+  owners: they hire the GM, they write the notes, they live with the
+  consequences.
 - **Sleeper rules.** Standard Sleeper format: half-PPR, 4-pt passing TDs,
   1QB/2RB/2WR/1TE/1FLEX/1K/1DEF + bench. Scoring is Sleeper standard (no
   reference league needed — `sync_sleeper.py --settings` activates it from the
@@ -54,7 +55,8 @@ never when it is merely stupid.
 | `PLAN.md` | The full build & operations plan |
 | `TASKS.md` | Phased build tasks (hand these to the build agent) |
 | `CLAUDE.md` | Operating instructions for Claude Code sessions |
-| `config/` | League rules + scoring settings |
+| `config/` | League rules, scoring, Grok Bot roster |
+| `bots/` | Grok Bot skills + create notes (do not clone onto the Bot disk) |
 | `agents/commissioner.md` | The commissioner agent definition |
 | `teams/` | One folder per team: GM file, roster, owner notes |
 | `state/` | League state: free agents, standings, matchups, transaction log |

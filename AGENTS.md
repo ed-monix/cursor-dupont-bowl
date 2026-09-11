@@ -1,7 +1,15 @@
-# AGENTS.md — DuPont Bowl (Cursor harness)
+# AGENTS.md — DuPont Bowl (Grok Bots + Cursor)
 
 This repo is the league. Scripts decide facts. Agents decide choices.
 Git is the tamper-evident record. Do not write to Sleeper.
+
+## Runtime
+- Celebrity GMs, Scout, Media, Commissioner: **Grok Bots**
+  (`config/grok-bots.json`, `bots/`).
+- Owned GMs (`your-team`, `wifes-team`): **Cursor**, pack-only. They stay
+  off the shared Grok Bot computer.
+- Orchestrator (this Cursor session): run scripts, paste packs into Bots,
+  validate JSON, apply with `faab.py` / `lineups.py`, one git commit.
 
 ## Roles
 - Scripts (`scripts/`): sync, score, FAAB, roster legality, fallback lineups,
@@ -24,10 +32,12 @@ A GM turn may only be given the pack from `scripts/gm_pack.py` for that slug
 `state/players.json`, never another `general-manager.md` or `opinions.json`.
 Never search X.
 
-On a shared Grok Bot disk, do not mount all 12 GM files and hope. Human-owned
-teams (`your-team`, `wifes-team`) stay off any shared Bot computer.
+Grok Bots on one account share one cloud computer. Do not clone this repo
+onto that disk. Do not copy GM files there. Isolation is pack-in-chat.
+`python scripts/grok_bots.py check` must stay green.
 
 ## Commands
+- `/grok-bots` — roster check, profiles, paste prompts
 - `/waivers` — weekly FAAB/trades (before first kickoff)
 - `/lineups <week> early|main` — lock Tue–Sat games, then Sun/Mon
 - `/recap` — official scores and commissioner column

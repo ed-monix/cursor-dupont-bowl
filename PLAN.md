@@ -12,9 +12,11 @@ The repo **is** the league. There is no server, no database, no hosted app.
 - **State = files.** Rosters, free agents, standings, matchups, and the
   transaction log are JSON/JSONL files in `state/` and `teams/`. Git history is
   the league's permanent, tamper-evident record.
-- **Claude / Cursor = harness.** Weekly operations are slash commands in
-  `.claude/commands/` and `.cursor/commands/`. Packs keep GM context small;
-  isolation is pack-only + tools off (prompt honor is not enough on a shared disk).
+- **Grok Bots + Cursor = harness.** Celebrity GMs, Scout, Media, and the
+  Commissioner are Grok Bots (`config/grok-bots.json`). Owned GMs stay in
+  Cursor. Slash commands in `.cursor/commands/` orchestrate: scripts build
+  packs; Bots get pack-in-chat (tools off). Do not clone this repo onto the
+  shared Grok Bot computer.
 - **Python scripts = the deterministic parts.** Anything that must be exactly
   right — scoring math, roster legality, FAAB resolution, Sleeper syncing —
   is a script, not a judgment call. Agents decide; scripts validate and apply.
@@ -25,12 +27,13 @@ The repo **is** the league. There is no server, no database, no hosted app.
 ### Division of labor per weekly run
 
 ```
-Orchestrator
+Orchestrator (Cursor)
   ├─ runs sync + gm_pack.py (public pack + 12 private packs)
-  ├─ one Scout / Media turn (buzz → tabloid); GMs never see buzz/
-  ├─ 12 inline GM turns (tools off, pack only) → decisions/<slug>.json
-  ├─ validators (faab.py, rosters, lineup_windows)
-  ├─ Commissioner reviews; scripts apply
+  ├─ Scout Bot + Media Bot (buzz → tabloid); GMs never see buzz/
+  ├─ 10 Grok Bot GM turns + 2 Cursor owned-GM turns (pack only)
+  │     → state/weeks/.../decisions/<slug>.json
+  ├─ validators (faab.py, lineups.py)
+  ├─ Commissioner Bot reviews; scripts apply
   └─ one git commit per run
 ```
 
@@ -201,6 +204,11 @@ validate agent output.
 - `config/scoring.json` — Sleeper `scoring_settings` map, verbatim keys (`rec`,
   `pass_td`, `rush_yd`, `pts_allow_*`, `fgm_*`, ...). Falls back to
   `config/scoring.default.json` (Sleeper standard half-PPR) when unsynced.
+- `config/grok-bots.json` — Bot roster: `{version, isolation, roles[]}`. Each
+  role has `id`, `kind` (scout|media|commissioner|gm), `product`
+  (grok_bot|cursor), `computer` (shared|none), and isolation flags. Owned
+  teams must be `off_shared_disk`. `share_url` is optional (filled after the
+  Bot exists in the Grok Bot app). Validated by `scripts/grok_bots.py check`.
 - `config/roster.json` — as written by `sync_sleeper.py`:
   `{roster_positions: [str,...], settings: {...}}`. Engine code that needs the
   slot structure consumes it via `lib.rosters.roster_config_from_league()`, which
@@ -298,9 +306,11 @@ The GM file is the only personality variable. Volume is **not** cheap:
 Commissioner, every week. Do not plan that volume on Claude-in-Cursor.
 
 Token diet (required): `scripts/gm_pack.py` builds one public pack and one
-private pack per GM. GM turns are inline, tools off — never `players.json`,
-never another GM file, never `buzz/`. One Scout writes buzz. Scripts do math.
-Composer is for mechanical file transforms only.
+private pack per GM. Celebrity GM turns are Grok Bots (pack pasted in chat,
+tools off). Owned GMs are Cursor pack-only, off the shared Bot disk. Never
+`players.json`, never another GM file, never `buzz/`. One Scout writes buzz.
+Scripts do math. Composer is for mechanical file transforms only.
+Do not plan that volume on Claude-in-Cursor.
 
 Personality stays the product: do not flatten to "start the highest projection."
 

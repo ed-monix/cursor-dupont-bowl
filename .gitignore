@@ -14,3 +14,6 @@ web/viewer.html
 
 # derived GM packs (rebuild: python scripts/gm_pack.py --week N)
 state/weeks/*/packs/
+
+# local Grok Bot paste exports (never copy onto the shared Bot disk)
+bot-prompts/

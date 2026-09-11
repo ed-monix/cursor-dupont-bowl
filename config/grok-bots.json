@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "isolation": {
+    "rule": "All Grok Bots on one xAI account share one cloud computer. Files, logins, and browser sessions on that disk are visible to every Bot. Isolation is pack-in-chat (tools off), not peek-honor. Do not git-clone this repo onto the Bot computer. Do not copy teams/*/general-manager.md or opinions.json onto it.",
+    "owned_teams_off_disk": ["your-team", "wifes-team"],
+    "never_on_shared_disk": [
+      "teams/*/general-manager.md",
+      "teams/*/opinions.json",
+      "state/players.json",
+      "state/news/buzz/"
+    ]
+  },
+  "roles": [
+    {
+      "id": "scout",
+      "kind": "scout",
+      "bot_name": "DuPont Scout",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "never_read_gm_files": true,
+      "write": ["state/news/buzz/YYYY-wNN.md"],
+      "skill": "bots/skill-scout.md",
+      "share_url": null
+    },
+    {
+      "id": "media",
+      "kind": "media",
+      "bot_name": "Kris Jenner",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "never_read_gm_files": true,
+      "write": ["state/news/YYYY-wNN.md"],
+      "skill": "bots/skill-media.md",
+      "persona": "agents/media.md",
+      "share_url": null
+    },
+    {
+      "id": "commissioner",
+      "kind": "commissioner",
+      "bot_name": "DuPont Commissioner",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "never_read_gm_files": false,
+      "gm_files_in_chat_only": true,
+      "write": ["state/weeks/YYYY-wNN/recap.md", "state/rulings.md", "state/weeks/YYYY-wNN/commissioner-signoff.md"],
+      "skill": "bots/skill-commish.md",
+      "persona": "agents/commissioner.md",
+      "share_url": null
+    },
+    {
+      "id": "coach-taylor",
+      "kind": "gm",
+      "slug": "coach-taylor",
+      "bot_name": "GM Coach Taylor",
+      "character": "Coach Eric Taylor",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "costanza",
+      "kind": "gm",
+      "slug": "costanza",
+      "bot_name": "GM Costanza",
+      "character": "George Costanza",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "dumbledore",
+      "kind": "gm",
+      "slug": "dumbledore",
+      "bot_name": "GM Dumbledore",
+      "character": "Albus Dumbledore",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "harry-caray",
+      "kind": "gm",
+      "slug": "harry-caray",
+      "bot_name": "GM Harry Caray",
+      "character": "Harry Caray",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "kardashian",
+      "kind": "gm",
+      "slug": "kardashian",
+      "bot_name": "GM Kim Kardashian",
+      "character": "Kim Kardashian",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "leon-black",
+      "kind": "gm",
+      "slug": "leon-black",
+      "bot_name": "GM Leon Black",
+      "character": "Leon Black",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "maura-higgins",
+      "kind": "gm",
+      "slug": "maura-higgins",
+      "bot_name": "GM Maura Higgins",
+      "character": "Maura Higgins",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "meyer-walsh",
+      "kind": "gm",
+      "slug": "meyer-walsh",
+      "bot_name": "GM Meyer Walsh",
+      "character": "Selina Meyer and Gary Walsh",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "patricia-moyer",
+      "kind": "gm",
+      "slug": "patricia-moyer",
+      "bot_name": "GM Patricia Moyer",
+      "character": "Patricia Moyer",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "rinna",
+      "kind": "gm",
+      "slug": "rinna",
+      "bot_name": "GM Lisa Rinna",
+      "character": "Lisa Rinna",
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "your-team",
+      "kind": "gm",
+      "slug": "your-team",
+      "bot_name": "GM Ed Monix",
+      "character": "Ed Monix",
+      "product": "cursor",
+      "computer": "none",
+      "off_shared_disk": true,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    },
+    {
+      "id": "wifes-team",
+      "kind": "gm",
+      "slug": "wifes-team",
+      "bot_name": "GM Tony Soprano",
+      "character": "Tony Soprano",
+      "product": "cursor",
+      "computer": "none",
+      "off_shared_disk": true,
+      "own_gm_file_in_pack_only": true,
+      "share_url": null
+    }
+  ]
+}
