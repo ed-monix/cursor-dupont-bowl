@@ -1,34 +1,31 @@
 # Grok Bots — DuPont Bowl
 
-Celebrity GMs, Scout, Media, and Commissioner run as **Grok Bots**.
-Ed Monix (`your-team`) and Tony Soprano (`wifes-team`) stay **off** that
-computer (Cursor pack-only this trial).
+Celebrity GMs, Scout, Media, and Commissioner run as **Grok Bots** in the
+Grok Bot cloud (laptop closed is fine). Ed Monix (`your-team`) and Tony
+Soprano (`wifes-team`) stay off that computer (Cursor).
 
 xAI: every Bot on one account shares one VM. Do not clone this repo there.
 Do not copy `teams/*/general-manager.md` or `opinions.json` onto disk.
-Personality travels in the weekly pack (`general_manager_md`).
 
-The weekly clock is the orchestrator, not 12 paste windows:
+## Clock: the Commissioner
 
-```bash
-python scripts/grok_bots.py ensure
-python scripts/grok_bots.py dispatch --week N --kind waivers
-python scripts/faab.py ...   # after commissioner review
+One scheduled routine, on the Commissioner only:
+
+```text
+daily-slate — every day 09:00 America/New_York
 ```
 
-`ensure` / `dispatch` talk to the unofficial Grok Bot desktop gateway
-(typically `http://127.0.0.1:1340`, token in `sand-data/gateway.json`).
-Set `GROKBOT_GATEWAY_URL` and `SAND_GATEWAY_TOKEN`. This Cloud Agent
-cannot reach that socket until Cursor Desktop MCP or a self-hosted
-worker on the Mac is wired.
+`python scripts/daily_ops.py` reads the public NFL slate and says idle /
+waivers / lineups-early / lineups-main / recap. The Commissioner wakes the
+other Bots. GMs have a single `on-commissioner` routine (no Thu/Sun alarms).
 
-## Create (once)
+On a gameday wake, each GM reads `gameday_note` in **their** pack (owned
+teams only; celebrity packs are empty). Notes are pressure, not orders.
 
-Prefer `python scripts/grok_bots.py ensure` so ids land on
-`gateway_agent_id`. Manual app create still works: Edit Profile from
-`python scripts/grok_bots.py profile costanza`, enable `bots/skill-gm.md`.
+Create-once paste: `python scripts/grok_bots.py routines`
 
 ## Isolation
 
-Never mount the league repo on the Bot computer. Never copy GM files
-there. Tools off on every GM turn. Owned GMs stay `product: cursor`.
+Never mount the league repo on the Bot computer. The Commissioner must not
+attach GM files when pinging. Packs come from a Cursor Cloud Agent, one
+slug at a time.

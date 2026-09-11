@@ -46,4 +46,23 @@ Do this:
    rule 5): `week <WW>: notes`. Nothing else in this command writes state.
 
 This command spawns no agents and runs no scripts — it is pure scaffolding.
-Owners should file notes before **`/waivers`**, not "Saturday."
+Owners should file the weekly note before **`/waivers`**. Optional **gameday**
+notes (`2026-w<WW>-early.md` before Thursday games, `2026-w<WW>-main.md`
+before Sunday) are how the two owners talk to their GM on kickoff day.
+The Commissioner wakes GMs that morning; the pack includes those files.
+
+2. **For each of the two**, if `teams/<slug>/notes/2026-w<WW>.md` does not already
+   exist, create it from this stub (create the `notes/` folder if missing).
+   Never overwrite an existing note — if it exists, leave it and report that.
+
+   Also scaffold (same never-overwrite rule):
+   `2026-w<WW>-early.md` and `2026-w<WW>-main.md` with:
+
+   ```md
+   # Gameday note — <slug>, 2026 Week <WW> (<early|main>)
+
+   <!--
+   Optional. File this the morning of that window's games (Thu / Sun).
+   Pressure, not orders. The GM reads it in the lineup pack.
+   -->
+   ```

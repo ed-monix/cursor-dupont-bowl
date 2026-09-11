@@ -82,7 +82,7 @@ def create_instructions(root: Union[str, Path], role: dict) -> str:
     return (
         f"{profile}\n\n---\n{skill}\n\n"
         "Do not clone git. Do not write GM files to disk. "
-        "Weekly packs arrive as chat. Reply JSON only.\n"
+        "The Commissioner is the daily clock. Packs arrive in chat. Reply JSON only.\n"
     )
 
 

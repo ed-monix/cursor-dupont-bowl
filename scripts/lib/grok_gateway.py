@@ -238,29 +238,13 @@ def extract_reply_text(payload: Any, agent: dict[str, Any] | None = None) -> str
 
 
 def enablement_text() -> str:
-    return """This Cloud Agent cannot talk to Grok Bots until a gateway is reachable.
+    return """The clock is the Commissioner Bot (Grok cloud), not a Mac.
 
-One-command weekly clock (intended):
-  python scripts/grok_bots.py dispatch --kind waivers --week 1
-  python scripts/grok_bots.py dispatch --kind lineups --week 1
+Daily: python scripts/daily_ops.py
+  → POST that public JSON to the Commissioner's daily-slate webhook
+  → Commissioner wakes GMs; orchestrator sends each GM its pack
 
-That builds isolated packs and POSTs them to each grok_bot GM. Replies
-land in state/weeks/<season>-wNN/decisions/<slug>.json. Then:
-  python scripts/faab.py apply --week 1
-  python scripts/lineups.py apply --week 1
+GMs have no calendars. Owned teams stay on Cursor.
 
-Enable the gateway on the Mac that runs the Grok Bot app:
-
-  1. Cursor Desktop → this repo → add MCP that wraps
-     POST http://127.0.0.1:1340/api/<command> with SAND_GATEWAY_TOKEN
-     from sand-data/gateway.json
-  2. Or `cursor worker start` on that Mac (self-hosted worker)
-  3. Tunneling 1340 off-LAN is a last resort
-
-Then set on the agent:
-  GROKBOT_GATEWAY_URL   (http://127.0.0.1:1340 or the tunneled URL)
-  SAND_GATEWAY_TOKEN
-
-Owned teams (your-team, wifes-team) stay on Cursor. They are never
-dispatched through the shared Bot computer.
+Mac gateway (GROKBOT_GATEWAY_URL) is optional leftover, not the product.
 """

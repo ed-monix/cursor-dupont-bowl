@@ -1,0 +1,40 @@
+{
+  "timezone": "America/New_York",
+  "clock": "The Commissioner runs one daily slate check. Scripts (daily_ops.py) decide the action from public NFL games. The Commissioner wakes other Bots. GMs have no calendars. Nothing runs on a Mac. Bots do not clone this repo.",
+  "routines": [
+    {
+      "id": "daily-slate",
+      "roles": ["commissioner"],
+      "kind": "ops",
+      "trigger": "schedule+webhook",
+      "schedule": "0 9 * * *",
+      "schedule_note": "Every day 09:00 America/New_York",
+      "skill": "bots/skill-commish.md"
+    },
+    {
+      "id": "on-commissioner",
+      "roles": ["gm"],
+      "kind": "turn",
+      "trigger": "webhook",
+      "schedule": null,
+      "notes": ["owner_note", "gameday_note"],
+      "skill": "bots/skill-gm.md"
+    },
+    {
+      "id": "on-commissioner-scout",
+      "roles": ["scout"],
+      "kind": "buzz",
+      "trigger": "webhook",
+      "schedule": null,
+      "skill": "bots/routines-other.md"
+    },
+    {
+      "id": "on-commissioner-media",
+      "roles": ["media"],
+      "kind": "tabloid",
+      "trigger": "webhook",
+      "schedule": null,
+      "skill": "bots/routines-other.md"
+    }
+  ]
+}

@@ -71,7 +71,11 @@ def test_cli_check_and_run_sheet():
     ]) == 0
 
 
-def test_cli_help():
+def test_cli_routines_and_ops():
+    assert grok_bots_cli.main(["--root", str(REPO), "routines"]) == 0
+    assert grok_bots_cli.main([
+        "--root", str(REPO), "ops", "--date", "2026-09-13",
+    ]) == 0
     import pytest
     with pytest.raises(SystemExit) as exc:
         grok_bots_cli.main(["--help"])

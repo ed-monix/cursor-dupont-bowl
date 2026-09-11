@@ -255,9 +255,24 @@ def cmd_dispatch(
     return 1 if failed else 0
 
 
+def cmd_routines(root: pathlib.Path, ident: str | None) -> int:
+    from lib import routines
+    sys.stdout.write(routines.render_catalog(root, ident))
+    return 0
+
+
+def cmd_ops(root: pathlib.Path, day: str | None, season: str) -> int:
+    from datetime import date
+    from lib.daily_ops import ops_for_root
+    today = date.fromisoformat(day) if day else date.today()
+    json.dump(ops_for_root(root, today=today, season=season), sys.stdout, indent=2)
+    sys.stdout.write("\n")
+    return 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(
-        description="Grok Bot roster and one-command weekly dispatch"
+        description="Grok Bot roster, commissioner clock, and dispatch"
     )
     ap.add_argument("--root", default=str(ROOT))
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -288,6 +303,11 @@ def main(argv=None) -> int:
     p_disp.add_argument("--slug", action="append", dest="slugs")
     p_disp.add_argument("--offer", help="trade-offer JSON file (kind=trades)")
     p_disp.add_argument("--dry-run", action="store_true")
+    p_rt = sub.add_parser("routines")
+    p_rt.add_argument("id", nargs="?", help="gm|commissioner|daily-slate|on-commissioner")
+    p_ops = sub.add_parser("ops")
+    p_ops.add_argument("--date", help="YYYY-MM-DD")
+    p_ops.add_argument("--season", default="2026")
 
     args = ap.parse_args(argv)
     root = pathlib.Path(args.root)
@@ -316,6 +336,10 @@ def main(argv=None) -> int:
             args.offer,
             args.dry_run,
         )
+    if args.cmd == "routines":
+        return cmd_routines(root, args.id)
+    if args.cmd == "ops":
+        return cmd_ops(root, args.date, args.season)
     return 2
 
 

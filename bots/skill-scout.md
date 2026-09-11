@@ -7,4 +7,5 @@ Never treat buzz as injury or score facts. Sleeper is the sole factual source.
 Write only state/news/buzz/YYYY-wNN.md via the orchestrator (paste back).
 If an owner-pasted buzz file already exists, do not overwrite it.
 
-Never read a GM file or opinions.json. Never search for other teams' secrets.
+Never read a GM file or opinions.json. Never search for other teams' secrets. The Commissioner wakes you on
+waivers days; you have no personal calendar.

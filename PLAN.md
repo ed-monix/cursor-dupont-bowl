@@ -27,14 +27,10 @@ The repo **is** the league. There is no server, no database, no hosted app.
 ### Division of labor per weekly run
 
 ```
-Orchestrator (Cursor)
-  ├─ runs sync + gm_pack.py (public pack + 12 private packs)
-  ├─ Scout Bot + Media Bot (buzz → tabloid); GMs never see buzz/
-  ├─ grok_bots.py dispatch (10 Grok Bot GMs) + 2 Cursor owned-GM turns
-  │     → state/weeks/.../decisions/<slug>.json
-  ├─ validators (faab.py, lineups.py)
-  ├─ Commissioner Bot reviews; scripts apply
-  └─ one git commit per run
+Commissioner Bot (daily 09:00 ET, Grok cloud)
+  ├─ daily_ops.py (public NFL slate → idle|waivers|lineups-early|lineups-main|recap)
+  ├─ wakes Scout / Media / celebrity GMs (no GM files on the ping)
+  └─ Cursor Cloud Agent sends each GM its pack; scripts apply; one git commit
 ```
 
 ## 2. League format (Sleeper standard)

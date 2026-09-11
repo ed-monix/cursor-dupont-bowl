@@ -146,6 +146,13 @@ def test_private_pack_does_not_open_other_gm_files(tmp_path: Path):
     assert "SECRET KIM FILE" not in blob
     assert "You are Ed." in private["general_manager_md"]
     assert private["opponent"] == "kardashian"
+    assert private.get("gameday_note") == ""
+
+    (root / "teams" / "your-team" / "notes").mkdir()
+    (root / "teams" / "your-team" / "notes" / "2026-w02-early.md").write_text("Start the kid.\n")
+    private2 = packs.build_private_pack(root, "your-team", 2, "2026", run="lineups", window="early")
+    assert private2["gameday_note"] == "Start the kid."
+    assert "pressure, not orders" in packs.render_gm_prompt(private2)
     assert private["public"]["free_agents_trimmed"] is None  # lineups diet
     assert "Do NOT open state/players.json" in packs.render_gm_prompt(private)
 

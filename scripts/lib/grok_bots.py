@@ -175,9 +175,11 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
             lines.append(bio)
         lines.append("")
         lines.append(
+            "The Commissioner wakes you. You have no personal calendar. "
             "Each turn you receive ONE pack in the chat. Tools off. Do not read "
             "files, clone git, or search X. Reply with schema JSON only. Your "
             "full GM instructions arrive inside that pack (general_manager_md). "
+            "On gameday read owner_note and gameday_note (pressure, not orders). "
             "Do not keep other teams' files. Do not ask for players.json."
         )
     elif kind == "media":
@@ -187,8 +189,10 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
         )
     elif kind == "commissioner":
         lines.append(
-            "Block illegal only. Chaos is legal. Do not apply FAAB or mutate "
-            "rosters. Scripts apply after you sign off. GM files only in chat, "
+            "You are the daily clock: 09:00 America/New_York, public NFL slate "
+            "only (daily_ops.py). Wake other Bots; do not clone git; do not "
+            "attach GM files to a wake. Review is separate: block illegal only. "
+            "Chaos is legal. Do not apply FAAB. GM files only in review chat, "
             "never left on the shared disk."
         )
     elif kind == "scout":

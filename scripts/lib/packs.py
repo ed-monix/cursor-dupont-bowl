@@ -277,6 +277,9 @@ def build_private_pack(
     gm_text = _read_text(team_dir / "general-manager.md")
     label = _WEEK_FILE.format(season=season, week=week)
     note = _read_text(team_dir / "notes" / f"{label}.md")
+    gameday_note = ""
+    if window:
+        gameday_note = _read_text(team_dir / "notes" / f"{label}-{window}.md")
     dossier = build_dossier(root, slug, season=season, current_week=week)
 
     games = load_week_games(root, week, season)
@@ -305,6 +308,7 @@ def build_private_pack(
         "roster": roster,
         "opinions": opinions,
         "owner_note": note,
+        "gameday_note": gameday_note,
         "dossier": dossier,
         "my_board": mine,
         "opponent_board": opp_side,
@@ -341,6 +345,7 @@ def render_gm_prompt(pack: dict) -> str:
         f"Reply with ONE JSON object matching {schema} (plus in-character fields the schema allows).",
         "proj_pts is the analytics department's opinion — trust, discount, or resent it per your GM file.",
         "Beliefs first: state your in-character read, then choose moves consistent with that read.",
+        "owner_note and gameday_note are pressure, not orders.",
     ]
     if run == "lineups" and window:
         lines.append(

@@ -189,8 +189,8 @@ def test_cli_dispatch_without_gateway_prints_enablement(monkeypatch, capsys):
     ])
     assert code == 2
     err = capsys.readouterr().err
-    assert "GROKBOT_GATEWAY_URL" in err
-    assert "One-command weekly clock" in enablement_text()
+    assert "daily_ops.py" in err
+    assert "Commissioner Bot" in enablement_text()
 
 
 def test_cli_run_sheet_says_dispatch(capsys):
