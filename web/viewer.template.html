@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The DuPont Bowl</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,25 +37,29 @@
     --glow:radial-gradient(60% 120% at 50% -10%, rgba(124,137,245,.10), transparent 70%);
   }
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{
     margin:0;background:var(--bg);color:var(--text);
     font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;
     background-image:var(--glow);background-repeat:no-repeat;
+    overflow-x:hidden;
   }
   .num{font-variant-numeric:tabular-nums}
-  button{font-family:inherit;cursor:pointer}
+  button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 
   /* Top bar */
   .topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:20px;
-    height:56px;padding:0 20px;background:color-mix(in srgb,var(--bg) 86%,transparent);
+    height:56px;padding:0 20px;padding-top:env(safe-area-inset-top);
+    background:color-mix(in srgb,var(--bg) 86%,transparent);
     backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border)}
   .brand{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-.01em;
-    white-space:nowrap}
+    white-space:nowrap;min-width:0}
   .brand .trophy{color:var(--accent);flex:0 0 auto}
   .spacer{flex:1}
   .weeknav{display:flex;align-items:center;gap:2px}
+  .weeknav.off{visibility:hidden}
   .wkbtn{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--border);
     background:var(--panel);border-radius:7px;color:var(--muted);font-size:15px;line-height:1;
     transition:.13s}
@@ -130,7 +134,7 @@
   /* Standings */
   table{width:100%;border-collapse:collapse}
   .stand{background:var(--panel);border:1px solid var(--border);border-radius:12px;
-    overflow:hidden}
+    overflow:auto;-webkit-overflow-scrolling:touch}
   th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);
     font-weight:600;text-align:right;padding:11px 14px;border-bottom:1px solid var(--border)}
   th.l{text-align:left}
@@ -200,7 +204,7 @@
   .castrec{margin-left:auto;color:var(--muted);font-size:12px}
   .castbio{font-size:12.5px;color:var(--muted);margin-top:3px}
   .howlist{display:flex;flex-direction:column;gap:9px}
-  .howrow{display:flex;gap:12px;align-items:baseline}
+  .howrow{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
   .howcmd{flex:0 0 auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
     color:var(--accent);background:var(--accent-soft);padding:2px 7px;border-radius:6px}
   .howdesc{font-size:13px;color:var(--text)}
@@ -267,14 +271,58 @@
   .schedaway{text-align:right}
   .schedvs{color:var(--faint);font-size:11px}
 
-  footer{max-width:760px;margin:0 auto;padding:8px 24px 40px;color:var(--faint);
+  footer{max-width:760px;margin:0 auto;padding:8px 24px calc(40px + env(safe-area-inset-bottom));color:var(--faint);
     font-size:11.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   a{color:var(--muted)}
   @media (max-width:560px){
     .detail{grid-template-columns:1fr}
     .col+.col{border-left:0;border-top:1px solid var(--border)}
-    .topbar{gap:12px;padding:0 14px}
-    .brand span.txt{display:none}
+  }
+
+  /* Phone: stack chrome, swipe tabs, stack matchups, bigger taps */
+  @media (max-width:720px){
+    .topbar{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      grid-template-areas:"brand office" "week week" "tabs tabs";
+      height:auto;align-items:center;gap:8px 10px;
+      padding:10px 12px 8px;padding-top:max(10px, env(safe-area-inset-top));
+    }
+    .brand{grid-area:brand}
+    #office{grid-area:office;justify-self:end;min-width:0}
+    #office .pill{max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .spacer{display:none}
+    .weeknav{grid-area:week;justify-content:center}
+    .weeknav.off{display:none;visibility:visible}
+    .wklabel{min-width:0;flex:1}
+    .wkbtn{width:36px;height:36px}
+    .seg{
+      grid-area:tabs;width:100%;max-width:100%;
+      overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;
+    }
+    .seg::-webkit-scrollbar{display:none}
+    .seg button{flex:0 0 auto;padding:8px 12px;font-size:13px}
+    main{padding:18px 14px 56px}
+    .matchhead{
+      grid-template-columns:minmax(0,1fr) 20px;
+      grid-template-areas:"home chev" "score chev" "away chev";
+      gap:4px 8px;padding:12px 12px 8px;
+    }
+    .team.home{grid-area:home}
+    .scorebox{grid-area:score;justify-content:flex-start;font-size:22px;gap:8px;padding:2px 0 4px}
+    .team.away{grid-area:away;align-items:flex-start;text-align:left}
+    .chev{grid-area:chev}
+    .tname{white-space:normal}
+    .casttop{flex-wrap:wrap}
+    .castrec{margin-left:0}
+    .stand table{min-width:420px}
+    th:nth-child(6),td:nth-child(6){display:none}
+    .schedrow{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px;font-size:12.5px}
+    .schedaway,.schedrow > span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  }
+  @media (max-width:380px){
+    .brand span.txt{font-size:13px}
   }
 </style>
 
@@ -619,7 +667,7 @@
     else if(tab==="draft"){ renderDraft(); }
     else { renderGuide(); }
     var perWeek = (tab==="scores" || tab==="feed");
-    document.querySelector(".weeknav").style.visibility = perWeek ? "visible" : "hidden";
+    document.querySelector(".weeknav").classList.toggle("off", !perWeek);
   }
 
   var TABS = ["scores","feed","standings","bracket","schedule","rosters","draft","guide"];
