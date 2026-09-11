@@ -1,14 +1,16 @@
 name: Gameday stats
 
-# Live scoring is this job, not the Commissioner's 9am check.
-# Enable GitHub Pages (Settings → Pages → GitHub Actions) so viewer.yml
-# can publish after these commits.
+# Live scoring is this job, not the Commissioner 9am check and not Scout.
+# Cron is UTC. After a stats commit, viewer.yml rebuilds index.html on main
+# and Pages (branch: main, folder: /) serves it.
 
 on:
   schedule:
-    # Thursday night (TNF), Sunday afternoon/evening, Monday night — US/Eastern.
+    # TNF: Thu 8pm–11pm ET → Fri 00:00–03:59 UTC
     - cron: "*/20 0-3 * * 5"
+    # Sunday slate: Sun 12pm–7pm ET → Sun 16:00–23:59 UTC
     - cron: "*/20 16-23 * * 0"
+    # Late Sunday + MNF start: Sun 8pm–Mon 12am ET → Mon 00:00–04:59 UTC
     - cron: "*/20 0-4 * * 1"
   workflow_dispatch:
 

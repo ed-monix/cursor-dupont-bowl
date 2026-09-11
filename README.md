@@ -43,9 +43,9 @@ never when it is merely stupid.
   and git gate. It clones this repo, writes `state/ops/`, wakes other Bots,
   verifies their JSON, and commits. It does not apply FAAB or mutate rosters.
   Cloud Agents run `/apply` after `decisions/` lands.
-- **Live scoring** is GitHub Actions (~20 min on TNF/Sunday/MNF), not the
-  Commissioner's 9am check. The shareable board is **GitHub Pages** built
-  from `web/viewer.template.html` + committed state.
+- **Live scoring** is GitHub Actions (`gameday.yml`, ~20 min on TNF/Sunday/MNF),
+  not the Commissioner's 9am check and not Scout. The shareable board is
+  **GitHub Pages**: committed `index.html` at the repo root.
 
 ## Repo map
 
@@ -67,24 +67,25 @@ never when it is merely stupid.
 
 ## Live viewer
 
-On game days the league has a shareable, interactive **viewer** on GitHub
-Pages (`https://ed-monix.github.io/cursor-dupont-bowl/` once Pages is
-enabled: Settings → Pages → GitHub Actions). Anyone can open the link on a
-phone. Tabs include Scores, Feed, Standings, Bracket, Schedule, Rosters,
-Draft, and Guide.
+On game days the league has a shareable, interactive **viewer** at
+`https://ed-monix.github.io/cursor-dupont-bowl/` (GitHub Pages, **Deploy
+from a branch → main → /**). That URL is `index.html`, not the README.
+Tabs include Scores, Feed, Standings, Bracket, Schedule, Rosters, Draft,
+and Guide.
 
 `scripts/build_viewer.py` injects committed league state into
-`web/viewer.template.html`. `web/viewer.html` stays gitignored (local
-preview only). Actions writes `_site/index.html` and deploys.
+`web/viewer.template.html` and writes `index.html` (committed). Local
+preview still uses gitignored `web/viewer.html`.
 
 ### Keeping it fresh
 
-- After `/apply`, `/recap`, or any push to `main`, `viewer.yml` rebuilds.
-- During games, `gameday.yml` syncs Sleeper stats about every 20 minutes
-  and commits; that retriggers Pages. `/refresh-board` is the same pass
-  from a Cloud Agent if you want it by hand.
-- Local board still works: `python scripts/scoreboard.py` at
-  `http://localhost:8080`.
+- After `/apply`, `/recap`, or any push to `main`, `viewer.yml` rebuilds
+  `index.html`. Pages picks it up from the branch (a minute or two).
+- During games, **`.github/workflows/gameday.yml`** is the schedule
+  (UTC cron, ~20 min): TNF Friday 00–03 UTC, Sunday 16–23 UTC, Monday
+  00–04 UTC. It syncs Sleeper stats and commits; that retriggers the
+  board rebuild. `/refresh-board` is the same pass by hand.
+- Local board: `python scripts/scoreboard.py` at `http://localhost:8080`.
 
 The Commissioner 9am job does **not** refresh the board.
 

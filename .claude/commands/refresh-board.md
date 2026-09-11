@@ -18,10 +18,8 @@ One pass:
    If Sleeper fails, say so and stop this pass.
 4. **Commit live stats** if `state/weeks/` changed:
    `live: week NN stats`. Push. Do not commit `web/viewer.html`
-   (gitignored).
-5. **Pages** rebuilds from the template + committed state
-   (`.github/workflows/viewer.yml`). Local preview:
-   `python scripts/build_viewer.py --season 2026`.
+   (gitignored). `viewer.yml` rebuilds root `index.html` for Pages.
+5. Local preview: `python scripts/build_viewer.py --season 2026`.
 
 Report one short line: the week synced and that Pages will pick it up.
 

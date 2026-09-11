@@ -1,21 +1,26 @@
 name: Viewer
 
+# Pages is "Deploy from a branch" → main → / (legacy).
+# That serves index.html at the site root. GitHub Actions Pages deploy
+# 404s while that setting is on, so this job writes index.html into git.
+
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "index.html"
+      - ".nojekyll"
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: viewer-index
   cancel-in-progress: true
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,17 +30,16 @@ jobs:
       - name: Install
         run: pip install -r requirements.txt
       - name: Build board
-        run: python scripts/build_viewer.py --season 2026 --out _site/index.html
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+        run: python scripts/build_viewer.py --season 2026 --out index.html
+      - name: Commit index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          touch .nojekyll
+          git add index.html .nojekyll
+          if git diff --cached --quiet; then
+            echo "board unchanged"
+            exit 0
+          fi
+          git commit -m "board: rebuild index.html"
+          git push
