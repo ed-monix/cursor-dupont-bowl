@@ -141,10 +141,12 @@ def _frontmatter_description(path: pathlib.Path) -> str:
     return ""
 
 
-def _load_feed(season: str, week: int, names: Optional[dict] = None) -> dict:
-    """Load the week's feed (tabloid, forum, recap).
+def _load_feed(season: str, week: int, names: Optional[dict] = None,
+               players: Optional[dict] = None,
+               transactions: Optional[list] = None) -> dict:
+    """Load the week's feed (tabloid, forum, recap, transactions).
 
-    Returns {"tabloid": str, "forum": [posts], "recap": str}.
+    Returns {"tabloid": str, "forum": [posts], "recap": str, "transactions": [...]}.
     Each forum post has {timestamp, team, post, name (pretty slug)}.
     Raw strings — no escaping or markdown conversion.
     """
@@ -170,11 +172,146 @@ def _load_feed(season: str, week: int, names: Optional[dict] = None) -> dict:
         with open(recap_path, encoding="utf-8") as f:
             recap = f.read()
 
+    if transactions is None:
+        transactions = transactions_for_week(season, week, names, players)
+
     return {
         "tabloid": tabloid,
         "forum": forum_posts_out,
         "recap": recap,
+        "transactions": transactions,
     }
+
+
+def _load_jsonl(path: pathlib.Path) -> list:
+    if not path.exists():
+        return []
+    out = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except (json.JSONDecodeError, ValueError):
+                continue
+            if isinstance(row, dict):
+                out.append(row)
+    return out
+
+
+def _player_name(pid, players: Optional[dict]) -> str:
+    row = (players or {}).get(str(pid)) or {}
+    return str(row.get("name") or pid).strip()
+
+
+def week_start_dates(season: str) -> list:
+    """[(week, YYYY-MM-DD), ...] from each week's nfl-games.json, sorted by date."""
+    starts = []
+    weeks_dir = ROOT / "state" / "weeks"
+    if not weeks_dir.exists():
+        return starts
+    for d in sorted(weeks_dir.glob(f"{season}-w*")):
+        try:
+            w = int(d.name.split("-w")[1])
+        except ValueError:
+            continue
+        games = _load(d / "nfl-games.json", [])
+        dates = [g.get("date") for g in games if isinstance(g, dict) and g.get("date")]
+        if dates:
+            starts.append((w, min(str(x) for x in dates)))
+    starts.sort(key=lambda pair: (pair[1], pair[0]))
+    return starts
+
+
+def transaction_week(timestamp: str, starts: list, fallback: int = 1) -> int:
+    """Assign a log timestamp to a week: last week whose first game is on/before that day.
+
+    Events before week 1 kickoff (cutdown, early waivers) land on week 1.
+    """
+    day = (timestamp or "")[:10]
+    if not starts:
+        return fallback
+    chosen = starts[0][0]
+    if not day:
+        return chosen
+    for week, start in starts:
+        if day >= start:
+            chosen = week
+        else:
+            break
+    return chosen
+
+
+def viewer_moves(entries: list, names: Optional[dict] = None,
+                 players: Optional[dict] = None) -> list:
+    """Shape applied waiver claims and trades for the Feed. Pure.
+
+    Trades are logged once per team; we collapse a pair into one row.
+    """
+    waivers = []
+    trades = {}
+    for raw in entries:
+        if not isinstance(raw, dict):
+            continue
+        if raw.get("status") != "applied":
+            continue
+        action = raw.get("action")
+        if action == "waiver_claim":
+            pids = [str(p) for p in (raw.get("players") or []) if p]
+            add_id = pids[0] if pids else ""
+            drop_id = pids[1] if len(pids) > 1 else None
+            slug = raw.get("team") or ""
+            waivers.append({
+                "kind": "waiver",
+                "team": slug,
+                "teamName": _display_name(slug, names),
+                "add": _player_name(add_id, players) if add_id else "—",
+                "drop": _player_name(drop_id, players) if drop_id else "",
+                "bid": raw.get("bid"),
+                "reasoning": raw.get("reasoning") or "",
+                "timestamp": raw.get("timestamp") or "",
+            })
+        elif action == "trade":
+            pids = tuple(sorted(str(p) for p in (raw.get("players") or []) if p))
+            key = (raw.get("timestamp") or "", pids)
+            rec = trades.setdefault(key, {
+                "kind": "trade",
+                "slugs": [],
+                "pids": list(pids),
+                "reasoning": raw.get("reasoning") or "",
+                "timestamp": raw.get("timestamp") or "",
+            })
+            slug = raw.get("team")
+            if slug and slug not in rec["slugs"]:
+                rec["slugs"].append(slug)
+            if raw.get("reasoning") and not rec["reasoning"]:
+                rec["reasoning"] = raw["reasoning"]
+
+    out = []
+    for rec in trades.values():
+        slugs = rec["slugs"]
+        out.append({
+            "kind": "trade",
+            "teams": slugs,
+            "teamNames": [_display_name(s, names) for s in slugs],
+            "players": [_player_name(p, players) for p in rec["pids"]],
+            "reasoning": rec["reasoning"],
+            "timestamp": rec["timestamp"],
+        })
+    out.extend(waivers)
+    out.sort(key=lambda r: r.get("timestamp") or "", reverse=True)
+    return out
+
+
+def transactions_for_week(season: str, week: int,
+                          names: Optional[dict] = None,
+                          players: Optional[dict] = None) -> list:
+    entries = _load_jsonl(ROOT / "state" / "transactions.jsonl")
+    starts = week_start_dates(season)
+    slice_ = [e for e in entries if transaction_week(e.get("timestamp") or "", starts) == week]
+    return viewer_moves(slice_, names, players)
 
 
 def _load_guide(season: str, names: Optional[dict] = None,
@@ -641,7 +778,7 @@ def build_league_data(season: str) -> dict:
             matchups.append(viewer_matchup(m, players, {h: recstr(h), a: recstr(a)}, names, gms))
 
         # Load feed (tabloid, forum, recap)
-        feed = _load_feed(season, w, names)
+        feed = _load_feed(season, w, names, players)
 
         weeks_out.append({
             "week": w,

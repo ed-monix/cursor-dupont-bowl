@@ -185,6 +185,14 @@
   .prose{white-space:pre-wrap;font-size:13px;line-height:1.55;color:var(--text)}
   .feedempty{font-size:12.5px;color:var(--faint);font-style:italic}
   .forumlist{display:flex;flex-direction:column;gap:13px}
+  .txlist{display:flex;flex-direction:column;gap:12px}
+  .txrow{border-left:2px solid var(--border);padding:1px 0 2px 12px}
+  .txrow.trade{border-left-color:var(--accent)}
+  .txkind{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);
+    font-weight:700}
+  .txhead{font-size:13px;font-weight:600;letter-spacing:-.01em;margin-top:2px}
+  .txsub{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .txnote{font-size:12px;color:var(--muted);font-style:italic;margin-top:3px;line-height:1.4}
   .post{border-left:2px solid var(--border);padding:1px 0 1px 12px}
   .postname{font-size:12.5px;font-weight:600;letter-spacing:-.01em}
   .posttext{font-size:13px;color:var(--text);margin-top:2px;white-space:pre-wrap}
@@ -573,17 +581,38 @@
 
   function renderFeed(){
     var w = LEAGUE.weeks[wIdx];
-    var f = (w && w.feed) || {tabloid:"", forum:[], recap:""};
+    var f = (w && w.feed) || {tabloid:"", forum:[], recap:"", transactions:[]};
     document.getElementById("eyebrow").textContent = "The Feed · Week "+(w?w.week:"");
     var posts = (f.forum||[]).map(function(p){
       return '<div class="post"><div class="postname">'+esc(p.name||p.team)+'</div>'+
              '<div class="posttext">'+esc(p.post||"")+'</div></div>';
+    }).join("");
+    var moves = (f.transactions||[]).map(function(t){
+      if(t.kind==="trade"){
+        var names = (t.teamNames||[]).join(" ⇄ ");
+        var players = (t.players||[]).join(" · ");
+        return '<div class="txrow trade"><div class="txkind">Trade</div>'+
+          '<div class="txhead">'+esc(names||"Trade")+'</div>'+
+          (players?'<div class="txsub">'+esc(players)+'</div>':'')+
+          (t.reasoning?'<div class="txnote">'+esc(t.reasoning)+'</div>':'')+'</div>';
+      }
+      var bid = (t.bid!=null && t.bid!=="") ? "$"+t.bid+" FAAB" : "FAAB";
+      var drop = t.drop ? " · dropped "+t.drop : "";
+      return '<div class="txrow waiver"><div class="txkind">Waiver</div>'+
+        '<div class="txhead">'+esc(t.teamName||t.team||"")+
+          ' claimed '+esc(t.add||"—")+'</div>'+
+        '<div class="txsub">'+esc(bid+drop)+'</div>'+
+        (t.reasoning?'<div class="txnote">'+esc(t.reasoning)+'</div>':'')+'</div>';
     }).join("");
     view.innerHTML =
       '<section class="feedcard"><div class="feedhd"><span class="feedkicker">The Tabloid</span>'+
         '<span class="feedby">Kris Jenner</span></div>'+
         (f.tabloid ? '<div class="prose">'+esc(f.tabloid)+'</div>'
                    : '<div class="feedempty">No tabloid this week.</div>')+'</section>'+
+      '<section class="feedcard"><div class="feedhd"><span class="feedkicker">Transactions</span>'+
+        '<span class="feedby">Waivers & trades</span></div>'+
+        (moves ? '<div class="txlist">'+moves+'</div>'
+               : '<div class="feedempty">No waivers or trades this week.</div>')+'</section>'+
       '<section class="feedcard"><div class="feedhd"><span class="feedkicker">The Forum</span></div>'+
         (posts ? '<div class="forumlist">'+posts+'</div>'
                : '<div class="feedempty">Quiet week in the group chat.</div>')+'</section>'+

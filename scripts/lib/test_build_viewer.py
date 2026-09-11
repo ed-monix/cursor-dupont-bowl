@@ -342,6 +342,7 @@ def test_load_feed_tabloid_and_recap():
             assert "Week 5 Tabloid" in feed["tabloid"]
             assert "Week 5 Recap" in feed["recap"]
             assert feed["forum"] == []
+            assert feed["transactions"] == []
         finally:
             build_viewer.ROOT = original_root
 
@@ -372,6 +373,7 @@ def test_load_feed_forum_newest_first_with_names():
             assert feed["forum"][0]["name"] == "Team B"  # pretty(slug)
             assert feed["forum"][1]["post"] == "First post"
             assert feed["forum"][1]["name"] == "Team A"
+            assert feed["transactions"] == []
         finally:
             build_viewer.ROOT = original_root
 
@@ -389,8 +391,57 @@ def test_load_feed_handles_missing_files():
             assert feed["tabloid"] == ""
             assert feed["recap"] == ""
             assert feed["forum"] == []
+            assert feed["transactions"] == []
         finally:
             build_viewer.ROOT = original_root
+
+
+def test_transaction_week_cutdown_lands_on_week_one():
+    starts = [(1, "2026-09-09"), (2, "2026-09-17")]
+    assert build_viewer.transaction_week("2026-09-08T13:23:48+00:00", starts) == 1
+    assert build_viewer.transaction_week("2026-09-09T23:55:20+00:00", starts) == 1
+    assert build_viewer.transaction_week("2026-09-18T12:00:00+00:00", starts) == 2
+
+
+def test_viewer_moves_waivers_and_deduped_trades():
+    players = {
+        "p-add": {"name": "Star Add"},
+        "p-drop": {"name": "Bye Drop"},
+        "p-a": {"name": "Alpha"},
+        "p-b": {"name": "Bravo"},
+    }
+    names = {"team-a": "The A's", "team-b": "The B's"}
+    entries = [
+        {"action": "waiver_claim", "status": "applied", "team": "team-a",
+         "players": ["p-add", "p-drop"], "bid": 12,
+         "reasoning": "need him", "timestamp": "2026-09-09T10:00:00+00:00"},
+        {"action": "waiver_claim", "status": "rejected", "team": "team-b",
+         "players": ["p-add"], "bid": 3, "reasoning": "void",
+         "timestamp": "2026-09-09T10:00:00+00:00"},
+        {"action": "trade", "status": "applied", "team": "team-a",
+         "players": ["p-a", "p-b"], "bid": None,
+         "reasoning": "Trade with team-b: Alpha for Bravo",
+         "timestamp": "2026-09-08T13:39:35+00:00"},
+        {"action": "trade", "status": "applied", "team": "team-b",
+         "players": ["p-b", "p-a"], "bid": None,
+         "reasoning": "Trade with team-a: Alpha for Bravo",
+         "timestamp": "2026-09-08T13:39:35+00:00"},
+        {"action": "drop", "status": "applied", "team": "team-a",
+         "players": ["p-drop"], "bid": None, "reasoning": "cutdown",
+         "timestamp": "2026-09-08T13:23:48+00:00"},
+    ]
+    moves = build_viewer.viewer_moves(entries, names, players)
+    kinds = [m["kind"] for m in moves]
+    assert kinds.count("trade") == 1
+    assert kinds.count("waiver") == 1
+    trade = next(m for m in moves if m["kind"] == "trade")
+    assert set(trade["teamNames"]) == {"The A's", "The B's"}
+    assert set(trade["players"]) == {"Alpha", "Bravo"}
+    claim = next(m for m in moves if m["kind"] == "waiver")
+    assert claim["add"] == "Star Add"
+    assert claim["drop"] == "Bye Drop"
+    assert claim["bid"] == 12
+    assert claim["teamName"] == "The A's"
 
 
 # --- Tests for build_league_data's week-visibility gate ---------------------
