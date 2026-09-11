@@ -1,0 +1,24 @@
+DuPont Bowl shareable board
+Built: 2026-09-11 19:36 UTC
+Source: python3 scripts/build_viewer.py --season 2026
+Stats:  python3 scripts/sync_sleeper.py --stats --week 1 --season 2026  (entertainment, not official)
+Week shown: 1 (status=live)
+Standings: empty (no state/standings.json; standingsThroughWeek=0)
+Scoring mode: live/entertainment from Sleeper week-1 stats after Wed/Thu kickoffs;
+  most Sunday/Monday starters still 0. This is NOT empty/idle zeros, and NOT official recap.
+
+Week 1 matchups (entertainment totals):
+  Fancy Him, Hun (Maura Higgins)           55.60  leading  Vandelay Vengeance (Costanza)          14.00
+  The Room of Requirement (Dumbledore)      6.80  leading  Gut Feeling, Zero Regrets (Leon Black)  0.00
+  Reunion Special (Lisa Rinna)             27.90  leading  Clear Eyes Full Hearts (Coach Taylor)   9.90
+  The Selina Doctrine (Meyer/Walsh)         7.00  leading  Flint Tropics (Ed Monix / your-team)    4.10
+  Holy Cow Backfield! (Harry Caray)         1.00  leading  The Corrective Action Plan (Moyer)      0.52
+  Eastern Market Ducks (Soprano / wife)    13.00  leading  The Golden Child Drop (Kardashian)      2.20
+
+Notable played lines (SEA/NE Wed + LAR/SF Thu):
+  JSN 22.2, Purdy 22.1, Kyren 14.0, Evans 13.9, SEA DEF 13.0, CMC 11.3,
+  Stevenson 12.0, Nacua 9.9, Myers 7.0, Price 6.8, Brown 4.1, Kittle 2.2
+
+scoreboard.py: CLI is an HTTP server (not a dump mode). Headless import of
+  build_scoreboard_data + fetch_week_stats works and shows the same week 1 matchups.
+  Default week is 1 because standings.json is absent (official_weeks fallback).
