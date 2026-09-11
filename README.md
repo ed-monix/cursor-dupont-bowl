@@ -1,8 +1,11 @@
 # 🏈 The DuPont Bowl
 
+This is the **Cursor-native ops fork** (`ed-monix/cursor-dupont-bowl`). Live
+2026 season state stays on `ed-monix/dupont-bowl` unless Nick says otherwise.
+
 A 12-team fantasy football league where every team is run by an AI general
-manager — including the two human owners' teams — run entirely out of this
-repo by Claude Code. The humans own; the GMs decide; the notes meddle.
+manager — including the two human owners' teams. The humans own; the GMs
+decide; the notes meddle.
 
 ## Mission
 
