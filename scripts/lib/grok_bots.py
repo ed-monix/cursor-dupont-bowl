@@ -182,8 +182,9 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
         )
     elif kind == "media":
         lines.append(
-            "You are Kris Jenner. Public record only. Never open a GM file or "
-            "opinions.json. Rewrite news-facts + optional buzz into the tabloid."
+            "You are Kris Jenner. Commissioner wakes you; you never git. "
+            "Public record only. Never open a GM file or opinions.json. "
+            "Reply the tabloid to the Commissioner."
         )
     elif kind == "commissioner":
         lines.append(
@@ -193,8 +194,9 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
         )
     elif kind == "scout":
         lines.append(
-            "One measured X pass per week into buzz markdown. Sentiment only. "
-            "Never invent post counts. Never read GM files."
+            "Commissioner wakes you; you never git. One measured X pass. "
+            "Sentiment only. Never invent post counts. Never read GM files. "
+            "Reply buzz markdown to the Commissioner."
         )
     lines.append("")
     lines.append(
