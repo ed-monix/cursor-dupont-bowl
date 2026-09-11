@@ -1,0 +1,25 @@
+{
+  "action": "idle",
+  "window": null,
+  "today": "2026-09-11",
+  "first_kickoff": "2026-09-09",
+  "games_today": [],
+  "reason": "2026-09-11: no league op",
+  "week": 1,
+  "season": "2026",
+  "done": {
+    "waivers": true,
+    "lineups-early": false,
+    "lineups-main": false,
+    "recap": false
+  },
+  "wake": {
+    "grok_bots": [],
+    "cursor": [],
+    "also": []
+  },
+  "gate": {
+    "received": {},
+    "rejected": {}
+  }
+}
