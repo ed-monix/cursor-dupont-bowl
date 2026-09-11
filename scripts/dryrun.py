@@ -1,45 +1,46 @@
 #!/usr/bin/env python3
 """dryrun.py -- deterministic fake-week harness (TASKS.md rework item 6).
 
-Runs the full weekly pipeline -- FAAB, Sunday lineups (with a forced
-fallback), score_week, and live/final reconciliation -- against committed
-fixtures under `tests/dryrun/` (a 4-team / 2-matchup mini league). Every
-input is a committed file; there are no live GM subagents and no network
-calls anywhere in this script. It exists to prove the deterministic half of
-the pipeline (faab -> apply -> score_week -> reconcile) runs end-to-end and
-produces the exact expected state (PLAN.md §4, TASKS.md "Definition of
-done").
+Runs the full weekly pipeline -- FAAB, two lineup windows (early + main,
+with a forced fallback on main), score_week, and live/final reconciliation
+-- against committed fixtures under `tests/dryrun/` (a 4-team / 2-matchup
+mini league). Every input is a committed file; there are no live GM
+subagents and no network calls anywhere in this script. It exists to prove
+the deterministic half of the pipeline (faab -> lineups windows ->
+score_week -> reconcile) runs end-to-end and produces the exact expected
+state (PLAN.md §4, TASKS.md "Definition of done").
 
 This is thin orchestration over the existing libs (`scripts/faab.py`,
 `scripts/free_agents.py`, `scripts/league_board.py`, `scripts/score_week.py`,
-`scripts/lib/rosters.py`, `scripts/lib/reconcile.py`,
-`scripts/lib/decisions.py`) -- no scoring/validation/resolution logic is
-reimplemented here.
+`scripts/lib/apply_lineups.py`, `scripts/lib/rosters.py`,
+`scripts/lib/reconcile.py`, `scripts/lib/decisions.py`, `scripts/lib/packs.py`)
+-- no scoring/validation/resolution logic is reimplemented here.
 
 Steps, against `--root` (default `tests/dryrun`), week 1 of season 2026:
 
   1. Derive `state/free-agents.json` and `state/league-board.json` from the
      fixture rosters/players/projections (smoke check: both write cleanly).
-  2. FAAB: resolve the canned Saturday claims + standings, apply the winners
+  2. FAAB: resolve the canned waiver claims + standings, apply the winners
      via `lib.rosters.apply_transaction`, and write
      `state/transactions.jsonl` -- every emitted entry is validated against
-     `docs/schemas/transaction-entry.json` via `lib.decisions`.
-  3. Sunday: apply each team's canned lineup; any lineup that fails
-     `lib.rosters.validate_lineup` (this fixture deliberately breaks one:
-     team-d starts the same player in two slots) falls back to
-     `lib.rosters.best_legal_lineup` and is flagged `fallback: true` in the
-     written `state/weeks/<...>/lineups.json`.
-  4. `score_week`: score week 1 as final, writing `matchups.json` and
+     `docs/schemas/transaction-entry.json` via `lib.decisions`. Rebuild the
+     league board after claims land.
+  3. Lineups early: canned legal lineups; KC (Thursday) slots freeze.
+     Packs are rebuilt as a smoke check (no GM files required).
+  4. Lineups main: canned Sunday lineups. team-d's illegal double-start
+     falls back (frozen Thursday slots held). team-a tries to move a
+     frozen WR2; merge keeps the locked player (not a fallback).
+  5. `score_week`: score week 1 as final, writing `matchups.json` and
      folding the results into `state/standings.json`.
-  5. Reconcile the committed `live-scores.json` fixture against the final
+  6. Reconcile the committed `live-scores.json` fixture against the final
      per-player scores just computed, and confirm the planted drift is
      exactly what's expected.
 
 Mutates the fixture tree it's pointed at (rosters, transactions, standings,
 etc.) -- this is a one-shot "run of the week" over `--root`, same as a real
-`/saturday` + `/sunday` + `/recap` run mutates the real league root. Point
-it at a scratch copy (see `scripts/lib/test_dryrun.py`) to run it repeatedly
-without touching the committed fixtures.
+`/waivers` + `/lineups early` + `/lineups main` + `/recap` run mutates the
+real league root. Point it at a scratch copy (see `scripts/lib/test_dryrun.py`)
+to run it repeatedly without touching the committed fixtures.
 
 CLI:
 
@@ -52,7 +53,6 @@ on the first failed step or assertion.
 from __future__ import annotations
 
 import argparse
-import copy
 import json
 import pathlib
 import sys
@@ -64,12 +64,10 @@ import free_agents  # noqa: E402
 import league_board  # noqa: E402
 import score_week  # noqa: E402
 from lib import decisions  # noqa: E402
-from lib.rosters import (  # noqa: E402
-    best_legal_lineup,
-    save_roster,
-    validate_lineup,
-)
+from lib.apply_lineups import apply_lineup_window  # noqa: E402
+from lib.rosters import save_roster  # noqa: E402
 from lib.reconcile import reconcile  # noqa: E402
+from lib import packs  # noqa: E402
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEFAULT_ROOT = REPO_ROOT / "tests" / "dryrun"
@@ -182,70 +180,97 @@ def step_faab(root: pathlib.Path, players: dict) -> dict:
     return {"report": report, "entries": entries, "won": won, "lost": lost}
 
 
+def _rebuild_board(root: pathlib.Path, players: dict, scoring: dict) -> dict:
+    week_dir = root / "state" / "weeks" / WEEK_LABEL
+    rosters = _load_rosters(root / "teams")
+    projections = _load_json(week_dir / "projections.json")
+    board = league_board.derive_league_board(rosters, players, projections, scoring)
+    _write_json(root / "state" / "league-board.json", board)
+    return board
+
+
+def _write_rosters(teams_dir: pathlib.Path, rosters: dict) -> None:
+    for slug, roster in rosters.items():
+        save_roster(roster, teams_dir / slug / "roster.json")
+
+
 # ---------------------------------------------------------------------------
-# Step 3 -- Sunday lineups, forcing + flagging the fallback path
+# Step 3 -- lineup windows (early then main) + pack smoke
 # ---------------------------------------------------------------------------
 
-def step_sunday(root: pathlib.Path, players: dict) -> dict:
+def step_lineups(root: pathlib.Path, players: dict) -> dict:
     teams_dir = root / "teams"
     week_dir = root / "state" / "weeks" / WEEK_LABEL
-    canned_lineups = _load_json(week_dir / "canned" / "sunday-lineups.json")
     projections = _load_json(week_dir / "projections.json")
     scoring = score_week.load_scoring(root / "config")
+    games = _load_json(week_dir / "nfl-games.json")
+    board = _rebuild_board(root, players, scoring)
 
-    rosters = _load_rosters(teams_dir)
+    buzz_dir = root / "state" / "news" / "buzz"
+    buzz_dir.mkdir(parents=True, exist_ok=True)
+    (buzz_dir / f"{WEEK_LABEL}.md").write_text("SECRET_BUZZ_MUST_NOT_REACH_GMS\n")
+    public = packs.build_public_pack(root, WEEK, str(SEASON))
+    if not public.get("nfl_games"):
+        raise DryRunFailure("packs: expected nfl_games on the public pack")
+    private = packs.build_private_pack(
+        root, "team-a", WEEK, str(SEASON), public=public, run="lineups", window="early",
+    )
+    blob = json.dumps(private) + packs.render_gm_prompt(private)
+    if "SECRET_BUZZ_MUST_NOT_REACH_GMS" in blob:
+        raise DryRunFailure("packs: GMs must never see state/news/buzz/")
 
-    lineups_out = {}
-    fallback_teams = []
+    early = apply_lineup_window(
+        _load_rosters(teams_dir), players, projections, scoring,
+        _load_json(week_dir / "canned" / "lineups-early.json"),
+        "early", games, existing_lineups={}, board=board,
+    )
+    _write_json(week_dir / "lineups.json", early["lineups"])
+    _write_rosters(teams_dir, early["rosters"])
 
-    for slug, roster in sorted(rosters.items()):
-        canned = canned_lineups.get(slug)
-        if canned is None:
-            ok, errors = False, ["no canned lineup submitted for this team"]
-            candidate = roster
-        else:
-            candidate = copy.deepcopy(roster)
-            candidate["starters"] = dict(canned["starters"])
-            ok, errors = validate_lineup(candidate, players)
+    team_a_locked = set((early["lineups"]["team-a"].get("locked_slots") or {}))
+    if "WR2" not in team_a_locked:
+        raise DryRunFailure("lineups-early: expected team-a WR2 (KC / Thursday) to freeze")
+    if "WR2" in (early["lineups"]["team-d"].get("locked_slots") or {}):
+        raise DryRunFailure("lineups-early: team-d is Sunday-only and must stay unlocked")
 
-        used_fallback = False
-        if ok:
-            justification = canned.get("justification", "")
-        else:
-            used_fallback = True
-            candidate = best_legal_lineup(roster, players, projections, scoring)
-            ok2, errors2 = validate_lineup(candidate, players)
-            if not ok2:
-                raise DryRunFailure(
-                    f"sunday: {slug} fallback lineup is still illegal: {errors2}"
-                )
-            justification = (
-                "FALLBACK (highest-projected legal lineup): submitted lineup was "
-                "illegal -- " + "; ".join(errors)
-            )
+    # TNF is now in progress; main window still cannot move those slots.
+    for game in games:
+        if game.get("home") == "KC" or game.get("away") == "KC":
+            game["status"] = "complete"
+    _write_json(week_dir / "nfl-games.json", games)
+    board = _rebuild_board(root, players, scoring)
 
-        save_roster(candidate, teams_dir / slug / "roster.json")
-        lineups_out[slug] = {
-            "starters": candidate["starters"],
-            "justification": justification,
-            "fallback": used_fallback,
-        }
-        if used_fallback:
-            fallback_teams.append(slug)
+    main = apply_lineup_window(
+        _load_rosters(teams_dir), players, projections, scoring,
+        _load_json(week_dir / "canned" / "sunday-lineups.json"),
+        "main", games, existing_lineups=early["lineups"], board=board,
+    )
+    _write_json(week_dir / "lineups.json", main["lineups"])
+    _write_rosters(teams_dir, main["rosters"])
 
-    _write_json(week_dir / "lineups.json", lineups_out)
-
-    if not fallback_teams:
-        raise DryRunFailure(
-            "sunday: expected the fallback path to be exercised for at least one team"
-        )
+    fallback_teams = [
+        slug for slug, entry in main["lineups"].items() if entry.get("fallback")
+    ]
     if set(fallback_teams) != EXPECTED_FALLBACK_TEAMS:
         raise DryRunFailure(
-            f"sunday: expected fallback for {sorted(EXPECTED_FALLBACK_TEAMS)}, "
+            f"lineups-main: expected fallback for {sorted(EXPECTED_FALLBACK_TEAMS)}, "
             f"got {sorted(fallback_teams)}"
         )
+    if main["lineups"]["team-a"]["starters"]["WR2"] != "wr-a2":
+        raise DryRunFailure("lineups-main: frozen team-a WR2 must stay wr-a2")
+    a_report = next(t for t in main["report"]["teams"] if t["team"] == "team-a")
+    if not a_report["freeze_violations"]:
+        raise DryRunFailure("lineups-main: expected freeze_violations on team-a's WR2 swap")
+    if a_report["fallback"]:
+        raise DryRunFailure("lineups-main: moving a frozen slot is not a fallback")
 
-    return {"lineups": lineups_out, "fallback_teams": fallback_teams}
+    return {
+        "lineups": main["lineups"],
+        "fallback_teams": fallback_teams,
+        "early": early,
+        "main": main,
+        "pack_prompt_bytes": packs.pack_sizes(public, private)["prompt_bytes"],
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -357,7 +382,7 @@ def run(root: pathlib.Path) -> dict:
     results = {}
     results["free_agents_and_board"] = step_free_agents_and_board(root, players, scoring)
     results["faab"] = step_faab(root, players)
-    results["sunday"] = step_sunday(root, players)
+    results["lineups"] = step_lineups(root, players)
     results["score_week"] = step_score_week(root)
     results["reconcile"] = step_reconcile(root)
     return results
@@ -366,7 +391,7 @@ def run(root: pathlib.Path) -> dict:
 def _print_summary(results: dict) -> None:
     fa = results["free_agents_and_board"]
     faab_r = results["faab"]
-    sunday = results["sunday"]
+    lineups = results["lineups"]
     sw = results["score_week"]
     rec = results["reconcile"]
 
@@ -379,7 +404,10 @@ def _print_summary(results: dict) -> None:
         f"  [2] faab: {len(faab_r['won'])} won / {len(faab_r['lost'])} lost claim(s); "
         f"{len(faab_r['entries'])} transaction(s) logged, all schema-valid"
     )
-    print(f"  [3] sunday: fallback triggered for {sorted(sunday['fallback_teams'])}")
+    print(
+        f"  [3] lineups: fallback triggered for {sorted(lineups['fallback_teams'])}; "
+        f"early pack prompt {lineups['pack_prompt_bytes']} bytes"
+    )
     for matchup in sw["matchups"]:
         print(
             f"  [4] {matchup['home']} {matchup['home_score']:.1f} - "

@@ -148,3 +148,52 @@ def test_private_pack_does_not_open_other_gm_files(tmp_path: Path):
     assert private["opponent"] == "kardashian"
     assert private["public"]["free_agents_trimmed"] is None  # lineups diet
     assert "Do NOT open state/players.json" in packs.render_gm_prompt(private)
+
+
+def test_private_pack_does_not_include_buzz_file(tmp_path: Path):
+    root = tmp_path
+    (root / "teams" / "your-team").mkdir(parents=True)
+    (root / "teams" / "your-team" / "general-manager.md").write_text("Ed.\n")
+    (root / "teams" / "your-team" / "roster.json").write_text(json.dumps({
+        "team": "Flint Tropics", "faab_remaining": 50,
+        "starters": {"QB": "p1"}, "bench": [], "ir": [],
+    }))
+    (root / "state" / "weeks" / "2026-w02").mkdir(parents=True)
+    (root / "state" / "news" / "buzz").mkdir(parents=True)
+    (root / "state" / "news" / "buzz" / "2026-w02.md").write_text("SECRET_BUZZ_COUNT=999\n")
+    (root / "state" / "news" / "2026-w02.md").write_text("tabloid rewrite only")
+    (root / "state" / "league-board.json").write_text(json.dumps({
+        "your-team": {"faab_remaining": 50, "starters": {}, "bench": [], "ir": []},
+    }))
+    (root / "state" / "free-agents.json").write_text("{}")
+    (root / "state" / "schedule.json").write_text(json.dumps({
+        "regular_season": {"2": []}, "playoffs": {},
+    }))
+    private = packs.build_private_pack(root, "your-team", 2, "2026", run="waivers")
+    assert "SECRET_BUZZ_COUNT=999" not in json.dumps(private)
+    assert "tabloid rewrite only" in (private["public"]["tabloid"] or "")
+
+
+def test_waiver_prompt_budget_on_committed_week1():
+    """Regression: stuffing players.json into 12 GMs is megabytes; packs stay small."""
+    root = Path(__file__).resolve().parents[2]
+    fa = root / "state" / "free-agents.json"
+    if not fa.exists():
+        return
+    public = packs.build_public_pack(root, 1, "2026")
+    assert public["free_agents_trimmed_count"] <= 12 * len(packs.FA_POSITIONS)
+    slugs = packs.team_slugs(root)
+    if not slugs:
+        return
+    sizes = []
+    for slug in slugs:
+        private = packs.build_private_pack(
+            root, slug, 1, "2026", public=public, run="waivers",
+        )
+        sizes.append(packs.pack_sizes(public, private)["prompt_bytes"])
+    assert max(sizes) < 120_000
+    assert min(sizes) > 40_000
+    lineup = packs.build_private_pack(
+        root, slugs[0], 1, "2026", public=public, run="lineups", window="main",
+    )
+    assert packs.pack_sizes(public, lineup)["prompt_bytes"] < 70_000

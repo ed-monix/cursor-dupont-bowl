@@ -47,13 +47,22 @@ and require `docs/schemas/sunday-lineup.json` (filename kept; this is the
 lineup schema). Beliefs first; projections are an opinion.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
-in the justification. Retry once. Then fallback = `best_legal_lineup` with
-frozen slots held (do not bench a locked Thursday starter). Log
-`fallback: true` if the fallback path ran.
+in the justification. Retry once. Then the **script** applies the window
+(freeze, merge, fallback) — do not hand-merge:
 
-Merge with `merge_lineup` / `freeze_violations`. Write
-`state/weeks/2026-w<WW>/decisions/<slug>.lineup-<window>.json` and update
-`lineups.json` (includes `locked_slots`, `windows_run`, `justifications`).
+```bash
+python scripts/lineups.py --week <WW> --window <early|main> \
+  --decisions-dir state/weeks/2026-w<WW>/decisions
+```
+
+`--dry-run` first for commissioner review. Fallback = `best_legal_lineup`
+with frozen slots held (do not bench a locked Thursday starter). Logged
+`fallback: true` only when the submitted lineup was illegal or missing.
+
+Writes `state/weeks/2026-w<WW>/lineups.json` (includes `locked_slots`,
+`windows_run`, `justifications`) and updates `roster.json` starters.
+Also keep a copy of each validated GM object at
+`state/weeks/2026-w<WW>/decisions/<slug>.lineup-<window>.json`.
 
 Forum optional via `forum.append_post` (one post per team per run).
 

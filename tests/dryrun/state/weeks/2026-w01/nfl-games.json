@@ -1,0 +1,6 @@
+[
+  {"date": "2026-09-10", "home": "KC", "away": "LAC", "status": "pre_game", "week": 1, "game_id": "tnf"},
+  {"date": "2026-09-13", "home": "BUF", "away": "NYJ", "status": "pre_game", "week": 1, "game_id": "sun-buf"},
+  {"date": "2026-09-13", "home": "SF", "away": "SEA", "status": "pre_game", "week": 1, "game_id": "sun-sf"},
+  {"date": "2026-09-13", "home": "DAL", "away": "NYG", "status": "pre_game", "week": 1, "game_id": "sun-dal"}
+]

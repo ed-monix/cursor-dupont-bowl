@@ -2,10 +2,10 @@
   "team-a": {
     "starters": {
       "QB": "qb-a", "RB1": "rb-a1", "RB2": "rb-a2",
-      "WR1": "wr-a1", "WR2": "bn-a2", "TE": "te-a",
+      "WR1": "wr-a1", "WR2": "wr-a2", "TE": "te-a",
       "FLEX": "flex-a", "K": "k-a", "DEF": "def-a"
     },
-    "justification": "Trying to sneak Blake Ashford into WR2 after Thursday already kicked. Scripts should refuse."
+    "justification": "Thursday night in Kansas City — lock the whole slate before kickoff."
   },
   "team-b": {
     "starters": {
@@ -13,7 +13,7 @@
       "WR1": "wr-b1", "WR2": "wr-b2", "TE": "te-b",
       "FLEX": "flex-b", "K": "k-b", "DEF": "def-b"
     },
-    "justification": "Rolling with the board as projected; nothing here to overthink."
+    "justification": "No Thursday players; this is a declared lineup, still movable Sunday."
   },
   "team-c": {
     "starters": {
@@ -21,14 +21,14 @@
       "WR1": "wr-c1", "WR2": "wr-c2", "TE": "te-c",
       "FLEX": "flex-c", "K": "k-c", "DEF": "def-c"
     },
-    "justification": "Best players available start; the waiver pickup rides the bench this week."
+    "justification": "Sunday slate only; early window is a no-op lock."
   },
   "team-d": {
     "starters": {
       "QB": "qb-d", "RB1": "rb-d1", "RB2": "rb-d2",
       "WR1": "wr-d1", "WR2": "wr-d2", "TE": "te-d",
-      "FLEX": "wr-d1", "K": "k-d", "DEF": "def-d"
+      "FLEX": "flex-d", "K": "k-d", "DEF": "def-d"
     },
-    "justification": "Doubling down on Drake by slotting him into the flex too -- he's simply the best player on the roster."
+    "justification": "Legal for now. The illegal Drake-flex stunt waits for the main window."
   }
 }

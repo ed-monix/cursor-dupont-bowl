@@ -110,12 +110,18 @@ def test_dryrun_end_to_end(dryrun_root):
     assert team_c_roster["faab_remaining"] == 85
     assert "fa-2" in team_c_roster["bench"]
 
-    # --- step 3: the forced fallback lineup is flagged ----------------------
+    # --- step 3: two lineup windows; forced fallback + freeze hold ---------
     lineups = _read(week_dir / "lineups.json")
     assert lineups["team-d"]["fallback"] is True
     assert "FALLBACK" in lineups["team-d"]["justification"]
     for slug in ("team-a", "team-b", "team-c"):
         assert lineups[slug]["fallback"] is False
+    assert "early" in lineups["team-a"]["windows_run"]
+    assert "main" in lineups["team-a"]["windows_run"]
+    assert "WR2" in lineups["team-a"]["locked_slots"]
+    assert lineups["team-a"]["starters"]["WR2"] == "wr-a2"
+    # team-d is Sunday-only: unlocked after early, locked after main
+    assert "WR2" in lineups["team-d"]["locked_slots"]
 
     from lib.rosters import validate_lineup
 
