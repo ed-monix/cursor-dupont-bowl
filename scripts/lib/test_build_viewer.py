@@ -725,8 +725,8 @@ def test_load_guide_how_it_runs_from_command_frontmatter():
         # Create command files with frontmatter
         for cmd, desc in [
             ("notes", "Scaffold owner notes"),
-            ("saturday", "Waivers and trades"),
-            ("sunday", "Lock lineups"),
+            ("waivers", "Waivers and trades"),
+            ("lineups", "Lock lineups"),
             ("recap", "Final results"),
             ("refresh-board", "Sync and publish"),
         ]:
@@ -753,9 +753,9 @@ Content here''')
             assert len(how_it_runs) == 5
             assert how_it_runs[0]["cmd"] == "/notes"
             assert how_it_runs[0]["desc"] == "Scaffold owner notes"
-            assert how_it_runs[1]["cmd"] == "/saturday"
+            assert how_it_runs[1]["cmd"] == "/waivers"
             assert how_it_runs[1]["desc"] == "Waivers and trades"
-            assert how_it_runs[2]["cmd"] == "/sunday"
+            assert how_it_runs[2]["cmd"] == "/lineups"
             assert how_it_runs[2]["desc"] == "Lock lineups"
 
         finally:
@@ -771,7 +771,7 @@ def test_load_guide_skips_missing_command_files():
         (root / "config").mkdir(parents=True)
         (root / "state").mkdir(parents=True)
 
-        # Only create notes and recap commands (missing saturday, sunday, refresh-board)
+        # Only create notes and recap commands (missing waivers, lineups, refresh-board)
         (root / ".claude" / "commands" / "notes.md").write_text("""---
 description: Scaffold notes
 ---
@@ -798,6 +798,33 @@ description: Final recap
             assert "/recap" in cmds
             assert "/saturday" not in cmds
             assert "/sunday" not in cmds
+            assert "/waivers" not in cmds
+            assert "/lineups" not in cmds
 
         finally:
             build_viewer.ROOT = original_root
+
+
+def test_load_office_public_slice():
+    """_load_office exposes ops action/week without the gate maps."""
+    with tempfile.TemporaryDirectory() as tmpdir:
+        root = pathlib.Path(tmpdir)
+        ops = root / "state" / "ops"
+        ops.mkdir(parents=True)
+        (ops / "latest.json").write_text(json.dumps({
+            "action": "idle",
+            "week": 1,
+            "today": "2026-09-11",
+            "reason": "no league op",
+            "gate": {"received": {"x": 1}, "rejected": {}},
+        }))
+        original_root = build_viewer.ROOT
+        build_viewer.ROOT = root
+        try:
+            office = build_viewer._load_office()
+            assert office["action"] == "idle"
+            assert office["week"] == 1
+            assert "gate" not in office
+        finally:
+            build_viewer.ROOT = original_root
+

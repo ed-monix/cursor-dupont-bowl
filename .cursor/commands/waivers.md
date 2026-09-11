@@ -131,5 +131,5 @@ Stage rosters, transactions, free-agents, league-board, news, week folder
 
 ## 8. Viewer
 
-`python scripts/build_viewer.py --season 2026` then `/refresh-board` from an
-interactive session if this sitting has no Artifact tool.
+Push to `main`. GitHub Pages rebuilds the board. Optional local preview:
+`python scripts/build_viewer.py --season 2026`.

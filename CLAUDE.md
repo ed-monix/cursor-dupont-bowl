@@ -13,8 +13,10 @@ Respect the data contracts in `PLAN.md` §8. Never invent new state files
 without adding them to the contracts section.
 
 **League ops mode** (in-season): run the slash commands in `.claude/commands/`
-and `.cursor/commands/` — `/waivers`, `/lineups`, `/recap`, `/notes`.
-(`/saturday` and `/sunday` are retired aliases.)
+and `.cursor/commands/` — `/waivers`, `/lineups`, `/apply`, `/recap`,
+`/notes`, `/refresh-board`. (`/saturday` and `/sunday` are retired aliases.)
+This repo is the league (`ed-monix/cursor-dupont-bowl`). The board is
+GitHub Pages, not a Claude artifact.
 
 ## Hard rules — always
 

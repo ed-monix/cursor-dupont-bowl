@@ -1,0 +1,47 @@
+name: Gameday stats
+
+# Live scoring is this job, not the Commissioner's 9am check.
+# Enable GitHub Pages (Settings → Pages → GitHub Actions) so viewer.yml
+# can publish after these commits.
+
+on:
+  schedule:
+    # Thursday night (TNF), Sunday afternoon/evening, Monday night — US/Eastern.
+    - cron: "*/20 0-3 * * 5"
+    - cron: "*/20 16-23 * * 0"
+    - cron: "*/20 0-4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gameday-stats
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Sync live stats
+        run: python scripts/gameday_sync.py --season 2026
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/weeks state/ops
+          if git diff --cached --quiet; then
+            echo "no stats change"
+            exit 0
+          fi
+          WEEK=$(python -c "import json; print(json.load(open('state/ops/latest.json')).get('week') or '')")
+          git commit -m "live: week ${WEEK:-?} stats"
+          git push

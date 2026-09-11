@@ -82,6 +82,5 @@ the owner — with this window's pool that should be nobody.
 
 Stage rosters, `state/transactions.jsonl`, `state/players.json`,
 `state/free-agents.json`, `state/league-board.json`, the memo, the FAAB
-report, and the ruling; ONE commit: `week 01: cutdown`. Then rebuild
-`web/viewer.html` and republish the artifact in place (refresh-board.md
-step 4).
+report, and the ruling; ONE commit: `week 01: cutdown`. Then push to `main`
+so GitHub Pages rebuilds the board.

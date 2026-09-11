@@ -85,5 +85,5 @@ A week may have **two** lineup commits. That is the point.
 
 ## 5. Viewer
 
-`python scripts/build_viewer.py --season 2026`. Artifact republish via
-`/refresh-board` if this session has the tool.
+Push to `main`. GitHub Pages rebuilds the board. Optional local preview:
+`python scripts/build_viewer.py --season 2026`.

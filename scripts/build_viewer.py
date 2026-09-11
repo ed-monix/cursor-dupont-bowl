@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-"""build_viewer.py — render web/viewer.html (the interactive league viewer)
-from committed league state, for the Sunday refresh loop to publish.
+"""build_viewer.py — render the interactive league viewer from committed state.
 
 Reuses the tested engine (scoreboard.build_scoreboard_data) for per-matchup
 detail and state/standings.json for the standings table. The pure mapping
 helpers (viewer_*) are separated from I/O so they can be unit-tested.
 
-Output: web/viewer.html — data injected into web/viewer.template.html at the
-`/*__LEAGUE_DATA__*/` marker. The Sunday Routine then publishes that file to
-the league's artifact URL.
+Output defaults to web/viewer.html (gitignored). GitHub Pages builds
+`--out _site/index.html` from the same template + committed state.
 """
 from __future__ import annotations
 
@@ -311,7 +309,7 @@ def _load_guide(season: str, names: Optional[dict] = None,
 
     # How it runs: descriptions from command frontmatter
     how_it_runs = []
-    command_order = ["notes", "saturday", "sunday", "recap", "refresh-board"]
+    command_order = ["notes", "waivers", "lineups", "recap", "refresh-board"]
     for cmd in command_order:
         cmd_path = ROOT / ".claude" / "commands" / f"{cmd}.md"
         desc = _frontmatter_description(cmd_path)
@@ -658,6 +656,7 @@ def build_league_data(season: str) -> dict:
     rosters = _load_rosters(players, names, gms)
     schedule_view = viewer_schedule(schedule, names)
 
+    office = _load_office()
     return {
         "league": "The DuPont Bowl",
         "season": int(season) if str(season).isdigit() else season,
@@ -668,7 +667,22 @@ def build_league_data(season: str) -> dict:
         "draft": draft,
         "rosters": rosters,
         "schedule": schedule_view,
+        "office": office,
         "updated": datetime.datetime.now().isoformat(),
+    }
+
+
+def _load_office() -> dict:
+    """Public slice of state/ops/latest.json for the top-bar office pill."""
+    raw = _load(ROOT / "state" / "ops" / "latest.json", {})
+    if not isinstance(raw, dict) or not raw:
+        return {}
+    return {
+        "action": raw.get("action"),
+        "today": raw.get("today"),
+        "week": raw.get("week"),
+        "window": raw.get("window"),
+        "reason": raw.get("reason"),
     }
 
 

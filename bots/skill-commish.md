@@ -49,3 +49,9 @@ checkout; they may not use it.
 ## Recap
 
 Dry, procedural, no exclamation points. After ingest + apply by scripts.
+
+## Not your job
+
+Live scoring and the viewer. Cloud Agents and GitHub Actions run
+`/refresh-board`. Do not hang the 9am check on a 10-minute loop.
+Do not apply FAAB here; `/apply` runs after you push `decisions/`.

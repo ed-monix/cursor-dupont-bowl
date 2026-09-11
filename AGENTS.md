@@ -44,6 +44,8 @@ into a GM chat. `python scripts/grok_bots.py check` must stay green.
 - `/waivers` — weekly FAAB/trades (before first kickoff)
 - `/lineups <week> early|main` — lock Tue–Sat games, then Sun/Mon
 - `/recap` — official scores and commissioner column
+- `/apply` — FAAB / lineups after the gate commits `decisions/`
+- `/refresh-board` — sync live stats; Pages rebuilds (not the 9am job)
 - `/notes` — owner-note stubs for the two owned teams
 
 ## Style

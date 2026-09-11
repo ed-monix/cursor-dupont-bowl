@@ -73,6 +73,7 @@
     letter-spacing:.02em;padding:2px 8px;border-radius:999px;text-transform:uppercase}
   .pill.final{color:var(--faint);background:var(--panel-2);border:1px solid var(--border)}
   .pill.live{color:var(--live);background:color-mix(in srgb,var(--live) 12%,transparent)}
+  .pill.office{color:var(--muted);background:var(--panel-2);border:1px solid var(--border);text-transform:none;letter-spacing:0;font-weight:500}
   .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
   .pill.live .dot{animation:pulse 1.6s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -276,6 +277,7 @@
 
 <div class="topbar">
   <div class="brand"><svg class="trophy" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg><span class="txt">The DuPont Bowl</span></div>
+  <span id="office"></span>
   <div class="spacer"></div>
   <div class="weeknav">
     <button class="wkbtn" id="prev" aria-label="Previous week">‹</button>
@@ -634,17 +636,24 @@
     if(e.key==="ArrowRight"&&wIdx<LEAGUE.weeks.length-1){wIdx++;render();}
   });
 
+  var officeEl = document.getElementById("office");
+  var office = LEAGUE.office || {};
+  if(officeEl && office.action){
+    var label = office.action === "idle" ? "Office idle" : ("Office "+office.action);
+    if(office.week) label += " · W"+office.week;
+    officeEl.innerHTML = '<span class="pill office">'+esc(label)+'</span>';
+  }
+
   var upd = LEAGUE.updated ? new Date(LEAGUE.updated) : null;
   document.getElementById("foot-right").textContent = upd
     ? ("Updated "+upd.toLocaleString([], {weekday:"short",hour:"numeric",minute:"2-digit"})+
-       " · live board refreshes every 20 min · unofficial until Monday")
+       " · live board from git · unofficial until Monday")
     : "";
 
   selTab(tab);   // sync tab highlight with the default (Guide in preseason)
 
-  // In-season, the Sunday refresh loop re-publishes this artifact with fresh
-  // data; a viewer's page reloads to pick up the new version. Off in the demo.
-  var AUTO_RELOAD_MS = 0;
+  // GitHub Pages is a static snapshot; reload to pick up the next Actions publish.
+  var AUTO_RELOAD_MS = 20 * 60 * 1000;
   if(AUTO_RELOAD_MS>0) setTimeout(function(){location.reload();}, AUTO_RELOAD_MS);
 })();
 </script>
