@@ -39,16 +39,16 @@ python scripts/league_board.py --week <WW>
 python scripts/gm_pack.py --week <WW> --run lineups --window <early|main>
 ```
 
-## 2. GM lineups (Grok Bots + two Cursor owned GMs)
+## 2. GM lineups (all 12 Grok Bots)
 
 ```bash
 python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
 ```
 
-Celebrity replies: `docs/schemas/sunday-lineup.json` into
-`decisions/<slug>.lineup-<W>.json`. Owned GMs (`your-team`, `wifes-team`)
-use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
-are an opinion.
+Replies: `docs/schemas/sunday-lineup.json` into
+`decisions/<slug>.lineup-<W>.json` for every GM, including `your-team`
+(Ed Monix) and `wifes-team` (Tony Soprano). Beliefs first; projections
+are an opinion. Scout and Media do not wake on lineups.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window

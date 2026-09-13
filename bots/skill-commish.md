@@ -14,10 +14,12 @@ Every day 09:00 America/New_York:
    That writes `state/ops/YYYY-MM-DD.json` and `state/ops/latest.json`.
 3. Commit and push: `ops YYYY-MM-DD: <action>`.
 4. If idle, stop after the ops commit.
-5. If not idle: build each celebrity GM's pack
+5. If not idle: build each GM's pack from `wake.grok_bots` (all 12 slugs,
+   including `your-team` / Ed Monix and `wifes-team` / Tony Soprano)
    (`python scripts/grok_bots.py prompt ...`) and **message that Bot only**
-   with that pack. Owned teams (`your-team`, `wifes-team`) are Cursor —
-   list them in ops; do not ping them here.
+   with that pack. Do not skip the owned seats. `wake.cursor` is empty —
+   it is not a do-not-ping list. Scout and Media still only wake on
+   waivers (unchanged).
 6. Wait. GMs reply **to you** with schema JSON. They do not git.
 
 ## Gate (what may enter git)
