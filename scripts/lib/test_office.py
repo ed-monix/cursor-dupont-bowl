@@ -56,11 +56,14 @@ def test_waivers_stage_step_order(tmp_path):
         "free_agents.py", "league_board.py", "derive_news.py",
         "buzz_inbox.py", "fetch_buzz.py",
         "gm_pack.py", "agent_turn.py", "gm_pack.py", "gm_turn.py",
-        "faab.py", "agent_turn.py", "faab.py", "apply_gate.py",
+        # One faab.py: the dry run the commissioner reviews. The trade turn
+        # runs inside an action step, so it is not in this list.
+        "faab.py", "agent_turn.py", "apply_gate.py",
     ]
 
 
-def test_waivers_media_before_gm_turns_faab_dry_before_commissioner_before_real(tmp_path):
+def test_nothing_is_applied_before_the_commissioner_has_seen_it(tmp_path):
+    """The gate that matters: dry run -> commissioner -> apply, in that order."""
     argvs = _cmd_argvs(office.build_waivers_steps(tmp_path, 5, "2026"))
 
     def first(pred):
@@ -70,9 +73,22 @@ def test_waivers_media_before_gm_turns_faab_dry_before_commissioner_before_real(
     turn_i = first(lambda a: pathlib.Path(a[1]).name == "gm_turn.py")
     dry_i = first(lambda a: pathlib.Path(a[1]).name == "faab.py" and "--dry-run" in a)
     commish_i = first(lambda a: "commissioner" in a)
-    real_i = first(lambda a: pathlib.Path(a[1]).name == "faab.py" and "--dry-run" not in a)
+    apply_i = first(lambda a: pathlib.Path(a[1]).name == "apply_gate.py")
 
-    assert media_i < turn_i < dry_i < commish_i < real_i
+    assert media_i < turn_i < dry_i < commish_i < apply_i
+
+
+def test_faab_is_applied_exactly_once(tmp_path):
+    """office.py used to run faab.py for real AND then call apply_gate, which
+    runs it again. The second pass found every drop "already gone" and
+    overwrote faab-report.json with eight claims marked `skipped` that had in
+    fact been applied — and the press quoted that wrong record back at the GMs.
+    """
+    argvs = _cmd_argvs(office.build_waivers_steps(tmp_path, 5, "2026"))
+    faab_calls = [a for a in argvs if pathlib.Path(a[1]).name == "faab.py"]
+    assert len(faab_calls) == 1
+    assert "--dry-run" in faab_calls[0]
+    assert sum(1 for a in argvs if pathlib.Path(a[1]).name == "apply_gate.py") == 1
 
 
 def test_waivers_argv_carries_week_and_season(tmp_path):

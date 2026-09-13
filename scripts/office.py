@@ -381,20 +381,27 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
         Step("commissioner review — waivers",
              _py(root, "agent_turn.py", "--role", "commissioner", "--week", week,
                  "--season", season, "--stage", "waivers", "--root", root)),
-        Step("FAAB apply (real)",
-             _py(root, "faab.py", "--claims", claims_path,
-                 "--standings", order_path, *faab_report)),
+        # apply_gate.apply_waivers() IS the real FAAB apply: it collects the
+        # claims, builds the tiebreak order and runs faab.py with
+        # --transactions. Running faab.py separately here as well applied
+        # everything twice — harmless on the rosters, because the second pass
+        # found every drop "already gone", but it overwrote faab-report.json
+        # with eight claims marked `skipped` that had in fact been applied, and
+        # the press then quoted that wrong record back at the GMs.
+        #
         # Explicit stage/week: apply_gate otherwise takes both from
         # state/ops/latest.json, which is whatever the last daily_ops --write
         # decided. A run driven by --stage/--week must not inherit that.
+        Step("apply gate (the real FAAB apply)",
+             _py(root, "apply_gate.py", "--root", root,
+                 "--action", "waivers", "--week", week, "--season", season)),
+        # After the apply, not before: FAAB moves rosters, and a trade that was
+        # legal at screening time may not be legal once it has.
         Step("apply accepted trades",
              note="executes every accepted offer on both rosters and logs it "
                   "to transactions.jsonl; counters are recorded, never "
                   "auto-applied",
              action=lambda: _apply_trades(root, season, week)),
-        Step("apply gate (Cloud Agent apply)",
-             _py(root, "apply_gate.py", "--root", root,
-                 "--action", "waivers", "--week", week, "--season", season)),
         Step("press — each GM's own words plus the outcome",
              note="appends to teams/<slug>/press/; this is the substrate "
                   "build_dossier reads back into next week's GM pack",
