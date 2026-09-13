@@ -88,6 +88,11 @@ class Step:
     argv: Optional[list] = None
     note: Optional[str] = None
     action: Optional[Callable[[], None]] = None
+    # A quiet step's stdout is captured and reduced to its last line. gm_pack
+    # prints a ~100-line JSON blob of every team's pack sizes, which buries the
+    # rest of a run's log. Captured output is printed in full if the step fails,
+    # so nothing diagnostic is lost.
+    quiet: bool = False
 
 
 def _py(root: pathlib.Path, script: str, *args) -> list:
@@ -159,13 +164,13 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
              _py(root, "fetch_buzz.py", "--week", week, "--season", season)),
         Step("build GM packs (pre-tabloid)",
              _py(root, "gm_pack.py", "--week", week, "--season", season,
-                 "--run", "waivers", "--root", root)),
+                 "--run", "waivers", "--root", root), quiet=True),
         Step("media turn — Kris writes the tabloid",
              _py(root, "agent_turn.py", "--role", "media", "--week", week,
                  "--season", season, "--root", root)),
         Step("rebuild GM packs (so GMs see the tabloid)",
              _py(root, "gm_pack.py", "--week", week, "--season", season,
-                 "--run", "waivers", "--root", root)),
+                 "--run", "waivers", "--root", root), quiet=True),
         Step("12 GM turns — waiver decisions",
              _py(root, "gm_turn.py", "--week", week, "--season", season,
                  "--run", "waivers", "--root", root)),
@@ -208,7 +213,8 @@ def build_lineups_steps(root: pathlib.Path, week: int, season: str,
                  "--run", "lineups", "--window", window, "--root", root)),
         Step(f"12 GM turns — lineups/{window}",
              _py(root, "gm_turn.py", "--week", week, "--season", season,
-                 "--run", "lineups", "--window", window, "--root", root)),
+                 "--run", "lineups", "--window", window, "--root", root),
+             quiet=True),
         Step(f"commissioner review — lineups/{window}",
              _py(root, "agent_turn.py", "--role", "commissioner", "--week", week,
                  "--season", season, "--stage", "lineups", "--window", window,
@@ -341,6 +347,18 @@ def run_step(step: Step, *, root: pathlib.Path, dry_run: bool) -> bool:
     if step.argv is not None:
         print("    $ " + shlex.join(step.argv))
         if dry_run:
+            return True
+        if step.quiet:
+            proc = subprocess.run(step.argv, cwd=str(root),
+                                  capture_output=True, text=True)
+            if proc.returncode != 0:
+                print(f"    FAILED (exit {proc.returncode})")
+                for stream in (proc.stdout, proc.stderr):
+                    if stream:
+                        print("    " + stream.strip().replace("\n", "\n    "))
+                return False
+            tail = [ln for ln in (proc.stdout or "").splitlines() if ln.strip()]
+            print(f"    ok{' — ' + tail[-1].strip() if tail else ''}"[:160])
             return True
         proc = subprocess.run(step.argv, cwd=str(root))
         if proc.returncode != 0:

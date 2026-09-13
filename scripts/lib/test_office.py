@@ -403,3 +403,45 @@ def test_missing_stage_and_not_today_is_a_usage_error(tmp_path):
 def test_lineups_without_window_is_a_usage_error(tmp_path):
     with pytest.raises(SystemExit):
         office.main(["--stage", "lineups", "--week", "2", "--root", str(tmp_path)])
+
+
+def test_quiet_step_reduces_a_noisy_success_to_one_line(capsys, tmp_path,
+                                                        monkeypatch):
+    """gm_pack prints ~100 lines of per-team JSON; the run log should not."""
+    import subprocess as sp
+
+    import office
+
+    noisy = "\n".join(f'  "team_{i}": 1234,' for i in range(80)) + "\nwrote 12 packs"
+
+    def fake(argv, **kw):
+        return sp.CompletedProcess(argv, 0, stdout=noisy, stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    ok = office.run_step(office.Step("packs", ["x"], quiet=True),
+                         root=tmp_path, dry_run=False)
+    out = capsys.readouterr().out
+    assert ok
+    assert "wrote 12 packs" in out
+    assert "team_40" not in out          # the blob never reaches the log
+    assert len(out.strip().splitlines()) == 2   # the $ line and the ok line
+
+
+def test_quiet_step_still_shows_everything_when_it_fails(capsys, tmp_path,
+                                                         monkeypatch):
+    """Quieting a step must not cost you the diagnosis when it breaks."""
+    import subprocess as sp
+
+    import office
+
+    def fake(argv, **kw):
+        return sp.CompletedProcess(argv, 1, stdout="partial output",
+                                   stderr="Traceback: boom")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    ok = office.run_step(office.Step("packs", ["x"], quiet=True),
+                         root=tmp_path, dry_run=False)
+    out = capsys.readouterr().out
+    assert not ok
+    assert "partial output" in out
+    assert "Traceback: boom" in out
