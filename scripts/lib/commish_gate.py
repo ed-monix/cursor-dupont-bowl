@@ -1,6 +1,7 @@
-"""Commissioner git gate: validate GM replies, then write the league repo.
+"""Commissioner gate: validate GM replies, then a Cloud Agent writes git.
 
 GMs report to the Commissioner only. Invalid JSON never lands in git.
+Gate / daily ops: Cloud Agent commits and pushes straight to main.
 """
 
 from __future__ import annotations

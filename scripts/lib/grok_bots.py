@@ -195,28 +195,38 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
             lines.append(bio)
         lines.append("")
         lines.append(
-            "The Commissioner wakes you after it reads the repo. You have no "
-            "calendar and you never clone git. Reply schema JSON to the "
-            "Commissioner only. On gameday read owner_note and gameday_note "
-            "(pressure, not orders). Pack in chat. Tools off."
+            "The Commissioner wakes you after a Cloud Agent reads the repo. "
+            "You have no calendar and you never clone git. Packs arrive in "
+            "chat. Do not use the GitHub connector, gh auth login, or "
+            "device login. League git is Cursor Cloud Agents only. Reply "
+            "schema JSON to the Commissioner only. On gameday read "
+            "owner_note and gameday_note (pressure, not orders). Tools off."
         )
     elif kind == "media":
         lines.append(
             "You are Kris Jenner. Commissioner wakes you; you never git. "
-            "Public record only. Never open a GM file or opinions.json. "
-            "Reply the tabloid to the Commissioner."
+            "Packs arrive in chat. Do not use the GitHub connector, "
+            "gh auth login, or device login. League git is Cursor Cloud "
+            "Agents only. Public record only. Never open a GM file or "
+            "opinions.json. Reply the tabloid to the Commissioner."
         )
     elif kind == "commissioner":
         lines.append(
-            "You are the daily clock and the git gate. Clone this repo, run "
-            "commish_gate.py daily --write, wake other Bots, ingest their JSON, "
-            "commit only what validates. GMs never git. Do not apply FAAB."
+            "You are the daily clock and the verification gate. A Cursor "
+            "Cloud Agent writes git — not a clone on the shared Bot "
+            "computer, not the GitHub MCP connector (Grok OAuth bug), "
+            "not gh auth login, not device login. Run commish_gate.py "
+            "daily --write, wake all 12 GMs, ingest their JSON. The "
+            "Cloud Agent commits and pushes straight to main. GMs never "
+            "git. Do not apply FAAB."
         )
     elif kind == "scout":
         lines.append(
-            "Commissioner wakes you; you never git. One measured X pass. "
-            "Sentiment only. Never invent post counts. Never read GM files. "
-            "Reply buzz markdown to the Commissioner."
+            "Commissioner wakes you; you never git. Packs arrive in chat. "
+            "Do not use the GitHub connector, gh auth login, or device "
+            "login. League git is Cursor Cloud Agents only. One measured "
+            "X pass. Sentiment only. Never invent post counts. Never "
+            "read GM files. Reply buzz markdown to the Commissioner."
         )
     lines.append("")
     lines.append(

@@ -238,9 +238,14 @@ def extract_reply_text(payload: Any, agent: dict[str, Any] | None = None) -> str
 
 
 def enablement_text() -> str:
-    return """The Commissioner is the git gate.
+    return """A Cursor Cloud Agent writes league git.
 
-Daily: git pull, python scripts/commish_gate.py daily --write,
-ping GMs, ingest replies, commit. GMs never clone.
-Cloud Agents read state/ops/ and decisions/ after that.
+Skip the GitHub MCP connector until the Grok OAuth platform bug is fixed.
+Never box-computer device login, gh auth login, or cookie workarounds.
+Never clone this league onto the shared Grok Bot computer.
+
+Daily: Cloud Agent has the repo, python scripts/commish_gate.py daily --write,
+ping GMs, ingest replies, commit and push straight to main.
+GMs never clone; packs arrive in chat.
+Cloud Agents apply after decisions/ lands.
 """

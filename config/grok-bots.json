@@ -1,7 +1,7 @@
 {
   "version": 1,
   "isolation": {
-    "rule": "All Grok Bots on one xAI account share one cloud computer. Files, logins, and browser sessions on that disk are visible to every Bot. Isolation is pack-in-chat (tools off), not peek-honor. All 12 GMs are Grok Bots, including owned seats your-team (Ed Monix) and wifes-team (Tony Soprano). Do not git-clone this repo onto the Bot computer. Do not copy teams/*/general-manager.md or opinions.json onto it.",
+    "rule": "All Grok Bots on one xAI account share one cloud computer. Files, logins, and browser sessions on that disk are visible to every Bot. Isolation is pack-in-chat (tools off), not peek-honor. All 12 GMs are Grok Bots, including owned seats your-team (Ed Monix) and wifes-team (Tony Soprano). ALL repo work is Cursor Cloud Agents. Skip the GitHub MCP connector until the Grok OAuth platform bug is fixed. Never box-computer gh auth login or device login. Do not git-clone this repo onto the Bot computer. Do not copy teams/*/general-manager.md or opinions.json onto it.",
     "owned_team_slugs": ["your-team", "wifes-team"],
     "never_on_shared_disk": [
       "teams/*/general-manager.md",

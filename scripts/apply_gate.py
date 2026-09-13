@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""apply_gate.py — Cloud Agent apply after the Commissioner commits decisions/.
+"""apply_gate.py — Cloud Agent apply after the gate commits decisions/ to main.
 
     python scripts/apply_gate.py
     python scripts/apply_gate.py --dry-run

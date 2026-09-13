@@ -83,9 +83,15 @@ def create_instructions(root: Union[str, Path], role: dict) -> str:
     profile = grok_bots.profile_text(root, role).strip()
     skill = skill_text(root, role).strip()
     extra = (
-        "You are the git gate. Clone this repo. Ingest GM JSON. Commit."
+        "You verify GM JSON. A Cursor Cloud Agent writes git "
+        "(gate / daily ops push straight to main). Skip the "
+        "GitHub MCP connector. Do not clone onto the shared "
+        "Bot computer. Never gh auth login or device login."
         if role.get("kind") == "commissioner"
-        else "Do not clone git. Reply JSON to the Commissioner only."
+        else "Do not clone git. Packs arrive in chat. Reply JSON "
+        "to the Commissioner only. Do not use the GitHub "
+        "connector, gh auth login, or device login. League "
+        "git is Cursor Cloud Agents only."
     )
     return (
         f"{profile}\n\n---\n{skill}\n\n{extra}\n"

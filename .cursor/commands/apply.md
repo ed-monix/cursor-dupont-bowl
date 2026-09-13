@@ -5,10 +5,11 @@ argument-hint: [--dry-run]
 
 # /apply — scripts mutate rosters after git has decisions/
 
-The Commissioner verifies JSON and commits `state/weeks/*/decisions/`.
-It does **not** run FAAB or write `roster.json`. This command does.
+The Commissioner verifies JSON. A Cursor Cloud Agent commits
+`state/weeks/*/decisions/` straight to `main`. Neither runs FAAB or
+writes `roster.json`. This command does.
 
-1. `git pull`.
+1. Cloud Agent already has the repo (do not `gh auth login`).
 2. Read `state/ops/latest.json`. Idle / recap → stop (recap is `/recap`).
 3. Dry-run first, then apply:
 
