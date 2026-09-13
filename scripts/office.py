@@ -429,8 +429,11 @@ def run_step(step: Step, *, root: pathlib.Path, dry_run: bool) -> bool:
                     if stream:
                         print("    " + stream.strip().replace("\n", "\n    "))
                 return False
-            tail = [ln for ln in (proc.stdout or "").splitlines() if ln.strip()]
-            print(f"    ok{' — ' + tail[-1].strip() if tail else ''}"[:160])
+            # The last line of a JSON blob is "}", which summarises nothing.
+            # Take the last line that carries actual words.
+            tail = [ln.strip() for ln in (proc.stdout or "").splitlines()
+                    if ln.strip(" \t{}[],\"")]
+            print(f"    ok{' — ' + tail[-1] if tail else ''}"[:160])
             return True
         proc = subprocess.run(step.argv, cwd=str(root))
         if proc.returncode != 0:

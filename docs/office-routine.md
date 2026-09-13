@@ -100,44 +100,40 @@ week may have two lineup commits (early + main) — never more than one per
 invocation of a stage. Any office-routine build has to preserve this exactly;
 it is not a detail `scripts/office.py` gets to relax.
 
-## Known gap: a commissioner block is not enforced
+## Resolved: an illegal claim no longer stalls the week
 
-Found by the first end-to-end week-2 run. The commissioner reviewed the FAAB
-dry run, correctly blocked one claim as illegal (a team dropping its starting
-DEF with a full bench), and closed with "the run may proceed, with
-patricia-moyer's claim struck".
+The first end-to-end week-2 run died here. The commissioner correctly blocked
+one claim as illegal — a team dropping its starting DEF with a full bench — and
+closed with "the run may proceed, with the claim struck". Nothing implemented
+"struck", so the real FAAB run hit the same claim and `apply_transaction` raised
+out of the run. It failed safe (no commit, no league change) but it was not
+hands-off: one GM's illegal claim stalled the whole week.
 
-**Nothing implements "struck."** `office.py` writes the signoff to a file and
-moves to the next step; the real FAAB run then hits the same illegal claim and
-`lib/rosters.apply_transaction` raises. The scripts caught it independently —
-CLAUDE.md rule 3 held, legality came from the script and not from trusting the
-agent — so the outcome is safe: stop-on-error, no commit, league state
-unchanged. But it is not hands-off. One GM's illegal claim stalls the week
-until a person looks at it.
+Fixed where CLAUDE.md rule 3 says it belongs — in the script, not the agent.
+`faab.resolve_faab` already had a block asking "can this claim actually be
+applied?" with several `skipped` reasons, and `apply_won_claims`'s own docstring
+says "resolve_faab's own checks should prevent this". The roster-legality check
+was simply missing. A winning claim that would leave an illegal roster is now
+marked `skipped` with the reason, and **no FAAB is charged** — which is what the
+league already does: Ruling 2026-05 refunded a voided bid, and the
+commissioner's memos say "no FAAB is charged" for a struck claim.
 
-In the human flow this never surfaced, because the operator reads the signoff
-and strikes the claim before applying. There is no operator in the office.
+A claim is only blamed for illegality it causes. If a roster is already invalid
+going in, the gate does not fire — punishing the wrong GM would be worse than
+the original bug.
 
-Three ways out, none of them chosen yet — this is a league-rules decision, not
-a plumbing one:
-
-1. `faab.py` marks such a claim `skipped` (a status it already has, with
-   reasons) instead of raising. Self-healing; a GM's illegal claim dies quietly.
-2. The commissioner returns structured JSON alongside its markdown, and
-   `office.py` strikes what it blocks. Faithful to the design, more moving parts.
-3. Leave it. Halting on illegal input is defensible; the office is then
-   autonomous only for weeks where every GM files a legal claim.
-
-Until one is picked, a scheduled run can fail on the waivers stage and will
-correctly commit nothing when it does.
+The commissioner still reviews and still blocks; its ruling is now corroborated
+by the script rather than depending on a human to act on it.
 
 ## Not yet switched on
 
 This document describes an evaluation path, not a running system:
 
-- `scripts/office.py` now exists and has been run end to end. The waivers
-  stage halts on the gap above; the lineups stage completed clean (12 of 12
-  lineups validated, no fallbacks, one commit).
+- `scripts/office.py` exists and every stage has been run end to end against
+  real league data in a throwaway clone: waivers (12 GM turns, tabloid, FAAB,
+  trades, commissioner, apply, one commit), lineups (12 of 12 validated, no
+  fallbacks), recap (stats synced, week scored, standings written), and trades
+  (a bogus offer screened out at zero cost, a legal one answered and applied).
 - No Routine, cron, or GitHub Actions workflow currently calls
   `scripts/office.py`, `scripts/daily_ops.py`, or any wrapper around them on
   a schedule. Nothing in `.github/workflows/` or elsewhere fires this
@@ -146,8 +142,9 @@ This document describes an evaluation path, not a running system:
   `claude -p` per team) is itself still under test — see the "Under test:
   one-command GM turns" sections of `.claude/commands/waivers.md` and
   `.claude/commands/lineups.md`. The legacy Grok Bot gateway
-  (`scripts/grok_bots.py dispatch`) remains the documented default until a
-  full week has run clean on the new path.
+  (`scripts/grok_bots.py dispatch`) remains the documented default. Flipping
+  that is a one-line change to each of those two sections once the owner is
+  satisfied — deliberately not done here.
 - Turning this on is a decision for the owner, not something this document
   authorizes. When it happens, expect it to show up as an explicit
   Routine/cron entry plus an update to this file — not a silent addition.
