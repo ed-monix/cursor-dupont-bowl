@@ -538,3 +538,29 @@ def test_reconcile_skips_cleanly_when_no_live_scores(tmp_path, capsys):
     office._reconcile(tmp_path, "2026", 5)
     assert "nothing to reconcile" in capsys.readouterr().out
     assert not (tmp_path / "state" / "weeks" / "2026-w05" / "reconciliation.json").exists()
+
+
+def test_push_is_off_by_default_and_on_when_asked(tmp_path, monkeypatch, capsys):
+    """Each command doc ends with 'push to main; Pages rebuilds the board'.
+    Capability present, not armed."""
+    import subprocess as sp
+
+    # do_commit stages only paths that exist, and returns early when none do.
+    (tmp_path / "teams").mkdir()
+
+    calls = []
+
+    def fake(argv, **kw):
+        calls.append(argv)
+        return sp.CompletedProcess(argv, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    office.do_commit(tmp_path, "waivers", 2, "2026", None,
+                     dry_run=False, skip_commit=False, steps_ok=True)
+    assert not any("push" in a for a in calls)
+
+    calls.clear()
+    office.do_commit(tmp_path, "waivers", 2, "2026", None,
+                     dry_run=False, skip_commit=False, steps_ok=True, push=True)
+    assert any(a[-1] == "push" for a in calls)
+    assert "rebuild the board" in capsys.readouterr().out

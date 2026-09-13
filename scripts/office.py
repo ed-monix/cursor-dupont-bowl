@@ -518,7 +518,7 @@ def commit_paths(stage: str, root: pathlib.Path, season: str, week: int,
 
 def do_commit(root: pathlib.Path, stage: str, week: int, season: str,
              window: Optional[str], *, dry_run: bool, skip_commit: bool,
-             steps_ok: bool) -> bool:
+             steps_ok: bool, push: bool = False) -> bool:
     message = commit_message(stage, week, window)
     paths = commit_paths(stage, root, season, week, window)
     add_argv = ["git", "-C", str(root), "add", "--", *paths]
@@ -552,6 +552,19 @@ def do_commit(root: pathlib.Path, stage: str, week: int, season: str,
         print(f"    git commit failed (exit {rc}) — possibly nothing staged")
         return False
     print("    committed")
+
+    # Every command doc ends with "Viewer: push to main. GitHub Pages rebuilds
+    # the board" — viewer.yml triggers on push, so without this the board goes
+    # stale even though the run succeeded. Off by default: a scheduled office
+    # can turn it on, and nothing pushes by accident until someone does.
+    if push:
+        push_argv = ["git", "-C", str(root), "push"]
+        print("    $ " + shlex.join(push_argv))
+        rc = subprocess.run(push_argv).returncode
+        if rc != 0:
+            print(f"    git push failed (exit {rc})")
+            return False
+        print("    pushed — viewer.yml will rebuild the board")
     return True
 
 
@@ -603,7 +616,7 @@ def run_step(step: Step, *, root: pathlib.Path, dry_run: bool) -> bool:
 
 def run_stage(stage: str, root: pathlib.Path, week: int, season: str,
              window: Optional[str], *, dry_run: bool, skip_commit: bool,
-             stop_on_error: bool) -> int:
+             stop_on_error: bool, push: bool = False) -> int:
     steps = build_steps(stage, root, week, season, window)
     header = f"=== office: {stage} week {_ww(week)}"
     if window:
@@ -624,7 +637,7 @@ def run_stage(stage: str, root: pathlib.Path, week: int, season: str,
                 break
 
     commit_ok = do_commit(root, stage, week, season, window, dry_run=dry_run,
-                          skip_commit=skip_commit, steps_ok=ok)
+                          skip_commit=skip_commit, steps_ok=ok, push=push)
     return 0 if (ok and commit_ok) else 1
 
 
@@ -680,6 +693,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
                     help="print every step's exact argv; run nothing")
     ap.add_argument("--skip-commit", action="store_true",
                     help="run every step but do not make the one commit")
+    ap.add_argument("--push", action="store_true",
+                    help="push after the commit so GitHub Pages rebuilds the "
+                         "board (each command doc's final 'Viewer' step); off "
+                         "by default")
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--stop-on-error", dest="stop_on_error", action="store_true",
                     default=True,
@@ -718,7 +735,7 @@ def main(argv=None) -> int:
     try:
         return run_stage(stage, root, week, args.season, window,
                          dry_run=args.dry_run, skip_commit=args.skip_commit,
-                         stop_on_error=args.stop_on_error)
+                         stop_on_error=args.stop_on_error, push=args.push)
     except OfficeError as e:
         print(f"office: {e}", file=sys.stderr)
         return 1

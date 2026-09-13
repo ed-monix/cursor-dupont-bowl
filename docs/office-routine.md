@@ -100,6 +100,16 @@ week may have two lineup commits (early + main) — never more than one per
 invocation of a stage. Any office-routine build has to preserve this exactly;
 it is not a detail `scripts/office.py` gets to relax.
 
+## Pushing (the "Viewer" step)
+
+Every command doc ends the same way: push to `main`, and `viewer.yml` rebuilds
+the board. `office.py` commits but does **not** push unless you pass `--push`.
+
+Off by default is deliberate — nothing should push by accident while this is
+under evaluation. A scheduled office that is meant to update the board turns it
+on; without it the run still succeeds and the board simply stays at whatever
+the last push left it.
+
 ## Resolved: an illegal claim no longer stalls the week
 
 The first end-to-end week-2 run died here. The commissioner correctly blocked
