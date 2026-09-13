@@ -100,12 +100,44 @@ week may have two lineup commits (early + main) — never more than one per
 invocation of a stage. Any office-routine build has to preserve this exactly;
 it is not a detail `scripts/office.py` gets to relax.
 
+## Known gap: a commissioner block is not enforced
+
+Found by the first end-to-end week-2 run. The commissioner reviewed the FAAB
+dry run, correctly blocked one claim as illegal (a team dropping its starting
+DEF with a full bench), and closed with "the run may proceed, with
+patricia-moyer's claim struck".
+
+**Nothing implements "struck."** `office.py` writes the signoff to a file and
+moves to the next step; the real FAAB run then hits the same illegal claim and
+`lib/rosters.apply_transaction` raises. The scripts caught it independently —
+CLAUDE.md rule 3 held, legality came from the script and not from trusting the
+agent — so the outcome is safe: stop-on-error, no commit, league state
+unchanged. But it is not hands-off. One GM's illegal claim stalls the week
+until a person looks at it.
+
+In the human flow this never surfaced, because the operator reads the signoff
+and strikes the claim before applying. There is no operator in the office.
+
+Three ways out, none of them chosen yet — this is a league-rules decision, not
+a plumbing one:
+
+1. `faab.py` marks such a claim `skipped` (a status it already has, with
+   reasons) instead of raising. Self-healing; a GM's illegal claim dies quietly.
+2. The commissioner returns structured JSON alongside its markdown, and
+   `office.py` strikes what it blocks. Faithful to the design, more moving parts.
+3. Leave it. Halting on illegal input is defensible; the office is then
+   autonomous only for weeks where every GM files a legal claim.
+
+Until one is picked, a scheduled run can fail on the waivers stage and will
+correctly commit nothing when it does.
+
 ## Not yet switched on
 
 This document describes an evaluation path, not a running system:
 
-- `scripts/office.py` may not exist yet, and until it is read and verified
-  its behavior above is a contract, not a confirmation.
+- `scripts/office.py` now exists and has been run end to end. The waivers
+  stage halts on the gap above; the lineups stage completed clean (12 of 12
+  lineups validated, no fallbacks, one commit).
 - No Routine, cron, or GitHub Actions workflow currently calls
   `scripts/office.py`, `scripts/daily_ops.py`, or any wrapper around them on
   a schedule. Nothing in `.github/workflows/` or elsewhere fires this
