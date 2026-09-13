@@ -123,6 +123,26 @@ python scripts/grok_bots.py dispatch --week <WW> --kind trades \
   --slug <target> --offer <offer.json>
 ```
 
+### Under test: screened trades
+
+```bash
+python scripts/gm_turn.py --week <WW> --run trades --team <target> \
+  --offer <offer.json>
+```
+
+Not yet the default. `scripts/office.py`'s waivers stage runs this for you:
+`lib/trades.screen_offers` checks every outgoing offer against both rosters
+first — the offerer really holds what it is sending, the target really holds
+what is being asked for, and both rosters survive the swap — and only the
+offers that pass become an agent turn. That is the §5 rule enforced in code
+rather than by hand: week 1 burned ten turns on players who were not where
+the offerer thought they were.
+
+Every verdict, including the rejections nobody was asked about, is written to
+`state/weeks/2026-w<WW>/trade-screen.json` and goes into the commissioner's
+review pack. A target that cannot be parsed falls back to `reject` — a GM who
+cannot be understood has not agreed to anything.
+
 ## 6. Commissioner review, then apply
 
 Commissioner Grok Bot (`bots/skill-commish.md`, `agents/commissioner.md`)

@@ -154,6 +154,9 @@ def build_commissioner_pack(root: Union[str, Path], week: int,
 
     if stage == "waivers":
         pack["faab_report_dry_run"] = _read_json(week_dir / "faab-report.json", {})
+        # Every outgoing offer and the harness's verdict on it, so a blocked
+        # trade is reviewable rather than invisible.
+        pack["trade_screen"] = _read_json(week_dir / "trade-screen.json", [])
     elif stage == "lineups":
         pack["lineups"] = _read_json(week_dir / "lineups.json", {})
     elif stage == "recap":

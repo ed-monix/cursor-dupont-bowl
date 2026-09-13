@@ -264,6 +264,13 @@ validate agent output.
   (league-office corrections, script-derived roster-imbalance facts, and the
   window's one-time provisions, all also logged in `state/rulings.md`).
 
+- `state/weeks/<season>-w<NN>/trade-screen.json` — the harness's verdict on
+  every outgoing trade offer that week, one record per offering team
+  `{from, offer, ok, reason}` (`scripts/lib/trades.py`). waivers.md §5 requires
+  offers to be validated BEFORE a target agent is spawned; this is that check's
+  audit trail, so an offer nobody was asked about still shows why. Written by
+  `scripts/office.py`'s trades step; read by the commissioner's waivers review.
+
 ### GM memory & the shared record (the personality substrate)
 - `teams/*/notes/2026-wNN.md` — owner notes (human input) plus the GM's replies.
 - `teams/*/press/2026-wNN.md` — the GM's public paper trail: note replies and

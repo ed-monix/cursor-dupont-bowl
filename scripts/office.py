@@ -40,6 +40,7 @@ import pathlib
 import shlex
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from typing import Callable, Optional
 
@@ -50,6 +51,7 @@ from lib.apply_gate import (  # noqa: E402
     faab_priority_order,
     week_dir as _apply_gate_week_dir,
 )
+from lib.trades import screen_offers  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PY = sys.executable
@@ -121,6 +123,47 @@ def _write_json(path: pathlib.Path, obj) -> None:
         f.write("\n")
 
 
+def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
+    """Screen every outgoing offer, then ask only the targets that survive.
+
+    waivers.md §5: validate in the harness BEFORE spawning the target, because
+    week 1 burned ten turns on players who were not where the offerer thought.
+    An offer that fails the screen never becomes an agent turn; it is recorded
+    with its reason so the commissioner sees why nobody was asked.
+    """
+    wdir = _apply_gate_week_dir(root, season, week)
+    records = screen_offers(root, season, week)
+    _write_json(wdir / "trade-screen.json", records)
+
+    if not records:
+        print("    no outgoing offers this week")
+        return
+
+    passed = [r for r in records if r.get("ok")]
+    for rec in records:
+        if not rec.get("ok"):
+            print(f"    screened out {rec['from']}: {rec.get('reason', '')}")
+    print(f"    {len(passed)} of {len(records)} offer(s) go to a target")
+
+    with tempfile.TemporaryDirectory(prefix="office-offers-") as tmp:
+        for rec in passed:
+            offer = rec["offer"]
+            target = offer.get("to_team")
+            offer_path = pathlib.Path(tmp) / f"{rec['from']}.json"
+            offer_path.write_text(json.dumps(offer), encoding="utf-8")
+            argv = _py(root, "gm_turn.py", "--week", week, "--season", season,
+                       "--run", "trades", "--team", target,
+                       "--offer", offer_path, "--root", root)
+            print(f"    $ {shlex.join(argv)}")
+            rc = subprocess.run(argv, cwd=str(root)).returncode
+            if rc != 0:
+                # One unanswered offer is not a reason to lose the whole run's
+                # waiver claims. Record it and carry on; the commissioner sees
+                # the missing response in trade-screen.json.
+                print(f"    trade turn for {target} failed (exit {rc}) — "
+                      "recorded, run continues")
+
+
 def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
     """Write claims-from-gate.json + faab-standings-order.json into the week
     folder — the same two files scripts/apply_gate.py's apply_waivers()
@@ -187,6 +230,11 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
         Step("FAAB dry run (for commissioner review)",
              _py(root, "faab.py", "--claims", claims_path,
                  "--standings", order_path, *faab_report, "--dry-run")),
+        Step("trades — screen offers, ask only valid targets",
+             note="validates each outgoing offer against both rosters, then "
+                  "runs gm_turn --run trades for the targets that survive; "
+                  "writes trade-screen.json",
+             action=lambda: _run_trades(root, season, week)),
         Step("commissioner review — waivers",
              _py(root, "agent_turn.py", "--role", "commissioner", "--week", week,
                  "--season", season, "--stage", "waivers", "--root", root)),
