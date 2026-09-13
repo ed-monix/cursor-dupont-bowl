@@ -3,15 +3,19 @@ name: Gameday stats
 # Live scoring is this job, not the Commissioner 9am check and not Scout.
 # Cron is UTC. After a stats commit, viewer.yml rebuilds index.html on main
 # and Pages (branch: main, folder: /) serves it.
+#
+# GitHub drops a lot of :00 / :20 / :40 scheduled jobs under load, and this
+# workflow had never produced a run. Offset minutes so the Sunday slate
+# actually ticks.
 
 on:
   schedule:
     # TNF: Thu 8pm–11pm ET → Fri 00:00–03:59 UTC
-    - cron: "*/20 0-3 * * 5"
-    # Sunday slate: Sun 12pm–7pm ET → Sun 16:00–23:59 UTC
-    - cron: "*/20 16-23 * * 0"
-    # Late Sunday + MNF start: Sun 8pm–Mon 12am ET → Mon 00:00–04:59 UTC
-    - cron: "*/20 0-4 * * 1"
+    - cron: "7,27,47 0-3 * * 5"
+    # Sunday slate: 11am–7:59pm ET → Sun 15:00–23:59 UTC
+    - cron: "7,27,47 15-23 * * 0"
+    # Late Sunday + MNF start: Sun 8pm–Mon 1am ET → Mon 00:00–04:59 UTC
+    - cron: "7,27,47 0-4 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -24,6 +28,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,7 +44,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/weeks state/ops
+          git add state/weeks state/nfl-schedule.json
           if git diff --cached --quiet; then
             echo "no stats change"
             exit 0
