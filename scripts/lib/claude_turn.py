@@ -65,6 +65,10 @@ def usage_of(envelope: dict) -> dict:
         "cache_write": u.get("cache_creation_input_tokens", 0),
         "cache_read": u.get("cache_read_input_tokens", 0),
         "output": u.get("output_tokens", 0),
+        # Claude Code's own client-side estimate at LIST price. On a Max
+        # subscription this is not a bill — it is a yardstick for comparing one
+        # run's shape against another's.
+        "cost_usd": float(envelope.get("total_cost_usd") or 0.0),
     }
 
 
@@ -121,6 +125,7 @@ def run_turn(*, system_text: str, user_text: str, model: str,
 def accumulate(totals: dict, usage: dict) -> dict:
     for k in ("input", "cache_write", "cache_read", "output"):
         totals[k] = totals.get(k, 0) + usage.get(k, 0)
+    totals["cost_usd"] = totals.get("cost_usd", 0.0) + usage.get("cost_usd", 0.0)
     return totals
 
 
@@ -128,5 +133,9 @@ def usage_line(totals: dict) -> str:
     cached = totals.get("cache_read", 0)
     fresh = totals.get("input", 0) + totals.get("cache_write", 0)
     share = (cached / (cached + fresh) * 100) if (cached + fresh) else 0.0
-    return (f"tokens: {fresh:,} fresh + {cached:,} cached ({share:.0f}% from "
+    line = (f"tokens: {fresh:,} fresh + {cached:,} cached ({share:.0f}% from "
             f"cache), {totals.get('output', 0):,} out")
+    cost = totals.get("cost_usd", 0.0)
+    if cost:
+        line += f" | list-price estimate ${cost:.2f}"
+    return line

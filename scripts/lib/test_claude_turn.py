@@ -121,15 +121,19 @@ def test_usage_is_extracted_and_accumulated(monkeypatch):
         "result": "ok",
         "usage": {"input_tokens": 10, "cache_creation_input_tokens": 5,
                   "cache_read_input_tokens": 85, "output_tokens": 3},
+        "total_cost_usd": 0.25,
     }))
     out = _run(monkeypatch, rec)
-    assert out.usage == {"input": 10, "cache_write": 5,
-                         "cache_read": 85, "output": 3}
+    assert out.usage == {"input": 10, "cache_write": 5, "cache_read": 85,
+                         "output": 3, "cost_usd": 0.25}
     totals = claude_turn.accumulate({}, out.usage)
     claude_turn.accumulate(totals, out.usage)
     assert totals["cache_read"] == 170
+    assert totals["cost_usd"] == 0.5
     # 170 cached against 30 fresh
-    assert "85% from cache" in claude_turn.usage_line(totals)
+    line = claude_turn.usage_line(totals)
+    assert "85% from cache" in line
+    assert "$0.50" in line
 
 
 def test_usage_line_survives_a_turn_that_reported_nothing():
