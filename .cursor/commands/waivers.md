@@ -67,25 +67,30 @@ tabloid. NEVER a GM file. Rebuild:
 python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
-## 3. GM decisions — all 12, one command
+## 3. GM decisions — Grok Bots + two Cursor owned GMs
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind waivers
+```
+
+Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
+For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
+order is context only; bids are blind.
+
+### Under test: one-command GM turns
 
 ```bash
 python scripts/gm_turn.py --week <WW> --run waivers
 ```
 
-One isolated `claude -p` per team on Sonnet, empty working directory, pack on
-stdin. Writes `state/weeks/2026-w<WW>/decisions/<slug>.json`. All twelve teams
-run identically — `your-team` and `wifes-team` included, same model, same pack
-shape, no Cursor sidecar.
-
-Bids are blind by construction, not by convention: turn one warms the shared
-prefix and the other eleven run concurrently, so no GM can see another's claims.
-Reverse-standings order is context only. `--dry-run` sizes the prompts without
-calling; `--save-raw DIR` keeps the raw envelopes when something fails to
-validate.
-
-The legacy gateway path (`python scripts/grok_bots.py dispatch --week <WW>
---kind waivers`) still works and is unchanged.
+Not yet the default. Being evaluated over a full week before it can replace
+the gateway above. What it changes: all 12 teams move to one path, owned two
+included — no Cursor sidecar. Each team runs as an isolated `claude -p` call
+on Sonnet with an empty working directory, so there is no repo to read. Turn
+one fires alone to warm the shared cache prefix before the other eleven fan
+out, so bids stay blind by construction rather than by convention.
+`--dry-run` sizes the prompts without calling; `--save-raw DIR` keeps the raw
+envelopes when something fails to validate.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver

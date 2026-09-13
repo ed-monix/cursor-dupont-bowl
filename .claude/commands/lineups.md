@@ -39,24 +39,31 @@ python scripts/league_board.py --week <WW>
 python scripts/gm_pack.py --week <WW> --run lineups --window <early|main>
 ```
 
-## 2. GM lineups (all 12, one command)
+## 2. GM lineups (Grok Bots + two Cursor owned GMs)
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
+```
+
+Celebrity replies: `docs/schemas/sunday-lineup.json` into
+`decisions/<slug>.lineup-<W>.json`. Owned GMs (`your-team`, `wifes-team`)
+use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
+are an opinion.
+
+### Under test: one-command GM turns
 
 ```bash
 python scripts/gm_turn.py --week <WW> --run lineups --window <W>
 ```
 
-All twelve GMs, including `your-team` and `wifes-team`, run the same way:
-one isolated `claude -p` per team on Sonnet, empty working directory, pack on
-stdin. No Grok gateway, no Cursor sidecar, no awake laptop. Replies validate
-against `docs/schemas/sunday-lineup.json` into `decisions/<slug>.lineup-<W>.json`.
-
-Isolation is structural here, not instructed: each turn runs with no repo
-mounted, so there is no `state/players.json` and no other team's files to open.
-Turn one fires alone to warm the shared prefix, then the rest fan out — so no
-GM sees another's lineup. Add `--dry-run` to size the prompts without calling.
-
-The legacy gateway path (`python scripts/grok_bots.py dispatch --week <WW>
---kind lineups --window <W>`) still works and is unchanged.
+Not yet the default. Being evaluated over a full week before it can replace
+the gateway above. What it changes: all 12 teams move to one path, owned two
+included — no Cursor sidecar, no awake laptop. Each team runs as an isolated
+`claude -p` call on Sonnet with an empty working directory, so there is no
+repo mounted and no other team's files to open. Turn one fires alone to warm
+the shared cache prefix before the other eleven fan out, so no GM sees another's
+lineup by construction rather than by convention. `--dry-run` sizes the
+prompts without calling.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window

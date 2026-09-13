@@ -38,14 +38,15 @@ import argparse
 import concurrent.futures
 import json
 import pathlib
-import subprocess
 import sys
-import tempfile
 import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 from lib import packs  # noqa: E402
+from lib.claude_turn import (  # noqa: E402
+    TurnError, accumulate, run_turn, usage_line,
+)
 from lib.decisions import load_schema, parse_and_validate  # noqa: E402
 from lib.grok_dispatch import write_decision_file  # noqa: E402
 
@@ -62,81 +63,7 @@ SCHEMA_FOR_RUN = {
 }
 
 
-class TurnError(RuntimeError):
-    pass
-
-
-def _claude_argv(system_file: pathlib.Path, model: str,
-                 schema: dict | None) -> list:
-    argv = [
-        "claude", "-p",
-        "--model", model,
-        "--append-system-prompt-file", str(system_file),
-        "--output-format", "json",
-        # No tool should ever run in a GM turn. The empty cwd makes this moot,
-        # but deny anything that would prompt and never wait for a human.
-        "--permission-mode", "dontAsk",
-        "--permission-prompts", "none",
-    ]
-    if schema is not None:
-        # --json-schema takes the schema INLINE, not a path to a file.
-        argv += ["--json-schema", json.dumps(schema)]
-    return argv
-
-
-def run_one(slug: str, private_prompt: str, system_file: pathlib.Path, *,
-            model: str, schema_arg: dict | None,
-            timeout: int, save_raw: pathlib.Path | None = None) -> dict:
-    """One GM turn. Returns the parsed `claude -p` JSON envelope.
-
-    cwd is a fresh empty directory: no repo, no CLAUDE.md, no skills, nothing
-    to read. That is the isolation guarantee and it also keeps the repo's own
-    context out of all twelve invocations.
-    """
-    with tempfile.TemporaryDirectory(prefix=f"gmturn-{slug}-") as empty:
-        proc = subprocess.run(
-            _claude_argv(system_file, model, schema_arg),
-            input=private_prompt,
-            capture_output=True,
-            text=True,
-            cwd=empty,
-            timeout=timeout,
-        )
-    if save_raw is not None:
-        save_raw.mkdir(parents=True, exist_ok=True)
-        (save_raw / f"{slug}.stdout.json").write_text(proc.stdout or "",
-                                                      encoding="utf-8")
-        if proc.stderr:
-            (save_raw / f"{slug}.stderr.txt").write_text(proc.stderr,
-                                                         encoding="utf-8")
-    if proc.returncode != 0:
-        raise TurnError(
-            f"claude exited {proc.returncode}: {(proc.stderr or proc.stdout)[:400]}"
-        )
-    try:
-        return json.loads(proc.stdout)
-    except ValueError as e:
-        raise TurnError(f"could not parse claude envelope: {e}") from e
-
-
-def _answer_text(envelope: dict) -> str:
-    structured = envelope.get("structured_output")
-    if isinstance(structured, dict) and structured:
-        return json.dumps(structured)
-    return envelope.get("result") or ""
-
-
-def _usage(envelope: dict) -> dict:
-    u = envelope.get("usage") or {}
-    return {
-        "input": u.get("input_tokens", 0),
-        "cache_write": u.get("cache_creation_input_tokens", 0),
-        "cache_read": u.get("cache_read_input_tokens", 0),
-        "output": u.get("output_tokens", 0),
-    }
-
-
-def turn_with_retry(slug: str, private_prompt: str, system_file: pathlib.Path,
+def turn_with_retry(slug: str, private_prompt: str, system_text: str,
                     schema: dict, *, model: str,
                     schema_arg: dict | None,
                     timeout: int,
@@ -151,14 +78,14 @@ def turn_with_retry(slug: str, private_prompt: str, system_file: pathlib.Path,
     usage = {}
     for attempt in (1, 2):
         try:
-            envelope = run_one(slug, private_prompt, system_file, model=model,
-                               schema_arg=schema_arg, timeout=timeout,
-                               save_raw=save_raw)
-        except (TurnError, subprocess.TimeoutExpired) as e:
+            result = run_turn(system_text=system_text, user_text=private_prompt,
+                              model=model, schema=schema_arg, timeout=timeout,
+                              label=slug, save_raw=save_raw)
+        except TurnError as e:
             last_errors = [str(e)]
             continue
-        usage = _usage(envelope)
-        obj, errors = parse_and_validate(_answer_text(envelope), schema)
+        usage = result.usage
+        obj, errors = parse_and_validate(result.text, schema)
         if obj is not None and not errors:
             return obj, [], usage, attempt
         last_errors = errors or ["no JSON object in reply"]
@@ -228,9 +155,6 @@ def main() -> int:
     schema = load_schema(schema_name)
     kind = "lineups" if args.run == "lineups" else "waivers"
 
-    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gm-system-"))
-    system_file = tmp / "gm-system.md"
-    system_file.write_text(system_text, encoding="utf-8")
     schema_arg = schema if args.structured else None
 
     started = time.time()
@@ -238,7 +162,7 @@ def main() -> int:
 
     def work(slug):
         return slug, turn_with_retry(
-            slug, prompts[slug], system_file, schema,
+            slug, prompts[slug], system_text, schema,
             model=args.model, schema_arg=schema_arg, timeout=args.timeout,
             save_raw=pathlib.Path(args.save_raw) if args.save_raw else None)
 
@@ -258,8 +182,7 @@ def main() -> int:
     failures = []
     for slug in order:
         obj, errors, usage, attempts = results[slug]
-        for k in totals:
-            totals[k] += usage.get(k, 0)
+        accumulate(totals, usage)
         if obj is None:
             obj = fallback_object(args.run, slug, errors)
             failures.append(slug)
@@ -271,12 +194,8 @@ def main() -> int:
         print(f"  {slug:<16} -> {dest.name}{retry}{flag}")
 
     elapsed = time.time() - started
-    cached = totals["cache_read"]
-    fresh = totals["input"] + totals["cache_write"]
-    share = (cached / (cached + fresh) * 100) if (cached + fresh) else 0.0
     print(f"\n{len(order)} turns in {elapsed:,.0f}s on {args.model}")
-    print(f"tokens: {fresh:,} fresh + {cached:,} cached ({share:.0f}% from cache)"
-          f", {totals['output']:,} out")
+    print(usage_line(totals))
     if failures:
         print(f"fallback (no moves logged): {', '.join(failures)}")
     return 0
