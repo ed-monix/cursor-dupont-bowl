@@ -26,10 +26,11 @@ No network. Pure stdlib + the repo's own lib modules.
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Union
 
-from lib.rosters import apply_transaction, roster_config_from_league
+from lib.rosters import apply_transaction, roster_config_from_league, save_roster
 
 TRADE_DEADLINE_WEEK = 11
 
@@ -236,3 +237,108 @@ def _load_roster_config(config_path: Path) -> Optional[dict]:
         return None
     league_cfg = json.loads(config_path.read_text(encoding="utf-8"))
     return roster_config_from_league(league_cfg)
+
+
+def collect_responses(decisions_dir: Union[str, Path]) -> dict:
+    """{target_slug: response} from `<slug>.trade.json` files."""
+    out = {}
+    decisions_dir = Path(decisions_dir)
+    if not decisions_dir.is_dir():
+        return out
+    for path in sorted(decisions_dir.glob("*.trade.json")):
+        try:
+            obj = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if isinstance(obj, dict) and obj.get("response"):
+            out[path.name[: -len(".trade.json")]] = obj
+    return out
+
+
+def apply_accepted(root: Union[str, Path], season: str, week: int, *,
+                   dry_run: bool = False) -> list:
+    """Execute every accepted offer and log it. Returns one record per response.
+
+    Until this existed, a GM could accept a trade and nothing happened: the
+    response sat in `<slug>.trade.json`, `collect_waiver_claims` skipped it by
+    name, and no roster ever changed. waivers.md §6 says "apply approved trades
+    the same way" — by hand, in the human flow. There is no hand in the office.
+
+    `counter` is recorded, never auto-applied. A counter is a fresh offer back
+    to the original offerer, and chasing it automatically is an unbounded
+    negotiation; it goes to the commissioner and the next run instead.
+
+    The swap itself is lib.rosters.apply_transaction on both sides, so trades
+    obey exactly the same roster rules as every other transaction.
+    """
+    root = Path(root)
+    wdir = root / "state" / "weeks" / f"{season}-w{week:02d}"
+    screen = []
+    try:
+        screen = json.loads((wdir / "trade-screen.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        screen = []
+    offers = {r["offer"]["to_team"]: r for r in screen
+              if isinstance(r, dict) and r.get("ok") and r.get("offer")}
+    responses = collect_responses(wdir / "decisions")
+
+    rosters = _load_rosters(root / "teams")
+    players = _load_players(root / "state" / "players.json")
+    roster_config = _load_roster_config(root / "config" / "roster.json")
+
+    results, entries, changed = [], [], {}
+    stamp = datetime.now(timezone.utc).isoformat()
+
+    for target, response in sorted(responses.items()):
+        rec = {"target": target, "response": response.get("response")}
+        screened = offers.get(target)
+        if screened is None:
+            rec.update(applied=False, reason="no screened offer for this target")
+            results.append(rec)
+            continue
+        offerer, offer = screened["from"], screened["offer"]
+        rec["from"] = offerer
+        if response.get("response") != "accept":
+            rec.update(applied=False,
+                       reason=f"{response.get('response')} — nothing to apply")
+            results.append(rec)
+            continue
+
+        out_ids, in_ids = list(offer.get("out") or []), list(offer.get("in") or [])
+        try:
+            changed[offerer] = apply_transaction(
+                changed.get(offerer, rosters[offerer]),
+                {"type": "trade", "out": out_ids, "in": in_ids},
+                players, roster_config)
+            changed[target] = apply_transaction(
+                changed.get(target, rosters[target]),
+                {"type": "trade", "out": in_ids, "in": out_ids},
+                players, roster_config)
+        except (ValueError, KeyError) as e:
+            # The screen passed it, but rosters move during a run (FAAB applies
+            # first). A trade that is no longer legal is reported, not forced.
+            rec.update(applied=False, reason=f"illegal at apply time: {e}")
+            results.append(rec)
+            continue
+
+        reasoning = (response.get("message") or offer.get("message") or "").strip()
+        for team, gone, got in ((offerer, out_ids, in_ids),
+                                (target, in_ids, out_ids)):
+            entries.append({
+                "timestamp": stamp, "team": team, "action": "trade",
+                "players": list(gone) + list(got), "bid": None,
+                "reasoning": reasoning, "status": "applied",
+            })
+        rec.update(applied=True, reason="")
+        results.append(rec)
+
+    if not dry_run and changed:
+        for team, roster in changed.items():
+            save_roster(roster, root / "teams" / team / "roster.json")
+        tx = root / "state" / "transactions.jsonl"
+        tx.parent.mkdir(parents=True, exist_ok=True)
+        with open(tx, "a", encoding="utf-8") as f:
+            for entry in entries:
+                f.write(json.dumps(entry, sort_keys=True) + "\n")
+
+    return results

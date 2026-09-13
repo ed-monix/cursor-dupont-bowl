@@ -51,7 +51,7 @@ from lib.apply_gate import (  # noqa: E402
     faab_priority_order,
     week_dir as _apply_gate_week_dir,
 )
-from lib.trades import screen_offers  # noqa: E402
+from lib.trades import apply_accepted, screen_offers  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PY = sys.executable
@@ -164,6 +164,19 @@ def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
                       "recorded, run continues")
 
 
+def _apply_trades(root: pathlib.Path, season: str, week: int) -> None:
+    """Execute accepted offers. Runs after FAAB, which moves rosters first."""
+    results = apply_accepted(root, season, week)
+    if not results:
+        print("    no trade responses to apply")
+        return
+    for rec in results:
+        if rec.get("applied"):
+            print(f"    applied {rec.get('from')} <-> {rec['target']}")
+        else:
+            print(f"    {rec['target']}: {rec.get('reason', '')}")
+
+
 def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
     """Write claims-from-gate.json + faab-standings-order.json into the week
     folder — the same two files scripts/apply_gate.py's apply_waivers()
@@ -244,6 +257,11 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
         # Explicit stage/week: apply_gate otherwise takes both from
         # state/ops/latest.json, which is whatever the last daily_ops --write
         # decided. A run driven by --stage/--week must not inherit that.
+        Step("apply accepted trades",
+             note="executes every accepted offer on both rosters and logs it "
+                  "to transactions.jsonl; counters are recorded, never "
+                  "auto-applied",
+             action=lambda: _apply_trades(root, season, week)),
         Step("apply gate (Cloud Agent apply)",
              _py(root, "apply_gate.py", "--root", root,
                  "--action", "waivers", "--week", week, "--season", season)),

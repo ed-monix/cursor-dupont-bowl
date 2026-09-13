@@ -181,3 +181,114 @@ def test_screen_offers_rejects_two_offers_from_one_team(tmp_path: Path, monkeypa
     assert records[0]["ok"] is True
     assert records[1]["ok"] is False
     assert "already has an outgoing offer" in records[1]["reason"]
+
+
+# --------------------------------------------------------------------------
+# Applying what a target accepted. Before apply_accepted existed, a GM could
+# say yes and nothing happened: the response sat in <slug>.trade.json,
+# collect_waiver_claims skipped it by name, and no roster ever moved.
+# --------------------------------------------------------------------------
+
+def _traded_league(tmp_path: Path):
+    """Two teams with LEGAL rosters, one screened offer, ready for a response.
+
+    apply_transaction validates the whole resulting roster, so a fixture with
+    empty starters fails on slot requirements rather than on the trade.
+    """
+    from lib import trades as trades_mod
+
+    slots = [("QB", "QB"), ("RB1", "RB"), ("RB2", "RB"), ("WR1", "WR"),
+             ("WR2", "WR"), ("TE", "TE"), ("FLEX", "RB"), ("K", "K"),
+             ("DEF", "DEF")]
+    players = {}
+    for slug, spare in (("alpha", "a1"), ("bravo", "b1")):
+        starters = {}
+        for slot, pos in slots:
+            pid = f"{slug}-{slot}"
+            starters[slot] = pid  # rosters store bare ids, not dicts
+            players[pid] = {"id": pid, "name": pid, "pos": pos}
+        players[spare] = {"id": spare, "name": spare, "pos": "WR"}
+        (tmp_path / "teams" / slug).mkdir(parents=True)
+        (tmp_path / "teams" / slug / "roster.json").write_text(json.dumps({
+            "team": slug, "starters": starters,
+            "bench": [spare],
+            "ir": [], "faab_remaining": 100,
+        }), encoding="utf-8")
+
+    wdir = tmp_path / "state" / "weeks" / "2026-w05"
+    (wdir / "decisions").mkdir(parents=True)
+    (wdir / "trade-screen.json").write_text(json.dumps([{
+        "from": "alpha", "ok": True, "reason": "",
+        "offer": {"to_team": "bravo", "out": ["a1"], "in": ["b1"]},
+    }]), encoding="utf-8")
+    (tmp_path / "state" / "players.json").write_text(json.dumps(players),
+                                                     encoding="utf-8")
+    return wdir, trades_mod
+
+
+def test_accepted_trade_moves_both_rosters_and_is_logged(tmp_path: Path):
+    wdir, trades_mod = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(
+        json.dumps({"response": "accept", "message": "Fine."}), encoding="utf-8")
+
+    results = trades_mod.apply_accepted(tmp_path, "2026", 5)
+    assert [r["applied"] for r in results] == [True]
+
+    alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
+    bravo = json.loads((tmp_path / "teams" / "bravo" / "roster.json").read_text())
+    assert "b1" in json.dumps(alpha) and "a1" not in json.dumps(alpha)
+    assert "a1" in json.dumps(bravo) and "b1" not in json.dumps(bravo)
+
+    logged = [json.loads(l) for l in
+              (tmp_path / "state" / "transactions.jsonl").read_text().splitlines()]
+    assert {e["team"] for e in logged} == {"alpha", "bravo"}
+    assert all(e["action"] == "trade" and e["status"] == "applied" for e in logged)
+
+
+def test_rejected_trade_changes_nothing(tmp_path: Path):
+    wdir, trades_mod = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(
+        json.dumps({"response": "reject"}), encoding="utf-8")
+
+    results = trades_mod.apply_accepted(tmp_path, "2026", 5)
+    assert results[0]["applied"] is False
+    alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
+    assert "a1" in json.dumps(alpha)
+    assert not (tmp_path / "state" / "transactions.jsonl").exists()
+
+
+def test_counter_is_recorded_never_auto_applied(tmp_path: Path):
+    """Chasing a counter automatically is an unbounded negotiation."""
+    wdir, trades_mod = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(json.dumps({
+        "response": "counter",
+        "counter": {"to_team": "alpha", "out": ["b1"], "in": ["a1"]},
+    }), encoding="utf-8")
+
+    results = trades_mod.apply_accepted(tmp_path, "2026", 5)
+    assert results[0]["applied"] is False
+    assert "counter" in results[0]["reason"]
+    assert not (tmp_path / "state" / "transactions.jsonl").exists()
+
+
+def test_response_with_no_screened_offer_is_ignored(tmp_path: Path):
+    wdir, trades_mod = _traded_league(tmp_path)
+    (wdir / "decisions" / "ghost.trade.json").write_text(
+        json.dumps({"response": "accept"}), encoding="utf-8")
+
+    results = trades_mod.apply_accepted(tmp_path, "2026", 5)
+    ghost = [r for r in results if r["target"] == "ghost"][0]
+    assert ghost["applied"] is False
+    assert "no screened offer" in ghost["reason"]
+
+
+def test_dry_run_reports_without_writing(tmp_path: Path):
+    wdir, trades_mod = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(
+        json.dumps({"response": "accept"}), encoding="utf-8")
+
+    results = trades_mod.apply_accepted(tmp_path, "2026", 5, dry_run=True)
+    assert results[0]["applied"] is True
+    alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
+    assert "a1" in json.dumps(alpha)  # untouched on disk
+    assert not (tmp_path / "state" / "transactions.jsonl").exists()
