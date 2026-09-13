@@ -47,7 +47,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 from lib.apply_gate import (  # noqa: E402
     collect_waiver_claims,
-    standings_worst_to_best,
+    faab_priority_order,
     week_dir as _apply_gate_week_dir,
 )
 
@@ -128,9 +128,15 @@ def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
     call paths agree on what "the claims" and "the tiebreak order" mean."""
     wdir = _apply_gate_week_dir(root, season, week)
     claims = collect_waiver_claims(wdir / "decisions")
-    standings = _load_json(root / "state" / "standings.json", {"teams": {}})
+    # standings.json does not exist until week 1 has been scored, and faab.py
+    # raises on a contested claim whose team is missing from the order — which
+    # is exactly what killed the first automated week-2 run. Ruling 2026-02
+    # covers it: reversed draft order until standings exist, then the normal
+    # tiebreak "takes over automatically".
+    order, basis = faab_priority_order(root, season)
     _write_json(wdir / "claims-from-gate.json", claims)
-    _write_json(wdir / "faab-standings-order.json", standings_worst_to_best(standings))
+    _write_json(wdir / "faab-standings-order.json", order)
+    print(f"    FAAB tiebreak basis: {basis} ({len(order)} teams)")
 
 
 # --------------------------------------------------------------------------

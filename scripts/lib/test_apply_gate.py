@@ -85,3 +85,55 @@ def test_ops_file_still_drives_the_daily_job(tmp_path: Path, capsys):
     echoed = json.loads(capsys.readouterr().out.splitlines()[0])
     assert echoed["action"] == "lineups-main"
     assert echoed["week"] == 1
+
+
+def test_faab_order_falls_back_to_reversed_draft_before_standings_exist(tmp_path):
+    """state/rulings.md Ruling 2026-02.
+
+    The first automated week-2 run died here: no standings.json (week 1 not
+    scored), so the tiebreak order was empty and faab.py raised
+    "team 'coach-taylor' has a contested claim but is missing from standings".
+    """
+    from lib.apply_gate import faab_priority_order
+
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state" / "draft-log.jsonl").write_text("\n".join(
+        json.dumps({"pick_no": n, "round": 1, "team": t})
+        for n, t in enumerate(["alpha", "bravo", "charlie"], start=1)
+    ), encoding="utf-8")
+
+    order, basis = faab_priority_order(tmp_path, "2026")
+    assert basis == "reversed-draft-order"
+    assert order == ["charlie", "bravo", "alpha"]  # last of round 1 = best
+
+
+def test_faab_order_switches_to_standings_the_moment_they_exist(tmp_path):
+    """The ruling expires on its own — no edit required."""
+    from lib.apply_gate import faab_priority_order
+
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state" / "draft-log.jsonl").write_text(
+        json.dumps({"pick_no": 1, "round": 1, "team": "alpha"}), encoding="utf-8")
+    (tmp_path / "state" / "standings.json").write_text(json.dumps({"teams": {
+        "alpha": {"wins": 1, "losses": 0, "ties": 0, "points_for": 100},
+        "bravo": {"wins": 0, "losses": 1, "ties": 0, "points_for": 90},
+    }}), encoding="utf-8")
+
+    order, basis = faab_priority_order(tmp_path, "2026")
+    assert basis == "standings"
+    assert order == ["bravo", "alpha"]
+
+
+def test_faab_order_uses_only_round_one_and_dedupes(tmp_path):
+    from lib.apply_gate import faab_priority_order
+
+    (tmp_path / "state").mkdir()
+    (tmp_path / "state" / "draft-log.jsonl").write_text("\n".join([
+        json.dumps({"pick_no": 1, "round": 1, "team": "alpha"}),
+        json.dumps({"pick_no": 2, "round": 1, "team": "bravo"}),
+        json.dumps({"pick_no": 3, "round": 2, "team": "bravo"}),
+        json.dumps({"pick_no": 4, "round": 2, "team": "alpha"}),
+    ]), encoding="utf-8")
+
+    order, _ = faab_priority_order(tmp_path, "2026")
+    assert order == ["bravo", "alpha"]
