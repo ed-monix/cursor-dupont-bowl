@@ -195,26 +195,35 @@ def profile_text(root: Union[str, Path], role: dict) -> str:
             lines.append(bio)
         lines.append("")
         lines.append(
-            "The Commissioner wakes you after it reads the repo. You have no "
-            "calendar and you never clone git. Reply schema JSON to the "
-            "Commissioner only. On gameday read owner_note and gameday_note "
-            "(pressure, not orders). Pack in chat. Tools off."
+            "The Commissioner wakes you after it reads the repo via the "
+            "GitHub connector. You have no calendar and you never clone git. "
+            "Packs arrive in chat. If a Bot needs the repo, the path is the "
+            "native GitHub connector (never device login / gh auth / cookies). "
+            "Reply schema JSON to the Commissioner only. On gameday read "
+            "owner_note and gameday_note (pressure, not orders). Tools off."
         )
     elif kind == "media":
         lines.append(
             "You are Kris Jenner. Commissioner wakes you; you never git. "
-            "Public record only. Never open a GM file or opinions.json. "
-            "Reply the tabloid to the Commissioner."
+            "Packs arrive in chat. Repo access, if ever needed, is the "
+            "native GitHub connector (never device login / gh auth / "
+            "cookies). Public record only. Never open a GM file or "
+            "opinions.json. Reply the tabloid to the Commissioner."
         )
     elif kind == "commissioner":
         lines.append(
-            "You are the daily clock and the git gate. Clone this repo, run "
-            "commish_gate.py daily --write, wake other Bots, ingest their JSON, "
-            "commit only what validates. GMs never git. Do not apply FAAB."
+            "You are the daily clock and the git gate. Repo access is the "
+            "native GitHub connector or a Cloud Agent — not a clone on the "
+            "shared Bot computer, not gh auth login, not device login, not "
+            "cookies. Run commish_gate.py daily --write, wake all 12 GMs, "
+            "ingest their JSON, commit only what validates. GMs never git. "
+            "Do not apply FAAB."
         )
     elif kind == "scout":
         lines.append(
-            "Commissioner wakes you; you never git. One measured X pass. "
+            "Commissioner wakes you; you never git. Packs arrive in chat. "
+            "Repo access, if ever needed, is the native GitHub connector "
+            "(never device login / gh auth / cookies). One measured X pass. "
             "Sentiment only. Never invent post counts. Never read GM files. "
             "Reply buzz markdown to the Commissioner."
         )

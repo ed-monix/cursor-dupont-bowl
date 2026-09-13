@@ -10,10 +10,14 @@ Git is the tamper-evident record. Do not write to Sleeper.
   first-class GM Bots. Humans own those teams and write notes; they do
   not run the GM turn in Cursor. The Commissioner builds packs and wakes
   all 12.
-- Orchestrator: the **Commissioner Grok Bot** clones the repo daily, wakes
-  every GM (Scout/Media still only on waivers), verifies their JSON, and
-  commits. Cursor Cloud Agents read git after that (apply FAAB/lineups,
-  notes, recap follow-up).
+- Orchestrator: the **Commissioner Grok Bot** is the git gate. Repo
+  access is the **native GitHub connector** (or a Cursor Cloud Agent
+  with that connector) — not a clone on the shared Grok Bot computer,
+  not `gh auth login`, not device login, not browser cookies. It wakes
+  every GM (Scout/Media still only on waivers), verifies their JSON,
+  and commits to `main`. Cursor Cloud Agents read git after that
+  (apply FAAB/lineups, notes, recap follow-up). See
+  `docs/skills/github-connector.md`.
 
 
 ## Roles
@@ -37,10 +41,13 @@ A GM turn may only be given the pack from `scripts/gm_pack.py` for that slug
 `state/players.json`, never another `general-manager.md` or `opinions.json`.
 Never search X.
 
-Grok Bots on one account share one cloud computer. **Only the Commissioner**
-clones this repo. GMs never git; they report JSON to the Commissioner, who
-is the gate (`commish_gate.py ingest`). Do not copy other teams' GM files
-into a GM chat. `python scripts/grok_bots.py check` must stay green.
+Grok Bots on one account share one cloud computer. Do not clone this
+repo onto that disk. The sanctioned repo path is the native GitHub
+connector or a Cloud Agent. **Only the Commissioner** is the git gate
+for commits to `main`. GMs never git; packs arrive in chat. They
+report JSON to the Commissioner, who is the gate
+(`commish_gate.py ingest`). Do not copy other teams' GM files into a
+GM chat. `python scripts/grok_bots.py check` must stay green.
 
 ## Commands
 - `/grok-bots` — roster, commissioner clock, daily ops

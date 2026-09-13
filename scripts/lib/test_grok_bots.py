@@ -99,3 +99,36 @@ def test_cli_prompt_builds_owned_team_packs(capsys):
         out = capsys.readouterr().out
         assert slug in out or "Ed" in out or "Tony" in out
         assert out.strip()
+
+
+def test_skills_teach_github_connector_owner_rule():
+    for name in (
+        "skill-commish.md",
+        "skill-gm.md",
+        "skill-scout.md",
+        "skill-media.md",
+        "README.md",
+        "routines.md",
+        "routines-gm.md",
+        "routines-other.md",
+    ):
+        text = (REPO / "bots" / name).read_text(encoding="utf-8")
+        assert "GitHub connector" in text, name
+        assert "Do not connect" not in text, name
+        assert "GitHub plugin" not in text, name
+    rule = (REPO / "docs" / "skills" / "github-connector.md").read_text(
+        encoding="utf-8"
+    )
+    assert "native GitHub connector" in rule
+    assert "gh auth login" in rule
+    assert "device login" in rule
+    roster = grok_bots.load_roster(REPO)
+    assert "GitHub connector" in roster["isolation"]["rule"]
+    commish = next(r for r in roster["roles"] if r["kind"] == "commissioner")
+    profile = grok_bots.profile_text(REPO, commish)
+    assert "GitHub connector" in profile
+    assert "Clone this repo" not in profile
+    gm = next(r for r in roster["roles"] if r.get("slug") == "costanza")
+    gm_profile = grok_bots.profile_text(REPO, gm)
+    assert "never clone git" in gm_profile
+    assert "GitHub connector" in gm_profile

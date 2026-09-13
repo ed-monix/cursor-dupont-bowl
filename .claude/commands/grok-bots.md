@@ -5,11 +5,14 @@ argument-hint: check|routines|ops
 
 # /grok-bots
 
-The Commissioner clones this repo daily, writes `state/ops/`, wakes all
-12 GM Bots (including `your-team` / Ed Monix and `wifes-team` / Tony
-Soprano), ingests their JSON (`commish_gate.py`), and commits. GMs never
-git. Scout and Media still only wake on waivers. Cloud Agents `/apply`
-after the gate. The board is GitHub Pages.
+The Commissioner is the git gate. Repo access is the native GitHub
+connector or a Cursor Cloud Agent — not a clone on the shared Grok
+Bot computer. It writes `state/ops/`, wakes all 12 GM Bots (including
+`your-team` / Ed Monix and `wifes-team` / Tony Soprano), ingests their
+JSON (`commish_gate.py`), and commits. GMs never git; packs arrive in
+chat. Scout and Media still only wake on waivers. Cloud Agents
+`/apply` after the gate. The board is GitHub Pages. See
+`docs/skills/github-connector.md`.
 
 ```bash
 python scripts/grok_bots.py check

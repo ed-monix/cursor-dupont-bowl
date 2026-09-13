@@ -2,10 +2,11 @@
 
 The Commissioner Bot runs a daily check. It does not invent the calendar:
 this module says whether to idle, run waivers, lock a lineup window, or recap.
-The Commissioner clones this repo, runs this module, wakes all 12 GM Bots
-(including owned seats your-team and wifes-team), and is the only Bot that
-writes back to git. GMs never touch the repo. Scout/Media wake on waivers
-only.
+The Commissioner is the git gate. Repo access is the GitHub connector
+or a Cloud Agent (not a clone on the shared Bot computer). It runs this
+module, wakes all 12 GM Bots (including owned seats your-team and
+wifes-team), and is the only Bot that writes back to git. GMs never
+touch the repo; packs arrive in chat. Scout/Media wake on waivers only.
 """
 
 from __future__ import annotations

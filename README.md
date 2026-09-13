@@ -40,10 +40,12 @@ never when it is merely stupid.
   - **`/lineups main`** — lock the rest after late injury news (Sun/Mon).
     Already-kicked games stay frozen.
 - **The Commissioner** is a Grok Bot (`bots/skill-commish.md`): daily clock
-  and git gate. It clones this repo, writes `state/ops/`, wakes **all 12
-  GM Bots** (Scout/Media still only on waivers), verifies their JSON, and
-  commits. It does not apply FAAB or mutate rosters. Cloud Agents run
-  `/apply` after `decisions/` lands.
+  and git gate. Repo access is the **native GitHub connector** or a
+  Cursor Cloud Agent — not a clone on the shared Grok Bot computer.
+  It writes `state/ops/`, wakes **all 12 GM Bots** (Scout/Media still
+  only on waivers), verifies their JSON, and commits. It does not
+  apply FAAB or mutate rosters. Cloud Agents run `/apply` after
+  `decisions/` lands. See `docs/skills/github-connector.md`.
 - **Live scoring** is GitHub Actions (`gameday.yml`, ~20 min on TNF/Sunday/MNF),
   not the Commissioner's 9am check and not Scout. The shareable board is
   **GitHub Pages**: committed `index.html` at the repo root.
@@ -57,7 +59,8 @@ never when it is merely stupid.
 | `TASKS.md` | Phased build tasks |
 | `CLAUDE.md` | Operating instructions for Claude Code sessions |
 | `config/` | League rules, scoring, Grok Bot roster |
-| `bots/` | Grok Bot skills + create notes (do not clone onto the Bot disk) |
+| `bots/` | Grok Bot skills + create notes (GitHub connector / Cloud Agent; do not clone onto the Bot disk) |
+| `docs/skills/` | Owner rule: GitHub connector only |
 | `agents/commissioner.md` | The commissioner agent definition |
 | `teams/` | One folder per team: GM file, roster, owner notes |
 | `state/` | League state: free agents, standings, matchups, ops, transaction log |
@@ -96,7 +99,8 @@ The Commissioner 9am job does **not** refresh the board.
 pip install -r requirements.txt
 python scripts/sync_sleeper.py --settings   # Sleeper-standard scoring/roster
 # Optional: GROK_API_KEY for real X buzz in the tabloid (or paste a buzz file).
-# Commissioner Bot: daily clone + commish_gate.py (see bots/skill-commish.md)
+# Commissioner Bot: GitHub connector / Cloud Agent + commish_gate.py
+#   (see bots/skill-commish.md and docs/skills/github-connector.md)
 # After decisions land: /apply
 # Game-day board: GitHub Actions, or /refresh-board in a Cloud Agent
 #   python scripts/scoreboard.py   # local board at http://localhost:8080

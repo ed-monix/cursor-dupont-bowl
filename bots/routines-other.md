@@ -1,7 +1,10 @@
 # Scout, Media — report to the Commissioner
 
 No calendars. No git. The Commissioner pings you; you reply in chat.
-The Commissioner writes buzz/tabloid into the repo if it passes the gate.
+The Commissioner writes buzz/tabloid into the repo if it passes the
+gate (via the GitHub connector / Cloud Agent — not a box clone).
+See `docs/skills/github-connector.md`.
+
 Scout and Media still only wake on waivers (not lineups or recap).
 
 ## Scout

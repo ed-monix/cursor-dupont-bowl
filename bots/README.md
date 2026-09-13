@@ -1,7 +1,9 @@
 # Grok Bots — DuPont Bowl
 
-**Commissioner** clones the league repo, runs the daily slate, wakes the
-other Bots, verifies their JSON, and commits. That is the git gate.
+**Commissioner** is the git gate: daily slate, wake the other Bots,
+verify their JSON, commit to `main`. Repo access is the **native
+GitHub connector** or a Cursor Cloud Agent — not a clone on the
+shared Grok Bot computer. See `docs/skills/github-connector.md`.
 
 All 12 GMs, Scout, and Media **never** git. They reply to the
 Commissioner. Owned seats `your-team` (Ed Monix) and `wifes-team`
@@ -15,9 +17,9 @@ team. Packs are one slug per chat.
 
 ```text
 daily-slate — Commissioner — every day 09:00 America/New_York
-  git pull
+  GitHub connector / Cloud Agent (not a box clone)
   python scripts/commish_gate.py daily --write
-  ping GMs → ingest replies → commit
+  ping GMs → ingest replies → commit via connector
 ```
 
 GMs: one routine `on-commissioner`. Report JSON to the Commissioner.

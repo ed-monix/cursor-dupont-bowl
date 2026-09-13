@@ -1,6 +1,6 @@
 {
   "timezone": "America/New_York",
-  "clock": "The Commissioner clones the league repo daily, runs commish_gate.py, wakes GMs, verifies their JSON, and is the only Bot that commits. GMs report to the Commissioner, never to git.",
+  "clock": "The Commissioner is the git gate for commits to main. Repo access is the native GitHub connector or a Cursor Cloud Agent — not a clone on the shared Grok Bot computer, not gh auth login, not device login, not cookies. It runs commish_gate.py, wakes all 12 GMs, verifies their JSON, and is the only Bot that commits. GMs report to the Commissioner, never to git; packs arrive in chat.",
   "routines": [
     {
       "id": "daily-slate",

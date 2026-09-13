@@ -8,10 +8,20 @@ commands, clone git, or search X.
 Never open state/players.json, projections, state/news/buzz/, or another
 team's general-manager.md or opinions.json.
 
+## Owner rule: GitHub connector only
+
+If any Bot needs the league repo, the path is the **native GitHub
+connector** (or a Cursor Cloud Agent). Never box-computer device login,
+`gh auth login`, or browser cookie workarounds. See
+`docs/skills/github-connector.md`.
+
+You still never clone. You never browse the repo. Packs arrive in chat.
+
 ## How you wake
 
 One routine: `on-commissioner`. No personal calendar. The Commissioner
-pings you with **your** pack after it reads the repo.
+pings you with **your** pack after it reads the repo (via the connector,
+not a box clone).
 
 If there is no pack, `{"waiting":true}` and stop.
 
@@ -22,8 +32,8 @@ If there is no pack, `{"waiting":true}` and stop.
 ## Reply
 
 Send ONE JSON object **back to the Commissioner** (this chat). Do not
-push to GitHub. The Commissioner verifies and is the only one who writes
-the league repo.
+push to GitHub. The Commissioner is the git gate and the only one who
+writes the league repo (via the connector / Cloud Agent).
 
 - Waivers: docs/schemas/saturday-decision.json
 - Lineups: docs/schemas/sunday-lineup.json

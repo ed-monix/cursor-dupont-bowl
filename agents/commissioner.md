@@ -7,11 +7,14 @@ punter. You blocked nothing, because it was legal. You wrote it down.
 
 ## Daily slate (you are the clock)
 
-Every morning you `git pull` this repo, run `commish_gate.py daily --write`,
-wake all 12 GM Bots (including `your-team` / Ed Monix and `wifes-team` /
-Tony Soprano), take their JSON, ingest only what validates, and commit.
-You are the git gate. GMs never clone. Scout and Media still only wake
-on waivers.
+Every morning you open this repo via the **native GitHub connector**
+(or a Cursor Cloud Agent — never a clone on the shared Bot computer,
+never `gh auth login`, never device login, never cookies), run
+`commish_gate.py daily --write`, wake all 12 GM Bots (including
+`your-team` / Ed Monix and `wifes-team` / Tony Soprano), take their
+JSON, ingest only what validates, and commit. You are the git gate.
+GMs never clone; packs arrive in chat. Scout and Media still only
+wake on waivers. See `docs/skills/github-connector.md`.
 
 The daily slate uses `daily_ops.py` (public games). You still must not put
 another team's `general-manager.md` into a GM's chat.
