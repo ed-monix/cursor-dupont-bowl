@@ -60,7 +60,12 @@ DEFAULT_MODEL = "claude-sonnet-5"
 SCHEMA_FOR_RUN = {
     "waivers": "saturday-decision.json",
     "lineups": "sunday-lineup.json",
+    "trades": "trade-response.json",
 }
+
+# decision_filename()'s vocabulary, which decides <slug>.json vs
+# <slug>.lineup-<w>.json vs <slug>.trade.json.
+KIND_FOR_RUN = {"waivers": "waivers", "lineups": "lineups", "trades": "trades"}
 
 
 def turn_with_retry(slug: str, private_prompt: str, system_text: str,
@@ -97,6 +102,10 @@ def fallback_object(run: str, slug: str, errors: list) -> dict:
             "fallback_reason": "; ".join(errors)[:300] or "unvalidated reply"}
     if run == "waivers":
         base.update({"claims": [], "drops": [], "note_reply": ""})
+    elif run == "trades":
+        # A GM who cannot be understood has not agreed to anything. Reject is
+        # the only fallback that changes no roster.
+        base.update({"response": "reject"})
     else:
         base.update({"starters": {}, "bench": []})
     return base
@@ -107,7 +116,10 @@ def main() -> int:
         description="Run the 12 GM turns as isolated claude -p subprocesses.")
     ap.add_argument("--week", type=int, required=True)
     ap.add_argument("--season", default="2026")
-    ap.add_argument("--run", choices=("waivers", "lineups"), default="waivers")
+    ap.add_argument("--run", choices=("waivers", "lineups", "trades"),
+                    default="waivers")
+    ap.add_argument("--offer", metavar="FILE",
+                    help="trades only: the offer JSON addressed to --team")
     ap.add_argument("--window", choices=("early", "main"), default=None)
     ap.add_argument("--team", help="one slug (default: all 12)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
@@ -128,16 +140,31 @@ def main() -> int:
     root = pathlib.Path(args.root)
     if args.run == "lineups" and not args.window:
         args.window = "main"
+    if args.run == "trades":
+        # A trade response is one turn to one team, not a twelve-way fan-out:
+        # only the target is asked, and only about the offer in front of it.
+        if not args.team or not args.offer:
+            ap.error("--run trades requires --team (the target) and --offer")
 
     public = packs.build_public_pack(root, args.week, args.season)
     system_text = packs.build_gm_system(public, args.run, args.window)
     slugs = [args.team] if args.team else packs.team_slugs(root)
+
+    offer = None
+    if args.run == "trades":
+        try:
+            offer = json.loads(pathlib.Path(args.offer).read_text(encoding="utf-8"))
+        except (OSError, ValueError) as e:
+            print(f"gm_turn: cannot read --offer {args.offer}: {e}", file=sys.stderr)
+            return 1
 
     prompts = {}
     for slug in slugs:
         private = packs.build_private_pack(
             root, slug, args.week, args.season, public=public,
             run=args.run, window=args.window, include_public=False)
+        if offer is not None:
+            private["trade_offer_received"] = offer
         prompts[slug] = packs.render_private_prompt(private)
 
     shared = len(system_text)
@@ -153,7 +180,7 @@ def main() -> int:
 
     schema_name = SCHEMA_FOR_RUN[args.run]
     schema = load_schema(schema_name)
-    kind = "lineups" if args.run == "lineups" else "waivers"
+    kind = KIND_FOR_RUN[args.run]
 
     schema_arg = schema if args.structured else None
 

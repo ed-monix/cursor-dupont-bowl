@@ -338,13 +338,15 @@ def public_for_run(public: dict, run: str = "waivers") -> dict:
         "tabloid": public.get("tabloid"),
         "forum": public.get("forum"),
         "last_week_forum": public.get("last_week_forum"),
+        # A trade target scouts the other roster; it is not shopping the wire.
         "free_agents_trimmed": public.get("free_agents_trimmed") if run == "waivers" else None,
         "nfl_games": public.get("nfl_games"),
         "standings": public.get("standings"),
         "fantasy_matchups": public.get("fantasy_matchups"),
         "rules": public.get("rules"),
-        # Full league board only on the waiver/trade run for scouting.
-        "league_board": public.get("league_board") if run == "waivers" else None,
+        # Full league board on the waiver and trade runs, for scouting.
+        "league_board": (public.get("league_board")
+                         if run in ("waivers", "trades") else None),
     }
 
 
@@ -367,6 +369,18 @@ def render_gm_prompt(pack: dict) -> str:
         "Beliefs first: state your in-character read, then choose moves consistent with that read.",
         "owner_note and gameday_note are pressure, not orders.",
     ]
+    if run == "trades":
+        lines[lines.index("## House rules") + 2:lines.index("## House rules") + 2] = [
+            "A trade offer addressed to you is in your private context. The"
+            " office has already checked it is legal — both rosters survive the"
+            " swap and every player named is where the offerer thinks he is. So"
+            " this is purely your call: accept, reject, or counter.",
+            "Judge it the way your GM file would, not the way a spreadsheet"
+            " would. A lopsided trade you like is allowed. So is refusing a good"
+            " one out of spite.",
+            "`counter` requires a counter object; its `to_team` is the original"
+            " offerer.",
+        ]
     if run == "lineups" and window:
         lines.append(
             f"This is lineup window `{window}`. Do not move players in locked_slots. "
@@ -394,9 +408,11 @@ def build_gm_system(public: dict, run: str = "waivers",
     NOTHING team-specific may go in here. A single team's name, roster or note
     leaking into this file is a parity break — every GM reads it.
     """
-    schema_name = (
-        "saturday-decision.json" if run == "waivers" else "sunday-lineup.json"
-    )
+    schema_name = {
+        "waivers": "saturday-decision.json",
+        "lineups": "sunday-lineup.json",
+        "trades": "trade-response.json",
+    }[run]
     schema = decisions.load_schema(schema_name)
     fields = ", ".join(sorted((schema.get("properties") or {}).keys()))
     required = ", ".join(schema.get("required") or [])
@@ -438,6 +454,18 @@ def build_gm_system(public: dict, run: str = "waivers",
         json.dumps(schema, indent=1),
         "```",
     ]
+    if run == "trades":
+        lines[lines.index("## House rules") + 2:lines.index("## House rules") + 2] = [
+            "A trade offer addressed to you is in your private context. The"
+            " office has already checked it is legal — both rosters survive the"
+            " swap and every player named is where the offerer thinks he is. So"
+            " this is purely your call: accept, reject, or counter.",
+            "Judge it the way your GM file would, not the way a spreadsheet"
+            " would. A lopsided trade you like is allowed. So is refusing a good"
+            " one out of spite.",
+            "`counter` requires a counter object; its `to_team` is the original"
+            " offerer.",
+        ]
     if run == "lineups" and window:
         lines.append(
             f"This is lineup window `{window}`. Do not move players in locked_slots. "
