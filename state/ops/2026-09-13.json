@@ -138,7 +138,9 @@
     "also": []
   },
   "gate": {
-    "received": {},
+    "received": {
+      "costanza": "/workspace/state/weeks/2026-w01/decisions/costanza.lineup-main.json"
+    },
     "rejected": {}
   }
 }
