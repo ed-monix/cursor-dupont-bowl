@@ -16,9 +16,13 @@ The repo **is** the league. There is no server, no database, no hosted app.
   Commissioner are Grok Bots (`config/grok-bots.json`), including owned
   seats `your-team` (Ed Monix) and `wifes-team` (Tony Soprano). Slash
   commands in `.cursor/commands/` orchestrate: scripts build packs; the
-  Commissioner Bot is the git gate (clone, ingest, commit). GMs report
-  to the Commissioner, never to git. Humans own two seats and write
-  notes; they do not run the GM turn.
+  Commissioner Bot verifies GM JSON. A Cursor Cloud Agent is the only
+  git writer (gate / daily ops push straight to `main`; larger
+  doc/code changes open a PR). Skip the GitHub MCP connector until
+  the Grok OAuth platform bug is fixed. Never `gh auth login` or
+  device login on the shared Bot computer. GMs report to the
+  Commissioner, never to git; packs arrive in chat. Humans own two
+  seats and write notes; they do not run the GM turn.
 - **Python scripts = the deterministic parts.** Anything that must be exactly
   right — scoring math, roster legality, FAAB resolution, Sleeper syncing —
   is a script, not a judgment call. Agents decide; scripts validate and apply.
@@ -29,12 +33,12 @@ The repo **is** the league. There is no server, no database, no hosted app.
 ### Division of labor per weekly run
 
 ```
-Commissioner Bot (daily 09:00 ET) — git gate
-  ├─ git pull league repo
+Cloud Agent (daily 09:00 ET) — writes git
+  ├─ repo already on the Cloud Agent (not a box clone, not GitHub MCP)
   ├─ commish_gate.py daily --write  →  state/ops/YYYY-MM-DD.json
   ├─ ping GMs with packs; GMs reply to Commissioner only
   ├─ commish_gate.py ingest         →  decisions/ if valid
-  └─ commit. Cloud Agents read git from there.
+  └─ commit and push straight to main
 ```
 
 ## 2. League format (Sleeper standard)

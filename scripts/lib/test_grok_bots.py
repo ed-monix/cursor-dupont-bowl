@@ -99,3 +99,42 @@ def test_cli_prompt_builds_owned_team_packs(capsys):
         out = capsys.readouterr().out
         assert slug in out or "Ed" in out or "Tony" in out
         assert out.strip()
+
+
+def test_skills_teach_cloud_agents_owner_rule():
+    for name in (
+        "skill-commish.md",
+        "skill-gm.md",
+        "skill-scout.md",
+        "skill-media.md",
+        "README.md",
+        "routines.md",
+        "routines-gm.md",
+        "routines-other.md",
+    ):
+        text = (REPO / "bots" / name).read_text(encoding="utf-8")
+        assert "Cloud Agent" in text, name
+        assert "Do not connect" not in text, name
+        assert "GitHub plugin" not in text, name
+        assert "never clone" in text.lower() or "do not clone" in text.lower() or "never git" in text.lower(), name
+    rule = (REPO / "docs" / "skills" / "cloud-agents.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Cursor Cloud Agents" in rule
+    assert "GitHub MCP connector" in rule
+    assert "gh auth login" in rule
+    assert "device login" in rule
+    assert "straight to `main`" in rule
+    assert "github-connector-only-43f8" in rule
+    roster = grok_bots.load_roster(REPO)
+    assert "Cursor Cloud Agents" in roster["isolation"]["rule"]
+    assert "gh auth login" in roster["isolation"]["rule"]
+    commish = next(r for r in roster["roles"] if r["kind"] == "commissioner")
+    profile = grok_bots.profile_text(REPO, commish)
+    assert "Cloud Agent" in profile
+    assert "Clone this repo" not in profile
+    gm = next(r for r in roster["roles"] if r.get("slug") == "costanza")
+    gm_profile = grok_bots.profile_text(REPO, gm)
+    assert "never clone git" in gm_profile
+    assert "Cloud Agent" in gm_profile
+    assert "Packs arrive in chat" in gm_profile

@@ -1,8 +1,10 @@
 # Scout, Media — report to the Commissioner
 
 No calendars. No git. The Commissioner pings you; you reply in chat.
-The Commissioner writes buzz/tabloid into the repo if it passes the gate.
-Scout and Media still only wake on waivers (not lineups or recap).
+A Cursor Cloud Agent writes buzz/tabloid into the repo if it passes
+the gate. Scout and Media still only wake on waivers (not lineups or
+recap). Packs arrive in chat. Never clone; never `gh auth login` or
+device login.
 
 ## Scout
 

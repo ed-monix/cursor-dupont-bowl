@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""commish_gate.py — Commissioner is the only Bot that writes the league repo.
+"""commish_gate.py — verify GM JSON; a Cloud Agent writes the league repo.
 
     python scripts/commish_gate.py daily --date 2026-09-13 --write
     python scripts/commish_gate.py ingest --week 1 --kind lineups-main \\

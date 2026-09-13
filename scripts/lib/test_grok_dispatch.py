@@ -206,7 +206,11 @@ def test_cli_dispatch_without_gateway_prints_enablement(monkeypatch, capsys):
     assert code == 2
     err = capsys.readouterr().err
     assert "commish_gate.py" in err
-    assert "git gate" in enablement_text()
+    text = enablement_text()
+    assert "Cloud Agent" in text
+    assert "gh auth login" in text
+    assert "shared Grok Bot computer" in text
+    assert "GitHub MCP connector" in text
 
 
 def test_cli_run_sheet_says_dispatch(capsys):
@@ -220,6 +224,20 @@ def test_cli_run_sheet_says_dispatch(capsys):
     assert "your-team" in out
     assert "wifes-team" in out
     assert "Cursor pack-only" not in out
+    assert "Cloud Agent" in out
+
+
+def test_create_instructions_use_cloud_agents():
+    roster = grok_bots.load_roster(REPO)
+    commish = next(r for r in roster["roles"] if r["kind"] == "commissioner")
+    gm = next(r for r in roster["roles"] if r.get("slug") == "costanza")
+    commish_text = grok_dispatch.create_instructions(REPO, commish)
+    gm_text = grok_dispatch.create_instructions(REPO, gm)
+    assert "Cloud Agent" in commish_text
+    assert "Clone this repo" not in commish_text
+    assert "Do not clone git" in gm_text
+    assert "Packs arrive in chat" in gm_text
+    assert "Cloud Agent" in gm_text
 
 
 def test_gm_bot_roles_includes_owned():

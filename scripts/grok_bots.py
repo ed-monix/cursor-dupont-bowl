@@ -10,8 +10,10 @@
     python scripts/grok_bots.py run-sheet --week 1 --run waivers
 
 Weekly clock is dispatch (gateway sendPrompt), not pasting 12 chats.
-Does not clone the repo onto the shared Bot computer. All 12 GMs are
-Grok Bots, including owned seats your-team (Ed Monix) and wifes-team
+Does not clone the repo onto the shared Bot computer. Repo access is
+a Cursor Cloud Agent (skip GitHub MCP until the Grok OAuth bug is
+fixed; never gh auth login / device login). All 12 GMs are Grok
+Bots, including owned seats your-team (Ed Monix) and wifes-team
 (Tony Soprano).
 """
 from __future__ import annotations
@@ -110,6 +112,8 @@ def cmd_run_sheet(root: pathlib.Path, week: int, run: str, season: str,
     print(f"# DuPont Bowl {run} week {week:02d}")
     print("# Weekly clock: dispatch. Do not paste 12 packs by hand.")
     print("# Do NOT git-clone this repo onto the Grok Bot computer.")
+    print("# Repo access: Cursor Cloud Agent only (skip GitHub MCP).")
+    print("# Never gh auth login or device login on the box computer.")
     print()
     print(
         f"python scripts/grok_bots.py dispatch --week {week} "
