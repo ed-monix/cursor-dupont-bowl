@@ -28,6 +28,7 @@ def test_viewer_starters_marks_played_and_carries_meta():
     by = {r["slot"]: r for r in rows}
     assert "WR2" not in by                       # null slot omitted
     assert by["QB"]["played"] is True
+    assert by["QB"]["id"] == "p1"
     assert by["QB"]["name"] == "Star QB" and by["QB"]["nfl"] == "KC"
     assert "300" in by["QB"]["stat"]             # stat summary present
     assert by["WR1"]["played"] is False          # no stat line -> yet to play

@@ -547,6 +547,7 @@ def viewer_starters(team: dict, players: dict) -> list:
         pos = info.get("pos", "?")
         out.append({
             "slot": slot,
+            "id": pid,
             "name": info.get("name", pid),
             "pos": pos,
             "nfl": info.get("team") or "FA",
@@ -807,6 +808,7 @@ def build_league_data(season: str) -> dict:
         "rosters": rosters,
         "schedule": schedule_view,
         "office": office,
+        "scoring": scoring,
         "updated": datetime.datetime.now().isoformat(),
     }
 

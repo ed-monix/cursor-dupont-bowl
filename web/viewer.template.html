@@ -735,16 +735,131 @@
     officeEl.innerHTML = '<span class="pill office">'+esc(label)+'</span>';
   }
 
+  var PTS_ALLOW_TIERS = [
+    ["pts_allow_0",0],["pts_allow_1_6",6],["pts_allow_7_13",13],
+    ["pts_allow_14_20",20],["pts_allow_21_27",27],["pts_allow_28_34",34],
+    ["pts_allow_35p",null]
+  ];
+  var PTS_ALLOW_TIER_KEYS = {};
+  PTS_ALLOW_TIERS.forEach(function(t){ PTS_ALLOW_TIER_KEYS[t[0]] = true; });
+
+  function scorePlayer(line, scoring){
+    if(!line) return 0;
+    var total = 0;
+    var numeric = line.pts_allow;
+    if(numeric != null && numeric !== ""){
+      var key = "pts_allow_35p";
+      for(var i=0;i<PTS_ALLOW_TIERS.length;i++){
+        if(PTS_ALLOW_TIERS[i][1]==null || numeric<=PTS_ALLOW_TIERS[i][1]){
+          key = PTS_ALLOW_TIERS[i][0]; break;
+        }
+      }
+      total += scoring[key]||0;
+    }
+    Object.keys(line).forEach(function(k){
+      if(k==="pts_allow") return;
+      if(numeric!=null && numeric!=="" && PTS_ALLOW_TIER_KEYS[k]) return;
+      if(scoring[k]!=null) total += (Number(line[k])||0) * scoring[k];
+    });
+    return total;
+  }
+
+  function nstat(s,k){ return Math.round(s[k]||0); }
+
+  function statSummary(pos, s){
+    if(!s) return "";
+    var parts = [];
+    if(pos==="QB"){
+      if(nstat(s,"pass_yd")||nstat(s,"pass_td")) parts.push(nstat(s,"pass_yd")+" pass yd");
+      if(nstat(s,"pass_td")) parts.push(nstat(s,"pass_td")+" pass TD");
+      if(nstat(s,"pass_int")) parts.push(nstat(s,"pass_int")+" INT");
+      if(nstat(s,"rush_yd")) parts.push(nstat(s,"rush_yd")+" rush yd");
+      if(nstat(s,"rush_td")) parts.push(nstat(s,"rush_td")+" rush TD");
+    } else if(pos==="RB"){
+      if(nstat(s,"rush_yd")||nstat(s,"rush_td")) parts.push(nstat(s,"rush_yd")+" rush yd");
+      if(nstat(s,"rush_td")) parts.push(nstat(s,"rush_td")+" TD");
+      if(nstat(s,"rec")) parts.push(nstat(s,"rec")+" rec, "+nstat(s,"rec_yd")+" yd");
+      if(nstat(s,"rec_td")) parts.push(nstat(s,"rec_td")+" rec TD");
+    } else if(pos==="WR"||pos==="TE"){
+      if(nstat(s,"rec")||nstat(s,"rec_yd")) parts.push(nstat(s,"rec")+" rec, "+nstat(s,"rec_yd")+" yd");
+      if(nstat(s,"rec_td")) parts.push(nstat(s,"rec_td")+" TD");
+      if(nstat(s,"rush_yd")) parts.push(nstat(s,"rush_yd")+" rush yd");
+    } else if(pos==="K"){
+      var fg = nstat(s,"fgm_0_19")+nstat(s,"fgm_20_29")+nstat(s,"fgm_30_39")+nstat(s,"fgm_40_49")+nstat(s,"fgm_50p");
+      if(fg) parts.push(fg+" FG");
+      if(nstat(s,"xpm")) parts.push(nstat(s,"xpm")+" XP");
+    } else if(pos==="DEF"){
+      if("pts_allow" in s) parts.push(nstat(s,"pts_allow")+" pa");
+      if(nstat(s,"sack")) parts.push(nstat(s,"sack")+" sk");
+      if(nstat(s,"int")) parts.push(nstat(s,"int")+" INT");
+      if(nstat(s,"fum_rec")) parts.push(nstat(s,"fum_rec")+" FR");
+      if(nstat(s,"def_td")) parts.push(nstat(s,"def_td")+" TD");
+    }
+    return parts.join(", ");
+  }
+
+  function playerHasPlayed(line){
+    if(!line) return false;
+    if(line.gp || line.gms_active || line.off_snp || line.def_snp) return true;
+    var keys = ["pass_yd","pass_td","rush_yd","rush_td","rec","rec_yd","rec_td","xpm","sack","int","pts_allow"];
+    for(var i=0;i<keys.length;i++){
+      if(line[keys[i]]) return true;
+    }
+    return false;
+  }
+
+  function applySleeperStats(stats){
+    var scoring = LEAGUE.scoring || {};
+    (LEAGUE.weeks||[]).forEach(function(w){
+      if(w.status!=="live") return;
+      w.matchups.forEach(function(m){
+        ["home","away"].forEach(function(side){
+          var team = m[side];
+          var total = 0;
+          (team.starters||[]).forEach(function(p){
+            var line = p.id ? stats[p.id] : null;
+            if(line && playerHasPlayed(line)){
+              p.played = true;
+              p.pts = Math.round(scorePlayer(line, scoring)*100)/100;
+              p.stat = statSummary(p.pos, line);
+            }
+            total += p.played ? p.pts : 0;
+          });
+          team.total = Math.round(total*100)/100;
+        });
+        if(m.home.total > m.away.total) m.leader = "home";
+        else if(m.away.total > m.home.total) m.leader = "away";
+        else m.leader = null;
+      });
+    });
+  }
+
+  function pullLiveStats(){
+    var w = LEAGUE.weeks[wIdx];
+    if(!w || w.status!=="live") return;
+    if(document.hidden) return;
+    var url = "https://api.sleeper.app/v1/stats/nfl/regular/"+LEAGUE.season+"/"+w.week;
+    fetch(url).then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+      .then(function(stats){
+        applySleeperStats(stats);
+        var foot = document.getElementById("foot-right");
+        if(foot){
+          foot.textContent = "Live from Sleeper · "+
+            (new Date()).toLocaleString([], {hour:"numeric",minute:"2-digit",second:"2-digit"})+
+            " · unofficial until Monday";
+        }
+        if(tab==="scores") renderScores();
+      }).catch(function(){});
+  }
+
   var upd = LEAGUE.updated ? new Date(LEAGUE.updated) : null;
   document.getElementById("foot-right").textContent = upd
     ? ("Updated "+upd.toLocaleString([], {weekday:"short",hour:"numeric",minute:"2-digit"})+
-       " · live board from git · unofficial until Monday")
+       " · unofficial until Monday")
     : "";
 
   selTab(tab);   // sync tab highlight with the default (Guide in preseason)
-
-  // GitHub Pages is a static snapshot; reload to pick up the next Actions publish.
-  var AUTO_RELOAD_MS = 20 * 60 * 1000;
-  if(AUTO_RELOAD_MS>0) setTimeout(function(){location.reload();}, AUTO_RELOAD_MS);
+  pullLiveStats();
+  setInterval(pullLiveStats, 30000);
 })();
 </script>
