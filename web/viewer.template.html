@@ -379,6 +379,17 @@
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
 
+  var SLOT_ORDER = ["QB","RB1","RB2","WR1","WR2","TE","FLEX","K","DEF"];
+  function slotIndex(slot){
+    var i = SLOT_ORDER.indexOf(slot);
+    return i < 0 ? SLOT_ORDER.length : i;
+  }
+  function orderedStarters(list){
+    return (list || []).slice().sort(function(a,b){
+      return slotIndex(a.slot) - slotIndex(b.slot);
+    });
+  }
+
   function playerRow(p){
     var out = p.played ? "" : " out";
     var pts = p.played ? p.pts.toFixed(1) : "–";
@@ -393,7 +404,7 @@
 
   function detail(m){
     function col(side,isWin){
-      var rows = side.starters.map(playerRow).join("");
+      var rows = orderedStarters(side.starters).map(playerRow).join("");
       return '<div class="col'+(isWin?" win":"")+'">'+rows+'</div>';
     }
     return '<div class="detail">'+
@@ -560,7 +571,7 @@
     }).join("");
     var t = r.teams[rosterIdx];
     var faab = (t.faabRemaining!=null) ? '<span class="rfaab num">FAAB $'+t.faabRemaining+'</span>' : "";
-    var starters = t.starters.map(rosterSlotRow).join("");
+    var starters = orderedStarters(t.starters).map(rosterSlotRow).join("");
     var bench = t.bench.map(function(p){ return rosterSlotRow(p); }).join("");
     var ir = t.ir.map(function(p){ return rosterSlotRow(p); }).join("");
     view.innerHTML =

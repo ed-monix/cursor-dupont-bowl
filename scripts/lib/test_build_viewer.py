@@ -32,6 +32,21 @@ def test_viewer_starters_marks_played_and_carries_meta():
     assert "300" in by["QB"]["stat"]             # stat summary present
     assert by["WR1"]["played"] is False          # no stat line -> yet to play
     assert by["WR1"]["stat"] == ""
+    assert [r["slot"] for r in rows] == ["QB", "RB1", "WR1"]
+
+
+def test_viewer_starters_uses_fantasy_slot_order_not_alpha_keys():
+    # roster.json / lineups.json often serialize slots alphabetically (DEF, FLEX, K…)
+    team = make_team(
+        "tropics", 4.1,
+        scores={"p1": 4.1, "p2": 0.0},
+        stat_lines={"p1": {"rec": 3, "rec_yd": 26}},
+        starters={"DEF": "p2", "FLEX": "p2", "K": "p2", "QB": "p1",
+                  "RB1": "p2", "RB2": "p2", "TE": "p2", "WR1": "p1", "WR2": "p2"})
+    rows = build_viewer.viewer_starters(team, PLAYERS)
+    assert [r["slot"] for r in rows] == [
+        "QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "K", "DEF",
+    ]
 
 
 def test_viewer_matchup_maps_leader_slug_to_side():
