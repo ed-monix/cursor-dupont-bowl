@@ -166,13 +166,15 @@ def test_screen_offers_rejects_two_offers_from_one_team(tmp_path: Path, monkeypa
 
     import lib.trades as trades_mod
 
+    original_collect_offers = trades_mod.collect_offers
+
     class DupDict(dict):
         def items(self):
             base = list(super().items())
             return base + base
 
     monkeypatch.setattr(trades_mod, "collect_offers",
-                         lambda decisions_dir: DupDict(trades_mod.collect_offers(decisions_dir)))
+                         lambda decisions_dir: DupDict(original_collect_offers(decisions_dir)))
 
     records = screen_offers(tmp_path, "2026", 5, rosters=rosters, players=PLAYERS)
     assert len(records) == 2
