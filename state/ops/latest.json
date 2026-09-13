@@ -140,7 +140,9 @@
   "gate": {
     "received": {
       "costanza": "/workspace/state/weeks/2026-w01/decisions/costanza.lineup-main.json",
-      "coach-taylor": "/workspace/state/weeks/2026-w01/decisions/coach-taylor.lineup-main.json"
+      "coach-taylor": "/workspace/state/weeks/2026-w01/decisions/coach-taylor.lineup-main.json",
+      "leon-black": "/workspace/state/weeks/2026-w01/decisions/leon-black.lineup-main.json",
+      "harry-caray": "/workspace/state/weeks/2026-w01/decisions/harry-caray.lineup-main.json"
     },
     "rejected": {}
   }
