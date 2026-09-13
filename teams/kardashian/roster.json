@@ -11,15 +11,15 @@
   "ir": [],
   "name": "The Golden Child Drop",
   "starters": {
+    "DEF": "PHI",
+    "FLEX": "11635",
+    "K": "13545",
     "QB": "6904",
     "RB1": "4866",
     "RB2": "12489",
-    "WR1": "6794",
-    "WR2": "12526",
     "TE": "4217",
-    "FLEX": "11635",
-    "K": "13545",
-    "DEF": "PHI"
+    "WR1": "6794",
+    "WR2": "12526"
   },
   "team": "kardashian"
 }

@@ -11,15 +11,15 @@
   "ir": [],
   "name": "Clear Eyes Full Hearts",
   "starters": {
+    "DEF": "LAC",
+    "FLEX": "5927",
+    "K": "7839",
     "QB": "5870",
     "RB1": "12507",
     "RB2": "7021",
-    "WR1": "9493",
-    "WR2": "7547",
     "TE": "5012",
-    "FLEX": "5927",
-    "K": "7839",
-    "DEF": "LAC"
+    "WR1": "9493",
+    "WR2": "7547"
   },
   "team": "coach-taylor"
 }

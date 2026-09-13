@@ -11,15 +11,15 @@
   "ir": [],
   "name": "The Corrective Action Plan",
   "starters": {
+    "DEF": "KC",
+    "FLEX": "8228",
+    "K": "8259",
     "QB": "4943",
     "RB1": "9221",
     "RB2": "8151",
-    "WR1": "6801",
-    "WR2": "7525",
     "TE": "7553",
-    "FLEX": "13279",
-    "K": "8259",
-    "DEF": "KC"
+    "WR1": "6801",
+    "WR2": "7525"
   },
   "team": "patricia-moyer"
 }

@@ -11,15 +11,15 @@
   "ir": [],
   "name": "Eastern Market Ducks",
   "starters": {
+    "DEF": "SEA",
+    "FLEX": "7588",
+    "K": "11539",
     "QB": "11563",
     "RB1": "9226",
     "RB2": "9224",
-    "WR1": "9504",
-    "WR2": "6819",
     "TE": "10859",
-    "FLEX": "7588",
-    "K": "11539",
-    "DEF": "SEA"
+    "WR1": "9504",
+    "WR2": "6819"
   },
   "team": "wifes-team"
 }
