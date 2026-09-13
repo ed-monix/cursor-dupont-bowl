@@ -85,14 +85,23 @@ def main(argv=None) -> int:
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--action", help="override ops action")
+    # A caller that already knows the stage must be able to say so. Reading the
+    # week from state/ops/latest.json is right for the Commissioner's daily job
+    # but wrong for anyone driving a specific run: ops is whatever the last
+    # daily_ops --write decided, so an explicit run would otherwise apply the
+    # wrong stage for the wrong week without complaining.
+    ap.add_argument("--week", type=int, help="override ops week")
+    ap.add_argument("--season", help="override ops season")
+    ap.add_argument("--window", choices=("early", "main"),
+                    help="override ops window")
     args = ap.parse_args(argv)
 
     root = pathlib.Path(args.root)
     ops = load_ops(root)
     action = args.action or ops.get("action") or "idle"
-    week = int(ops.get("week") or 0)
-    season = str(ops.get("season") or "2026")
-    window = ops.get("window")
+    week = int(args.week if args.week is not None else (ops.get("week") or 0))
+    season = str(args.season or ops.get("season") or "2026")
+    window = args.window or ops.get("window")
     print(json.dumps({"action": action, "week": week, "window": window}, sort_keys=True))
 
     if action in (None, "idle"):
