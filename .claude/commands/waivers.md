@@ -46,7 +46,8 @@ python scripts/sync_sleeper.py --schedule --week <WW>
 python scripts/free_agents.py  --week <WW>
 python scripts/league_board.py --week <WW>
 python scripts/derive_news.py  --week <WW>
-python scripts/fetch_buzz.py   --week <WW>   # owner file wins; else GROK_API_KEY; else skip
+python scripts/buzz_inbox.py   --week <WW>   # Grok automation's X drop -> canonical buzz file
+python scripts/fetch_buzz.py   --week <WW>   # owner file wins; no GROK_API_KEY set, so else skip
 python scripts/gm_pack.py      --week <WW> --run waivers
 ```
 
@@ -66,15 +67,25 @@ tabloid. NEVER a GM file. Rebuild:
 python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
-## 3. GM decisions — Grok Bots + two Cursor owned GMs
+## 3. GM decisions — all 12, one command
 
 ```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind waivers
+python scripts/gm_turn.py --week <WW> --run waivers
 ```
 
-Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
-For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
-order is context only; bids are blind.
+One isolated `claude -p` per team on Sonnet, empty working directory, pack on
+stdin. Writes `state/weeks/2026-w<WW>/decisions/<slug>.json`. All twelve teams
+run identically — `your-team` and `wifes-team` included, same model, same pack
+shape, no Cursor sidecar.
+
+Bids are blind by construction, not by convention: turn one warms the shared
+prefix and the other eleven run concurrently, so no GM can see another's claims.
+Reverse-standings order is context only. `--dry-run` sizes the prompts without
+calling; `--save-raw DIR` keeps the raw envelopes when something fails to
+validate.
+
+The legacy gateway path (`python scripts/grok_bots.py dispatch --week <WW>
+--kind waivers`) still works and is unchanged.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver

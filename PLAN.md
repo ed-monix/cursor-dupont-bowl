@@ -287,6 +287,15 @@ validate agent output.
   run proceeds without it. Sentiment only — no script or validator ever reads
   it, Sleeper remains the sole source of facts, and GMs only ever see the
   mogul's rewrite, never this file.
+- `state/news/buzz/inbox/` — landing zone for the owner's external Grok
+  automation (SuperGrok subscription, NOT the xAI API; `GROK_API_KEY` stays
+  unset). It commits one markdown file here per week under any filename, with
+  no knowledge of the league week. `scripts/buzz_inbox.py --week N` promotes the
+  most recently modified file to the canonical path above, stamps the standard
+  header, and deletes the consumed file; an existing canonical file always wins.
+  Same standing as the buzz file itself: optional, sentiment only, never read by
+  a script or a validator, never seen by a GM. `docs/grok-automation.md` holds
+  the prompt.
 
 ### Draft
 - `state/draft-log.jsonl` — one object per pick `{pick_no, round, team,

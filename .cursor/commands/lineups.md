@@ -39,16 +39,24 @@ python scripts/league_board.py --week <WW>
 python scripts/gm_pack.py --week <WW> --run lineups --window <early|main>
 ```
 
-## 2. GM lineups (Grok Bots + two Cursor owned GMs)
+## 2. GM lineups (all 12, one command)
 
 ```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
+python scripts/gm_turn.py --week <WW> --run lineups --window <W>
 ```
 
-Celebrity replies: `docs/schemas/sunday-lineup.json` into
-`decisions/<slug>.lineup-<W>.json`. Owned GMs (`your-team`, `wifes-team`)
-use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
-are an opinion.
+All twelve GMs, including `your-team` and `wifes-team`, run the same way:
+one isolated `claude -p` per team on Sonnet, empty working directory, pack on
+stdin. No Grok gateway, no Cursor sidecar, no awake laptop. Replies validate
+against `docs/schemas/sunday-lineup.json` into `decisions/<slug>.lineup-<W>.json`.
+
+Isolation is structural here, not instructed: each turn runs with no repo
+mounted, so there is no `state/players.json` and no other team's files to open.
+Turn one fires alone to warm the shared prefix, then the rest fan out — so no
+GM sees another's lineup. Add `--dry-run` to size the prompts without calling.
+
+The legacy gateway path (`python scripts/grok_bots.py dispatch --week <WW>
+--kind lineups --window <W>`) still works and is unchanged.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window
