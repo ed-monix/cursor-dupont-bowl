@@ -282,7 +282,9 @@ def test_faab_inputs_step_mirrors_lib_apply_gate(tmp_path):
     }}))
 
     steps = office.build_waivers_steps(tmp_path, 5, "2026")
-    prep = next(s for s in steps if s.action is not None)
+    # Select by label, not by "first action step" — the waivers stage now has
+    # several action steps (forum, trades, press) and position is not identity.
+    prep = next(s for s in steps if "FAAB inputs" in s.label)
     prep.action()
 
     wdir = tmp_path / "state" / "weeks" / "2026-w05"
@@ -445,3 +447,94 @@ def test_quiet_step_still_shows_everything_when_it_fails(capsys, tmp_path,
     assert not ok
     assert "partial output" in out
     assert "Traceback: boom" in out
+
+
+# --------------------------------------------------------------------
+# Forum, press and reconcile: the office staged these files for commit
+# from the start but never wrote them, so an automated week committed an
+# empty forum thread and no press at all.
+# --------------------------------------------------------------------
+
+def _week(tmp_path, label="2026-w05"):
+    d = tmp_path / "state" / "weeks" / label / "decisions"
+    d.mkdir(parents=True)
+    return d
+
+
+def test_forum_posts_are_written_from_waiver_decisions(tmp_path):
+    d = _week(tmp_path)
+    (d / "alpha.json").write_text(json.dumps({
+        "claims": [], "drops": [], "note_reply": "",
+        "forum_post": "Your roster is a cry for help.",
+    }))
+    (d / "bravo.json").write_text(json.dumps({
+        "claims": [], "drops": [], "note_reply": "", "forum_post": "",
+    }))
+    office._post_forum(tmp_path, "2026", 5, "waivers")
+
+    thread = (tmp_path / "state" / "forum" / "2026-w05.jsonl").read_text()
+    rows = [json.loads(l) for l in thread.splitlines()]
+    assert [r["team"] for r in rows] == ["alpha"]       # empty post not posted
+    assert "cry for help" in rows[0]["post"]
+
+
+def test_forum_ignores_lineup_and_trade_files_on_a_waivers_run(tmp_path):
+    d = _week(tmp_path)
+    (d / "alpha.json").write_text(json.dumps({"forum_post": "waiver talk"}))
+    (d / "alpha.lineup-main.json").write_text(json.dumps({"forum_post": "lineup talk"}))
+    (d / "alpha.trade.json").write_text(json.dumps({"response": "reject"}))
+    office._post_forum(tmp_path, "2026", 5, "waivers")
+
+    rows = [json.loads(l) for l in
+            (tmp_path / "state" / "forum" / "2026-w05.jsonl").read_text().splitlines()]
+    assert [r["post"] for r in rows] == ["waiver talk"]
+
+
+def test_forum_rerun_does_not_double_post(tmp_path):
+    """append_post enforces one post per team per run; a re-run must not fail."""
+    d = _week(tmp_path)
+    (d / "alpha.json").write_text(json.dumps({"forum_post": "said once"}))
+    office._post_forum(tmp_path, "2026", 5, "waivers")
+    office._post_forum(tmp_path, "2026", 5, "waivers")
+
+    rows = (tmp_path / "state" / "forum" / "2026-w05.jsonl").read_text().splitlines()
+    assert len(rows) == 1
+
+
+def test_press_records_the_gms_words_and_the_outcome(tmp_path):
+    d = _week(tmp_path)
+    (d / "alpha.json").write_text(json.dumps({
+        "claims": [], "drops": [], "note_reply": "Tell the owner I am busy.",
+    }))
+    (tmp_path / "state" / "weeks" / "2026-w05" / "faab-report.json").write_text(
+        json.dumps({"claims": [
+            {"team": "alpha", "add": "p9", "bid": 12, "status": "won",
+             "reason": "uncontested claim, bid $12"},
+        ]}))
+    office._press(tmp_path, "2026", 5, "waivers")
+
+    press = (tmp_path / "teams" / "alpha" / "press" / "2026-w05.md").read_text()
+    assert "Tell the owner I am busy." in press
+    assert "won" in press and "p9" in press
+
+
+def test_press_marks_a_lineup_fallback(tmp_path):
+    d = _week(tmp_path)
+    (d / "alpha.lineup-main.json").write_text(json.dumps({
+        "starters": {}, "justification": "Gut over projections.",
+    }))
+    (tmp_path / "state" / "weeks" / "2026-w05" / "lineups.json").write_text(
+        json.dumps({"alpha": {"fallback": True}}))
+    office._press(tmp_path, "2026", 5, "lineups", "main")
+
+    press = (tmp_path / "teams" / "alpha" / "press" / "2026-w05.md").read_text()
+    assert "Gut over projections." in press
+    assert "Hall of Shame" in press
+
+
+def test_reconcile_skips_cleanly_when_no_live_scores(tmp_path, capsys):
+    """The live scoreboard is optional; a week without it is normal."""
+    _week(tmp_path)
+    office._reconcile(tmp_path, "2026", 5)
+    assert "nothing to reconcile" in capsys.readouterr().out
+    assert not (tmp_path / "state" / "weeks" / "2026-w05" / "reconciliation.json").exists()

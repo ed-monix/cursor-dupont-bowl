@@ -52,6 +52,11 @@ from lib.apply_gate import (  # noqa: E402
     week_dir as _apply_gate_week_dir,
 )
 from lib.trades import apply_accepted, screen_offers  # noqa: E402
+from lib.reconcile import reconcile  # noqa: E402
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from forum import append_post  # noqa: E402
+from gm_dossier import append_press  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PY = sys.executable
@@ -121,6 +126,127 @@ def _write_json(path: pathlib.Path, obj) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2, sort_keys=True)
         f.write("\n")
+
+
+def _decisions(root: pathlib.Path, season: str, week: int, pattern: str) -> dict:
+    """{slug: decision} for one run's decision files.
+
+    `<slug>.json`, `<slug>.lineup-<w>.json` and `<slug>.trade.json` all reduce
+    to the same slug, so a bare `*.json` glob would let the trade response
+    clobber the waiver decision. Exclude the other two by name, exactly as
+    lib.apply_gate.collect_waiver_claims does.
+    """
+    wdir = _apply_gate_week_dir(root, season, week) / "decisions"
+    out = {}
+    if not wdir.is_dir():
+        return out
+    bare = pattern == "*.json"
+    for path in sorted(wdir.glob(pattern)):
+        name = path.name
+        if bare and (".lineup-" in name or name.endswith(".trade.json")):
+            continue
+        slug = name.split(".")[0]
+        try:
+            out[slug] = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+    return out
+
+
+def _post_forum(root: pathlib.Path, season: str, week: int,
+                run: str, window: Optional[str] = None) -> None:
+    """Append every GM's forum_post to the week's thread.
+
+    The office staged state/forum/<week>.jsonl for commit from the start but
+    nothing ever wrote it, so an automated week committed an empty thread. The
+    forum is not decoration: it feeds Kris's tabloid, the commissioner's Quote
+    of the Week, and the public half of next week's GM packs. Without it the
+    whole trash-talk loop is dead and the league gets quieter every week.
+    """
+    pattern = "*.json" if run == "waivers" else f"*.lineup-{window or 'main'}.json"
+    posted = 0
+    for slug, decision in _decisions(root, season, week, pattern).items():
+        if not isinstance(decision, dict):
+            continue
+        post = decision.get("forum_post")
+        if not isinstance(post, str) or not post.strip():
+            continue
+        try:
+            append_post(root, week, slug, post.strip(), season)
+            posted += 1
+        except ValueError:
+            # One post per team per run; a re-run is not a second post.
+            pass
+    print(f"    {posted} forum post(s)")
+
+
+def _press(root: pathlib.Path, season: str, week: int,
+           stage: str, window: Optional[str] = None) -> None:
+    """Append each GM's own words plus the outcome to teams/<slug>/press/.
+
+    waivers.md §6 and lineups.md §3 both call for this. It is the substrate
+    build_dossier reads back, so skipping it means every GM's memory stops
+    accumulating and the personalities flatten out over a season.
+    """
+    wdir = _apply_gate_week_dir(root, season, week)
+    wrote = 0
+    if stage == "waivers":
+        report = _load_json(wdir / "faab-report.json", {}) or {}
+        outcomes: dict = {}
+        for claim in report.get("claims") or []:
+            outcomes.setdefault(claim.get("team"), []).append(
+                f"- `{claim.get('add')}` — **{claim.get('status')}**: "
+                f"{claim.get('reason', '')}")
+        for slug, decision in _decisions(root, season, week, "*.json").items():
+            if not isinstance(decision, dict):
+                continue
+            blocks = []
+            note = (decision.get("note_reply") or "").strip()
+            if note:
+                blocks.append(f"**On the owner's note:** {note}")
+            if outcomes.get(slug):
+                blocks.append("**Waivers:**\n" + "\n".join(outcomes[slug]))
+            if blocks:
+                append_press(root, slug, week, "\n\n".join(blocks), season)
+                wrote += 1
+    else:
+        lineups = _load_json(wdir / "lineups.json", {}) or {}
+        pattern = f"*.lineup-{window or 'main'}.json"
+        for slug, decision in _decisions(root, season, week, pattern).items():
+            just = (decision.get("justification") or "").strip()
+            fell_back = bool((lineups.get(slug) or {}).get("fallback"))
+            blocks = []
+            if just:
+                blocks.append(f"**Lineup ({window or 'main'}):** {just}")
+            if fell_back:
+                blocks.append("**Lineup fell back — Hall of Shame.**")
+            if blocks:
+                append_press(root, slug, week, "\n\n".join(blocks), season)
+                wrote += 1
+    print(f"    press appended for {wrote} team(s)")
+
+
+def _reconcile(root: pathlib.Path, season: str, week: int) -> None:
+    """Write live-vs-final drift for the recap, when live scores were captured.
+
+    recap.md §2: the live scoreboard is entertainment, the Monday finals are
+    official, and the commissioner gets to mock the gap. scoreboard.py writes
+    live-scores.json only while it is running, so its absence is a normal week,
+    not an error — the doc says to skip and say so.
+    """
+    wdir = _apply_gate_week_dir(root, season, week)
+    live = _load_json(wdir / "live-scores.json", None)
+    if not live:
+        print("    no live scores captured this week — nothing to reconcile")
+        return
+    final = _load_json(wdir / "matchups.json", {}) or {}
+    finals = final.get("player_scores") or final.get("final_scores") or {}
+    if not finals:
+        print("    no final per-player scores in matchups.json — skipped")
+        return
+    drift = reconcile(live, finals)
+    _write_json(wdir / "reconciliation.json", drift)
+    print(f"    {len(drift)} player(s) drifted live -> final")
 
 
 def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
@@ -236,6 +362,10 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
         Step("12 GM turns — waiver decisions",
              _py(root, "gm_turn.py", "--week", week, "--season", season,
                  "--run", "waivers", "--root", root)),
+        Step("forum — post the week's trash talk",
+             note="appends each GM's forum_post to state/forum/<week>.jsonl; "
+                  "feeds the tabloid, Quote of the Week, and next week's packs",
+             action=lambda: _post_forum(root, season, week, "waivers")),
         Step("build FAAB inputs from decisions/ + standings.json",
              note=f"writes {claims_path} and {order_path} (mirrors "
                   "lib.apply_gate's own construction)",
@@ -265,6 +395,10 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
         Step("apply gate (Cloud Agent apply)",
              _py(root, "apply_gate.py", "--root", root,
                  "--action", "waivers", "--week", week, "--season", season)),
+        Step("press — each GM's own words plus the outcome",
+             note="appends to teams/<slug>/press/; this is the substrate "
+                  "build_dossier reads back into next week's GM pack",
+             action=lambda: _press(root, season, week, "waivers")),
     ]
 
 
@@ -287,6 +421,9 @@ def build_lineups_steps(root: pathlib.Path, week: int, season: str,
              _py(root, "gm_turn.py", "--week", week, "--season", season,
                  "--run", "lineups", "--window", window, "--root", root),
              quiet=True),
+        Step("forum — post the week's trash talk",
+             note="appends each GM's forum_post from this window's lineups",
+             action=lambda: _post_forum(root, season, week, "lineups", window)),
         Step(f"commissioner review — lineups/{window}",
              _py(root, "agent_turn.py", "--role", "commissioner", "--week", week,
                  "--season", season, "--stage", "lineups", "--window", window,
@@ -295,6 +432,9 @@ def build_lineups_steps(root: pathlib.Path, week: int, season: str,
              _py(root, "apply_gate.py", "--root", root,
                  "--action", f"lineups-{window}", "--week", week,
                  "--season", season, "--window", window)),
+        Step("press — lineup justifications and any fallback",
+             note="appends to teams/<slug>/press/",
+             action=lambda: _press(root, season, week, "lineups", window)),
     ]
 
 
@@ -306,6 +446,10 @@ def build_recap_steps(root: pathlib.Path, week: int, season: str) -> list:
         Step("score the week officially",
              _py(root, "score_week.py", "--week", week, "--season", season,
                  "--final")),
+        Step("reconcile live vs final",
+             note="writes reconciliation.json when the live scoreboard "
+                  "captured scores; a week with none is normal",
+             action=lambda: _reconcile(root, season, week)),
         Step("commissioner writes the recap",
              _py(root, "agent_turn.py", "--role", "commissioner", "--week", week,
                  "--season", season, "--stage", "recap", "--root", root)),
