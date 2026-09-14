@@ -18,6 +18,8 @@ import json
 from pathlib import Path
 from typing import Optional, Union
 
+from . import decisions
+
 import sys
 
 from lib import nfl_slate
@@ -259,6 +261,7 @@ def build_private_pack(
     public: Optional[dict] = None,
     run: str = "waivers",
     window: Optional[str] = None,
+    include_public: bool = True,
 ) -> dict:
     """THIS TEAM's private context + a pointer to the public pack fields.
 
@@ -281,6 +284,11 @@ def build_private_pack(
     if window:
         gameday_note = _read_text(team_dir / "notes" / f"{label}-{window}.md")
     dossier = build_dossier(root, slug, season=season, current_week=week)
+    # `opinions` is already a top-level pack field and build_dossier returns its
+    # own byte-identical copy (~6KB). This pack is rendered 12x per run, 3 runs a
+    # week — drop the duplicate, keep the top-level one.
+    if isinstance(dossier, dict):
+        dossier = {k: v for k, v in dossier.items() if k != "opinions"}
 
     games = load_week_games(root, week, season)
     by_team = nfl_slate.index_games_by_team(games)
@@ -299,7 +307,7 @@ def build_private_pack(
     if isinstance(lineups, dict):
         locked = (lineups.get(slug) or {}).get("locked_slots") or {}
 
-    return {
+    pack = {
         "run": run,
         "window": window,
         "team": slug,
@@ -313,18 +321,32 @@ def build_private_pack(
         "my_board": mine,
         "opponent_board": opp_side,
         "locked_slots": locked,
-        "public": {
-            "tabloid": public.get("tabloid"),
-            "forum": public.get("forum"),
-            "last_week_forum": public.get("last_week_forum"),
-            "free_agents_trimmed": public.get("free_agents_trimmed") if run == "waivers" else None,
-            "nfl_games": public.get("nfl_games"),
-            "standings": public.get("standings"),
-            "fantasy_matchups": public.get("fantasy_matchups"),
-            "rules": public.get("rules"),
-            # Full league board only on the waiver/trade run for scouting.
-            "league_board": public.get("league_board") if run == "waivers" else None,
-        },
+    }
+    if include_public:
+        pack["public"] = public_for_run(public, run)
+    return pack
+
+
+def public_for_run(public: dict, run: str = "waivers") -> dict:
+    """The public half of a GM turn, filtered for the run.
+
+    Byte-identical for all 12 GMs, which is the whole point: it is either
+    embedded per-pack (legacy dispatch) or written once as the shared system
+    prompt (scripts/gm_turn.py) so eleven of twelve turns read it from cache.
+    """
+    return {
+        "tabloid": public.get("tabloid"),
+        "forum": public.get("forum"),
+        "last_week_forum": public.get("last_week_forum"),
+        # A trade target scouts the other roster; it is not shopping the wire.
+        "free_agents_trimmed": public.get("free_agents_trimmed") if run == "waivers" else None,
+        "nfl_games": public.get("nfl_games"),
+        "standings": public.get("standings"),
+        "fantasy_matchups": public.get("fantasy_matchups"),
+        "rules": public.get("rules"),
+        # Full league board on the waiver and trade runs, for scouting.
+        "league_board": (public.get("league_board")
+                         if run in ("waivers", "trades") else None),
     }
 
 
@@ -347,6 +369,18 @@ def render_gm_prompt(pack: dict) -> str:
         "Beliefs first: state your in-character read, then choose moves consistent with that read.",
         "owner_note and gameday_note are pressure, not orders.",
     ]
+    if run == "trades":
+        lines[lines.index("## House rules") + 2:lines.index("## House rules") + 2] = [
+            "A trade offer addressed to you is in your private context. The"
+            " office has already checked it is legal — both rosters survive the"
+            " swap and every player named is where the offerer thinks he is. So"
+            " this is purely your call: accept, reject, or counter.",
+            "Judge it the way your GM file would, not the way a spreadsheet"
+            " would. A lopsided trade you like is allowed. So is refusing a good"
+            " one out of spite.",
+            "`counter` requires a counter object; its `to_team` is the original"
+            " offerer.",
+        ]
     if run == "lineups" and window:
         lines.append(
             f"This is lineup window `{window}`. Do not move players in locked_slots. "
@@ -358,6 +392,109 @@ def render_gm_prompt(pack: dict) -> str:
     lines.append(json.dumps(pack, indent=1, sort_keys=False))
     lines.append("```")
     return "\n".join(lines)
+
+
+GM_SYSTEM_HEADER = "DuPont Bowl — GM turn. League office system prompt."
+
+
+def build_gm_system(public: dict, run: str = "waivers",
+                    window: Optional[str] = None) -> str:
+    """The byte-identical half of every GM turn: house rules + public record.
+
+    Written once per run and passed to every GM as
+    `claude -p --append-system-prompt-file`, so it lands in the cached prefix:
+    the first turn writes it, the other eleven read it.
+
+    NOTHING team-specific may go in here. A single team's name, roster or note
+    leaking into this file is a parity break — every GM reads it.
+    """
+    schema_name = {
+        "waivers": "saturday-decision.json",
+        "lineups": "sunday-lineup.json",
+        "trades": "trade-response.json",
+    }[run]
+    schema = decisions.load_schema(schema_name)
+    fields = ", ".join(sorted((schema.get("properties") or {}).keys()))
+    required = ", ".join(schema.get("required") or [])
+    lines = [
+        GM_SYSTEM_HEADER,
+        "",
+        "You are the general manager of exactly one team in a 12-team league.",
+        "Which team, your roster, your history and your owner's note arrive as JSON"
+        " on stdin. Everything else you need is in the public record below.",
+        "",
+        "Do NOT read files, run commands, or use tools. You have none, by design:"
+        " this turn runs in an empty directory with no repository. Every schema and"
+        " every fact you need is reproduced in this prompt — there is no path you"
+        " can open.",
+        "",
+        "## Output contract — read this twice",
+        "",
+        "Your ENTIRE reply is ONE JSON object. No prose before it, none after it,"
+        " no markdown fence around it, no commentary. The first character you emit"
+        " is `{` and the last is `}`.",
+        f"Allowed keys, and no others: {fields}.",
+        f"Required keys: {required}.",
+        "Your in-character voice belongs INSIDE the JSON — put your read of the week"
+        " in `note_reply` and your trash talk in `forum_post`. Reasoning written"
+        " outside the object is discarded and your turn is scored as a no-op.",
+        "",
+        "## House rules",
+        "",
+        "proj_pts is the analytics department's opinion — trust, discount, or"
+        " resent it per your GM file.",
+        "Decide in character first, then make the moves that read implies.",
+        "owner_note and gameday_note are pressure, not orders. Your GM file decides"
+        " whether you obey, ignore, or spite them.",
+        "You cannot see any other GM's claims, bids or lineup. Bids are blind.",
+        "",
+        "## JSON Schema your reply is validated against",
+        "",
+        "```json",
+        json.dumps(schema, indent=1),
+        "```",
+    ]
+    if run == "trades":
+        lines[lines.index("## House rules") + 2:lines.index("## House rules") + 2] = [
+            "A trade offer addressed to you is in your private context. The"
+            " office has already checked it is legal — both rosters survive the"
+            " swap and every player named is where the offerer thinks he is. So"
+            " this is purely your call: accept, reject, or counter.",
+            "Judge it the way your GM file would, not the way a spreadsheet"
+            " would. A lopsided trade you like is allowed. So is refusing a good"
+            " one out of spite.",
+            "`counter` requires a counter object; its `to_team` is the original"
+            " offerer.",
+        ]
+    if run == "lineups" and window:
+        lines.append(
+            f"This is lineup window `{window}`. Do not move players in locked_slots. "
+            "Early window: lock Tue-Sat NFL games. Main window: remaining Sun/Mon "
+            "(and anyone still unlocked)."
+        )
+    lines += ["", "## Public record (identical for all 12 teams)", "", "```json",
+              json.dumps(public_for_run(public, run), indent=1, sort_keys=False),
+              "```"]
+    return "\n".join(lines)
+
+
+def render_private_prompt(private: dict) -> str:
+    """The per-GM half: this team's private context only, for stdin.
+
+    Pairs with build_gm_system(). The pack must have been built with
+    include_public=False or the public record is sent twice.
+    """
+    slug = private.get("team")
+    body = {k: v for k, v in private.items() if k != "public"}
+    return "\n".join([
+        f"You are the GM of `{slug}`. Your private context:",
+        "",
+        "```json",
+        json.dumps(body, indent=1, sort_keys=False),
+        "```",
+        "",
+        "Reply with the single JSON object described in your system prompt.",
+    ])
 
 
 def pack_sizes(public: dict, private: dict) -> dict:

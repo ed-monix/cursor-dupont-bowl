@@ -102,7 +102,9 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
-from lib.rosters import apply_transaction, roster_config_from_league, save_roster  # noqa: E402
+from lib.rosters import (  # noqa: E402
+    apply_transaction, roster_config_from_league, save_roster, validate_roster,
+)
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -144,7 +146,8 @@ def _pick_winner(bids: list[tuple[str, dict]], standings: list[str]) -> tuple[st
     return ranked[0]
 
 
-def resolve_faab(claims_by_team: dict, standings: list, rosters: dict, players: dict) -> dict:
+def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
+                 players: dict, roster_config=None) -> dict:
     """Pure FAAB resolution. See module docstring for all shapes. No I/O."""
 
     # --- Phase 1: bucket every claim by the player it adds, dropping
@@ -176,6 +179,11 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict, players: 
     }
 
     unknown_lookup = {id(claim): True for _, claim in unknown_claims}
+
+    # A team can win more than one claim, and each changes its roster, so
+    # legality has to be checked against the roster as it will actually be
+    # when the claim lands — not against the roster it started the run with.
+    working: dict = {}
 
     for team, claim_list in claims_by_team.items():
         consumed_drops: set = set()
@@ -241,6 +249,36 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict, players: 
                 )
                 report_claims.append(entry)
                 continue
+
+            # Would the resulting roster actually be legal? apply_won_claims
+            # raises if a "won" claim turns out to be illegal, and its docstring
+            # says resolve_faab's own checks should prevent that — this is the
+            # check that was missing. Without it a GM dropping a starter with a
+            # full bench got as far as the apply step and took the whole run
+            # down with it.
+            #
+            # The claim is voided rather than charged, which is what the league
+            # already does: Ruling 2026-05 refunded a voided bid, and the
+            # commissioner's own memos say "no FAAB is charged" for a struck
+            # claim.
+            txn = {"type": "add", "player": add_id, "to": "bench"}
+            if drop_id is not None:
+                txn["drop"] = drop_id
+            probe = copy.deepcopy(working.get(team, rosters.get(team, {})))
+            # Only blame a claim for illegality it actually causes. If the
+            # roster is already invalid going in, that is not this claim's
+            # doing and gating on it would punish the wrong GM.
+            was_legal, _ = validate_roster(probe, players, roster_config)
+            if was_legal:
+                probe["faab_remaining"] = probe.get("faab_remaining", 0) - bid
+                try:
+                    working[team] = apply_transaction(probe, txn, players,
+                                                      roster_config)
+                except (ValueError, KeyError) as e:
+                    entry["status"] = "skipped"
+                    entry["reason"] = f"would leave an illegal roster: {e}"
+                    report_claims.append(entry)
+                    continue
 
             # Won and applicable.
             others = [b for t, b in bids_by_add[add_id] if b is not claim]
@@ -364,7 +402,8 @@ def main() -> int:
     rosters_dir = pathlib.Path(args.rosters_dir)
     rosters = _load_rosters(rosters_dir)
 
-    report = resolve_faab(claims_by_team, standings, rosters, players)
+    report = resolve_faab(claims_by_team, standings, rosters, players,
+                          roster_config)
 
     if args.report_out:
         out_path = pathlib.Path(args.report_out)
