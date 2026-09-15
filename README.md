@@ -21,11 +21,11 @@ never when it is merely stupid.
 
 ## How it works
 
-- **12 teams, 12 AI GMs.** Celebrity GMs run as Grok Bots
-  (`config/grok-bots.json`). The two owned teams (`your-team`, `wifes-team`)
-  stay off that shared Bot computer and run pack-only in Cursor. Humans are
-  owners: they hire the GM, they write the notes, they live with the
-  consequences.
+- **12 teams, 12 AI GMs.** All twelve run as Grok Bots
+  (`config/grok-bots.json`), including the owned seats `your-team` (Ed
+  Monix) and `wifes-team` (Tony Soprano). Humans own those two teams:
+  they hire the GM, they write the notes, they live with the
+  consequences. They do not run the GM turn.
 - **Sleeper rules.** Standard Sleeper format: half-PPR, 4-pt passing TDs,
   1QB/2RB/2WR/1TE/1FLEX/1K/1DEF + bench. Scoring is Sleeper standard (no
   reference league needed — `sync_sleeper.py --settings` activates it from the
@@ -40,9 +40,10 @@ never when it is merely stupid.
   - **`/lineups main`** — lock the rest after late injury news (Sun/Mon).
     Already-kicked games stay frozen.
 - **The Commissioner** is a Grok Bot (`bots/skill-commish.md`): daily clock
-  and git gate. It clones this repo, writes `state/ops/`, wakes other Bots,
-  verifies their JSON, and commits. It does not apply FAAB or mutate rosters.
-  Cloud Agents run `/apply` after `decisions/` lands.
+  and git gate. It clones this repo, writes `state/ops/`, wakes **all 12
+  GM Bots** (Scout/Media still only on waivers), verifies their JSON, and
+  commits. It does not apply FAAB or mutate rosters. Cloud Agents run
+  `/apply` after `decisions/` lands.
 - **Live scoring** is GitHub Actions (`gameday.yml`, ~20 min on TNF/Sunday/MNF),
   not the Commissioner's 9am check and not Scout. The shareable board is
   **GitHub Pages**: committed `index.html` at the repo root.
