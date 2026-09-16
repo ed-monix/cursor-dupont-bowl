@@ -11,15 +11,15 @@
   "ir": [],
   "name": "Holy Cow Backfield!",
   "starters": {
+    "DEF": "BAL",
+    "FLEX": "2449",
+    "K": "12015",
     "QB": "4881",
     "RB1": "9509",
     "RB2": "6790",
-    "WR1": "9997",
-    "WR2": "9756",
     "TE": "8131",
-    "FLEX": "2449",
-    "K": "12015",
-    "DEF": "BAL"
+    "WR1": "9997",
+    "WR2": "9756"
   },
   "team": "harry-caray"
 }

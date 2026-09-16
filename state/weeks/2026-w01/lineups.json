@@ -1,182 +1,1046 @@
 {
   "coach-taylor": {
+    "fallback": false,
+    "justification": "Clear eyes. Jones stays under center \u2014 we named him the starter and we don't yank a QB because analytics whispered louder. Hampton and Dowdle earned the rock; Lloyd waits his turn. Puka already punched the clock in the early window, so he stays put. St. Brown and McLaurin out wide. Andrews over Goedert \u2014 trust the veteran who shows up every Sunday. Same kick, same Chargers D. Effort over the spreadsheet.",
+    "justifications": {
+      "legacy": "The tabloid wants to make Wednesday's quarterback scramble the whole story \u2014 that was a board problem, and boards get fixed, it never touched the locker room. Reunion Special can call two tight ends a 'hostage situation' and light $55 on Rodgers for noise, that's their business; I don't run my program off headlines, theirs or mine. My QB answer is Daniel Jones, and it's not because a spreadsheet says Lawrence's number is a couple points higher this week \u2014 Jones spent years getting written off and kept chopping anyway, and when I traded for a guy with that kind of makeup I don't bench him for a rookie projection, so Lawrence and Cousins hold the clipboard. Everywhere else the board holds as built: Hampton and Dowdle in the backfield, Nacua and St. Brown outside, McLaurin's earned that flex spot with every route he runs, Andrews at tight end, McPherson and the Chargers defense doing their jobs like they always do. Clear eyes, full hearts, we play Sunday.",
+      "main": "Clear eyes. Jones stays under center \u2014 we named him the starter and we don't yank a QB because analytics whispered louder. Hampton and Dowdle earned the rock; Lloyd waits his turn. Puka already punched the clock in the early window, so he stays put. St. Brown and McLaurin out wide. Andrews over Goedert \u2014 trust the veteran who shows up every Sunday. Same kick, same Chargers D. Effort over the spreadsheet."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LAC",
+        "player_id": "LAC",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "WAS",
+        "player_id": "5927",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CIN",
+        "player_id": "7839",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "IND",
+        "player_id": "5870",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LAC",
+        "player_id": "12507",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PIT",
+        "player_id": "7021",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "5012",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "LAR",
+        "player_id": "9493",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "7547",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "LAC",
+      "FLEX": "5927",
+      "K": "7839",
       "QB": "5870",
       "RB1": "12507",
       "RB2": "7021",
-      "WR1": "9493",
-      "WR2": "7547",
       "TE": "5012",
-      "FLEX": "5927",
-      "K": "7839",
-      "DEF": "LAC"
+      "WR1": "9493",
+      "WR2": "7547"
     },
-    "justification": "The tabloid wants to make Wednesday's quarterback scramble the whole story \u2014 that was a board problem, and boards get fixed, it never touched the locker room. Reunion Special can call two tight ends a 'hostage situation' and light $55 on Rodgers for noise, that's their business; I don't run my program off headlines, theirs or mine. My QB answer is Daniel Jones, and it's not because a spreadsheet says Lawrence's number is a couple points higher this week \u2014 Jones spent years getting written off and kept chopping anyway, and when I traded for a guy with that kind of makeup I don't bench him for a rookie projection, so Lawrence and Cousins hold the clipboard. Everywhere else the board holds as built: Hampton and Dowdle in the backfield, Nacua and St. Brown outside, McLaurin's earned that flex spot with every route he runs, Andrews at tight end, McPherson and the Chargers defense doing their jobs like they always do. Clear eyes, full hearts, we play Sunday.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "costanza": {
-    "starters": {
-      "QB": "4892",
-      "RB1": "8136",
-      "RB2": "8150",
-      "WR1": "7569",
-      "WR2": "8112",
-      "TE": "9484",
-      "FLEX": "5892",
-      "K": "6083",
-      "DEF": "TEN"
+    "fallback": false,
+    "justification": "They're stuffing Tua in my QB slot like I'm some kind of mark. I see the whole operation. Herbert was on the bench because that's where they HIDE the points \u2014 classic misdirection, and I'm not falling for it. Kyren already played; I leave him in. You think I'm handing the league a win on a technicality? Rachaad White at 8.64 is not a running back, it's a setup. They wanted me frozen, staring at White until kickoff. Montgomery at RB1, DJ Moore in the FLEX. I'm taking the points. Maura's got Guerendo locked in for a zero and I'm supposed to feel sorry? It's a trap. I'm still playing to win.",
+    "justifications": {
+      "legacy": "They're calling me the 'Golden Child.' GOLDEN CHILD. Nobody writes that about a man they're not planning to embarrass in six weeks. So don't tell me the universe isn't laughing. My gut said start Herbert, but I inverted it and I'm starting Mayfield instead. Kraft, Gay, and the Titans D are one-man boards.",
+      "main": "They're stuffing Tua in my QB slot like I'm some kind of mark. I see the whole operation. Herbert was on the bench because that's where they HIDE the points \u2014 classic misdirection, and I'm not falling for it. Kyren already played; I leave him in. You think I'm handing the league a win on a technicality? Rachaad White at 8.64 is not a running back, it's a setup. They wanted me frozen, staring at White until kickoff. Montgomery at RB1, DJ Moore in the FLEX. I'm taking the points. Maura's got Guerendo locked in for a zero and I'm supposed to feel sorry? It's a trap. I'm still playing to win."
     },
-    "justification": "They're calling me the 'Golden Child.' GOLDEN CHILD. Nobody writes that about a man they're not planning to embarrass in six weeks. So don't tell me the universe isn't laughing. My gut said start Herbert, but I inverted it and I'm starting Mayfield instead. Kraft, Gay, and the Titans D are one-man boards.",
-    "fallback": false
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "TEN",
+        "player_id": "TEN",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "4983",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LV",
+        "player_id": "6083",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LAC",
+        "player_id": "6797",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "HOU",
+        "player_id": "5892",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "LAR",
+        "player_id": "8150",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "GB",
+        "player_id": "9484",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "HOU",
+        "player_id": "7569",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "ATL",
+        "player_id": "8112",
+        "window": "main"
+      }
+    },
+    "starters": {
+      "DEF": "TEN",
+      "FLEX": "4983",
+      "K": "6083",
+      "QB": "6797",
+      "RB1": "5892",
+      "RB2": "8150",
+      "TE": "9484",
+      "WR1": "7569",
+      "WR2": "8112"
+    },
+    "windows_run": [
+      "main"
+    ]
   },
   "dumbledore": {
+    "fallback": false,
+    "justification": "Price has already walked the early path; we leave him where he stands. Daniels over Goff \u2014 youth is an omen, not a projection. Wilson steps into the FLEX; the Room offers what is required against Leon Black this week. Coker waits in patience. Pickens, Olave, Taylor, Warren, Shrader, Denver remain.",
+    "justifications": {
+      "legacy": "Leon Black has already declared the week won. Jared Goff's story is not finished; this is the week it plays. Garrett Wilson has a part to play. Curious, curious, how little of this anyone else will understand until much later.",
+      "main": "Price has already walked the early path; we leave him where he stands. Daniels over Goff \u2014 youth is an omen, not a projection. Wilson steps into the FLEX; the Room offers what is required against Leon Black this week. Coker waits in patience. Pickens, Olave, Taylor, Warren, Shrader, Denver remain."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "DEN",
+        "player_id": "DEN",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NYJ",
+        "player_id": "8146",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "IND",
+        "player_id": "12185",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "WAS",
+        "player_id": "11566",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "IND",
+        "player_id": "6813",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "SEA",
+        "player_id": "13286",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "IND",
+        "player_id": "12518",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DAL",
+        "player_id": "8137",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NO",
+        "player_id": "8144",
+        "window": "main"
+      }
+    },
     "starters": {
-      "QB": "3163",
-      "RB1": "6813",
-      "RB2": "13286",
-      "WR1": "8137",
-      "WR2": "8144",
-      "TE": "12518",
+      "DEF": "DEN",
       "FLEX": "8146",
       "K": "12185",
-      "DEF": "DEN"
+      "QB": "11566",
+      "RB1": "6813",
+      "RB2": "13286",
+      "TE": "12518",
+      "WR1": "8137",
+      "WR2": "8144"
     },
-    "justification": "Leon Black has already declared the week won. Jared Goff's story is not finished; this is the week it plays. Garrett Wilson has a part to play. Curious, curious, how little of this anyone else will understand until much later.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "harry-caray": {
+    "fallback": false,
+    "justification": "Holy Cow! Lamar Jackson and Bijan Robinson lead the charge \u2014 you don't sit the big names on a beautiful Sunday! Diggs is due in the flex, Flowers and Addison ride shotgun, Likely at TE, Mevis already put points on the board, and the Ravens D comes home. It's a beautiful day for a ballgame!",
+    "justifications": {
+      "legacy": "HOLY COW League, Opening Sunday! Lamar Jackson's my Opening Day starter, Bijan Robinson right there with him. Zay Flowers is Questionable but starting. Isaiah Likely gets the tight end nod.",
+      "main": "Holy Cow! Lamar Jackson and Bijan Robinson lead the charge \u2014 you don't sit the big names on a beautiful Sunday! Diggs is due in the flex, Flowers and Addison ride shotgun, Likely at TE, Mevis already put points on the board, and the Ravens D comes home. It's a beautiful day for a ballgame!"
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "BAL",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "WAS",
+        "player_id": "2449",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "LAR",
+        "player_id": "12015",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "4881",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "ATL",
+        "player_id": "9509",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CHI",
+        "player_id": "6790",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NYG",
+        "player_id": "8131",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "9997",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "MIN",
+        "player_id": "9756",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "BAL",
+      "FLEX": "2449",
+      "K": "12015",
       "QB": "4881",
       "RB1": "9509",
       "RB2": "6790",
-      "WR1": "9997",
-      "WR2": "9756",
       "TE": "8131",
-      "FLEX": "2449",
-      "K": "12015",
-      "DEF": "BAL"
+      "WR1": "9997",
+      "WR2": "9756"
     },
-    "justification": "HOLY COW League, Opening Sunday! Lamar Jackson's my Opening Day starter, Bijan Robinson right there with him. Zay Flowers is Questionable but starting. Isaiah Likely gets the tight end nod.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "kardashian": {
+    "fallback": false,
+    "justification": "This week's drop is the Philly stack \u2014 Hurts, Saquon, Eagles D. It's competitive and it's content. Kittle already played so he stays locked at TE (those points are already in the bag). Dart is cute and viral but I'm not breaking the Hurts brand moment for 0.6 proj. McConkey holds FLEX over Egbuka; McMillan stays WR2. Harvey over Marks/Mitchell. Winning looks good on me.",
+    "justifications": {
+      "legacy": "Kris put a quote about us on the front page. Kittle starts despite Questionable \u2014 he's the acquisition of the press release. Saquon, Jefferson non-negotiable.",
+      "main": "This week's drop is the Philly stack \u2014 Hurts, Saquon, Eagles D. It's competitive and it's content. Kittle already played so he stays locked at TE (those points are already in the bag). Dart is cute and viral but I'm not breaking the Hurts brand moment for 0.6 proj. McConkey holds FLEX over Egbuka; McMillan stays WR2. Harvey over Marks/Mitchell. Winning looks good on me."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PHI",
+        "player_id": "PHI",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LAC",
+        "player_id": "11635",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "GB",
+        "player_id": "13545",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PHI",
+        "player_id": "6904",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PHI",
+        "player_id": "4866",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "DEN",
+        "player_id": "12489",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "SF",
+        "player_id": "4217",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "MIN",
+        "player_id": "6794",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CAR",
+        "player_id": "12526",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "PHI",
+      "FLEX": "11635",
+      "K": "13545",
       "QB": "6904",
       "RB1": "4866",
       "RB2": "12489",
-      "WR1": "6794",
-      "WR2": "12526",
       "TE": "4217",
-      "FLEX": "11635",
-      "K": "13545",
-      "DEF": "PHI"
+      "WR1": "6794",
+      "WR2": "12526"
     },
-    "justification": "Kris put a quote about us on the front page. Kittle starts despite Questionable \u2014 he's the acquisition of the press release. Saquon, Jefferson non-negotiable.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "leon-black": {
+    "fallback": false,
+    "justification": "Burrow stays \u2014 analytics like him and I like the Chase stack more. Mahomes can watch from the pine and think about it. Henry and Dobbins run it; Hubbard doesn't leap them on gut or board. Watson holds FLEX over Wilson and Golden because I said so and the numbers don't disagree hard enough to care. Loop in at K \u2014 empty kicking spot is how amateurs lose. LV defense. Gut Feeling, Zero Regrets. Tell Dumbledore to bring a wand.",
+    "justifications": {
+      "legacy": "I own the quarterback aisle. Burrow's my guy, Chase catches everything. Mahomes sits with his questionable tag. My K slot is empty \u2014 I cut my kicker to go buy Rodgers and Watson, that's a league office problem now, not mine. [League office correction: the Rodgers claim that cost me my kicker turned out to be void \u2014 Tyler Loop is back, so he starts.]",
+      "main": "Burrow stays \u2014 analytics like him and I like the Chase stack more. Mahomes can watch from the pine and think about it. Henry and Dobbins run it; Hubbard doesn't leap them on gut or board. Watson holds FLEX over Wilson and Golden because I said so and the numbers don't disagree hard enough to care. Loop in at K \u2014 empty kicking spot is how amateurs lose. LV defense. Gut Feeling, Zero Regrets. Tell Dumbledore to bring a wand."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LV",
+        "player_id": "LV",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "GB",
+        "player_id": "8167",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "12711",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CIN",
+        "player_id": "6770",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BAL",
+        "player_id": "3198",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "DEN",
+        "player_id": "6806",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CHI",
+        "player_id": "12517",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CIN",
+        "player_id": "7564",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "KC",
+        "player_id": "10229",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "LV",
+      "FLEX": "8167",
+      "K": "12711",
       "QB": "6770",
       "RB1": "3198",
       "RB2": "6806",
-      "WR1": "7564",
-      "WR2": "10229",
       "TE": "12517",
-      "FLEX": "8167",
-      "K": "12711",
-      "DEF": "LV"
+      "WR1": "7564",
+      "WR2": "10229"
     },
-    "justification": "I own the quarterback aisle. Burrow's my guy, Chase catches everything. Mahomes sits with his questionable tag. My K slot is empty \u2014 I cut my kicker to go buy Rodgers and Watson, that's a league office problem now, not mine. [League office correction: the Rodgers claim that cost me my kicker turned out to be void \u2014 Tyler Loop is back, so he starts.]",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "maura-higgins": {
+    "fallback": false,
+    "justification": "Guerendo blanked the early kick \u2014 he's off my pitch, hun. Cook's in at RB2, I fancy him. Purdy, CMC and JSN already banked from the early window. Jamo and Nabers stay because I fancy the boom. Chig over Waller, Aubrey and the Jags as they are. Costanza can get stuffed.",
+    "justifications": {
+      "legacy": "Guerendo's PUP with a zero next to his name, benched. James Cook comes in. Nabers is questionable but starting anyway, gorgeous on tape.",
+      "main": "Guerendo blanked the early kick \u2014 he's off my pitch, hun. Cook's in at RB2, I fancy him. Purdy, CMC and JSN already banked from the early window. Jamo and Nabers stay because I fancy the boom. Chig over Waller, Aubrey and the Jags as they are. Costanza can get stuffed."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "JAX",
+        "player_id": "JAX",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NYG",
+        "player_id": "11632",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DAL",
+        "player_id": "11533",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "SF",
+        "player_id": "8183",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "SF",
+        "player_id": "4034",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "8138",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "WAS",
+        "player_id": "8210",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "SEA",
+        "player_id": "9488",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "8148",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "JAX",
+      "FLEX": "11632",
+      "K": "11533",
       "QB": "8183",
       "RB1": "4034",
       "RB2": "8138",
-      "WR1": "9488",
-      "WR2": "8148",
       "TE": "8210",
-      "FLEX": "11632",
-      "K": "11533",
-      "DEF": "JAX"
+      "WR1": "9488",
+      "WR2": "8148"
     },
-    "justification": "Guerendo's PUP with a zero next to his name, benched. James Cook comes in. Nabers is questionable but starting anyway, gorgeous on tape.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "meyer-walsh": {
+    "fallback": false,
+    "justification": "Selina: Henderson already locked a zero into RB2 \u2014 that is on Gary, full stop. Do not touch kicked slots. Allen, Lamb, Waddle, Kelce, Metcalf stay; Etienne at RB1; PIT at home; Myers already scored. Mason and Odunze ride the bench because I start stars, not vibes. Gary objected. Logged.",
+    "justifications": {
+      "legacy": "TreVeyon Henderson is marked OUT \u2014 actually out, and I am not gifting Ed Monix a zero out of stubbornness, so Jordan Mason starts in his place.",
+      "main": "Selina: Henderson already locked a zero into RB2 \u2014 that is on Gary, full stop. Do not touch kicked slots. Allen, Lamb, Waddle, Kelce, Metcalf stay; Etienne at RB1; PIT at home; Myers already scored. Mason and Odunze ride the bench because I start stars, not vibes. Gary objected. Logged."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PIT",
+        "player_id": "PIT",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PIT",
+        "player_id": "5846",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "SEA",
+        "player_id": "2747",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "4984",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NO",
+        "player_id": "7543",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "NE",
+        "player_id": "12529",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "KC",
+        "player_id": "1466",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DAL",
+        "player_id": "6786",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "DEN",
+        "player_id": "7526",
+        "window": "main"
+      }
+    },
     "starters": {
-      "QB": "4984",
-      "RB1": "7543",
-      "RB2": "8408",
-      "WR1": "6786",
-      "WR2": "7526",
-      "TE": "1466",
+      "DEF": "PIT",
       "FLEX": "5846",
       "K": "2747",
-      "DEF": "PIT"
+      "QB": "4984",
+      "RB1": "7543",
+      "RB2": "12529",
+      "TE": "1466",
+      "WR1": "6786",
+      "WR2": "7526"
     },
-    "justification": "TreVeyon Henderson is marked OUT \u2014 actually out, and I am not gifting Ed Monix a zero out of stubbornness, so Jordan Mason starts in his place.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "patricia-moyer": {
+    "fallback": false,
+    "justification": "Corrective Action Plan \u2014 Week 1 main, filed and footnoted. QB Sam Darnold remains locked (early window already complete; no midstream reassignment). RB1 Jahmyr Gibbs and RB2 Kenneth Walker are the documented workhorses; projections affirm both. WR1 Tee Higgins and WR2 DeVonta Smith stay as the dual-receiver protocol \u2014 neither slight nor upgrade warranted. TE Kyle Pitts retained over Strange; Strange stays contingency. FLEX: Jaylen Warren elevated over Bucky Irving (marginal proj gap, Warren's PIT role is the cleaner affirmation) and over Carnell Tate (lower proj, no ritual override). K Cameron Dicker and KC DEF unchanged. Shough, Brooks, Doubs (locked early), Strange, Irving, Tate on bench as contingency file. Process held; competing without chasing.",
+    "justifications": {
+      "legacy": "Beliefs first. My affirmation-of-the-day was 'let the quiet ones prove themselves,' so Carnell Tate starts over Jaylen Warren in FLEX.",
+      "main": "Corrective Action Plan \u2014 Week 1 main, filed and footnoted. QB Sam Darnold remains locked (early window already complete; no midstream reassignment). RB1 Jahmyr Gibbs and RB2 Kenneth Walker are the documented workhorses; projections affirm both. WR1 Tee Higgins and WR2 DeVonta Smith stay as the dual-receiver protocol \u2014 neither slight nor upgrade warranted. TE Kyle Pitts retained over Strange; Strange stays contingency. FLEX: Jaylen Warren elevated over Bucky Irving (marginal proj gap, Warren's PIT role is the cleaner affirmation) and over Carnell Tate (lower proj, no ritual override). K Cameron Dicker and KC DEF unchanged. Shough, Brooks, Doubs (locked early), Strange, Irving, Tate on bench as contingency file. Process held; competing without chasing."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "KC",
+        "player_id": "KC",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PIT",
+        "player_id": "8228",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LAC",
+        "player_id": "8259",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "SEA",
+        "player_id": "4943",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "9221",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "KC",
+        "player_id": "8151",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "ATL",
+        "player_id": "7553",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CIN",
+        "player_id": "6801",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PHI",
+        "player_id": "7525",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "KC",
+      "FLEX": "8228",
+      "K": "8259",
       "QB": "4943",
       "RB1": "9221",
       "RB2": "8151",
-      "WR1": "6801",
-      "WR2": "7525",
       "TE": "7553",
-      "FLEX": "13279",
-      "K": "8259",
-      "DEF": "KC"
+      "WR1": "6801",
+      "WR2": "7525"
     },
-    "justification": "Beliefs first. My affirmation-of-the-day was 'let the quiet ones prove themselves,' so Carnell Tate starts over Jaylen Warren in FLEX.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "rinna": {
+    "fallback": false,
+    "justification": "Honey, Brock Bowers at zero is not drama \u2014 it's dead air, and I do not do dead air. McBride slides to TE where he belongs. Bhayshul Tuten gets the FLEX for the must-see-TV boom potential (and because the numbers don't hate him either). Godwin over Sutton at WR2 because Chris is a storyline and Courtland can sip wine on the bench this week. Locked early slots stay locked: Maye, Stevenson, Evans, LAR. Reunion Special is set \u2014 quiet is not an option.",
+    "justifications": {
+      "legacy": "Rodgers starts, Maye sits. Bowers is Doubtful and projected zero, so McBride slides to TE and Tuten gets called up to FLEX.",
+      "main": "Honey, Brock Bowers at zero is not drama \u2014 it's dead air, and I do not do dead air. McBride slides to TE where he belongs. Bhayshul Tuten gets the FLEX for the must-see-TV boom potential (and because the numbers don't hate him either). Godwin over Sutton at WR2 because Chris is a storyline and Courtland can sip wine on the bench this week. Locked early slots stay locked: Maye, Stevenson, Evans, LAR. Reunion Special is set \u2014 quiet is not an option."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "LAR",
+        "player_id": "LAR",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "JAX",
+        "player_id": "12490",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "HOU",
+        "player_id": "3451",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "NE",
+        "player_id": "11564",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "ARI",
+        "player_id": "13287",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "NE",
+        "player_id": "7611",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "ARI",
+        "player_id": "8130",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-10",
+        "kicked": true,
+        "nfl": "SF",
+        "player_id": "2216",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "TB",
+        "player_id": "4037",
+        "window": "main"
+      }
+    },
     "starters": {
-      "QB": "96",
-      "RB1": "13287",
-      "RB2": "7611",
-      "WR1": "2216",
-      "WR2": "5045",
-      "TE": "8130",
+      "DEF": "LAR",
       "FLEX": "12490",
       "K": "3451",
-      "DEF": "LAR"
+      "QB": "11564",
+      "RB1": "13287",
+      "RB2": "7611",
+      "TE": "8130",
+      "WR1": "2216",
+      "WR2": "4037"
     },
-    "justification": "Rodgers starts, Maye sits. Bowers is Doubtful and projected zero, so McBride slides to TE and Tuten gets called up to FLEX.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "wifes-team": {
+    "fallback": false,
+    "justification": "I don't throw games. What am I, a degenerate? SEA already ate \u2014 locked. Bo Nix stays under center; Kyler's a nice spare tire, not the wheel. Achane and Chase Brown start \u2014 those kids run angry. Javonte keeps FLEX because he produces and I play to win this week against Kim's circus. Sitting Dyami Brown at a zero is basic respect for the operation; Pittman goes WR2 where he belongs. Breece on the pine kills me \u2014 that's family \u2014 but leaving Javonte out to force Breece in is how you lose on purpose, and I don't do that. LaPorta over the TE committee. Bates kicks. Everybody eats when they earn it.",
+    "justifications": {
+      "legacy": "Dyami Brown's a flat zero \u2014 standing on the sideline in street clothes ain't scoring me points, so Pittman comes off the bench.",
+      "main": "I don't throw games. What am I, a degenerate? SEA already ate \u2014 locked. Bo Nix stays under center; Kyler's a nice spare tire, not the wheel. Achane and Chase Brown start \u2014 those kids run angry. Javonte keeps FLEX because he produces and I play to win this week against Kim's circus. Sitting Dyami Brown at a zero is basic respect for the operation; Pittman goes WR2 where he belongs. Breece on the pine kills me \u2014 that's family \u2014 but leaving Javonte out to force Breece in is how you lose on purpose, and I don't do that. LaPorta over the TE committee. Bates kicks. Everybody eats when they earn it."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "SEA",
+        "player_id": "SEA",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DAL",
+        "player_id": "7588",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "11539",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-14",
+        "kicked": false,
+        "nfl": "DEN",
+        "player_id": "11563",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "MIA",
+        "player_id": "9226",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CIN",
+        "player_id": "9224",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "10859",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "HOU",
+        "player_id": "9504",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "PIT",
+        "player_id": "6819",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "SEA",
+      "FLEX": "7588",
+      "K": "11539",
       "QB": "11563",
       "RB1": "9226",
       "RB2": "9224",
-      "WR1": "9504",
-      "WR2": "6819",
       "TE": "10859",
-      "FLEX": "7588",
-      "K": "11539",
-      "DEF": "SEA"
+      "WR1": "9504",
+      "WR2": "6819"
     },
-    "justification": "Dyami Brown's a flat zero \u2014 standing on the sideline in street clothes ain't scoring me points, so Pittman comes off the bench.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   },
   "your-team": {
+    "fallback": false,
+    "justification": "AJ Brown is locked from the early window \u2014 leave him. Caleb starts; I will not apologize for Caleb Williams, and the CHI stack with Burden is the talent play this board gives me. Jeanty and Skattebo stay \u2014 highest RB juice on the roster. Analytics wants Downs in the FLEX; I want Judkins. Volume back, better projection, and I hunt talent over tidy WR projections. Kincaid over Freiermuth. Reichard and DET are the only K/DEF I have, so they roll. Meyer-Walsh already ate a zero at RB2. We win this week.",
+    "justifications": {
+      "legacy": "Caleb starts, no discussion, he's the whole sport. Jeanty and Skattebo stay put. Downs sits: Judkins has more juice in his legs than a slot receiver running safe underneath routes.",
+      "main": "AJ Brown is locked from the early window \u2014 leave him. Caleb starts; I will not apologize for Caleb Williams, and the CHI stack with Burden is the talent play this board gives me. Jeanty and Skattebo stay \u2014 highest RB juice on the roster. Analytics wants Downs in the FLEX; I want Judkins. Volume back, better projection, and I hunt talent over tidy WR projections. Kincaid over Freiermuth. Reichard and DET are the only K/DEF I have, so they roll. Meyer-Walsh already ate a zero at RB2. We win this week."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "DET",
+        "window": "main"
+      },
+      "FLEX": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CLE",
+        "player_id": "12512",
+        "window": "main"
+      },
+      "K": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "MIN",
+        "player_id": "11792",
+        "window": "main"
+      },
+      "QB": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CHI",
+        "player_id": "11560",
+        "window": "main"
+      },
+      "RB1": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "LV",
+        "player_id": "12527",
+        "window": "main"
+      },
+      "RB2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "NYG",
+        "player_id": "12481",
+        "window": "main"
+      },
+      "TE": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "10236",
+        "window": "main"
+      },
+      "WR1": {
+        "game_date": "2026-09-09",
+        "kicked": true,
+        "nfl": "NE",
+        "player_id": "5859",
+        "window": "main"
+      },
+      "WR2": {
+        "game_date": "2026-09-13",
+        "kicked": false,
+        "nfl": "CHI",
+        "player_id": "12519",
+        "window": "main"
+      }
+    },
     "starters": {
+      "DEF": "DET",
+      "FLEX": "12512",
+      "K": "11792",
       "QB": "11560",
       "RB1": "12527",
       "RB2": "12481",
-      "WR1": "5859",
-      "WR2": "12519",
       "TE": "10236",
-      "FLEX": "12512",
-      "K": "11792",
-      "DEF": "DET"
+      "WR1": "5859",
+      "WR2": "12519"
     },
-    "justification": "Caleb starts, no discussion, he's the whole sport. Jeanty and Skattebo stay put. Downs sits: Judkins has more juice in his legs than a slot receiver running safe underneath routes.",
-    "fallback": false
+    "windows_run": [
+      "main"
+    ]
   }
 }

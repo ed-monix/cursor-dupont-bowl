@@ -525,6 +525,14 @@ def _load_draft(season: str, names: Optional[dict] = None,
 
 # --- pure mappers (unit-tested) --------------------------------------------
 
+# Sleeper-style starter order (not alphabetical JSON key order).
+_SLOT_ORDER = ["QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "K", "DEF"]
+
+
+def _slot_index(slot: str) -> int:
+    return _SLOT_ORDER.index(slot) if slot in _SLOT_ORDER else len(_SLOT_ORDER)
+
+
 def viewer_starters(team: dict, players: dict) -> list:
     """Ordered starter detail for the viewer from a build_scoreboard_data team."""
     starters = team.get("roster", {}).get("starters", {})
@@ -539,6 +547,7 @@ def viewer_starters(team: dict, players: dict) -> list:
         pos = info.get("pos", "?")
         out.append({
             "slot": slot,
+            "id": pid,
             "name": info.get("name", pid),
             "pos": pos,
             "nfl": info.get("team") or "FA",
@@ -546,6 +555,7 @@ def viewer_starters(team: dict, players: dict) -> list:
             "stat": scoreboard._stat_summary(pos, stat_lines.get(pid, {})) if played else "",
             "played": played,
         })
+    out.sort(key=lambda r: _slot_index(r["slot"]))
     return out
 
 
@@ -579,13 +589,6 @@ def viewer_standings(standings_json: dict, names: Optional[dict] = None,
     } for s, t in teams.items()]
     rows.sort(key=lambda r: (-r["w"], -r["pf"]))  # record, then points-for
     return rows
-
-
-_SLOT_ORDER = ["QB", "RB1", "RB2", "WR1", "WR2", "TE", "FLEX", "K", "DEF"]
-
-
-def _slot_index(slot: str) -> int:
-    return _SLOT_ORDER.index(slot) if slot in _SLOT_ORDER else len(_SLOT_ORDER)
 
 
 def viewer_roster(roster: dict, players: dict, names: Optional[dict] = None,
@@ -805,6 +808,7 @@ def build_league_data(season: str) -> dict:
         "rosters": rosters,
         "schedule": schedule_view,
         "office": office,
+        "scoring": scoring,
         "updated": datetime.datetime.now().isoformat(),
     }
 

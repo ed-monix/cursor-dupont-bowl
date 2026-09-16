@@ -10,15 +10,15 @@
   "ir": [],
   "name": "Gut Feeling, Zero Regrets",
   "starters": {
+    "DEF": "LV",
+    "FLEX": "8167",
+    "K": "12711",
     "QB": "6770",
     "RB1": "3198",
     "RB2": "6806",
-    "WR1": "7564",
-    "WR2": "10229",
     "TE": "12517",
-    "FLEX": "8167",
-    "K": "12711",
-    "DEF": "LV"
+    "WR1": "7564",
+    "WR2": "10229"
   },
   "team": "leon-black"
 }
