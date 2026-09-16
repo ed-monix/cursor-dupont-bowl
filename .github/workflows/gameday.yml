@@ -14,8 +14,14 @@ on:
     - cron: "7,27,47 0-3 * * 5"
     # Sunday slate: 11am–7:59pm ET → Sun 15:00–23:59 UTC
     - cron: "7,27,47 15-23 * * 0"
-    # Late Sunday + MNF start: Sun 8pm–Mon 1am ET → Mon 00:00–04:59 UTC
+    # Sunday night: Sun 8pm–Mon 1am ET → Mon 00:00–04:59 UTC
     - cron: "7,27,47 0-4 * * 1"
+    # Monday night: Mon 8pm ET–Tue 1am ET → Tue 00:00–04:59 UTC.
+    # This window was missing, and the label above claimed to cover "MNF start"
+    # when it only reaches Sunday night. Week 1's KC–DEN Monday nighter was
+    # still `pre_game` two days later, all_complete() stayed false, and the
+    # recap never fired — the league sat idle waiting on one game's status.
+    - cron: "7,27,47 0-4 * * 2"
   workflow_dispatch:
 
 permissions:
