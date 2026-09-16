@@ -50,6 +50,21 @@ Celebrity replies: `docs/schemas/sunday-lineup.json` into
 use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
 are an opinion.
 
+### Under test: one-command GM turns
+
+```bash
+python scripts/gm_turn.py --week <WW> --run lineups --window <W>
+```
+
+Not yet the default. Being evaluated over a full week before it can replace
+the gateway above. What it changes: all 12 teams move to one path, owned two
+included — no Cursor sidecar, no awake laptop. Each team runs as an isolated
+`claude -p` call on Sonnet with an empty working directory, so there is no
+repo mounted and no other team's files to open. Turn one fires alone to warm
+the shared cache prefix before the other eleven fan out, so no GM sees another's
+lineup by construction rather than by convention. `--dry-run` sizes the
+prompts without calling.
+
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window
 (freeze, merge, fallback) — do not hand-merge:

@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "lib"))
 from lib.apply_gate import (  # noqa: E402
     collect_waiver_claims,
     load_ops,
-    standings_worst_to_best,
+    faab_priority_order,
     week_dir,
 )
 
@@ -43,9 +43,13 @@ def apply_waivers(root: pathlib.Path, season: str, week: int, dry_run: bool) -> 
     claims = collect_waiver_claims(wdir / "decisions")
     claims_path = wdir / "claims-from-gate.json"
     order_path = wdir / "faab-standings-order.json"
-    standings = _load(root / "state" / "standings.json", {"teams": {}})
     _write(claims_path, claims)
-    _write(order_path, standings_worst_to_best(standings))
+    # Ruling 2026-02: standings.json does not exist until week 1 is scored, so
+    # fall back to reversed draft order. Without this, every contested claim
+    # before the first scored week raises out of faab.py's tiebreak.
+    order, basis = faab_priority_order(root, season)
+    _write(order_path, order)
+    print(f"faab tiebreak basis: {basis} ({len(order)} teams)")
     cmd = [
         sys.executable,
         str(root / "scripts" / "faab.py"),
@@ -85,14 +89,23 @@ def main(argv=None) -> int:
     ap.add_argument("--root", default=str(ROOT))
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--action", help="override ops action")
+    # A caller that already knows the stage must be able to say so. Reading the
+    # week from state/ops/latest.json is right for the Commissioner's daily job
+    # but wrong for anyone driving a specific run: ops is whatever the last
+    # daily_ops --write decided, so an explicit run would otherwise apply the
+    # wrong stage for the wrong week without complaining.
+    ap.add_argument("--week", type=int, help="override ops week")
+    ap.add_argument("--season", help="override ops season")
+    ap.add_argument("--window", choices=("early", "main"),
+                    help="override ops window")
     args = ap.parse_args(argv)
 
     root = pathlib.Path(args.root)
     ops = load_ops(root)
     action = args.action or ops.get("action") or "idle"
-    week = int(ops.get("week") or 0)
-    season = str(ops.get("season") or "2026")
-    window = ops.get("window")
+    week = int(args.week if args.week is not None else (ops.get("week") or 0))
+    season = str(args.season or ops.get("season") or "2026")
+    window = args.window or ops.get("window")
     print(json.dumps({"action": action, "week": week, "window": window}, sort_keys=True))
 
     if action in (None, "idle"):

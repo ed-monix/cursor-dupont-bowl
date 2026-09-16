@@ -34,10 +34,13 @@ def make_players(**overrides):
 
 
 def make_roster(team, faab, bench=()):
-    """Minimal roster shape sufficient for resolve_faab (which only reads
-    faab_remaining and scans starters/bench/ir for drop-presence -- it does
-    not require a fully slot-legal roster; that's apply_transaction's job,
-    exercised separately below with full rosters)."""
+    """Minimal roster shape sufficient for resolve_faab.
+
+    resolve_faab does check that a winning claim leaves a legal roster, but it
+    only blames a claim for illegality the claim itself causes: a roster that is
+    already invalid going in (like this one, which has no starters) is not the
+    claim's fault, so the gate does not fire. Full-roster behaviour is exercised
+    below with _full_roster."""
     return {"team": team, "faab_remaining": faab, "starters": {}, "bench": list(bench), "ir": []}
 
 
@@ -425,3 +428,89 @@ def test_higher_bid_wins_over_worse_standing():
     by_team = {c["team"]: c for c in report["claims"]}
     assert by_team["best-team"]["status"] == "won"
     assert by_team["worst-team"]["status"] == "lost"
+
+
+# ---------------------------------------------------------------------------
+# A won claim that would leave an illegal roster is voided, not raised.
+#
+# This is what took down the first automated week-2 run: a GM claimed a DEF
+# while dropping its STARTING DEF with a full bench. resolve_faab marked it
+# "won", apply_won_claims raised out of the run, and nothing committed. Its own
+# docstring says resolve_faab's checks should prevent that — this is the check
+# that was missing.
+# ---------------------------------------------------------------------------
+
+def _bench_full(team, faab):
+    """A legal roster whose bench is at the six-player limit."""
+    r = _full_roster(team, faab, bench=["wr3", "b2", "b3", "b4", "b5", "b6"])
+    return r
+
+
+def _players_with_full_bench():
+    players = _full_players()
+    for pid in ("b2", "b3", "b4", "b5", "b6"):
+        players[pid] = {"name": pid, "pos": "WR", "team": "AAA",
+                        "status": "Active", "injury": None}
+    return players
+
+
+def test_claim_that_would_overflow_the_bench_is_voided_not_raised():
+    players = _players_with_full_bench()
+    rosters = {"team-a": _bench_full("team-a", faab=50)}
+    # Dropping a STARTER empties a slot but frees no bench space, so the add
+    # has nowhere to land.
+    claims = {"team-a": [{"add": "fa_wr", "drop": "def1", "bid": 9,
+                          "reasoning": "clear the decks"}]}
+
+    report = faab.resolve_faab(claims, ["team-a"], rosters, players)
+    claim = report["claims"][0]
+    assert claim["status"] == "skipped"
+    assert "illegal roster" in claim["reason"]
+
+    # Voided, not charged — Ruling 2026-05 refunded a voided bid and the
+    # commissioner's memos say "no FAAB is charged" for a struck claim.
+    assert report["remaining_budget"]["team-a"] == 50
+
+    # And the run survives: apply_won_claims has nothing illegal to choke on.
+    updated, entries = faab.apply_won_claims(report, rosters, players)
+    assert entries == []
+    ok, errors = validate_roster(updated["team-a"], players)
+    assert ok, errors
+
+
+def test_a_legal_claim_on_the_same_roster_still_wins():
+    """The gate must not become a blanket refusal."""
+    players = _players_with_full_bench()
+    rosters = {"team-a": _bench_full("team-a", faab=50)}
+    claims = {"team-a": [{"add": "fa_wr", "drop": "b2", "bid": 9,
+                          "reasoning": "bench for bench"}]}
+
+    report = faab.resolve_faab(claims, ["team-a"], rosters, players)
+    assert report["claims"][0]["status"] == "won"
+    assert report["remaining_budget"]["team-a"] == 41
+    updated, entries = faab.apply_won_claims(report, rosters, players)
+    assert len(entries) == 1
+    ok, errors = validate_roster(updated["team-a"], players)
+    assert ok, errors
+
+
+def test_one_voided_claim_does_not_sink_the_others():
+    """The whole point: one GM's illegal claim must not stall the week."""
+    players = _players_with_full_bench()
+    rosters = {
+        "team-a": _bench_full("team-a", faab=50),
+        "team-b": _full_roster("team-b", faab=50, bench=["b2"]),
+    }
+    claims = {
+        "team-a": [{"add": "fa_wr", "drop": "def1", "bid": 9, "reasoning": "illegal"}],
+        "team-b": [{"add": "fa_rb", "drop": "b2", "bid": 4, "reasoning": "legal"}],
+    }
+
+    report = faab.resolve_faab(claims, ["team-a", "team-b"], rosters, players)
+    by_team = {c["team"]: c for c in report["claims"]}
+    assert by_team["team-a"]["status"] == "skipped"
+    assert by_team["team-b"]["status"] == "won"
+
+    updated, entries = faab.apply_won_claims(report, rosters, players)
+    assert [e["team"] for e in entries] == ["team-b"]
+    assert "fa_rb" in updated["team-b"]["bench"]

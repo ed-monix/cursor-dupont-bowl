@@ -264,6 +264,13 @@ validate agent output.
   (league-office corrections, script-derived roster-imbalance facts, and the
   window's one-time provisions, all also logged in `state/rulings.md`).
 
+- `state/weeks/<season>-w<NN>/trade-screen.json` — the harness's verdict on
+  every outgoing trade offer that week, one record per offering team
+  `{from, offer, ok, reason}` (`scripts/lib/trades.py`). waivers.md §5 requires
+  offers to be validated BEFORE a target agent is spawned; this is that check's
+  audit trail, so an offer nobody was asked about still shows why. Written by
+  `scripts/office.py`'s trades step; read by the commissioner's waivers review.
+
 ### GM memory & the shared record (the personality substrate)
 - `teams/*/notes/2026-wNN.md` — owner notes (human input) plus the GM's replies.
 - `teams/*/press/2026-wNN.md` — the GM's public paper trail: note replies and
@@ -287,6 +294,15 @@ validate agent output.
   run proceeds without it. Sentiment only — no script or validator ever reads
   it, Sleeper remains the sole source of facts, and GMs only ever see the
   mogul's rewrite, never this file.
+- `state/news/buzz/inbox/` — landing zone for the owner's external Grok
+  automation (SuperGrok subscription, NOT the xAI API; `GROK_API_KEY` stays
+  unset). It commits one markdown file here per week under any filename, with
+  no knowledge of the league week. `scripts/buzz_inbox.py --week N` promotes the
+  most recently modified file to the canonical path above, stamps the standard
+  header, and deletes the consumed file; an existing canonical file always wins.
+  Same standing as the buzz file itself: optional, sentiment only, never read by
+  a script or a validator, never seen by a GM. `docs/grok-automation.md` holds
+  the prompt.
 
 ### Draft
 - `state/draft-log.jsonl` — one object per pick `{pick_no, round, team,

@@ -46,7 +46,8 @@ python scripts/sync_sleeper.py --schedule --week <WW>
 python scripts/free_agents.py  --week <WW>
 python scripts/league_board.py --week <WW>
 python scripts/derive_news.py  --week <WW>
-python scripts/fetch_buzz.py   --week <WW>   # owner file wins; else GROK_API_KEY; else skip
+python scripts/buzz_inbox.py   --week <WW>   # Grok automation's X drop -> canonical buzz file
+python scripts/fetch_buzz.py   --week <WW>   # owner file wins; no GROK_API_KEY set, so else skip
 python scripts/gm_pack.py      --week <WW> --run waivers
 ```
 
@@ -75,6 +76,21 @@ python scripts/grok_bots.py dispatch --week <WW> --kind waivers
 Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
 For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
 order is context only; bids are blind.
+
+### Under test: one-command GM turns
+
+```bash
+python scripts/gm_turn.py --week <WW> --run waivers
+```
+
+Not yet the default. Being evaluated over a full week before it can replace
+the gateway above. What it changes: all 12 teams move to one path, owned two
+included — no Cursor sidecar. Each team runs as an isolated `claude -p` call
+on Sonnet with an empty working directory, so there is no repo to read. Turn
+one fires alone to warm the shared cache prefix before the other eleven fan
+out, so bids stay blind by construction rather than by convention.
+`--dry-run` sizes the prompts without calling; `--save-raw DIR` keeps the raw
+envelopes when something fails to validate.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver
@@ -106,6 +122,26 @@ validates the offer, dispatch **only the target**:
 python scripts/grok_bots.py dispatch --week <WW> --kind trades \
   --slug <target> --offer <offer.json>
 ```
+
+### Under test: screened trades
+
+```bash
+python scripts/gm_turn.py --week <WW> --run trades --team <target> \
+  --offer <offer.json>
+```
+
+Not yet the default. `scripts/office.py`'s waivers stage runs this for you:
+`lib/trades.screen_offers` checks every outgoing offer against both rosters
+first — the offerer really holds what it is sending, the target really holds
+what is being asked for, and both rosters survive the swap — and only the
+offers that pass become an agent turn. That is the §5 rule enforced in code
+rather than by hand: week 1 burned ten turns on players who were not where
+the offerer thought they were.
+
+Every verdict, including the rejections nobody was asked about, is written to
+`state/weeks/2026-w<WW>/trade-screen.json` and goes into the commissioner's
+review pack. A target that cannot be parsed falls back to `reject` — a GM who
+cannot be understood has not agreed to anything.
 
 ## 6. Commissioner review, then apply
 
