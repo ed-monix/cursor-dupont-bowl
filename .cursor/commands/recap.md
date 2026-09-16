@@ -63,8 +63,10 @@ week's owner notes — it closes the loop.
 
 ## 4. Commit (exactly one)
 
-Stage `state/standings.json`, the week's `matchups.json` and `recap.md`; ONE
-commit: `week <WW>: recap`.
+Stage `state/standings.json`, the week's `matchups.json`, `recap.md` and
+`stats.json`; ONE commit: `week <WW>: recap`. The stats belong in it: step 1
+re-syncs them and step 2 scores the week from them, so they are the evidence
+for the official result.
 
 ## 5. Refresh the shared board (after the commit)
 
