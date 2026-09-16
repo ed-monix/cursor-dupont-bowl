@@ -578,5 +578,78 @@ def test_push_is_off_by_default_and_on_when_asked(tmp_path, monkeypatch, capsys)
     calls.clear()
     office.do_commit(tmp_path, "waivers", 2, "2026", None,
                      dry_run=False, skip_commit=False, steps_ok=True, push=True)
-    assert any(a[-1] == "push" for a in calls)
+    # The push now goes through _push_with_rebase: fetch, rebase, push.
+    verbs = [a[3] for a in calls if len(a) > 3]
+    assert "push" in verbs and "pull" in verbs
     assert "rebuild the board" in capsys.readouterr().out
+
+
+# --------------------------------------------------------------------
+# Pushing. viewer.yml pushes a board rebuild after every push to main, so
+# by the time a run that takes minutes reaches its push the remote has
+# moved. A bare `git push` lost that race on the very first live run.
+# --------------------------------------------------------------------
+
+def test_push_rebases_before_pushing(tmp_path, monkeypatch, capsys):
+    import subprocess as sp
+
+    calls = []
+
+    def fake(argv, **kw):
+        calls.append(argv[3] if len(argv) > 3 else argv[-1])
+        return sp.CompletedProcess(argv, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    assert office._push_with_rebase(tmp_path) is True
+    assert calls == ["fetch", "pull", "push"]
+    assert "rebuild the board" in capsys.readouterr().out
+
+
+def test_push_retries_when_it_loses_the_race(tmp_path, monkeypatch, capsys):
+    import subprocess as sp
+
+    monkeypatch.setattr(office.time, "sleep", lambda _: None)
+    seq = {"push": [1, 0]}
+
+    def fake(argv, **kw):
+        verb = argv[3] if len(argv) > 3 else argv[-1]
+        rc = seq["push"].pop(0) if verb == "push" else 0
+        return sp.CompletedProcess(argv, rc, stdout="", stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    assert office._push_with_rebase(tmp_path) is True
+    assert "lost a race; retrying" in capsys.readouterr().out
+
+
+def test_push_gives_up_without_losing_the_commit(tmp_path, monkeypatch, capsys):
+    """A failed push must never be reported as success — the commit is local."""
+    import subprocess as sp
+
+    monkeypatch.setattr(office.time, "sleep", lambda _: None)
+
+    def fake(argv, **kw):
+        verb = argv[3] if len(argv) > 3 else argv[-1]
+        return sp.CompletedProcess(argv, 1 if verb == "push" else 0,
+                                   stdout="", stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    assert office._push_with_rebase(tmp_path, attempts=2) is False
+    assert "commit is safe locally" in capsys.readouterr().out
+
+
+def test_a_failed_rebase_stops_rather_than_force_anything(tmp_path, monkeypatch):
+    import subprocess as sp
+
+    def fake(argv, **kw):
+        verb = argv[3] if len(argv) > 3 else argv[-1]
+        return sp.CompletedProcess(argv, 1 if verb == "pull" else 0,
+                                   stdout="", stderr="")
+
+    monkeypatch.setattr(office.subprocess, "run", fake)
+    assert office._push_with_rebase(tmp_path) is False
+
+
+def test_recap_commits_the_stats_it_scored_from(tmp_path):
+    paths = office.commit_paths("recap", tmp_path, "2026", 1)
+    assert "state/weeks/2026-w01/stats.json" in paths
+    assert "state/standings.json" in paths

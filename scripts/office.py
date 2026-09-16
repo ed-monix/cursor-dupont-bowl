@@ -41,6 +41,7 @@ import shlex
 import subprocess
 import sys
 import tempfile
+import time
 from dataclasses import dataclass
 from typing import Callable, Optional
 
@@ -519,6 +520,11 @@ def commit_paths(stage: str, root: pathlib.Path, season: str, week: int,
             "state/standings.json",
             f"{wdir}/matchups.json",
             f"{wdir}/recap.md",
+            # recap.md §4 lists only the three above, but step 1 re-syncs the
+            # final stats and step 2 scores the week from them. Leaving them
+            # uncommitted means the evidence for the official result is not in
+            # the repo, and the dirty tree blocks the rebase the push needs.
+            f"{wdir}/stats.json",
         ]
     raise OfficeError(f"unknown stage {stage!r}")
 
@@ -565,14 +571,39 @@ def do_commit(root: pathlib.Path, stage: str, week: int, season: str,
     # stale even though the run succeeded. Off by default: a scheduled office
     # can turn it on, and nothing pushes by accident until someone does.
     if push:
-        push_argv = ["git", "-C", str(root), "push"]
-        print("    $ " + shlex.join(push_argv))
-        rc = subprocess.run(push_argv).returncode
-        if rc != 0:
-            print(f"    git push failed (exit {rc})")
-            return False
-        print("    pushed — viewer.yml will rebuild the board")
+        return _push_with_rebase(root)
     return True
+
+
+def _push_with_rebase(root: pathlib.Path, attempts: int = 4) -> bool:
+    """Push, integrating whatever landed while the run was working.
+
+    viewer.yml pushes a board rebuild after every push to main, so by the time
+    a run that takes minutes reaches its push, the remote has almost always
+    moved. A bare `git push` loses that race — it did on the very first live
+    run, leaving week 1 committed locally and unpushed.
+
+    Fetch, rebase, push; retry with backoff. The rebase is safe because the
+    run's own work is already committed and every stage stages everything it
+    wrote (see commit_paths) — nothing of ours is left in the working tree to
+    block it.
+    """
+    for attempt in range(1, attempts + 1):
+        subprocess.run(["git", "-C", str(root), "fetch", "--quiet", "origin"])
+        rebase = subprocess.run(
+            ["git", "-C", str(root), "pull", "--quiet", "--rebase"])
+        if rebase.returncode != 0:
+            print(f"    rebase failed (exit {rebase.returncode}) — "
+                  "resolve by hand, the run's commit is safe locally")
+            return False
+        push = subprocess.run(["git", "-C", str(root), "push", "--quiet"])
+        if push.returncode == 0:
+            print("    pushed — viewer.yml will rebuild the board")
+            return True
+        print(f"    push attempt {attempt}/{attempts} lost a race; retrying")
+        time.sleep(2 ** attempt)
+    print("    could not push after retries — the run's commit is safe locally")
+    return False
 
 
 # --------------------------------------------------------------------------
