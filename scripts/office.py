@@ -285,8 +285,14 @@ def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
 
     with tempfile.TemporaryDirectory(prefix="office-offers-") as tmp:
         for rec in passed:
-            offer = rec["offer"]
+            offer = dict(rec["offer"])
             target = offer.get("to_team")
+            # An uneven offer costs the target roster space. It has to know
+            # that before it answers, and how many, because accepting without
+            # naming that many drops is refused at apply time.
+            owed = (rec.get("requires_drop") or {}).get(target)
+            if owed:
+                offer["requires_drop"] = owed
             offer_path = pathlib.Path(tmp) / f"{rec['from']}.json"
             offer_path.write_text(json.dumps(offer), encoding="utf-8")
             argv = _py(root, "gm_turn.py", "--week", week, "--season", season,

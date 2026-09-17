@@ -62,7 +62,7 @@ def test_collect_offers_empty_dir(tmp_path: Path):
 def test_validate_offer_legal_swap_passes():
     rosters = {"alpha": _roster("alpha", ["p1"]), "bravo": _roster("bravo", ["p2"])}
     offer = {"to_team": "bravo", "out": ["p1"], "in": ["p2"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS)
     assert ok is True
     assert reason == ""
 
@@ -70,7 +70,7 @@ def test_validate_offer_legal_swap_passes():
 def test_validate_offer_rejects_player_offerer_does_not_hold():
     rosters = {"alpha": _roster("alpha", ["p1"]), "bravo": _roster("bravo", ["p2"])}
     offer = {"to_team": "bravo", "out": ["p3"], "in": ["p2"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS)
     assert ok is False
     assert "p3" in reason
 
@@ -78,7 +78,7 @@ def test_validate_offer_rejects_player_offerer_does_not_hold():
 def test_validate_offer_rejects_player_target_does_not_hold():
     rosters = {"alpha": _roster("alpha", ["p1"]), "bravo": _roster("bravo", ["p2"])}
     offer = {"to_team": "bravo", "out": ["p1"], "in": ["p4"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS)
     assert ok is False
     assert "p4" in reason
 
@@ -86,7 +86,7 @@ def test_validate_offer_rejects_player_target_does_not_hold():
 def test_validate_offer_rejects_self_trade():
     rosters = {"alpha": _roster("alpha", ["p1"])}
     offer = {"to_team": "alpha", "out": ["p1"], "in": ["p1"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS)
     assert ok is False
     assert "yourself" in reason
 
@@ -94,7 +94,7 @@ def test_validate_offer_rejects_self_trade():
 def test_validate_offer_rejects_unknown_to_team():
     rosters = {"alpha": _roster("alpha", ["p1"])}
     offer = {"to_team": "ghost", "out": ["p1"], "in": ["p2"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS)
     assert ok is False
     assert "ghost" in reason
 
@@ -113,7 +113,7 @@ def test_validate_offer_rejects_overflowed_bench_with_apply_transaction_message(
     # bravo gives up both p2 and p3 for alpha's single p1 -> alpha's bench
     # would grow from 1 to 2, over its 1-slot limit.
     offer = {"to_team": "bravo", "out": ["p1"], "in": ["p2", "p3"]}
-    ok, reason = validate_offer("alpha", offer, rosters, PLAYERS, roster_config)
+    ok, reason, _drops = validate_offer("alpha", offer, rosters, PLAYERS, roster_config)
     assert ok is False
     assert "bench" in reason.lower()
 
@@ -292,3 +292,111 @@ def test_dry_run_reports_without_writing(tmp_path: Path):
     alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
     assert "a1" in json.dumps(alpha)  # untouched on disk
     assert not (tmp_path / "state" / "transactions.jsonl").exists()
+
+
+# ---- uneven trades: a full roster makes room, it does not refuse -----------
+#
+# Every team carries a full 15 and validate_offer used to require both sides
+# legal the instant the swap landed. That made every 2-for-1 illegal on arrival:
+# week 2 screened out both offers in the league on exactly this, including one
+# an owner had asked their GM to make. An uneven trade is normal; the receiving
+# side just has to cut someone.
+
+SLOT_POS = {"QB": "QB", "RB1": "RB", "RB2": "RB", "WR1": "WR", "WR2": "WR",
+            "TE": "TE", "FLEX": "RB", "K": "K", "DEF": "DEF"}
+CONFIG = {"bench_slots": 6, "ir_slots": 1}
+
+
+def _full(team):
+    """9 legal starters + a full 6-man bench = the 15 every team here carries."""
+    return {
+        "team": team, "faab_remaining": 100,
+        "starters": {slot: f"{team}-{slot}" for slot in SLOT_POS},
+        "bench": [f"{team}-b{i}" for i in range(6)], "ir": [],
+    }
+
+
+def _full_players():
+    out = {}
+    for team in ("alpha", "bravo"):
+        for slot, pos in SLOT_POS.items():
+            out[f"{team}-{slot}"] = {"name": slot, "pos": pos, "team": "AAA",
+                                     "status": "ACT", "injury": None}
+        for i in range(6):
+            out[f"{team}-b{i}"] = {"name": f"b{i}", "pos": "RB", "team": "AAA",
+                                   "status": "ACT", "injury": None}
+    return out
+
+
+def test_two_for_one_is_legal_and_costs_the_receiver_a_drop():
+    rosters = {"alpha": _full("alpha"), "bravo": _full("bravo")}
+    offer = {"to_team": "bravo", "out": ["alpha-b0", "alpha-b1"], "in": ["bravo-b0"]}
+    ok, reason, needs = validate_offer("alpha", offer, rosters,
+                                       _full_players(), CONFIG)
+    assert ok, reason
+    assert needs == {"bravo": 1}          # bravo nets +1 and is full
+    assert "alpha" not in needs           # alpha nets -1, owes nothing
+
+
+def test_even_trade_costs_nobody_a_drop():
+    rosters = {"alpha": _full("alpha"), "bravo": _full("bravo")}
+    offer = {"to_team": "bravo", "out": ["alpha-b0"], "in": ["bravo-b0"]}
+    ok, reason, needs = validate_offer("alpha", offer, rosters,
+                                       _full_players(), CONFIG)
+    assert ok, reason
+    assert needs is None
+
+
+def test_three_for_one_asks_the_receiver_for_two():
+    rosters = {"alpha": _full("alpha"), "bravo": _full("bravo")}
+    offer = {"to_team": "bravo",
+             "out": ["alpha-b0", "alpha-b1", "alpha-b2"], "in": ["bravo-b0"]}
+    ok, reason, needs = validate_offer("alpha", offer, rosters,
+                                       _full_players(), CONFIG)
+    assert ok, reason
+    assert needs == {"bravo": 2}
+
+
+def test_offerer_taking_back_more_must_name_its_own_drop():
+    """The offerer knew it was net-positive, so it names the casualty up front."""
+    rosters = {"alpha": _full("alpha"), "bravo": _full("bravo")}
+    offer = {"to_team": "bravo", "out": ["alpha-b0"],
+             "in": ["bravo-b0", "bravo-b1"]}
+    ok, reason, _ = validate_offer("alpha", offer, rosters, _full_players(), CONFIG)
+    assert not ok
+    assert "names only 0 drop" in reason
+
+    offer["drop"] = ["alpha-b5"]
+    ok, reason, needs = validate_offer("alpha", offer, rosters,
+                                       _full_players(), CONFIG)
+    assert ok, reason
+    assert needs == {"alpha": 1}
+
+
+def test_a_player_in_the_trade_is_never_counted_as_droppable():
+    """Accepting a player only to waive him is not making room."""
+    from lib.trades import droppable_for
+    can = droppable_for(_full("alpha"), ["alpha-b0"], ["bravo-b0"])
+    assert "alpha-b0" not in can   # already leaving
+    assert "bravo-b0" not in can   # just arrived
+
+
+def test_drops_needed_asks_the_validator_how_many():
+    from lib.trades import drops_needed
+    r, P = _full("alpha"), _full_players()
+    assert drops_needed(r, ["alpha-b0"], ["bravo-b0"], P, CONFIG) == 0
+    assert drops_needed(r, ["alpha-b0"], ["bravo-b0", "bravo-b1"], P, CONFIG) == 1
+    assert drops_needed(r, ["alpha-b0", "alpha-b1"], ["bravo-b0"], P, CONFIG) == 0
+
+
+def test_trading_away_a_starter_still_costs_a_bench_spot():
+    """The case the old arithmetic got wrong, and that killed the real offers.
+
+    kardashian was asked for Justin Jefferson, a STARTER, in a 2-for-1. Giving
+    him up empties a lineup slot; both incoming players still land on the bench,
+    which was already full. Total roster size said "fits". The bench said no.
+    """
+    from lib.trades import drops_needed
+    r, P = _full("alpha"), _full_players()
+    # give up a starter, take back two: bench grows by two, frees nothing
+    assert drops_needed(r, ["alpha-QB"], ["bravo-b0", "bravo-b1"], P, CONFIG) == 2

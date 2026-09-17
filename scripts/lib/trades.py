@@ -30,7 +30,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Union
 
-from lib.rosters import apply_transaction, roster_config_from_league, save_roster
+from lib.rosters import (apply_transaction,
+                         roster_config_from_league, save_roster)
 
 TRADE_DEADLINE_WEEK = 11
 
@@ -67,6 +68,63 @@ def collect_offers(decisions_dir: Union[str, Path]) -> dict:
     return out
 
 
+def _active_ids(roster: dict) -> list:
+    """Starters + bench. IR is not a trading or dropping pool."""
+    ids = [str(pid) for pid in (roster.get("starters") or {}).values() if pid]
+    ids += [str(pid) for pid in (roster.get("bench") or [])]
+    return ids
+
+
+def droppable_for(roster: dict, gone: list, got: list) -> list:
+    """Players this side could cut to make room for `got`, bench first.
+
+    Not the ones leaving in the trade (already going) and not the ones arriving
+    (accepting a player to immediately waive him is not a trade, it is a
+    laundering of somebody else's roster crunch). Bench first because incoming
+    players land on the bench, so a bench cut is what actually relieves the
+    pressure -- dropping a starter empties a lineup slot and helps nothing.
+    """
+    busy = {str(p) for p in gone} | {str(p) for p in got}
+    bench = [str(p) for p in (roster.get("bench") or []) if str(p) not in busy]
+    starters = [str(p) for p in (roster.get("starters") or {}).values()
+                if p and str(p) not in busy]
+    return bench + starters
+
+
+def drops_needed(roster: dict, gone: list, got: list, players: dict,
+                 roster_config: Optional[dict] = None) -> Optional[int]:
+    """Fewest players this side must cut for the swap to be legal. Usually 0.
+
+    Asked, not calculated. An earlier version of this did the capacity
+    arithmetic by hand and got it wrong: it compared total roster size against
+    total slots, when `apply_transaction` puts every incoming player on the
+    *bench*. Trading away a starter empties a lineup slot and relieves no bench
+    pressure at all, so a 2-for-1 for somebody's starter still overflowed and
+    the screen still said no. Rather than model the rules a second time and be
+    wrong a second time, this drops one more player at a time and asks
+    apply_transaction -- the only thing that actually knows -- whether it fits
+    yet.
+
+    Returns None if no number of drops makes it legal, which means the offer is
+    broken for a reason that is not roster space.
+    """
+    can = droppable_for(roster, gone, got)
+    for n in range(0, len(can) + 1):
+        candidate = roster
+        try:
+            for pid in can[:n]:
+                candidate = apply_transaction(
+                    candidate, {"type": "drop", "player": pid},
+                    players, roster_config)
+            apply_transaction(
+                candidate, {"type": "trade", "out": gone, "in": got},
+                players, roster_config)
+            return n
+        except ValueError:
+            continue
+    return None
+
+
 def validate_offer(
     offerer: str,
     offer: dict,
@@ -74,7 +132,11 @@ def validate_offer(
     players: dict,
     roster_config: Optional[dict] = None,
 ) -> tuple[bool, str]:
-    """Is `offer` (from `offerer`) legal right now? Returns (ok, reason).
+    """Is `offer` (from `offerer`) legal right now?
+
+    Returns `(ok, reason, requires_drop)`. `requires_drop` is `{team: n}` when a
+    side must cut `n` players to fit the swap, else None -- an uneven trade is
+    legal, it just costs the receiving side roster space.
 
     `reason` is a short human-readable string, empty when ok is True. Checks
     run cheapest/most-obvious first so the reason a bad offer gets rejected
@@ -86,53 +148,81 @@ def validate_offer(
         4. the target actually holds every `in` id
         5. the swap leaves BOTH rosters valid (via rosters.apply_transaction,
            which already knows bench/ir limits, duplicate players, etc. --
-           never reimplemented here)
+           never reimplemented here), allowing for the drops each side would
+           have to make: a side over the limit is asked for room, not refused
     """
     to_team = offer.get("to_team")
     if not to_team or to_team not in rosters:
-        return False, f"unknown to_team {to_team!r}"
+        return False, f"unknown to_team {to_team!r}", None
     if to_team == offerer:
-        return False, "cannot trade with yourself"
+        return False, "cannot trade with yourself", None
 
     out_ids = offer.get("out")
     in_ids = offer.get("in")
     if not isinstance(out_ids, list) or not out_ids:
-        return False, "offer 'out' must be a non-empty list of player ids"
+        return False, "offer 'out' must be a non-empty list of player ids", None
     if not isinstance(in_ids, list) or not in_ids:
-        return False, "offer 'in' must be a non-empty list of player ids"
+        return False, "offer 'in' must be a non-empty list of player ids", None
 
     offerer_roster = rosters.get(offerer)
     if offerer_roster is None:
-        return False, f"unknown offerer {offerer!r}"
+        return False, f"unknown offerer {offerer!r}", None
     target_roster = rosters[to_team]
 
     offerer_ids = _all_player_ids(offerer_roster)
     missing_out = [pid for pid in out_ids if pid not in offerer_ids]
     if missing_out:
-        return False, f"{offerer} does not hold: {', '.join(missing_out)}"
+        return False, f"{offerer} does not hold: {', '.join(missing_out)}", None
 
     target_ids = _all_player_ids(target_roster)
     missing_in = [pid for pid in in_ids if pid not in target_ids]
     if missing_in:
-        return False, f"{to_team} does not hold: {', '.join(missing_in)}"
+        return False, f"{to_team} does not hold: {', '.join(missing_in)}", None
 
-    try:
-        apply_transaction(
-            offerer_roster, {"type": "trade", "out": out_ids, "in": in_ids},
-            players, roster_config,
-        )
-    except ValueError as exc:
-        return False, f"{offerer}'s side: {exc}"
+    requires_drop = {}
+    for team, roster, gone, got, named, must_name in (
+        (offerer, offerer_roster, out_ids, in_ids, offer.get("drop"), True),
+        (to_team, target_roster, in_ids, out_ids, None, False),
+    ):
+        need = drops_needed(roster, gone, got, players, roster_config)
+        if need is None:
+            # No number of cuts fixes it, so the problem is not roster space.
+            # Re-run the bare swap to surface the real reason.
+            try:
+                apply_transaction(
+                    roster, {"type": "trade", "out": gone, "in": got},
+                    players, roster_config)
+            except ValueError as exc:
+                return False, f"{team}'s side: {exc}", None
+            return False, f"{team}'s side: cannot be made legal", None
 
-    try:
-        apply_transaction(
-            target_roster, {"type": "trade", "out": in_ids, "in": out_ids},
-            players, roster_config,
-        )
-    except ValueError as exc:
-        return False, f"{to_team}'s side: {exc}"
+        # The offerer names its own drops up front -- it knew it was taking
+        # back more than it sent, so who it cuts is part of the offer. The
+        # target has not been asked yet and names them when it accepts, so for
+        # that side drops_needed has already proven a legal set of that size
+        # exists and the real names arrive with the acceptance.
+        if must_name and need:
+            chosen = [str(x) for x in (named or [])]
+            if len(chosen) < need:
+                return False, (f"{team}'s side: offer takes back {need} more "
+                               f"than it sends and names only {len(chosen)} "
+                               f"drop(s)"), None
+            candidate = roster
+            try:
+                for pid in chosen[:need]:
+                    candidate = apply_transaction(
+                        candidate, {"type": "drop", "player": pid},
+                        players, roster_config)
+                apply_transaction(
+                    candidate, {"type": "trade", "out": gone, "in": got},
+                    players, roster_config)
+            except ValueError as exc:
+                return False, f"{team}'s side: named drops do not work: {exc}", None
 
-    return True, ""
+        if need:
+            requires_drop[team] = need
+
+    return True, "", requires_drop if requires_drop else None
 
 
 def screen_offers(
@@ -200,8 +290,14 @@ def screen_offers(
             })
             continue
 
-        ok, reason = validate_offer(slug, offer, rosters, players, roster_config)
-        records.append({"from": slug, "offer": offer, "ok": ok, "reason": reason})
+        ok, reason, requires_drop = validate_offer(
+            slug, offer, rosters, players, roster_config)
+        rec = {"from": slug, "offer": offer, "ok": ok, "reason": reason}
+        if requires_drop:
+            # The target reads this in its pack: accepting costs it this many
+            # roster spots, and it names the casualties in its response.
+            rec["requires_drop"] = requires_drop
+        records.append(rec)
 
     return records
 
@@ -305,7 +401,35 @@ def apply_accepted(root: Union[str, Path], season: str, week: int, *,
             continue
 
         out_ids, in_ids = list(offer.get("out") or []), list(offer.get("in") or [])
+        # Room, if either side needs it. The offerer named its drops in the
+        # offer; the target names them in its response. A side that owes drops
+        # and did not name enough is refused here rather than silently
+        # over-filled -- accepting is not a licence to break the roster.
+        needed = screened.get("requires_drop") or {}
+        drops = {offerer: [str(x) for x in (offer.get("drop") or [])],
+                 target: [str(x) for x in (response.get("drop") or [])]}
+        short = {team: n for team, n in needed.items()
+                 if len(drops.get(team) or []) < n}
+        if short:
+            rec.update(applied=False, reason="; ".join(
+                f"{team} must drop {n} to fit this trade and named "
+                f"{len(drops.get(team) or [])}" for team, n in sorted(short.items())))
+            results.append(rec)
+            continue
+
         try:
+            for team in (offerer, target):
+                for pid in (drops.get(team) or [])[:needed.get(team, 0)]:
+                    changed[team] = apply_transaction(
+                        changed.get(team, rosters[team]),
+                        {"type": "drop", "player": pid},
+                        players, roster_config)
+                    entries.append({
+                        "timestamp": stamp, "team": team, "action": "drop",
+                        "players": [pid], "bid": None,
+                        "reasoning": "dropped to make room for an accepted trade",
+                        "status": "applied",
+                    })
             changed[offerer] = apply_transaction(
                 changed.get(offerer, rosters[offerer]),
                 {"type": "trade", "out": out_ids, "in": in_ids},
