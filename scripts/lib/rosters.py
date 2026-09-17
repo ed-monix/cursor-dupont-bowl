@@ -295,9 +295,30 @@ def validate_roster(roster, players, roster_config=None):
     return (len(errors) == 0, errors)
 
 
+# Injury designations that bar a player from a starting slot. "Questionable" is
+# deliberately NOT here: a questionable player is a football judgment and taking
+# it away would neuter the GMs -- Tony Soprano started a questionable Kyler
+# Murray in week 2 as a disciplinary message to Bo Nix, which is terrible
+# management and entirely his right. These four are different. A player who is
+# Out, Doubtful, on IR or suspended is not dressing, so starting him is not a
+# gamble, it is an empty slot scoring zero, and the fallback should fill it.
+CANNOT_START_INJURY = frozenset({"out", "doubtful", "ir", "suspended"})
+
+
+def injury_bars_starting(player: dict) -> bool:
+    """Is this player's designation one that means he will not play at all?"""
+    if not isinstance(player, dict):
+        return False
+    for field in ("injury", "status"):
+        value = (player.get(field) or "").strip().lower()
+        if value in CANNOT_START_INJURY:
+            return True
+    return False
+
+
 def validate_lineup(roster, players, roster_config=None):
     """Game-day lineup check: every starter slot filled, position-eligible,
-    and no player started in two slots at once.
+    not ruled out, and no player started in two slots at once.
 
     Returns (ok: bool, errors: list[str]).
     """
@@ -317,6 +338,9 @@ def validate_lineup(roster, players, roster_config=None):
         pos = players[pid].get("pos")
         if not slot_position_ok(slot, pos, roster_config):
             errors.append(f"slot {slot}: player {pid} position {pos} not eligible")
+        if injury_bars_starting(players[pid]):
+            tag = players[pid].get("injury") or players[pid].get("status")
+            errors.append(f"slot {slot}: player {pid} is {tag} and cannot start")
         if pid in seen:
             errors.append(
                 f"player {pid} started in multiple slots ({seen[pid]} and {slot})"

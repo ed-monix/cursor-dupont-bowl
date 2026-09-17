@@ -7,6 +7,7 @@ import pytest
 from lib.rosters import (
     apply_transaction,
     best_legal_lineup,
+    injury_bars_starting,
     duplicate_players_across_teams,
     roster_config_from_league,
     slot_position_ok,
@@ -438,3 +439,75 @@ def test_roster_built_to_superflex_adapted_config_passes_validation():
     ok, errors = validate_roster(roster, players, roster_config)
     assert ok is True
     assert errors == []
+
+
+# --- a player who is not dressing cannot hold a starting slot ---------------
+#
+# validate_lineup checked position eligibility and nothing else, so a GM could
+# start a player ruled Out and the lineup was "legal" — the fallback never fired
+# and the slot scored zero. Questionable is deliberately still legal: Tony
+# Soprano starting a questionable Kyler Murray to send Bo Nix a message is bad
+# management and entirely his business.
+
+def _lineup_players(qb_injury=None, qb_status="Active"):
+    return {
+        "qb1": {"name": "QB One", "pos": "QB", "team": "AAA",
+                "status": qb_status, "injury": qb_injury},
+        "rb1": {"name": "RB One", "pos": "RB", "team": "AAA",
+                "status": "Active", "injury": None},
+        "rb2": {"name": "RB Two", "pos": "RB", "team": "AAA",
+                "status": "Active", "injury": None},
+        "wr1": {"name": "WR One", "pos": "WR", "team": "AAA",
+                "status": "Active", "injury": None},
+        "wr2": {"name": "WR Two", "pos": "WR", "team": "AAA",
+                "status": "Active", "injury": None},
+        "te1": {"name": "TE One", "pos": "TE", "team": "AAA",
+                "status": "Active", "injury": None},
+        "k1": {"name": "K One", "pos": "K", "team": "AAA",
+               "status": "Active", "injury": None},
+        "d1": {"name": "D One", "pos": "DEF", "team": "AAA",
+               "status": "Active", "injury": None},
+        "fx1": {"name": "FLEX One", "pos": "RB", "team": "AAA",
+                "status": "Active", "injury": None},
+    }
+
+
+def _lineup_roster():
+    return {"starters": {"QB": "qb1", "RB1": "rb1", "RB2": "rb2", "WR1": "wr1",
+                         "WR2": "wr2", "TE": "te1", "FLEX": "fx1", "K": "k1",
+                         "DEF": "d1"},
+            "bench": [], "ir": []}
+
+
+def test_a_healthy_lineup_is_legal():
+    ok, errors = validate_lineup(_lineup_roster(), _lineup_players())
+    assert ok, errors
+
+
+def test_questionable_is_still_the_gms_call():
+    ok, errors = validate_lineup(
+        _lineup_roster(), _lineup_players(qb_injury="Questionable"))
+    assert ok, errors
+
+
+@pytest.mark.parametrize("tag", ["Out", "Doubtful", "IR", "Suspended",
+                                 "out", "DOUBTFUL"])
+def test_a_player_who_is_not_dressing_cannot_start(tag):
+    ok, errors = validate_lineup(
+        _lineup_roster(), _lineup_players(qb_injury=tag))
+    assert not ok
+    assert any("cannot start" in e and "QB" in e for e in errors)
+
+
+def test_the_bar_reads_status_as_well_as_injury():
+    """Sleeper sometimes carries it on status rather than injury."""
+    ok, errors = validate_lineup(
+        _lineup_roster(), _lineup_players(qb_status="Out"))
+    assert not ok
+    assert any("cannot start" in e for e in errors)
+
+
+def test_injury_bars_starting_is_tolerant_of_junk():
+    assert injury_bars_starting({}) is False
+    assert injury_bars_starting({"injury": None}) is False
+    assert injury_bars_starting(None) is False
