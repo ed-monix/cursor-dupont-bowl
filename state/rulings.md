@@ -120,3 +120,47 @@ of this review. state/free-agents.json should be regenerated once this
 correction is applied, so the derived pool matches the roster files it is
 supposed to describe — the office has had quite enough of stale wire boards
 for one week.
+
+## Ruling 2026-06 — Five rosters silently short two weeks, bench reconciliation (2026-09-16)
+
+Week 2's waiver run stopped dead at the apply gate. FAAB went to execute
+costanza's won claim, validated the resulting roster as it is required to, and
+refused it: DJ Moore in both the FLEX and on the bench, Justin Herbert in both
+the QB slot and on the bench. The claim was innocent. The roster was not.
+
+This office has audited all twelve. Five were corrupt — costanza, rinna,
+dumbledore, meyer-walsh and patricia-moyer — and the cause is the same in each
+case, `week 01: apply lineups-main`. That apply wrote each team's new starters
+and left the bench exactly as it found it. A player promoted out of the bench
+therefore stayed on it, appearing twice; a player demoted out of the lineup was
+written to no list at all and ceased, quietly, to be on anybody's roster. The
+five affected teams are precisely the five that changed their week 1 lineup.
+The seven that stood pat were untouched, which is why this went unnoticed: a
+bug that only bites the managers who manage.
+
+Nothing validated a roster between that apply and this week's FAAB, so five
+teams have spent two weeks of league time carrying thirteen or fourteen
+players while believing they carried fifteen, and this office has been
+publishing standings computed against lineups drawn from them.
+
+Players destroyed, now restored: Baker Mayfield and Rachaad White
+(costanza); Aaron Rodgers and Courtland Sutton (rinna); Jared Goff
+(dumbledore); Jordan Mason (meyer-walsh); Carnell Tate (patricia-moyer).
+
+Ruling: this is a pipeline defect, not a GM decision, and no GM is charged for
+it. Remedy, applied by `scripts/repair_lineup_bench.py` rather than by hand:
+1. Each affected bench is rebuilt as what the team held before the corrupting
+   apply, minus whoever is starting now — the apply as it should have run.
+2. The duplicates are removed and the destroyed players restored to the bench.
+3. No FAAB is charged or refunded, no lineup is restated, and no result is
+   reversed. Week 1 was played and scored with the lineups the GMs actually
+   submitted; only the bench behind them was wrong, and a bench scores nothing.
+   The standings stand.
+4. The apply path is fixed so a lineup change conserves the rostered set, with
+   tests, because the only reason this cost two weeks instead of two minutes
+   is that nothing asserted it.
+
+All twelve rosters validate as of this ruling. Week 2's waiver run is to be
+re-run from the top against the repaired rosters — the GM decisions taken
+against corrupt ones are void, having been reasoned from a roster five of the
+twelve did not have.

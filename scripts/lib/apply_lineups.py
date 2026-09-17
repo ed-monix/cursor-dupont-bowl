@@ -48,6 +48,38 @@ def resolved_by_id(players: dict, board: Optional[dict] = None) -> dict:
     return out
 
 
+
+def reconciled_bench(roster: dict, new_starters: dict) -> list:
+    """The bench that goes with `new_starters`, conserving the rostered set.
+
+    Setting `starters` alone is not a lineup change, it is a leak. Whoever was
+    promoted is still sitting on the bench (a duplicate the validator rejects)
+    and whoever was demoted is on no list at all (silently dropped from the
+    roster). `week 01: apply lineups-main` did exactly that to five of twelve
+    teams -- costanza lost Baker Mayfield and Rachaad White -- and nothing
+    noticed until FAAB validated a roster three weeks of league time later.
+
+    So the bench is derived, never carried over: everyone the team held before
+    (starters + bench), minus whoever is starting now. Surviving bench players
+    keep their order and demoted starters are appended in slot order, so a
+    no-op lineup leaves the file byte-identical. IR is not touched -- an IR
+    player is not a lineup decision.
+    """
+    starting = {str(pid) for pid in (new_starters or {}).values() if pid}
+    held = []
+    for pid in (roster.get("bench") or []):
+        held.append(str(pid))
+    for _slot, pid in sorted((roster.get("starters") or {}).items()):
+        if pid:
+            held.append(str(pid))
+
+    bench = []
+    for pid in held:
+        if pid not in starting and pid not in bench:
+            bench.append(pid)
+    return bench
+
+
 def frozen_starters_map(
     existing: Optional[dict],
     roster: dict,
@@ -138,6 +170,7 @@ def apply_lineup_window(
         )
         new_roster = copy.deepcopy(roster)
         new_roster["starters"] = dict(merged["starters"])
+        new_roster["bench"] = reconciled_bench(roster, merged["starters"])
         updated_rosters[slug] = new_roster
         lineups_out[slug] = merged
         team_reports.append({

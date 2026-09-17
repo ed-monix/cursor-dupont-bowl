@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from lib.apply_lineups import apply_lineup_window
+from lib.apply_lineups import apply_lineup_window, reconciled_bench
 import lineups as lineups_cli
 
 SIMPLE_SCORING = {"pass_yd": 0.04, "pass_td": 4, "rush_yd": 0.1, "rec": 0.5, "rec_yd": 0.1}
@@ -122,3 +122,62 @@ def test_lineups_cli_dry_run(tmp_path: Path):
     assert rc == 0
     assert not (week / "lineups.json").exists()
     assert (week / "lineups-early-report.json").exists()
+
+
+# --- bench reconciliation -------------------------------------------------
+#
+# `week 01: apply lineups-main` wrote starters and left bench alone, so five of
+# twelve rosters ended up holding a promoted player twice and a demoted player
+# not at all. These pin the invariant that actually matters: a lineup change
+# moves players between starters and bench, it never creates or destroys one.
+
+def test_promoted_player_leaves_the_bench():
+    """The bug: starting a bench player left him on the bench as a duplicate."""
+    roster = _roster()                      # TE kelce starting, otherte benched
+    new_starters = _starters(te="otherte")
+    bench = reconciled_bench(roster, new_starters)
+    assert "otherte" not in bench           # promoted, so no longer benched
+    assert bench.count("otherte") == 0
+
+
+def test_demoted_starter_lands_on_the_bench_not_in_the_bin():
+    """The costly half: a benched starter used to vanish off the roster."""
+    roster = _roster()
+    new_starters = _starters(te="otherte")
+    bench = reconciled_bench(roster, new_starters)
+    assert "kelce" in bench                 # demoted, not destroyed
+
+
+def test_a_lineup_change_conserves_the_rostered_set():
+    roster = _roster()
+    before = set(roster["starters"].values()) | set(roster["bench"])
+    new_starters = _starters(te="otherte")
+    after = set(new_starters.values()) | set(reconciled_bench(roster, new_starters))
+    assert before == after
+
+
+def test_no_op_lineup_leaves_the_bench_untouched():
+    roster = _roster()
+    assert reconciled_bench(roster, _starters()) == roster["bench"]
+
+
+def test_reconciled_bench_never_duplicates():
+    roster = _roster()
+    bench = reconciled_bench(roster, _starters(te="otherte"))
+    assert len(bench) == len(set(bench))
+
+
+def test_apply_window_writes_a_bench_that_matches_its_starters(tmp_path):
+    """End to end: the roster apply_lineup_window hands back must validate."""
+    roster = _roster()
+    out = apply_lineup_window(
+        {"t": roster}, _players(), {}, SIMPLE_SCORING,
+        {"t": {"starters": _starters(te="otherte"), "justification": "x"}},
+        "main", GAMES, existing_lineups={},
+    )
+    new = out["rosters"]["t"]
+    overlap = set(new["starters"].values()) & set(new["bench"])
+    assert not overlap, f"player in two places at once: {overlap}"
+    assert (set(roster["starters"].values()) | set(roster["bench"])) == (
+        set(new["starters"].values()) | set(new["bench"])
+    )
