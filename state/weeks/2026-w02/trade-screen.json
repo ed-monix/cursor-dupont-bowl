@@ -1,0 +1,34 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "12527"
+      ],
+      "message": "Ed, I'm doing you a favor here. You take a QB you don't need behind your golden boy and a solid back off my bench, I take Jeanty off your hands before he gets you beat again. Everybody wins, mostly me. Clock's ticking.",
+      "out": [
+        "12522",
+        "7594"
+      ],
+      "to_team": "your-team"
+    },
+    "ok": false,
+    "reason": "your-team's side: resulting roster is invalid: bench has 7 players, limit is 6"
+  },
+  {
+    "from": "your-team",
+    "offer": {
+      "in": [
+        "6794"
+      ],
+      "message": "You're sitting Jefferson behind a QB controversy while I'm sitting two backs I don't need. Judkins and Harrison for Jefferson, straight up. No picks, no games \u2014 just take the upgrade and let's both stop pretending this is a hard decision.",
+      "out": [
+        "12512",
+        "11628"
+      ],
+      "to_team": "kardashian"
+    },
+    "ok": false,
+    "reason": "kardashian's side: resulting roster is invalid: bench has 8 players, limit is 6"
+  }
+]

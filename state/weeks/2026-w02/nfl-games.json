@@ -1,0 +1,130 @@
+[
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "ARI",
+  "away": "SEA",
+  "week": 2,
+  "game_id": "202610201"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "ATL",
+  "away": "CAR",
+  "week": 2,
+  "game_id": "202610202"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "BAL",
+  "away": "NO",
+  "week": 2,
+  "game_id": "202610203"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-17",
+  "home": "BUF",
+  "away": "DET",
+  "week": 2,
+  "game_id": "202610204"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "CHI",
+  "away": "MIN",
+  "week": 2,
+  "game_id": "202610206"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "DAL",
+  "away": "WAS",
+  "week": 2,
+  "game_id": "202610209"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "DEN",
+  "away": "JAX",
+  "week": 2,
+  "game_id": "202610210"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "HOU",
+  "away": "CIN",
+  "week": 2,
+  "game_id": "202610213"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "KC",
+  "away": "IND",
+  "week": 2,
+  "game_id": "202610216"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "NE",
+  "away": "PIT",
+  "week": 2,
+  "game_id": "202610221"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "NYJ",
+  "away": "GB",
+  "week": 2,
+  "game_id": "202610224"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "LAC",
+  "away": "LV",
+  "week": 2,
+  "game_id": "202610229"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "SF",
+  "away": "MIA",
+  "week": 2,
+  "game_id": "202610231"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-21",
+  "home": "LAR",
+  "away": "NYG",
+  "week": 2,
+  "game_id": "202610232"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "TB",
+  "away": "CLE",
+  "week": 2,
+  "game_id": "202610233"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-09-20",
+  "home": "TEN",
+  "away": "PHI",
+  "week": 2,
+  "game_id": "202610234"
+ }
+]

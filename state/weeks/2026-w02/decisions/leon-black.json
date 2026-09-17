@@ -1,0 +1,23 @@
+{
+  "claims": [
+    {
+      "add": "13346",
+      "drop": null,
+      "bid": 30
+    }
+  ],
+  "drops": [],
+  "trade_offer": {
+    "to_team": "your-team",
+    "out": [
+      "12522",
+      "7594"
+    ],
+    "in": [
+      "12527"
+    ],
+    "message": "Ed, I'm doing you a favor here. You take a QB you don't need behind your golden boy and a solid back off my bench, I take Jeanty off your hands before he gets you beat again. Everybody wins, mostly me. Clock's ticking."
+  },
+  "note_reply": "No note? Good. Nothing to disagree with. I'll keep winning without the memo.",
+  "forum_post": "Christian Watson just dropped 29.7 on a team that thought I couldn't field a lineup, and I'm about to add another name to the pile because I'm feeling it, not because a spreadsheet told me to. Ed Monix, I sent you a trade that helps you way more than it helps me \u2014 take it before I change my mind and just take Jeanty for free next week. QB aisle's still mine. Kris, you're welcome for the copy."
+}

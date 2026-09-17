@@ -1,0 +1,85 @@
+{
+  "coach-taylor": [
+    {
+      "add": "8142",
+      "bid": 8,
+      "drop": "8126"
+    }
+  ],
+  "costanza": [
+    {
+      "add": "8142",
+      "bid": 27,
+      "drop": "3257"
+    }
+  ],
+  "dumbledore": [],
+  "harry-caray": [
+    {
+      "add": "12534",
+      "bid": 35,
+      "drop": "5844"
+    }
+  ],
+  "kardashian": [
+    {
+      "add": "12534",
+      "bid": 27,
+      "drop": "5001"
+    }
+  ],
+  "leon-black": [
+    {
+      "add": "13346",
+      "bid": 30,
+      "drop": null
+    }
+  ],
+  "maura-higgins": [
+    {
+      "add": "12534",
+      "bid": 32,
+      "drop": "11651"
+    }
+  ],
+  "meyer-walsh": [
+    {
+      "add": "8132",
+      "bid": 60,
+      "drop": "8408"
+    }
+  ],
+  "patricia-moyer": [
+    {
+      "add": "TB",
+      "bid": 5,
+      "drop": "KC"
+    }
+  ],
+  "rinna": [
+    {
+      "add": "12534",
+      "bid": 42,
+      "drop": "9758"
+    }
+  ],
+  "wifes-team": [
+    {
+      "add": "12534",
+      "bid": 32,
+      "drop": "5849"
+    },
+    {
+      "add": "8142",
+      "bid": 8,
+      "drop": "7587"
+    }
+  ],
+  "your-team": [
+    {
+      "add": "8142",
+      "bid": 24,
+      "drop": "7600"
+    }
+  ]
+}
