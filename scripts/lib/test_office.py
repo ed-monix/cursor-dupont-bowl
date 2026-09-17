@@ -705,3 +705,63 @@ def test_lineups_commits_its_syncs_and_board(tmp_path):
     assert "state/players.json" in paths
     assert "state/nfl-schedule.json" in paths
     assert "state/league-board.json" in paths
+
+
+# --- trades: one turn per target, not one per offer ------------------------
+
+def test_offers_to_one_target_are_batched_into_a_single_turn(tmp_path, monkeypatch):
+    import subprocess as sp
+    """Three teams can now bid for the same player in the same week. Asking the
+    target once lets it weigh them against each other, and caps the week at one
+    turn per target however many offers fly."""
+    screen = [
+        {"from": "alpha", "ok": True, "reason": "",
+         "offer": {"to_team": "bravo", "out": ["a1"], "in": ["b1"]}},
+        {"from": "charlie", "ok": True, "reason": "",
+         "offer": {"to_team": "bravo", "out": ["c1"], "in": ["b1"]},
+         "requires_drop": {"bravo": 1}},
+    ]
+    monkeypatch.setattr(office, "screen_offers", lambda *a, **k: screen)
+    (tmp_path / "state" / "weeks" / "2026-w05").mkdir(parents=True)
+
+    calls = []
+
+    def fake_run(argv, **kw):
+        argv = [str(a) for a in argv]
+        payload = json.loads(pathlib.Path(argv[argv.index("--offer") + 1]).read_text())
+        calls.append({"team": argv[argv.index("--team") + 1], "payload": payload})
+        return sp.CompletedProcess(argv, 0)
+
+    monkeypatch.setattr(office.subprocess, "run", fake_run)
+    office._run_trades(tmp_path, "2026", 5)
+
+    assert len(calls) == 1, "one turn per target, not one per offer"
+    assert calls[0]["team"] == "bravo"
+    payload = calls[0]["payload"]
+    assert isinstance(payload, list) and len(payload) == 2
+    assert {o["from"] for o in payload} == {"alpha", "charlie"}
+    # the target must be told what accepting the uneven one costs it
+    owed = [o for o in payload if o["from"] == "charlie"][0]
+    assert owed["requires_drop"] == 1
+
+
+def test_a_lone_offer_is_still_sent_as_a_bare_object(tmp_path, monkeypatch):
+    import subprocess as sp
+    """Unchanged shape for the common case, so nothing else has to care."""
+    screen = [{"from": "alpha", "ok": True, "reason": "",
+               "offer": {"to_team": "bravo", "out": ["a1"], "in": ["b1"]}}]
+    monkeypatch.setattr(office, "screen_offers", lambda *a, **k: screen)
+    (tmp_path / "state" / "weeks" / "2026-w05").mkdir(parents=True)
+
+    seen = {}
+
+    def fake_run(argv, **kw):
+        argv = [str(a) for a in argv]
+        seen["payload"] = json.loads(
+            pathlib.Path(argv[argv.index("--offer") + 1]).read_text())
+        return sp.CompletedProcess(argv, 0)
+
+    monkeypatch.setattr(office.subprocess, "run", fake_run)
+    office._run_trades(tmp_path, "2026", 5)
+    assert isinstance(seen["payload"], dict)
+    assert seen["payload"]["to_team"] == "bravo"

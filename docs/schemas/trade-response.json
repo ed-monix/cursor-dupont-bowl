@@ -2,11 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "trade-response.json",
   "title": "Trade Response",
-  "description": "The target team's reply to a trade-offer.json (PLAN.md \u00a74 step 5: the target agent gets one accept/reject/counter; the offerer then gets final accept/reject on a counter).",
+  "description": "The target team's reply to a trade-offer.json (PLAN.md \u00a74 step 5: the target agent gets one accept/reject/counter; the offerer then gets final accept/reject on a counter). When several offers arrive in the same week, answer each in `responses`; a lone offer may still use the flat top-level form.",
   "type": "object",
-  "required": [
-    "response"
-  ],
+  "required": [],
   "properties": {
     "response": {
       "type": "string",
@@ -56,6 +54,79 @@
         "type": "string"
       },
       "description": "Player ids you cut to make room, required when accepting an offer whose 'requires_drop' names you. Accepting without enough drops is refused at apply time."
+    },
+    "responses": {
+      "type": "array",
+      "description": "One entry per offer addressed to you, when more than one arrived. `from` names the offering team so each answer is unambiguous.",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "response"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Slug of the team whose offer this answers."
+          },
+          "response": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "reject",
+              "counter"
+            ],
+            "description": "accept/reject the offer as-is, or counter with a new offer."
+          },
+          "drop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Player ids you cut to make room, required when accepting an offer whose 'requires_drop' names you. Accepting without enough drops is refused at apply time."
+          },
+          "message": {
+            "type": "string",
+            "description": "Optional in-character note attached to the response."
+          },
+          "counter": {
+            "type": "object",
+            "description": "Required when response is 'counter'; shaped like trade-offer.json ({to_team, out, in, message?}) but 'to_team' is implicitly the original offerer.",
+            "required": [
+              "to_team",
+              "out",
+              "in"
+            ],
+            "properties": {
+              "to_team": {
+                "type": "string"
+              },
+              "out": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "honour": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Conflict turns only (context has conflict: true): the `index` values of your own accepted offers you are going through with. The rest are declined in your name."
     }
   },
   "additionalProperties": false

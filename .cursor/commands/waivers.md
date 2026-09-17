@@ -115,7 +115,7 @@ Do not apply yet.
 
 ## 5. Trades
 
-Max one outgoing offer per team; deadline end of week 11. After the harness
+Max three outgoing offers per team; deadline end of week 11. A target answers all offers sent to it in ONE turn. If several of a team's own offers are accepted and conflict, that team's GM picks which to honour. After the harness
 validates the offer, dispatch **only the target**:
 
 ```bash

@@ -109,7 +109,12 @@ Once per week, before the first kickoff (typically Tue/Wed — not "Saturday").
    can't win two claims that need the same drop. Budget $100/season, min bid $0.
 5. Trades: validate the offer in the harness **before** spawning the target.
    Target gets one accept/reject/counter; offerer gets final accept/reject on a
-   counter. Max one outgoing offer per team per week. Trade deadline end of week 11.
+   counter. Max THREE outgoing offers per team per week (one was a market that
+   could not clear: a single no ended a GM's week). A target answers every offer
+   sent to it in one turn, so the week costs at most one turn per target. If
+   several of a team's own offers come back accepted and cannot all be honoured,
+   that team's GM chooses which to keep — the harness never picks for it. Trade
+   deadline end of week 11.
 6. Commissioner reviews everything (see §5), then the validator applies
    approved transactions to rosters and appends to `state/transactions.jsonl`.
    The commissioner does not apply FAAB itself.

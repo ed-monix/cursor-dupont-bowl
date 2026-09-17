@@ -380,6 +380,20 @@ def render_gm_prompt(pack: dict) -> str:
             " one out of spite.",
             "`counter` requires a counter object; its `to_team` is the original"
             " offerer.",
+            "SEVERAL offers may be addressed to you in the same week, by"
+            " different teams. When they are, answer EVERY one in `responses`,"
+            " naming the offering team in each entry's `from`. Weigh them"
+            " against each other — you are allowed to take the worse deal from"
+            " someone you like.",
+            "If an offer carries `requires_drop: n`, accepting it costs you n"
+            " roster spots and you must name that many player ids in `drop`."
+            " Accepting without them is refused.",
+            "If your context says `conflict: true`, these are YOUR OWN offers"
+            " that other teams accepted, and they cannot all be honoured — the"
+            " same player is promised twice, or the combination breaks your"
+            " roster. Reply with `honour`: the list of `index` values you are"
+            " going through with. The rest are declined in your name, so choose"
+            " like a GM who has to explain it afterwards.",
         ]
     if run == "lineups" and window:
         lines.append(

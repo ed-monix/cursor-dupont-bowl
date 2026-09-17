@@ -36,17 +36,25 @@ from lib.rosters import (apply_transaction,
 TRADE_DEADLINE_WEEK = 11
 
 
+MAX_OFFERS_PER_TEAM = 3
+
+
 def collect_offers(decisions_dir: Union[str, Path]) -> dict:
-    """{offerer_slug: offer} from gate files named <slug>.json.
+    """{offerer_slug: [offer, ...]} from gate files named <slug>.json.
 
     Mirrors `apply_gate.collect_waiver_claims`: only plain `<slug>.json`
     decision files are considered (never `<slug>.lineup-*.json` or
     `<slug>.trade.json`, which are lineup submissions and trade *responses*
-    respectively, not offers). A decision file is only included if it
-    actually carries a non-empty `trade_offer` object -- most weeks, most
-    teams offer nothing. Unreadable or malformed files are skipped, same as
-    collect_waiver_claims tolerates them (a bad file must not crash the
+    respectively, not offers). Unreadable or malformed files are skipped, same
+    as collect_waiver_claims tolerates them (a bad file must not crash the
     whole run).
+
+    A team may make up to MAX_OFFERS_PER_TEAM offers a week. It used to be one,
+    which made the trade market almost inert: a GM got a single shot, and if the
+    target said no -- both of week 2's did -- that was the whole market for the
+    week. `trade_offers` is the list form; `trade_offer` is still read as a
+    single offer so older decision files and any GM that writes the old key
+    keep working.
     """
     decisions_dir = Path(decisions_dir)
     out: dict = {}
@@ -62,9 +70,16 @@ def collect_offers(decisions_dir: Union[str, Path]) -> dict:
             continue
         if not isinstance(obj, dict):
             continue
-        offer = obj.get("trade_offer")
-        if isinstance(offer, dict) and offer:
-            out[path.stem] = offer
+
+        offers = []
+        many = obj.get("trade_offers")
+        if isinstance(many, list):
+            offers.extend(o for o in many if isinstance(o, dict) and o)
+        one = obj.get("trade_offer")
+        if isinstance(one, dict) and one:
+            offers.append(one)
+        if offers:
+            out[path.stem] = offers
     return out
 
 
@@ -269,35 +284,34 @@ def screen_offers(
     decisions_dir = root / "state" / "weeks" / f"{season}-w{week:02d}" / "decisions"
     offers = collect_offers(decisions_dir)
 
-    # Belt-and-braces: the schema caps a decision at one trade_offer, so this
-    # can only ever fire if collect_offers is fed more than one decision file
-    # per team, or upstream produces a duplicate -- still assert it.
-    seen: set = set()
     records = []
-    for slug, offer in offers.items():
-        if slug in seen:
-            records.append({
-                "from": slug, "offer": offer, "ok": False,
-                "reason": f"{slug} already has an outgoing offer this week",
-            })
-            continue
-        seen.add(slug)
+    for slug, team_offers in offers.items():
+        for index, offer in enumerate(team_offers):
+            # Offers past the cap are refused in submission order, so a GM that
+            # writes four keeps its first three rather than losing all of them.
+            if index >= MAX_OFFERS_PER_TEAM:
+                records.append({
+                    "from": slug, "offer": offer, "ok": False,
+                    "reason": (f"{slug} may make at most {MAX_OFFERS_PER_TEAM} "
+                               f"offers a week; this was number {index + 1}"),
+                })
+                continue
 
-        if week > TRADE_DEADLINE_WEEK:
-            records.append({
-                "from": slug, "offer": offer, "ok": False,
-                "reason": f"trade deadline was end of week {TRADE_DEADLINE_WEEK}",
-            })
-            continue
+            if week > TRADE_DEADLINE_WEEK:
+                records.append({
+                    "from": slug, "offer": offer, "ok": False,
+                    "reason": f"trade deadline was end of week {TRADE_DEADLINE_WEEK}",
+                })
+                continue
 
-        ok, reason, requires_drop = validate_offer(
-            slug, offer, rosters, players, roster_config)
-        rec = {"from": slug, "offer": offer, "ok": ok, "reason": reason}
-        if requires_drop:
-            # The target reads this in its pack: accepting costs it this many
-            # roster spots, and it names the casualties in its response.
-            rec["requires_drop"] = requires_drop
-        records.append(rec)
+            ok, reason, requires_drop = validate_offer(
+                slug, offer, rosters, players, roster_config)
+            rec = {"from": slug, "offer": offer, "ok": ok, "reason": reason}
+            if requires_drop:
+                # The target reads this in its pack: accepting costs it this
+                # many roster spots, and it names the casualties in its reply.
+                rec["requires_drop"] = requires_drop
+            records.append(rec)
 
     return records
 
@@ -336,8 +350,16 @@ def _load_roster_config(config_path: Path) -> Optional[dict]:
 
 
 def collect_responses(decisions_dir: Union[str, Path]) -> dict:
-    """{target_slug: response} from `<slug>.trade.json` files."""
-    out = {}
+    """{target_slug: {offerer_slug: response}} from `<slug>.trade.json` files.
+
+    A target can now be sent up to three offers by three different teams in the
+    same week, and it answers all of them in one turn, so a response file holds
+    a `responses` list whose entries name the offer they answer via `from`. A
+    file in the older flat shape (a bare `response` at the top level) is still
+    read; with only one offer in front of it there is no ambiguity, so it is
+    filed under None and matched to whatever offer that target received.
+    """
+    out: dict = {}
     decisions_dir = Path(decisions_dir)
     if not decisions_dir.is_dir():
         return out
@@ -346,19 +368,102 @@ def collect_responses(decisions_dir: Union[str, Path]) -> dict:
             obj = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError):
             continue
-        if isinstance(obj, dict) and obj.get("response"):
-            out[path.name[: -len(".trade.json")]] = obj
+        if not isinstance(obj, dict):
+            continue
+        target = path.name[: -len(".trade.json")]
+
+        answers: dict = {}
+        many = obj.get("responses")
+        if isinstance(many, list):
+            for item in many:
+                if isinstance(item, dict) and item.get("response"):
+                    answers[item.get("from")] = item
+        if obj.get("response"):
+            answers.setdefault(None, obj)
+        if answers:
+            out[target] = answers
     return out
 
 
+def _apply_one(cand, state, rosters, players, roster_config, stamp):
+    """Apply one accepted offer onto `state`. Returns (new_state, entries).
+
+    Raises ValueError if it does not fit, so callers can use this both to
+    really apply a trade and to ask whether a set of trades can coexist.
+    """
+    offerer, target = cand["from"], cand["target"]
+    offer, response = cand["offer"], cand["response"]
+    out_ids = list(offer.get("out") or [])
+    in_ids = list(offer.get("in") or [])
+    needed = cand.get("requires_drop") or {}
+    drops = {offerer: [str(x) for x in (offer.get("drop") or [])],
+             target: [str(x) for x in (response.get("drop") or [])]}
+
+    state = dict(state)
+    entries = []
+    for team in (offerer, target):
+        for pid in (drops.get(team) or [])[:needed.get(team, 0)]:
+            state[team] = apply_transaction(
+                state.get(team, rosters[team]),
+                {"type": "drop", "player": pid}, players, roster_config)
+            entries.append({
+                "timestamp": stamp, "team": team, "action": "drop",
+                "players": [pid], "bid": None,
+                "reasoning": "dropped to make room for an accepted trade",
+                "status": "applied",
+            })
+    state[offerer] = apply_transaction(
+        state.get(offerer, rosters[offerer]),
+        {"type": "trade", "out": out_ids, "in": in_ids}, players, roster_config)
+    state[target] = apply_transaction(
+        state.get(target, rosters[target]),
+        {"type": "trade", "out": in_ids, "in": out_ids}, players, roster_config)
+
+    reasoning = (response.get("message") or offer.get("message") or "").strip()
+    for team, gone, got in ((offerer, out_ids, in_ids), (target, in_ids, out_ids)):
+        entries.append({
+            "timestamp": stamp, "team": team, "action": "trade",
+            "players": list(gone) + list(got), "bid": None,
+            "reasoning": reasoning, "status": "applied",
+        })
+    return state, entries
+
+
+def offers_coexist(cands, state, rosters, players, roster_config) -> bool:
+    """Can all of one team's accepted offers be honoured together?
+
+    Usually yes: a GM who sent three offers for three different players and got
+    three yeses has simply had a good week. It is only when the accepts overlap
+    -- the same player promised twice, or a combination the roster cannot carry
+    -- that somebody has to choose.
+    """
+    try:
+        for cand in cands:
+            state, _ = _apply_one(cand, state, rosters, players, roster_config,
+                                  "1970-01-01T00:00:00+00:00")
+    except (ValueError, KeyError):
+        return False
+    return True
+
+
 def apply_accepted(root: Union[str, Path], season: str, week: int, *,
-                   dry_run: bool = False) -> list:
+                   dry_run: bool = False, choose=None) -> list:
     """Execute every accepted offer and log it. Returns one record per response.
 
     Until this existed, a GM could accept a trade and nothing happened: the
     response sat in `<slug>.trade.json`, `collect_waiver_claims` skipped it by
     name, and no roster ever changed. waivers.md §6 says "apply approved trades
-    the same way" — by hand, in the human flow. There is no hand in the office.
+    the same way" -- by hand, in the human flow. There is no hand in the office.
+
+    A team may now send up to three offers, so several of its offers can come
+    back accepted at once. If they all fit together they are all honoured. If
+    they cannot -- the same player promised to two teams, or a combination the
+    roster will not carry -- the OFFERING GM chooses which to honour, via
+    `choose(offerer, candidates) -> [chosen]`. That choice is a football
+    decision and belongs to the GM; the harness applying the first and voiding
+    the rest by screening order would be the harness deciding a trade. Without
+    a chooser (tests, dry runs) the first that fits wins and the rest are
+    reported, never silently dropped.
 
     `counter` is recorded, never auto-applied. A counter is a fresh offer back
     to the original offerer, and chasing it automatically is an unbounded
@@ -369,95 +474,122 @@ def apply_accepted(root: Union[str, Path], season: str, week: int, *,
     """
     root = Path(root)
     wdir = root / "state" / "weeks" / f"{season}-w{week:02d}"
-    screen = []
     try:
         screen = json.loads((wdir / "trade-screen.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
         screen = []
-    offers = {r["offer"]["to_team"]: r for r in screen
-              if isinstance(r, dict) and r.get("ok") and r.get("offer")}
+
+    by_target: dict = {}
+    for r in screen:
+        if isinstance(r, dict) and r.get("ok") and r.get("offer"):
+            by_target.setdefault(r["offer"].get("to_team"), []).append(r)
     responses = collect_responses(wdir / "decisions")
 
     rosters = _load_rosters(root / "teams")
     players = _load_players(root / "state" / "players.json")
     roster_config = _load_roster_config(root / "config" / "roster.json")
 
-    results, entries, changed = [], [], {}
+    results, entries, state = [], [], {}
     stamp = datetime.now(timezone.utc).isoformat()
 
-    for target, response in sorted(responses.items()):
-        rec = {"target": target, "response": response.get("response")}
-        screened = offers.get(target)
-        if screened is None:
-            rec.update(applied=False, reason="no screened offer for this target")
-            results.append(rec)
-            continue
-        offerer, offer = screened["from"], screened["offer"]
-        rec["from"] = offerer
-        if response.get("response") != "accept":
-            rec.update(applied=False,
-                       reason=f"{response.get('response')} — nothing to apply")
-            results.append(rec)
+    # ---- match each answer to the offer it answers -----------------------
+    accepted: dict = {}
+    for target, answers in sorted(responses.items()):
+        screened_for_target = by_target.get(target) or []
+        if not screened_for_target:
+            for answer in answers.values():
+                results.append({"target": target,
+                                "response": answer.get("response"),
+                                "applied": False,
+                                "reason": "no screened offer for this target"})
             continue
 
-        out_ids, in_ids = list(offer.get("out") or []), list(offer.get("in") or [])
-        # Room, if either side needs it. The offerer named its drops in the
-        # offer; the target names them in its response. A side that owes drops
-        # and did not name enough is refused here rather than silently
-        # over-filled -- accepting is not a licence to break the roster.
-        needed = screened.get("requires_drop") or {}
-        drops = {offerer: [str(x) for x in (offer.get("drop") or [])],
-                 target: [str(x) for x in (response.get("drop") or [])]}
-        short = {team: n for team, n in needed.items()
-                 if len(drops.get(team) or []) < n}
-        if short:
-            rec.update(applied=False, reason="; ".join(
-                f"{team} must drop {n} to fit this trade and named "
-                f"{len(drops.get(team) or [])}" for team, n in sorted(short.items())))
-            results.append(rec)
-            continue
+        for screened in screened_for_target:
+            offerer = screened["from"]
+            # `from` names the offer when several arrived; a lone offer may
+            # still be answered in the older flat shape, filed under None.
+            answer = answers.get(offerer)
+            if answer is None and len(screened_for_target) == 1:
+                answer = answers.get(None)
+            if answer is None:
+                results.append({"target": target, "from": offerer,
+                                "applied": False,
+                                "reason": "no response to this offer"})
+                continue
 
-        try:
-            for team in (offerer, target):
-                for pid in (drops.get(team) or [])[:needed.get(team, 0)]:
-                    changed[team] = apply_transaction(
-                        changed.get(team, rosters[team]),
-                        {"type": "drop", "player": pid},
-                        players, roster_config)
-                    entries.append({
-                        "timestamp": stamp, "team": team, "action": "drop",
-                        "players": [pid], "bid": None,
-                        "reasoning": "dropped to make room for an accepted trade",
-                        "status": "applied",
-                    })
-            changed[offerer] = apply_transaction(
-                changed.get(offerer, rosters[offerer]),
-                {"type": "trade", "out": out_ids, "in": in_ids},
-                players, roster_config)
-            changed[target] = apply_transaction(
-                changed.get(target, rosters[target]),
-                {"type": "trade", "out": in_ids, "in": out_ids},
-                players, roster_config)
-        except (ValueError, KeyError) as e:
-            # The screen passed it, but rosters move during a run (FAAB applies
-            # first). A trade that is no longer legal is reported, not forced.
-            rec.update(applied=False, reason=f"illegal at apply time: {e}")
-            results.append(rec)
-            continue
+            rec = {"target": target, "from": offerer,
+                   "response": answer.get("response")}
+            if answer.get("response") != "accept":
+                rec.update(applied=False,
+                           reason=f"{answer.get('response')} — nothing to apply")
+                results.append(rec)
+                continue
 
-        reasoning = (response.get("message") or offer.get("message") or "").strip()
-        for team, gone, got in ((offerer, out_ids, in_ids),
-                                (target, in_ids, out_ids)):
-            entries.append({
-                "timestamp": stamp, "team": team, "action": "trade",
-                "players": list(gone) + list(got), "bid": None,
-                "reasoning": reasoning, "status": "applied",
+            needed = screened.get("requires_drop") or {}
+            drops = {offerer: [str(x) for x in (screened["offer"].get("drop") or [])],
+                     target: [str(x) for x in (answer.get("drop") or [])]}
+            short = {team: n for team, n in needed.items()
+                     if len(drops.get(team) or []) < n}
+            if short:
+                rec.update(applied=False, reason="; ".join(
+                    f"{team} must drop {n} to fit this trade and named "
+                    f"{len(drops.get(team) or [])}"
+                    for team, n in sorted(short.items())))
+                results.append(rec)
+                continue
+
+            accepted.setdefault(offerer, []).append({
+                "from": offerer, "target": target, "offer": screened["offer"],
+                "response": answer, "requires_drop": needed,
             })
-        rec.update(applied=True, reason="")
-        results.append(rec)
 
-    if not dry_run and changed:
-        for team, roster in changed.items():
+    # ---- an offerer with several accepts may have to choose --------------
+    for offerer in sorted(accepted):
+        cands = accepted[offerer]
+        if len(cands) > 1 and not offers_coexist(cands, state, rosters, players,
+                                                 roster_config):
+            chosen = None
+            if choose is not None:
+                chosen = choose(offerer, cands)
+            if chosen is None:
+                # No chooser: keep what fits, in order, and say so.
+                chosen = []
+                probe = dict(state)
+                for cand in cands:
+                    try:
+                        probe, _ = _apply_one(cand, probe, rosters, players,
+                                              roster_config, stamp)
+                        chosen.append(cand)
+                    except (ValueError, KeyError):
+                        pass
+            keep = {id(c) for c in chosen}
+            for cand in cands:
+                if id(cand) not in keep:
+                    results.append({
+                        "target": cand["target"], "from": offerer,
+                        "response": "accept", "applied": False,
+                        "reason": ("accepted, but conflicts with another offer "
+                                   f"{offerer} chose to honour instead"),
+                    })
+            cands = chosen
+
+        for cand in cands:
+            rec = {"target": cand["target"], "from": offerer, "response": "accept"}
+            try:
+                state, new_entries = _apply_one(cand, state, rosters, players,
+                                                roster_config, stamp)
+            except (ValueError, KeyError) as e:
+                # The screen passed it, but rosters move during a run (FAAB
+                # applies first). No longer legal is reported, not forced.
+                rec.update(applied=False, reason=f"illegal at apply time: {e}")
+                results.append(rec)
+                continue
+            entries.extend(new_entries)
+            rec.update(applied=True, reason="")
+            results.append(rec)
+
+    if not dry_run and state:
+        for team, roster in state.items():
             save_roster(roster, root / "teams" / team / "roster.json")
         tx = root / "state" / "transactions.jsonl"
         tx.parent.mkdir(parents=True, exist_ok=True)

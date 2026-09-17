@@ -262,12 +262,17 @@ def _reconcile(root: pathlib.Path, season: str, week: int) -> None:
 
 
 def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
-    """Screen every outgoing offer, then ask only the targets that survive.
+    """Screen every outgoing offer, then ask each target once.
 
     waivers.md §5: validate in the harness BEFORE spawning the target, because
     week 1 burned ten turns on players who were not where the offerer thought.
     An offer that fails the screen never becomes an agent turn; it is recorded
     with its reason so the commissioner sees why nobody was asked.
+
+    A team may send up to three offers, so a target can be sent several in one
+    week. They go in a single turn rather than one turn each: a GM weighing
+    three bids for the same player should see them together, and it caps the
+    week at one turn per target however many offers fly.
     """
     wdir = _apply_gate_week_dir(root, season, week)
     records = screen_offers(root, season, week)
@@ -281,20 +286,30 @@ def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
     for rec in records:
         if not rec.get("ok"):
             print(f"    screened out {rec['from']}: {rec.get('reason', '')}")
-    print(f"    {len(passed)} of {len(records)} offer(s) go to a target")
+
+    by_target: dict = {}
+    for rec in passed:
+        by_target.setdefault(rec["offer"].get("to_team"), []).append(rec)
+    print(f"    {len(passed)} of {len(records)} offer(s) go to "
+          f"{len(by_target)} target(s)")
 
     with tempfile.TemporaryDirectory(prefix="office-offers-") as tmp:
-        for rec in passed:
-            offer = dict(rec["offer"])
-            target = offer.get("to_team")
-            # An uneven offer costs the target roster space. It has to know
-            # that before it answers, and how many, because accepting without
-            # naming that many drops is refused at apply time.
-            owed = (rec.get("requires_drop") or {}).get(target)
-            if owed:
-                offer["requires_drop"] = owed
-            offer_path = pathlib.Path(tmp) / f"{rec['from']}.json"
-            offer_path.write_text(json.dumps(offer), encoding="utf-8")
+        for target, recs in sorted(by_target.items()):
+            payload = []
+            for rec in recs:
+                offer = dict(rec["offer"])
+                offer["from"] = rec["from"]
+                # An uneven offer costs the target roster space. It has to know
+                # that before it answers, and how many, because accepting
+                # without naming that many drops is refused at apply time.
+                owed = (rec.get("requires_drop") or {}).get(target)
+                if owed:
+                    offer["requires_drop"] = owed
+                payload.append(offer)
+
+            offer_path = pathlib.Path(tmp) / f"{target}.json"
+            offer_path.write_text(json.dumps(payload if len(payload) > 1
+                                             else payload[0]), encoding="utf-8")
             argv = _py(root, "gm_turn.py", "--week", week, "--season", season,
                        "--run", "trades", "--team", target,
                        "--offer", offer_path, "--root", root)
@@ -308,9 +323,55 @@ def _run_trades(root: pathlib.Path, season: str, week: int) -> None:
                       "recorded, run continues")
 
 
+def _choose_between_conflicting_accepts(root: pathlib.Path, season: str,
+                                        week: int):
+    """Build the callback apply_accepted uses when one team's accepts collide.
+
+    Which of your own trades to honour is a football decision, so the offering
+    GM makes it in its own turn rather than the harness taking the first that
+    fits. Returning None on any failure hands apply_accepted back to its own
+    deterministic fallback -- a broken turn must not lose the trades.
+    """
+    def choose(offerer, cands):
+        wdir = _apply_gate_week_dir(root, season, week)
+        with tempfile.TemporaryDirectory(prefix="office-conflict-") as tmp:
+            payload = {
+                "conflict": True,
+                "you": offerer,
+                "accepted_offers": [
+                    {"index": i, "to_team": c["target"], "offer": c["offer"]}
+                    for i, c in enumerate(cands)
+                ],
+            }
+            path = pathlib.Path(tmp) / f"{offerer}.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            argv = _py(root, "gm_turn.py", "--week", week, "--season", season,
+                       "--run", "trades", "--team", offerer,
+                       "--offer", path, "--root", root)
+            print(f"    $ {shlex.join(argv)}")
+            if subprocess.run(argv, cwd=str(root)).returncode != 0:
+                print(f"    conflict turn for {offerer} failed — "
+                      "falling back to whatever fits")
+                return None
+
+        answer = _load_json(wdir / "decisions" / f"{offerer}.trade.json", {})
+        picked = answer.get("honour")
+        if not isinstance(picked, list) or not picked:
+            return None
+        keep = []
+        for i in picked:
+            if isinstance(i, int) and 0 <= i < len(cands):
+                keep.append(cands[i])
+        return keep or None
+
+    return choose
+
+
 def _apply_trades(root: pathlib.Path, season: str, week: int) -> None:
     """Execute accepted offers. Runs after FAAB, which moves rosters first."""
-    results = apply_accepted(root, season, week)
+    results = apply_accepted(
+        root, season, week,
+        choose=_choose_between_conflicting_accepts(root, season, week))
     if not results:
         print("    no trade responses to apply")
         return
