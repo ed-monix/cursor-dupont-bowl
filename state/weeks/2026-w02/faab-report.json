@@ -1,0 +1,135 @@
+{
+  "claims": [
+    {
+      "add": "8142",
+      "bid": 8,
+      "drop": "8126",
+      "reason": "outbid on 8142: patricia-moyer bid $28 (your bid $8)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "13414",
+      "bid": 3,
+      "drop": "6768",
+      "reason": "uncontested claim, bid $3",
+      "reasoning": null,
+      "status": "won",
+      "team": "costanza"
+    },
+    {
+      "add": "12534",
+      "bid": 25,
+      "drop": "5947",
+      "reason": "outbid on 12534: meyer-walsh bid $58 (your bid $25)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "harry-caray"
+    },
+    {
+      "add": "96",
+      "bid": 56,
+      "drop": "5001",
+      "reason": "highest bid $56 (next best $38)",
+      "reasoning": null,
+      "status": "won",
+      "team": "kardashian"
+    },
+    {
+      "add": "96",
+      "bid": 38,
+      "drop": "7594",
+      "reason": "outbid on 96: kardashian bid $56 (your bid $38)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "12534",
+      "bid": 35,
+      "drop": "11651",
+      "reason": "outbid on 12534: meyer-walsh bid $58 (your bid $35)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "12534",
+      "bid": 58,
+      "drop": "9228",
+      "reason": "highest bid $58 (next best $35)",
+      "reasoning": null,
+      "status": "won",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "8142",
+      "bid": 28,
+      "drop": "11583",
+      "reason": "highest bid $28 (next best $9)",
+      "reasoning": null,
+      "status": "won",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "4993",
+      "bid": 37,
+      "drop": "13298",
+      "reason": "uncontested claim, bid $37",
+      "reasoning": null,
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "12534",
+      "bid": 30,
+      "drop": "7587",
+      "reason": "outbid on 12534: meyer-walsh bid $58 (your bid $30)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "8142",
+      "bid": 9,
+      "drop": "5849",
+      "reason": "outbid on 8142: patricia-moyer bid $28 (your bid $9)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "9486",
+      "bid": 30,
+      "drop": null,
+      "reason": "uncontested claim, bid $30",
+      "reasoning": null,
+      "status": "won",
+      "team": "your-team"
+    },
+    {
+      "add": "12534",
+      "bid": 28,
+      "drop": "7600",
+      "reason": "outbid on 12534: meyer-walsh bid $58 (your bid $28)",
+      "reasoning": null,
+      "status": "lost",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 75,
+    "costanza": 91,
+    "dumbledore": 62,
+    "harry-caray": 100,
+    "kardashian": 6,
+    "leon-black": 59,
+    "maura-higgins": 100,
+    "meyer-walsh": 42,
+    "patricia-moyer": 40,
+    "rinna": 8,
+    "wifes-team": 100,
+    "your-team": 64
+  }
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "12527"
+      ],
+      "message": "Doing you a favor here, Monix. Dobbins for Jeanty. You get a proven vet who just went for 3 TDs last week caught in a decent committee, I get the guy your kicker-brained roster construction is wasting. Say yes before I change my mind and just take him for less.",
+      "out": [
+        "6806"
+      ],
+      "to_team": "your-team"
+    },
+    "ok": true,
+    "reason": ""
+  },
+  {
+    "from": "your-team",
+    "offer": {
+      "in": [
+        "6794"
+      ],
+      "message": "Judkins and Harrison are quietly balling on quietly dead teams \u2014 Cleveland and Arizona aren't winning anything. AJ Brown's on ice, I need a real WR1, and you're sitting on one. Send me Jefferson, I send you two guys who'll outscore him on your own bench by Thanksgiving. Make it happen.",
+      "out": [
+        "12512",
+        "11628"
+      ],
+      "to_team": "kardashian"
+    },
+    "ok": false,
+    "reason": "kardashian's side: resulting roster is invalid: bench has 8 players, limit is 6"
+  }
+]

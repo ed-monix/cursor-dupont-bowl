@@ -1,0 +1,26 @@
+[
+ {
+  "kind": "big_bid",
+  "text": "rinna won the bid for Aaron Rodgers at $55",
+  "team": "rinna",
+  "player_id": "96",
+  "player_name": "Aaron Rodgers",
+  "bid": 55
+ },
+ {
+  "kind": "big_bid",
+  "text": "meyer-walsh won the bid for Tyler Allgeier at $54",
+  "team": "meyer-walsh",
+  "player_id": "8132",
+  "player_name": "Tyler Allgeier",
+  "bid": 54
+ },
+ {
+  "kind": "big_bid",
+  "text": "leon-black won the bid for Cam Ward at $41",
+  "team": "leon-black",
+  "player_id": "12522",
+  "player_name": "Cam Ward",
+  "bid": 41
+ }
+]

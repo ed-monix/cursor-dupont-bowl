@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "add": "9486",
+      "drop": null,
+      "bid": 30
+    },
+    {
+      "add": "12534",
+      "drop": "7600",
+      "bid": 28
+    }
+  ],
+  "drops": [],
+  "trade_offer": {
+    "to_team": "kardashian",
+    "out": [
+      "12512",
+      "11628"
+    ],
+    "in": [
+      "6794"
+    ],
+    "message": "Judkins and Harrison are quietly balling on quietly dead teams \u2014 Cleveland and Arizona aren't winning anything. AJ Brown's on ice, I need a real WR1, and you're sitting on one. Send me Jefferson, I send you two guys who'll outscore him on your own bench by Thanksgiving. Make it happen."
+  },
+  "note_reply": "Correct. Judkins and Harrison are nice numbers on nowhere teams \u2014 nice doesn't win in December, and AJ being down means I need a stud, not a stat sheet. Sent Kardashian the Jefferson offer, we'll see if she's got the stomach for it. Caleb's cooking, everybody else better catch up.",
+  "forum_post": "Leon's out here bragging he won a week on a kicker like that's a program you build on. We won on a quarterback who takes the top off the whole league \u2014 different sport. Caleb's cooking, Flint's coming for that swagger Sunday. See you then."
+}
