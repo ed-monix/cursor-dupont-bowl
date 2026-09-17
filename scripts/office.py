@@ -62,6 +62,17 @@ from gm_dossier import append_press  # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PY = sys.executable
 
+# Files sync_sleeper.py rewrites in place on any stage that syncs. Staging them
+# is not bookkeeping: `--push` rebases before pushing and rebase refuses on a
+# dirty tree, so a synced-but-unstaged file fails the push of a week that
+# otherwise succeeded -- which is how week 2's waivers landed locally and went
+# nowhere. They are also the evidence the run decided against. b3d78d4 fixed
+# this for the recap's stats.json; these are the same bug on the other stages.
+SYNCED_STATE = (
+    "state/players.json",
+    "state/nfl-schedule.json",
+)
+
 STAGES = ("waivers", "lineups", "recap")
 WINDOWS = ("early", "main")
 
@@ -508,12 +519,17 @@ def commit_paths(stage: str, root: pathlib.Path, season: str, week: int,
             wdir,  # news-facts, faab-report, packs, decisions
             f"state/forum/{season}-w{_ww(week)}.jsonl",
             "state/rulings.md",
+            *SYNCED_STATE,
         ]
     if stage == "lineups":
         return [
             "teams",  # roster.json starters + press
             wdir,  # lineups.json, decisions
             f"state/forum/{season}-w{_ww(week)}.jsonl",
+            # This stage syncs and rebuilds the board too, so it carries the
+            # same staging debt waivers did.
+            "state/league-board.json",
+            *SYNCED_STATE,
         ]
     if stage == "recap":
         return [

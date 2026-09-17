@@ -653,3 +653,55 @@ def test_recap_commits_the_stats_it_scored_from(tmp_path):
     paths = office.commit_paths("recap", tmp_path, "2026", 1)
     assert "state/weeks/2026-w01/stats.json" in paths
     assert "state/standings.json" in paths
+
+
+# --- staging debt ---------------------------------------------------------
+#
+# Week 2's waivers ran all 20 steps, committed, and then could not push:
+# sync_sleeper.py had rewritten state/players.json at step 1, nothing staged it,
+# and `--push` rebases before pushing. Rebase refuses on a dirty tree, so a
+# clean week sat locally. Every file a stage syncs has to be in its commit list.
+
+def _synced_by(stage, tmp_path):
+    """The state files this stage's own steps rewrite in place."""
+    root = tmp_path
+    steps = {
+        "waivers": office.build_waivers_steps(root, 2, "2026"),
+        "lineups": office.build_lineups_steps(root, 2, "2026", "main"),
+        "recap": office.build_recap_steps(root, 2, "2026"),
+    }[stage]
+    syncs = {
+        "--players": "state/players.json",
+        "--schedule": "state/nfl-schedule.json",
+    }
+    out = set()
+    for step in steps:
+        if not step.argv:
+            continue
+        argv = [str(a) for a in step.argv]
+        for flag, path in syncs.items():
+            if flag in argv:
+                out.add(path)
+        if any(a.endswith("league_board.py") for a in argv):
+            out.add("state/league-board.json")
+    return out
+
+
+@pytest.mark.parametrize("stage", ["waivers", "lineups", "recap"])
+def test_every_stage_stages_what_it_syncs(stage, tmp_path):
+    paths = set(office.commit_paths(stage, tmp_path, "2026", 2, window="main"))
+    missing = _synced_by(stage, tmp_path) - paths
+    assert not missing, f"{stage} syncs but never stages: {sorted(missing)}"
+
+
+def test_waivers_commits_the_player_data_it_decided_against(tmp_path):
+    paths = office.commit_paths("waivers", tmp_path, "2026", 2)
+    assert "state/players.json" in paths
+    assert "state/nfl-schedule.json" in paths
+
+
+def test_lineups_commits_its_syncs_and_board(tmp_path):
+    paths = office.commit_paths("lineups", tmp_path, "2026", 2, window="early")
+    assert "state/players.json" in paths
+    assert "state/nfl-schedule.json" in paths
+    assert "state/league-board.json" in paths
