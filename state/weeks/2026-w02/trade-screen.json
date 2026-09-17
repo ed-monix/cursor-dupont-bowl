@@ -12,8 +12,11 @@
       ],
       "to_team": "your-team"
     },
-    "ok": false,
-    "reason": "your-team's side: resulting roster is invalid: bench has 7 players, limit is 6"
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "your-team": 1
+    }
   },
   {
     "from": "your-team",
@@ -28,7 +31,10 @@
       ],
       "to_team": "kardashian"
     },
-    "ok": false,
-    "reason": "kardashian's side: resulting roster is invalid: bench has 8 players, limit is 6"
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "kardashian": 2
+    }
   }
 ]
