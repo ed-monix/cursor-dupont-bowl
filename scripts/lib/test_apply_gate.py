@@ -137,3 +137,36 @@ def test_faab_order_uses_only_round_one_and_dedupes(tmp_path):
 
     order, _ = faab_priority_order(tmp_path, "2026")
     assert order == ["bravo", "alpha"]
+
+
+# --- in-character reasoning survives to the permanent record ----------------
+#
+# CLAUDE.md rule 4: every decision is logged WITH its reasoning, and if it is
+# not logged it did not happen. faab.py always carried a claim's `reasoning`
+# through to transactions.jsonl, but the decision schema never asked a GM for
+# one, so every applied claim in weeks 1 and 2 landed with "reasoning": "".
+# meyer-walsh spent $60 and the league's permanent record says nothing about
+# why. The schema now requires it; these pin the carry so it cannot silently
+# drop out again.
+
+def test_claim_reasoning_survives_collection(tmp_path: Path):
+    d = tmp_path / "decisions"
+    d.mkdir()
+    (d / "costanza.json").write_text(json.dumps({
+        "claims": [{"add": "p1", "drop": "p2", "bid": 14,
+                    "reasoning": "Serenity now. I need a kicker who can count."}],
+        "drops": [], "note_reply": "", "forum_post": "",
+    }), encoding="utf-8")
+
+    claims = collect_waiver_claims(d)
+    assert claims["costanza"][0]["reasoning"].startswith("Serenity now")
+
+
+def test_the_schema_requires_a_reason_for_every_claim():
+    schema = json.loads(
+        (Path(__file__).resolve().parents[2] / "docs" / "schemas"
+         / "saturday-decision.json").read_text(encoding="utf-8"))
+    item = schema["properties"]["claims"]["items"]
+    assert "reasoning" in item["properties"]
+    assert "reasoning" in item["required"], (
+        "a claim without a reason is a decision the league cannot audit")

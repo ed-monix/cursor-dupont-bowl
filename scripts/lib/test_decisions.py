@@ -29,7 +29,8 @@ SATURDAY_SCHEMA = {
 
 def valid_decision():
     return {
-        "claims": [{"add": "p_wr9", "drop": "p_wr3", "bid": 12}],
+        "claims": [{"add": "p_wr9", "drop": "p_wr3", "bid": 12,
+                    "reasoning": "He gets the ball, p_wr3 watches it."}],
         "drops": [],
         "note_reply": "Fine, I'll bench him. Happy now?",
     }

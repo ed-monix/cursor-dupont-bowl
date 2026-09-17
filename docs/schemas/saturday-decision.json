@@ -2,29 +2,45 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "saturday-decision.json",
   "title": "Saturday Decision",
-  "description": "An AI GM agent's Saturday roster-run output (PLAN.md §4 'Saturday AM — Roster run'): FAAB waiver claims, drops, an optional outgoing trade offer, and a reply to this week's owner note.",
+  "description": "An AI GM agent's Saturday roster-run output (PLAN.md \u00a74 'Saturday AM \u2014 Roster run'): FAAB waiver claims, drops, an optional outgoing trade offer, and a reply to this week's owner note.",
   "type": "object",
-  "required": ["claims", "drops", "note_reply"],
+  "required": [
+    "claims",
+    "drops",
+    "note_reply"
+  ],
   "properties": {
     "claims": {
       "type": "array",
       "description": "FAAB waiver claims, in priority order (highest priority first); processed by scripts/faab.py.",
       "items": {
         "type": "object",
-        "required": ["add", "drop", "bid"],
+        "required": [
+          "add",
+          "drop",
+          "bid",
+          "reasoning"
+        ],
         "properties": {
           "add": {
             "type": "string",
             "description": "Free-agent player id to claim."
           },
           "drop": {
-            "type": ["string", "null"],
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "Roster player id to drop to make room, or null if none is needed."
           },
           "bid": {
             "type": "integer",
             "minimum": 0,
             "description": "FAAB bid in whole dollars, 0 <= bid <= remaining budget ($100/season)."
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "Why THIS player at THIS price, in your own voice. One or two sentences. Carried verbatim into state/transactions.jsonl, which is the league's permanent record of why you did what you did."
           }
         }
       }
@@ -32,17 +48,37 @@
     "drops": {
       "type": "array",
       "description": "Player ids to drop outright (no corresponding add).",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "trade_offer": {
       "type": "object",
       "description": "Optional outgoing trade offer; shaped like trade-offer.json ({to_team, out, in, message?}). Omit if not offering a trade this week (max one outgoing offer per team per week).",
-      "required": ["to_team", "out", "in"],
+      "required": [
+        "to_team",
+        "out",
+        "in"
+      ],
       "properties": {
-        "to_team": {"type": "string"},
-        "out": {"type": "array", "items": {"type": "string"}},
-        "in": {"type": "array", "items": {"type": "string"}},
-        "message": {"type": "string"}
+        "to_team": {
+          "type": "string"
+        },
+        "out": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "in": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "message": {
+          "type": "string"
+        }
       }
     },
     "note_reply": {
