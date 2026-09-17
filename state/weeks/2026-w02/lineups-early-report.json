@@ -1,0 +1,106 @@
+{
+  "teams": [
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "WR2"
+      ],
+      "team": "coach-taylor",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX"
+      ],
+      "team": "costanza",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "dumbledore",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "harry-caray",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "kardashian",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "leon-black",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "RB2",
+        "WR2"
+      ],
+      "team": "maura-higgins",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "QB"
+      ],
+      "team": "meyer-walsh",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "RB1"
+      ],
+      "team": "patricia-moyer",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "rinna",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "K",
+        "TE"
+      ],
+      "team": "wifes-team",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "TE"
+      ],
+      "team": "your-team",
+      "validation_errors": []
+    }
+  ],
+  "window": "early"
+}

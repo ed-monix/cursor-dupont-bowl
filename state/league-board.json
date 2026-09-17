@@ -246,15 +246,6 @@
     "injury": null
    },
    {
-    "id": "3257",
-    "name": "Jacoby Brissett",
-    "pos": "QB",
-    "nfl": "ARI",
-    "proj_pts": 12.4,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "6768",
     "name": "Tua Tagovailoa",
     "pos": "QB",
@@ -280,10 +271,19 @@
     "proj_pts": 7.44,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "8142",
+    "name": "Alec Pierce",
+    "pos": "WR",
+    "nfl": "IND",
+    "proj_pts": 9.95,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 94
+  "faab_remaining": 67
  },
  "dumbledore": {
   "starters": {
@@ -435,7 +435,7 @@
     "name": "Baltimore Ravens",
     "pos": "DEF",
     "nfl": "BAL",
-    "proj_pts": 8.24,
+    "proj_pts": 8.27,
     "status": null,
     "injury": null
    },
@@ -739,7 +739,7 @@
     "name": "Tyler Loop",
     "pos": "K",
     "nfl": "BAL",
-    "proj_pts": 6.74,
+    "proj_pts": 6.75,
     "status": "Active",
     "injury": null
    },
@@ -843,10 +843,19 @@
     "proj_pts": 11.42,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "13346",
+    "name": "Denzel Boston",
+    "pos": "WR",
+    "nfl": "CLE",
+    "proj_pts": 7.39,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 59
+  "faab_remaining": 29
  },
  "maura-higgins": {
   "starters": {
@@ -1122,17 +1131,17 @@
     "injury": null
    },
    {
-    "id": "8408",
-    "name": "Jordan Mason",
+    "id": "8132",
+    "name": "Tyler Allgeier",
     "pos": "RB",
-    "nfl": "MIN",
-    "proj_pts": 0.0,
-    "status": "Inactive",
-    "injury": "IR"
+    "nfl": "ARI",
+    "proj_pts": 5.7,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 40
  },
  "patricia-moyer": {
   "starters": {
@@ -1390,15 +1399,6 @@
     "injury": null
    },
    {
-    "id": "9758",
-    "name": "C.J. Stroud",
-    "pos": "QB",
-    "nfl": "HOU",
-    "proj_pts": 17.87,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "96",
     "name": "Aaron Rodgers",
     "pos": "QB",
@@ -1415,10 +1415,19 @@
     "proj_pts": 7.95,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "12534",
+    "name": "Kyle Monangai",
+    "pos": "RB",
+    "nfl": "CHI",
+    "proj_pts": 6.46,
+    "status": "Active",
+    "injury": "Questionable"
    }
   ],
   "ir": [],
-  "faab_remaining": 45
+  "faab_remaining": 3
  },
  "wifes-team": {
   "starters": {
@@ -1570,7 +1579,7 @@
     "name": "Detroit Lions",
     "pos": "DEF",
     "nfl": "DET",
-    "proj_pts": 4.64,
+    "proj_pts": 4.65,
     "status": null,
     "injury": null
    },

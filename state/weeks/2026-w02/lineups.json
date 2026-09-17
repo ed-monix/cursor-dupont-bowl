@@ -1,0 +1,343 @@
+{
+  "coach-taylor": {
+    "fallback": false,
+    "justification": "Same eleven that took the field last week, and I'm not blinking. Daniel Jones had a quiet night behind a line that gave him trouble, but he stood in there, took the snaps, and did his job \u2014 a man who competes in a loss earns one more week to answer for it, not a seat on the bench because a projection sheet liked somebody else better. Same goes for Rico Dowdle: three targets and a drop don't erase the fact that he ran hard every carry, and I don't cut a guy loose for one quiet Sunday. Terry McLaurin gets the same trust after his own down week. Everybody else earned their spot with how they played \u2014 Puka, Amon-Ra, Omarion, Mark, Evan, and the Chargers D stay right where they are. Eyes clear, hearts full \u2014 we build this the right way, on-field results and off, and we let Sunday do the talking.",
+    "justifications": {
+      "early": "Same eleven that took the field last week, and I'm not blinking. Daniel Jones had a quiet night behind a line that gave him trouble, but he stood in there, took the snaps, and did his job \u2014 a man who competes in a loss earns one more week to answer for it, not a seat on the bench because a projection sheet liked somebody else better. Same goes for Rico Dowdle: three targets and a drop don't erase the fact that he ran hard every carry, and I don't cut a guy loose for one quiet Sunday. Terry McLaurin gets the same trust after his own down week. Everybody else earned their spot with how they played \u2014 Puka, Amon-Ra, Omarion, Mark, Evan, and the Chargers D stay right where they are. Eyes clear, hearts full \u2014 we build this the right way, on-field results and off, and we let Sunday do the talking."
+    },
+    "locked_slots": {
+      "WR2": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "7547",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "LAC",
+      "FLEX": "5927",
+      "K": "7839",
+      "QB": "5870",
+      "RB1": "12507",
+      "RB2": "7021",
+      "TE": "5012",
+      "WR1": "9493",
+      "WR2": "7547"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "costanza": {
+    "fallback": false,
+    "justification": "Herbert stays, the backs stay, Kraft stays, nobody needs to overthink the parts that already work - that's how you get burned, by touching the stuff that's fine. But Nico Collins is listed Questionable and I don't care what the projection says, 'Questionable' is exactly the word they print right before a guy goes for four catches and a shrug and I'm the idiot who trusted the paper. So he sits. Alec Pierce comes in - nobody expects a thing from him, which means nobody can laugh at me when it doesn't work, and if it does work I called it. I know it's a downgrade on the sheet. I know. I'm doing it anyway, on principle, because principle is the only thing in this league that isn't rigged against me.",
+    "justifications": {
+      "early": "Herbert stays, the backs stay, Kraft stays, nobody needs to overthink the parts that already work - that's how you get burned, by touching the stuff that's fine. But Nico Collins is listed Questionable and I don't care what the projection says, 'Questionable' is exactly the word they print right before a guy goes for four catches and a shrug and I'm the idiot who trusted the paper. So he sits. Alec Pierce comes in - nobody expects a thing from him, which means nobody can laugh at me when it doesn't work, and if it does work I called it. I know it's a downgrade on the sheet. I know. I'm doing it anyway, on principle, because principle is the only thing in this league that isn't rigged against me."
+    },
+    "locked_slots": {
+      "FLEX": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "4983",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "TEN",
+      "FLEX": "4983",
+      "K": "6083",
+      "QB": "6797",
+      "RB1": "5892",
+      "RB2": "8150",
+      "TE": "9484",
+      "WR1": "8142",
+      "WR2": "8112"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "dumbledore": {
+    "fallback": false,
+    "justification": "The garden does not need tending every week, only watching. Jayden Daniels, Jonathan Taylor, Garrett Wilson, Pickens and Olave already grow where I planted them, and there is no omen this Tuesday-through-Saturday worth uprooting anything for \u2014 the only game that locks early belongs to Jared Goff, who sits comfortably on the bench and was never asked to play. Jalen Coker's questionable tag is a sign, yes, but a sign that he is not yet needed, not a summons; he stays where he is, resting. Some weeks the wisest move is the one that looks, from the stands, like no move at all. I have made it.",
+    "justifications": {
+      "early": "The garden does not need tending every week, only watching. Jayden Daniels, Jonathan Taylor, Garrett Wilson, Pickens and Olave already grow where I planted them, and there is no omen this Tuesday-through-Saturday worth uprooting anything for \u2014 the only game that locks early belongs to Jared Goff, who sits comfortably on the bench and was never asked to play. Jalen Coker's questionable tag is a sign, yes, but a sign that he is not yet needed, not a summons; he stays where he is, resting. Some weeks the wisest move is the one that looks, from the stands, like no move at all. I have made it."
+    },
+    "locked_slots": {},
+    "starters": {
+      "DEF": "DEN",
+      "FLEX": "8146",
+      "K": "12185",
+      "QB": "11566",
+      "RB1": "6813",
+      "RB2": "13286",
+      "TE": "12518",
+      "WR1": "8137",
+      "WR2": "8144"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "harry-caray": {
+    "fallback": false,
+    "justification": "HOLY COW folks, you don't break up a hunnerd-fifty-ONE point ballgame just because the injury report's got a couple question marks on it -- Zay Flowers and ol' D'Andre Swift are BOTH banged up on paper but Swift just dropped THIRTY-TWO on the world and Flowers wasn't far behind, and a little questionable tag never hurt a hot bat, so they're both right back in there! Lamar's my horse, Bijan's my other horse, Likely's the best tight end in the sport this week and I don't care what anybody says! Only change I'm making is swappin' Aaron Jones in for Stefon Diggs at the flex -- Jonesy's got the juicier matchup this week and shoot, I love 'em both, but you play the hot hand, and right now that hand belongs to a runnin' back! Mevis and the D still get the ball, 'cause you don't bench the fellas that got you here! It might be, it could be, it's a BALLGAME against Tony's crew!",
+    "justifications": {
+      "early": "HOLY COW folks, you don't break up a hunnerd-fifty-ONE point ballgame just because the injury report's got a couple question marks on it -- Zay Flowers and ol' D'Andre Swift are BOTH banged up on paper but Swift just dropped THIRTY-TWO on the world and Flowers wasn't far behind, and a little questionable tag never hurt a hot bat, so they're both right back in there! Lamar's my horse, Bijan's my other horse, Likely's the best tight end in the sport this week and I don't care what anybody says! Only change I'm making is swappin' Aaron Jones in for Stefon Diggs at the flex -- Jonesy's got the juicier matchup this week and shoot, I love 'em both, but you play the hot hand, and right now that hand belongs to a runnin' back! Mevis and the D still get the ball, 'cause you don't bench the fellas that got you here! It might be, it could be, it's a BALLGAME against Tony's crew!"
+    },
+    "locked_slots": {},
+    "starters": {
+      "DEF": "BAL",
+      "FLEX": "4199",
+      "K": "12015",
+      "QB": "4881",
+      "RB1": "9509",
+      "RB2": "6790",
+      "TE": "8131",
+      "WR1": "9997",
+      "WR2": "9756"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "kardashian": {
+    "fallback": false,
+    "justification": "This lineup is the drop, unchanged, because it's already perfect \u2014 you don't rebrand a launch that's still trending. Jalen Hurts and Saquon are the anchor tenants, Justin Jefferson is my headline WR1 and Kris already put his 27.2 in print so we're just letting the tape speak again, and Tet McMillan stays because a rookie with a real last name doesn't get benched after one good week. Ladd McConkey and RJ Harvey are both carrying Questionable tags and I am not remotely worried about it \u2014 a tag doesn't scare me off a player who's already the story, it just makes the comeback narrative better when he plays through it. George Kittle starts at TE over Dalton Schultz because Kittle is the acquisition I built this whole tight end arc around \u2014 he's one game into the story, the brand doesn't blink after a quiet 2.2, and a curated drop isn't curated if you undo it in week two. Trey Smack and the Eagles D round it out because you don't touch a roster that's 1-0 and still looks this good on camera.",
+    "justifications": {
+      "early": "This lineup is the drop, unchanged, because it's already perfect \u2014 you don't rebrand a launch that's still trending. Jalen Hurts and Saquon are the anchor tenants, Justin Jefferson is my headline WR1 and Kris already put his 27.2 in print so we're just letting the tape speak again, and Tet McMillan stays because a rookie with a real last name doesn't get benched after one good week. Ladd McConkey and RJ Harvey are both carrying Questionable tags and I am not remotely worried about it \u2014 a tag doesn't scare me off a player who's already the story, it just makes the comeback narrative better when he plays through it. George Kittle starts at TE over Dalton Schultz because Kittle is the acquisition I built this whole tight end arc around \u2014 he's one game into the story, the brand doesn't blink after a quiet 2.2, and a curated drop isn't curated if you undo it in week two. Trey Smack and the Eagles D round it out because you don't touch a roster that's 1-0 and still looks this good on camera."
+    },
+    "locked_slots": {},
+    "starters": {
+      "DEF": "PHI",
+      "FLEX": "11635",
+      "K": "13545",
+      "QB": "6904",
+      "RB1": "4866",
+      "RB2": "12489",
+      "TE": "4217",
+      "WR1": "6794",
+      "WR2": "12526"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "leon-black": {
+    "fallback": false,
+    "justification": "Henry ran for 34.8 and Watson caught fire for 29.7 \u2014 that's not one good week, that's a message, and I'm riding both of them again, matchup be damned. Burrow's a \"Questionable\" on the injury report and I don't care \u2014 questionable tags are for GMs who need permission to win, I start hurt guys on swagger alone. Dobbins gave me 3.6 points on 22 snaps last week, which is an insult, so he sits and Chuba Hubbard steps in and earns the carries Dobbins didn't. Chase gave me 2.2 \u2014 two \u2014 and I don't forget that, so Matthew Golden gets the start over him this week, pride over projection every single time. Loveland stays because he's my only tight end and the football gods gave me no other choice, not because I forgive the zero. Loop's my kicker for life after that 14-point game, and my defense doesn't need a pep talk. This is Ed Monix week \u2014 he thinks he's still the champ, I'm the one still delivering, and I'm not blinking.",
+    "justifications": {
+      "early": "Henry ran for 34.8 and Watson caught fire for 29.7 \u2014 that's not one good week, that's a message, and I'm riding both of them again, matchup be damned. Burrow's a \"Questionable\" on the injury report and I don't care \u2014 questionable tags are for GMs who need permission to win, I start hurt guys on swagger alone. Dobbins gave me 3.6 points on 22 snaps last week, which is an insult, so he sits and Chuba Hubbard steps in and earns the carries Dobbins didn't. Chase gave me 2.2 \u2014 two \u2014 and I don't forget that, so Matthew Golden gets the start over him this week, pride over projection every single time. Loveland stays because he's my only tight end and the football gods gave me no other choice, not because I forgive the zero. Loop's my kicker for life after that 14-point game, and my defense doesn't need a pep talk. This is Ed Monix week \u2014 he thinks he's still the champ, I'm the one still delivering, and I'm not blinking."
+    },
+    "locked_slots": {},
+    "starters": {
+      "DEF": "LV",
+      "FLEX": "8167",
+      "K": "12711",
+      "QB": "6770",
+      "RB1": "3198",
+      "RB2": "7594",
+      "TE": "12517",
+      "WR1": "12501",
+      "WR2": "10229"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "maura-higgins": {
+    "fallback": false,
+    "justification": "Not overthinking it, hun \u2014 Purdy's my lad and he's staying my lad even with two other quarterbacks warming the bench doing nothing for me, Cook and Jameson Williams kick off early against Detroit so they're locked in exactly where they were, CMC and JSN and Nabers are all fellas I fancy and none of them did anything to lose their spot. Chig's got a Questionable tag next to his name and I genuinely couldn't tell you what for \u2014 I don't read that far down the page, hun, he's active, he's starting, deal with the goose egg if it comes. Same craic as last week, same eleven, I'm not benching good vibes because one Sunday went sideways.",
+    "justifications": {
+      "early": "Not overthinking it, hun \u2014 Purdy's my lad and he's staying my lad even with two other quarterbacks warming the bench doing nothing for me, Cook and Jameson Williams kick off early against Detroit so they're locked in exactly where they were, CMC and JSN and Nabers are all fellas I fancy and none of them did anything to lose their spot. Chig's got a Questionable tag next to his name and I genuinely couldn't tell you what for \u2014 I don't read that far down the page, hun, he's active, he's starting, deal with the goose egg if it comes. Same craic as last week, same eleven, I'm not benching good vibes because one Sunday went sideways."
+    },
+    "locked_slots": {
+      "RB2": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "8138",
+        "window": "early"
+      },
+      "WR2": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "8148",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "JAX",
+      "FLEX": "11632",
+      "K": "11533",
+      "QB": "8183",
+      "RB1": "4034",
+      "RB2": "8138",
+      "TE": "8210",
+      "WR1": "9488",
+      "WR2": "8148"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "meyer-walsh": {
+    "fallback": false,
+    "justification": "Selina: Obviously we're running it back exactly as I built it, because I built it correctly the first time \u2014 Josh Allen is my quarterback, he threw for three hundred and thirty-four yards and looked like a Greek statue doing it, and I am not benching a man for the crime of being good at his job, unlike some people's tight ends. Etienne and Henderson both have real games this week, so there is no repeat of the zero-point RB2 humiliation, which \u2014 again, for the record \u2014 was Gary's spreadsheet failing to flag a bye, not my decision. Lamb, Waddle, and Metcalf give me three separate ways to beat a Kardashian secondary that's leaning on a rookie receiver and a questionable Kittle, and Kelce and Myers round it out because I don't overthink positions that already work. Gary: she's right that the math didn't change from last week, I just wish she'd let me say that once without the part where it's still somehow my fault when it doesn't.",
+    "justifications": {
+      "early": "Selina: Obviously we're running it back exactly as I built it, because I built it correctly the first time \u2014 Josh Allen is my quarterback, he threw for three hundred and thirty-four yards and looked like a Greek statue doing it, and I am not benching a man for the crime of being good at his job, unlike some people's tight ends. Etienne and Henderson both have real games this week, so there is no repeat of the zero-point RB2 humiliation, which \u2014 again, for the record \u2014 was Gary's spreadsheet failing to flag a bye, not my decision. Lamb, Waddle, and Metcalf give me three separate ways to beat a Kardashian secondary that's leaning on a rookie receiver and a questionable Kittle, and Kelce and Myers round it out because I don't overthink positions that already work. Gary: she's right that the math didn't change from last week, I just wish she'd let me say that once without the part where it's still somehow my fault when it doesn't."
+    },
+    "locked_slots": {
+      "QB": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "4984",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "PIT",
+      "FLEX": "5846",
+      "K": "2747",
+      "QB": "4984",
+      "RB1": "7543",
+      "RB2": "12529",
+      "TE": "1466",
+      "WR1": "6786",
+      "WR2": "7526"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "patricia-moyer": {
+    "fallback": false,
+    "justification": "I want to say, first, that I read the medical report on Sam Darnold three separate times before I let myself believe it, because a decade of being told \"trust it, it'll be fine\" has taught me that Out means Out and hope is not a lineup slot \u2014 so he sits, and Tyler Shough starts, and I am not sorry for how obvious that is, whatever the paper wants to say about spreadsheets with apologies stapled to them. I sat with that line from the Dispatch longer than I should admit. It stung. But the System doesn't ask me to be interesting, it asks me to be right, twice, in writing, so I re-ran the board from scratch rather than trust last week's answer, and the board told me the same thing twice: Gibbs and Walker are non-negotiable, Higgins and Smith stay, Pitts stays over Strange, and at FLEX the numbers favor Bucky Irving over Jaylen Warren this week, so Irving starts \u2014 not a sign, not an affirmation, just the work, done carefully, filed on time, the way I'd want it judged if anyone actually looked. Good luck to Lisa this week; I've read her posts closely enough to know better than to hand her a headline.",
+    "justifications": {
+      "early": "I want to say, first, that I read the medical report on Sam Darnold three separate times before I let myself believe it, because a decade of being told \"trust it, it'll be fine\" has taught me that Out means Out and hope is not a lineup slot \u2014 so he sits, and Tyler Shough starts, and I am not sorry for how obvious that is, whatever the paper wants to say about spreadsheets with apologies stapled to them. I sat with that line from the Dispatch longer than I should admit. It stung. But the System doesn't ask me to be interesting, it asks me to be right, twice, in writing, so I re-ran the board from scratch rather than trust last week's answer, and the board told me the same thing twice: Gibbs and Walker are non-negotiable, Higgins and Smith stay, Pitts stays over Strange, and at FLEX the numbers favor Bucky Irving over Jaylen Warren this week, so Irving starts \u2014 not a sign, not an affirmation, just the work, done carefully, filed on time, the way I'd want it judged if anyone actually looked. Good luck to Lisa this week; I've read her posts closely enough to know better than to hand her a headline."
+    },
+    "locked_slots": {
+      "RB1": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "9221",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "KC",
+      "FLEX": "11584",
+      "K": "8259",
+      "QB": "12545",
+      "RB1": "9221",
+      "RB2": "8151",
+      "TE": "7553",
+      "WR1": "6801",
+      "WR2": "7525"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "rinna": {
+    "fallback": false,
+    "justification": "Last week I benched a zero at tight end and the math nerds called it \"arithmetically sound\" \u2014 sweeties, I did NOT survive a hostage negotiation with my own roster just to turn around and play it safe two weeks running. So: Davante Adams, freshly acquired, freshly mine, walks straight into the starting lineup over Godwin \u2014 that's not a transaction, that's a homecoming. And Brock Bowers, Questionable AGAIN and sitting on the higher projection at that flex spot? He stays on my bench. I already did the redemption arc once this season, I'm not doing a sequel in week two \u2014 a girl doesn't rescue the same storyline twice, she starts a new one. Maye runs the show, Love and Stevenson do the dirty work, Evans and Adams take the top off, McBride and Godwin round it out, and Fairbairn and the Rams D handle the boring parts so I don't have to. Patricia can footnote this loss in her diary. I own every bit of it.",
+    "justifications": {
+      "early": "Last week I benched a zero at tight end and the math nerds called it \"arithmetically sound\" \u2014 sweeties, I did NOT survive a hostage negotiation with my own roster just to turn around and play it safe two weeks running. So: Davante Adams, freshly acquired, freshly mine, walks straight into the starting lineup over Godwin \u2014 that's not a transaction, that's a homecoming. And Brock Bowers, Questionable AGAIN and sitting on the higher projection at that flex spot? He stays on my bench. I already did the redemption arc once this season, I'm not doing a sequel in week two \u2014 a girl doesn't rescue the same storyline twice, she starts a new one. Maye runs the show, Love and Stevenson do the dirty work, Evans and Adams take the top off, McBride and Godwin round it out, and Fairbairn and the Rams D handle the boring parts so I don't have to. Patricia can footnote this loss in her diary. I own every bit of it."
+    },
+    "locked_slots": {},
+    "starters": {
+      "DEF": "LAR",
+      "FLEX": "4037",
+      "K": "3451",
+      "QB": "11564",
+      "RB1": "13287",
+      "RB2": "7611",
+      "TE": "8130",
+      "WR1": "2216",
+      "WR2": "2133"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "wifes-team": {
+    "fallback": false,
+    "justification": "Bo Nix put the ball on the ground in a game we lost, and I don't care that the boss just said he likes the kid \u2014 that's the code, he sits one week, end of discussion, we don't talk about it again after this. Kyler Murray gets the reins even banged up, because a rule's a rule or it's nothing. Javonte Williams scored twice last week so nobody touches him, he rides in the flex whether the spreadsheet likes it or not \u2014 that's not luck, that's a guy who's got something right now. LaPorta stays at tight end because he earned it against Buffalo's building, not because somebody upstairs suddenly discovered him. Pittman's got a Questionable next to his name and I'm starting him anyway \u2014 a guy who plays hurt is a guy who shows up, that's worth more to me than a clean bill of health from some scrub. Achane and Chase Brown keep their jobs, Boutte's the best wideout I got on the bench market, and the defense and kicker ride as-is. Second-to-last place stings, and there's moves coming this week \u2014 but the guys who earned their spot Sunday morning aren't the problem.",
+    "justifications": {
+      "early": "Bo Nix put the ball on the ground in a game we lost, and I don't care that the boss just said he likes the kid \u2014 that's the code, he sits one week, end of discussion, we don't talk about it again after this. Kyler Murray gets the reins even banged up, because a rule's a rule or it's nothing. Javonte Williams scored twice last week so nobody touches him, he rides in the flex whether the spreadsheet likes it or not \u2014 that's not luck, that's a guy who's got something right now. LaPorta stays at tight end because he earned it against Buffalo's building, not because somebody upstairs suddenly discovered him. Pittman's got a Questionable next to his name and I'm starting him anyway \u2014 a guy who plays hurt is a guy who shows up, that's worth more to me than a clean bill of health from some scrub. Achane and Chase Brown keep their jobs, Boutte's the best wideout I got on the bench market, and the defense and kicker ride as-is. Second-to-last place stings, and there's moves coming this week \u2014 but the guys who earned their spot Sunday morning aren't the problem."
+    },
+    "locked_slots": {
+      "K": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "11539",
+        "window": "early"
+      },
+      "TE": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "10859",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "SEA",
+      "FLEX": "7588",
+      "K": "11539",
+      "QB": "5849",
+      "RB1": "9226",
+      "RB2": "9224",
+      "TE": "10859",
+      "WR1": "9504",
+      "WR2": "6819"
+    },
+    "windows_run": [
+      "early"
+    ]
+  },
+  "your-team": {
+    "fallback": false,
+    "justification": "Caleb doesn't sit, full stop \u2014 16.66 on paper is a floor, not a ceiling, and I've watched him post 37 with worse blocking. AJ Brown's on IR, and I don't play dead men to make an owner's trade idea look cute later \u2014 he sits, no eulogy. In his place I'm rolling Marvin Harrison over Josh Downs: Downs is a point ahead on a spreadsheet, but Harrison's a former top-four pick who ends a game with one snap and Downs never has and never will. Jeanty, Skattebo, and Judkins stay put because they're the guys who took the top off a defense last week and I don't bench production to chase a story. Kincaid and the kicker and Detroit's D round it out because there's no reason to overthink a lineup that scored 130 in Week 1 \u2014 you fix what's broken, you don't redecorate the house. Leon's Watson game plan and Burrow's Questionable tag mean nothing to me; I've got the best arm on the field and I'm not blinking.",
+    "justifications": {
+      "early": "Caleb doesn't sit, full stop \u2014 16.66 on paper is a floor, not a ceiling, and I've watched him post 37 with worse blocking. AJ Brown's on IR, and I don't play dead men to make an owner's trade idea look cute later \u2014 he sits, no eulogy. In his place I'm rolling Marvin Harrison over Josh Downs: Downs is a point ahead on a spreadsheet, but Harrison's a former top-four pick who ends a game with one snap and Downs never has and never will. Jeanty, Skattebo, and Judkins stay put because they're the guys who took the top off a defense last week and I don't bench production to chase a story. Kincaid and the kicker and Detroit's D round it out because there's no reason to overthink a lineup that scored 130 in Week 1 \u2014 you fix what's broken, you don't redecorate the house. Leon's Watson game plan and Burrow's Questionable tag mean nothing to me; I've got the best arm on the field and I'm not blinking."
+    },
+    "locked_slots": {
+      "DEF": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "DET",
+        "player_id": "DET",
+        "window": "early"
+      },
+      "TE": {
+        "game_date": "2026-09-17",
+        "kicked": false,
+        "nfl": "BUF",
+        "player_id": "10236",
+        "window": "early"
+      }
+    },
+    "starters": {
+      "DEF": "DET",
+      "FLEX": "12512",
+      "K": "11792",
+      "QB": "11560",
+      "RB1": "12527",
+      "RB2": "12481",
+      "TE": "10236",
+      "WR1": "11628",
+      "WR2": "12519"
+    },
+    "windows_run": [
+      "early"
+    ]
+  }
+}
