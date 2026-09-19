@@ -82,15 +82,37 @@ def test_week_for_date_picks_gameday_week():
     assert week_for_date(TNF, date(2026, 9, 8)) == 1
 
 
-def test_wake_skips_owned_teams():
+def test_wake_includes_all_twelve_gms():
+    from lib import grok_bots
+    roster = grok_bots.load_roster(REPO)
+    wake = wake_targets("lineups-main", roster)
+    assert "your-team" in wake["grok_bots"]
+    assert "wifes-team" in wake["grok_bots"]
+    assert "costanza" in wake["grok_bots"]
+    assert wake["cursor"] == []
+    assert len(wake["grok_bots"]) == 12
+    assert set(wake["grok_bots"]) == {
+        role["slug"] for role in grok_bots.gm_roles(roster)
+    }
+
+
+def test_wake_waivers_includes_all_gms_and_scout_media():
+    from lib import grok_bots
+    roster = grok_bots.load_roster(REPO)
+    wake = wake_targets("waivers", roster)
+    assert len(wake["grok_bots"]) == 12
+    assert "your-team" in wake["grok_bots"]
+    assert "wifes-team" in wake["grok_bots"]
+    assert wake["cursor"] == []
+    assert wake["also"] == ["scout", "media"]
+
+
+def test_wake_lineups_does_not_include_scout_media():
     from lib import grok_bots
     roster = grok_bots.load_roster(REPO)
     wake = wake_targets("lineups-early", roster)
-    assert "your-team" not in wake["grok_bots"]
-    assert "wifes-team" not in wake["grok_bots"]
-    assert "costanza" in wake["grok_bots"]
-    assert wake["cursor"] == ["your-team", "wifes-team"]
-    assert len(wake["grok_bots"]) == 10
+    assert wake["also"] == []
+    assert len(wake["grok_bots"]) == 12
 
 
 def test_ops_for_committed_repo_thursday_week1():
