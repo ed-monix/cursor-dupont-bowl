@@ -146,7 +146,17 @@
     "also": []
   },
   "gate": {
-    "received": {},
+    "received": {
+      "coach-taylor": "/workspace/state/weeks/2026-w02/decisions/coach-taylor.lineup-main.json",
+      "costanza": "/workspace/state/weeks/2026-w02/decisions/costanza.lineup-main.json",
+      "dumbledore": "/workspace/state/weeks/2026-w02/decisions/dumbledore.lineup-main.json",
+      "harry-caray": "/workspace/state/weeks/2026-w02/decisions/harry-caray.lineup-main.json",
+      "kardashian": "/workspace/state/weeks/2026-w02/decisions/kardashian.lineup-main.json",
+      "leon-black": "/workspace/state/weeks/2026-w02/decisions/leon-black.lineup-main.json",
+      "maura-higgins": "/workspace/state/weeks/2026-w02/decisions/maura-higgins.lineup-main.json",
+      "meyer-walsh": "/workspace/state/weeks/2026-w02/decisions/meyer-walsh.lineup-main.json",
+      "patricia-moyer": "/workspace/state/weeks/2026-w02/decisions/patricia-moyer.lineup-main.json"
+    },
     "rejected": {}
   }
 }
