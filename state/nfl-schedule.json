@@ -176,7 +176,7 @@
   "game_id": "202610209"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "DEN",
   "away": "JAX",
@@ -240,7 +240,7 @@
   "game_id": "202610232"
  },
  {
-  "status": "suspended",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "TB",
   "away": "CLE",
