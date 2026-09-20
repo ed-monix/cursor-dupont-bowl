@@ -128,7 +128,7 @@
   "game_id": "202610134"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "ARI",
   "away": "SEA",
@@ -136,7 +136,7 @@
   "game_id": "202610201"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "ATL",
   "away": "CAR",
@@ -144,7 +144,7 @@
   "game_id": "202610202"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "BAL",
   "away": "NO",
@@ -160,7 +160,7 @@
   "game_id": "202610204"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "CHI",
   "away": "MIN",
@@ -168,7 +168,7 @@
   "game_id": "202610206"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "DAL",
   "away": "WAS",
@@ -176,7 +176,7 @@
   "game_id": "202610209"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "DEN",
   "away": "JAX",
@@ -184,7 +184,7 @@
   "game_id": "202610210"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "HOU",
   "away": "CIN",
@@ -200,7 +200,7 @@
   "game_id": "202610216"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "NE",
   "away": "PIT",
@@ -208,7 +208,7 @@
   "game_id": "202610221"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "NYJ",
   "away": "GB",
@@ -216,7 +216,7 @@
   "game_id": "202610224"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "LAC",
   "away": "LV",
@@ -224,7 +224,7 @@
   "game_id": "202610229"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "SF",
   "away": "MIA",
@@ -240,7 +240,7 @@
   "game_id": "202610232"
  },
  {
-  "status": "in_game",
+  "status": "suspended",
   "date": "2026-09-20",
   "home": "TB",
   "away": "CLE",
@@ -248,7 +248,7 @@
   "game_id": "202610233"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "TEN",
   "away": "PHI",
