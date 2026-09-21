@@ -2,8 +2,8 @@
 
 GMs never receive `state/players.json` or another team's `general-manager.md`.
 The orchestrator sends pack JSON (rendered prompt) to a Grok Bot via
-`grok_bots.py dispatch` (celebrity GMs) or a Cursor turn (owned GMs),
-tools disabled. Scripts read the fat files; agents do not.
+`grok_bots.py dispatch` (all 12 GMs, including owned seats), tools
+disabled. Scripts read the fat files; agents do not.
 
 Public pack (one per week, shared): tabloid, trimmed free agents, compact
 league board, NFL games this week, standings slice, forum thread, schedule

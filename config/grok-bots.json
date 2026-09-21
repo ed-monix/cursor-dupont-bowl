@@ -1,8 +1,8 @@
 {
   "version": 1,
   "isolation": {
-    "rule": "All Grok Bots on one xAI account share one cloud computer. Files, logins, and browser sessions on that disk are visible to every Bot. Isolation is pack-in-chat (tools off), not peek-honor. Do not git-clone this repo onto the Bot computer. Do not copy teams/*/general-manager.md or opinions.json onto it.",
-    "owned_teams_off_disk": ["your-team", "wifes-team"],
+    "rule": "All Grok Bots on one xAI account share one cloud computer. Files, logins, and browser sessions on that disk are visible to every Bot. Isolation is pack-in-chat (tools off), not peek-honor. All 12 GMs are Grok Bots, including owned seats your-team (Ed Monix) and wifes-team (Tony Soprano). Do not git-clone this repo onto the Bot computer. Do not copy teams/*/general-manager.md or opinions.json onto it.",
+    "owned_team_slugs": ["your-team", "wifes-team"],
     "never_on_shared_disk": [
       "teams/*/general-manager.md",
       "teams/*/opinions.json",
@@ -176,9 +176,9 @@
       "slug": "your-team",
       "bot_name": "GM Ed Monix",
       "character": "Ed Monix",
-      "product": "cursor",
-      "computer": "none",
-      "off_shared_disk": true,
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
       "own_gm_file_in_pack_only": true,
       "share_url": null
     },
@@ -188,9 +188,9 @@
       "slug": "wifes-team",
       "bot_name": "GM Tony Soprano",
       "character": "Tony Soprano",
-      "product": "cursor",
-      "computer": "none",
-      "off_shared_disk": true,
+      "product": "grok_bot",
+      "computer": "shared",
+      "off_shared_disk": false,
       "own_gm_file_in_pack_only": true,
       "share_url": null
     }
