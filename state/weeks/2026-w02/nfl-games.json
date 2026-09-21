@@ -1,6 +1,6 @@
 [
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "ARI",
   "away": "SEA",
@@ -40,7 +40,7 @@
   "game_id": "202610206"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "DAL",
   "away": "WAS",
@@ -64,7 +64,7 @@
   "game_id": "202610213"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-20",
   "home": "KC",
   "away": "IND",
@@ -88,7 +88,7 @@
   "game_id": "202610224"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "LAC",
   "away": "LV",
@@ -96,7 +96,7 @@
   "game_id": "202610229"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-09-20",
   "home": "SF",
   "away": "MIA",
