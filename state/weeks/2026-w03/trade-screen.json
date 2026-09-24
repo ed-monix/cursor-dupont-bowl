@@ -1,0 +1,21 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "6794"
+      ],
+      "message": "Kim, I'm doing you a favor here \u2014 Ward's got QB1 upside and Boston's a name you can put on a jersey and pretend it's a launch. You give me Jefferson, you get a 'brand moment' out of it, I get the guy who actually wins me the week we're playing THIS week. Take the deal before I stop being generous.",
+      "out": [
+        "12522",
+        "13346"
+      ],
+      "to_team": "kardashian"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "kardashian": 2
+    }
+  }
+]

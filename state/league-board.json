@@ -6,7 +6,7 @@
     "name": "Los Angeles Chargers",
     "pos": "DEF",
     "nfl": "LAC",
-    "proj_pts": 8.38,
+    "proj_pts": 3.48,
     "status": null,
     "injury": null
    },
@@ -15,7 +15,7 @@
     "name": "Terry McLaurin",
     "pos": "WR",
     "nfl": "WAS",
-    "proj_pts": 11.64,
+    "proj_pts": 8.39,
     "status": "Active",
     "injury": null
    },
@@ -24,7 +24,7 @@
     "name": "Evan McPherson",
     "pos": "K",
     "nfl": "CIN",
-    "proj_pts": 6.18,
+    "proj_pts": 7.48,
     "status": "Active",
     "injury": null
    },
@@ -33,7 +33,7 @@
     "name": "Daniel Jones",
     "pos": "QB",
     "nfl": "IND",
-    "proj_pts": 14.79,
+    "proj_pts": 13.75,
     "status": "Active",
     "injury": null
    },
@@ -42,7 +42,7 @@
     "name": "Omarion Hampton",
     "pos": "RB",
     "nfl": "LAC",
-    "proj_pts": 12.15,
+    "proj_pts": 12.96,
     "status": "Active",
     "injury": null
    },
@@ -51,16 +51,16 @@
     "name": "Rico Dowdle",
     "pos": "RB",
     "nfl": "PIT",
-    "proj_pts": 9.89,
+    "proj_pts": 11.15,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "TE": {
     "id": "5012",
     "name": "Mark Andrews",
     "pos": "TE",
     "nfl": "BAL",
-    "proj_pts": 8.08,
+    "proj_pts": 9.46,
     "status": "Active",
     "injury": null
    },
@@ -69,16 +69,16 @@
     "name": "Puka Nacua",
     "pos": "WR",
     "nfl": "LAR",
-    "proj_pts": 16.53,
+    "proj_pts": 14.23,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "WR2": {
     "id": "7547",
     "name": "Amon-Ra St. Brown",
     "pos": "WR",
     "nfl": "DET",
-    "proj_pts": 14.21,
+    "proj_pts": 16.16,
     "status": "Active",
     "injury": null
    }
@@ -89,7 +89,7 @@
     "name": "MarShawn Lloyd",
     "pos": "RB",
     "nfl": "GB",
-    "proj_pts": 10.64,
+    "proj_pts": 9.33,
     "status": "Active",
     "injury": null
    },
@@ -98,7 +98,7 @@
     "name": "Blake Corum",
     "pos": "RB",
     "nfl": "LAR",
-    "proj_pts": 10.24,
+    "proj_pts": 7.74,
     "status": "Active",
     "injury": null
    },
@@ -107,7 +107,7 @@
     "name": "Kirk Cousins",
     "pos": "QB",
     "nfl": "LV",
-    "proj_pts": 13.54,
+    "proj_pts": 14.69,
     "status": "Active",
     "injury": null
    },
@@ -116,16 +116,16 @@
     "name": "Dallas Goedert",
     "pos": "TE",
     "nfl": "PHI",
-    "proj_pts": 8.32,
+    "proj_pts": 0.0,
     "status": "Active",
-    "injury": null
+    "injury": "Doubtful"
    },
    {
     "id": "7523",
     "name": "Trevor Lawrence",
     "pos": "QB",
     "nfl": "JAX",
-    "proj_pts": 17.2,
+    "proj_pts": 19.16,
     "status": "Active",
     "injury": null
    },
@@ -134,7 +134,7 @@
     "name": "Wan'Dale Robinson",
     "pos": "WR",
     "nfl": "TEN",
-    "proj_pts": 6.05,
+    "proj_pts": 6.96,
     "status": "Active",
     "injury": null
    }
@@ -149,7 +149,7 @@
     "name": "Tennessee Titans",
     "pos": "DEF",
     "nfl": "TEN",
-    "proj_pts": 4.29,
+    "proj_pts": 5.55,
     "status": null,
     "injury": null
    },
@@ -158,25 +158,25 @@
     "name": "DJ Moore",
     "pos": "WR",
     "nfl": "BUF",
-    "proj_pts": 10.94,
+    "proj_pts": 10.0,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "K": {
     "id": "6083",
     "name": "Matt Gay",
     "pos": "K",
     "nfl": "LV",
-    "proj_pts": 7.16,
+    "proj_pts": 7.88,
     "status": "Active",
     "injury": null
    },
    "QB": {
-    "id": "6797",
-    "name": "Justin Herbert",
+    "id": "4892",
+    "name": "Baker Mayfield",
     "pos": "QB",
-    "nfl": "LAC",
-    "proj_pts": 16.86,
+    "nfl": "TB",
+    "proj_pts": 16.48,
     "status": "Active",
     "injury": null
    },
@@ -185,7 +185,7 @@
     "name": "David Montgomery",
     "pos": "RB",
     "nfl": "HOU",
-    "proj_pts": 15.97,
+    "proj_pts": 13.8,
     "status": "Active",
     "injury": null
    },
@@ -194,7 +194,7 @@
     "name": "Kyren Williams",
     "pos": "RB",
     "nfl": "LAR",
-    "proj_pts": 16.0,
+    "proj_pts": 12.64,
     "status": "Active",
     "injury": null
    },
@@ -203,7 +203,7 @@
     "name": "Tucker Kraft",
     "pos": "TE",
     "nfl": "GB",
-    "proj_pts": 9.92,
+    "proj_pts": 9.55,
     "status": "Active",
     "injury": null
    },
@@ -212,7 +212,7 @@
     "name": "Nico Collins",
     "pos": "WR",
     "nfl": "HOU",
-    "proj_pts": 14.84,
+    "proj_pts": 12.25,
     "status": "Active",
     "injury": "Questionable"
    },
@@ -221,7 +221,7 @@
     "name": "Drake London",
     "pos": "WR",
     "nfl": "ATL",
-    "proj_pts": 11.45,
+    "proj_pts": 11.14,
     "status": "Active",
     "injury": null
    }
@@ -232,7 +232,7 @@
     "name": "Xavier Worthy",
     "pos": "WR",
     "nfl": "KC",
-    "proj_pts": 8.22,
+    "proj_pts": 9.04,
     "status": "Active",
     "injury": null
    },
@@ -241,7 +241,7 @@
     "name": "Geno Smith",
     "pos": "QB",
     "nfl": "NYJ",
-    "proj_pts": 14.93,
+    "proj_pts": 15.52,
     "status": "Active",
     "injury": null
    },
@@ -252,15 +252,6 @@
     "nfl": "ATL",
     "proj_pts": 0.0,
     "status": "Active",
-    "injury": "Questionable"
-   },
-   {
-    "id": "4892",
-    "name": "Baker Mayfield",
-    "pos": "QB",
-    "nfl": "TB",
-    "proj_pts": 17.29,
-    "status": "Active",
     "injury": null
    },
    {
@@ -268,7 +259,16 @@
     "name": "Rachaad White",
     "pos": "RB",
     "nfl": "WAS",
-    "proj_pts": 7.44,
+    "proj_pts": 5.37,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "6797",
+    "name": "Justin Herbert",
+    "pos": "QB",
+    "nfl": "LAC",
+    "proj_pts": 16.39,
     "status": "Active",
     "injury": null
    },
@@ -277,9 +277,9 @@
     "name": "Alec Pierce",
     "pos": "WR",
     "nfl": "IND",
-    "proj_pts": 9.95,
-    "status": "Active",
-    "injury": null
+    "proj_pts": 0.0,
+    "status": "Inactive",
+    "injury": "Out"
    }
   ],
   "ir": [],
@@ -292,7 +292,7 @@
     "name": "Denver Broncos",
     "pos": "DEF",
     "nfl": "DEN",
-    "proj_pts": 6.11,
+    "proj_pts": 5.69,
     "status": null,
     "injury": null
    },
@@ -301,7 +301,7 @@
     "name": "Garrett Wilson",
     "pos": "WR",
     "nfl": "NYJ",
-    "proj_pts": 12.31,
+    "proj_pts": 12.34,
     "status": "Active",
     "injury": null
    },
@@ -310,7 +310,7 @@
     "name": "Spencer Shrader",
     "pos": "K",
     "nfl": "IND",
-    "proj_pts": 6.55,
+    "proj_pts": 9.02,
     "status": "Active",
     "injury": null
    },
@@ -319,16 +319,16 @@
     "name": "Jayden Daniels",
     "pos": "QB",
     "nfl": "WAS",
-    "proj_pts": 20.24,
+    "proj_pts": 0.0,
     "status": "Active",
-    "injury": null
+    "injury": "Out"
    },
    "RB1": {
     "id": "6813",
     "name": "Jonathan Taylor",
     "pos": "RB",
     "nfl": "IND",
-    "proj_pts": 17.42,
+    "proj_pts": 18.18,
     "status": "Active",
     "injury": null
    },
@@ -337,16 +337,16 @@
     "name": "Jadarian Price",
     "pos": "RB",
     "nfl": "SEA",
-    "proj_pts": 10.9,
+    "proj_pts": 9.48,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "TE": {
     "id": "12518",
     "name": "Tyler Warren",
     "pos": "TE",
     "nfl": "IND",
-    "proj_pts": 9.09,
+    "proj_pts": 7.77,
     "status": "Active",
     "injury": null
    },
@@ -355,7 +355,7 @@
     "name": "George Pickens",
     "pos": "WR",
     "nfl": "DAL",
-    "proj_pts": 13.83,
+    "proj_pts": 12.4,
     "status": "Active",
     "injury": null
    },
@@ -364,7 +364,7 @@
     "name": "Chris Olave",
     "pos": "WR",
     "nfl": "NO",
-    "proj_pts": 12.65,
+    "proj_pts": 14.98,
     "status": "Active",
     "injury": null
    }
@@ -375,7 +375,7 @@
     "name": "Chris Rodriguez",
     "pos": "RB",
     "nfl": "JAX",
-    "proj_pts": 6.33,
+    "proj_pts": 4.47,
     "status": "Active",
     "injury": null
    },
@@ -384,7 +384,7 @@
     "name": "AJ Barner",
     "pos": "TE",
     "nfl": "SEA",
-    "proj_pts": 6.61,
+    "proj_pts": 6.98,
     "status": "Active",
     "injury": null
    },
@@ -393,7 +393,7 @@
     "name": "Jalen Coker",
     "pos": "WR",
     "nfl": "CAR",
-    "proj_pts": 10.67,
+    "proj_pts": 12.01,
     "status": "Active",
     "injury": "Questionable"
    },
@@ -402,7 +402,7 @@
     "name": "Rashid Shaheed",
     "pos": "WR",
     "nfl": "SEA",
-    "proj_pts": 6.24,
+    "proj_pts": 7.12,
     "status": "Active",
     "injury": null
    },
@@ -411,7 +411,7 @@
     "name": "Parker Washington",
     "pos": "WR",
     "nfl": "JAX",
-    "proj_pts": 9.02,
+    "proj_pts": 12.71,
     "status": "Active",
     "injury": null
    },
@@ -420,7 +420,7 @@
     "name": "Jared Goff",
     "pos": "QB",
     "nfl": "DET",
-    "proj_pts": 16.28,
+    "proj_pts": 18.91,
     "status": "Active",
     "injury": null
    }
@@ -435,25 +435,25 @@
     "name": "Baltimore Ravens",
     "pos": "DEF",
     "nfl": "BAL",
-    "proj_pts": 8.27,
+    "proj_pts": 5.77,
     "status": null,
     "injury": null
    },
    "FLEX": {
-    "id": "2449",
-    "name": "Stefon Diggs",
-    "pos": "WR",
-    "nfl": "WAS",
-    "proj_pts": 9.92,
+    "id": "4199",
+    "name": "Aaron Jones",
+    "pos": "RB",
+    "nfl": "MIN",
+    "proj_pts": 11.72,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "K": {
     "id": "12015",
     "name": "Harrison Mevis",
     "pos": "K",
     "nfl": "LAR",
-    "proj_pts": 7.03,
+    "proj_pts": 8.15,
     "status": "Active",
     "injury": null
    },
@@ -462,7 +462,7 @@
     "name": "Lamar Jackson",
     "pos": "QB",
     "nfl": "BAL",
-    "proj_pts": 20.33,
+    "proj_pts": 24.08,
     "status": "Active",
     "injury": null
    },
@@ -471,7 +471,7 @@
     "name": "Bijan Robinson",
     "pos": "RB",
     "nfl": "ATL",
-    "proj_pts": 20.35,
+    "proj_pts": 18.05,
     "status": "Active",
     "injury": null
    },
@@ -480,16 +480,16 @@
     "name": "D'Andre Swift",
     "pos": "RB",
     "nfl": "CHI",
-    "proj_pts": 10.56,
+    "proj_pts": 11.89,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    "TE": {
-    "id": "8131",
-    "name": "Isaiah Likely",
+    "id": "3214",
+    "name": "Hunter Henry",
     "pos": "TE",
-    "nfl": "NYG",
-    "proj_pts": 7.42,
+    "nfl": "NE",
+    "proj_pts": 8.26,
     "status": "Active",
     "injury": null
    },
@@ -498,45 +498,27 @@
     "name": "Zay Flowers",
     "pos": "WR",
     "nfl": "BAL",
-    "proj_pts": 11.6,
+    "proj_pts": 14.37,
     "status": "Active",
     "injury": "Questionable"
    },
    "WR2": {
-    "id": "9756",
-    "name": "Jordan Addison",
+    "id": "2449",
+    "name": "Stefon Diggs",
     "pos": "WR",
-    "nfl": "MIN",
-    "proj_pts": 9.28,
+    "nfl": "WAS",
+    "proj_pts": 7.72,
     "status": "Active",
     "injury": null
    }
   },
   "bench": [
    {
-    "id": "3214",
-    "name": "Hunter Henry",
-    "pos": "TE",
-    "nfl": "NE",
-    "proj_pts": 8.25,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "4199",
-    "name": "Aaron Jones",
-    "pos": "RB",
-    "nfl": "MIN",
-    "proj_pts": 12.95,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "5844",
     "name": "T.J. Hockenson",
     "pos": "TE",
     "nfl": "MIN",
-    "proj_pts": 7.15,
+    "proj_pts": 7.08,
     "status": "Active",
     "injury": null
    },
@@ -545,7 +527,7 @@
     "name": "Deebo Samuel",
     "pos": "WR",
     "nfl": "SF",
-    "proj_pts": 8.75,
+    "proj_pts": 9.4,
     "status": "Active",
     "injury": null
    },
@@ -554,7 +536,7 @@
     "name": "Jakobi Meyers",
     "pos": "WR",
     "nfl": "JAX",
-    "proj_pts": 7.46,
+    "proj_pts": 6.71,
     "status": "Active",
     "injury": "Questionable"
    },
@@ -563,7 +545,25 @@
     "name": "Malik Willis",
     "pos": "QB",
     "nfl": "MIA",
-    "proj_pts": 18.2,
+    "proj_pts": 15.82,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "8131",
+    "name": "Isaiah Likely",
+    "pos": "TE",
+    "nfl": "NYG",
+    "proj_pts": 8.07,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "9756",
+    "name": "Jordan Addison",
+    "pos": "WR",
+    "nfl": "MIN",
+    "proj_pts": 7.87,
     "status": "Active",
     "injury": null
    }
@@ -578,7 +578,7 @@
     "name": "Philadelphia Eagles",
     "pos": "DEF",
     "nfl": "PHI",
-    "proj_pts": 8.71,
+    "proj_pts": 8.36,
     "status": null,
     "injury": null
    },
@@ -587,16 +587,16 @@
     "name": "Ladd McConkey",
     "pos": "WR",
     "nfl": "LAC",
-    "proj_pts": 10.68,
+    "proj_pts": 11.27,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    "K": {
     "id": "13545",
     "name": "Trey Smack",
     "pos": "K",
     "nfl": "GB",
-    "proj_pts": 7.13,
+    "proj_pts": 8.6,
     "status": "Active",
     "injury": null
    },
@@ -605,7 +605,7 @@
     "name": "Jalen Hurts",
     "pos": "QB",
     "nfl": "PHI",
-    "proj_pts": 20.78,
+    "proj_pts": 18.87,
     "status": "Active",
     "injury": null
    },
@@ -614,16 +614,16 @@
     "name": "Saquon Barkley",
     "pos": "RB",
     "nfl": "PHI",
-    "proj_pts": 15.42,
+    "proj_pts": 14.81,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "RB2": {
     "id": "12489",
     "name": "RJ Harvey",
     "pos": "RB",
     "nfl": "DEN",
-    "proj_pts": 7.99,
+    "proj_pts": 6.84,
     "status": "Active",
     "injury": "Questionable"
    },
@@ -632,16 +632,16 @@
     "name": "George Kittle",
     "pos": "TE",
     "nfl": "SF",
-    "proj_pts": 8.71,
+    "proj_pts": 10.23,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    "WR1": {
     "id": "6794",
     "name": "Justin Jefferson",
     "pos": "WR",
     "nfl": "MIN",
-    "proj_pts": 14.46,
+    "proj_pts": 14.03,
     "status": "Active",
     "injury": null
    },
@@ -650,7 +650,7 @@
     "name": "Tetairoa McMillan",
     "pos": "WR",
     "nfl": "CAR",
-    "proj_pts": 12.34,
+    "proj_pts": 11.75,
     "status": "Active",
     "injury": null
    }
@@ -661,16 +661,16 @@
     "name": "Brian Thomas",
     "pos": "WR",
     "nfl": "JAX",
-    "proj_pts": 6.9,
+    "proj_pts": 7.51,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    {
     "id": "12474",
     "name": "Woody Marks",
     "pos": "RB",
     "nfl": "HOU",
-    "proj_pts": 6.64,
+    "proj_pts": 6.09,
     "status": "Active",
     "injury": null
    },
@@ -679,16 +679,16 @@
     "name": "Jaxson Dart",
     "pos": "QB",
     "nfl": "NYG",
-    "proj_pts": 18.07,
+    "proj_pts": 0.0,
     "status": "Active",
-    "injury": null
+    "injury": "Out"
    },
    {
     "id": "12514",
     "name": "Emeka Egbuka",
     "pos": "WR",
     "nfl": "TB",
-    "proj_pts": 9.15,
+    "proj_pts": 8.48,
     "status": "Active",
     "injury": null
    },
@@ -697,7 +697,7 @@
     "name": "Dalton Schultz",
     "pos": "TE",
     "nfl": "HOU",
-    "proj_pts": 7.86,
+    "proj_pts": 8.06,
     "status": "Active",
     "injury": null
    },
@@ -706,7 +706,7 @@
     "name": "Keaton Mitchell",
     "pos": "RB",
     "nfl": "LAC",
-    "proj_pts": 5.68,
+    "proj_pts": 6.13,
     "status": "Active",
     "injury": null
    }
@@ -721,16 +721,16 @@
     "name": "Las Vegas Raiders",
     "pos": "DEF",
     "nfl": "LV",
-    "proj_pts": 3.84,
+    "proj_pts": 4.98,
     "status": null,
     "injury": null
    },
    "FLEX": {
-    "id": "8167",
-    "name": "Christian Watson",
+    "id": "10229",
+    "name": "Rashee Rice",
     "pos": "WR",
-    "nfl": "GB",
-    "proj_pts": 12.85,
+    "nfl": "KC",
+    "proj_pts": 10.44,
     "status": "Active",
     "injury": null
    },
@@ -739,34 +739,34 @@
     "name": "Tyler Loop",
     "pos": "K",
     "nfl": "BAL",
-    "proj_pts": 6.75,
+    "proj_pts": 8.39,
     "status": "Active",
     "injury": null
    },
    "QB": {
-    "id": "6770",
-    "name": "Joe Burrow",
+    "id": "4046",
+    "name": "Patrick Mahomes",
     "pos": "QB",
-    "nfl": "CIN",
-    "proj_pts": 17.8,
+    "nfl": "KC",
+    "proj_pts": 21.74,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    "RB1": {
     "id": "3198",
     "name": "Derrick Henry",
     "pos": "RB",
     "nfl": "BAL",
-    "proj_pts": 14.25,
+    "proj_pts": 17.52,
     "status": "Active",
     "injury": null
    },
    "RB2": {
-    "id": "6806",
-    "name": "J.K. Dobbins",
+    "id": "7594",
+    "name": "Chuba Hubbard",
     "pos": "RB",
-    "nfl": "DEN",
-    "proj_pts": 8.62,
+    "nfl": "CAR",
+    "proj_pts": 12.95,
     "status": "Active",
     "injury": null
    },
@@ -775,7 +775,7 @@
     "name": "Colston Loveland",
     "pos": "TE",
     "nfl": "CHI",
-    "proj_pts": 9.45,
+    "proj_pts": 7.99,
     "status": "Active",
     "injury": null
    },
@@ -784,16 +784,16 @@
     "name": "Ja'Marr Chase",
     "pos": "WR",
     "nfl": "CIN",
-    "proj_pts": 13.88,
+    "proj_pts": 14.22,
     "status": "Active",
     "injury": null
    },
    "WR2": {
-    "id": "10229",
-    "name": "Rashee Rice",
+    "id": "8167",
+    "name": "Christian Watson",
     "pos": "WR",
-    "nfl": "KC",
-    "proj_pts": 10.75,
+    "nfl": "GB",
+    "proj_pts": 13.65,
     "status": "Active",
     "injury": null
    }
@@ -804,16 +804,7 @@
     "name": "Michael Wilson",
     "pos": "WR",
     "nfl": "ARI",
-    "proj_pts": 8.11,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "12501",
-    "name": "Matthew Golden",
-    "pos": "WR",
-    "nfl": "GB",
-    "proj_pts": 9.24,
+    "proj_pts": 10.04,
     "status": "Active",
     "injury": null
    },
@@ -822,25 +813,7 @@
     "name": "Cam Ward",
     "pos": "QB",
     "nfl": "TEN",
-    "proj_pts": 12.05,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "4046",
-    "name": "Patrick Mahomes",
-    "pos": "QB",
-    "nfl": "KC",
-    "proj_pts": 17.66,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "7594",
-    "name": "Chuba Hubbard",
-    "pos": "RB",
-    "nfl": "CAR",
-    "proj_pts": 11.42,
+    "proj_pts": 13.4,
     "status": "Active",
     "injury": null
    },
@@ -849,7 +822,34 @@
     "name": "Denzel Boston",
     "pos": "WR",
     "nfl": "CLE",
-    "proj_pts": 7.39,
+    "proj_pts": 8.23,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "6806",
+    "name": "J.K. Dobbins",
+    "pos": "RB",
+    "nfl": "DEN",
+    "proj_pts": 5.74,
+    "status": "Active",
+    "injury": "Questionable"
+   },
+   {
+    "id": "6770",
+    "name": "Joe Burrow",
+    "pos": "QB",
+    "nfl": "CIN",
+    "proj_pts": 18.03,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "12501",
+    "name": "Matthew Golden",
+    "pos": "WR",
+    "nfl": "GB",
+    "proj_pts": 9.18,
     "status": "Active",
     "injury": null
    }
@@ -864,7 +864,7 @@
     "name": "Jacksonville Jaguars",
     "pos": "DEF",
     "nfl": "JAX",
-    "proj_pts": 5.67,
+    "proj_pts": 6.09,
     "status": null,
     "injury": null
    },
@@ -873,16 +873,16 @@
     "name": "Malik Nabers",
     "pos": "WR",
     "nfl": "NYG",
-    "proj_pts": 11.22,
+    "proj_pts": 11.58,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "K": {
     "id": "11533",
     "name": "Brandon Aubrey",
     "pos": "K",
     "nfl": "DAL",
-    "proj_pts": 7.27,
+    "proj_pts": 9.0,
     "status": "Active",
     "injury": null
    },
@@ -891,7 +891,7 @@
     "name": "Brock Purdy",
     "pos": "QB",
     "nfl": "SF",
-    "proj_pts": 19.98,
+    "proj_pts": 21.81,
     "status": "Active",
     "injury": null
    },
@@ -900,7 +900,7 @@
     "name": "Christian McCaffrey",
     "pos": "RB",
     "nfl": "SF",
-    "proj_pts": 17.43,
+    "proj_pts": 18.4,
     "status": "Active",
     "injury": null
    },
@@ -909,25 +909,25 @@
     "name": "James Cook",
     "pos": "RB",
     "nfl": "BUF",
-    "proj_pts": 15.76,
+    "proj_pts": 15.73,
     "status": "Active",
     "injury": null
    },
    "TE": {
-    "id": "8210",
-    "name": "Chig Okonkwo",
+    "id": "2505",
+    "name": "Darren Waller",
     "pos": "TE",
-    "nfl": "WAS",
-    "proj_pts": 6.46,
+    "nfl": "CAR",
+    "proj_pts": 6.36,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    "WR1": {
     "id": "9488",
     "name": "Jaxon Smith-Njigba",
     "pos": "WR",
     "nfl": "SEA",
-    "proj_pts": 15.49,
+    "proj_pts": 18.47,
     "status": "Active",
     "injury": null
    },
@@ -936,7 +936,7 @@
     "name": "Jameson Williams",
     "pos": "WR",
     "nfl": "DET",
-    "proj_pts": 10.73,
+    "proj_pts": 10.7,
     "status": "Active",
     "injury": null
    }
@@ -947,7 +947,7 @@
     "name": "Tre Tucker",
     "pos": "WR",
     "nfl": "LV",
-    "proj_pts": 6.75,
+    "proj_pts": 7.25,
     "status": "Active",
     "injury": null
    },
@@ -956,9 +956,9 @@
     "name": "Jayden Reed",
     "pos": "WR",
     "nfl": "GB",
-    "proj_pts": 9.62,
+    "proj_pts": 0.0,
     "status": "Active",
-    "injury": null
+    "injury": "Out"
    },
    {
     "id": "11651",
@@ -970,20 +970,11 @@
     "injury": "PUP"
    },
    {
-    "id": "2505",
-    "name": "Darren Waller",
-    "pos": "TE",
-    "nfl": "CAR",
-    "proj_pts": 5.4,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "3294",
     "name": "Dak Prescott",
     "pos": "QB",
     "nfl": "DAL",
-    "proj_pts": 20.27,
+    "proj_pts": 18.58,
     "status": "Active",
     "injury": null
    },
@@ -992,9 +983,18 @@
     "name": "Jordan Love",
     "pos": "QB",
     "nfl": "GB",
-    "proj_pts": 19.54,
+    "proj_pts": 16.54,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "8210",
+    "name": "Chig Okonkwo",
+    "pos": "TE",
+    "nfl": "WAS",
+    "proj_pts": 3.95,
+    "status": "Active",
+    "injury": "Questionable"
    }
   ],
   "ir": [],
@@ -1007,7 +1007,7 @@
     "name": "Pittsburgh Steelers",
     "pos": "DEF",
     "nfl": "PIT",
-    "proj_pts": 5.12,
+    "proj_pts": 5.66,
     "status": null,
     "injury": null
    },
@@ -1016,7 +1016,7 @@
     "name": "DK Metcalf",
     "pos": "WR",
     "nfl": "PIT",
-    "proj_pts": 10.23,
+    "proj_pts": 9.14,
     "status": "Active",
     "injury": null
    },
@@ -1025,7 +1025,7 @@
     "name": "Jason Myers",
     "pos": "K",
     "nfl": "SEA",
-    "proj_pts": 6.68,
+    "proj_pts": 8.05,
     "status": "Active",
     "injury": null
    },
@@ -1034,7 +1034,7 @@
     "name": "Josh Allen",
     "pos": "QB",
     "nfl": "BUF",
-    "proj_pts": 21.83,
+    "proj_pts": 23.5,
     "status": "Active",
     "injury": null
    },
@@ -1043,16 +1043,16 @@
     "name": "Travis Etienne",
     "pos": "RB",
     "nfl": "NO",
-    "proj_pts": 9.68,
+    "proj_pts": 10.05,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "RB2": {
     "id": "12529",
     "name": "TreVeyon Henderson",
     "pos": "RB",
     "nfl": "NE",
-    "proj_pts": 8.45,
+    "proj_pts": 11.63,
     "status": "Active",
     "injury": null
    },
@@ -1061,7 +1061,7 @@
     "name": "Travis Kelce",
     "pos": "TE",
     "nfl": "KC",
-    "proj_pts": 8.4,
+    "proj_pts": 9.71,
     "status": "Active",
     "injury": null
    },
@@ -1070,7 +1070,7 @@
     "name": "CeeDee Lamb",
     "pos": "WR",
     "nfl": "DAL",
-    "proj_pts": 15.53,
+    "proj_pts": 14.41,
     "status": "Active",
     "injury": null
    },
@@ -1079,7 +1079,7 @@
     "name": "Jaylen Waddle",
     "pos": "WR",
     "nfl": "DEN",
-    "proj_pts": 10.43,
+    "proj_pts": 10.91,
     "status": "Active",
     "injury": null
    }
@@ -1090,7 +1090,7 @@
     "name": "Rome Odunze",
     "pos": "WR",
     "nfl": "CHI",
-    "proj_pts": 7.96,
+    "proj_pts": 7.38,
     "status": "Active",
     "injury": null
    },
@@ -1099,7 +1099,7 @@
     "name": "Devaughn Vele",
     "pos": "WR",
     "nfl": "NO",
-    "proj_pts": 7.67,
+    "proj_pts": 8.09,
     "status": "Active",
     "injury": null
    },
@@ -1108,7 +1108,7 @@
     "name": "Matthew Stafford",
     "pos": "QB",
     "nfl": "LAR",
-    "proj_pts": 16.86,
+    "proj_pts": 16.13,
     "status": "Active",
     "injury": null
    },
@@ -1117,7 +1117,7 @@
     "name": "Khalil Shakir",
     "pos": "WR",
     "nfl": "BUF",
-    "proj_pts": 8.66,
+    "proj_pts": 8.08,
     "status": "Active",
     "injury": null
    },
@@ -1126,7 +1126,7 @@
     "name": "Bryce Young",
     "pos": "QB",
     "nfl": "CAR",
-    "proj_pts": 16.47,
+    "proj_pts": 16.37,
     "status": "Active",
     "injury": null
    },
@@ -1135,7 +1135,7 @@
     "name": "Tyler Allgeier",
     "pos": "RB",
     "nfl": "ARI",
-    "proj_pts": 5.7,
+    "proj_pts": 6.31,
     "status": "Active",
     "injury": null
    }
@@ -1150,16 +1150,16 @@
     "name": "Kansas City Chiefs",
     "pos": "DEF",
     "nfl": "KC",
-    "proj_pts": 7.93,
+    "proj_pts": 8.43,
     "status": null,
     "injury": null
    },
    "FLEX": {
-    "id": "8228",
-    "name": "Jaylen Warren",
+    "id": "11584",
+    "name": "Bucky Irving",
     "pos": "RB",
-    "nfl": "PIT",
-    "proj_pts": 10.58,
+    "nfl": "TB",
+    "proj_pts": 13.02,
     "status": "Active",
     "injury": null
    },
@@ -1168,25 +1168,25 @@
     "name": "Cameron Dicker",
     "pos": "K",
     "nfl": "LAC",
-    "proj_pts": 7.35,
+    "proj_pts": 7.7,
     "status": "Active",
     "injury": null
    },
    "QB": {
-    "id": "4943",
-    "name": "Sam Darnold",
+    "id": "12545",
+    "name": "Tyler Shough",
     "pos": "QB",
-    "nfl": "SEA",
-    "proj_pts": 0.0,
+    "nfl": "NO",
+    "proj_pts": 18.25,
     "status": "Active",
-    "injury": "Out"
+    "injury": null
    },
    "RB1": {
     "id": "9221",
     "name": "Jahmyr Gibbs",
     "pos": "RB",
     "nfl": "DET",
-    "proj_pts": 24.19,
+    "proj_pts": 20.91,
     "status": "Active",
     "injury": null
    },
@@ -1195,7 +1195,7 @@
     "name": "Kenneth Walker",
     "pos": "RB",
     "nfl": "KC",
-    "proj_pts": 14.83,
+    "proj_pts": 18.92,
     "status": "Active",
     "injury": null
    },
@@ -1204,7 +1204,7 @@
     "name": "Kyle Pitts",
     "pos": "TE",
     "nfl": "ATL",
-    "proj_pts": 7.62,
+    "proj_pts": 7.74,
     "status": "Active",
     "injury": null
    },
@@ -1213,7 +1213,7 @@
     "name": "Tee Higgins",
     "pos": "WR",
     "nfl": "CIN",
-    "proj_pts": 11.76,
+    "proj_pts": 11.74,
     "status": "Active",
     "injury": null
    },
@@ -1222,7 +1222,7 @@
     "name": "DeVonta Smith",
     "pos": "WR",
     "nfl": "PHI",
-    "proj_pts": 12.18,
+    "proj_pts": 13.06,
     "status": "Active",
     "injury": null
    }
@@ -1233,34 +1233,16 @@
     "name": "Jonathon Brooks",
     "pos": "RB",
     "nfl": "CAR",
-    "proj_pts": 5.96,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "11584",
-    "name": "Bucky Irving",
-    "pos": "RB",
-    "nfl": "TB",
-    "proj_pts": 12.45,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "12545",
-    "name": "Tyler Shough",
-    "pos": "QB",
-    "nfl": "NO",
-    "proj_pts": 15.29,
-    "status": "Active",
-    "injury": null
+    "proj_pts": 0.0,
+    "status": "Inactive",
+    "injury": "IR"
    },
    {
     "id": "8121",
     "name": "Romeo Doubs",
     "pos": "WR",
     "nfl": "NE",
-    "proj_pts": 7.44,
+    "proj_pts": 7.81,
     "status": "Active",
     "injury": null
    },
@@ -1269,7 +1251,7 @@
     "name": "Brenton Strange",
     "pos": "TE",
     "nfl": "JAX",
-    "proj_pts": 6.16,
+    "proj_pts": 7.3,
     "status": "Active",
     "injury": null
    },
@@ -1278,9 +1260,27 @@
     "name": "Carnell Tate",
     "pos": "WR",
     "nfl": "TEN",
-    "proj_pts": 6.92,
+    "proj_pts": 7.5,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "8228",
+    "name": "Jaylen Warren",
+    "pos": "RB",
+    "nfl": "PIT",
+    "proj_pts": 12.1,
+    "status": "Active",
+    "injury": "Questionable"
+   },
+   {
+    "id": "4943",
+    "name": "Sam Darnold",
+    "pos": "QB",
+    "nfl": "SEA",
+    "proj_pts": 0.0,
+    "status": "Active",
+    "injury": "Questionable"
    }
   ],
   "ir": [],
@@ -1293,25 +1293,25 @@
     "name": "Los Angeles Rams",
     "pos": "DEF",
     "nfl": "LAR",
-    "proj_pts": 6.99,
+    "proj_pts": 6.12,
     "status": null,
     "injury": null
    },
    "FLEX": {
-    "id": "12490",
-    "name": "Bhayshul Tuten",
-    "pos": "RB",
-    "nfl": "JAX",
-    "proj_pts": 8.25,
+    "id": "11604",
+    "name": "Brock Bowers",
+    "pos": "TE",
+    "nfl": "LV",
+    "proj_pts": 10.66,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "K": {
     "id": "3451",
     "name": "Ka'imi Fairbairn",
     "pos": "K",
     "nfl": "HOU",
-    "proj_pts": 7.32,
+    "proj_pts": 8.65,
     "status": "Active",
     "injury": null
    },
@@ -1320,7 +1320,7 @@
     "name": "Drake Maye",
     "pos": "QB",
     "nfl": "NE",
-    "proj_pts": 18.89,
+    "proj_pts": 17.97,
     "status": "Active",
     "injury": null
    },
@@ -1329,7 +1329,7 @@
     "name": "Jeremiyah Love",
     "pos": "RB",
     "nfl": "ARI",
-    "proj_pts": 10.82,
+    "proj_pts": 12.54,
     "status": "Active",
     "injury": null
    },
@@ -1338,7 +1338,7 @@
     "name": "Rhamondre Stevenson",
     "pos": "RB",
     "nfl": "NE",
-    "proj_pts": 10.89,
+    "proj_pts": 9.27,
     "status": "Active",
     "injury": null
    },
@@ -1347,7 +1347,7 @@
     "name": "Trey McBride",
     "pos": "TE",
     "nfl": "ARI",
-    "proj_pts": 11.2,
+    "proj_pts": 13.45,
     "status": "Active",
     "injury": null
    },
@@ -1356,45 +1356,27 @@
     "name": "Mike Evans",
     "pos": "WR",
     "nfl": "SF",
-    "proj_pts": 10.94,
+    "proj_pts": 11.48,
     "status": "Active",
-    "injury": null
+    "injury": "Questionable"
    },
    "WR2": {
-    "id": "4037",
-    "name": "Chris Godwin",
+    "id": "2133",
+    "name": "Davante Adams",
     "pos": "WR",
-    "nfl": "TB",
-    "proj_pts": 8.39,
+    "nfl": "LAR",
+    "proj_pts": 10.35,
     "status": "Active",
     "injury": null
    }
   },
   "bench": [
    {
-    "id": "11604",
-    "name": "Brock Bowers",
-    "pos": "TE",
-    "nfl": "LV",
-    "proj_pts": 10.52,
-    "status": "Active",
-    "injury": "Questionable"
-   },
-   {
     "id": "13298",
     "name": "KC Concepcion",
     "pos": "WR",
     "nfl": "CLE",
-    "proj_pts": 8.25,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "2133",
-    "name": "Davante Adams",
-    "pos": "WR",
-    "nfl": "LAR",
-    "proj_pts": 10.25,
+    "proj_pts": 7.49,
     "status": "Active",
     "injury": null
    },
@@ -1403,7 +1385,7 @@
     "name": "Aaron Rodgers",
     "pos": "QB",
     "nfl": "PIT",
-    "proj_pts": 16.26,
+    "proj_pts": 13.82,
     "status": "Active",
     "injury": null
    },
@@ -1412,7 +1394,7 @@
     "name": "Courtland Sutton",
     "pos": "WR",
     "nfl": "DEN",
-    "proj_pts": 7.95,
+    "proj_pts": 8.43,
     "status": "Active",
     "injury": null
    },
@@ -1421,9 +1403,27 @@
     "name": "Kyle Monangai",
     "pos": "RB",
     "nfl": "CHI",
-    "proj_pts": 6.46,
+    "proj_pts": 6.51,
     "status": "Active",
     "injury": "Questionable"
+   },
+   {
+    "id": "12490",
+    "name": "Bhayshul Tuten",
+    "pos": "RB",
+    "nfl": "JAX",
+    "proj_pts": 10.37,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "4037",
+    "name": "Chris Godwin",
+    "pos": "WR",
+    "nfl": "TB",
+    "proj_pts": 8.06,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
@@ -1436,7 +1436,7 @@
     "name": "Seattle Seahawks",
     "pos": "DEF",
     "nfl": "SEA",
-    "proj_pts": 8.07,
+    "proj_pts": 8.49,
     "status": null,
     "injury": null
    },
@@ -1445,7 +1445,7 @@
     "name": "Javonte Williams",
     "pos": "RB",
     "nfl": "DAL",
-    "proj_pts": 16.23,
+    "proj_pts": 14.2,
     "status": "Active",
     "injury": null
    },
@@ -1454,7 +1454,7 @@
     "name": "Jake Bates",
     "pos": "K",
     "nfl": "DET",
-    "proj_pts": 6.15,
+    "proj_pts": 8.7,
     "status": "Active",
     "injury": null
    },
@@ -1463,7 +1463,7 @@
     "name": "Bo Nix",
     "pos": "QB",
     "nfl": "DEN",
-    "proj_pts": 15.74,
+    "proj_pts": 16.8,
     "status": "Active",
     "injury": null
    },
@@ -1472,7 +1472,7 @@
     "name": "De'Von Achane",
     "pos": "RB",
     "nfl": "MIA",
-    "proj_pts": 15.11,
+    "proj_pts": 14.24,
     "status": "Active",
     "injury": null
    },
@@ -1481,7 +1481,7 @@
     "name": "Chase Brown",
     "pos": "RB",
     "nfl": "CIN",
-    "proj_pts": 13.53,
+    "proj_pts": 14.35,
     "status": "Active",
     "injury": null
    },
@@ -1490,7 +1490,7 @@
     "name": "Sam LaPorta",
     "pos": "TE",
     "nfl": "DET",
-    "proj_pts": 8.97,
+    "proj_pts": 9.63,
     "status": "Active",
     "injury": null
    },
@@ -1499,7 +1499,7 @@
     "name": "Kayshon Boutte",
     "pos": "WR",
     "nfl": "HOU",
-    "proj_pts": 5.59,
+    "proj_pts": 6.13,
     "status": "Active",
     "injury": null
    },
@@ -1508,7 +1508,7 @@
     "name": "Michael Pittman",
     "pos": "WR",
     "nfl": "PIT",
-    "proj_pts": 9.39,
+    "proj_pts": 7.28,
     "status": "Active",
     "injury": "Questionable"
    }
@@ -1519,34 +1519,25 @@
     "name": "Harold Fannin",
     "pos": "TE",
     "nfl": "CLE",
-    "proj_pts": 7.9,
+    "proj_pts": 7.31,
     "status": "Active",
     "injury": null
-   },
-   {
-    "id": "5849",
-    "name": "Kyler Murray",
-    "pos": "QB",
-    "nfl": "MIN",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": "Questionable"
    },
    {
     "id": "7002",
     "name": "Juwan Johnson",
     "pos": "TE",
     "nfl": "NO",
-    "proj_pts": 7.73,
+    "proj_pts": 8.25,
     "status": "Active",
-    "injury": "Questionable"
+    "injury": null
    },
    {
     "id": "7587",
     "name": "Dyami Brown",
     "pos": "WR",
     "nfl": "WAS",
-    "proj_pts": 0.87,
+    "proj_pts": 1.61,
     "status": "Active",
     "injury": null
    },
@@ -1555,7 +1546,7 @@
     "name": "Jake Ferguson",
     "pos": "TE",
     "nfl": "DAL",
-    "proj_pts": 7.98,
+    "proj_pts": 7.35,
     "status": "Active",
     "injury": null
    },
@@ -1564,7 +1555,16 @@
     "name": "Breece Hall",
     "pos": "RB",
     "nfl": "NYJ",
-    "proj_pts": 12.45,
+    "proj_pts": 13.43,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "5849",
+    "name": "Kyler Murray",
+    "pos": "QB",
+    "nfl": "MIN",
+    "proj_pts": 17.63,
     "status": "Active",
     "injury": null
    }
@@ -1579,16 +1579,16 @@
     "name": "Detroit Lions",
     "pos": "DEF",
     "nfl": "DET",
-    "proj_pts": 4.65,
+    "proj_pts": 6.67,
     "status": null,
     "injury": null
    },
    "FLEX": {
-    "id": "12512",
-    "name": "Quinshon Judkins",
+    "id": "12533",
+    "name": "Jacory Croskey-Merritt",
     "pos": "RB",
-    "nfl": "CLE",
-    "proj_pts": 11.5,
+    "nfl": "WAS",
+    "proj_pts": 9.72,
     "status": "Active",
     "injury": null
    },
@@ -1597,7 +1597,7 @@
     "name": "Will Reichard",
     "pos": "K",
     "nfl": "MIN",
-    "proj_pts": 6.24,
+    "proj_pts": 8.03,
     "status": "Active",
     "injury": null
    },
@@ -1606,16 +1606,16 @@
     "name": "Caleb Williams",
     "pos": "QB",
     "nfl": "CHI",
-    "proj_pts": 16.66,
+    "proj_pts": 0.0,
     "status": "Active",
-    "injury": null
+    "injury": "Doubtful"
    },
    "RB1": {
     "id": "12527",
     "name": "Ashton Jeanty",
     "pos": "RB",
     "nfl": "LV",
-    "proj_pts": 13.35,
+    "proj_pts": 13.58,
     "status": "Active",
     "injury": null
    },
@@ -1624,7 +1624,7 @@
     "name": "Cam Skattebo",
     "pos": "RB",
     "nfl": "NYG",
-    "proj_pts": 12.14,
+    "proj_pts": 12.99,
     "status": "Active",
     "injury": null
    },
@@ -1633,11 +1633,49 @@
     "name": "Dalton Kincaid",
     "pos": "TE",
     "nfl": "BUF",
-    "proj_pts": 9.78,
+    "proj_pts": 10.47,
     "status": "Active",
     "injury": null
    },
    "WR1": {
+    "id": "9500",
+    "name": "Josh Downs",
+    "pos": "WR",
+    "nfl": "IND",
+    "proj_pts": 8.98,
+    "status": "Active",
+    "injury": null
+   },
+   "WR2": {
+    "id": "12519",
+    "name": "Luther Burden",
+    "pos": "WR",
+    "nfl": "CHI",
+    "proj_pts": 8.42,
+    "status": "Active",
+    "injury": null
+   }
+  },
+  "bench": [
+   {
+    "id": "5967",
+    "name": "Tony Pollard",
+    "pos": "RB",
+    "nfl": "TEN",
+    "proj_pts": 10.61,
+    "status": "Active",
+    "injury": "Questionable"
+   },
+   {
+    "id": "7600",
+    "name": "Pat Freiermuth",
+    "pos": "TE",
+    "nfl": "PIT",
+    "proj_pts": 6.87,
+    "status": "Active",
+    "injury": null
+   },
+   {
     "id": "5859",
     "name": "A.J. Brown",
     "pos": "WR",
@@ -1646,59 +1684,21 @@
     "status": "Inactive",
     "injury": "IR"
    },
-   "WR2": {
-    "id": "12519",
-    "name": "Luther Burden",
-    "pos": "WR",
-    "nfl": "CHI",
-    "proj_pts": 9.22,
+   {
+    "id": "12512",
+    "name": "Quinshon Judkins",
+    "pos": "RB",
+    "nfl": "CLE",
+    "proj_pts": 11.61,
     "status": "Active",
     "injury": null
-   }
-  },
-  "bench": [
+   },
    {
     "id": "11628",
     "name": "Marvin Harrison",
     "pos": "WR",
     "nfl": "ARI",
-    "proj_pts": 7.76,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "12533",
-    "name": "Jacory Croskey-Merritt",
-    "pos": "RB",
-    "nfl": "WAS",
-    "proj_pts": 11.76,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "5967",
-    "name": "Tony Pollard",
-    "pos": "RB",
-    "nfl": "TEN",
-    "proj_pts": 8.13,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "7600",
-    "name": "Pat Freiermuth",
-    "pos": "TE",
-    "nfl": "PIT",
-    "proj_pts": 7.04,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "9500",
-    "name": "Josh Downs",
-    "pos": "WR",
-    "nfl": "IND",
-    "proj_pts": 8.33,
+    "proj_pts": 5.75,
     "status": "Active",
     "injury": null
    }
