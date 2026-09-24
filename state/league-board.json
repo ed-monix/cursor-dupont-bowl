@@ -541,15 +541,6 @@
     "injury": "Questionable"
    },
    {
-    "id": "8161",
-    "name": "Malik Willis",
-    "pos": "QB",
-    "nfl": "MIA",
-    "proj_pts": 15.82,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "8131",
     "name": "Isaiah Likely",
     "pos": "TE",
@@ -566,10 +557,19 @@
     "proj_pts": 7.87,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "4035",
+    "name": "Alvin Kamara",
+    "pos": "RB",
+    "nfl": "NO",
+    "proj_pts": 6.92,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 62
  },
  "kardashian": {
   "starters": {
@@ -675,29 +675,11 @@
     "injury": null
    },
    {
-    "id": "12508",
-    "name": "Jaxson Dart",
-    "pos": "QB",
-    "nfl": "NYG",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": "Out"
-   },
-   {
     "id": "12514",
     "name": "Emeka Egbuka",
     "pos": "WR",
     "nfl": "TB",
     "proj_pts": 8.48,
-    "status": "Active",
-    "injury": null
-   },
-   {
-    "id": "5001",
-    "name": "Dalton Schultz",
-    "pos": "TE",
-    "nfl": "HOU",
-    "proj_pts": 8.06,
     "status": "Active",
     "injury": null
    },
@@ -709,10 +691,28 @@
     "proj_pts": 6.13,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "9758",
+    "name": "C.J. Stroud",
+    "pos": "QB",
+    "nfl": "HOU",
+    "proj_pts": 15.54,
+    "status": "Active",
+    "injury": null
+   },
+   {
+    "id": "4039",
+    "name": "Cooper Kupp",
+    "pos": "WR",
+    "nfl": "SEA",
+    "proj_pts": 5.99,
+    "status": "Active",
+    "injury": "Questionable"
    }
   ],
   "ir": [],
-  "faab_remaining": 62
+  "faab_remaining": 22
  },
  "leon-black": {
   "starters": {
@@ -952,15 +952,6 @@
     "injury": null
    },
    {
-    "id": "10222",
-    "name": "Jayden Reed",
-    "pos": "WR",
-    "nfl": "GB",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": "Out"
-   },
-   {
     "id": "11651",
     "name": "Isaac Guerendo",
     "pos": "RB",
@@ -995,10 +986,19 @@
     "proj_pts": 3.95,
     "status": "Active",
     "injury": "Questionable"
+   },
+   {
+    "id": "7571",
+    "name": "Rashod Bateman",
+    "pos": "WR",
+    "nfl": "BAL",
+    "proj_pts": 8.66,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 65
  },
  "meyer-walsh": {
   "starters": {
@@ -1533,15 +1533,6 @@
     "injury": null
    },
    {
-    "id": "7587",
-    "name": "Dyami Brown",
-    "pos": "WR",
-    "nfl": "WAS",
-    "proj_pts": 1.61,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "8110",
     "name": "Jake Ferguson",
     "pos": "TE",
@@ -1567,10 +1558,19 @@
     "proj_pts": 17.63,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "13345",
+    "name": "Jonah Coleman",
+    "pos": "RB",
+    "nfl": "DEN",
+    "proj_pts": 6.64,
+    "status": "Active",
+    "injury": "Questionable"
    }
   ],
   "ir": [],
-  "faab_remaining": 100
+  "faab_remaining": 63
  },
  "your-team": {
   "starters": {
@@ -1667,15 +1667,6 @@
     "injury": "Questionable"
    },
    {
-    "id": "7600",
-    "name": "Pat Freiermuth",
-    "pos": "TE",
-    "nfl": "PIT",
-    "proj_pts": 6.87,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "5859",
     "name": "A.J. Brown",
     "pos": "WR",
@@ -1701,9 +1692,18 @@
     "proj_pts": 5.75,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "5854",
+    "name": "Drew Lock",
+    "pos": "QB",
+    "nfl": "SEA",
+    "proj_pts": 16.75,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 94
+  "faab_remaining": 59
  }
 }
