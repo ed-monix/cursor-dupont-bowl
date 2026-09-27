@@ -55,6 +55,6 @@ jobs:
             echo "no stats change"
             exit 0
           fi
-          WEEK=$(python -c "import json; print(json.load(open('state/ops/latest.json')).get('week') or '')")
+          WEEK=$(python scripts/gameday_sync.py --print-week)
           git commit -m "live: week ${WEEK:-?} stats"
           git push
