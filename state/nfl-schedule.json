@@ -256,7 +256,7 @@
   "game_id": "202610234"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "BUF",
   "away": "LAC",
@@ -272,7 +272,7 @@
   "game_id": "202610306"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "CLE",
   "away": "CAR",
@@ -296,7 +296,7 @@
   "game_id": "202610310"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "DET",
   "away": "NYJ",
@@ -312,7 +312,7 @@
   "game_id": "202610312"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "IND",
   "away": "HOU",
@@ -320,7 +320,7 @@
   "game_id": "202610314"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "JAX",
   "away": "NE",
@@ -328,7 +328,7 @@
   "game_id": "202610315"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "MIA",
   "away": "KC",
@@ -344,7 +344,7 @@
   "game_id": "202610322"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "NYG",
   "away": "TEN",
@@ -352,7 +352,7 @@
   "game_id": "202610323"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "PIT",
   "away": "CIN",
@@ -376,7 +376,7 @@
   "game_id": "202610333"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-09-27",
   "home": "WAS",
   "away": "SEA",
