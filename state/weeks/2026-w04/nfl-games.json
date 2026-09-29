@@ -1,0 +1,130 @@
+[
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "BAL",
+  "away": "TEN",
+  "week": 4,
+  "game_id": "202610403"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "BUF",
+  "away": "NE",
+  "week": 4,
+  "game_id": "202610404"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "CAR",
+  "away": "DET",
+  "week": 4,
+  "game_id": "202610405"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "CHI",
+  "away": "NYJ",
+  "week": 4,
+  "game_id": "202610406"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "CIN",
+  "away": "JAX",
+  "week": 4,
+  "game_id": "202610407"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-01",
+  "home": "CLE",
+  "away": "PIT",
+  "week": 4,
+  "game_id": "202610408"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "HOU",
+  "away": "DAL",
+  "week": 4,
+  "game_id": "202610413"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "MIN",
+  "away": "MIA",
+  "week": 4,
+  "game_id": "202610420"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-05",
+  "home": "NO",
+  "away": "ATL",
+  "week": 4,
+  "game_id": "202610422"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "NYG",
+  "away": "ARI",
+  "week": 4,
+  "game_id": "202610423"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "LV",
+  "away": "KC",
+  "week": 4,
+  "game_id": "202610425"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "PHI",
+  "away": "LAR",
+  "week": 4,
+  "game_id": "202610426"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "SEA",
+  "away": "LAC",
+  "week": 4,
+  "game_id": "202610430"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "SF",
+  "away": "DEN",
+  "week": 4,
+  "game_id": "202610431"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "TB",
+  "away": "GB",
+  "week": 4,
+  "game_id": "202610433"
+ },
+ {
+  "status": "pre_game",
+  "date": "2026-10-04",
+  "home": "WAS",
+  "away": "IND",
+  "week": 4,
+  "game_id": "202610435"
+ }
+]
