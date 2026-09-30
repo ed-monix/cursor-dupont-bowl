@@ -32,9 +32,6 @@ KIND_LINEUPS = "lineups"
 KIND_TRADES = "trades"
 DISPATCH_KINDS = (KIND_WAIVERS, KIND_LINEUPS, KIND_TRADES)
 
-OWNED = frozenset(grok_bots.OWNED_SLUGS)
-
-
 @dataclass(frozen=True)
 class DispatchResult:
     slug: str
@@ -44,16 +41,22 @@ class DispatchResult:
     skipped: bool = False
 
 
-def celebrity_gm_roles(roster: dict) -> list:
+def gm_bot_roles(roster: dict) -> list:
+    """All grok_bot GM roles, including owned seats your-team and wifes-team."""
     out = []
     for role in grok_bots.gm_roles(roster):
         if role.get("product") != "grok_bot":
             continue
         slug = role.get("slug")
-        if not slug or slug in OWNED:
+        if not slug:
             continue
         out.append(role)
     return out
+
+
+def celebrity_gm_roles(roster: dict) -> list:
+    """Alias of gm_bot_roles. Owned seats are first-class Bots."""
+    return gm_bot_roles(roster)
 
 
 def skill_relpath(role: dict) -> str:
@@ -283,12 +286,12 @@ def dispatch_week(
 ) -> list[DispatchResult]:
     out_root = out_root or root
     roster = grok_bots.load_roster(root)
-    celebrity = celebrity_gm_roles(roster)
+    celebrity = gm_bot_roles(roster)
     if slugs:
         extra = [s for s in slugs if s not in {r.get("slug") for r in celebrity}]
         rows = [r for r in celebrity if r.get("slug") in set(slugs)]
         results: list[DispatchResult] = [
-            DispatchResult(s, False, None, "not a celebrity grok_bot GM")
+            DispatchResult(s, False, None, "not a grok_bot GM")
             for s in extra
         ]
     else:

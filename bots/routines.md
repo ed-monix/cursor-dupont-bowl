@@ -1,9 +1,10 @@
 # Routines — Commissioner is the git gate
 
 **DuPont Commissioner** is the only Bot with a calendar and the only Bot
-that clones the league repo. Celebrity GMs report to the Commissioner.
-The Commissioner verifies, then commits. Cursor Cloud Agents read git
-after that.
+that clones the league repo. All 12 GMs report to the Commissioner,
+including owned seats `your-team` (Ed Monix) and `wifes-team` (Tony
+Soprano). The Commissioner verifies, then commits. Cursor Cloud Agents
+read git after that. Scout and Media still only wake on waivers.
 
 GMs do not clone. Do not give GMs a GitHub plugin.
 
@@ -20,7 +21,7 @@ Paste `bots/skill-commish.md`.
 
 ---
 
-## Each celebrity GM — `on-commissioner`
+## Each GM (all 12) — `on-commissioner`
 
 **When:** Commissioner ping. No cron.
 

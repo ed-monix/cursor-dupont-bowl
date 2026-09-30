@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 from typing import Optional, Union
 
+# Human-owned seats. Still Grok Bots — notes only; do not skip on wake.
 OWNED_SLUGS = ("your-team", "wifes-team")
 KINDS = ("scout", "media", "commissioner", "gm")
 PRODUCTS = ("grok_bot", "cursor")
@@ -54,6 +55,10 @@ def shared_disk_roles(roster: dict) -> list:
 
 
 def off_disk_slugs(roster: dict) -> list:
+    """Slugs marked off the shared Bot disk.
+
+    Owned seats are Grok Bots now. A non-empty list is a stale roster.
+    """
     iso = roster.get("isolation") or {}
     listed = list(iso.get("owned_teams_off_disk") or [])
     for role in gm_roles(roster):
@@ -85,10 +90,21 @@ def check_roster(root: Union[str, Path], roster: Optional[dict] = None) -> list:
     gm_slugs = []
 
     iso = roster.get("isolation") or {}
-    owned = list(iso.get("owned_teams_off_disk") or [])
-    for slug in OWNED_SLUGS:
-        if slug not in owned:
-            errors.append(f"isolation.owned_teams_off_disk missing {slug}")
+    stale_off = list(iso.get("owned_teams_off_disk") or [])
+    if stale_off:
+        errors.append(
+            "isolation.owned_teams_off_disk is retired; all 12 GMs are Grok Bots "
+            f"(still listed: {stale_off})"
+        )
+    listed_owned = list(iso.get("owned_team_slugs") or [])
+    if not listed_owned:
+        errors.append(
+            "isolation.owned_team_slugs missing (your-team, wifes-team)"
+        )
+    elif sorted(listed_owned) != sorted(OWNED_SLUGS):
+        errors.append(
+            f"isolation.owned_team_slugs must be {list(OWNED_SLUGS)}, got {listed_owned}"
+        )
 
     for role in roles(roster):
         rid = role.get("id")
@@ -118,16 +134,20 @@ def check_roster(root: Union[str, Path], roster: Optional[dict] = None) -> list:
             if not role.get("own_gm_file_in_pack_only"):
                 errors.append(f"{rid}: GM personality must travel in the pack only")
             if slug in OWNED_SLUGS:
-                if not role.get("off_shared_disk"):
-                    errors.append(f"{rid}: owned GM must set off_shared_disk")
-                if role.get("computer") == "shared":
-                    errors.append(f"{rid}: owned GM must not use the shared Bot computer")
-                if role.get("product") == "grok_bot":
+                if role.get("product") != "grok_bot":
                     errors.append(
-                        f"{rid}: owned GM stays off Grok Bot this trial (product=cursor)"
+                        f"{rid}: owned GM must be a Grok Bot (product=grok_bot)"
+                    )
+                if role.get("off_shared_disk"):
+                    errors.append(
+                        f"{rid}: owned GM is a Bot; do not set off_shared_disk"
+                    )
+                if role.get("computer") != "shared":
+                    errors.append(
+                        f"{rid}: owned GM uses the shared Bot computer like every other GM"
                     )
             elif role.get("computer") == "shared" and role.get("off_shared_disk"):
-                errors.append(f"{rid}: celebrity GM on shared disk cannot be off_shared_disk")
+                errors.append(f"{rid}: GM on shared disk cannot be off_shared_disk")
 
     expected = team_slugs_on_disk(root)
     missing = sorted(set(expected) - set(gm_slugs))

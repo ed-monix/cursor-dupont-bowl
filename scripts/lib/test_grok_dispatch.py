@@ -142,19 +142,35 @@ def test_dispatch_one_writes_validated_json(tmp_path):
     assert "costanza.json" in result.path
 
 
-def test_dispatch_week_skips_owned_and_requires_id():
+def test_dispatch_week_includes_owned_seats():
     results = grok_dispatch.dispatch_week(
         CFG,
         week=1,
         kind="waivers",
         root=REPO,
         out_root=REPO / "does-not-write",
-        slugs=["your-team"],
+        dry_run=True,
+    )
+    slugs = {row.slug for row in results}
+    assert "your-team" in slugs
+    assert "wifes-team" in slugs
+    assert "costanza" in slugs
+    assert len(slugs) == 12
+
+
+def test_dispatch_week_rejects_unknown_slug():
+    results = grok_dispatch.dispatch_week(
+        CFG,
+        week=1,
+        kind="waivers",
+        root=REPO,
+        out_root=REPO / "does-not-write",
+        slugs=["not-a-team"],
         dry_run=True,
     )
     assert results
     assert results[0].ok is False
-    assert "celebrity" in (results[0].error or "")
+    assert "grok_bot GM" in (results[0].error or "")
 
 
 def test_dispatch_dry_run_does_not_send(tmp_path):
@@ -201,12 +217,16 @@ def test_cli_run_sheet_says_dispatch(capsys):
     out = capsys.readouterr().out
     assert "dispatch --week 1 --kind waivers" in out
     assert "Do not paste 12 packs" in out
+    assert "your-team" in out
+    assert "wifes-team" in out
+    assert "Cursor pack-only" not in out
 
 
-def test_celebrity_gm_roles_excludes_owned():
+def test_gm_bot_roles_includes_owned():
     roster = grok_bots.load_roster(REPO)
-    slugs = {r["slug"] for r in grok_dispatch.celebrity_gm_roles(roster)}
-    assert "your-team" not in slugs
-    assert "wifes-team" not in slugs
+    slugs = {r["slug"] for r in grok_dispatch.gm_bot_roles(roster)}
+    assert "your-team" in slugs
+    assert "wifes-team" in slugs
     assert "costanza" in slugs
-    assert len(slugs) == 10
+    assert len(slugs) == 12
+    assert slugs == {r["slug"] for r in grok_dispatch.celebrity_gm_roles(roster)}

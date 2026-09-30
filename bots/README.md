@@ -3,8 +3,10 @@
 **Commissioner** clones the league repo, runs the daily slate, wakes the
 other Bots, verifies their JSON, and commits. That is the git gate.
 
-Celebrity GMs, Scout, and Media **never** git. They reply to the
-Commissioner. Ed Monix and Tony Soprano stay in Cursor.
+All 12 GMs, Scout, and Media **never** git. They reply to the
+Commissioner. Owned seats `your-team` (Ed Monix) and `wifes-team`
+(Tony Soprano) are first-class GM Bots — wake them with the rest.
+Scout and Media still only wake on waivers.
 
 Shared computer: GMs must not open `teams/*/general-manager.md` for another
 team. Packs are one slug per chat.

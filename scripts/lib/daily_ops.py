@@ -2,8 +2,10 @@
 
 The Commissioner Bot runs a daily check. It does not invent the calendar:
 this module says whether to idle, run waivers, lock a lineup window, or recap.
-The Commissioner clones this repo, runs this module, wakes other Bots,
-and is the only Bot that writes back to git. GMs never touch the repo.
+The Commissioner clones this repo, runs this module, wakes all 12 GM Bots
+(including owned seats your-team and wifes-team), and is the only Bot that
+writes back to git. GMs never touch the repo. Scout/Media wake on waivers
+only.
 """
 
 from __future__ import annotations
@@ -175,11 +177,15 @@ def _reason(action: str, window: Optional[str], today: date,
     return f"slate complete; recap missing"
 
 
-def celebrity_slugs(roster: dict) -> list[str]:
+def gm_slugs(roster: dict) -> list[str]:
+    """All GM slugs the Commissioner builds packs for and pings.
+
+    Includes owned seats (`your-team`, `wifes-team`). One list.
+    """
     out = []
     for role in grok_bots.gm_roles(roster):
         slug = role.get("slug")
-        if not slug or slug in grok_bots.OWNED_SLUGS:
+        if not slug:
             continue
         if role.get("product") != "grok_bot":
             continue
@@ -187,16 +193,27 @@ def celebrity_slugs(roster: dict) -> list[str]:
     return out
 
 
+def celebrity_slugs(roster: dict) -> list[str]:
+    """Alias of gm_slugs. All 12 GMs are Bots; owned seats are not skipped."""
+    return gm_slugs(roster)
+
+
 def wake_targets(action: str, roster: dict) -> dict[str, list[str]]:
-    """Who the Commissioner pings. Owned GMs stay on Cursor."""
-    gms = celebrity_slugs(roster) if roster else []
-    owned = list(grok_bots.OWNED_SLUGS)
+    """Who the Commissioner pings.
+
+    `wake.grok_bots` is the only GM ping list — all 12 slugs, including
+    your-team (Ed Monix) and wifes-team (Tony Soprano). `wake.cursor` is
+    empty so it cannot be read as a do-not-ping list.
+
+    Scout and Media still only wake on waivers (unchanged).
+    """
+    gms = gm_slugs(roster) if roster else []
     if action == "idle":
         return {"grok_bots": [], "cursor": [], "also": []}
     if action == "waivers":
-        return {"grok_bots": gms, "cursor": owned, "also": ["scout", "media"]}
+        return {"grok_bots": gms, "cursor": [], "also": ["scout", "media"]}
     if action in ("lineups-early", "lineups-main"):
-        return {"grok_bots": gms, "cursor": owned, "also": []}
+        return {"grok_bots": gms, "cursor": [], "also": []}
     if action == "recap":
         return {"grok_bots": [], "cursor": [], "also": ["commissioner"]}
     return {"grok_bots": [], "cursor": [], "also": []}

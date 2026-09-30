@@ -2,6 +2,7 @@
 
 No calendars. No git. The Commissioner pings you; you reply in chat.
 The Commissioner writes buzz/tabloid into the repo if it passes the gate.
+Scout and Media still only wake on waivers (not lineups or recap).
 
 ## Scout
 

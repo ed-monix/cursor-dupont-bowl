@@ -4,13 +4,16 @@ This repo is the league. Scripts decide facts. Agents decide choices.
 Git is the tamper-evident record. Do not write to Sleeper.
 
 ## Runtime
-- Celebrity GMs, Scout, Media, Commissioner: **Grok Bots**
+- All 12 GMs, Scout, Media, Commissioner: **Grok Bots**
   (`config/grok-bots.json`, `bots/`).
-- Owned GMs (`your-team`, `wifes-team`): **Cursor**, pack-only. They stay
-  off the shared Grok Bot computer.
+- Owned seats (`your-team` / Ed Monix, `wifes-team` / Tony Soprano) are
+  first-class GM Bots. Humans own those teams and write notes; they do
+  not run the GM turn in Cursor. The Commissioner builds packs and wakes
+  all 12.
 - Orchestrator: the **Commissioner Grok Bot** clones the repo daily, wakes
-  GMs, verifies their JSON, and commits. Cursor Cloud Agents read git after
-  that (apply FAAB/lineups, notes, recap follow-up). Owned GMs stay Cursor.
+  every GM (Scout/Media still only on waivers), verifies their JSON, and
+  commits. Cursor Cloud Agents read git after that (apply FAAB/lineups,
+  notes, recap follow-up).
 
 
 ## Roles
