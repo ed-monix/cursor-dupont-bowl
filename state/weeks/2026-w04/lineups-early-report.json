@@ -1,0 +1,98 @@
+{
+  "teams": [
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "coach-taylor",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "costanza",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "dumbledore",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "harry-caray",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "kardashian",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "leon-black",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "maura-higgins",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF"
+      ],
+      "team": "meyer-walsh",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX"
+      ],
+      "team": "patricia-moyer",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "QB"
+      ],
+      "team": "rinna",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX",
+        "WR2"
+      ],
+      "team": "wifes-team",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "your-team",
+      "validation_errors": []
+    }
+  ],
+  "window": "early"
+}

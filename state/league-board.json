@@ -845,17 +845,17 @@
     "injury": null
    },
    {
-    "id": "12501",
-    "name": "Matthew Golden",
+    "id": "1479",
+    "name": "Keenan Allen",
     "pos": "WR",
-    "nfl": "GB",
-    "proj_pts": 9.95,
+    "nfl": "IND",
+    "proj_pts": 7.0,
     "status": "Active",
     "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 29
+  "faab_remaining": 9
  },
  "maura-higgins": {
   "starters": {
@@ -1131,17 +1131,17 @@
     "injury": null
    },
    {
-    "id": "8132",
-    "name": "Tyler Allgeier",
+    "id": "11576",
+    "name": "Braelon Allen",
     "pos": "RB",
-    "nfl": "ARI",
-    "proj_pts": 6.58,
+    "nfl": "NYJ",
+    "proj_pts": 12.36,
     "status": "Active",
     "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 40
+  "faab_remaining": 14
  },
  "patricia-moyer": {
   "starters": {
@@ -1229,15 +1229,6 @@
   },
   "bench": [
    {
-    "id": "11583",
-    "name": "Jonathon Brooks",
-    "pos": "RB",
-    "nfl": "CAR",
-    "proj_pts": 0.0,
-    "status": "Inactive",
-    "injury": "IR"
-   },
-   {
     "id": "8121",
     "name": "Romeo Doubs",
     "pos": "WR",
@@ -1281,10 +1272,19 @@
     "proj_pts": 16.75,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "11370",
+    "name": "Chris Brooks",
+    "pos": "RB",
+    "nfl": "GB",
+    "proj_pts": 5.13,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 68
+  "faab_remaining": 50
  },
  "rinna": {
   "starters": {
@@ -1381,15 +1381,6 @@
     "injury": null
    },
    {
-    "id": "96",
-    "name": "Aaron Rodgers",
-    "pos": "QB",
-    "nfl": "PIT",
-    "proj_pts": 13.92,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "5045",
     "name": "Courtland Sutton",
     "pos": "WR",
@@ -1424,10 +1415,19 @@
     "proj_pts": 12.21,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "4017",
+    "name": "Deshaun Watson",
+    "pos": "QB",
+    "nfl": "CLE",
+    "proj_pts": 16.0,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 3
+  "faab_remaining": 0
  },
  "wifes-team": {
   "starters": {
@@ -1601,15 +1601,7 @@
     "status": "Active",
     "injury": null
    },
-   "QB": {
-    "id": "5854",
-    "name": "Drew Lock",
-    "pos": "QB",
-    "nfl": "SEA",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": null
-   },
+   "QB": null,
    "RB1": {
     "id": "12527",
     "name": "Ashton Jeanty",
@@ -1701,9 +1693,18 @@
     "proj_pts": 14.39,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "2307",
+    "name": "Marcus Mariota",
+    "pos": "QB",
+    "nfl": "WAS",
+    "proj_pts": 16.64,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 59
+  "faab_remaining": 19
  }
 }
