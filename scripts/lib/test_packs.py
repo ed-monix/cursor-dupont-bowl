@@ -204,3 +204,14 @@ def test_waiver_prompt_budget_on_committed_week1():
         root, slugs[0], 1, "2026", public=public, run="lineups", window="main",
     )
     assert packs.pack_sizes(public, lineup)["prompt_bytes"] < 70_000
+
+
+def test_lineup_prompts_tell_the_gm_what_cannot_start():
+    """validate_lineup bars Out/Doubtful/IR/Suspended starters. A GM never told
+    that walks straight into a Hall-of-Shame fallback: in week 4 Caleb Williams
+    was Doubtful on Thursday for a Sunday game, and nothing in the prompt said a
+    Doubtful starter anywhere in the lineup sinks the whole submission."""
+    import inspect
+    from lib import packs
+    src = inspect.getsource(packs)
+    assert src.count("Out, Doubtful, IR or Suspended is illegal") >= 2

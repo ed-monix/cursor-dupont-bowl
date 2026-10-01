@@ -400,6 +400,7 @@ def render_gm_prompt(pack: dict) -> str:
             f"This is lineup window `{window}`. Do not move players in locked_slots. "
             "Early window: lock Tue–Sat NFL games. Main window: remaining Sun/Mon (and anyone still unlocked)."
         )
+        lines.append("A starter tagged Out, Doubtful, IR or Suspended is illegal: the office replaces the WHOLE lineup with its own fallback and it goes in the Hall of Shame. Questionable is your call. A player in a later game still counts — check every slot, not just this window's.")
     lines.append("")
     lines.append("```json")
     # Drop the raw GM file duplication? It's inside the pack as general_manager_md.
@@ -486,6 +487,7 @@ def build_gm_system(public: dict, run: str = "waivers",
             "Early window: lock Tue-Sat NFL games. Main window: remaining Sun/Mon "
             "(and anyone still unlocked)."
         )
+        lines.append("A starter tagged Out, Doubtful, IR or Suspended is illegal: the office replaces the WHOLE lineup with its own fallback and it goes in the Hall of Shame. Questionable is your call. A player in a later game still counts — check every slot, not just this window's.")
     lines += ["", "## Public record (identical for all 12 teams)", "", "```json",
               json.dumps(public_for_run(public, run), indent=1, sort_keys=False),
               "```"]
