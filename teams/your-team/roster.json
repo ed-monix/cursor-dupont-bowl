@@ -4,16 +4,17 @@
     "11628",
     "12533",
     "11560",
-    "12481"
+    "12481",
+    "2307"
   ],
-  "faab_remaining": 59,
+  "faab_remaining": 19,
   "ir": [],
   "name": "Flint Tropics",
   "starters": {
     "DEF": "DET",
     "FLEX": "12512",
     "K": "11792",
-    "QB": "5854",
+    "QB": null,
     "RB1": "12527",
     "RB2": "5967",
     "TE": "10236",

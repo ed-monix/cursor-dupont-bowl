@@ -1,0 +1,21 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "9509"
+      ],
+      "message": "Harry \u2014 Cam Ward AND Michael Wilson for Bijan Robinson. I'm doing you a favor here, you get two guys who actually show up, I get the one I've been wanting since draft night. Take the deal before I change my mind and just take him anyway.",
+      "out": [
+        "12522",
+        "10232"
+      ],
+      "to_team": "harry-caray"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "harry-caray": 2
+    }
+  }
+]
