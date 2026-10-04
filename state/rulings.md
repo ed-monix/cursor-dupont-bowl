@@ -164,3 +164,21 @@ All twelve rosters validate as of this ruling. Week 2's waiver run is to be
 re-run from the top against the repaired rosters — the GM decisions taken
 against corrupt ones are void, having been reasoned from a roster five of the
 twelve did not have.
+
+## Ruling 2026-07 — coach-taylor's FLEX stands; Terry McLaurin was frozen (2026-10-04)
+
+The week 4 main lineup run began at 10:32 ET. IND @ WAS had already kicked off,
+an early Sunday start that this office did not know about, because the
+schedule it keeps records dates and not kickoff times. Terry McLaurin (WAS),
+in coach-taylor's FLEX since Thursday, had been ruled Out. Coach Taylor saw it,
+said so plainly, and submitted Puka Nacua in his place. The freeze refused the
+swap, as it is written to: a slot whose game has started does not move.
+
+Ruling: the freeze stands and McLaurin stays in the FLEX. No remedy is granted.
+The office's lateness is acknowledged and is not, on its own, grounds to
+reopen a slot after kickoff; a lineup rule that bends whenever the office is
+slow is not a rule. Coach Taylor's lineup is not a fallback and does not go in
+the Hall of Shame — his submission was legal and his judgment was sound. He
+was simply told about the game later than the game was told about him.
+
+The office notes, for the record, that it will now be checking its watch.
