@@ -35,6 +35,7 @@ human would type by hand.
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import pathlib
 import shlex
@@ -54,6 +55,7 @@ from lib.apply_gate import (  # noqa: E402
 )
 from lib.trades import apply_accepted, screen_offers  # noqa: E402
 from lib.reconcile import reconcile  # noqa: E402
+from lib import nfl_slate  # noqa: E402
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from forum import append_post  # noqa: E402
@@ -825,6 +827,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--continue-on-error", dest="stop_on_error",
                     action="store_false",
                     help="keep running remaining steps after a failure")
+    ap.add_argument("--treat-pre-game", action="append", default=[],
+                    metavar="GAME_ID",
+                    help="lineups only: run as if this NFL game had not kicked "
+                         "off. For an owner ruling that the league is set 'as "
+                         "of' before kickoff after the office ran late (Ruling "
+                         "2026-08). Repeatable. Never rewrites the schedule.")
     return ap
 
 
@@ -852,6 +860,16 @@ def main(argv=None) -> int:
         window = args.window
         if stage == "lineups" and window is None:
             ap.error("--window early|main is required for --stage lineups")
+
+    if args.treat_pre_game:
+        if stage != "lineups":
+            ap.error("--treat-pre-game only applies to --stage lineups")
+        ids = ",".join(str(g) for g in args.treat_pre_game)
+        # Every step is a subprocess and inherits this; nfl_slate.treat_pre_game
+        # reads it in each loader on the lineup path.
+        os.environ[nfl_slate.PRE_GAME_ENV] = ids
+        print(f"!! treating as NOT kicked off: {ids} — owner ruling, see "
+              "state/rulings.md")
 
     try:
         return run_stage(stage, root, week, args.season, window,

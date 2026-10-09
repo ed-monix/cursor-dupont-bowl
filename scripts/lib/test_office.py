@@ -765,3 +765,41 @@ def test_a_lone_offer_is_still_sent_as_a_bare_object(tmp_path, monkeypatch):
     office._run_trades(tmp_path, "2026", 5)
     assert isinstance(seen["payload"], dict)
     assert seen["payload"]["to_team"] == "bravo"
+
+
+# --- "as of before kickoff": the pre-game override -------------------------
+
+def test_treat_pre_game_pins_only_the_named_game(monkeypatch):
+    from lib import nfl_slate
+    games = [{"game_id": "g1", "status": "in_game"},
+             {"game_id": "g2", "status": "in_game"}]
+    monkeypatch.setenv(nfl_slate.PRE_GAME_ENV, "g1")
+    out = nfl_slate.treat_pre_game(games)
+    assert [g["status"] for g in out] == ["pre_game", "in_game"]
+    assert games[0]["status"] == "in_game", "the stored schedule is never mutated"
+    assert nfl_slate.game_has_kicked(out[0]) is False
+    assert nfl_slate.game_has_kicked(out[1]) is True
+
+
+def test_treat_pre_game_is_a_no_op_without_the_override(monkeypatch):
+    from lib import nfl_slate
+    monkeypatch.delenv(nfl_slate.PRE_GAME_ENV, raising=False)
+    games = [{"game_id": "g1", "status": "in_game"}]
+    assert nfl_slate.treat_pre_game(games) == games
+
+
+def test_the_flag_is_refused_outside_lineups(monkeypatch):
+    with pytest.raises(SystemExit):
+        office.main(["--stage", "waivers", "--week", "5",
+                     "--treat-pre-game", "g1", "--dry-run"])
+
+
+def test_the_flag_reaches_every_step_via_the_environment(tmp_path, monkeypatch):
+    from lib import nfl_slate
+    monkeypatch.delenv(nfl_slate.PRE_GAME_ENV, raising=False)
+    monkeypatch.setattr(office, "run_stage", lambda *a, **k: 0)
+    office.main(["--stage", "lineups", "--week", "5", "--window", "early",
+                 "--treat-pre-game", "202610509", "--root", str(tmp_path)])
+    import os
+    assert os.environ[nfl_slate.PRE_GAME_ENV] == "202610509"
+    monkeypatch.delenv(nfl_slate.PRE_GAME_ENV, raising=False)

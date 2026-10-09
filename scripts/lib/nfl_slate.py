@@ -52,6 +52,37 @@ def window_for_game(game: dict) -> str:
     return window_for_date(parse_game_date(game.get("date")))
 
 
+PRE_GAME_ENV = "DUPONT_TREAT_PRE_GAME"
+
+
+def treat_pre_game(games: list) -> list:
+    """Pin named games back to `pre_game` for a run the owner ordered "as of"
+    before kickoff.
+
+    The freeze is driven only by a game's status, and a run that starts late
+    re-syncs that status from Sleeper and finds the game under way. When the
+    owner rules that the league should be set as if it had not started (Ruling
+    2026-08: nobody's early lineup had been asked for at all), office.py passes
+    the game ids through DUPONT_TREAT_PRE_GAME and every loader on the lineup
+    path pins them here. Nothing on disk is rewritten: the stored schedule stays
+    the truth, and the override lives only as long as the run that asked for it.
+
+    GM packs never carry current-week live stats (the dossier only reads the
+    last scored week), so pinning the status is the whole of the hindsight a
+    late run could otherwise leak.
+    """
+    import os
+    ids = {g.strip() for g in os.environ.get(PRE_GAME_ENV, "").split(",") if g.strip()}
+    if not ids or not isinstance(games, list):
+        return games
+    out = []
+    for game in games:
+        if isinstance(game, dict) and str(game.get("game_id")) in ids:
+            game = dict(game, status="pre_game")
+        out.append(game)
+    return out
+
+
 def game_has_kicked(game: Optional[dict]) -> bool:
     if not game:
         return False

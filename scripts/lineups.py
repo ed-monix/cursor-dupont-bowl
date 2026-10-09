@@ -23,6 +23,7 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 import score_week  # noqa: E402
+from lib import nfl_slate  # noqa: E402
 from lib.apply_lineups import apply_lineup_window  # noqa: E402
 from lib.rosters import save_roster  # noqa: E402
 
@@ -89,6 +90,7 @@ def main(argv=None) -> int:
     projections = _load_json(week_dir / "projections.json", {})
     scoring = score_week.load_scoring(root / "config")
     games = _load_json(week_dir / "nfl-games.json", [])
+    games = nfl_slate.treat_pre_game(games)
     board = _load_json(root / "state" / "league-board.json", {})
     existing = _load_json(week_dir / "lineups.json", {})
     if not isinstance(existing, dict):

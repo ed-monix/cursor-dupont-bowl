@@ -146,9 +146,9 @@ def load_week_games(root: Path, week: int, season: str = "2026") -> list:
     week_path = root / "state" / "weeks" / _WEEK_FILE.format(season=season, week=week) / "nfl-games.json"
     games = _read_json(week_path, None)
     if games:
-        return games
+        return nfl_slate.treat_pre_game(games)
     season_sched = _read_json(root / "state" / "nfl-schedule.json", [])
-    return nfl_slate.games_for_week(season_sched, week)
+    return nfl_slate.treat_pre_game(nfl_slate.games_for_week(season_sched, week))
 
 
 def build_public_pack(root: Union[str, Path], week: int, season: str = "2026") -> dict:
