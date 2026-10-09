@@ -316,6 +316,31 @@ def injury_bars_starting(player: dict) -> bool:
     return False
 
 
+def injury_rank(player) -> int:
+    """0 can play, 1 might (Doubtful), 2 will not (Out / IR / Suspended)."""
+    if not injury_bars_starting(player):
+        return 0
+    tags = {(player.get(f) or "").strip().lower() for f in ("injury", "status")}
+    return 1 if "doubtful" in tags and not tags & {"out", "ir", "suspended"} else 2
+
+
+def _healthy_alternative(roster, players, slot, roster_config=None):
+    """A benched player who is eligible for `slot` and not ruled out.
+
+    The injury bar exists to stop a GM starting a man who is not dressing when
+    he has one who is. When he has nobody -- your-team in week 5 held two
+    quarterbacks, Caleb Williams (Out) and Marcus Mariota (Doubtful) -- there
+    is no better lineup to demand, and refusing the slot only crashed the run
+    for all twelve teams. So the bar applies only when this returns a player.
+    """
+    for pid in roster.get("bench") or []:
+        p = players.get(pid)
+        if p and slot_position_ok(slot, p.get("pos"), roster_config) \
+                and not injury_bars_starting(p):
+            return pid
+    return None
+
+
 def validate_lineup(roster, players, roster_config=None):
     """Game-day lineup check: every starter slot filled, position-eligible,
     not ruled out, and no player started in two slots at once.
@@ -338,9 +363,11 @@ def validate_lineup(roster, players, roster_config=None):
         pos = players[pid].get("pos")
         if not slot_position_ok(slot, pos, roster_config):
             errors.append(f"slot {slot}: player {pid} position {pos} not eligible")
-        if injury_bars_starting(players[pid]):
+        if injury_bars_starting(players[pid]) and _healthy_alternative(
+                roster, players, slot, roster_config):
             tag = players[pid].get("injury") or players[pid].get("status")
-            errors.append(f"slot {slot}: player {pid} is {tag} and cannot start")
+            errors.append(f"slot {slot}: player {pid} is {tag} and cannot start "
+                          "while a healthy eligible player is on the bench")
         if pid in seen:
             errors.append(
                 f"player {pid} started in multiple slots ({seen[pid]} and {slot})"
@@ -516,8 +543,15 @@ def best_legal_lineup(roster, players, projections, scoring, roster_config=None,
     def projected_points(pid):
         return score_player(projections.get(pid, {}) or {}, scoring)
 
-    # Sort once: best projection first, lower player_id breaking ties.
-    pool_sorted = sorted(pool_ids, key=lambda pid: (-projected_points(pid), pid))
+    # Sort once: anyone who can actually play, then a Doubtful who might,
+    # then anyone ruled out; within each,
+    # best projection, lower player_id breaking ties. A barred player is only
+    # ever reached when no healthy one is eligible for the slot -- the same
+    # line validate_lineup draws, so the fallback can never build a lineup the
+    # validator then rejects (which is how week 5's early window crashed: the
+    # fallback reseated an Out Caleb Williams and failed its own check).
+    pool_sorted = sorted(pool_ids, key=lambda pid: (
+        injury_rank(players.get(pid)), -projected_points(pid), pid))
 
     def position_of(pid):
         return players.get(pid, {}).get("pos")

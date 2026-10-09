@@ -449,7 +449,7 @@ def test_roster_built_to_superflex_adapted_config_passes_validation():
 # Soprano starting a questionable Kyler Murray to send Bo Nix a message is bad
 # management and entirely his business.
 
-def _lineup_players(qb_injury=None, qb_status="Active"):
+def _lineup_players(qb_injury=None, qb_status="Active", qb2_injury=None):
     return {
         "qb1": {"name": "QB One", "pos": "QB", "team": "AAA",
                 "status": qb_status, "injury": qb_injury},
@@ -469,6 +469,8 @@ def _lineup_players(qb_injury=None, qb_status="Active"):
                "status": "Active", "injury": None},
         "fx1": {"name": "FLEX One", "pos": "RB", "team": "AAA",
                 "status": "Active", "injury": None},
+        "qb2": {"name": "QB Two", "pos": "QB", "team": "AAA",
+                "status": "Active", "injury": qb2_injury},
     }
 
 
@@ -476,7 +478,7 @@ def _lineup_roster():
     return {"starters": {"QB": "qb1", "RB1": "rb1", "RB2": "rb2", "WR1": "wr1",
                          "WR2": "wr2", "TE": "te1", "FLEX": "fx1", "K": "k1",
                          "DEF": "d1"},
-            "bench": [], "ir": []}
+            "bench": ["qb2"], "ir": []}
 
 
 def test_a_healthy_lineup_is_legal():
@@ -511,3 +513,30 @@ def test_injury_bars_starting_is_tolerant_of_junk():
     assert injury_bars_starting({}) is False
     assert injury_bars_starting({"injury": None}) is False
     assert injury_bars_starting(None) is False
+
+
+def test_with_no_healthy_alternative_the_best_he_has_may_start():
+    """your-team, week 5: two QBs, Caleb Williams Out and Mariota Doubtful.
+    There was no better lineup to demand, and refusing it crashed the run for
+    all twelve teams."""
+    ok, errors = validate_lineup(
+        _lineup_roster(), _lineup_players(qb_injury="Doubtful", qb2_injury="Out"))
+    assert ok, errors
+
+
+def test_the_fallback_never_reseats_a_barred_player_over_a_healthy_one():
+    players = _lineup_players(qb_injury="Out")          # qb1 Out, qb2 healthy
+    roster = _lineup_roster()
+    out = best_legal_lineup(roster, players, {}, {})
+    assert out["starters"]["QB"] == "qb2"
+    ok, errors = validate_lineup(out, players)
+    assert ok, errors
+
+
+def test_the_fallback_always_builds_something_the_validator_accepts():
+    """The crash: fallback seated an Out QB, then failed its own validation."""
+    players = _lineup_players(qb_injury="Out", qb2_injury="Doubtful")
+    out = best_legal_lineup(_lineup_roster(), players, {}, {})
+    assert out["starters"]["QB"] == "qb2"               # Doubtful over Out
+    ok, errors = validate_lineup(out, players)
+    assert ok, errors

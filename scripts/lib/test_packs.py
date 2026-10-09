@@ -214,4 +214,4 @@ def test_lineup_prompts_tell_the_gm_what_cannot_start():
     import inspect
     from lib import packs
     src = inspect.getsource(packs)
-    assert src.count("Out, Doubtful, IR or Suspended is illegal") >= 2
+    assert src.count("Out, Doubtful, IR or Suspended is illegal WHEN a healthy") >= 2
