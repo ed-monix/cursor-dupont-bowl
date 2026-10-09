@@ -182,3 +182,25 @@ the Hall of Shame — his submission was legal and his judgment was sound. He
 was simply told about the game later than the game was told about him.
 
 The office notes, for the record, that it will now be checking its watch.
+
+## Ruling 2026-08 — Week 5 early window set as of before TB @ DAL kickoff (2026-10-08)
+
+Nothing ran for week 5 before Thursday's game. The week 4 recap, the week 5
+waivers and the early lineup window were all still outstanding when TB @ DAL
+(game 202610509) kicked off at 8:15pm ET, and the office reached its desk at
+8:27. The owner has ordered the league set as if that game had not started.
+
+The waiver run and the early lineup run therefore go ahead tonight, and the
+lineup run treats game 202610509 as not yet kicked off, via
+`office.py --treat-pre-game`. No stored record is altered to achieve it. GM packs
+carry no live stats from the week in progress, so no GM decides with the score
+in front of him; he sees exactly what he would have seen at 8:14.
+
+This office is aware of Ruling 2026-07, four days old, in which it refused to
+reopen a slot after kickoff on the grounds that a rule which bends when the
+office is slow is not a rule. It distinguishes the two as follows. There, one
+GM was frozen while eleven had been asked in time; reopening his slot would
+have given him something the others did not get. Here no GM was asked at all.
+The whole window was skipped, and running it now treats all twelve exactly
+alike. The office also notes that the distinction is the owner's to draw, and
+that it has been drawn.
