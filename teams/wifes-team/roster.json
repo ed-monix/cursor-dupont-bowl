@@ -1,13 +1,13 @@
 {
   "bench": [
-    "7002",
     "8110",
     "13345",
     "11563",
     "8155",
-    "9226"
+    "9226",
+    "11630"
   ],
-  "faab_remaining": 63,
+  "faab_remaining": 56,
   "ir": [],
   "name": "Eastern Market Ducks",
   "starters": {

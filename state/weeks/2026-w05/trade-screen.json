@@ -1,0 +1,55 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "9509"
+      ],
+      "message": "Same offer as last time, Harry, just louder. Ward and Wilson for Bijan - I'm doing you a favor here. Take it before he drops another 27 on somebody and you're still pretending you didn't see this coming.",
+      "out": [
+        "12522",
+        "10232"
+      ],
+      "to_team": "harry-caray"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "harry-caray": 2
+    }
+  },
+  {
+    "from": "maura-higgins",
+    "offer": {
+      "in": [
+        "11834"
+      ],
+      "message": "Bateman for Vele, straight swap, take it or leave it \u2014 I'm not haggling with you, Selina, I've got a kettle to put on.",
+      "out": [
+        "7571"
+      ],
+      "to_team": "meyer-walsh"
+    },
+    "ok": false,
+    "reason": "maura-higgins's side: offer takes back 1 more than it sends and names only 0 drop(s)"
+  },
+  {
+    "from": "rinna",
+    "offer": {
+      "in": [
+        "6770"
+      ],
+      "message": "Leon, baby \u2014 you've got Joe Burrow collecting splinters on your bench behind a QB room so deep you're using guys as currency, and I have exactly the kind of chaos a bored legend deserves. Sutton and Monangai for Burrow. Not because I need him \u2014 because nobody expects it, and right before our matchup is exactly when a girl should do it. We'll see who actually wants to win Sunday, or who's just hoarding.",
+      "out": [
+        "5045",
+        "12534"
+      ],
+      "to_team": "leon-black"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "leon-black": 1
+    }
+  }
+]

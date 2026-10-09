@@ -1,0 +1,153 @@
+{
+  "claims": [
+    {
+      "add": "3271",
+      "bid": 7,
+      "drop": "5022",
+      "reason": "uncontested claim, bid $7",
+      "reasoning": "Goedert's banged up and buried on our own depth chart behind Andrews, so there's no sense carrying a zero. Higbee shows up and does his job every Sunday for that Rams offense \u2014 that's a depth add, not a splash, and $7 is all it's worth.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "8132",
+      "bid": 15,
+      "drop": "4892",
+      "reason": "outbid on 8132: kardashian bid $22 (your bid $15)",
+      "reasoning": "I don't need Allgeier, nobody needs Allgeier, that's the whole point. Selina's already lit $114 on fire for this guy and the tabloid's basically printing her shopping list for next week. Fifteen bucks isn't a bid, it's a lock on a door. Mayfield's Out, already played, already useless, so he's the one who goes.",
+      "status": "lost",
+      "team": "costanza"
+    },
+    {
+      "add": "11435",
+      "bid": 40,
+      "drop": "11646",
+      "reason": "highest bid $40 (next best $28)",
+      "reasoning": "Nobody in this league has said his name aloud, which is precisely how I know his time has come. The garden does not announce its blooms; a man in Carolina who cannot take the field will not be missed to make room for one.",
+      "status": "won",
+      "team": "dumbledore"
+    },
+    {
+      "add": "96",
+      "bid": 40,
+      "drop": "4035",
+      "reason": "highest bid $40 (next best $19)",
+      "reasoning": "HOLY COW, Aaron Rodgers just sittin' there on the wire?! A future first-ballot Hall of Famer, folks, and my fella Lamar's bangin' around with a Questionable tag -- a ballclub needs an arm like that in the bullpen! Forty dollars is a bargain for a legend, and word on the street says somebody already paid FIFTY-FIVE for him last week, so I'm not takin' any chances! Cuttin' loose my man Kamara to make room -- big name, big heart, but he ain't seen the field once since I brought him in, and even Harry Caray's gotta turn the lineup card over sometime, folks!",
+      "status": "won",
+      "team": "harry-caray"
+    },
+    {
+      "add": "8132",
+      "bid": 22,
+      "drop": "9511",
+      "reason": "highest bid $22 (next best $15)",
+      "reasoning": "Kris put Tyler Allgeier on the front page and called him Selina's $114 science project \u2014 I don't need the body, I need the headline, and I'm not letting a woman who can't count to one running back own this week's cover story. Every dollar I have left says mine.",
+      "status": "won",
+      "team": "kardashian"
+    },
+    {
+      "add": "8132",
+      "bid": 9,
+      "drop": "1479",
+      "reason": "outbid on 8132: kardashian bid $22 (your bid $9)",
+      "reasoning": "Selina paid $114 for this guy TWICE and he's STILL sitting on the wire - I'll take the same hype for every dollar I've got left, nine bucks, because that's what a bargain looks like once the circus moves on. Allen never gave me anything back for the spite claim, so he's gone and Allgeier's in.",
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "11435",
+      "bid": 24,
+      "drop": "11651",
+      "reason": "outbid on 11435: dumbledore bid $40 (your bid $24)",
+      "reasoning": "Hun, 25.5 last week with Seattle's backfield wide open \u2014 I don't need a vibes check, I just need the jersey number. Guerendo's been on PUP doing absolutely nothing for me, he's gone.",
+      "status": "lost",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "4993",
+      "bid": 18,
+      "drop": "6804",
+      "reason": "uncontested claim, bid $18",
+      "reasoning": "Waller's on his bye so my TE spot's a ghost town this week \u2014 Gesicki dropped 11.5 last Sunday and he's got the bounce I fancy, he's in. Love's been sat there doing nothing behind Purdy, no loss.",
+      "status": "won",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "11435",
+      "bid": 14,
+      "drop": "7543",
+      "reason": "outbid on 11435: dumbledore bid $40 (your bid $14)",
+      "reasoning": "SELINA: Kris Jenner wants to run 'defamation' on her front page about my FAAB history? Fine \u2014 here's a real headline: every dollar I've got left, on one running back, twenty-five and a half points on the board last Sunday, and I don't care one bit if Kardashian wanted him too. GARY: Etienne isn't walking off that IR line this century and Wilson's the actual lead back in that Seattle room now \u2014 this is good value with a grudge attached, which is frankly how this front office does everything.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "11435",
+      "bid": 24,
+      "drop": "8151",
+      "reason": "outbid on 11435: dumbledore bid $40 (your bid $24)",
+      "reasoning": "Kenneth Walker is on a bye and contributes nothing to this slot, so per the System that is simply released, not debated. Emanuel Wilson posted 25.5 last week and projects 11.4 this week \u2014 I checked the workload numbers twice before committing, and I am taking the documented production over a flashier name this time, because that is what 'careful and right' looks like when nobody has handed me a sign to follow instead.",
+      "status": "lost",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "HOU",
+      "bid": 6,
+      "drop": "KC",
+      "reason": "would leave an illegal roster: resulting roster is invalid: bench has 7 players, limit is 6",
+      "reasoning": "Kansas City's defense is on a bye and has been sitting in my DEF slot doing nothing, which I should have caught sooner and am noting for the record that I did catch before kickoff. Houston projects highest among the available defenses this week and the number held up on a second look, so it goes in at a number that reflects a bye-week streamer and nothing more.",
+      "status": "skipped",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "8132",
+      "bid": 0,
+      "drop": "13298",
+      "reason": "outbid on 8132: kardashian bid $22 (your bid $0)",
+      "reasoning": "Selina paid $114 across two bids for Tyler Allgeier and the whole league is still talking about it \u2014 so I'm claiming him for ZERO dollars, Concepcion walks the plank, and now I own the punchline for free. This isn't about need, baby, it's about the receipt.",
+      "status": "lost",
+      "team": "rinna"
+    },
+    {
+      "add": "11435",
+      "bid": 28,
+      "drop": "8110",
+      "reason": "outbid on 11435: dumbledore bid $40 (your bid $28)",
+      "reasoning": "This kid in Seattle just dropped twenty-five and a half on somebody out of nowhere \u2014 that's not a fluke, that's a backfield changing hands, and a back who finds work like that I pay for, that's just business. Ferguson's a nice fella but he's buried behind two guys already earning their chair.",
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "11630",
+      "bid": 7,
+      "drop": "7002",
+      "reason": "uncontested claim, bid $7",
+      "reasoning": "Pittman's not suiting up and Boutte's thin as it is, so I bring in the Pittsburgh kid who put up fifteen last week \u2014 standard money, don't need to be a whole production about it, just insurance for a receiver room that's got nothing in it.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "96",
+      "bid": 19,
+      "drop": "11628",
+      "reason": "outbid on 96: harry-caray bid $40 (your bid $19)",
+      "reasoning": "Mariota's Doubtful and Caleb's Out \u2014 that's two empty jerseys on one depth chart, not a quarterback room. Rodgers dropped 23.96 last week and he's got a real matchup at home against Indy. Three straight losses means I don't nibble, I go to whatever's left in the drawer \u2014 all nineteen of it. Harrison's a $4.93 ghost on a dead roster who never showed up; he's the toll.",
+      "status": "lost",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 68,
+    "costanza": 67,
+    "dumbledore": 22,
+    "harry-caray": 22,
+    "kardashian": 0,
+    "leon-black": 9,
+    "maura-higgins": 47,
+    "meyer-walsh": 14,
+    "patricia-moyer": 50,
+    "rinna": 0,
+    "wifes-team": 56,
+    "your-team": 19
+  }
+}
