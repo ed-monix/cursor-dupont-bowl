@@ -103,15 +103,6 @@
     "injury": null
    },
    {
-    "id": "5022",
-    "name": "Dallas Goedert",
-    "pos": "TE",
-    "nfl": "PHI",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": "Questionable"
-   },
-   {
     "id": "7523",
     "name": "Trevor Lawrence",
     "pos": "QB",
@@ -137,10 +128,19 @@
     "proj_pts": 17.41,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "3271",
+    "name": "Tyler Higbee",
+    "pos": "TE",
+    "nfl": "LAR",
+    "proj_pts": 7.34,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 75
+  "faab_remaining": 68
  },
  "costanza": {
   "starters": {
@@ -380,15 +380,6 @@
     "injury": null
    },
    {
-    "id": "11646",
-    "name": "Jalen Coker",
-    "pos": "WR",
-    "nfl": "CAR",
-    "proj_pts": 0.0,
-    "status": "Active",
-    "injury": "Out"
-   },
-   {
     "id": "8676",
     "name": "Rashid Shaheed",
     "pos": "WR",
@@ -423,10 +414,19 @@
     "proj_pts": 0.0,
     "status": "Inactive",
     "injury": "IR"
+   },
+   {
+    "id": "11435",
+    "name": "Emanuel Wilson",
+    "pos": "RB",
+    "nfl": "SEA",
+    "proj_pts": 11.4,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 62
+  "faab_remaining": 22
  },
  "harry-caray": {
   "starters": {
@@ -550,15 +550,6 @@
     "injury": "Questionable"
    },
    {
-    "id": "4035",
-    "name": "Alvin Kamara",
-    "pos": "RB",
-    "nfl": "NO",
-    "proj_pts": 9.66,
-    "status": "Active",
-    "injury": "Questionable"
-   },
-   {
     "id": "3214",
     "name": "Hunter Henry",
     "pos": "TE",
@@ -566,10 +557,19 @@
     "proj_pts": 7.65,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "96",
+    "name": "Aaron Rodgers",
+    "pos": "QB",
+    "nfl": "PIT",
+    "proj_pts": 16.53,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 62
+  "faab_remaining": 22
  },
  "kardashian": {
   "starters": {
@@ -675,15 +675,6 @@
     "injury": null
    },
    {
-    "id": "9511",
-    "name": "Keaton Mitchell",
-    "pos": "RB",
-    "nfl": "LAC",
-    "proj_pts": 8.56,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "4039",
     "name": "Cooper Kupp",
     "pos": "WR",
@@ -709,10 +700,19 @@
     "proj_pts": 13.46,
     "status": "Active",
     "injury": "Questionable"
+   },
+   {
+    "id": "8132",
+    "name": "Tyler Allgeier",
+    "pos": "RB",
+    "nfl": "ARI",
+    "proj_pts": 7.77,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 22
+  "faab_remaining": 0
  },
  "leon-black": {
   "starters": {
@@ -970,15 +970,6 @@
     "injury": null
    },
    {
-    "id": "6804",
-    "name": "Jordan Love",
-    "pos": "QB",
-    "nfl": "GB",
-    "proj_pts": 17.23,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "8210",
     "name": "Chig Okonkwo",
     "pos": "TE",
@@ -995,10 +986,19 @@
     "proj_pts": 10.02,
     "status": "Active",
     "injury": null
+   },
+   {
+    "id": "4993",
+    "name": "Mike Gesicki",
+    "pos": "TE",
+    "nfl": "CIN",
+    "proj_pts": 6.49,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 65
+  "faab_remaining": 47
  },
  "meyer-walsh": {
   "starters": {
@@ -1515,15 +1515,6 @@
   },
   "bench": [
    {
-    "id": "7002",
-    "name": "Juwan Johnson",
-    "pos": "TE",
-    "nfl": "NO",
-    "proj_pts": 8.35,
-    "status": "Active",
-    "injury": null
-   },
-   {
     "id": "8110",
     "name": "Jake Ferguson",
     "pos": "TE",
@@ -1567,10 +1558,19 @@
     "proj_pts": 0.0,
     "status": "Inactive",
     "injury": "IR"
+   },
+   {
+    "id": "11630",
+    "name": "Roman Wilson",
+    "pos": "WR",
+    "nfl": "PIT",
+    "proj_pts": 7.76,
+    "status": "Active",
+    "injury": null
    }
   ],
   "ir": [],
-  "faab_remaining": 63
+  "faab_remaining": 56
  },
  "your-team": {
   "starters": {
