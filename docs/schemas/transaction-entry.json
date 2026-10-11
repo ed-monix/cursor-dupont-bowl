@@ -2,9 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "transaction-entry.json",
   "title": "Transaction Log Entry",
-  "description": "One line of state/transactions.jsonl (PLAN.md §4 step 6 / §8): append-only, one JSON object per applied action (add/drop/trade/waiver claim).",
+  "description": "One line of state/transactions.jsonl (PLAN.md \u00a74 step 6 / \u00a78): append-only, one JSON object per applied action (add/drop/trade/waiver claim).",
   "type": "object",
-  "required": ["timestamp", "team", "action", "players", "bid", "reasoning", "status"],
+  "required": [
+    "timestamp",
+    "team",
+    "action",
+    "players",
+    "bid",
+    "reasoning",
+    "status"
+  ],
   "properties": {
     "timestamp": {
       "type": "string",
@@ -16,16 +24,27 @@
     },
     "action": {
       "type": "string",
-      "description": "Kind of transaction, e.g. 'add', 'drop', 'waiver_claim', 'trade'.",
-      "enum": ["add", "drop", "waiver_claim", "trade"]
+      "description": "Kind of transaction, e.g. 'add', 'drop', 'waiver_claim', 'trade'. 'free_agent' is a post-waiver signing (scripts/free_agency.py): bid 0, players [added, dropped].",
+      "enum": [
+        "add",
+        "drop",
+        "waiver_claim",
+        "trade",
+        "free_agent"
+      ]
     },
     "players": {
       "type": "array",
       "description": "Player ids involved (adds and drops together for a claim; both sides for a trade).",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "bid": {
-      "type": ["integer", "null"],
+      "type": [
+        "integer",
+        "null"
+      ],
       "description": "FAAB dollars spent, or null when the action isn't a waiver claim (e.g. a free drop or trade).",
       "minimum": 0
     },
@@ -36,7 +55,11 @@
     "status": {
       "type": "string",
       "description": "Outcome of the transaction as applied.",
-      "enum": ["applied", "rejected", "flagged"]
+      "enum": [
+        "applied",
+        "rejected",
+        "flagged"
+      ]
     }
   },
   "additionalProperties": false

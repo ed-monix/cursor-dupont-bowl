@@ -24,7 +24,7 @@ POS = {"qb1": "QB", "qb2": "QB", "rb1": "RB", "rb2": "RB", "rb3": "RB",
 TEAM = {"fa_early": "LON"}
 
 
-def _league(tmp_path, gm_reply):
+def _league(tmp_path, gm_reply, verdict="approve"):
     root = tmp_path
     w = root / "state" / "weeks" / "2026-w05"
     w.mkdir(parents=True)
@@ -48,9 +48,18 @@ def _league(tmp_path, gm_reply):
         (d / "roster.json").write_text(json.dumps(
             {"team": slug, "faab_remaining": 50, "starters": starters, "bench": bench, "ir": []}))
         (d / "general-manager.md").write_text("# GM\n")
+    (root / "agents").mkdir()
+    (root / "agents" / "commissioner.md").write_text("# Commissioner\n")
     seen = {}
 
     def fake_turn(**kw):
+        if kw["label"].endswith("-fa-review"):
+            seen["review_pack"] = json.loads(kw["user_text"])
+            if verdict == "error":
+                raise claude_turn.TurnError("review down")
+            return claude_turn.TurnResult(text=json.dumps(
+                {"verdict": verdict, "rule": None if verdict == "approve" else "x",
+                 "signoff": "Fine."}), usage={})
         seen["pack"] = json.loads(kw["user_text"])
         return claude_turn.TurnResult(text=json.dumps(gm_reply), usage={})
     return root, seen, fake_turn
@@ -87,3 +96,63 @@ def test_a_player_who_was_not_offered_is_refused(tmp_path, monkeypatch):
     assert _run(root, monkeypatch, fake) == 2
     r = json.loads((root / "teams" / "me" / "roster.json").read_text())
     assert r["starters"]["QB"] == "qb1"   # untouched
+
+
+# ---- commissioner review: nothing applies until it approves -------------
+
+SIGN = {"add": "fa_qb", "drop": "b5", "start_slot": "QB", "reasoning": "go"}
+
+
+def _roster(root):
+    return json.loads((root / "teams" / "me" / "roster.json").read_text())
+
+
+def _log(root):
+    return json.loads((root / "state" / "weeks" / "2026-w05" / "decisions"
+                       / "me.free-agency.json").read_text())
+
+
+def test_the_commissioner_sees_the_exact_move_before_it_applies(tmp_path, monkeypatch):
+    root, seen, fake = _league(tmp_path, SIGN)
+    assert _run(root, monkeypatch, fake) == 0
+    pack = seen["review_pack"]
+    assert pack["decision"] == SIGN
+    assert pack["roster_after"]["starters"]["QB"] == "fa_qb"
+    assert pack["roster_before"]["starters"]["QB"] == "qb1"
+    assert _log(root)[-1]["outcome"] == "applied"
+    assert _log(root)[-1]["review"]["verdict"] == "approve"
+
+
+def test_a_block_applies_nothing_and_is_logged(tmp_path, monkeypatch):
+    root, _, fake = _league(tmp_path, SIGN, verdict="block")
+    assert _run(root, monkeypatch, fake) == 4
+    assert _roster(root)["starters"]["QB"] == "qb1"       # untouched
+    assert _log(root)[-1]["outcome"] == "blocked"
+    tx = (root / "state" / "transactions.jsonl").read_text()
+    assert '"status": "rejected"' in tx
+
+
+def test_no_review_means_no_move(tmp_path, monkeypatch):
+    """Fails closed: a move the office could not review is one it did not approve."""
+    root, _, fake = _league(tmp_path, SIGN, verdict="error")
+    assert _run(root, monkeypatch, fake) == 3
+    assert _roster(root)["starters"]["QB"] == "qb1"
+    assert not (root / "state" / "transactions.jsonl").exists()
+    assert _log(root)[-1]["outcome"] == "review_failed"
+
+
+def test_standing_pat_needs_no_review(tmp_path, monkeypatch):
+    root, seen, fake = _league(tmp_path, {"add": None, "drop": None,
+                                          "start_slot": None, "reasoning": "no"})
+    assert _run(root, monkeypatch, fake) == 0
+    assert "review_pack" not in seen
+
+
+def test_an_older_single_entry_log_is_kept_not_overwritten(tmp_path, monkeypatch):
+    root, _, fake = _league(tmp_path, SIGN)
+    d = root / "state" / "weeks" / "2026-w05" / "decisions"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "me.free-agency.json").write_text(json.dumps({"add": "earlier"}))
+    assert _run(root, monkeypatch, fake) == 0
+    log = _log(root)
+    assert log[0] == {"add": "earlier"} and log[-1]["outcome"] == "applied"

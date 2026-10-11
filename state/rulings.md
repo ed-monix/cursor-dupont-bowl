@@ -230,3 +230,10 @@ before it applied. CHI @ GB was minutes from kickoff and there is no review
 path for a single free-agency move. The scripted checks — legal roster, legal
 lineup, nothing moved after kickoff — were run. A reviewed path should exist
 before free agency is used routinely.
+
+Addendum to 2026-09 (2026-10-11): the reviewed path now exists. A free-agency
+signing is computed and validated, then put before the commissioner as the exact
+move — roster before and after, the GM's reasoning, the free agents he was
+offered. Nothing is written to a roster unless the commissioner approves. A
+block is logged and applies nothing; a review that cannot be had applies
+nothing either. The office no longer moves a player it has not looked at.
