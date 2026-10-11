@@ -204,3 +204,29 @@ have given him something the others did not get. Here no GM was asked at all.
 The whole window was skipped, and running it now treats all twelve exactly
 alike. The office also notes that the distinction is the owner's to draw, and
 that it has been drawn.
+
+## Ruling 2026-09 — Free agency after waivers clear; Brissett for Mariota (2026-10-11)
+
+The league has had no way to sign a player between waiver runs. Every add went
+through FAAB once a week, which left a GM helpless when his quarterback was
+ruled out on a Sunday morning — as Ed Monix's was, with his only backup, Marcus
+Mariota, already Out. The owner has established what every real league has:
+once waivers clear, a free agent may be signed outright. No FAAB is spent.
+
+It remains a GM decision, not an owner move. `scripts/free_agency.py` gives the
+team's GM an isolated turn with his roster and the free agents whose games have
+not kicked off, computed from the rosters themselves. He may sign one, must
+release one if full, and may start the new man only if neither his game nor
+the replaced starter's has kicked. Scripts validate the result before it is
+written.
+
+First use: your-team signed Jacoby Brissett (ARI), released Marcus Mariota,
+and started Brissett at QB over Caleb Williams. Caleb's official tag was still
+Questionable; the owner's report was that he would not play, and Ed chose to
+believe his own man on the ground over the paperwork. That was his call.
+
+Note for the record: the commissioner agent did not review this transaction
+before it applied. CHI @ GB was minutes from kickoff and there is no review
+path for a single free-agency move. The scripted checks — legal roster, legal
+lineup, nothing moved after kickoff — were run. A reviewed path should exist
+before free agency is used routinely.

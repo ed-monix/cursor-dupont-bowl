@@ -1009,11 +1009,12 @@
         "window": "main"
       },
       "QB": {
+        "player_id": "3257",
+        "nfl": "ARI",
         "game_date": "2026-10-11",
         "kicked": false,
-        "nfl": "CHI",
-        "player_id": "11560",
-        "window": "main"
+        "window": "main",
+        "free_agency": true
       },
       "RB1": {
         "game_date": "2026-10-11",
@@ -1055,7 +1056,7 @@
       "DEF": "DET",
       "FLEX": "12512",
       "K": "11792",
-      "QB": "11560",
+      "QB": "3257",
       "RB1": "12527",
       "RB2": "12481",
       "TE": "10236",
