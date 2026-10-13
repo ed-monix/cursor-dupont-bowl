@@ -10,8 +10,9 @@
     python scripts/grok_bots.py run-sheet --week 1 --run waivers
 
 Weekly clock is dispatch (gateway sendPrompt), not pasting 12 chats.
-Does not clone the repo onto the shared Bot computer. Owned teams
-(your-team, wifes-team) stay Cursor-only and are never dispatched.
+Does not clone the repo onto the shared Bot computer. All 12 GMs are
+Grok Bots, including owned seats your-team (Ed Monix) and wifes-team
+(Tony Soprano).
 """
 from __future__ import annotations
 
@@ -115,7 +116,7 @@ def cmd_run_sheet(root: pathlib.Path, week: int, run: str, season: str,
         f"--kind {run}{win}"
     )
     print("# then scripts apply: faab.py / lineups.py")
-    print("# owned GMs (your-team, wifes-team): Cursor pack-only, not dispatched")
+    print("# all 12 GMs including your-team and wifes-team")
     print()
     for role in grok_bots.roles(roster):
         kind = role["kind"]

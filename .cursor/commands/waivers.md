@@ -23,16 +23,15 @@ python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
 That writes `state/weeks/2026-w<WW>/packs/public.json` and
-`packs/<slug>.json`. Celebrity GMs are **Grok Bots**: one command, not 12
-pastes:
+`packs/<slug>.json`. All 12 GMs are **Grok Bots** (including `your-team`
+/ Ed Monix and `wifes-team` / Tony Soprano): one command, not 12 pastes:
 
 ```bash
 python scripts/grok_bots.py dispatch --week <WW> --kind waivers
 ```
 
-Owned GMs (`your-team`, `wifes-team`) stay in **Cursor** (`prompt`), never
-on the shared Bot disk. Reply = schema JSON only. Roster:
-`python scripts/grok_bots.py check`.
+Reply = schema JSON only. Roster: `python scripts/grok_bots.py check`.
+Scout and Media still only wake on waivers.
 
 GMs never see `state/news/buzz/`. One Scout (`fetch_buzz.py` / owner paste)
 writes buzz; Media rewrites the tabloid; then GMs read the tabloid only.
@@ -67,14 +66,14 @@ tabloid. NEVER a GM file. Rebuild:
 python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
-## 3. GM decisions — Grok Bots + two Cursor owned GMs
+## 3. GM decisions — all 12 Grok Bots
 
 ```bash
 python scripts/grok_bots.py dispatch --week <WW> --kind waivers
 ```
 
-Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
-For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
+Writes replies under `state/weeks/2026-w<WW>/decisions/<slug>.json` for
+every GM slug, including `your-team` and `wifes-team`. Reverse-standings
 order is context only; bids are blind.
 
 ### Under test: one-command GM turns
