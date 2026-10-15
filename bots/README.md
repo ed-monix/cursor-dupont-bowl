@@ -21,3 +21,12 @@ daily-slate — Commissioner — every day 09:00 America/New_York
 GMs: one routine `on-commissioner`. Report JSON to the Commissioner.
 
 `python scripts/grok_bots.py routines`
+
+## Commissioner paste
+
+The Commissioner's Grok paste is the block in `skill-commish.pointer.md`
+and nothing else; `skill-commish.md` wins over the paste. Each run's first
+comment or commit names the file it read:
+`read bots/skill-commish.md @ {short sha}` (first body line of a commit),
+so a stale paste shows up as an old hash. Added 2026-10-15 (build-out
+`docs/plan/2026-10-15-automation-cleanup.md`, "Instructions in git").

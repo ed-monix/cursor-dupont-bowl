@@ -16,7 +16,8 @@ GMs do not clone. Do not give GMs a GitHub plugin.
 **Do:** pull repo → `python scripts/commish_gate.py daily --write` → commit
 ops → ping GMs with packs → ingest replies → commit decisions.
 
-Paste `bots/skill-commish.md`.
+Paste the block in `bots/skill-commish.pointer.md`; it reads
+`bots/skill-commish.md` from `main` on every run.
 
 ---
 
