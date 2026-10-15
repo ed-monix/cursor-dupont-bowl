@@ -9,7 +9,7 @@ The Commissioner verifies JSON and commits `state/weeks/*/decisions/`.
 It does **not** run FAAB or write `roster.json`. This command does.
 
 1. `git pull`.
-2. Read `state/ops/latest.json`. Idle / recap → stop (recap is `/recap`).
+2. Run `python scripts/daily_ops.py --write`, then read `state/ops/latest.json`. Whoever runs the week refreshes the ops file; it went stale from 2026-09-20 while weeks were run outside the Commissioner. Idle / recap → stop (recap is `/recap`). The refreshed file rides in this run's commit.
 3. Dry-run first, then apply:
 
 ```bash
