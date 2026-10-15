@@ -17,8 +17,9 @@ Every day 09:00 America/New_York:
 4. If idle, stop after the ops commit.
 5. If not idle: build each celebrity GM's pack
    (`python scripts/grok_bots.py prompt ...`) and **message that Bot only**
-   with that pack. Owned teams (`your-team`, `wifes-team`) are Cursor —
-   list them in ops; do not ping them here.
+   with that pack. Owned teams (`your-team`, `wifes-team`) answer through
+   `scripts/gm_turn.py` (an isolated `claude -p` turn), never on the Bot
+   computer — list them in ops; do not ping them here.
 6. Wait. GMs reply **to you** with schema JSON. They do not git.
 
 ## Gate (what may enter git)

@@ -23,16 +23,11 @@ python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
 That writes `state/weeks/2026-w<WW>/packs/public.json` and
-`packs/<slug>.json`. Celebrity GMs are **Grok Bots**: one command, not 12
-pastes:
-
-```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind waivers
-```
-
-Owned GMs (`your-team`, `wifes-team`) stay in **Cursor** (`prompt`), never
-on the shared Bot disk. Reply = schema JSON only. Roster:
-`python scripts/grok_bots.py check`.
+`packs/<slug>.json`. All 12 GMs, the owned two (`your-team`, `wifes-team`)
+included, answer through **`scripts/gm_turn.py`**: one command, not 12
+pastes, each team an isolated `claude -p` turn (step 3). Reply = schema JSON
+only. The daily `bowl_league_ops` routine (`routines/bowl_league_ops.md`)
+runs this command when the ops call is `waivers`.
 
 GMs never see `state/news/buzz/`. One Scout (`fetch_buzz.py` / owner paste)
 writes buzz; Media rewrites the tabloid; then GMs read the tabloid only.
@@ -57,40 +52,51 @@ use the documented proxy in `state/rulings.md`.
 
 ## 2. Tabloid (before anyone moves)
 
-Message the **Kris Jenner** Grok Bot (`bots/skill-media.md`, `agents/media.md`)
-with PUBLIC RECORD only: `news-facts.json`, this week's buzz file if present,
-last week's forum, last recap, standings. She writes
-`state/news/2026-w<WW>.md`. Rebuild packs after she publishes so GMs see the
-tabloid. NEVER a GM file. Rebuild:
+Kris Jenner (`agents/media.md`) gets PUBLIC RECORD only: `news-facts.json`,
+this week's buzz file if present, last week's forum, last recap, standings.
+NEVER a GM file. Default: her own isolated turn, which builds that pack and
+writes `state/news/2026-w<WW>.md`:
+
+```bash
+python scripts/agent_turn.py --role media --week <WW>
+```
+
+Optional path, only while the local Grok gateway is running: message the
+Kris Jenner Grok Bot (`bots/skill-media.md`) with the same public record.
+Rebuild packs after she publishes so GMs see the tabloid:
 
 ```bash
 python scripts/gm_pack.py --week <WW> --run waivers
 ```
 
-## 3. GM decisions — Grok Bots + two Cursor owned GMs
-
-```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind waivers
-```
-
-Writes celebrity replies under `state/weeks/2026-w<WW>/decisions/<slug>.json`.
-For `your-team` and `wifes-team`: Cursor pack-only (`prompt`). Reverse-standings
-order is context only; bids are blind.
-
-### Under test: one-command GM turns
+## 3. GM decisions — all 12 through `gm_turn.py`
 
 ```bash
 python scripts/gm_turn.py --week <WW> --run waivers
 ```
 
-Not yet the default. Being evaluated over a full week before it can replace
-the gateway above. What it changes: all 12 teams move to one path, owned two
-included — no Cursor sidecar. Each team runs as an isolated `claude -p` call
-on Sonnet with an empty working directory, so there is no repo to read. Turn
-one fires alone to warm the shared cache prefix before the other eleven fan
-out, so bids stay blind by construction rather than by convention.
-`--dry-run` sizes the prompts without calling; `--save-raw DIR` keeps the raw
-envelopes when something fails to validate.
+The default since 2026-10-15, for all 12 teams, the owned two included (no
+Cursor). Each team runs as an isolated `claude -p` call on Sonnet with an
+empty working directory, so there is no repo to read. Turn one fires alone
+to warm the shared cache prefix before the other eleven fan out, so bids
+stay blind by construction rather than by convention. Writes
+`state/weeks/2026-w<WW>/decisions/<slug>.json`. Reverse-standings order is
+context only; bids are blind. `--dry-run` sizes the prompts without calling;
+`--save-raw DIR` keeps the raw envelopes when something fails to validate.
+If the `claude` CLI is missing or cannot authenticate, stop: do not answer
+for the GMs.
+
+### Optional: the Grok Bot gateway
+
+Only while Nick's local Grok gateway is running (a cloud routine cannot
+reach it), the celebrity GMs can answer as Grok Bots instead:
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind waivers
+```
+
+The owned two still go through `gm_turn.py --team <slug>`; they never go on
+the shared Bot disk. Roster check: `python scripts/grok_bots.py check`.
 
 Parse with `decisions.parse_and_validate` against
 `docs/schemas/saturday-decision.json` (filename kept; this is the waiver
@@ -116,21 +122,20 @@ Do not apply yet.
 ## 5. Trades
 
 Max three outgoing offers per team; deadline end of week 11. A target answers all offers sent to it in ONE turn. If several of a team's own offers are accepted and conflict, that team's GM picks which to honour. After the harness
-validates the offer, dispatch **only the target**:
-
-```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind trades \
-  --slug <target> --offer <offer.json>
-```
-
-### Under test: screened trades
+validates the offer, ask **only the target**:
 
 ```bash
 python scripts/gm_turn.py --week <WW> --run trades --team <target> \
   --offer <offer.json>
 ```
 
-Not yet the default. `scripts/office.py`'s waivers stage runs this for you:
+The default since 2026-10-15. Optional, only while the local Grok gateway
+is running and the target is a celebrity GM:
+`python scripts/grok_bots.py dispatch --week <WW> --kind trades --slug <target> --offer <offer.json>`.
+
+### Screened trades
+
+`scripts/office.py`'s waivers stage runs this for you:
 `lib/trades.screen_offers` checks every outgoing offer against both rosters
 first — the offerer really holds what it is sending, the target really holds
 what is being asked for, and both rosters survive the swap — and only the
@@ -145,10 +150,17 @@ cannot be understood has not agreed to anything.
 
 ## 6. Commissioner review, then apply
 
-Commissioner Grok Bot (`bots/skill-commish.md`, `agents/commissioner.md`)
-reviews the dry-run + decision JSON. GM files in chat only, never left on
-the shared disk. Blocks only illegal. Does **not** apply FAAB or mutate
-rosters. Then:
+The commissioner (`agents/commissioner.md`) reviews the dry-run + decision
+JSON in its own isolated turn, which writes
+`state/weeks/2026-w<WW>/commissioner-signoff.md`:
+
+```bash
+python scripts/agent_turn.py --role commissioner --week <WW> --stage waivers
+```
+
+(Optional path: the Commissioner Grok Bot, `bots/skill-commish.md`, while
+the gateway runs.) GM files in chat only, never left on a shared disk.
+Blocks only illegal. Does **not** apply FAAB or mutate rosters. Then:
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \
