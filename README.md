@@ -21,11 +21,13 @@ never when it is merely stupid.
 
 ## How it works
 
-- **12 teams, 12 AI GMs.** Celebrity GMs run as Grok Bots
-  (`config/grok-bots.json`). The two owned teams (`your-team`, `wifes-team`)
-  stay off that shared Bot computer and run pack-only in Cursor. Humans are
-  owners: they hire the GM, they write the notes, they live with the
-  consequences.
+- **12 teams, 12 AI GMs.** Every GM, the two owned teams (`your-team`,
+  `wifes-team`) included, answers in its own isolated `claude -p` turn
+  (`scripts/gm_turn.py`, pack-only, empty working directory). The Grok Bot
+  gateway (`config/grok-bots.json`, `grok_bots.py dispatch`) is an optional
+  path when Nick's local gateway is running; it is not running as of
+  2026-10-15. Humans are owners: they hire the GM, they write the notes,
+  they live with the consequences.
 - **Sleeper rules.** Standard Sleeper format: half-PPR, 4-pt passing TDs,
   1QB/2RB/2WR/1TE/1FLEX/1K/1DEF + bench. Scoring is Sleeper standard (no
   reference league needed — `sync_sleeper.py --settings` activates it from the
@@ -39,10 +41,13 @@ never when it is merely stupid.
   - **`/lineups early`** — lock starters whose NFL games are Tue–Sat (TNF).
   - **`/lineups main`** — lock the rest after late injury news (Sun/Mon).
     Already-kicked games stay frozen.
-- **The Commissioner** is a Grok Bot (`bots/skill-commish.md`): daily clock
-  and git gate. It clones this repo, writes `state/ops/`, wakes other Bots,
-  verifies their JSON, and commits. It does not apply FAAB or mutate rosters.
-  Cloud Agents run `/apply` after `decisions/` lands.
+- **The league clock** is one Claude routine, `bowl_league_ops`
+  (`routines/bowl_league_ops.md`, daily 08:59 America/New_York, decided
+  2026-10-15). It writes `state/ops/`, runs the day's command (waivers, a
+  lineup window, or the recap) with `gm_turn.py` for the GM turns, has the
+  commissioner agent (`agents/commissioner.md`) sign off, applies through
+  `/apply`, and commits once. No Grok Commissioner Bot is running; its
+  skill (`bots/skill-commish.md`) is the optional gateway path.
 - **Live scoring** is GitHub Actions (`gameday.yml`, ~20 min on TNF/Sunday/MNF),
   not the Commissioner's 9am check and not Scout. The shareable board is
   **GitHub Pages**: committed `index.html` at the repo root.
@@ -51,12 +56,13 @@ never when it is merely stupid.
 
 | Path | What it is |
 |---|---|
-| `AGENTS.md` | Cursor / Bot operating rules (packs, isolation, command names) |
+| `AGENTS.md` | Agent operating rules (packs, isolation, command names) |
 | `PLAN.md` | The full build & operations plan |
 | `TASKS.md` | Phased build tasks |
 | `CLAUDE.md` | Operating instructions for Claude Code sessions |
 | `config/` | League rules, scoring, Grok Bot roster |
-| `bots/` | Grok Bot skills + create notes (do not clone onto the Bot disk) |
+| `routines/` | `bowl_league_ops.md`, the daily Claude routine that runs the league, and its pointer paste |
+| `bots/` | Grok Bot skills + create notes, the optional gateway path (do not clone onto the Bot disk) |
 | `agents/commissioner.md` | The commissioner agent definition |
 | `teams/` | One folder per team: GM file, roster, owner notes |
 | `state/` | League state: free agents, standings, matchups, ops, transaction log |
@@ -88,7 +94,7 @@ preview still uses gitignored `web/viewer.html`.
   board rebuild. `/refresh-board` is the same pass by hand.
 - Local board: `python scripts/scoreboard.py` at `http://localhost:8080`.
 
-The Commissioner 9am job does **not** refresh the board.
+The daily `bowl_league_ops` routine does **not** refresh the board.
 
 ## Season quickstart
 
@@ -96,8 +102,8 @@ The Commissioner 9am job does **not** refresh the board.
 pip install -r requirements.txt
 python scripts/sync_sleeper.py --settings   # Sleeper-standard scoring/roster
 # Optional: GROK_API_KEY for real X buzz in the tabloid (or paste a buzz file).
-# Commissioner Bot: daily clone + commish_gate.py (see bots/skill-commish.md)
-# After decisions land: /apply
+# Daily: the bowl_league_ops routine (routines/bowl_league_ops.md) runs the day
+# By hand: /waivers, /lineups, /recap (GM turns via scripts/gm_turn.py), then /apply
 # Game-day board: GitHub Actions, or /refresh-board in a Cloud Agent
 #   python scripts/scoreboard.py   # local board at http://localhost:8080
 ```

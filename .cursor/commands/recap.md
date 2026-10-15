@@ -31,9 +31,16 @@ were captured this week, skip this step and say so.
 
 ## 3. Commissioner writes the recap
 
-Spawn the Commissioner Grok Bot (`bots/skill-commish.md`, `agents/commissioner.md`)
-— the only agent that may be given GM files, and only in chat, never left on
-the shared Bot disk. It writes `state/weeks/2026-w<WW>/recap.md` in its own voice (dry,
+Run the commissioner (`agents/commissioner.md`) in its own isolated turn —
+the only agent that may be given GM files, and only in chat, never left on a
+shared disk:
+
+```bash
+python scripts/agent_turn.py --role commissioner --week <WW> --stage recap
+```
+
+(Optional path: the Commissioner Grok Bot, `bots/skill-commish.md`, while
+the local gateway runs.) It writes `state/weeks/2026-w<WW>/recap.md` in its own voice (dry,
 procedural, faintly funereal; never an exclamation point). Give it: the scored
 matchups, updated standings, this week's `transactions.jsonl` slice, every
 `fallback: true` lineup, the reconciliation records, and this week's forum

@@ -39,31 +39,36 @@ python scripts/league_board.py --week <WW>
 python scripts/gm_pack.py --week <WW> --run lineups --window <early|main>
 ```
 
-## 2. GM lineups (Grok Bots + two Cursor owned GMs)
-
-```bash
-python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
-```
-
-Celebrity replies: `docs/schemas/sunday-lineup.json` into
-`decisions/<slug>.lineup-<W>.json`. Owned GMs (`your-team`, `wifes-team`)
-use Cursor `prompt`, off the shared Bot disk. Beliefs first; projections
-are an opinion.
-
-### Under test: one-command GM turns
+## 2. GM lineups (all 12 through `gm_turn.py`)
 
 ```bash
 python scripts/gm_turn.py --week <WW> --run lineups --window <W>
 ```
 
-Not yet the default. Being evaluated over a full week before it can replace
-the gateway above. What it changes: all 12 teams move to one path, owned two
-included — no Cursor sidecar, no awake laptop. Each team runs as an isolated
-`claude -p` call on Sonnet with an empty working directory, so there is no
-repo mounted and no other team's files to open. Turn one fires alone to warm
-the shared cache prefix before the other eleven fan out, so no GM sees another's
-lineup by construction rather than by convention. `--dry-run` sizes the
-prompts without calling.
+The default since 2026-10-15, for all 12 teams, the owned two (`your-team`,
+`wifes-team`) included: no Cursor, no awake laptop. Each team runs as an
+isolated `claude -p` call on Sonnet with an empty working directory, so
+there is no repo mounted and no other team's files to open. Turn one fires
+alone to warm the shared cache prefix before the other eleven fan out, so no
+GM sees another's lineup by construction rather than by convention. Replies
+follow `docs/schemas/sunday-lineup.json` into
+`decisions/<slug>.lineup-<W>.json`. Beliefs first; projections are an
+opinion. `--dry-run` sizes the prompts without calling. If the `claude` CLI
+is missing or cannot authenticate, stop: do not answer for the GMs. The
+daily `bowl_league_ops` routine (`routines/bowl_league_ops.md`) runs this
+command when the ops call is `lineups-early` or `lineups-main`.
+
+### Optional: the Grok Bot gateway
+
+Only while Nick's local Grok gateway is running (a cloud routine cannot
+reach it), the celebrity GMs can answer as Grok Bots instead:
+
+```bash
+python scripts/grok_bots.py dispatch --week <WW> --kind lineups --window <W>
+```
+
+The owned two still go through `gm_turn.py --team <slug>`, off the shared
+Bot disk.
 
 Validate schema + `validate_lineup`. BYE/Out starters must be acknowledged
 in the justification. Retry once. Then the **script** applies the window
@@ -87,7 +92,14 @@ Forum optional via `forum.append_post` (one post per team per run).
 
 ## 3. Commissioner + freeze
 
-Commissioner confirms every lineup is legal and fallbacks are recorded.
+Commissioner (`agents/commissioner.md`) confirms every lineup is legal and
+fallbacks are recorded, in its own isolated turn, which writes
+`state/weeks/2026-w<WW>/commissioner-signoff-<window>.md`:
+
+```bash
+python scripts/agent_turn.py --role commissioner --week <WW> --stage lineups --window <early|main>
+```
+
 Does not second-guess a legal benching of a stud. Persist starters into
 `roster.json` for slots that locked this window (leave still-unlocked
 slots as the current declaration). `append_press` the justification.

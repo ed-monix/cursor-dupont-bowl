@@ -17,6 +17,15 @@ The repo **is** the league. There is no server, no database, no hosted app.
   Cursor. Slash commands in `.cursor/commands/` orchestrate: scripts build
   packs; the Commissioner Bot is the git gate (clone, ingest, commit). GMs
   report to the Commissioner, never to git.
+  *Note 2026-10-15:* the harness above is no longer what runs. The owner
+  does not run the bowl in Cursor or run a Grok Commissioner Bot. One
+  Claude routine, `bowl_league_ops` (`routines/bowl_league_ops.md`, daily
+  08:59 America/New_York), runs the league day: it writes the ops call,
+  runs the matching command with all 12 GM turns (the owned two included)
+  through `scripts/gm_turn.py` (an isolated `claude -p` per team), has the
+  commissioner sign off via `scripts/agent_turn.py`, applies through
+  `/apply`, and commits once. The Grok Bot gateway stays an optional path
+  for a by-hand session while the local gateway runs.
 - **Python scripts = the deterministic parts.** Anything that must be exactly
   right — scoring math, roster legality, FAAB resolution, Sleeper syncing —
   is a script, not a judgment call. Agents decide; scripts validate and apply.
@@ -339,6 +348,10 @@ the shared Bot disk. Never
 `players.json`, never another GM file, never `buzz/`. One Scout writes buzz.
 Scripts do math. Composer is for mechanical file transforms only.
 Do not plan that volume on Claude-in-Cursor.
+
+*Note 2026-10-15:* GM turns now run on Claude through `scripts/gm_turn.py`
+(Sonnet, one isolated turn per team, a shared cached system prefix), with
+Media and the Commissioner on `scripts/agent_turn.py`; see §1's note.
 
 Personality stays the product: do not flatten to "start the highest projection."
 

@@ -1,5 +1,13 @@
 # The office routine — under evaluation, not switched on
 
+*Update 2026-10-15:* the owner decided to switch the league to a routine.
+The routine is `bowl_league_ops` (`routines/bowl_league_ops.md`, daily
+08:59 America/New_York). It runs the `.cursor/commands/` files with
+`scripts/gm_turn.py` as the default GM step for all 12 teams and the
+commissioner signoff from `scripts/agent_turn.py`; the Grok gateway is now
+the optional path. The rest of this page is the evaluation record as it
+stood before that decision.
+
 This describes a path to a hands-off weekly run: a scheduled Claude Code
 session that drives the league instead of an owner typing slash commands.
 None of it is live yet. See "Not yet switched on" below before assuming any
