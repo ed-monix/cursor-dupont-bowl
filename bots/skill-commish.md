@@ -12,7 +12,7 @@ Every day 09:00 America/New_York:
 2. `python scripts/commish_gate.py daily --write` (or `daily_ops.py --write`).
    Scripts decide idle / waivers / lineups-early / lineups-main / recap.
    That writes `state/ops/YYYY-MM-DD.json` and `state/ops/latest.json`.
-   Any runner that does a week's work (Cursor or Claude through `/apply`) refreshes the same file first, so it never describes an old week (added 2026-10-15).
+   Any runner that does a week's work (Cursor or Claude through `/apply`) refreshes the same file when today's ops file (America/New_York date) is not already there, so it never describes an old week (added 2026-10-15).
 3. Commit and push: `ops YYYY-MM-DD: <action>`.
 4. If idle, stop after the ops commit.
 5. If not idle: build each celebrity GM's pack
