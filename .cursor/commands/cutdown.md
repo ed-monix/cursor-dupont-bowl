@@ -54,7 +54,7 @@ The memo joins every GM's context this run (public record).
 
 ## 4. GM decisions — with a DOUBLE trade window
 
-Run the standard Saturday machinery (per `.claude/commands/saturday.md`
+Run the standard waiver machinery (per `.cursor/commands/waivers.md`
 steps 3–6: isolated subagent per team with dossier + memo + free agents +
 league board; decisions.py; retry-then-no-claims fallback) with two
 one-window-only exceptions, recorded in `state/rulings.md`:

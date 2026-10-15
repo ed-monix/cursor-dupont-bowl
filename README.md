@@ -63,7 +63,8 @@ never when it is merely stupid.
 | `scripts/` | Sleeper sync, scoring/FAAB/schedule engine, viewer builder, GM packs, gate |
 | `web/` | `viewer.template.html` — the interactive league viewer |
 | `.github/workflows/` | Pages publish + gameday stats |
-| `.claude/commands/` and `.cursor/commands/` | `/waivers`, `/lineups`, `/apply`, `/recap`, `/notes`, `/refresh-board`, `/draft` |
+| `.cursor/commands/` | `/waivers`, `/lineups`, `/apply`, `/recap`, `/notes`, `/refresh-board`, `/draft` — the one source for the slash commands |
+| `.claude/commands/` | Pointers only: each keeps its front matter and says to follow the matching `.cursor/commands/` file |
 
 ## Live viewer
 

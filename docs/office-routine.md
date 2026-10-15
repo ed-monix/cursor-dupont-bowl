@@ -35,8 +35,8 @@ file — is to run the whole sequence for a stage in one shot: syncs
 buzz), the tabloid pass, all 12 GM turns, FAAB (and trades where applicable),
 the commissioner review, applying the result, and then exactly one commit —
 folding together the steps that `/waivers`, `/lineups`, and `/recap`
-currently walk through by hand (see `.claude/commands/waivers.md`,
-`.claude/commands/lineups.md`, and `.claude/commands/recap.md`). Treat the
+currently walk through by hand (see `.cursor/commands/waivers.md`,
+`.cursor/commands/lineups.md`, and `.cursor/commands/recap.md`). Treat the
 flag names
 above as the interface contract to build toward, not as confirmed behavior
 of code that has been read and verified — verify against the actual script
@@ -150,8 +150,8 @@ This document describes an evaluation path, not a running system:
   routine today.
 - The GM-turn step it would depend on (`scripts/gm_turn.py`, one isolated
   `claude -p` per team) is itself still under test — see the "Under test:
-  one-command GM turns" sections of `.claude/commands/waivers.md` and
-  `.claude/commands/lineups.md`. The legacy Grok Bot gateway
+  one-command GM turns" sections of `.cursor/commands/waivers.md` and
+  `.cursor/commands/lineups.md`. The legacy Grok Bot gateway
   (`scripts/grok_bots.py dispatch`) remains the documented default. Flipping
   that is a one-line change to each of those two sections once the owner is
   satisfied — deliberately not done here.
