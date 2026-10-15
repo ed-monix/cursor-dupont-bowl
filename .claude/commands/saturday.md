@@ -3,7 +3,7 @@ description: (retired name) Use /waivers
 argument-hint: <week number>
 ---
 
-# /saturday is retired
+# Pointer
 
-Weekday command names do not match the NFL calendar. Run **`/waivers`**
-for the weekly FAAB/trade cycle.
+The source of this command is `.cursor/commands/saturday.md`.
+Read that file and follow it. This file is a pointer. The source wins.

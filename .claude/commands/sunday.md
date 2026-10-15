@@ -3,8 +3,7 @@ description: (retired name) Use /lineups
 argument-hint: <week> <early|main>
 ---
 
-# /sunday is retired
+# Pointer
 
-Lineups lock per NFL window, not once on Sunday. Run **`/lineups`** with
-`early` (Tue–Sat games, typically Thursday night) or `main` (Sun/Mon plus
-anyone still unlocked).
+The source of this command is `.cursor/commands/sunday.md`.
+Read that file and follow it. This file is a pointer. The source wins.
