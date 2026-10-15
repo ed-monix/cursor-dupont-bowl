@@ -7,7 +7,7 @@
     python scripts/office.py --today
     python scripts/office.py --stage waivers --week 2 --dry-run
 
-Today a human runs `.claude/commands/{waivers,lineups,recap}.md` by hand,
+Today a human runs `.cursor/commands/{waivers,lineups,recap}.md` by hand,
 one script at a time, off a checklist. This is that checklist turned into
 one process, so a scheduler can fire it instead of a person: same scripts,
 same order, same one-commit-per-run rule (CLAUDE.md rule 5) — only the
@@ -403,7 +403,7 @@ def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
 
 
 # --------------------------------------------------------------------------
-# Stage step builders — mirror .claude/commands/{waivers,lineups,recap}.md.
+# Stage step builders — mirror .cursor/commands/{waivers,lineups,recap}.md.
 # --------------------------------------------------------------------------
 
 def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:

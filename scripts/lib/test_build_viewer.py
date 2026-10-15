@@ -784,7 +784,7 @@ def test_load_guide_how_it_runs_from_command_frontmatter():
     """_load_guide extracts command descriptions from frontmatter in order."""
     with tempfile.TemporaryDirectory() as tmpdir:
         root = pathlib.Path(tmpdir)
-        (root / ".claude" / "commands").mkdir(parents=True)
+        (root / ".cursor" / "commands").mkdir(parents=True)
         (root / "agents").mkdir(parents=True)
         (root / "config").mkdir(parents=True)
         (root / "state").mkdir(parents=True)
@@ -797,7 +797,7 @@ def test_load_guide_how_it_runs_from_command_frontmatter():
             ("recap", "Final results"),
             ("refresh-board", "Sync and publish"),
         ]:
-            cmd_file = root / ".claude" / "commands" / f"{cmd}.md"
+            cmd_file = root / ".cursor" / "commands" / f"{cmd}.md"
             cmd_file.write_text(f'''---
 description: {desc}
 ---
@@ -833,17 +833,17 @@ def test_load_guide_skips_missing_command_files():
     """_load_guide skips command files that don't exist or have no description."""
     with tempfile.TemporaryDirectory() as tmpdir:
         root = pathlib.Path(tmpdir)
-        (root / ".claude" / "commands").mkdir(parents=True)
+        (root / ".cursor" / "commands").mkdir(parents=True)
         (root / "agents").mkdir(parents=True)
         (root / "config").mkdir(parents=True)
         (root / "state").mkdir(parents=True)
 
         # Only create notes and recap commands (missing waivers, lineups, refresh-board)
-        (root / ".claude" / "commands" / "notes.md").write_text("""---
+        (root / ".cursor" / "commands" / "notes.md").write_text("""---
 description: Scaffold notes
 ---
 # Content""")
-        (root / ".claude" / "commands" / "recap.md").write_text("""---
+        (root / ".cursor" / "commands" / "recap.md").write_text("""---
 description: Final recap
 ---
 # Content""")

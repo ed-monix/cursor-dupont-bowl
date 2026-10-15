@@ -12,9 +12,12 @@ follow `docs/ROUTING.md` — Opus triages `TASKS.md` and dispatches to the
 Respect the data contracts in `PLAN.md` §8. Never invent new state files
 without adding them to the contracts section.
 
-**League ops mode** (in-season): run the slash commands in `.claude/commands/`
-and `.cursor/commands/` — `/waivers`, `/lineups`, `/apply`, `/recap`,
-`/notes`, `/refresh-board`. (`/saturday` and `/sunday` are retired aliases.)
+**League ops mode** (in-season): run the slash commands — `/waivers`,
+`/lineups`, `/apply`, `/recap`, `/notes`, `/refresh-board`. (`/saturday` and
+`/sunday` are retired aliases.) `.cursor/commands/` is the one source: edit
+commands there only. Each `.claude/commands/` file is a pointer (front matter
+plus "read `.cursor/commands/X.md` and follow it exactly") so Claude Code
+still lists the command.
 This repo is the league (`ed-monix/cursor-dupont-bowl`). The board is
 GitHub Pages, not a Claude artifact.
 

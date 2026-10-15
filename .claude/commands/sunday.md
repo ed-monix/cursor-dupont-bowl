@@ -3,8 +3,9 @@ description: (retired name) Use /lineups
 argument-hint: <week> <early|main>
 ---
 
-# /sunday is retired
+Read `.cursor/commands/sunday.md` in this repo and follow it exactly;
+that file wins. `.cursor/commands/` is the one source for the slash
+commands; this file is only a pointer so Claude Code lists `/sunday`.
 
-Lineups lock per NFL window, not once on Sunday. Run **`/lineups`** with
-`early` (Tue–Sat games, typically Thursday night) or `main` (Sun/Mon plus
-anyone still unlocked).
+Arguments: `$ARGUMENTS` (substitute them wherever that file says
+`$ARGUMENTS`).

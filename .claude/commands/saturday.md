@@ -3,7 +3,9 @@ description: (retired name) Use /waivers
 argument-hint: <week number>
 ---
 
-# /saturday is retired
+Read `.cursor/commands/saturday.md` in this repo and follow it exactly;
+that file wins. `.cursor/commands/` is the one source for the slash
+commands; this file is only a pointer so Claude Code lists `/saturday`.
 
-Weekday command names do not match the NFL calendar. Run **`/waivers`**
-for the weekly FAAB/trade cycle.
+Arguments: `$ARGUMENTS` (substitute them wherever that file says
+`$ARGUMENTS`).

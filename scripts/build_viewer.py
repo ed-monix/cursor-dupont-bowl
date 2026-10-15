@@ -448,7 +448,7 @@ def _load_guide(season: str, names: Optional[dict] = None,
     how_it_runs = []
     command_order = ["notes", "waivers", "lineups", "recap", "refresh-board"]
     for cmd in command_order:
-        cmd_path = ROOT / ".claude" / "commands" / f"{cmd}.md"
+        cmd_path = ROOT / ".cursor" / "commands" / f"{cmd}.md"
         desc = _frontmatter_description(cmd_path)
         if desc:
             how_it_runs.append({
