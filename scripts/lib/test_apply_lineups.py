@@ -72,6 +72,48 @@ def test_illegal_lineup_falls_back_but_keeps_frozen_thursday_te():
     assert main["lineups"]["t"]["starters"]["FLEX"] != "kelce"
 
 
+def test_cut_kicker_plays_the_slot_empty_instead_of_crashing():
+    # Week 6: a team's only K was released and dropped out of the pool, so
+    # no legal fallback can fill K. The slot plays empty; the run goes on.
+    players = _players()
+    del players["k"]
+    projections = {pid: {} for pid in players}
+    out = apply_lineup_window(
+        {"t": _roster()}, players, projections, SIMPLE_SCORING,
+        {"t": {"starters": _starters(), "justification": "dance with who brung us"}},
+        "main", GAMES, existing_lineups={},
+    )
+    assert out["lineups"]["t"]["fallback"] is True
+    assert out["lineups"]["t"]["starters"]["K"] is None
+    errs = out["report"]["teams"][0]["validation_errors"]
+    assert any("slot K is empty" in e and "plays empty" in e for e in errs)
+
+
+def test_still_illegal_fallback_for_another_reason_still_raises(monkeypatch):
+    import lib.apply_lineups as al
+    monkeypatch.setattr(al, "validate_lineup", lambda r, p: (False, ["slot QB: bad"]))
+    players = _players()
+    with pytest.raises(ValueError, match="still illegal"):
+        apply_lineup_window(
+            {"t": _roster()}, players, {}, SIMPLE_SCORING,
+            {"t": {"starters": _starters()}}, "main", GAMES, existing_lineups={},
+        )
+
+
+def test_skipped_early_window_still_freezes_a_kicked_game():
+    # Week 6: no early run, then main ran with a game already under way.
+    # The standing roster starter in that game must stay put.
+    players = _players()
+    kicked = [dict(GAMES[0], status="in_game"), GAMES[1]]
+    swap = {"starters": _starters(te="otherte"), "justification": "late news"}
+    out = apply_lineup_window(
+        {"t": _roster()}, players, {pid: {} for pid in players}, SIMPLE_SCORING,
+        {"t": swap}, "main", kicked, existing_lineups={},
+    )
+    assert out["lineups"]["t"]["starters"]["TE"] == "kelce"
+    assert out["report"]["teams"][0]["freeze_violations"]
+
+
 def test_legal_frozen_swap_is_not_fallback():
     players = _players()
     roster = _roster()

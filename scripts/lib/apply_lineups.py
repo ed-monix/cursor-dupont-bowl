@@ -125,7 +125,12 @@ def apply_lineup_window(
 
     for slug, roster in sorted(updated_rosters.items()):
         existing = lineups_out.get(slug)
-        canned = decisions.get(slug) if isinstance(decisions.get(slug), dict) else {}
+        if not existing:
+            # First window of the week (the early run was skipped): freeze
+            # kicked games against the standing roster starters, or a GM
+            # could move a player whose game is already over.
+            existing = {"starters": dict(roster.get("starters") or {})}
+        canned =decisions.get(slug) if isinstance(decisions.get(slug), dict) else {}
         proposed = canned.get("starters")
         justification = canned.get("justification") or ""
         val_errors = []
@@ -151,8 +156,16 @@ def apply_lineup_window(
                 roster, players, projections, scoring, frozen_starters=frozen,
             )
             ok2, err2 = validate_lineup(candidate, players)
-            if not ok2:
+            # A slot nobody on the roster can fill (week 6: a team's only K
+            # was cut and left the pool) plays empty and scores 0. Anything
+            # else still illegal is a real bug.
+            unfillable = [e for e in err2 if e.endswith(" is empty")]
+            if len(unfillable) != len(err2):
                 raise ValueError(f"{slug} fallback lineup is still illegal: {err2}")
+            val_errors = val_errors + [
+                e + " (no eligible player on the roster; plays empty)"
+                for e in unfillable
+            ]
             candidate_starters = dict(candidate["starters"])
             justification = (
                 "FALLBACK (highest-projected legal lineup): submitted lineup was "
