@@ -1,10 +1,107 @@
 {
-  "action": "idle",
-  "window": null,
-  "today": "2026-10-17",
+  "action": "lineups-main",
+  "window": "main",
+  "today": "2026-10-18",
   "first_kickoff": "2026-10-15",
-  "games_today": [],
-  "reason": "2026-10-17: no league op",
+  "games_today": [
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "ATL",
+      "away": "CHI",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "CLE",
+      "away": "BAL",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "GB",
+      "away": "DAL",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "IND",
+      "away": "TEN",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "JAX",
+      "away": "HOU",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "KC",
+      "away": "LAC",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "LAR",
+      "away": "ARI",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "LV",
+      "away": "BUF",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "NE",
+      "away": "NYJ",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "NYG",
+      "away": "NO",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "PHI",
+      "away": "CAR",
+      "week": 6,
+      "window": "main"
+    },
+    {
+      "date": "2026-10-18",
+      "status": "pre_game",
+      "home": "TB",
+      "away": "PIT",
+      "week": 6,
+      "window": "main"
+    }
+  ],
+  "reason": "gameday 2026-10-18 window main; pending kickoffs",
   "week": 6,
   "season": "2026",
   "done": {
@@ -14,8 +111,22 @@
     "recap": false
   },
   "wake": {
-    "grok_bots": [],
-    "cursor": [],
+    "grok_bots": [
+      "coach-taylor",
+      "costanza",
+      "dumbledore",
+      "harry-caray",
+      "kardashian",
+      "leon-black",
+      "maura-higgins",
+      "meyer-walsh",
+      "patricia-moyer",
+      "rinna"
+    ],
+    "cursor": [
+      "your-team",
+      "wifes-team"
+    ],
     "also": []
   },
   "gate": {
