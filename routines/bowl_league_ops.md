@@ -3,10 +3,10 @@
 | Field | Value |
 |---|---|
 | Name | `bowl_league_ops` |
-| Trigger | Schedule, daily 08:59 America/New_York (`CRON_TZ=America/New_York 59 8 * * *`), decided 2026-10-15 |
+| Trigger | Schedule, daily 08:59 and 11:59 America/New_York (`CRON_TZ=America/New_York 59 8,11 * * *`); 08:59 decided 2026-10-15, the 11:59 retry 2026-10-18 |
 | Repo | `ed-monix/cursor-dupont-bowl` |
 | Connectors | none (git and the `claude` CLI only) |
-| Expected runs per day | 1 |
+| Expected runs per day | 2 (the second is usually idle) |
 
 The one Claude routine that runs the league day, decided 2026-10-15. Nick
 does not run the bowl in Cursor and does not run a Grok Commissioner Bot; he
@@ -17,6 +17,14 @@ isolated `claude -p` turn through `scripts/gm_turn.py`. The Grok Bot gateway
 (`scripts/grok_bots.py dispatch`) needs a local gateway on Nick's machine,
 which a cloud routine cannot reach; it stays an optional path for a by-hand
 session when that gateway is up, never this routine's.
+
+The 11:59 run is the retry, added 2026-10-18 after the week 6 morning run
+stopped on a script crash and nobody saw it until 10:10. It is the same
+prompt: when the morning run finished the day's job, the done flags make it
+idle; when the morning run stopped, it tries again before the 1pm ET
+Sunday kickoffs. Nick does not want to babysit the league (and wants no
+push notifications), so this routine repairs a crashing script itself
+(step 7) and stops only for what a script fix cannot settle.
 
 Live scoring and the board are not this routine's job:
 `.github/workflows/gameday.yml` and `viewer.yml` keep doing those.
@@ -41,10 +49,13 @@ run one league day: at most one league action, one commit, one push. Read
    `.cursor/commands/apply.md` step 2 and `bots/skill-commish.md` step 2
    say: if `state/ops/<today>.json` already exists, do not run `--write` (it
    would wipe the recorded `gate`); if it is missing, run
-   `python scripts/daily_ops.py --date <today> --write`. Then read
-   `state/ops/latest.json`: `action`, `window`, `week` (call it `W`; `WW` is
-   it zero-padded). Ignore `wake`: its `grok_bots`/`cursor` keys are a script
-   label, not who runs today.
+   `python scripts/daily_ops.py --date <today> --write`. Then take the call
+   from a fresh `python scripts/daily_ops.py --date <today>` (no `--write`;
+   it prints the same JSON): `action`, `window`, `week` (call it `W`; `WW` is
+   it zero-padded). Read it fresh, not from `latest.json`, because a second
+   run the same day must see the done flags the first run's commit set, or
+   it would run the same lineup window twice. Ignore `wake`: its
+   `grok_bots`/`cursor` keys are a script label, not who runs today.
 
 3. **Pick the one job for this run**, first match wins:
    - `action` is `lineups-early` or `lineups-main` -> lineups, window from `window`.
@@ -117,7 +128,29 @@ run one league day: at most one league action, one commit, one push. Read
      `transactions.jsonl`, press, schema validation with one retry and
      `fallback: true` after that, and its staging list.
 
-7. **When `gm_turn.py` or `agent_turn.py` cannot run, stop.** Check
+7. **When a league script crashes, fix it and carry on.** A traceback from
+   anything under `scripts/` (not the transport failures in step 8) is a bug
+   in the engine, not a reason to lose the day. Week 6 is the model: the
+   lineup apply raised on a team whose only kicker had been cut, and the
+   freeze ignored kicked games when the early window was skipped. Fix it in
+   this run when all of these hold:
+   - the fix makes the script do what `.cursor/commands/`, `PLAN.md`,
+     `agents/commissioner.md` or `state/rulings.md` already say. It never
+     invents a rule;
+   - it stays in `scripts/`, is the smallest change that clears the crash,
+     and comes with a regression test beside the existing ones;
+   - `python -m pytest -q scripts` passes before you rerun the failed step;
+   - it does not touch scoring values, FAAB rules, `docs/schemas/`, the
+     `PLAN.md` §8 contracts, a GM file, or a validator in a way that lets
+     something illegal through.
+   Rerun the step that failed and continue from there. The fix rides in the
+   run's one commit (rule 5), with one body line per fix:
+   `fix: <script>: <what it did wrong>`. Never hand-edit league state to get
+   past a crash. If the honest fix needs a rule nobody has written down
+   (which of two legal readings to apply, an owner call like Ruling
+   2026-08), stop as in step 8 and name the decision needed.
+
+8. **When `gm_turn.py` or `agent_turn.py` cannot run, stop.** Check
    `claude --version` before the first turn. Stop when it fails, when
    either script exits non-zero, or when a GM's decision file has
    `fallback: true` with a `fallback_reason` from the transport rather than
@@ -129,7 +162,7 @@ run one league day: at most one league action, one commit, one push. Read
    week, push nothing, and report the error in one line. Never answer for a
    GM, the commissioner or Kris yourself, and never hand-write a decision.
 
-8. **Hard rules.** Isolation: a GM sees only its own pack, which
+9. **Hard rules.** Isolation: a GM sees only its own pack, which
    `gm_turn.py` enforces by running each turn in an empty directory; you do
    not paste GM files, `state/players.json`, `state/news/buzz/` or
    `opinions.json` anywhere. Owner notes are pressure for the GM, never
@@ -138,7 +171,7 @@ run one league day: at most one league action, one commit, one push. Read
    (`state/transactions.jsonl`, the week folder) or it did not happen. No
    Sleeper writes, no GM file edits.
 
-9. **Commit once, then push.** One commit for the run, message exactly
+10. **Commit once, then push.** One commit for the run, message exactly
    `week <WW>: waivers`, `week <WW>: lineups-early`, `week <WW>: lineups-main`
    or `week <WW>: recap` (`<WW>` is the week worked, so `W-1` for a recap
    gap). The ops file this run wrote rides in that commit. Stage what the
@@ -146,9 +179,10 @@ run one league day: at most one league action, one commit, one push. Read
    `trade-screen.json` and `claims-from-gate.json` when written. Never
    commit mid-run. Push with `git push origin HEAD:main`.
 
-10. **Report in a few lines:** the date, the job and week, the commit SHA
-    (or why nothing was committed), any fallback teams, and anything the
-    commissioner blocked.
+11. **Report in a few lines:** the date, the job and week, the commit SHA
+    (or why nothing was committed), any fallback teams, anything the
+    commissioner blocked, and every `fix:` line. A stop leads with
+    `STOPPED:` and the one decision or failure that needs Nick.
 
 `/notes`, `/refresh-board`, free agency (`scripts/free_agency.py`, which
 needs an owner's report), `/draft`, `/cutdown` and `/gms-meeting` are not
@@ -162,4 +196,5 @@ through gm_turn.py and the commissioner signoff, applied once, in one commit
 with the rule-5 message, pushed to `main`. Or an idle day: the ops file
 committed if this run wrote it, and a clean exit. Or a stop with nothing
 committed and the reason in one line (gm_turn.py or agent_turn.py could not
-run, a PLACEHOLDER banner, or a block the apply would still carry out).
+run, a PLACEHOLDER banner, a block the apply would still carry out, or a
+crash whose fix needs an unwritten rule).
