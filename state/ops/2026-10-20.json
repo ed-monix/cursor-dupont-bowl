@@ -1,0 +1,42 @@
+{
+  "action": "waivers",
+  "window": null,
+  "today": "2026-10-20",
+  "first_kickoff": "2026-10-22",
+  "games_today": [],
+  "reason": "before first kickoff 2026-10-22; waivers still open",
+  "week": 7,
+  "season": "2026",
+  "done": {
+    "waivers": false,
+    "lineups-early": false,
+    "lineups-main": false,
+    "recap": false
+  },
+  "wake": {
+    "grok_bots": [
+      "coach-taylor",
+      "costanza",
+      "dumbledore",
+      "harry-caray",
+      "kardashian",
+      "leon-black",
+      "maura-higgins",
+      "meyer-walsh",
+      "patricia-moyer",
+      "rinna"
+    ],
+    "cursor": [
+      "your-team",
+      "wifes-team"
+    ],
+    "also": [
+      "scout",
+      "media"
+    ]
+  },
+  "gate": {
+    "received": {},
+    "rejected": {}
+  }
+}
