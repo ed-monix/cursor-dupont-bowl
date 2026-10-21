@@ -17,6 +17,13 @@ Commissioner. The owned two never go on the Bot computer.
 Shared computer: GMs must not open `teams/*/general-manager.md` for another
 team. Packs are one slug per chat.
 
+## Mailbox
+
+The Commissioner and `bowl_league_ops` pass requests through `bots/mailbox/`
+(`to-claude/` from the Commissioner, `to-commish/` from the routine).
+Protocol: `bots/mailbox/README.md`. Messages are requests, not orders.
+The Commissioner writes them and reads the answers. Celebrity GMs never do.
+
 ## Clock (gateway path, not running)
 
 ```text
