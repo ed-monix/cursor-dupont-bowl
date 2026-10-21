@@ -335,6 +335,16 @@ validate agent output.
   `trade-offer`, `trade-response`, `transaction-entry`, `gm-opinions`.
   `saturday-decision` and `sunday-lineup` carry an optional `forum_post` string.
 
+### Commissioner mailbox (not state)
+
+`bots/mailbox/` is not a state file and not a shape the scripts read. It is
+how the DuPont Commissioner and `bowl_league_ops` pass requests
+(`to-claude/`) and answers (`to-commish/`), one markdown file per message.
+Front matter and the status rules are in `bots/mailbox/README.md`. It is
+listed here so it is not mistaken for an unlisted state file: CLAUDE.md
+forbids new state files without a contracts entry, and this path is not
+one. Nothing under it feeds scoring, FAAB, rosters, or a GM.
+
 ## 9. Costs & model policy
 
 The GM file is the only personality variable. Volume is **not** cheap:

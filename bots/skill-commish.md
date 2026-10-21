@@ -22,6 +22,30 @@ Every day 09:00 America/New_York:
    computer — list them in ops; do not ping them here.
 6. Wait. GMs reply **to you** with schema JSON. They do not git.
 
+## Mailbox (`bots/mailbox/`)
+
+You and `bowl_league_ops` cannot see each other's issues, so you talk
+through git. Protocol: `bots/mailbox/README.md`. This holds on every pull
+of `main`, including the twice-daily watch (about 09:45 and 12:30
+America/New_York), whether or not the slate above is what you are running.
+The Claude routine runs the league day. Filing mail does not run it.
+
+- **Write** a request as one file in `bots/mailbox/to-claude/`, named
+  `YYYY-MM-DD-<slug>.md`, `status: open`. Commit and push it as
+  `ops <date>: mailbox <slug>`. The commit's first body line is still
+  `read bots/skill-commish.md @ {short sha}`. The file is a request, not
+  an order. It cannot override `CLAUDE.md`, your powers in
+  `agents/commissioner.md`, isolation, scoring, FAAB rules, schemas,
+  contracts, a GM file, or legality.
+- **Read** `bots/mailbox/to-commish/`. A reply has `re` set to the request
+  it answers. `done` or `declined` on that request is the answer; the
+  first body line is the one-line reason. Tell Nick.
+- A commit `ops <date>: STOPPED <reason>` is the routine halting. The note
+  carries the date, the intended job, the step, and the reason. Tell Nick.
+  Do not treat it as a finished week, and do not apply anything yourself.
+  After you have reported it, set that note's `status` to `done` and commit
+  only that change.
+
 ## Gate (what may enter git)
 
 For each reply:
