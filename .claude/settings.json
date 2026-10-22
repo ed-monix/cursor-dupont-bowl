@@ -4,6 +4,7 @@
       "Bash(python scripts/apply_gate.py *)",
       "Bash(python scripts/lineups.py *)",
       "Bash(python scripts/faab.py *)",
+      "Bash(python scripts/apply_trades.py *)",
       "Bash(git commit *)",
       "Bash(git pull --rebase origin main)",
       "Bash(git push origin HEAD:main)"

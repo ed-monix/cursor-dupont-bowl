@@ -538,3 +538,28 @@ def test_each_answer_is_matched_to_the_offer_it_names(tmp_path: Path):
     by_from = {r["from"]: r for r in results}
     assert by_from["alpha"]["applied"] is False
     assert by_from["charlie"]["applied"] is True
+
+
+def test_apply_trades_cli_applies_an_accepted_offer(tmp_path: Path, capsys):
+    import apply_trades
+    wdir, _ = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(
+        json.dumps({"response": "accept", "message": "Fine."}), encoding="utf-8")
+
+    assert apply_trades.main(["--week", "5", "--root", str(tmp_path)]) == 0
+    assert "applied alpha <-> bravo" in capsys.readouterr().out
+    alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
+    assert "b1" in json.dumps(alpha)
+
+
+def test_apply_trades_cli_dry_run_writes_nothing(tmp_path: Path):
+    import apply_trades
+    wdir, _ = _traded_league(tmp_path)
+    (wdir / "decisions" / "bravo.trade.json").write_text(
+        json.dumps({"response": "accept"}), encoding="utf-8")
+
+    assert apply_trades.main(["--week", "5", "--root", str(tmp_path),
+                              "--dry-run"]) == 0
+    alpha = json.loads((tmp_path / "teams" / "alpha" / "roster.json").read_text())
+    assert "a1" in json.dumps(alpha)
+    assert not (tmp_path / "state" / "transactions.jsonl").exists()

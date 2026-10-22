@@ -167,7 +167,13 @@ python scripts/faab.py --claims <claims.json> --standings <standings.json> \
   --report-out state/weeks/2026-w<WW>/faab-report.json
 ```
 
-Apply approved trades the same way. Log `state/transactions.jsonl`.
+Apply approved trades the same way, after FAAB:
+
+```bash
+python scripts/apply_trades.py --week <WW>
+```
+
+Log `state/transactions.jsonl`.
 `gm_dossier.append_press` for each team.
 
 ## 7. Commit (exactly one)

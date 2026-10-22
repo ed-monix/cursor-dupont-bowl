@@ -155,8 +155,8 @@ second commit, and they never replace the league action.
      `lineups.py` itself, so do not also run their non-dry-run commands from
      `waivers.md` step 6 or `lineups.md` step 2: running both applies twice
      (see the comment in `scripts/office.py`). Accepted trades are applied
-     after FAAB with `lib/trades.apply_accepted`, as `waivers.md` step 6
-     says. Recap has no apply.
+     after FAAB with `python scripts/apply_trades.py --week <W>`, as
+     `waivers.md` step 6 says. Recap has no apply.
    - Everything else the command says stands: syncs, packs, forum posts,
      `transactions.jsonl`, press, schema validation with one retry and
      `fallback: true` after that, and its staging list.
