@@ -343,6 +343,59 @@ def test_big_bid_player_name_missing_uses_id():
     assert bids[0]["player_name"] == "p_unknown"
 
 
+def test_big_bid_excludes_older_week_transactions():
+    """Bids from earlier weeks stay out of the week being reported.
+
+    Week 7's facts led with September's Allgeier ($60, $54) and Rodgers ($55)
+    bids because the season log was read whole. Historical rows carry a
+    timestamp and no week; an explicit week field wins when one is present.
+    """
+    starts = [
+        (1, "2026-09-09"),
+        (2, "2026-09-17"),
+        (7, "2026-10-22"),
+    ]
+    transactions = [
+        {"team": "meyer-walsh", "action": "waiver_claim", "bid": 60,
+         "players": ["8132"], "timestamp": "2026-09-17T00:40:39+00:00"},
+        {"team": "meyer-walsh", "action": "waiver_claim", "bid": 54,
+         "players": ["8132"], "timestamp": "2026-09-08T13:39:35+00:00"},
+        {"team": "rinna", "action": "waiver_claim", "bid": 55,
+         "players": ["96"], "timestamp": "2026-09-08T13:39:35+00:00"},
+        # Explicit week beats a timestamp that would land in week 7.
+        {"team": "old-club", "action": "waiver_claim", "bid": 99,
+         "players": ["old"], "week": 2,
+         "timestamp": "2026-10-22T13:19:45+00:00"},
+        {"team": "coach-taylor", "action": "waiver_claim", "bid": 14,
+         "players": ["HOU"], "timestamp": "2026-10-22T13:19:45+00:00"},
+        # Explicit week "7" beats a September timestamp.
+        {"team": "maura-higgins", "action": "waiver_claim", "bid": 18,
+         "players": ["12495"], "week": "7",
+         "timestamp": "2026-09-17T00:40:39+00:00"},
+    ]
+    players = {
+        "8132": {"name": "Tyler Allgeier"},
+        "96": {"name": "Aaron Rodgers"},
+        "old": {"name": "Old Bid"},
+        "HOU": {"name": "Houston"},
+        "12495": {"name": "Ollie Gordon"},
+    }
+
+    headlines = dn.derive_news(
+        {}, {}, None, transactions, players, {}, week=7, week_starts=starts,
+    )
+    bids = [h for h in headlines if h["kind"] == "big_bid"]
+    assert [b["team"] for b in bids] == ["maura-higgins", "coach-taylor"]
+    assert [b["bid"] for b in bids] == [18, 14]
+    assert all(b["player_name"] not in ("Tyler Allgeier", "Aaron Rodgers", "Old Bid")
+               for b in bids)
+
+    # No week argument still reads whatever list it was given.
+    unfiltered = dn.derive_news({}, {}, None, transactions, players, {}, top_n=5)
+    unfiltered_bids = [h for h in unfiltered if h["kind"] == "big_bid"]
+    assert any(b["bid"] == 60 and b["team"] == "meyer-walsh" for b in unfiltered_bids)
+
+
 def test_big_bid_players_array_first_element():
     """The first element of players array is the added player."""
     transactions = [

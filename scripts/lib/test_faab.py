@@ -215,6 +215,75 @@ def test_drop_player_already_gone_is_skipped():
 # Extra coverage: unknown add player, no-drop add, single-team no contest.
 # ---------------------------------------------------------------------------
 
+def test_claim_on_player_rostered_by_another_team_is_skipped():
+    """Week 7 waivers: 11435 was on dumbledore, 96 on harry-caray.
+
+    faab marked both claims won and apply would have put each player on a
+    second roster. They are skipped, with the owner named, and nothing is
+    charged. A legal claim in the same run still resolves.
+    """
+    players = _full_players()
+    players["11435"] = {
+        "name": "Rico Dowdle", "pos": "RB", "team": "CAR",
+        "status": "Active", "injury": None,
+    }
+    players["96"] = {
+        "name": "Aaron Rodgers", "pos": "QB", "team": "PIT",
+        "status": "Active", "injury": None,
+    }
+
+    dumbledore = _full_roster("dumbledore", faab=22, bench=["wr3"])
+    dumbledore["starters"]["RB2"] = "11435"
+    harry = _full_roster("harry-caray", faab=40, bench=["wr3"])
+    harry["starters"]["QB"] = "96"
+    meyer = _full_roster("meyer-walsh", faab=14, bench=["wr3"])
+    rinna = _full_roster("rinna", faab=55, bench=["wr3"])
+    rosters = {
+        "meyer-walsh": meyer,
+        "rinna": rinna,
+        "dumbledore": dumbledore,
+        "harry-caray": harry,
+    }
+    claims_by_team = {
+        "meyer-walsh": [{
+            "add": "11435", "drop": "wr3", "bid": 13,
+            "reasoning": "already on dumbledore",
+        }],
+        "rinna": [
+            {"add": "96", "drop": "wr3", "bid": 10, "reasoning": "already on harry"},
+            {"add": "fa_wr", "drop": None, "bid": 1, "reasoning": "actual free agent"},
+        ],
+    }
+    standings = ["meyer-walsh", "rinna", "dumbledore", "harry-caray"]
+
+    report = faab.resolve_faab(claims_by_team, standings, rosters, players)
+    by_key = {(c["team"], c["add"]): c for c in report["claims"]}
+
+    owned_rb = by_key[("meyer-walsh", "11435")]
+    assert owned_rb["status"] == "skipped"
+    assert owned_rb["reason"] == "player 11435 already rostered by dumbledore"
+
+    owned_qb = by_key[("rinna", "96")]
+    assert owned_qb["status"] == "skipped"
+    assert owned_qb["reason"] == "player 96 already rostered by harry-caray"
+
+    assert by_key[("rinna", "fa_wr")]["status"] == "won"
+    assert report["remaining_budget"]["meyer-walsh"] == 14
+    assert report["remaining_budget"]["rinna"] == 54
+
+    updated, entries = faab.apply_won_claims(
+        report, rosters, players, timestamp="2026-10-21T12:00:00+00:00",
+    )
+    assert [e["players"][0] for e in entries] == ["fa_wr"]
+    assert "11435" not in updated["meyer-walsh"]["bench"]
+    assert "11435" not in (updated["meyer-walsh"]["starters"] or {}).values()
+    assert "96" not in updated["rinna"]["bench"]
+    assert "96" not in (updated["rinna"]["starters"] or {}).values()
+    assert updated["dumbledore"]["starters"]["RB2"] == "11435"
+    assert updated["harry-caray"]["starters"]["QB"] == "96"
+    assert "fa_wr" in updated["rinna"]["bench"]
+
+
 def test_unknown_add_player_is_skipped():
     players = make_players()
     standings = ["team-a"]

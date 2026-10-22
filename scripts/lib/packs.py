@@ -28,6 +28,7 @@ _SCRIPTS = Path(__file__).resolve().parent.parent
 if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
 from gm_dossier import build_dossier  # noqa: E402
+import free_agents  # noqa: E402
 
 # Waiver-wire diet: 693 raw FAs is ~132K; GMs pick from the head of each pos.
 FA_PER_POS = 12
@@ -151,10 +152,41 @@ def load_week_games(root: Path, week: int, season: str = "2026") -> list:
     return nfl_slate.treat_pre_game(nfl_slate.games_for_week(season_sched, week))
 
 
+def _team_rosters(root: Path) -> list:
+    """Roster dicts on disk, for dropping already-rostered ids from the wire."""
+    teams = root / "teams"
+    if not teams.is_dir():
+        return []
+    rosters = []
+    for roster_path in sorted(teams.glob("*/roster.json")):
+        if roster_path.parent.name.startswith("_"):
+            continue
+        roster = _read_json(roster_path, None)
+        if isinstance(roster, dict):
+            rosters.append(roster)
+    return rosters
+
+
+def without_rostered(free_agents_pool: dict, rosters) -> dict:
+    """Drop ids that are already on a roster. The file can be stale; the
+    pack handed to GMs must not offer a player someone else owns."""
+    if not isinstance(free_agents_pool, dict):
+        return {}
+    taken = {str(pid) for pid in free_agents.rostered_player_ids(rosters)}
+    if not taken:
+        return free_agents_pool
+    return {
+        pid: row for pid, row in free_agents_pool.items() if str(pid) not in taken
+    }
+
+
 def build_public_pack(root: Union[str, Path], week: int, season: str = "2026") -> dict:
     root = Path(root)
     label = _WEEK_FILE.format(season=season, week=week)
-    fa = _read_json(root / "state" / "free-agents.json", {})
+    fa = without_rostered(
+        _read_json(root / "state" / "free-agents.json", {}),
+        _team_rosters(root),
+    )
     board = _read_json(root / "state" / "league-board.json", {})
     standings = _read_json(root / "state" / "standings.json", {})
     schedule = _read_json(root / "state" / "schedule.json", {})

@@ -31,6 +31,71 @@ from lib.scoring import score_player  # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
+def _week_start_dates(season: str) -> list:
+    """[(week, YYYY-MM-DD), ...] from each week's nfl-games.json, earliest game.
+
+    Same boundaries as scripts/build_viewer.py ``week_start_dates``: a log row
+    with no explicit week belongs to the last week whose first game is on or
+    before the row's calendar day.
+    """
+    starts = []
+    weeks_dir = ROOT / "state" / "weeks"
+    if not weeks_dir.exists():
+        return starts
+    for d in sorted(weeks_dir.glob(f"{season}-w*")):
+        try:
+            w = int(d.name.split("-w")[1])
+        except (IndexError, ValueError):
+            continue
+        games = _load_json(d / "nfl-games.json", [])
+        if not isinstance(games, list):
+            continue
+        dates = [g.get("date") for g in games if isinstance(g, dict) and g.get("date")]
+        if dates:
+            starts.append((w, min(str(x) for x in dates)))
+    starts.sort(key=lambda pair: (pair[1], pair[0]))
+    return starts
+
+
+def week_from_timestamp(timestamp: str, starts: list, fallback: int = 1) -> int:
+    """Last week whose first game is on/before that day.
+
+    Events before week 1 kickoff land on week 1. Mirrors
+    ``build_viewer.transaction_week``.
+    """
+    day = (timestamp or "")[:10]
+    if not starts:
+        return fallback
+    chosen = starts[0][0]
+    if not day:
+        return chosen
+    for week, start in starts:
+        if day >= start:
+            chosen = week
+        else:
+            break
+    return chosen
+
+
+def transaction_report_week(txn: dict, week_starts: list | None = None) -> int | None:
+    """Week a transactions.jsonl row belongs to.
+
+    An explicit ``week`` field wins. Otherwise the ISO ``timestamp`` (or a
+    ``date`` field, if that is all the row carries) is placed with
+    ``week_from_timestamp``.
+    """
+    if not isinstance(txn, dict):
+        return None
+    explicit = txn.get("week")
+    if explicit is not None and explicit != "":
+        try:
+            return int(explicit)
+        except (TypeError, ValueError):
+            pass
+    raw = txn.get("timestamp") or txn.get("date") or ""
+    return week_from_timestamp(str(raw), week_starts or [])
+
+
 def derive_news(
     stats: dict,
     projections: dict,
@@ -40,6 +105,8 @@ def derive_news(
     scoring: dict,
     prior_players: dict | None = None,
     top_n: int = 3,
+    week: int | None = None,
+    week_starts: list | None = None,
 ) -> list[dict]:
     """Derive deterministic factual headlines from committed state.
 
@@ -47,11 +114,16 @@ def derive_news(
         stats: {player_id: stat_line} for this week
         projections: {player_id: projection_row} for this week
         matchups: dict with 'matchups' key containing list of matchup dicts (or None)
-        transactions: list of transaction dicts for this week (raw, unfiltered)
+        transactions: transaction dicts. Big bids use only the week being
+            reported when ``week`` is set (explicit ``week`` on the row, else
+            its timestamp against ``week_starts``). Omit ``week`` to consider
+            every waiver_claim in the list.
         players: state/players.json mapping {player_id: {name, pos, team, status, injury}}
         scoring: scoring config dict
         prior_players: prior week's players.json snapshot (for injury_change) or None
         top_n: number of top performers/bidders to include per kind
+        week: NFL week being reported, or None to skip the bid-week filter
+        week_starts: [(week, YYYY-MM-DD), ...] used when a row has no week field
 
     Returns:
         List of headline dicts, grouped by kind in order: overperformer, underperformer,
@@ -152,6 +224,8 @@ def derive_news(
     bids: list[dict] = []
     for txn in transactions:
         if txn.get("action") == "waiver_claim":
+            if week is not None and transaction_report_week(txn, week_starts) != int(week):
+                continue
             bid = txn.get("bid", 0)
             team = txn.get("team")
             players_list = txn.get("players", [])
@@ -266,8 +340,9 @@ def main() -> int:
     matchups = _load_json(week_dir / "matchups.json", None)
     scoring = _load_scoring(ROOT / "config")
 
-    # Load transactions for this week (all entries; derive_news will filter)
+    # The log is the whole season. Big bids are only the week being reported.
     transactions = _load_jsonl(ROOT / "state" / "transactions.jsonl")
+    week_starts = _week_start_dates(a.season)
 
     # Load prior week's players snapshot if it exists
     prior_players = None
@@ -278,7 +353,10 @@ def main() -> int:
         )
 
     # Derive headlines
-    headlines = derive_news(stats, projections, matchups, transactions, players, scoring, prior_players)
+    headlines = derive_news(
+        stats, projections, matchups, transactions, players, scoring, prior_players,
+        week=a.week, week_starts=week_starts,
+    )
 
     # Write output
     out = pathlib.Path(a.out) if a.out else (week_dir / "news-facts.json")
