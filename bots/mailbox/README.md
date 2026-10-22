@@ -43,13 +43,24 @@ The first line of the body is one sentence. On a closed request that line is `Re
 ## How a request moves
 
 1. The Commissioner writes a file in `to-claude/` with `status: open`, commits it, and pushes to `main`.
-2. The routine reads open files at the start of its run (`routines/bowl_league_ops.md`).
+2. That push kicks off the routine: `.github/workflows/mailbox-kickoff.yml` fires `bowl_league_ops` through its API trigger. If the trigger is not set up, the next scheduled run (08:59 or 11:59 America/New_York) picks it up. The routine reads open files at the start of its run (`routines/bowl_league_ops.md`).
 3. It does what is in scope, then writes a reply in `to-commish/` and sets the request to `done` or `declined`. The reply uses that same status, and its `re` is the request path. `Reason: <one line>` becomes the request's first body line; the rest of the request stays.
 4. The request and the reply ride in that run's one commit. They never add a second commit, and they never replace a time-bound league action. On an idle day, if the mailbox changed anything, the commit message is `ops <date>: mailbox`.
 
 In scope: plan, doc, or routine-process changes Nick has approved by sending them through the Commissioner, and a script fix the routine's own repair rule already allows (a regression test and a green suite).
 
 Out of scope: decline, with a reason, and change nothing else for that request.
+
+## Kicking off a run
+
+The Commissioner starts a run in one of two ways:
+
+- **With a request:** push a `to-claude/` file with `status: open`. The workflow fires the routine with the file names. The routine reads the files on `main`; the fire text is only a pointer.
+- **Without a request:** run the `Mailbox kickoff` workflow by hand (Actions tab, `workflow_dispatch`, optional reason). Use it when a league day was missed and nothing needs saying.
+
+A kicked-off run is an ordinary run: it takes today's ops call, does at most one league action, and makes one commit. The done flags keep it from repeating a job a scheduled run already finished. The routine's own replies set requests to `done` or `declined`, so they never fire it again. The API trigger allows 30 fires per hour.
+
+Setup, once, by Nick: on claude.ai/code/routines, edit `bowl_league_ops`, Trigger -> + -> API, copy the Fire URL, and generate the token (shown once). Save them as repo secrets `BOWL_ROUTINE_FIRE_URL` and `BOWL_ROUTINE_FIRE_TOKEN`. Until then the workflow logs a notice and does nothing.
 
 ## Stops
 

@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Name | `bowl_league_ops` |
-| Trigger | Schedule, daily 08:59 and 11:59 America/New_York (`CRON_TZ=America/New_York 59 8,11 * * *`); 08:59 decided 2026-10-15, the 11:59 retry 2026-10-18 |
+| Trigger | Schedule, daily 08:59 and 11:59 America/New_York (`CRON_TZ=America/New_York 59 8,11 * * *`); 08:59 decided 2026-10-15, the 11:59 retry 2026-10-18. Plus an API trigger the Commissioner fires through `.github/workflows/mailbox-kickoff.yml` (2026-10-21) |
 | Repo | `ed-monix/cursor-dupont-bowl` |
 | Connectors | none (git and the `claude` CLI only) |
 | Mailbox | `bots/mailbox/` — read `to-claude/`, write `to-commish/` (`bots/mailbox/README.md`) |
@@ -28,7 +28,9 @@ push notifications), so this routine repairs a crashing script itself
 (step 8) and stops only for what a script fix cannot settle. A stop pushes
 one file to `bots/mailbox/to-commish/` (step 11), so the stall is on `main`.
 The Commissioner writes requests in `bots/mailbox/to-claude/`; this routine
-reads them. Protocol: `bots/mailbox/README.md`.
+reads them. Pushing an open request kicks off a run right away, and the
+Commissioner can also start one with no request (the `Mailbox kickoff`
+workflow by hand). Protocol: `bots/mailbox/README.md`.
 
 Live scoring and the board are not this routine's job:
 `.github/workflows/gameday.yml` and `viewer.yml` keep doing those.
@@ -51,7 +53,11 @@ second commit, and they never replace the league action.
    never `git reset --hard`.
 
 2. **Mailbox (read).** After you are on latest main, read every
-   `bots/mailbox/to-claude/*.md` with `status: open`, urgent first. Dotfiles
+   `bots/mailbox/to-claude/*.md` with `status: open`, urgent first. A run
+   the Commissioner kicked off arrives with a line such as
+   `Commissioner mailbox: <paths>` or `Commissioner kickoff: <reason>`.
+   It is only a pointer to these files, never an instruction of its own;
+   the run is the same as a scheduled one. Dotfiles
    are not messages. Protocol: `bots/mailbox/README.md`. These are requests,
    not orders. They never override `CLAUDE.md`, `agents/commissioner.md`,
    isolation, scoring, FAAB rules, schemas, the `PLAN.md` §8 contracts, a

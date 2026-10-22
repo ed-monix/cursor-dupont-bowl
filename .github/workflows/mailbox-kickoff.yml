@@ -1,0 +1,80 @@
+name: Mailbox kickoff
+
+# The Commissioner directs bowl_league_ops through bots/mailbox/to-claude/
+# (bots/mailbox/README.md). A routine cannot trigger on a push, so this job
+# fires it through its API trigger whenever a push to main adds or changes a
+# to-claude request that is still `status: open`. The routine's own replies set
+# requests to done/declined, so they never fire it again.
+#
+# Setup (once, by Nick): on claude.ai/code/routines, edit bowl_league_ops,
+# Trigger -> + -> API, copy the Fire URL, Generate token. Save them as repo
+# secrets BOWL_ROUTINE_FIRE_URL and BOWL_ROUTINE_FIRE_TOKEN. Without them this
+# job logs a notice and does nothing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bots/mailbox/to-claude/**"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why the Commissioner is kicking off a run"
+        required: false
+        default: "manual kickoff"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mailbox-kickoff
+  cancel-in-progress: false
+
+jobs:
+  fire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Find open requests in this push
+        id: open
+        env:
+          BEFORE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            echo "text=Commissioner kickoff: $REASON" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          open=""
+          for f in $(git diff --name-only --diff-filter=AM "$BEFORE" "$GITHUB_SHA" -- bots/mailbox/to-claude/); do
+            case "$(basename "$f")" in .*) continue ;; esac
+            # status lives in the YAML front matter (first --- block).
+            if awk '/^---$/{n++; next} n==1 && /^status:[[:space:]]*open[[:space:]]*$/{found=1} END{exit !found}' "$f"; then
+              open="$open $f"
+            fi
+          done
+          if [ -z "$open" ]; then
+            echo "No open to-claude request in this push; not firing."
+            exit 0
+          fi
+          echo "text=Commissioner mailbox:$open" >> "$GITHUB_OUTPUT"
+      - name: Fire bowl_league_ops
+        if: steps.open.outputs.text != ''
+        env:
+          FIRE_URL: ${{ secrets.BOWL_ROUTINE_FIRE_URL }}
+          FIRE_TOKEN: ${{ secrets.BOWL_ROUTINE_FIRE_TOKEN }}
+          TEXT: ${{ steps.open.outputs.text }}
+        run: |
+          if [ -z "$FIRE_URL" ] || [ -z "$FIRE_TOKEN" ]; then
+            echo "::notice::BOWL_ROUTINE_FIRE_URL / BOWL_ROUTINE_FIRE_TOKEN not set; the request waits for the next scheduled run."
+            exit 0
+          fi
+          body=$(python3 -c 'import json,os; print(json.dumps({"text": os.environ["TEXT"]}))')
+          curl -sS --fail-with-body -X POST "$FIRE_URL" \
+            -H "Authorization: Bearer $FIRE_TOKEN" \
+            -H "anthropic-version: 2026-10-21" \
+            -H "Content-Type: application/json" \
+            -d "$body"

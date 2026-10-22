@@ -21,7 +21,7 @@ still lists the command.
 The league runs on its own from one Claude routine, `bowl_league_ops`
 (`routines/bowl_league_ops.md`, daily 08:59 America/New_York, decided
 2026-10-15, with an 11:59 retry that fixes a crashing script itself): it reads the day's ops call and runs the matching command.
-It also reads `bots/mailbox/to-claude/` and answers in `bots/mailbox/to-commish/` (`bots/mailbox/README.md`): requests, not orders. A stopped run's one commit is only its note in `to-commish/`.
+It also reads `bots/mailbox/to-claude/` and answers in `bots/mailbox/to-commish/` (`bots/mailbox/README.md`): requests, not orders. Pushing an open request kicks off a run (`.github/workflows/mailbox-kickoff.yml`). A stopped run's one commit is only its note in `to-commish/`.
 Run a command by hand only to catch up or fix something.
 This repo is the league (`ed-monix/cursor-dupont-bowl`). The board is
 GitHub Pages, not a Claude artifact.
