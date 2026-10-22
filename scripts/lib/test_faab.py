@@ -514,3 +514,37 @@ def test_one_voided_claim_does_not_sink_the_others():
     updated, entries = faab.apply_won_claims(report, rosters, players)
     assert [e["team"] for e in entries] == ["team-b"]
     assert "fa_rb" in updated["team-b"]["bench"]
+
+
+def test_won_claim_on_an_already_overfull_bench_applies_without_raising():
+    """Week 7: harry-caray's bench was 7 going in (his cut K left the slot
+    empty). resolve_faab does not blame the claim for that, so the apply must
+    not either -- one pre-existing defect stalled the whole week."""
+    players = _players_with_full_bench()
+    players["b7"] = {"name": "b7", "pos": "WR", "team": "AAA",
+                     "status": "Active", "injury": None}
+    roster = _full_roster("team-a", faab=50,
+                          bench=["wr3", "b2", "b3", "b4", "b5", "b6", "b7"])
+    rosters = {"team-a": roster}
+    claims = {"team-a": [{"add": "fa_wr", "drop": "b7", "bid": 9,
+                          "reasoning": "swap the dead weight"}]}
+
+    report = faab.resolve_faab(claims, ["team-a"], rosters, players)
+    assert report["claims"][0]["status"] == "won"
+    updated, entries = faab.apply_won_claims(report, rosters, players)
+    assert len(entries) == 1
+    assert "fa_wr" in updated["team-a"]["bench"]
+    assert "b7" not in updated["team-a"]["bench"]
+    assert updated["team-a"]["faab_remaining"] == 41
+
+
+def test_won_claim_that_worsens_an_invalid_roster_still_raises():
+    players = _players_with_full_bench()
+    players["b7"] = {"name": "b7", "pos": "WR", "team": "AAA",
+                     "status": "Active", "injury": None}
+    roster = _full_roster("team-a", faab=50,
+                          bench=["wr3", "b2", "b3", "b4", "b5", "b6", "b7"])
+    report = {"claims": [{"team": "team-a", "add": "fa_wr", "drop": None,
+                          "bid": 1, "status": "won"}]}
+    with pytest.raises(ValueError, match="bench has 8"):
+        faab.apply_won_claims(report, {"team-a": roster}, players)

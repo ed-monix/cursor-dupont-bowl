@@ -1,0 +1,144 @@
+{
+  "claims": [
+    {
+      "add": "HOU",
+      "bid": 12,
+      "drop": "7523",
+      "reason": "highest bid $12 (next best $8)",
+      "reasoning": "LAC's on the bye and that's a zero I'm not willing to roll with at defense. Houston shows up, plays physical, and $12 is a fair price for a week of honest work - not a name I'm chasing, just a job that needs doing. Lawrence hasn't taken a snap for this program and the kid Cousins already gives us a steadier arm off the bench.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "5850",
+      "bid": 8,
+      "drop": "11581",
+      "reason": "uncontested claim, bid $8",
+      "reasoning": "Josh Jacobs is a pro who's done his job wherever he's lined up, and he's sitting out there for a depth price. Eight dollars for a back like that is good value, not a reach - Lloyd hasn't earned the spot over him.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "12495",
+      "bid": 8,
+      "drop": "5892",
+      "reason": "outbid on 12495: maura-higgins bid $18 (your bid $8)",
+      "reasoning": "Montgomery handed me the one 0.0 in the whole league at RB1 last week and he's Questionable AGAIN this week - that's not bad variance, that's a curse, and I'm not riding it a third time just to look like an idiot in the recap again. Gordon's cheap, nobody's circling him yet as far as I can tell, and eight bucks means I've still got plenty left for when somebody actually tries to mug me on the wire.",
+      "status": "lost",
+      "team": "costanza"
+    },
+    {
+      "add": "1945",
+      "bid": 12,
+      "drop": "12015",
+      "reason": "highest bid $12 (next best $2)",
+      "reasoning": "HOLY COW, Chris Boswell drops SEVENTEEN points last week and he's just sittin' there on the wire, folks?! That's a hot bat if I ever saw one, and he's kickin' for the same Pittsburgh ballclub as my man Aaron Rodgers -- a Steelers double-header right here on Holy Cow Backfield! Been carryin' an empty kicker slot too long and that's on me, so twelve dollars to fix it and stack the vibes is a bargain. Cuttin' loose whatever that mystery fella at '12015' is -- buddy, I don't even know your position, let alone your name, and that's sayin' somethin' comin' from ME.",
+      "status": "won",
+      "team": "harry-caray"
+    },
+    {
+      "add": "HOU",
+      "bid": 8,
+      "drop": "LV",
+      "reason": "outbid on HOU: coach-taylor bid $12 (your bid $8)",
+      "reasoning": "Vegas gave up 33 points and handed me one fantasy point last week \u2014 I rode that defense, now I'm mad at it, and mad means cut. Houston's the best arm on the wire and I'm taking it with eight of my last nine dollars because sitting on FAAB is for guys who are scared of losing.",
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "12495",
+      "bid": 18,
+      "drop": "11651",
+      "reason": "highest bid $18 (next best $11)",
+      "reasoning": "Cook's on his bye and Guerendo's rotting on PUP doing nothing for me anyway, so in comes Ollie Gordon II \u2014 fresh legs, a name with a bit of swagger on it, I fancy him, done.",
+      "status": "won",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "12495",
+      "bid": 11,
+      "drop": "7543",
+      "reason": "outbid on 12495: maura-higgins bid $18 (your bid $11)",
+      "reasoning": "SELINA: Nobody prints a story about MY roster being reckless and then watches me sit on my hands \u2014 get me Ollie Gordon II, Gary, a real investment, not a bit. GARY: Gordon projects 12.3 to Henderson's 6.28 and Etienne hasn't played a snap off IR all year, so this is the actual upgrade, not the headline \u2014 $11 secures him without touching the real money.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "5022",
+      "bid": 2,
+      "drop": "8134",
+      "reason": "outbid on 5022: your-team bid $15 (your bid $2)",
+      "reasoning": "SELINA: Kelce's Questionable and I am not losing to a woman who footnotes her own waiver wire because my tight end sneezed. GARY: Shakir's on a bye and projects zero either way; Goedert's cheap insurance behind Kelce for $2, filed under 'the binder was right and nobody will thank me.'",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "1945",
+      "bid": 2,
+      "drop": "8259",
+      "reason": "outbid on 1945: harry-caray bid $12 (your bid $2)",
+      "reasoning": "Cameron Dicker is on a bye this week, and I want it on the record that this is the schedule and not a judgment on him. Chris Boswell has the best projection of any kicker left on the wire and a defense in front of him I actually trust, and I checked that twice. This isn't a statement pick, it's just arithmetic, so two dollars is exactly what a kicker is worth to me this week, no more.",
+      "status": "lost",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "13274",
+      "bid": 0,
+      "drop": "13287",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "Germie Bernard dropped 20.2 on a team nobody's watching and I watched \u2014 I'm putting in a claim for ZERO dollars because I don't need money to have taste, and Jeremiyah Love already gave me his one episode arc and bored me in the finale. Questionable was never a personality, baby, and neither is 2.2 points a week.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "12495",
+      "bid": 0,
+      "drop": "12534",
+      "reason": "outbid on 12495: maura-higgins bid $18 (your bid $0)",
+      "reasoning": "Ollie Gordon II for the price of absolutely nothing, because I'm $0 and I refuse to let that be a boring sentence \u2014 Kyle Monangai is literally tagged OUT, he is a ghost on my bench, and ghosts don't get storylines. I'm betting on the name, not the budget.",
+      "status": "lost",
+      "team": "rinna"
+    },
+    {
+      "add": "4035",
+      "bid": 18,
+      "drop": "13345",
+      "reason": "uncontested claim, bid $18",
+      "reasoning": "Kid's Questionable and he still put up damn near fourteen points his last time out \u2014 that's a back who shows up hurt, and that's worth real money at my table. Coleman's been on IR so long he's a ghost in this house, his four weeks are up and I kept my word, so he's out and Kamara's in.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "11646",
+      "bid": 8,
+      "drop": "11563",
+      "reason": "uncontested claim, bid $8",
+      "reasoning": "Wilson's dead weight on my roster and Boutte's running on fumes, so I need a receiver who actually touches the ball \u2014 Coker's been doing just that down in Carolina. Nix doesn't play for me anyway, Murray's my guy under center, so the kid finds a seat somewhere else.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "5022",
+      "bid": 15,
+      "drop": "3257",
+      "reason": "highest bid $15 (next best $2)",
+      "reasoning": "Kincaid's on a bye and projecting a zero \u2014 that's not a tight end, that's an empty jersey. Goedert's the best real option standing on the wire, and Caleb's healthy, so Brissett's dead weight. We don't carry two quarterbacks when ours ain't hurt.",
+      "status": "won",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 48,
+    "costanza": 67,
+    "dumbledore": 22,
+    "harry-caray": 10,
+    "kardashian": 0,
+    "leon-black": 9,
+    "maura-higgins": 29,
+    "meyer-walsh": 14,
+    "patricia-moyer": 50,
+    "rinna": 0,
+    "wifes-team": 30,
+    "your-team": 4
+  }
+}

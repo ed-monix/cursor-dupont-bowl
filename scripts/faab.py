@@ -103,7 +103,8 @@ from datetime import datetime, timezone
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 from lib.rosters import (  # noqa: E402
-    apply_transaction, roster_config_from_league, save_roster, validate_roster,
+    _find_player, _remove_player, apply_transaction, roster_config_from_league,
+    save_roster, validate_roster,
 )
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -297,6 +298,28 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     return {"claims": report_claims, "remaining_budget": remaining_budget}
 
 
+def _apply_onto_invalid(roster: dict, txn: dict, players: dict, roster_config,
+                        errors_before: list) -> dict:
+    """Apply an add/drop to a roster that was already invalid going in.
+
+    resolve_faab only blames a claim for illegality it actually causes, so it
+    marks such a claim "won" (week 7: harry-caray's bench was already 7 after
+    his cut kicker left K empty). apply_transaction would refuse it for the
+    pre-existing error; this applies it as long as it adds no new one.
+    """
+    new_roster = copy.deepcopy(roster)
+    if txn.get("drop") is not None:
+        _remove_player(new_roster, txn["drop"])
+    if _find_player(new_roster, txn["player"]) is not None:
+        raise ValueError(f"player {txn['player']} already on roster")
+    new_roster.setdefault("bench", []).append(txn["player"])
+    _, errors_after = validate_roster(new_roster, players, roster_config)
+    added = sorted(set(errors_after) - set(errors_before))
+    if added:
+        raise ValueError("resulting roster is invalid: " + "; ".join(added))
+    return new_roster
+
+
 def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=None, timestamp=None):
     """Apply every 'won' claim in `report` via lib.rosters.apply_transaction.
 
@@ -323,9 +346,14 @@ def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=N
         # (its own validate_roster call then re-checks faab_remaining >= 0
         # as a second safety net on top of resolve_faab's own budget check).
         current = updated[team]
+        was_legal, errors_before = validate_roster(current, players, roster_config)
         current["faab_remaining"] = current.get("faab_remaining", 0) - claim["bid"]
 
-        updated[team] = apply_transaction(current, txn, players, roster_config)
+        if was_legal:
+            updated[team] = apply_transaction(current, txn, players, roster_config)
+        else:
+            updated[team] = _apply_onto_invalid(current, txn, players,
+                                                roster_config, errors_before)
         # Conform to docs/schemas/transaction-entry.json: `action` from the enum,
         # `players` a flat array of ids (add first, then the drop if any),
         # `reasoning` always a string (never null).

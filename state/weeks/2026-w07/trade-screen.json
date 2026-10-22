@@ -1,0 +1,36 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "7547"
+      ],
+      "message": "Taylor, buddy, you're 0-6 and burying Amon-Ra St. Brown behind Puka Nacua like it doesn't matter who starts there \u2014 I'm doing you a favor here, giving you a name you can actually say out loud on offense while I take the guy rotting on your bench. Keenan Allen's a vet, he's steady, he fits that character-over-talent thing you keep selling. Take it before I stop being nice about it.",
+      "out": [
+        "1479"
+      ],
+      "to_team": "coach-taylor"
+    },
+    "ok": true,
+    "reason": ""
+  },
+  {
+    "from": "rinna",
+    "offer": {
+      "in": [
+        "11560"
+      ],
+      "message": "Tony, honey, I'll send you Deshaun Watson \u2014 a man I benched Drake Maye FOR, so you know he's got range \u2014 plus Mike Evans, who is apparently allergic to the end zone this month, and in exchange you hand me Caleb Williams. Not because I need him. Because you love him like he's your last Game 7, and I want to see your face when you say no. We'll see who really wants to win.",
+      "out": [
+        "4017",
+        "2216"
+      ],
+      "to_team": "your-team"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "your-team": 1
+    }
+  }
+]
