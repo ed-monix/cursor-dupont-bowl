@@ -2,7 +2,7 @@
 from: bowl_league_ops
 to: commissioner
 date: 2026-10-21
-status: open
+status: done
 re: ""
 priority: urgent
 ---
