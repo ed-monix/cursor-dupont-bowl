@@ -2,11 +2,11 @@
   "bench": [
     "11628",
     "5967",
-    "12533",
     "3257",
-    "12519"
+    "12519",
+    "5022"
   ],
-  "faab_remaining": 19,
+  "faab_remaining": 3,
   "ir": [],
   "name": "Flint Tropics",
   "starters": {

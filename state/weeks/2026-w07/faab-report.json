@@ -1,0 +1,153 @@
+{
+  "claims": [
+    {
+      "add": "HOU",
+      "bid": 14,
+      "drop": "7523",
+      "reason": "uncontested claim, bid $14",
+      "reasoning": "LAC's got the bye and we can't leave a starting spot empty - that's not how we do things. Houston's shown up and done their job all year against a banged-up Giants team, and $14 is a fair price for a genuine hole, not a panic buy. Letting Lawrence go - he's not even playing this week, and we've got Jones out there earning it with Cousins settled in behind him.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "11646",
+      "bid": 10,
+      "drop": "4983",
+      "reason": "outbid on 11646: patricia-moyer bid $25 (your bid $10)",
+      "reasoning": "Moore's hurt AGAIN, that's the second time this guy's torched me and I already ate a thirteen-point column about it in the paper \u2014 he's bad luck, he's gone, no sentiment. Coker's boring and steady and nobody in this league is writing a single word about him, which is exactly the energy I need right now.",
+      "status": "lost",
+      "team": "costanza"
+    },
+    {
+      "add": "12495",
+      "bid": 7,
+      "drop": "8136",
+      "reason": "outbid on 12495: maura-higgins bid $18 (your bid $7)",
+      "reasoning": "White's done nothing for me all season and Montgomery's sitting on a Questionable tag and a zero projection like it's a pattern, because it IS a pattern \u2014 I need a body that might actually see the field. Gordon's cheap insurance, not a swing, I don't swing anymore, swinging is how you end up in the column.",
+      "status": "lost",
+      "team": "costanza"
+    },
+    {
+      "add": "12501",
+      "bid": 14,
+      "drop": "5947",
+      "reason": "tied bid $14 for 12501; lost tiebreak to maura-higgins (worse standing wins)",
+      "reasoning": "HOLY COW, Matthew Golden, folks -- that's a name that just SINGS off the tongue, and the kid drops NINETEEN POINT FOUR on the board last week like he's been doin' it his whole life! Cuttin' loose Jakobi Meyers, who ain't seen a football since the opener, to bring in a fella who's clearly due for a monster season!",
+      "status": "lost",
+      "team": "harry-caray"
+    },
+    {
+      "add": "1945",
+      "bid": 6,
+      "drop": "12015",
+      "reason": "highest bid $6 (next best $3)",
+      "reasoning": "Now listen, I know a kicker ain't the marquee matchup, folks, but Chris Boswell went off for SEVENTEEN points last week in Pittsburgh and we been runnin' with an empty kicker slot like a bunch of amateurs -- time to close that hole and do it with a fella who's hot right now! Finally kickin' that mystery placeholder fella to the curb, no hard feelings, pal, you held the spot down.",
+      "status": "won",
+      "team": "harry-caray"
+    },
+    {
+      "add": "5850",
+      "bid": 9,
+      "drop": "1479",
+      "reason": "uncontested claim, bid $9",
+      "reasoning": "Nine dollars, all of it, every penny \u2014 Jacobs is a real back on a real offense and Keenan Allen's name stopped doing anything for me weeks ago. Not leaving a dollar on the table, ever.",
+      "status": "won",
+      "team": "leon-black"
+    },
+    {
+      "add": "12495",
+      "bid": 18,
+      "drop": "8210",
+      "reason": "highest bid $18 (next best $7)",
+      "reasoning": "Ollie Gordon's about to eat in that Miami backfield with Achane down, hun, and I'm not sat here with two dead RB slots and a prayer \u2014 he's in, Okonkwo's out, simple.",
+      "status": "won",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "12501",
+      "bid": 14,
+      "drop": "3294",
+      "reason": "highest bid $14 (next best $14)",
+      "reasoning": "Matthew Golden's gorgeous on tape and Love's slinging it his way every week \u2014 Questionable tag doesn't bother me one bit, and I don't need two QBs sat doing nothing so Prescott's gone.",
+      "status": "won",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "12501",
+      "bid": 13,
+      "drop": "7543",
+      "reason": "outbid on 12501: maura-higgins bid $14 (your bid $13)",
+      "reasoning": "SELINA: They want to call me 'GOLDEN CHILD' like it's a burn \u2014 darling, frame it, hang it in the lobby. Now get me the actual Golden, Gary, the Packers rookie with the moment, before some footnote-filer in this league beats us to him. GARY: Matthew Golden dropped 19.4 on the league last week and still projects 12.94 off real GB snaps; cutting Travis Etienne Jr. loose since he's dead weight on IR anyway, bidding $13 of our last $14 because she said the number and I don't argue with the number.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "1945",
+      "bid": 3,
+      "drop": "8259",
+      "reason": "outbid on 1945: harry-caray bid $6 (your bid $3)",
+      "reasoning": "Cameron Dicker's team has a bye this week \u2014 zero games, zero points on the board, and the book is very clear that trusting last week's kicker answer is exactly the complacency it warns against, so I re-ran the entire stream from scratch instead of assuming anything carried over, the way I do every single week regardless of how last week went. Chris Boswell topped the list I built twice independently, seventeen points on the board just last week, and he costs almost nothing, which is the one time I'm allowed to spend small and still call it following the System.",
+      "status": "lost",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "11646",
+      "bid": 25,
+      "drop": "11370",
+      "reason": "highest bid $25 (next best $12)",
+      "reasoning": "Chris Brooks has been inactive on injured reserve since before I even finished documenting why I claimed him in the first place, and the same affirmation that justified adding him \u2014 release what isn't serving you \u2014 requires me to let him go the moment he stops serving the roster; I checked twice, and a man who hasn't played a snap doesn't serve anything. Jalen Coker is the name the wire handed me instead, a receiver outproducing his draft slot week after week, and I'm bidding roughly fifteen to twenty dollars over what I'd call the fair going number on purpose, as a statement, because quiet claims are how good players get overlooked and I don't intend to be the GM who missed him.",
+      "status": "won",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "11559",
+      "bid": 0,
+      "drop": "12534",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "Zero dollars and I'm STILL shopping \u2014 Michael Penix Jr. for free, because a third quarterback nobody asked for is my signature dish and I will not be stopped by a balance sheet. Kyle Monangai's been declared 'Out' for a week straight, which is the single most boring thing a man can do to me, so he's off this show entirely.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "4035",
+      "bid": 20,
+      "drop": "9226",
+      "reason": "uncontested claim, bid $20",
+      "reasoning": "Kamara's got a Questionable next to his name and still dropped 13.9 last week \u2014 that's a guy who shows up when it hurts, I respect that more than a clean injury report. Achane's done for the year, he's not walking through that door, he eats his spot now.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "11646",
+      "bid": 12,
+      "drop": "13345",
+      "reason": "outbid on 11646: patricia-moyer bid $25 (your bid $12)",
+      "reasoning": "Boutte's the only live body I got out wide and that's an embarrassment for a family this size \u2014 this kid in Carolina's getting fed every Sunday, time I bring somebody in who actually touches the ball. Coleman's been dead on IR since September, he's not coming back, he's out.",
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "5022",
+      "bid": 16,
+      "drop": "12533",
+      "reason": "uncontested claim, bid $16",
+      "reasoning": "Kincaid's on a bye and I'm not walking into Sunday fielding eight players and a prayer at tight end \u2014 Goedert's the best arm left on the wire with a real catch-point role in that Monday night game. Croskey-Merritt's been dead weight on IR for weeks; he's the toll, not a loss.",
+      "status": "won",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 54,
+    "costanza": 67,
+    "dumbledore": 22,
+    "harry-caray": 16,
+    "kardashian": 0,
+    "leon-black": 0,
+    "maura-higgins": 15,
+    "meyer-walsh": 14,
+    "patricia-moyer": 25,
+    "rinna": 0,
+    "wifes-team": 36,
+    "your-team": 3
+  }
+}

@@ -93,6 +93,13 @@ second commit, and they never replace the league action.
    below, re-read them, and follow the edited text for the pick. If that
    request is in scope but the kickoff is too close, do not edit, and leave
    it open. Then pick, first match wins:
+   - **Waivers before the window.** `action` is `lineups-early` or
+     `lineups-main`, `done.waivers` is false for `W`, and the window's first
+     kickoff is still at least 3 hours away (America/New_York clock; the
+     `games_today` entry for that window) -> waivers for `W`. The later run
+     the same day (the 11:59 retry) then locks the lineup. A week's waivers
+     are never lost to a lineup window while there is time (mailbox
+     2026-10-21, issue 22).
    - `action` is `lineups-early` or `lineups-main` -> lineups, window from `window`.
      A lineup window is time-bound, so it goes first.
    - **Recap gap.** `state/weeks/2026-w<W-1>/lineups.json` exists and

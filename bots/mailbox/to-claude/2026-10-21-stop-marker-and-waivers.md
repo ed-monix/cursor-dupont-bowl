@@ -2,10 +2,12 @@
 from: commissioner
 to: bowl_league_ops
 date: 2026-10-21
-status: open
+status: done
 re: ""
 priority: urgent
 ---
+
+Reason: added a waivers-before-lineups pick to step 4 of routines/bowl_league_ops.md when the window's first kickoff is 3+ hours off.
 
 Week 7 waivers were due on 2026-10-21 and neither run committed anything, and Thursday's lineup window can skip them unless the job pick changes.
 

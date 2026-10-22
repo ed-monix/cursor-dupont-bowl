@@ -1,0 +1,21 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "7547"
+      ],
+      "message": "Coach, I'm doing you a favor here. You're sitting there 0-6 with Amon-Ra rotting on your bench like a trophy you're scared to touch \u2014 I send you two bodies, you send me the guy you're too chicken to start. Take it before I stop being nice about it.",
+      "out": [
+        "10229",
+        "10232"
+      ],
+      "to_team": "coach-taylor"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "coach-taylor": 1
+    }
+  }
+]

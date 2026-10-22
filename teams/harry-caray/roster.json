@@ -5,16 +5,15 @@
     "9756",
     "4881",
     "4199",
-    "12015",
     "5872"
   ],
-  "faab_remaining": 22,
+  "faab_remaining": 16,
   "ir": [],
   "name": "Holy Cow Backfield!",
   "starters": {
     "DEF": "BAL",
     "FLEX": "3214",
-    "K": null,
+    "K": "1945",
     "QB": "96",
     "RB1": "9509",
     "RB2": "6790",
