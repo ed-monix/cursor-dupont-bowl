@@ -32,6 +32,34 @@ def test_index_and_kicked():
     assert nfl_slate.game_has_kicked(by_team["DET"]) is False
 
 
+def test_public_pack_drops_rostered_players_from_the_wire(tmp_path: Path):
+    """The free-agent file can still list a rostered id. The pack GMs see must not."""
+    root = tmp_path
+    (root / "teams" / "dumbledore").mkdir(parents=True)
+    (root / "teams" / "harry-caray").mkdir(parents=True)
+    (root / "state").mkdir()
+    (root / "teams" / "dumbledore" / "roster.json").write_text(json.dumps({
+        "team": "dumbledore", "faab_remaining": 22,
+        "starters": {"RB2": "11435"}, "bench": [], "ir": [],
+    }))
+    (root / "teams" / "harry-caray" / "roster.json").write_text(json.dumps({
+        "team": "harry-caray", "faab_remaining": 40,
+        "starters": {"QB": "96"}, "bench": [], "ir": [],
+    }))
+    (root / "state" / "free-agents.json").write_text(json.dumps({
+        "11435": {"name": "Rico Dowdle", "pos": "RB", "proj_pts": 12.0},
+        "96": {"name": "Aaron Rodgers", "pos": "QB", "proj_pts": 15.0},
+        "12501": {"name": "Matthew Golden", "pos": "WR", "proj_pts": 10.0},
+    }))
+
+    public = packs.build_public_pack(root, 7, "2026")
+    trimmed = public["free_agents_trimmed"]
+    assert "11435" not in trimmed
+    assert "96" not in trimmed
+    assert "12501" in trimmed
+    assert public["free_agents_full_count"] == 1
+
+
 def test_trim_free_agents_caps_per_position():
     fa = {}
     for i in range(20):

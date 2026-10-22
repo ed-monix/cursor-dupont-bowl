@@ -14,6 +14,9 @@ free agency"):
       same drop is skipped.
     - A claim whose drop player is already gone (not on that team's roster
       to begin with) is skipped.
+    - A claim for a player already on another team's roster is skipped
+      (logged, not applied). It never enters the auction, so it cannot
+      win, charge FAAB, or land on a second roster.
     - A won claim's bid is deducted from the team's remaining FAAB; a team
       can never be charged more than it has (a bid that would overspend the
       team's remaining budget is skipped, not applied).
@@ -135,6 +138,26 @@ def _roster_has_player(roster: dict, player_id: str) -> bool:
     return False
 
 
+def _other_roster_owner(rosters: dict, player_id, claiming_team: str):
+    """Slug of another team that already rosters ``player_id``, or None.
+
+    Checked against the rosters at the start of the run. A same-team add is
+    not this case (``apply_transaction`` already rejects that). Team order is
+    sorted so the logged owner is stable if a player is somehow on two clubs.
+    """
+    keys = {player_id}
+    if player_id is not None:
+        keys.add(str(player_id))
+    for team in sorted(rosters):
+        if team == claiming_team:
+            continue
+        roster = rosters.get(team) or {}
+        for key in keys:
+            if _roster_has_player(roster, key):
+                return team
+    return None
+
+
 def _pick_winner(bids: list[tuple[str, dict]], standings: list[str]) -> tuple[str, dict]:
     """bids: [(team, claim), ...] all bidding on the same add player.
     Highest bid wins; ties broken by worse standing (lower rank index)."""
@@ -155,12 +178,20 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     # never win) but still recording them as skipped in the report.
     bids_by_add: dict[str, list[tuple[str, dict]]] = {}
     unknown_claims: list[tuple[str, dict]] = []
+    # Claims on a player another team already rosters never enter the
+    # auction. Pulling them out here leaves bid order, tiebreaks, and
+    # budgets for everyone else exactly as they were.
+    rostered_claims: list[tuple[str, dict, str]] = []
 
     for team, claim_list in claims_by_team.items():
         for claim in claim_list:
             add_id = claim["add"]
             if add_id not in players:
                 unknown_claims.append((team, claim))
+                continue
+            owner = _other_roster_owner(rosters, add_id, team)
+            if owner is not None:
+                rostered_claims.append((team, claim, owner))
                 continue
             bids_by_add.setdefault(add_id, []).append((team, claim))
 
@@ -179,6 +210,7 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     }
 
     unknown_lookup = {id(claim): True for _, claim in unknown_claims}
+    rostered_lookup = {id(claim): owner for _, claim, owner in rostered_claims}
 
     # A team can win more than one claim, and each changes its roster, so
     # legality has to be checked against the roster as it will actually be
@@ -203,6 +235,13 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
             if id(claim) in unknown_lookup:
                 entry["status"] = "skipped"
                 entry["reason"] = f"unknown player id: {add_id}"
+                report_claims.append(entry)
+                continue
+
+            if id(claim) in rostered_lookup:
+                owner = rostered_lookup[id(claim)]
+                entry["status"] = "skipped"
+                entry["reason"] = f"player {add_id} already rostered by {owner}"
                 report_claims.append(entry)
                 continue
 
