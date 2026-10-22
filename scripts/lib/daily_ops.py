@@ -126,10 +126,23 @@ def decide(
     ]
     pending_today = [g for g in today_games if not nfl_slate.game_has_kicked(g)]
 
+    # Waivers before a lineup window on the week's first game day (2026-10-22,
+    # bowl #22): a Thursday kickoff used to send the day straight to
+    # lineups-early, and week 6 waivers never ran. While no game of the week
+    # has kicked and waivers are undone, waivers go first; the next run that
+    # day locks the window.
+    nothing_kicked = not any(nfl_slate.game_has_kicked(g) for g in week_games)
+    if (pending_today and kickoff is not None and today <= kickoff and nothing_kicked
+            and not done.get("waivers")):
+        return _call("waivers", None, today, week_games, kickoff)
+
     if pending_today:
         windows = {nfl_slate.window_for_game(g) for g in pending_today}
         if "early" in windows and not done.get("lineups-early"):
-            return _call("lineups-early", "early", today, pending_today, kickoff)
+            call = _call("lineups-early", "early", today, pending_today, kickoff)
+            if not done.get("waivers"):
+                call["reason"] += "; waivers were not run before the first kickoff and are skipped this week"
+            return call
         if "main" in windows and not done.get("lineups-main"):
             return _call("lineups-main", "main", today, pending_today, kickoff)
 

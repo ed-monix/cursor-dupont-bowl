@@ -103,7 +103,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 from lib.rosters import (  # noqa: E402
-    apply_transaction, roster_config_from_league, save_roster, validate_roster,
+    _starter_slots, apply_transaction, roster_config_from_league, save_roster, validate_roster,
 )
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -261,10 +261,11 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
             # already does: Ruling 2026-05 refunded a voided bid, and the
             # commissioner's own memos say "no FAAB is charged" for a struck
             # claim.
-            txn = {"type": "add", "player": add_id, "to": "bench"}
+            probe = copy.deepcopy(working.get(team, rosters.get(team, {})))
+            txn = {"type": "add", "player": add_id,
+                   "to": claim_target(probe, add_id, players, roster_config, drop_id)}
             if drop_id is not None:
                 txn["drop"] = drop_id
-            probe = copy.deepcopy(working.get(team, rosters.get(team, {})))
             # Only blame a claim for illegality it actually causes. If the
             # roster is already invalid going in, that is not this claim's
             # doing and gating on it would punish the wrong GM.
@@ -297,6 +298,27 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     return {"claims": report_claims, "remaining_budget": remaining_budget}
 
 
+def claim_target(roster: dict, add_id: str, players: dict, roster_config=None, drop_id=None) -> str:
+    """Where a won claim lands (Ruling 2026-10, 2026-10-22): an empty starting
+    slot that takes only the added player's position (K, DEF, QB, TE, RB1, ...)
+    before the bench; the bench otherwise. A slot the claim's own drop empties
+    counts as empty. FLEX-style slots are never filled this way: that is a
+    lineup choice, not a roster fact.
+
+    Pure. The first live case: harry-caray's week 7 claim for kicker Cairo
+    Santos, with the K slot empty and the bench already over its limit."""
+    pos = (players.get(add_id) or {}).get("pos")
+    starters = dict(roster.get("starters") or {})
+    if drop_id is not None:
+        for slot, pid in starters.items():
+            if pid == drop_id:
+                starters[slot] = None
+    for slot, allowed in _starter_slots(roster_config).items():
+        if pos and set(allowed) == {pos} and starters.get(slot) is None:
+            return slot
+    return "bench"
+
+
 def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=None, timestamp=None):
     """Apply every 'won' claim in `report` via lib.rosters.apply_transaction.
 
@@ -314,7 +336,8 @@ def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=N
         if claim["status"] != "won":
             continue
         team = claim["team"]
-        txn = {"type": "add", "player": claim["add"], "to": "bench"}
+        txn = {"type": "add", "player": claim["add"],
+               "to": claim_target(updated[team], claim["add"], players, roster_config, claim.get("drop"))}
         if claim.get("drop") is not None:
             txn["drop"] = claim["drop"]
 

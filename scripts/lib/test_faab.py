@@ -514,3 +514,34 @@ def test_one_voided_claim_does_not_sink_the_others():
     updated, entries = faab.apply_won_claims(report, rosters, players)
     assert [e["team"] for e in entries] == ["team-b"]
     assert "fa_rb" in updated["team-b"]["bench"]
+
+
+# ---------------------------------------------------------------------------
+# Ruling 2026-10 (2026-10-22): a won claim fills an empty starting slot for
+# its position before the bench. harry-caray's week 7 kicker claim crashed the
+# apply because the K slot was empty and the bench was already over its limit.
+# ---------------------------------------------------------------------------
+
+def test_claim_fills_an_empty_position_slot_before_the_bench():
+    players = _players_with_full_bench()
+    players["fa_k"] = {"name": "fa_k", "pos": "K", "team": "AAA", "status": "Active", "injury": None}
+    roster = _bench_full("team-a", faab=50)
+    roster["starters"]["K"] = None
+    assert faab.claim_target(roster, "fa_k", players) == "K"
+    assert faab.claim_target(roster, "b2", players) == "bench"   # a WR: WR slots are full, FLEX is never auto-filled
+    report = {"claims": [{"team": "team-a", "add": "fa_k", "drop": None, "bid": 1,
+                          "reasoning": "need a kicker", "status": "won", "reason": "uncontested claim, bid $1"}]}
+    updated, entries = faab.apply_won_claims(report, {"team-a": roster}, players,
+                                             timestamp="2026-10-22T12:00:00+00:00")
+    assert updated["team-a"]["starters"]["K"] == "fa_k"
+    assert "fa_k" not in updated["team-a"]["bench"]
+    assert len(updated["team-a"]["bench"]) == 6
+    assert entries[0]["status"] == "applied"
+
+
+def test_a_slot_freed_by_the_claims_own_drop_counts_as_empty():
+    players = _players_with_full_bench()
+    players["fa_k"] = {"name": "fa_k", "pos": "K", "team": "AAA", "status": "Active", "injury": None}
+    roster = _bench_full("team-a", faab=50)
+    old_k = roster["starters"]["K"]
+    assert faab.claim_target(roster, "fa_k", players, drop_id=old_k) == "K"

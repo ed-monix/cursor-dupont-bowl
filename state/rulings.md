@@ -237,3 +237,28 @@ move — roster before and after, the GM's reasoning, the free agents he was
 offered. Nothing is written to a roster unless the commissioner approves. A
 block is logged and applies nothing; a review that cannot be had applies
 nothing either. The office no longer moves a player it has not looked at.
+
+## Ruling 2026-10 — A claimed player takes an empty starting slot at his position before the bench (2026-10-22)
+
+The week 7 waiver apply stopped on harry-caray's claim for Cairo Santos (K). The
+roster arrived already broken: an empty K slot, and seven men on a six-man bench,
+one of them a player the league no longer recognises (12015), whom the claim was
+dropping. The office had no rule for where the new man goes. The bench was the
+only answer the script knew, and the bench was full.
+
+The owner has ruled: a player won on waivers goes into an empty starting slot
+that takes only his position (K, DEF, QB, TE, RB1, ...) before the bench, and a
+slot the claim's own drop empties counts as empty. A FLEX-type slot is never
+filled this way; who plays there is a lineup decision, not a waiver one.
+`scripts/faab.py` (`claim_target`) applies it, and the waiver legality check uses
+the same placement, so a claim is judged where it will actually land.
+
+Applied to the case at hand: Santos kicks for Holy Cow Backfield!, the phantom is
+released, and the bench is back to six. The office notes that a kicker was the
+thing this team lacked, and that it took a ruling to give him one.
+
+The same day the office stopped losing waivers to Thursday: on the week's first
+game day, with no game kicked off and waivers undone, the ops call runs waivers
+before the lineup window (`scripts/lib/daily_ops.py`). Week 6 waivers were lost
+that way; week 7's will not be.
+

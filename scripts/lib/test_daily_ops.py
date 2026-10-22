@@ -99,3 +99,26 @@ def test_ops_for_committed_repo_thursday_week1():
     # TNF LAR/SF is already complete in committed state → idle or early
     # depending on remaining pre_game Thursday games (none).
     assert call["action"] in ("idle", "lineups-early")
+
+
+def test_kickoff_day_runs_waivers_first_when_undone():
+    # bowl #22: Thursday kickoff with waivers undone went straight to lineups.
+    call = decide(
+        today=date(2026, 9, 10),
+        week_games=TNF,
+        done={"waivers": False, "lineups-early": False, "lineups-main": False, "recap": False},
+    )
+    assert call["action"] == "waivers"
+
+
+def test_waivers_skipped_once_a_game_has_kicked_is_said_out_loud():
+    kicked = [{**TNF[0], "status": "in_game"}] + TNF[1:]
+    later_thursday = [{**kicked[0]}, {**TNF[1], "date": "2026-09-10"}, TNF[2]]
+    call = decide(
+        today=date(2026, 9, 10),
+        week_games=later_thursday,
+        done={"waivers": False, "lineups-early": False, "lineups-main": False, "recap": False},
+    )
+    assert call["action"] in ("lineups-early", "lineups-main")
+    if call["action"] == "lineups-early":
+        assert "skipped" in call["reason"]
