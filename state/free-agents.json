@@ -17,7 +17,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "6783": {
   "name": "Jerry Jeudy",
@@ -25,13 +25,13 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.51,
+  "proj_pts": 2.37,
   "proj": {
+   "rec_yd": 14.39,
    "rec_td": 0.06,
-   "rec_yd": 15.11,
-   "rec": 1.25
+   "rec": 1.11
   },
-  "last_wk_pts": 8.9
+  "last_wk_pts": 4.1
  },
  "13600": {
   "name": "Tyren Montgomery",
@@ -49,13 +49,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.8,
-  "proj": {
-   "rec_td": 0.06,
-   "rec_yd": 10.33,
-   "rec": 0.82
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 6.3
  },
  "11439": {
   "name": "Jaleel McLaughlin",
@@ -63,14 +59,14 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.18,
+  "proj_pts": 0.9,
   "proj": {
-   "rush_yd": 5.62,
-   "rush_td": 0.05,
-   "rec_yd": 1.5,
-   "rec": 0.22
+   "rush_td": 0.03,
+   "rec_yd": 1.41,
+   "rush_yd": 4.17,
+   "rec": 0.2
   },
-  "last_wk_pts": 7.5
+  "last_wk_pts": 0.0
  },
  "13302": {
   "name": "Adam Randall",
@@ -88,11 +84,11 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.56,
+  "proj_pts": 2.43,
   "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 21.46,
-   "rec": 1.1
+   "rec_yd": 13.68,
+   "rec_td": 0.11,
+   "rec": 0.71
   },
   "last_wk_pts": 0.0
  },
@@ -101,7 +97,7 @@
   "pos": "QB",
   "team": "NE",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -112,9 +108,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 3.2
+  "proj_pts": 3.56,
+  "proj": {
+   "rec_yd": 17.75,
+   "rec_td": 0.16,
+   "rec": 1.65
+  },
+  "last_wk_pts": null
  },
  "12699": {
   "name": "LaJohntay Wester",
@@ -122,27 +122,23 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.22,
+  "proj_pts": 0.21,
   "proj": {
+   "rec_yd": 0.91,
    "rec_td": 0.01,
-   "rec_yd": 1.05,
    "rec": 0.07
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 2.0
  },
  "11304": {
   "name": "E.J. Jenkins",
   "pos": "TE",
-  "team": "PHI",
+  "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.22,
-  "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.06,
-   "rec": 0.1
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
  },
  "19": {
   "name": "Joe Flacco",
@@ -152,7 +148,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "4054": {
   "name": "Mo Alie-Cox",
@@ -160,13 +156,13 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.69,
+  "proj_pts": 0.75,
   "proj": {
+   "rec_yd": 3.8,
    "rec_td": 0.03,
-   "rec_yd": 3.43,
-   "rec": 0.34
+   "rec": 0.38
   },
-  "last_wk_pts": 6.6
+  "last_wk_pts": 0.0
  },
  "12848": {
   "name": "Josh Kelly",
@@ -196,7 +192,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "6016": {
   "name": "Dax Raymond",
@@ -214,11 +210,11 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.59,
+  "proj_pts": 0.91,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 13.68,
-   "rec": 1.33
+   "rec_yd": 4.79,
+   "rec_td": 0.03,
+   "rec": 0.48
   },
   "last_wk_pts": 0.0
  },
@@ -228,14 +224,14 @@
   "team": "GB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.45,
+  "proj_pts": 0.66,
   "proj": {
-   "rush_yd": 14.88,
-   "rush_td": 0.1,
-   "rec_yd": 6.67,
-   "rec": 0.78
+   "rush_td": 0.02,
+   "rec_yd": 1.23,
+   "rush_yd": 2.78,
+   "rec": 0.16
   },
-  "last_wk_pts": 9.2
+  "last_wk_pts": 0.0
  },
  "7585": {
   "name": "Davis Mills",
@@ -253,19 +249,24 @@
   "team": "JAX",
   "status": "Active",
   "injury": "Questionable",
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.97,
+  "proj": {
+   "rush_td": 0.03,
+   "rec_yd": 1.97,
+   "rush_yd": 3.89,
+   "rec": 0.28
+  },
+  "last_wk_pts": null
  },
  "5854": {
   "name": "Drew Lock",
   "pos": "QB",
   "team": "SEA",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7593": {
   "name": "Trey Sermon",
@@ -282,29 +283,30 @@
   "pos": "RB",
   "team": "CLE",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.62,
+  "injury": "Out",
+  "proj_pts": 0.67,
   "proj": {
-   "rush_yd": 3.11,
    "rush_td": 0.03,
-   "rec_yd": 0.83,
+   "rec_yd": 0.79,
+   "rush_yd": 3.58,
    "rec": 0.1
   },
-  "last_wk_pts": 7.9
+  "last_wk_pts": null
  },
- "HOU": {
-  "name": "Houston Texans",
-  "pos": "DEF",
-  "team": "HOU",
-  "status": null,
+ "3294": {
+  "name": "Dak Prescott",
+  "pos": "QB",
+  "team": "DAL",
+  "status": "Active",
   "injury": null,
-  "proj_pts": 8.58,
+  "proj_pts": 22.29,
   "proj": {
-   "sack": 2.66,
-   "int": 0.89,
-   "pts_allow": 16.25
+   "pass_yd": 298.99,
+   "pass_td": 2.34,
+   "rush_yd": 13.82,
+   "pass_int": 0.49
   },
-  "last_wk_pts": 1.0
+  "last_wk_pts": 23.28
  },
  "13301": {
   "name": "Antonio Williams",
@@ -312,9 +314,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 6.5
+  "proj_pts": 5.86,
+  "proj": {
+   "rec_yd": 29.62,
+   "rec_td": 0.25,
+   "rec": 2.55
+  },
+  "last_wk_pts": null
  },
  "11636": {
   "name": "Johnny Wilson",
@@ -332,13 +338,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.81,
+  "proj_pts": 2.85,
   "proj": {
+   "rec_yd": 16.14,
    "rec_td": 0.07,
-   "rec_yd": 15.42,
-   "rec": 1.69
+   "rec": 1.64
   },
-  "last_wk_pts": 6.8
+  "last_wk_pts": 5.9
  },
  "NE": {
   "name": "New England Patriots",
@@ -346,13 +352,13 @@
   "team": "NE",
   "status": null,
   "injury": null,
-  "proj_pts": 5.58,
+  "proj_pts": 8.33,
   "proj": {
-   "sack": 2.24,
-   "int": 0.66,
-   "pts_allow": 26.75
+   "int": 0.86,
+   "pts_allow": 18.5,
+   "sack": 2.93
   },
-  "last_wk_pts": 6.0
+  "last_wk_pts": 2.0
  },
  "11557": {
   "name": "Joe Milton",
@@ -362,7 +368,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "5995": {
   "name": "Justice Hill",
@@ -370,14 +376,14 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.45,
+  "proj_pts": 5.14,
   "proj": {
-   "rush_yd": 17.36,
    "rush_td": 0.09,
-   "rec_yd": 16.69,
-   "rec": 1.93
+   "rec_yd": 14.05,
+   "rush_yd": 16.96,
+   "rec": 1.79
   },
-  "last_wk_pts": 2.4
+  "last_wk_pts": 4.8
  },
  "12925": {
   "name": "Jamaal Pritchett",
@@ -405,20 +411,20 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.66,
+  "proj_pts": 4.8,
   "proj": {
-   "rec_td": 0.2,
-   "rec_yd": 26.06,
-   "rec": 1.69
+   "rec_yd": 26.65,
+   "rec_td": 0.21,
+   "rec": 1.72
   },
-  "last_wk_pts": 16.2
+  "last_wk_pts": 1.1
  },
  "13418": {
   "name": "Robert Henry Jr.",
   "pos": "RB",
   "team": "SEA",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -429,13 +435,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.35,
+  "proj_pts": 4.4,
   "proj": {
-   "rec_td": 0.16,
-   "rec_yd": 25.26,
-   "rec": 1.7
+   "rec_yd": 24.01,
+   "rec_td": 0.18,
+   "rec": 1.81
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 2.1
  },
  "7049": {
   "name": "Jauan Jennings",
@@ -443,13 +449,13 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.78,
+  "proj_pts": 4.98,
   "proj": {
-   "rec_td": 0.26,
-   "rec_yd": 23.01,
-   "rec": 1.83
+   "rec_yd": 24.78,
+   "rec_td": 0.24,
+   "rec": 2.13
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.4
  },
  "11610": {
   "name": "Malik Washington",
@@ -457,34 +463,30 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.83,
+  "proj_pts": 7.4,
   "proj": {
-   "rec_td": 0.17,
-   "rec_yd": 42.28,
-   "rec": 3.6
+   "rec_yd": 40.95,
+   "rec_td": 0.11,
+   "rec": 3.68
   },
-  "last_wk_pts": null
+  "last_wk_pts": 5.0
  },
  "10228": {
   "name": "Charlie Jones",
   "pos": "WR",
   "team": "NYG",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 0.15,
-  "proj": {
-   "rec_td": 0.0,
-   "rec_yd": 0.91,
-   "rec": 0.07
-  },
-  "last_wk_pts": 5.6
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "829": {
   "name": "Andy Dalton",
   "pos": "QB",
   "team": "ATL",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -507,7 +509,17 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
+ },
+ "11370": {
+  "name": "Chris Brooks",
+  "pos": "RB",
+  "team": "GB",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "11574": {
   "name": "Dylan Laube",
@@ -515,14 +527,14 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.35,
+  "proj_pts": 0.37,
   "proj": {
-   "rush_yd": 1.14,
    "rush_td": 0.01,
-   "rec_yd": 0.67,
+   "rec_yd": 0.71,
+   "rush_yd": 1.25,
    "rec": 0.1
   },
-  "last_wk_pts": 0.4
+  "last_wk_pts": 0.0
  },
  "6323": {
   "name": "Andrew Beck",
@@ -530,9 +542,14 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.04,
+  "proj": {
+   "rush_td": 0.0,
+   "rec_yd": 0.21,
+   "rush_yd": 0.11,
+   "rec": 0.02
+  },
+  "last_wk_pts": -0.1
  },
  "6927": {
   "name": "Quez Watkins",
@@ -550,13 +567,13 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.83,
+  "proj_pts": 6.42,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 32.47,
-   "rec": 3.36
+   "rec_yd": 33.51,
+   "rec_td": 0.22,
+   "rec": 3.49
   },
-  "last_wk_pts": 0.9
+  "last_wk_pts": 0.0
  },
  "3269": {
   "name": "Chris Moore",
@@ -576,7 +593,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13554": {
   "name": "CJ Williams",
@@ -594,9 +611,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
+  "proj_pts": 0.47,
+  "proj": {
+   "rec_yd": 2.53,
+   "rec_td": 0.02,
+   "rec": 0.2
+  },
+  "last_wk_pts": 0.0
  },
  "11647": {
   "name": "Kimani Vidal",
@@ -604,9 +625,14 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 5.5
+  "proj_pts": 6.13,
+  "proj": {
+   "rush_td": 0.17,
+   "rec_yd": 10.38,
+   "rush_yd": 25.88,
+   "rec": 1.45
+  },
+  "last_wk_pts": null
  },
  "6045": {
   "name": "Gary Jennings",
@@ -616,7 +642,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13273": {
   "name": "Josh Cuevas",
@@ -624,13 +650,13 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.46,
+  "proj_pts": 1.39,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 8.51,
-   "rec": 0.73
+   "rec_yd": 7.51,
+   "rec_td": 0.05,
+   "rec": 0.68
   },
-  "last_wk_pts": 12.4
+  "last_wk_pts": 4.5
  },
  "13282": {
   "name": "Jack Endries",
@@ -638,13 +664,13 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.08,
+  "proj_pts": 0.19,
   "proj": {
-   "rec_td": 0.0,
-   "rec_yd": 0.51,
-   "rec": 0.06
+   "rec_yd": 0.89,
+   "rec_td": 0.01,
+   "rec": 0.09
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "7608": {
   "name": "Khalil Herbert",
@@ -652,9 +678,14 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.47,
+  "proj": {
+   "rush_td": 0.02,
+   "rec_yd": 0.3,
+   "rush_yd": 2.98,
+   "rec": 0.04
+  },
+  "last_wk_pts": 3.3
  },
  "4227": {
   "name": "Harrison Butker",
@@ -662,13 +693,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.33,
+  "proj_pts": 7.66,
   "proj": {
-   "xpm": 2.32,
-   "fgm": 1.68,
-   "fga": 1.97
+   "xpm": 2.43,
+   "fgm": 1.76,
+   "fga": 2.07
   },
-  "last_wk_pts": 11.0
+  "last_wk_pts": 3.0
  },
  "8484": {
   "name": "Ko Kieft",
@@ -678,8 +709,8 @@
   "injury": null,
   "proj_pts": 0.03,
   "proj": {
+   "rec_yd": 0.18,
    "rec_td": 0.0,
-   "rec_yd": 0.17,
    "rec": 0.02
   },
   "last_wk_pts": 0.0
@@ -690,12 +721,12 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.18,
+  "proj_pts": 0.17,
   "proj": {
-   "rush_yd": 0.58,
    "rush_td": 0.01,
-   "rec_yd": 0.38,
-   "rec": 0.05
+   "rec_yd": 0.35,
+   "rush_yd": 0.59,
+   "rec": 0.04
   },
   "last_wk_pts": 0.0
  },
@@ -705,14 +736,14 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.32,
+  "proj_pts": 1.54,
   "proj": {
-   "rush_yd": 1.49,
-   "rush_td": 0.01,
-   "rec_yd": 0.7,
-   "rec": 0.08
+   "rush_td": 0.04,
+   "rec_yd": 4.5,
+   "rush_yd": 4.32,
+   "rec": 0.52
   },
-  "last_wk_pts": 3.1
+  "last_wk_pts": 6.9
  },
  "13079": {
   "name": "Jahdae Walker",
@@ -720,10 +751,10 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.19,
+  "proj_pts": 0.18,
   "proj": {
+   "rec_yd": 0.82,
    "rec_td": 0.01,
-   "rec_yd": 0.92,
    "rec": 0.07
   },
   "last_wk_pts": 0.0
@@ -746,17 +777,21 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13380": {
   "name": "Brenen Thompson",
   "pos": "WR",
   "team": "LAC",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "injury": "Questionable",
+  "proj_pts": 0.69,
+  "proj": {
+   "rec_yd": 3.51,
+   "rec_td": 0.03,
+   "rec": 0.31
+  },
+  "last_wk_pts": null
  },
  "2944": {
   "name": "Matt LaCosse",
@@ -776,11 +811,11 @@
   "injury": null,
   "proj_pts": 0.36,
   "proj": {
+   "rec_yd": 1.99,
    "rec_td": 0.01,
-   "rec_yd": 2.06,
-   "rec": 0.19
+   "rec": 0.2
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "2197": {
   "name": "Brandin Cooks",
@@ -788,12 +823,8 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.24,
-  "proj": {
-   "rec_td": 0.23,
-   "rec_yd": 36.57,
-   "rec": 2.36
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 1.8
  },
  "13421": {
@@ -802,13 +833,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.55,
+  "proj_pts": 4.59,
   "proj": {
-   "rec_td": 0.18,
-   "rec_yd": 24.7,
-   "rec": 2.0
+   "rec_yd": 23.48,
+   "rec_td": 0.2,
+   "rec": 2.09
   },
-  "last_wk_pts": 1.6
+  "last_wk_pts": 13.1
  },
  "12961": {
   "name": "Ryan Fitzgerald",
@@ -816,13 +847,13 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.7,
+  "proj_pts": 7.69,
   "proj": {
    "xpm": 2.34,
-   "fgm": 1.75,
+   "fgm": 1.76,
    "fga": 2.08
   },
-  "last_wk_pts": 9.0
+  "last_wk_pts": 0.0
  },
  "10955": {
   "name": "Chad Ryland",
@@ -830,13 +861,13 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.5,
+  "proj_pts": 8.12,
   "proj": {
-   "xpm": 2.21,
-   "fgm": 1.76,
-   "fga": 2.08
+   "xpm": 2.39,
+   "fgm": 1.9,
+   "fga": 2.25
   },
-  "last_wk_pts": 19.0
+  "last_wk_pts": 11.0
  },
  "7933": {
   "name": "Alex Kessman",
@@ -856,7 +887,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13310": {
   "name": "Miller Moss",
@@ -883,9 +914,13 @@
   "pos": "WR",
   "team": "BAL",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "injury": "Out",
+  "proj_pts": 0.37,
+  "proj": {
+   "rec_yd": 2.24,
+   "rec_td": 0.01,
+   "rec": 0.17
+  },
   "last_wk_pts": null
  },
  "12535": {
@@ -894,13 +929,13 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.68,
+  "proj_pts": 3.13,
   "proj": {
-   "rec_td": 0.1,
-   "rec_yd": 23.56,
-   "rec": 1.4
+   "rec_yd": 21.52,
+   "rec_td": 0.06,
+   "rec": 1.2
   },
-  "last_wk_pts": null
+  "last_wk_pts": 1.5
  },
  "12491": {
   "name": "Corey Kiner",
@@ -908,14 +943,14 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.52,
+  "proj_pts": 4.75,
   "proj": {
-   "rush_yd": 21.71,
-   "rush_td": 0.16,
-   "rec_yd": 7.61,
-   "rec": 0.78
+   "rush_td": 0.18,
+   "rec_yd": 7.23,
+   "rush_yd": 22.39,
+   "rec": 0.81
   },
-  "last_wk_pts": 5.7
+  "last_wk_pts": 1.3
  },
  "6130": {
   "name": "Devin Singletary",
@@ -923,14 +958,9 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.7,
-  "proj": {
-   "rush_yd": 18.12,
-   "rush_td": 0.18,
-   "rec_yd": 7.92,
-   "rec": 1.24
-  },
-  "last_wk_pts": 3.8
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 13.0
  },
  "5004": {
   "name": "Ito Smith",
@@ -950,7 +980,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13905": {
   "name": "Omari Evans",
@@ -967,7 +997,7 @@
   "pos": "QB",
   "team": "NO",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -978,23 +1008,23 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
+  "proj_pts": 1.85,
+  "proj": {
+   "rush_td": 0.04,
+   "rec_yd": 3.04,
+   "rush_yd": 9.12,
+   "rec": 0.43
+  },
+  "last_wk_pts": 4.9
  },
  "13347": {
   "name": "Demond Claiborne",
   "pos": "RB",
   "team": "MIN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.62,
-  "proj": {
-   "rush_yd": 2.29,
-   "rush_td": 0.03,
-   "rec_yd": 0.89,
-   "rec": 0.12
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "12475": {
@@ -1012,15 +1042,15 @@
   "pos": "RB",
   "team": "ATL",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 4.78,
+  "injury": "Out",
+  "proj_pts": 4.06,
   "proj": {
-   "rush_yd": 20.52,
-   "rush_td": 0.27,
-   "rec_yd": 5.22,
-   "rec": 0.66
+   "rush_td": 0.18,
+   "rec_yd": 5.51,
+   "rush_yd": 18.12,
+   "rec": 0.67
   },
-  "last_wk_pts": 2.0
+  "last_wk_pts": null
  },
  "11806": {
   "name": "Casey Washington",
@@ -1040,24 +1070,24 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11273": {
   "name": "Ben VanSumeren",
   "pos": "RB",
   "team": "KC",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7583": {
   "name": "Sam Ehlinger",
   "pos": "QB",
   "team": "DEN",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -1087,15 +1117,15 @@
   "pos": "QB",
   "team": "GB",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 19.44,
+  "injury": null,
+  "proj_pts": 17.24,
   "proj": {
-   "pass_int": 0.57,
-   "pass_td": 1.88,
-   "pass_yd": 273.87,
-   "rush_yd": 11.59
+   "pass_yd": 238.31,
+   "pass_td": 1.57,
+   "rush_yd": 17.16,
+   "pass_int": 1.01
   },
-  "last_wk_pts": 21.24
+  "last_wk_pts": 17.96
  },
  "5121": {
   "name": "Braxton Berrios",
@@ -1123,13 +1153,13 @@
   "team": "IND",
   "status": null,
   "injury": null,
-  "proj_pts": 5.36,
+  "proj_pts": 4.51,
   "proj": {
-   "sack": 2.24,
-   "int": 0.67,
-   "pts_allow": 24.0
+   "int": 0.57,
+   "pts_allow": 27.0,
+   "sack": 1.89
   },
-  "last_wk_pts": 2.0
+  "last_wk_pts": 6.0
  },
  "8147": {
   "name": "John Metchie III",
@@ -1137,13 +1167,13 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.21,
+  "proj_pts": 3.28,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 6.27,
-   "rec": 0.57
+   "rec_yd": 17.45,
+   "rec_td": 0.12,
+   "rec": 1.62
   },
-  "last_wk_pts": 3.4
+  "last_wk_pts": 3.0
  },
  "13342": {
   "name": "John Michael Gyllenborg",
@@ -1160,14 +1190,14 @@
   "pos": "TE",
   "team": "CIN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 1.49,
+  "injury": "Questionable",
+  "proj_pts": 1.59,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 7.66,
+   "rec_yd": 8.11,
+   "rec_td": 0.06,
    "rec": 0.84
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.1
  },
  "7496": {
   "name": "Nick Westbrook-Ikhine",
@@ -1185,13 +1215,13 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.63,
+  "proj_pts": 5.64,
   "proj": {
+   "rec_yd": 30.36,
    "rec_td": 0.18,
-   "rec_yd": 30.44,
-   "rec": 2.7
+   "rec": 2.88
   },
-  "last_wk_pts": 2.8
+  "last_wk_pts": 0.0
  },
  "11520": {
   "name": "Lucky Jackson",
@@ -1201,7 +1231,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13833": {
   "name": "Dominic Zvada",
@@ -1209,13 +1239,9 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.04,
-  "proj": {
-   "xpm": 2.28,
-   "fgm": 1.67,
-   "fga": 2.08
-  },
-  "last_wk_pts": 8.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 1.0
  },
  "9998": {
   "name": "Hendon Hooker",
@@ -1243,14 +1269,14 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.06,
+  "proj_pts": 0.07,
   "proj": {
-   "rush_yd": 0.05,
    "rush_td": 0.0,
-   "rec_yd": 0.39,
-   "rec": 0.04
+   "rec_yd": 0.42,
+   "rush_yd": 0.05,
+   "rec": 0.05
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "5906": {
   "name": "Dawson Knox",
@@ -1258,9 +1284,13 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.5
+  "proj_pts": 2.58,
+  "proj": {
+   "rec_yd": 11.87,
+   "rec_td": 0.13,
+   "rec": 1.22
+  },
+  "last_wk_pts": null
  },
  "7812": {
   "name": "Simi Fehoko",
@@ -1310,7 +1340,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13557": {
   "name": "Athan Kaliakmanis",
@@ -1320,17 +1350,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
- },
- "13846": {
-  "name": "Jack Velling",
-  "pos": "TE",
-  "team": "ATL",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "10220": {
   "name": "Will Mallory",
@@ -1338,13 +1358,13 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.28,
+  "proj_pts": 0.3,
   "proj": {
+   "rec_yd": 1.59,
    "rec_td": 0.01,
-   "rec_yd": 1.42,
-   "rec": 0.15
+   "rec": 0.17
   },
-  "last_wk_pts": 3.0
+  "last_wk_pts": 0.0
  },
  "13249": {
   "name": "Thomas Gordon",
@@ -1354,7 +1374,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "8205": {
   "name": "Isiah Pacheco",
@@ -1364,7 +1384,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "7842": {
   "name": "Luke Farrell",
@@ -1372,13 +1392,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.44,
-  "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 7.76,
-   "rec": 0.85
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 1.9
  },
  "7048": {
   "name": "Benny LeMay",
@@ -1406,12 +1422,8 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.94,
-  "proj": {
-   "rec_td": 0.07,
-   "rec_yd": 10.17,
-   "rec": 1.01
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "11280": {
@@ -1460,13 +1472,13 @@
   "team": "ARI",
   "status": null,
   "injury": null,
-  "proj_pts": 5.03,
+  "proj_pts": 3.02,
   "proj": {
-   "sack": 2.37,
-   "int": 0.56,
-   "pts_allow": 23.75
+   "int": 0.44,
+   "pts_allow": 30.5,
+   "sack": 1.88
   },
-  "last_wk_pts": 5.0
+  "last_wk_pts": 0.0
  },
  "3286": {
   "name": "Demarcus Robinson",
@@ -1484,13 +1496,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.51,
+  "proj_pts": 0.3,
   "proj": {
+   "rec_yd": 1.33,
    "rec_td": 0.01,
-   "rec_yd": 2.74,
-   "rec": 0.25
+   "rec": 0.12
   },
-  "last_wk_pts": 0.4
+  "last_wk_pts": 0.0
  },
  "12524": {
   "name": "Shedeur Sanders",
@@ -1506,10 +1518,14 @@
   "name": "Grant Calcaterra",
   "pos": "TE",
   "team": "PHI",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.88,
+  "proj": {
+   "rec_yd": 4.4,
+   "rec_td": 0.04,
+   "rec": 0.39
+  },
   "last_wk_pts": 0.0
  },
  "8125": {
@@ -1530,7 +1546,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7587": {
   "name": "Dyami Brown",
@@ -1538,9 +1554,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.1
+  "proj_pts": 1.75,
+  "proj": {
+   "rec_yd": 10.82,
+   "rec_td": 0.04,
+   "rec": 0.87
+  },
+  "last_wk_pts": null
  },
  "13422": {
   "name": "Jaren Kanak",
@@ -1557,12 +1577,12 @@
   "pos": "WR",
   "team": "MIA",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.67,
+  "injury": "Out",
+  "proj_pts": 0.66,
   "proj": {
+   "rec_yd": 3.91,
    "rec_td": 0.02,
-   "rec_yd": 4.04,
-   "rec": 0.29
+   "rec": 0.3
   },
   "last_wk_pts": null
  },
@@ -1642,13 +1662,13 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.45,
+  "proj_pts": 0.5,
   "proj": {
+   "rec_yd": 2.77,
    "rec_td": 0.01,
-   "rec_yd": 2.48,
-   "rec": 0.29
+   "rec": 0.32
   },
-  "last_wk_pts": 1.2
+  "last_wk_pts": 0.0
  },
  "11237": {
   "name": "Jacob Saylors",
@@ -1656,26 +1676,26 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.24,
+  "proj_pts": 0.23,
   "proj": {
-   "rush_yd": 1.12,
    "rush_td": 0.01,
-   "rec_yd": 0.46,
+   "rec_yd": 0.42,
+   "rush_yd": 1.06,
    "rec": 0.05
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "8414": {
   "name": "Britain Covey",
   "pos": "WR",
   "team": "PHI",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.09,
+  "injury": "Out",
+  "proj_pts": 0.08,
   "proj": {
+   "rec_yd": 0.58,
    "rec_td": 0.0,
-   "rec_yd": 0.61,
-   "rec": 0.06
+   "rec": 0.05
   },
   "last_wk_pts": 0.0
  },
@@ -1687,7 +1707,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": 7.2
  },
  "9501": {
   "name": "DeMario Douglas",
@@ -1695,13 +1715,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.02,
+  "proj_pts": 7.2,
   "proj": {
-   "rec_td": 0.19,
-   "rec_yd": 42.72,
-   "rec": 2.96
+   "rec_yd": 40.6,
+   "rec_td": 0.24,
+   "rec": 3.17
   },
-  "last_wk_pts": 16.1
+  "last_wk_pts": 3.8
  },
  "8180": {
   "name": "Jalen Nailor",
@@ -1709,20 +1729,20 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.61,
+  "proj_pts": 3.11,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 18.82,
-   "rec": 1.35
+   "rec_yd": 15.33,
+   "rec_td": 0.14,
+   "rec": 1.14
   },
-  "last_wk_pts": 1.4
+  "last_wk_pts": 2.4
  },
  "1737": {
   "name": "Case Keenum",
   "pos": "QB",
   "team": "CHI",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -1732,14 +1752,14 @@
   "pos": "WR",
   "team": "PHI",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 5.28,
+  "injury": "Out",
+  "proj_pts": 4.97,
   "proj": {
-   "rec_td": 0.18,
-   "rec_yd": 31.2,
-   "rec": 2.12
+   "rec_yd": 29.69,
+   "rec_td": 0.17,
+   "rec": 1.96
   },
-  "last_wk_pts": 3.4
+  "last_wk_pts": null
  },
  "NYJ": {
   "name": "New York Jets",
@@ -1747,37 +1767,22 @@
   "team": "NYJ",
   "status": null,
   "injury": null,
-  "proj_pts": 7.76,
+  "proj_pts": 5.58,
   "proj": {
-   "sack": 3.28,
-   "int": 0.67,
-   "pts_allow": 17.5
+   "int": 0.56,
+   "pts_allow": 22.75,
+   "sack": 2.7
   },
-  "last_wk_pts": 4.0
- },
- "13199": {
-  "name": "Montorie Foster Jr.",
-  "pos": "WR",
-  "team": "SEA",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 1.0
  },
  "12455": {
   "name": "Brashard Smith",
   "pos": "RB",
   "team": "KC",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.07,
-  "proj": {
-   "rush_yd": 0.41,
-   "rush_td": 0.0,
-   "rec_yd": 0.17,
-   "rec": 0.03
-  },
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "10937": {
@@ -1788,7 +1793,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13428": {
   "name": "Joey Aguilar",
@@ -1798,16 +1803,20 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13349": {
   "name": "Eli Stowers",
   "pos": "TE",
   "team": "PHI",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 0.0,
-  "proj": {},
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.78,
+  "proj": {
+   "rec_yd": 3.95,
+   "rec_td": 0.03,
+   "rec": 0.38
+  },
   "last_wk_pts": 0.0
  },
  "11618": {
@@ -1826,9 +1835,14 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.3
+  "proj_pts": 2.6,
+  "proj": {
+   "rush_td": 0.11,
+   "rec_yd": 4.28,
+   "rush_yd": 9.83,
+   "rec": 0.7
+  },
+  "last_wk_pts": null
  },
  "10983": {
   "name": "Sean Clifford",
@@ -1838,7 +1852,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "827": {
   "name": "Tyrod Taylor",
@@ -1856,13 +1870,13 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.74,
+  "proj_pts": 8.69,
   "proj": {
-   "xpm": 2.41,
-   "fgm": 1.81,
-   "fga": 2.11
+   "xpm": 2.71,
+   "fgm": 2.03,
+   "fga": 2.37
   },
-  "last_wk_pts": 17.0
+  "last_wk_pts": 12.0
  },
  "4137": {
   "name": "James Conner",
@@ -1890,11 +1904,11 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.16,
+  "proj_pts": 2.02,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 10.09,
-   "rec": 1.22
+   "rec_yd": 9.64,
+   "rec_td": 0.08,
+   "rec": 1.15
   },
   "last_wk_pts": 0.0
  },
@@ -1904,13 +1918,13 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.29,
+  "proj_pts": 6.78,
   "proj": {
-   "xpm": 2.17,
-   "fgm": 1.69,
-   "fga": 2.03
+   "xpm": 2.02,
+   "fgm": 1.58,
+   "fga": 1.89
   },
-  "last_wk_pts": 7.0
+  "last_wk_pts": 8.0
  },
  "13264": {
   "name": "Dohnte Meyers",
@@ -1918,13 +1932,13 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.5,
+  "proj_pts": 1.08,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 13.28,
-   "rec": 1.21
+   "rec_yd": 5.61,
+   "rec_td": 0.04,
+   "rec": 0.49
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13330": {
   "name": "Kenyon Sadiq",
@@ -1932,13 +1946,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.45,
+  "proj_pts": 6.9,
   "proj": {
-   "rec_td": 0.22,
-   "rec_yd": 27.65,
-   "rec": 2.53
+   "rec_yd": 36.28,
+   "rec_td": 0.26,
+   "rec": 3.22
   },
-  "last_wk_pts": 1.7
+  "last_wk_pts": 1.1
  },
  "9506": {
   "name": "Sean Tucker",
@@ -1946,14 +1960,14 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.36,
+  "proj_pts": 1.32,
   "proj": {
-   "rush_yd": 6.41,
-   "rush_td": 0.09,
-   "rec_yd": 0.86,
+   "rush_td": 0.1,
+   "rec_yd": 0.89,
+   "rush_yd": 5.42,
    "rec": 0.1
   },
-  "last_wk_pts": null
+  "last_wk_pts": 11.2
  },
  "7607": {
   "name": "Michael Carter",
@@ -1961,14 +1975,14 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.09,
+  "proj_pts": 0.1,
   "proj": {
-   "rush_yd": 0.3,
    "rush_td": 0.0,
-   "rec_yd": 0.32,
+   "rec_yd": 0.38,
+   "rush_yd": 0.32,
    "rec": 0.05
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.9
  },
  "12897": {
   "name": "Nate Carter",
@@ -2006,8 +2020,12 @@
   "team": "LAC",
   "status": "Active",
   "injury": "Out",
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 4.4,
+  "proj": {
+   "rec_yd": 28.27,
+   "rec_td": 0.09,
+   "rec": 1.99
+  },
   "last_wk_pts": null
  },
  "12946": {
@@ -2026,14 +2044,14 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.89,
+  "proj_pts": 0.82,
   "proj": {
-   "rush_yd": 0.24,
    "rush_td": 0.0,
-   "rec_yd": 4.59,
-   "rec": 0.46
+   "rec_yd": 4.44,
+   "rush_yd": 0.22,
+   "rec": 0.47
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "14020": {
   "name": "Dean Patterson IV",
@@ -2050,7 +2068,7 @@
   "pos": "QB",
   "team": "ARI",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -2061,13 +2079,13 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.58,
+  "proj_pts": 0.63,
   "proj": {
+   "rec_yd": 3.38,
    "rec_td": 0.02,
-   "rec_yd": 3.14,
-   "rec": 0.3
+   "rec": 0.34
   },
-  "last_wk_pts": null
+  "last_wk_pts": 2.2
  },
  "12761": {
   "name": "Jordan Moore",
@@ -2077,7 +2095,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11638": {
   "name": "Ricky Pearsall",
@@ -2097,7 +2115,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13292": {
   "name": "Lake McRee",
@@ -2127,7 +2145,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12487": {
   "name": "Terrance Ferguson",
@@ -2145,13 +2163,13 @@
   "team": "DAL",
   "status": null,
   "injury": null,
-  "proj_pts": 7.16,
+  "proj_pts": 5.61,
   "proj": {
-   "sack": 2.66,
-   "int": 0.76,
-   "pts_allow": 19.75
+   "int": 0.68,
+   "pts_allow": 24.0,
+   "sack": 2.39
   },
-  "last_wk_pts": 5.0
+  "last_wk_pts": 4.0
  },
  "5973": {
   "name": "Josh Oliver",
@@ -2161,22 +2179,22 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "8408": {
   "name": "Jordan Mason",
   "pos": "RB",
   "team": "MIN",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 9.1,
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 10.36,
   "proj": {
-   "rush_yd": 44.83,
-   "rush_td": 0.53,
-   "rec_yd": 6.93,
-   "rec": 0.96
+   "rush_td": 0.46,
+   "rec_yd": 8.74,
+   "rush_yd": 56.96,
+   "rec": 1.29
   },
-  "last_wk_pts": null
+  "last_wk_pts": 6.8
  },
  "12884": {
   "name": "Quincy Skinner Jr.",
@@ -2196,7 +2214,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11650": {
   "name": "Luke McCaffrey",
@@ -2204,9 +2222,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.33,
+  "proj": {
+   "rec_yd": 1.87,
+   "rec_td": 0.01,
+   "rec": 0.16
+  },
+  "last_wk_pts": null
  },
  "4195": {
   "name": "Jake Elliott",
@@ -2214,27 +2236,27 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.23,
+  "proj_pts": 6.72,
   "proj": {
-   "xpm": 2.42,
-   "fgm": 1.62,
-   "fga": 1.86
+   "xpm": 2.24,
+   "fgm": 1.5,
+   "fga": 1.73
   },
-  "last_wk_pts": 2.0
+  "last_wk_pts": 3.0
  },
  "13296": {
   "name": "Caleb Douglas",
   "pos": "WR",
   "team": "MIA",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 5.03,
+  "injury": null,
+  "proj_pts": 5.5,
   "proj": {
-   "rec_td": 0.12,
-   "rec_yd": 31.22,
-   "rec": 2.33
+   "rec_yd": 35.05,
+   "rec_td": 0.1,
+   "rec": 2.75
   },
-  "last_wk_pts": null
+  "last_wk_pts": 20.0
  },
  "11895": {
   "name": "Mason Tipton",
@@ -2254,7 +2276,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 13.4
+  "last_wk_pts": 16.12
  },
  "12735": {
   "name": "Caleb Lohner",
@@ -2272,9 +2294,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 8.6
+  "proj_pts": 4.43,
+  "proj": {
+   "rec_yd": 21.7,
+   "rec_td": 0.22,
+   "rec": 1.55
+  },
+  "last_wk_pts": null
  },
  "7694": {
   "name": "Tommy Tremble",
@@ -2282,20 +2308,20 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.5,
+  "proj_pts": 3.59,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 16.43,
-   "rec": 1.92
+   "rec_yd": 17.15,
+   "rec_td": 0.14,
+   "rec": 2.07
   },
-  "last_wk_pts": 18.6
+  "last_wk_pts": 1.3
  },
  "10215": {
   "name": "Jake Haener",
   "pos": "QB",
   "team": "NYG",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -2305,13 +2331,9 @@
   "pos": "TE",
   "team": "NYG",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.2,
-  "proj": {
-   "rec_td": 0.07,
-   "rec_yd": 12.55,
-   "rec": 1.0
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "13325": {
@@ -2330,13 +2352,13 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.26,
+  "proj_pts": 0.25,
   "proj": {
+   "rec_yd": 1.11,
    "rec_td": 0.01,
-   "rec_yd": 1.17,
-   "rec": 0.11
+   "rec": 0.1
   },
-  "last_wk_pts": 0.9
+  "last_wk_pts": 2.6
  },
  "8799": {
   "name": "Zaire Mitchell-Paden",
@@ -2354,9 +2376,14 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.7
+  "proj_pts": 5.18,
+  "proj": {
+   "rush_td": 0.23,
+   "rec_yd": 7.14,
+   "rush_yd": 23.83,
+   "rec": 0.89
+  },
+  "last_wk_pts": null
  },
  "9511": {
   "name": "Keaton Mitchell",
@@ -2364,9 +2391,14 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.4
+  "proj_pts": 5.19,
+  "proj": {
+   "rush_td": 0.11,
+   "rec_yd": 7.18,
+   "rush_yd": 26.23,
+   "rec": 1.21
+  },
+  "last_wk_pts": null
  },
  "13311": {
   "name": "Chris Bell",
@@ -2376,11 +2408,11 @@
   "injury": null,
   "proj_pts": 4.68,
   "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 28.99,
-   "rec": 1.83
+   "rec_yd": 29.91,
+   "rec_td": 0.11,
+   "rec": 2.02
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.0
  },
  "7521": {
   "name": "Chris Blair",
@@ -2398,14 +2430,14 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.53,
+  "proj_pts": 0.7,
   "proj": {
-   "rush_yd": 2.33,
-   "rush_td": 0.03,
-   "rec_yd": 0.67,
+   "rush_td": 0.04,
+   "rec_yd": 0.72,
+   "rush_yd": 2.87,
    "rec": 0.09
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.6
  },
  "13299": {
   "name": "Nate Boerkircher",
@@ -2413,9 +2445,13 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 7.8
+  "proj_pts": 1.2,
+  "proj": {
+   "rec_yd": 6.7,
+   "rec_td": 0.04,
+   "rec": 0.58
+  },
+  "last_wk_pts": null
  },
  "4233": {
   "name": "Zane Gonzalez",
@@ -2423,28 +2459,23 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.02,
+  "proj_pts": 5.3,
   "proj": {
-   "xpm": 1.23,
-   "fgm": 1.7,
-   "fga": 2.04
+   "xpm": 1.07,
+   "fgm": 1.49,
+   "fga": 1.79
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.0
  },
  "8208": {
   "name": "Tyler Badie",
   "pos": "RB",
   "team": "DEN",
-  "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.83,
-  "proj": {
-   "rush_yd": 3.37,
-   "rush_td": 0.02,
-   "rec_yd": 11.84,
-   "rec": 1.33
-  },
-  "last_wk_pts": 0.6
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "1604": {
   "name": "Nick Williams",
@@ -2462,9 +2493,13 @@
   "team": "WAS",
   "status": null,
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 4.0
+  "proj_pts": 7.6,
+  "proj": {
+   "int": 0.82,
+   "pts_allow": 18.25,
+   "sack": 3.18
+  },
+  "last_wk_pts": null
  },
  "8225": {
   "name": "Daniel Bellinger",
@@ -2472,13 +2507,13 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.53,
+  "proj_pts": 1.66,
   "proj": {
+   "rec_yd": 9.04,
    "rec_td": 0.05,
-   "rec_yd": 7.9,
-   "rec": 0.88
+   "rec": 0.91
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 0.9
  },
  "5938": {
   "name": "Lil'Jordan Humphrey",
@@ -2486,42 +2521,33 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.86,
+  "proj_pts": 1.53,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 9.31,
-   "rec": 0.77
+   "rec_yd": 7.92,
+   "rec_td": 0.06,
+   "rec": 0.75
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.0
  },
  "12504": {
   "name": "Kaleb Johnson",
   "pos": "RB",
   "team": "GB",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.21,
-  "proj": {
-   "rush_yd": 0.91,
-   "rush_td": 0.01,
-   "rec_yd": 0.41,
-   "rec": 0.04
-  },
-  "last_wk_pts": -0.2
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
  },
  "12079": {
   "name": "Treyton Welch",
   "pos": "TE",
   "team": "NO",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.24,
-  "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.17,
-   "rec": 0.12
-  },
-  "last_wk_pts": 0.0
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
  },
  "11644": {
   "name": "Cody Schrader",
@@ -2571,7 +2597,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13074": {
   "name": "Isaiah Neyor",
@@ -2588,7 +2614,7 @@
   "pos": "QB",
   "team": "CAR",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -2609,13 +2635,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.81,
+  "proj_pts": 2.16,
   "proj": {
+   "rec_yd": 14.0,
    "rec_td": 0.06,
-   "rec_yd": 11.26,
-   "rec": 0.64
+   "rec": 0.79
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "7149": {
   "name": "Tommy Stevens",
@@ -2653,12 +2679,12 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.17,
+  "proj_pts": 0.26,
   "proj": {
-   "rush_yd": 0.94,
-   "rush_td": 0.0,
-   "rec_yd": 0.48,
-   "rec": 0.06
+   "rush_td": 0.01,
+   "rec_yd": 0.64,
+   "rush_yd": 1.01,
+   "rec": 0.07
   },
   "last_wk_pts": 0.0
  },
@@ -2677,10 +2703,10 @@
   "pos": "WR",
   "team": "SEA",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 2.4
+  "last_wk_pts": 0.8
  },
  "7535": {
   "name": "Hunter Long",
@@ -2697,14 +2723,14 @@
   "pos": "WR",
   "team": "GB",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.94,
+  "injury": null,
+  "proj_pts": 4.5,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 8.63,
-   "rec": 1.0
+   "rec_yd": 20.92,
+   "rec_td": 0.13,
+   "rec": 2.32
   },
-  "last_wk_pts": 6.1
+  "last_wk_pts": 6.6
  },
  "8088": {
   "name": "Kalif Jackson",
@@ -2731,13 +2757,13 @@
   "pos": "RB",
   "team": "PIT",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.09,
   "proj": {
-   "rush_yd": 0.29,
    "rush_td": 0.0,
-   "rec_yd": 0.39,
-   "rec": 0.05
+   "rec_yd": 0.36,
+   "rush_yd": 0.3,
+   "rec": 0.04
   },
   "last_wk_pts": null
  },
@@ -2757,14 +2783,14 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.57,
+  "proj_pts": 3.93,
   "proj": {
-   "rush_yd": 13.55,
-   "rush_td": 0.07,
-   "rec_yd": 4.03,
-   "rec": 0.58
+   "rush_td": 0.11,
+   "rec_yd": 7.34,
+   "rush_yd": 18.2,
+   "rec": 0.99
   },
-  "last_wk_pts": 2.7
+  "last_wk_pts": 5.3
  },
  "8253": {
   "name": "Deven Thompkins",
@@ -2792,23 +2818,23 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.44,
+  "proj_pts": 0.91,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 13.58,
-   "rec": 1.08
+   "rec_yd": 5.25,
+   "rec_td": 0.03,
+   "rec": 0.4
   },
-  "last_wk_pts": 2.0
+  "last_wk_pts": 0.0
  },
  "13335": {
   "name": "Cole Payton",
   "pos": "QB",
   "team": "PHI",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "9220": {
   "name": "Evan Hull",
@@ -2826,9 +2852,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.75,
+  "proj": {
+   "rec_yd": 3.63,
+   "rec_td": 0.03,
+   "rec": 0.42
+  },
+  "last_wk_pts": null
  },
  "1706": {
   "name": "Jack Doyle",
@@ -2866,13 +2896,13 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.2,
+  "proj_pts": 1.3,
   "proj": {
+   "rec_yd": 7.15,
    "rec_td": 0.04,
-   "rec_yd": 6.63,
-   "rec": 0.56
+   "rec": 0.65
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12656": {
   "name": "Robbie Ouzts",
@@ -2890,11 +2920,11 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.12,
+  "proj_pts": 0.21,
   "proj": {
-   "rec_td": 0.0,
-   "rec_yd": 0.6,
-   "rec": 0.08
+   "rec_yd": 0.81,
+   "rec_td": 0.01,
+   "rec": 0.09
   },
   "last_wk_pts": 0.0
  },
@@ -2904,9 +2934,13 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
+  "proj_pts": 0.34,
+  "proj": {
+   "rec_yd": 1.83,
+   "rec_td": 0.01,
+   "rec": 0.13
+  },
+  "last_wk_pts": 0.0
  },
  "13321": {
   "name": "Dan Villari",
@@ -2924,9 +2958,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 7.0
+  "proj_pts": 8.59,
+  "proj": {
+   "xpm": 2.61,
+   "fgm": 1.74,
+   "fga": 2.14
+  },
+  "last_wk_pts": null
  },
  "10226": {
   "name": "Andrei Iosivas",
@@ -2936,7 +2974,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13116": {
   "name": "Tre Watson",
@@ -2946,7 +2984,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12765": {
   "name": "Keleki Latu",
@@ -2956,7 +2994,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11617": {
   "name": "Malachi Corley",
@@ -2964,10 +3002,10 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.16,
+  "proj_pts": 0.15,
   "proj": {
+   "rec_yd": 0.44,
    "rec_td": 0.0,
-   "rec_yd": 0.46,
    "rec": 0.04
   },
   "last_wk_pts": 0.0
@@ -2978,27 +3016,27 @@
   "team": "TB",
   "status": null,
   "injury": null,
-  "proj_pts": 5.46,
+  "proj_pts": 6.02,
   "proj": {
-   "sack": 2.4,
-   "int": 0.64,
-   "pts_allow": 23.75
+   "int": 0.71,
+   "pts_allow": 22.0,
+   "sack": 2.66
   },
-  "last_wk_pts": 7.0
+  "last_wk_pts": 23.0
  },
  "4981": {
   "name": "Calvin Ridley",
   "pos": "WR",
   "team": "TEN",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.19,
+  "injury": "Out",
+  "proj_pts": 2.38,
   "proj": {
+   "rec_yd": 14.12,
    "rec_td": 0.08,
-   "rec_yd": 12.47,
-   "rec": 0.92
+   "rec": 0.97
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7946": {
   "name": "Jack Stoll",
@@ -3038,7 +3076,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": 3.38
  },
  "9479": {
   "name": "Darnell Washington",
@@ -3046,13 +3084,13 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.31,
+  "proj_pts": 4.88,
   "proj": {
-   "rec_td": 0.18,
-   "rec_yd": 28.78,
-   "rec": 2.7
+   "rec_yd": 26.35,
+   "rec_td": 0.17,
+   "rec": 2.45
   },
-  "last_wk_pts": 10.5
+  "last_wk_pts": 6.9
  },
  "11577": {
   "name": "Will Shipley",
@@ -3070,11 +3108,11 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.44,
+  "proj_pts": 1.56,
   "proj": {
+   "rec_yd": 7.67,
    "rec_td": 0.05,
-   "rec_yd": 6.66,
-   "rec": 0.69
+   "rec": 0.72
   },
   "last_wk_pts": 0.0
  },
@@ -3084,26 +3122,22 @@
   "team": "CLE",
   "status": null,
   "injury": null,
-  "proj_pts": 7.58,
+  "proj_pts": 5.31,
   "proj": {
-   "sack": 2.76,
-   "int": 0.77,
-   "pts_allow": 18.0
+   "int": 0.62,
+   "pts_allow": 21.5,
+   "sack": 2.23
   },
-  "last_wk_pts": 9.0
+  "last_wk_pts": 5.0
  },
  "13307": {
   "name": "Marlin Klein",
   "pos": "TE",
   "team": "HOU",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 1.54,
-  "proj": {
-   "rec_td": 0.06,
-   "rec_yd": 7.91,
-   "rec": 0.78
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": null
  },
  "6699": {
@@ -3152,13 +3186,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.7,
+  "proj_pts": 7.11,
   "proj": {
-   "xpm": 2.35,
-   "fgm": 1.8,
-   "fga": 2.14
+   "xpm": 2.17,
+   "fgm": 1.66,
+   "fga": 1.98
   },
-  "last_wk_pts": 15.0
+  "last_wk_pts": 4.0
  },
  "8076": {
   "name": "Michael Bandy",
@@ -3178,7 +3212,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12048": {
   "name": "George Holani",
@@ -3186,14 +3220,14 @@
   "team": "SEA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.09,
+  "proj_pts": 5.82,
   "proj": {
-   "rush_yd": 20.44,
-   "rush_td": 0.14,
-   "rec_yd": 11.41,
-   "rec": 1.61
+   "rush_td": 0.17,
+   "rec_yd": 11.29,
+   "rush_yd": 27.5,
+   "rec": 1.32
   },
-  "last_wk_pts": 8.0
+  "last_wk_pts": 2.8
  },
  "12888": {
   "name": "Dalen Cambre",
@@ -3223,7 +3257,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13696": {
   "name": "Ja'Mori Maclin",
@@ -3233,7 +3267,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7536": {
   "name": "Quintin Morris",
@@ -3241,9 +3275,13 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.43,
+  "proj": {
+   "rec_yd": 2.06,
+   "rec_td": 0.02,
+   "rec": 0.2
+  },
+  "last_wk_pts": null
  },
  "13339": {
   "name": "Davon Booth",
@@ -3293,7 +3331,22 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
+ },
+ "7523": {
+  "name": "Trevor Lawrence",
+  "pos": "QB",
+  "team": "JAX",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 20.69,
+  "proj": {
+   "pass_yd": 263.23,
+   "pass_td": 1.81,
+   "rush_yd": 20.85,
+   "pass_int": 0.54
+  },
+  "last_wk_pts": null
  },
  "12508": {
   "name": "Jaxson Dart",
@@ -3311,13 +3364,13 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.72,
+  "proj_pts": 3.93,
   "proj": {
-   "rec_td": 0.22,
-   "rec_yd": 23.61,
-   "rec": 2.08
+   "rec_yd": 20.15,
+   "rec_td": 0.15,
+   "rec": 2.03
   },
-  "last_wk_pts": 2.3
+  "last_wk_pts": 0.7
  },
  "13670": {
   "name": "Harrison Wallace III",
@@ -3329,18 +3382,24 @@
   "proj": {},
   "last_wk_pts": 0.0
  },
+ "12533": {
+  "name": "Jacory Croskey-Merritt",
+  "pos": "RB",
+  "team": "WAS",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": null
+ },
  "3048": {
   "name": "Chris Manhertz",
   "pos": "TE",
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.06,
-  "proj": {
-   "rec_td": 0.0,
-   "rec_yd": 0.39,
-   "rec": 0.04
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "12787": {
@@ -3369,14 +3428,9 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 13.48,
-  "proj": {
-   "pass_int": 1.37,
-   "pass_td": 0.76,
-   "pass_yd": 228.07,
-   "rush_yd": 15.84
-  },
-  "last_wk_pts": 17.32
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 10.18
  },
  "8220": {
   "name": "Sincere McCormick",
@@ -3394,27 +3448,23 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.05,
-  "proj": {
-   "rec_td": 0.12,
-   "rec_yd": 24.21,
-   "rec": 1.8
-  },
-  "last_wk_pts": 2.9
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 10.3
  },
  "6271": {
   "name": "Olamide Zaccheaus",
   "pos": "WR",
   "team": "ATL",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.56,
+  "injury": "Out",
+  "proj_pts": 1.91,
   "proj": {
-   "rec_td": 0.06,
-   "rec_yd": 7.41,
-   "rec": 0.62
+   "rec_yd": 9.01,
+   "rec_td": 0.08,
+   "rec": 0.74
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13392": {
   "name": "Jeff Caldwell",
@@ -3452,11 +3502,11 @@
   "team": "DAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.24,
+  "proj_pts": 0.29,
   "proj": {
+   "rec_yd": 1.7,
    "rec_td": 0.01,
-   "rec_yd": 1.34,
-   "rec": 0.1
+   "rec": 0.11
   },
   "last_wk_pts": 0.0
  },
@@ -3465,7 +3515,7 @@
   "pos": "QB",
   "team": "IND",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -3476,13 +3526,13 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.36,
+  "proj_pts": 1.42,
   "proj": {
+   "rec_yd": 7.79,
    "rec_td": 0.04,
-   "rec_yd": 7.4,
-   "rec": 0.76
+   "rec": 0.81
   },
-  "last_wk_pts": 0.1
+  "last_wk_pts": 4.9
  },
  "ATL": {
   "name": "Atlanta Falcons",
@@ -3490,28 +3540,23 @@
   "team": "ATL",
   "status": null,
   "injury": null,
-  "proj_pts": 4.95,
+  "proj_pts": 5.72,
   "proj": {
-   "sack": 2.15,
-   "int": 0.58,
-   "pts_allow": 26.0
+   "int": 0.66,
+   "pts_allow": 24.0,
+   "sack": 2.48
   },
-  "last_wk_pts": 5.0
+  "last_wk_pts": 11.0
  },
  "13277": {
   "name": "CJ Donaldson",
   "pos": "RB",
   "team": "NO",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.75,
-  "proj": {
-   "rush_yd": 7.26,
-   "rush_td": 0.03,
-   "rec_yd": 8.67,
-   "rec": 1.23
-  },
-  "last_wk_pts": 1.9
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "5917": {
   "name": "Mecole Hardman Jr.",
@@ -3521,7 +3566,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12460": {
   "name": "Antwane Wells Jr.",
@@ -3533,33 +3578,19 @@
   "proj": {},
   "last_wk_pts": 0.0
  },
- "5022": {
-  "name": "Dallas Goedert",
-  "pos": "TE",
-  "team": "PHI",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 9.3,
-  "proj": {
-   "rec_td": 0.54,
-   "rec_yd": 42.14,
-   "rec": 3.61
-  },
-  "last_wk_pts": 9.1
- },
  "CAR": {
   "name": "Carolina Panthers",
   "pos": "DEF",
   "team": "CAR",
   "status": null,
   "injury": null,
-  "proj_pts": 6.23,
+  "proj_pts": 4.85,
   "proj": {
-   "sack": 2.59,
-   "int": 0.73,
-   "pts_allow": 20.75
+   "int": 0.58,
+   "pts_allow": 25.75,
+   "sack": 2.05
   },
-  "last_wk_pts": 4.0
+  "last_wk_pts": -4.0
  },
  "13414": {
   "name": "Kaelon Black",
@@ -3567,14 +3598,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.0,
-  "proj": {
-   "rush_yd": 26.68,
-   "rush_td": 0.13,
-   "rec_yd": 7.99,
-   "rec": 0.98
-  },
-  "last_wk_pts": 4.2
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 10.4
  },
  "8755": {
   "name": "Kaden Davis",
@@ -3586,21 +3612,6 @@
   "proj": {},
   "last_wk_pts": 0.0
  },
- "12495": {
-  "name": "Ollie Gordon II",
-  "pos": "RB",
-  "team": "MIA",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 12.3,
-  "proj": {
-   "rush_yd": 64.75,
-   "rush_td": 0.6,
-   "rec_yd": 9.73,
-   "rec": 1.59
-  },
-  "last_wk_pts": null
- },
  "4602": {
   "name": "Robert Tonyan",
   "pos": "TE",
@@ -3609,8 +3620,8 @@
   "injury": null,
   "proj_pts": 0.04,
   "proj": {
+   "rec_yd": 0.26,
    "rec_td": 0.0,
-   "rec_yd": 0.28,
    "rec": 0.03
   },
   "last_wk_pts": 0.0
@@ -3621,13 +3632,13 @@
   "team": "SEA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.15,
+  "proj_pts": 1.26,
   "proj": {
+   "rec_yd": 6.0,
    "rec_td": 0.06,
-   "rec_yd": 4.91,
-   "rec": 0.6
+   "rec": 0.59
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 2.2
  },
  "12863": {
   "name": "Andrew Armstrong",
@@ -3635,9 +3646,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.8
+  "proj_pts": 0.85,
+  "proj": {
+   "rec_yd": 4.8,
+   "rec_td": 0.03,
+   "rec": 0.39
+  },
+  "last_wk_pts": 0.8
  },
  "5133": {
   "name": "Tyler Conklin",
@@ -3645,49 +3660,44 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.3,
+  "proj_pts": 0.07,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.62,
-   "rec": 0.15
+   "rec_yd": 0.49,
+   "rec_td": 0.0,
+   "rec": 0.04
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.9
  },
  "8917": {
   "name": "KaVontae Turpin",
   "pos": "WR",
   "team": "DAL",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.85,
+  "injury": "Out",
+  "proj_pts": 2.28,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 8.39,
-   "rec": 0.62
+   "rec_yd": 10.21,
+   "rec_td": 0.07,
+   "rec": 0.68
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11655": {
   "name": "Tyrone Tracy Jr.",
   "pos": "RB",
   "team": "NYG",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 5.97,
-  "proj": {
-   "rush_yd": 23.82,
-   "rush_td": 0.23,
-   "rec_yd": 10.66,
-   "rec": 1.37
-  },
-  "last_wk_pts": 17.5
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 8.2
  },
  "12775": {
   "name": "Max Brosmer",
   "pos": "QB",
   "team": "MIN",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -3700,6 +3710,16 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
+  "last_wk_pts": null
+ },
+ "9226": {
+  "name": "De'Von Achane",
+  "pos": "RB",
+  "team": "MIA",
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "9494": {
@@ -3708,28 +3728,13 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.93,
+  "proj_pts": 3.32,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 19.31,
-   "rec": 1.65
+   "rec_yd": 16.75,
+   "rec_td": 0.09,
+   "rec": 1.63
   },
-  "last_wk_pts": 2.3
- },
- "11559": {
-  "name": "Michael Penix Jr.",
-  "pos": "QB",
-  "team": "ATL",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 15.11,
-  "proj": {
-   "pass_int": 0.36,
-   "pass_td": 1.26,
-   "pass_yd": 219.76,
-   "rush_yd": 9.99
-  },
-  "last_wk_pts": 23.1
+  "last_wk_pts": 6.6
  },
  "12928": {
   "name": "Amar Johnson",
@@ -3739,7 +3744,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12113": {
   "name": "Thomas Yassmin",
@@ -3757,13 +3762,13 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.14,
+  "proj_pts": 2.81,
   "proj": {
-   "rec_td": 0.16,
-   "rec_yd": 23.18,
-   "rec": 1.63
+   "rec_yd": 16.47,
+   "rec_td": 0.08,
+   "rec": 1.3
   },
-  "last_wk_pts": 0.7
+  "last_wk_pts": 0.0
  },
  "13403": {
   "name": "Jam Miller",
@@ -3801,8 +3806,12 @@
   "team": "SEA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.88,
+  "proj": {
+   "rec_yd": 4.94,
+   "rec_td": 0.03,
+   "rec": 0.41
+  },
   "last_wk_pts": 0.0
  },
  "6869": {
@@ -3811,11 +3820,11 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.59,
+  "proj_pts": 1.28,
   "proj": {
-   "rec_td": 0.07,
-   "rec_yd": 8.02,
-   "rec": 0.73
+   "rec_yd": 6.84,
+   "rec_td": 0.04,
+   "rec": 0.72
   },
   "last_wk_pts": 0.0
  },
@@ -3847,14 +3856,14 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12511": {
   "name": "Will Howard",
   "pos": "QB",
   "team": "PIT",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -3867,7 +3876,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13355": {
   "name": "DJ Rogers",
@@ -3885,28 +3894,24 @@
   "team": "DAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.86,
+  "proj_pts": 4.46,
   "proj": {
-   "rush_yd": 14.59,
-   "rush_td": 0.07,
-   "rec_yd": 4.56,
-   "rec": 0.73
+   "rush_td": 0.09,
+   "rec_yd": 5.99,
+   "rush_yd": 26.01,
+   "rec": 0.8
   },
-  "last_wk_pts": 1.4
+  "last_wk_pts": 3.8
  },
- "1945": {
-  "name": "Chris Boswell",
-  "pos": "K",
-  "team": "PIT",
+ "12457": {
+  "name": "Jaydon Blue",
+  "pos": "RB",
+  "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.31,
-  "proj": {
-   "xpm": 2.35,
-   "fgm": 2.02,
-   "fga": 2.35
-  },
-  "last_wk_pts": 17.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "12548": {
   "name": "Lenny Krieg",
@@ -3924,13 +3929,13 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.53,
+  "proj_pts": 3.31,
   "proj": {
-   "rec_td": 0.31,
-   "rec_yd": 20.0,
-   "rec": 1.3
+   "rec_yd": 14.26,
+   "rec_td": 0.23,
+   "rec": 0.96
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 0.9
  },
  "4177": {
   "name": "Mack Hollins",
@@ -3948,11 +3953,11 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.07,
+  "proj_pts": 0.0,
   "proj": {
+   "rec_yd": 0.03,
    "rec_td": 0.0,
-   "rec_yd": 0.52,
-   "rec": 0.04
+   "rec": 0.0
   },
   "last_wk_pts": 0.0
  },
@@ -3962,13 +3967,13 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.38,
+  "proj_pts": 0.36,
   "proj": {
+   "rec_yd": 2.14,
    "rec_td": 0.01,
-   "rec_yd": 2.26,
-   "rec": 0.18
+   "rec": 0.17
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.0
  },
  "11371": {
   "name": "Julian Hill",
@@ -3986,13 +3991,13 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.26,
+  "proj_pts": 0.24,
   "proj": {
+   "rec_yd": 1.3,
    "rec_td": 0.01,
-   "rec_yd": 1.43,
-   "rec": 0.11
+   "rec": 0.1
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13662": {
   "name": "Will Pauling",
@@ -4012,7 +4017,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": 3.4
  },
  "10857": {
   "name": "Stetson Bennett IV",
@@ -4040,10 +4045,10 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.35,
+  "proj_pts": 0.41,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.84,
+   "rec_yd": 1.9,
+   "rec_td": 0.02,
    "rec": 0.16
   },
   "last_wk_pts": 0.0
@@ -4056,8 +4061,8 @@
   "injury": null,
   "proj_pts": 0.18,
   "proj": {
+   "rec_yd": 0.8,
    "rec_td": 0.01,
-   "rec_yd": 0.77,
    "rec": 0.09
   },
   "last_wk_pts": 0.0
@@ -4068,13 +4073,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.16,
+  "proj_pts": 0.87,
   "proj": {
-   "rec_td": 0.07,
-   "rec_yd": 11.81,
-   "rec": 1.11
+   "rec_yd": 4.7,
+   "rec_td": 0.03,
+   "rec": 0.44
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 16.0
  },
  "4179": {
   "name": "Joshua Dobbs",
@@ -4084,14 +4089,14 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "10866": {
   "name": "Aidan O'Connell",
   "pos": "QB",
   "team": "LV",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -4112,13 +4117,13 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.95,
+  "proj_pts": 5.3,
   "proj": {
-   "rec_td": 0.22,
-   "rec_yd": 27.74,
-   "rec": 1.68
+   "rec_yd": 31.36,
+   "rec_td": 0.21,
+   "rec": 1.78
   },
-  "last_wk_pts": 0.8
+  "last_wk_pts": 5.9
  },
  "13013": {
   "name": "Mark Redman",
@@ -4136,13 +4141,13 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.8,
+  "proj_pts": 1.72,
   "proj": {
+   "rec_yd": 7.92,
    "rec_td": 0.09,
-   "rec_yd": 8.33,
-   "rec": 0.85
+   "rec": 0.77
   },
-  "last_wk_pts": 1.3
+  "last_wk_pts": 0.0
  },
  "11299": {
   "name": "Zavier Scott",
@@ -4172,7 +4177,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12483": {
   "name": "Jack Bech",
@@ -4190,13 +4195,9 @@
   "team": "NO",
   "status": null,
   "injury": null,
-  "proj_pts": 5.35,
-  "proj": {
-   "sack": 2.53,
-   "int": 0.65,
-   "pts_allow": 24.0
-  },
-  "last_wk_pts": 11.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 4.0
  },
  "13313": {
   "name": "Emmanuel Henderson Jr.",
@@ -4214,13 +4215,9 @@
   "team": "HOU",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.39,
-  "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 1.81,
-   "rec": 0.18
-  },
-  "last_wk_pts": 0.4
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "5985": {
   "name": "Foster Moreau",
@@ -4228,13 +4225,9 @@
   "team": "HOU",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.76,
-  "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 12.41,
-   "rec": 1.2
-  },
-  "last_wk_pts": 13.7
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "GB": {
   "name": "Green Bay Packers",
@@ -4242,13 +4235,13 @@
   "team": "GB",
   "status": null,
   "injury": null,
-  "proj_pts": 4.12,
+  "proj_pts": 5.63,
   "proj": {
-   "sack": 2.06,
-   "int": 0.59,
-   "pts_allow": 28.25
+   "int": 0.65,
+   "pts_allow": 22.25,
+   "sack": 2.29
   },
-  "last_wk_pts": 9.0
+  "last_wk_pts": 6.0
  },
  "13429": {
   "name": "Seydou Traore",
@@ -4258,11 +4251,11 @@
   "injury": null,
   "proj_pts": 0.06,
   "proj": {
+   "rec_yd": 0.38,
    "rec_td": 0.0,
-   "rec_yd": 0.4,
    "rec": 0.04
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "10234": {
   "name": "Derius Davis",
@@ -4270,9 +4263,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.4
+  "proj_pts": 0.24,
+  "proj": {
+   "rec_yd": 0.81,
+   "rec_td": 0.01,
+   "rec": 0.08
+  },
+  "last_wk_pts": null
  },
  "7531": {
   "name": "Feleipe Franks",
@@ -4282,8 +4279,8 @@
   "injury": null,
   "proj_pts": 0.05,
   "proj": {
+   "rec_yd": 0.2,
    "rec_td": 0.0,
-   "rec_yd": 0.19,
    "rec": 0.02
   },
   "last_wk_pts": 0.0
@@ -4294,9 +4291,13 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 9.0
+  "proj_pts": 9.16,
+  "proj": {
+   "xpm": 2.88,
+   "fgm": 2.12,
+   "fga": 2.47
+  },
+  "last_wk_pts": null
  },
  "10444": {
   "name": "Cedric Tillman",
@@ -4314,13 +4315,9 @@
   "team": "NYG",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.26,
-  "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 15.0,
-   "rec": 1.04
-  },
-  "last_wk_pts": 2.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 1.2
  },
  "12480": {
   "name": "Moliki Matavao",
@@ -4340,9 +4337,9 @@
   "injury": null,
   "proj_pts": 0.37,
   "proj": {
+   "rec_yd": 2.12,
    "rec_td": 0.01,
-   "rec_yd": 2.23,
-   "rec": 0.18
+   "rec": 0.19
   },
   "last_wk_pts": 0.0
  },
@@ -4354,7 +4351,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 8.48
+  "last_wk_pts": 6.4
  },
  "4924": {
   "name": "Zach Terrell",
@@ -4376,17 +4373,31 @@
   "proj": {},
   "last_wk_pts": null
  },
+ "1479": {
+  "name": "Keenan Allen",
+  "pos": "WR",
+  "team": "IND",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 7.09,
+  "proj": {
+   "rec_yd": 40.94,
+   "rec_td": 0.17,
+   "rec": 3.96
+  },
+  "last_wk_pts": 4.6
+ },
  "3258": {
   "name": "Nick Vannett",
   "pos": "TE",
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.49,
+  "proj_pts": 0.45,
   "proj": {
+   "rec_yd": 2.22,
    "rec_td": 0.02,
-   "rec_yd": 2.56,
-   "rec": 0.22
+   "rec": 0.21
   },
   "last_wk_pts": 0.0
  },
@@ -4395,7 +4406,7 @@
   "pos": "QB",
   "team": "SF",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -4416,9 +4427,13 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 3.52,
+  "proj": {
+   "rec_yd": 17.47,
+   "rec_td": 0.17,
+   "rec": 1.21
+  },
+  "last_wk_pts": null
  },
  "6167": {
   "name": "Jordan Scarlett",
@@ -4438,7 +4453,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12531": {
   "name": "Trevor Etienne",
@@ -4446,14 +4461,14 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.32,
+  "proj_pts": 2.31,
   "proj": {
-   "rush_yd": 10.59,
-   "rush_td": 0.04,
-   "rec_yd": 4.67,
-   "rec": 0.66
+   "rush_td": 0.06,
+   "rec_yd": 3.88,
+   "rush_yd": 11.15,
+   "rec": 0.57
   },
-  "last_wk_pts": -0.1
+  "last_wk_pts": 3.5
  },
  "13705": {
   "name": "Ty Pezza",
@@ -4490,7 +4505,7 @@
   "pos": "QB",
   "team": "LAR",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -4541,13 +4556,13 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.4,
+  "proj_pts": 2.39,
   "proj": {
+   "rec_yd": 12.0,
    "rec_td": 0.09,
-   "rec_yd": 11.68,
-   "rec": 1.19
+   "rec": 1.18
   },
-  "last_wk_pts": -0.1
+  "last_wk_pts": 2.2
  },
  "12541": {
   "name": "Dont'e Thornton Jr.",
@@ -4555,12 +4570,8 @@
   "team": "LV",
   "status": "Inactive",
   "injury": "IR",
-  "proj_pts": 0.62,
-  "proj": {
-   "rec_td": 0.03,
-   "rec_yd": 3.19,
-   "rec": 0.24
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "12732": {
@@ -4571,7 +4582,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "7891": {
   "name": "Brock Wright",
@@ -4579,13 +4590,13 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.38,
+  "proj_pts": 1.21,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 6.85,
-   "rec": 0.79
+   "rec_yd": 6.22,
+   "rec_td": 0.04,
+   "rec": 0.7
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13269": {
   "name": "Fernando Mendoza",
@@ -4603,13 +4614,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.16,
-  "proj": {
-   "rec_td": 0.08,
-   "rec_yd": 12.14,
-   "rec": 0.94
-  },
-  "last_wk_pts": 7.9
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 2.2
  },
  "11593": {
   "name": "Brevyn Spann-Ford",
@@ -4617,13 +4624,13 @@
   "team": "DAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.84,
+  "proj_pts": 1.1,
   "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 4.8,
-   "rec": 0.48
+   "rec_yd": 5.94,
+   "rec_td": 0.04,
+   "rec": 0.53
   },
-  "last_wk_pts": 5.5
+  "last_wk_pts": 2.1
  },
  "12634": {
   "name": "Jordan Watkins",
@@ -4631,13 +4638,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.95,
-  "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 38.9,
-   "rec": 2.31
-  },
-  "last_wk_pts": 2.7
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 7.1
  },
  "11257": {
   "name": "Shedrick Jackson",
@@ -4675,9 +4678,14 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": null
+  "proj_pts": 1.08,
+  "proj": {
+   "rush_td": 0.05,
+   "rec_yd": 0.81,
+   "rush_yd": 6.67,
+   "rec": 0.1
+  },
+  "last_wk_pts": 0.0
  },
  "8181": {
   "name": "Connor Heyward",
@@ -4685,14 +4693,14 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.52,
+  "proj_pts": 0.61,
   "proj": {
-   "rush_yd": 1.5,
    "rush_td": 0.01,
-   "rec_yd": 1.59,
-   "rec": 0.18
+   "rec_yd": 1.67,
+   "rush_yd": 1.64,
+   "rec": 0.19
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.8
  },
  "2078": {
   "name": "Odell Beckham Jr.",
@@ -4702,17 +4710,17 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12062": {
   "name": "Cam Grandy",
   "pos": "TE",
-  "team": "MIN",
+  "team": "CIN",
   "status": "Active",
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11474": {
   "name": "Dylan Drummond",
@@ -4730,13 +4738,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.71,
+  "proj_pts": 1.09,
   "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 4.16,
-   "rec": 0.35
+   "rec_yd": 6.56,
+   "rec_td": 0.03,
+   "rec": 0.51
   },
-  "last_wk_pts": 3.7
+  "last_wk_pts": 2.3
  },
  "12829": {
   "name": "Coleman Owen",
@@ -4756,7 +4764,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12718": {
   "name": "Konata Mumpfield",
@@ -4764,13 +4772,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.24,
+  "proj_pts": 3.73,
   "proj": {
-   "rec_td": 0.19,
-   "rec_yd": 23.39,
-   "rec": 1.52
+   "rec_yd": 20.98,
+   "rec_td": 0.16,
+   "rec": 1.35
   },
-  "last_wk_pts": 2.5
+  "last_wk_pts": 2.0
  },
  "9481": {
   "name": "Luke Musgrave",
@@ -4788,8 +4796,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.11,
+  "proj": {
+   "rush_td": 0.0,
+   "rec_yd": 0.39,
+   "rush_yd": 0.44,
+   "rec": 0.05
+  },
   "last_wk_pts": 0.0
  },
  "12939": {
@@ -4800,22 +4813,22 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": 8.3
  },
  "8129": {
   "name": "Dameon Pierce",
   "pos": "RB",
   "team": "PHI",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 5.94,
+  "injury": "Questionable",
+  "proj_pts": 4.53,
   "proj": {
-   "rush_yd": 36.25,
-   "rush_td": 0.23,
-   "rec_yd": 4.29,
-   "rec": 0.66
+   "rush_td": 0.14,
+   "rec_yd": 5.37,
+   "rush_yd": 24.78,
+   "rec": 0.83
   },
-  "last_wk_pts": 13.0
+  "last_wk_pts": 11.3
  },
  "13281": {
   "name": "Jordyn Tyson",
@@ -4853,14 +4866,14 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.94,
+  "proj_pts": 6.23,
   "proj": {
-   "rush_yd": 15.58,
-   "rush_td": 0.13,
-   "rec_yd": 12.33,
+   "rush_td": 0.22,
+   "rec_yd": 13.16,
+   "rush_yd": 21.87,
    "rec": 1.66
   },
-  "last_wk_pts": null
+  "last_wk_pts": 7.6
  },
  "12538": {
   "name": "Brady Cook",
@@ -4870,7 +4883,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13010": {
   "name": "Jordan Waters",
@@ -4887,15 +4900,15 @@
   "pos": "RB",
   "team": "NYJ",
   "status": "Active",
-  "injury": "Questionable",
+  "injury": "Out",
   "proj_pts": 0.08,
   "proj": {
-   "rush_yd": 0.62,
    "rush_td": 0.0,
-   "rec_yd": 0.1,
+   "rec_yd": 0.09,
+   "rush_yd": 0.69,
    "rec": 0.01
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13726": {
   "name": "Camden Brown",
@@ -4905,21 +4918,17 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12536": {
   "name": "Jaylin Noel",
   "pos": "WR",
   "team": "HOU",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 5.1,
-  "proj": {
-   "rec_td": 0.21,
-   "rec_yd": 29.01,
-   "rec": 1.79
-  },
-  "last_wk_pts": 18.7
+  "injury": "Questionable",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.7
  },
  "7597": {
   "name": "Kenny Yeboah",
@@ -4945,15 +4954,11 @@
   "name": "Cole Kmet",
   "pos": "TE",
   "team": "CHI",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 3.33,
-  "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 16.1,
-   "rec": 1.63
-  },
-  "last_wk_pts": 1.3
+  "status": "Inactive",
+  "injury": "IR",
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 4.3
  },
  "11058": {
   "name": "Blake Grupe",
@@ -4963,7 +4968,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 4.0
+  "last_wk_pts": 0.0
  },
  "13276": {
   "name": "Omar Cooper Jr.",
@@ -4971,13 +4976,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.8,
+  "proj_pts": 7.88,
   "proj": {
-   "rec_td": 0.26,
-   "rec_yd": 43.75,
-   "rec": 3.43
+   "rec_yd": 45.69,
+   "rec_td": 0.24,
+   "rec": 3.46
   },
-  "last_wk_pts": 19.3
+  "last_wk_pts": 20.0
  },
  "11210": {
   "name": "Malik Heath",
@@ -4997,7 +5002,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13121": {
   "name": "Ben Yurosek",
@@ -5005,13 +5010,13 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.18,
+  "proj_pts": 0.2,
   "proj": {
+   "rec_yd": 0.92,
    "rec_td": 0.01,
-   "rec_yd": 0.85,
-   "rec": 0.08
+   "rec": 0.1
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "3678": {
   "name": "Wil Lutz",
@@ -5019,13 +5024,13 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.62,
+  "proj_pts": 7.12,
   "proj": {
-   "xpm": 2.39,
-   "fgm": 1.73,
-   "fga": 2.03
+   "xpm": 2.25,
+   "fgm": 1.63,
+   "fga": 1.91
   },
-  "last_wk_pts": 7.0
+  "last_wk_pts": 14.0
  },
  "1984": {
   "name": "Allen Hurns",
@@ -5045,22 +5050,22 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7567": {
   "name": "Kenny Gainwell",
   "pos": "RB",
   "team": "TB",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 6.34,
+  "injury": "Questionable",
+  "proj_pts": 5.96,
   "proj": {
-   "rush_yd": 21.75,
-   "rush_td": 0.22,
-   "rec_yd": 14.84,
-   "rec": 1.93
+   "rush_td": 0.23,
+   "rec_yd": 13.45,
+   "rush_yd": 18.6,
+   "rec": 1.75
   },
-  "last_wk_pts": 2.9
+  "last_wk_pts": 8.8
  },
  "6540": {
   "name": "DeAndre Thompkins",
@@ -5098,25 +5103,25 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.32,
+  "proj_pts": 2.51,
   "proj": {
-   "rec_td": 0.07,
-   "rec_yd": 11.46,
-   "rec": 1.55
+   "rec_yd": 12.21,
+   "rec_td": 0.09,
+   "rec": 1.54
   },
-  "last_wk_pts": null
+  "last_wk_pts": 9.4
  },
  "7757": {
   "name": "Ben Skowronek",
   "pos": "WR",
   "team": "PIT",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.59,
+  "injury": "Out",
+  "proj_pts": 1.5,
   "proj": {
+   "rec_yd": 6.6,
    "rec_td": 0.09,
-   "rec_yd": 7.22,
-   "rec": 0.65
+   "rec": 0.59
   },
   "last_wk_pts": null
  },
@@ -5155,15 +5160,15 @@
   "pos": "RB",
   "team": "TEN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 6.08,
+  "injury": "Out",
+  "proj_pts": 6.51,
   "proj": {
-   "rush_yd": 19.93,
-   "rush_td": 0.16,
-   "rec_yd": 14.1,
-   "rec": 2.39
+   "rush_td": 0.18,
+   "rec_yd": 16.05,
+   "rush_yd": 21.3,
+   "rec": 2.35
   },
-  "last_wk_pts": 1.3
+  "last_wk_pts": null
  },
  "11570": {
   "name": "Rasheen Ali",
@@ -5171,14 +5176,29 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.24,
+  "proj_pts": 0.22,
   "proj": {
-   "rush_yd": 0.48,
    "rush_td": 0.0,
-   "rec_yd": 0.89,
+   "rec_yd": 0.75,
+   "rush_yd": 0.41,
    "rec": 0.09
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.9
+ },
+ "12534": {
+  "name": "Kyle Monangai",
+  "pos": "RB",
+  "team": "CHI",
+  "status": "Active",
+  "injury": "Out",
+  "proj_pts": 5.73,
+  "proj": {
+   "rush_td": 0.26,
+   "rec_yd": 5.33,
+   "rush_yd": 31.1,
+   "rec": 0.73
+  },
+  "last_wk_pts": null
  },
  "8195": {
   "name": "Ronnie Rivers",
@@ -5198,7 +5218,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "1642": {
   "name": "Levine Toilolo",
@@ -5236,13 +5256,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.41,
-  "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 2.38,
-   "rec": 0.22
-  },
-  "last_wk_pts": 1.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 7.2
  },
  "5189": {
   "name": "Eddy Pineiro",
@@ -5250,13 +5266,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.24,
-  "proj": {
-   "xpm": 2.65,
-   "fgm": 1.88,
-   "fga": 2.2
-  },
-  "last_wk_pts": 4.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 1.0
  },
  "13337": {
   "name": "Emmett Johnson",
@@ -5264,14 +5276,14 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.77,
+  "proj_pts": 3.7,
   "proj": {
-   "rush_yd": 7.89,
-   "rush_td": 0.05,
-   "rec_yd": 9.55,
-   "rec": 1.01
+   "rush_td": 0.09,
+   "rec_yd": 10.99,
+   "rush_yd": 12.95,
+   "rec": 1.09
   },
-  "last_wk_pts": 3.4
+  "last_wk_pts": 2.7
  },
  "13101": {
   "name": "Gage Larvadain",
@@ -5309,13 +5321,13 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.42,
+  "proj_pts": 2.27,
   "proj": {
-   "rec_td": 0.12,
-   "rec_yd": 12.2,
-   "rec": 0.93
+   "rec_yd": 11.6,
+   "rec_td": 0.11,
+   "rec": 0.87
   },
-  "last_wk_pts": 1.4
+  "last_wk_pts": 2.2
  },
  "11186": {
   "name": "Carlos Washington Jr.",
@@ -5325,7 +5337,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11583": {
   "name": "Jonathon Brooks",
@@ -5345,7 +5357,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12497": {
   "name": "Tory Horton",
@@ -5353,28 +5365,28 @@
   "team": "SEA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.81,
+  "proj_pts": 3.02,
   "proj": {
+   "rec_yd": 16.71,
    "rec_td": 0.12,
-   "rec_yd": 14.65,
-   "rec": 1.21
+   "rec": 1.19
   },
-  "last_wk_pts": 1.8
+  "last_wk_pts": 0.0
  },
  "12469": {
   "name": "Dylan Sampson",
   "pos": "RB",
   "team": "CLE",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 5.33,
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.52,
   "proj": {
-   "rush_yd": 17.69,
-   "rush_td": 0.14,
-   "rec_yd": 12.93,
-   "rec": 1.81
+   "rush_td": 0.11,
+   "rec_yd": 13.25,
+   "rush_yd": 20.52,
+   "rec": 1.8
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 9.2
  },
  "13336": {
   "name": "Dane Key",
@@ -5392,13 +5404,13 @@
   "team": "CAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.17,
+  "proj_pts": 0.45,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 6.56,
-   "rec": 0.43
+   "rec_yd": 2.46,
+   "rec_td": 0.02,
+   "rec": 0.16
   },
-  "last_wk_pts": 3.2
+  "last_wk_pts": -2.0
  },
  "13179": {
   "name": "Ja'seem Reed",
@@ -5418,7 +5430,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 12.66
+  "last_wk_pts": -0.3
  },
  "8219": {
   "name": "Jelani Woods",
@@ -5426,13 +5438,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.5,
+  "proj_pts": 0.28,
   "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 2.58,
-   "rec": 0.24
+   "rec_yd": 1.49,
+   "rec_td": 0.01,
+   "rec": 0.14
   },
-  "last_wk_pts": 1.4
+  "last_wk_pts": 0.4
  },
  "MIA": {
   "name": "Miami Dolphins",
@@ -5440,13 +5452,13 @@
   "team": "MIA",
   "status": null,
   "injury": null,
-  "proj_pts": 5.27,
+  "proj_pts": 3.9,
   "proj": {
-   "sack": 2.63,
-   "int": 0.54,
-   "pts_allow": 22.0
+   "int": 0.4,
+   "pts_allow": 26.0,
+   "sack": 1.94
   },
-  "last_wk_pts": null
+  "last_wk_pts": 4.0
  },
  "13297": {
   "name": "Reggie Virgil",
@@ -5454,11 +5466,11 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.26,
+  "proj_pts": 2.6,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.38,
-   "rec": 0.13
+   "rec_yd": 13.41,
+   "rec_td": 0.11,
+   "rec": 1.2
   },
   "last_wk_pts": 0.0
  },
@@ -5470,11 +5482,11 @@
   "injury": null,
   "proj_pts": 0.6,
   "proj": {
+   "rec_yd": 2.75,
    "rec_td": 0.03,
-   "rec_yd": 2.68,
    "rec": 0.3
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.7
  },
  "12502": {
   "name": "Gunnar Helm",
@@ -5482,24 +5494,24 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.85,
+  "proj_pts": 4.29,
   "proj": {
-   "rec_td": 0.11,
-   "rec_yd": 19.54,
-   "rec": 2.48
+   "rec_yd": 22.8,
+   "rec_td": 0.12,
+   "rec": 2.57
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 3.9
  },
  "13577": {
   "name": "Dallen Bentley",
   "pos": "TE",
   "team": "DEN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.2,
+  "injury": "Out",
+  "proj_pts": 0.19,
   "proj": {
+   "rec_yd": 0.84,
    "rec_td": 0.01,
-   "rec_yd": 0.99,
    "rec": 0.09
   },
   "last_wk_pts": null
@@ -5528,14 +5540,10 @@
   "name": "Christian Kirk",
   "pos": "WR",
   "team": "SF",
-  "status": "Inactive",
-  "injury": "IR",
-  "proj_pts": 4.46,
-  "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 25.46,
-   "rec": 2.14
-  },
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "12472": {
@@ -5556,21 +5564,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
- },
- "11646": {
-  "name": "Jalen Coker",
-  "pos": "WR",
-  "team": "CAR",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 12.99,
-  "proj": {
-   "rec_td": 0.56,
-   "rec_yd": 69.09,
-   "rec": 5.33
-  },
-  "last_wk_pts": 12.7
+  "last_wk_pts": 0.0
  },
  "13316": {
   "name": "Eric Rivers Jr.",
@@ -5588,13 +5582,13 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 6.06,
+  "proj_pts": 7.71,
   "proj": {
-   "rec_td": 0.13,
-   "rec_yd": 36.23,
-   "rec": 3.31
+   "rec_yd": 44.29,
+   "rec_td": 0.23,
+   "rec": 3.8
   },
-  "last_wk_pts": 7.2
+  "last_wk_pts": 2.4
  },
  "12498": {
   "name": "Mason Taylor",
@@ -5602,13 +5596,13 @@
   "team": "NYJ",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.22,
+  "proj_pts": 2.72,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 20.89,
-   "rec": 2.46
+   "rec_yd": 13.89,
+   "rec_td": 0.09,
+   "rec": 1.62
   },
-  "last_wk_pts": 5.3
+  "last_wk_pts": 22.7
  },
  "10218": {
   "name": "Xavier Hutchinson",
@@ -5616,20 +5610,16 @@
   "team": "HOU",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.36,
-  "proj": {
-   "rec_td": 0.06,
-   "rec_yd": 14.7,
-   "rec": 0.97
-  },
-  "last_wk_pts": 2.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 10.4
  },
  "6154": {
   "name": "David Sills V",
   "pos": "WR",
   "team": "TB",
-  "status": "Inactive",
-  "injury": "IR",
+  "status": "Active",
+  "injury": null,
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": 0.0
@@ -5640,14 +5630,9 @@
   "team": "MIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.36,
-  "proj": {
-   "rush_yd": 4.18,
-   "rush_td": 0.04,
-   "rec_yd": 3.53,
-   "rec": 0.5
-  },
-  "last_wk_pts": null
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.0
  },
  "11623": {
   "name": "Jordan Whittington",
@@ -5655,11 +5640,11 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.38,
+  "proj_pts": 3.18,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 7.91,
-   "rec": 0.67
+   "rec_yd": 18.37,
+   "rec_td": 0.09,
+   "rec": 1.55
   },
   "last_wk_pts": 0.0
  },
@@ -5668,14 +5653,14 @@
   "pos": "TE",
   "team": "LV",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.46,
+  "injury": "Questionable",
+  "proj_pts": 0.47,
   "proj": {
+   "rec_yd": 2.32,
    "rec_td": 0.02,
-   "rec_yd": 2.22,
-   "rec": 0.23
+   "rec": 0.24
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.3
  },
  "9225": {
   "name": "Tank Bigsby",
@@ -5693,13 +5678,13 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.61,
+  "proj_pts": 2.3,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 5.79,
-   "rec": 0.59
+   "rec_yd": 9.68,
+   "rec_td": 0.07,
+   "rec": 1.07
   },
-  "last_wk_pts": 4.0
+  "last_wk_pts": 0.0
  },
  "13407": {
   "name": "Carson Towt",
@@ -5719,7 +5704,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "BUF": {
   "name": "Buffalo Bills",
@@ -5727,9 +5712,13 @@
   "team": "BUF",
   "status": null,
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.0
+  "proj_pts": 5.68,
+  "proj": {
+   "int": 0.71,
+   "pts_allow": 25.0,
+   "sack": 2.36
+  },
+  "last_wk_pts": null
  },
  "9757": {
   "name": "Kendre Miller",
@@ -5737,14 +5726,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.19,
-  "proj": {
-   "rush_yd": 37.2,
-   "rush_td": 0.42,
-   "rec_yd": 9.47,
-   "rec": 1.37
-  },
-  "last_wk_pts": 8.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 4.3
  },
  "7670": {
   "name": "Joshua Palmer",
@@ -5752,9 +5736,13 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 4.2
+  "proj_pts": 2.39,
+  "proj": {
+   "rec_yd": 15.48,
+   "rec_td": 0.05,
+   "rec": 1.13
+  },
+  "last_wk_pts": null
  },
  "12547": {
   "name": "Kyle Williams",
@@ -5762,13 +5750,13 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.13,
+  "proj_pts": 4.18,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 25.7,
-   "rec": 1.29
+   "rec_yd": 24.43,
+   "rec_td": 0.17,
+   "rec": 1.42
   },
-  "last_wk_pts": 1.7
+  "last_wk_pts": 0.0
  },
  "3333": {
   "name": "Temarrick Hemingway",
@@ -5788,7 +5776,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12705": {
   "name": "Graham Mertz",
@@ -5806,13 +5794,13 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.83,
+  "proj_pts": 7.55,
   "proj": {
+   "rec_yd": 33.38,
    "rec_td": 0.41,
-   "rec_yd": 35.19,
-   "rec": 3.67
+   "rec": 3.47
   },
-  "last_wk_pts": 2.1
+  "last_wk_pts": 3.0
  },
  "8527": {
   "name": "Dareke Young",
@@ -5820,11 +5808,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.39,
+  "proj_pts": 0.46,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 2.36,
-   "rec": 0.18
+   "rec_yd": 2.45,
+   "rec_td": 0.02,
+   "rec": 0.19
   },
   "last_wk_pts": 0.0
  },
@@ -5833,13 +5821,13 @@
   "pos": "RB",
   "team": "DAL",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.44,
+  "injury": "Out",
+  "proj_pts": 0.5,
   "proj": {
-   "rush_yd": 1.38,
    "rush_td": 0.01,
-   "rec_yd": 1.03,
-   "rec": 0.15
+   "rec_yd": 1.33,
+   "rush_yd": 1.57,
+   "rec": 0.17
   },
   "last_wk_pts": null
  },
@@ -5849,9 +5837,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 3.1
+  "proj_pts": 0.23,
+  "proj": {
+   "rec_yd": 1.27,
+   "rec_td": 0.01,
+   "rec": 0.09
+  },
+  "last_wk_pts": null
  },
  "4922": {
   "name": "Garrett Scantling",
@@ -5867,7 +5859,7 @@
   "name": "Dillon Gabriel",
   "pos": "QB",
   "team": "CLE",
-  "status": "Inactive",
+  "status": "Active",
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
@@ -5879,11 +5871,11 @@
   "team": "GB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.3,
+  "proj_pts": 0.28,
   "proj": {
+   "rec_yd": 1.32,
    "rec_td": 0.01,
-   "rec_yd": 1.54,
-   "rec": 0.18
+   "rec": 0.17
   },
   "last_wk_pts": 0.0
  },
@@ -5903,14 +5895,14 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 14.62,
+  "proj_pts": 13.91,
   "proj": {
-   "pass_int": 0.22,
-   "pass_td": 0.7,
-   "pass_yd": 190.8,
-   "rush_yd": 30.7
+   "pass_yd": 187.86,
+   "pass_td": 0.53,
+   "rush_yd": 28.95,
+   "pass_int": 0.44
   },
-  "last_wk_pts": null
+  "last_wk_pts": 26.02
  },
  "11729": {
   "name": "Sione Vaki",
@@ -5918,14 +5910,14 @@
   "team": "DET",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.79,
+  "proj_pts": 3.32,
   "proj": {
-   "rush_yd": 14.35,
-   "rush_td": 0.11,
-   "rec_yd": 9.33,
-   "rec": 0.96
+   "rush_td": 0.09,
+   "rec_yd": 8.5,
+   "rush_yd": 13.43,
+   "rec": 0.86
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.5
  },
  "11562": {
   "name": "Spencer Rattler",
@@ -5963,13 +5955,9 @@
   "team": "SF",
   "status": null,
   "injury": null,
-  "proj_pts": 6.16,
-  "proj": {
-   "sack": 2.56,
-   "int": 0.77,
-   "pts_allow": 23.5
-  },
-  "last_wk_pts": 5.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": -1.0
  },
  "6136": {
   "name": "Jarrett Stidham",
@@ -5989,7 +5977,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11626": {
   "name": "Xavier Legette",
@@ -6007,9 +5995,13 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 13.9
+  "proj_pts": 6.24,
+  "proj": {
+   "rec_yd": 38.78,
+   "rec_td": 0.17,
+   "rec": 2.64
+  },
+  "last_wk_pts": null
  },
  "11573": {
   "name": "Frank Gore Jr.",
@@ -6019,7 +6011,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13408": {
   "name": "Tanner Koziol",
@@ -6027,9 +6019,13 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 1.04,
+  "proj": {
+   "rec_yd": 5.65,
+   "rec_td": 0.04,
+   "rec": 0.48
+  },
+  "last_wk_pts": null
  },
  "12817": {
   "name": "Jake Briningstool",
@@ -6037,11 +6033,11 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.55,
+  "proj_pts": 0.56,
   "proj": {
+   "rec_yd": 2.99,
    "rec_td": 0.02,
-   "rec_yd": 2.85,
-   "rec": 0.29
+   "rec": 0.28
   },
   "last_wk_pts": 0.0
  },
@@ -6051,13 +6047,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.59,
-  "proj": {
-   "rec_td": 0.24,
-   "rec_yd": 20.68,
-   "rec": 2.12
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 2.1
  },
  "12500": {
   "name": "Quinn Ewers",
@@ -6067,17 +6059,17 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "5154": {
-  "name": "Trent Sherfield Sr.",
+  "name": "Trent Sherfield",
   "pos": "WR",
   "team": "BUF",
   "status": "Active",
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12520": {
   "name": "Xavier Restrepo",
@@ -6094,14 +6086,14 @@
   "pos": "WR",
   "team": "GB",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.35,
+  "injury": null,
+  "proj_pts": 1.51,
   "proj": {
+   "rec_yd": 7.99,
    "rec_td": 0.04,
-   "rec_yd": 7.04,
-   "rec": 0.51
+   "rec": 0.6
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 0.9
  },
  "13477": {
   "name": "Colbie Young",
@@ -6109,20 +6101,20 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.51,
+  "proj_pts": 1.61,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 7.58,
+   "rec_yd": 8.03,
+   "rec_td": 0.06,
    "rec": 0.9
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12521": {
   "name": "Elijah Arroyo",
   "pos": "TE",
   "team": "SEA",
-  "status": "Active",
-  "injury": "Out",
+  "status": "Inactive",
+  "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": 0.0
@@ -6143,13 +6135,13 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.62,
+  "proj_pts": 0.59,
   "proj": {
+   "rec_yd": 3.39,
    "rec_td": 0.02,
-   "rec_yd": 3.55,
-   "rec": 0.3
+   "rec": 0.27
   },
-  "last_wk_pts": 1.7
+  "last_wk_pts": 0.0
  },
  "13645": {
   "name": "Michael Wortham",
@@ -6159,14 +6151,14 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13404": {
   "name": "Garrett Nussmeier",
   "pos": "QB",
   "team": "KC",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -6177,9 +6169,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.5,
+  "proj": {
+   "rec_yd": 2.53,
+   "rec_td": 0.02,
+   "rec": 0.26
+  },
+  "last_wk_pts": null
  },
  "13436": {
   "name": "Kentrel Bullock",
@@ -6189,7 +6185,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "3202": {
   "name": "Austin Hooper",
@@ -6197,13 +6193,13 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.74,
+  "proj_pts": 2.79,
   "proj": {
+   "rec_yd": 12.46,
    "rec_td": 0.15,
-   "rec_yd": 12.16,
-   "rec": 1.25
+   "rec": 1.24
   },
-  "last_wk_pts": 1.1
+  "last_wk_pts": 3.1
  },
  "11377": {
   "name": "Tyrell Shavers",
@@ -6213,18 +6209,18 @@
   "injury": "PUP",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11600": {
   "name": "Ja'Tavion Sanders",
   "pos": "TE",
   "team": "CAR",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.2,
+  "injury": "Out",
+  "proj_pts": 0.21,
   "proj": {
+   "rec_yd": 0.91,
    "rec_td": 0.01,
-   "rec_yd": 0.87,
    "rec": 0.11
   },
   "last_wk_pts": null
@@ -6235,11 +6231,11 @@
   "team": "NE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.36,
+  "proj_pts": 7.17,
   "proj": {
-   "xpm": 2.48,
-   "fgm": 1.69,
-   "fga": 2.05
+   "xpm": 2.44,
+   "fgm": 1.67,
+   "fga": 2.02
   },
   "last_wk_pts": 7.0
  },
@@ -6249,14 +6245,14 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 14.4,
+  "proj_pts": 13.66,
   "proj": {
-   "pass_int": 0.44,
-   "pass_td": 1.3,
-   "pass_yd": 207.65,
-   "rush_yd": 10.35
+   "pass_yd": 196.16,
+   "pass_td": 1.29,
+   "rush_yd": 8.89,
+   "pass_int": 0.42
   },
-  "last_wk_pts": 12.6
+  "last_wk_pts": 11.54
  },
  "5008": {
   "name": "Durham Smythe",
@@ -6274,9 +6270,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 6.2
+  "proj_pts": 5.7,
+  "proj": {
+   "rec_yd": 32.72,
+   "rec_td": 0.21,
+   "rec": 2.08
+  },
+  "last_wk_pts": null
  },
  "NYG": {
   "name": "New York Giants",
@@ -6284,12 +6284,8 @@
   "team": "NYG",
   "status": null,
   "injury": null,
-  "proj_pts": 5.32,
-  "proj": {
-   "sack": 2.28,
-   "int": 0.65,
-   "pts_allow": 26.75
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 1.0
  },
  "13288": {
@@ -6297,10 +6293,10 @@
   "pos": "RB",
   "team": "TEN",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "6453": {
   "name": "D.J. Montgomery",
@@ -6318,11 +6314,11 @@
   "team": "CLE",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.07,
+  "proj_pts": 1.91,
   "proj": {
+   "rec_yd": 11.59,
    "rec_td": 0.05,
-   "rec_yd": 12.12,
-   "rec": 0.85
+   "rec": 0.75
   },
   "last_wk_pts": 0.0
  },
@@ -6332,12 +6328,12 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.07,
+  "proj_pts": 0.06,
   "proj": {
-   "rush_yd": 0.06,
    "rush_td": 0.0,
-   "rec_yd": 0.42,
-   "rec": 0.05
+   "rec_yd": 0.38,
+   "rush_yd": 0.06,
+   "rec": 0.04
   },
   "last_wk_pts": 0.0
  },
@@ -6366,14 +6362,14 @@
   "pos": "WR",
   "team": "NYJ",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.93,
+  "injury": null,
+  "proj_pts": 3.81,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 17.3,
-   "rec": 1.29
+   "rec_yd": 23.75,
+   "rec_td": 0.1,
+   "rec": 1.67
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12389": {
   "name": "Hayden Rucci",
@@ -6381,9 +6377,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.46,
+  "proj": {
+   "rec_yd": 2.21,
+   "rec_td": 0.02,
+   "rec": 0.23
+  },
+  "last_wk_pts": null
  },
  "13274": {
   "name": "Germie Bernard",
@@ -6391,13 +6391,13 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 9.27,
+  "proj_pts": 8.11,
   "proj": {
-   "rec_td": 0.34,
-   "rec_yd": 49.34,
-   "rec": 4.54
+   "rec_yd": 42.86,
+   "rec_td": 0.31,
+   "rec": 3.91
   },
-  "last_wk_pts": 20.2
+  "last_wk_pts": 4.2
  },
  "7537": {
   "name": "Jaret Patterson",
@@ -6415,12 +6415,12 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.09,
+  "proj_pts": 0.1,
   "proj": {
-   "rush_yd": 0.48,
    "rush_td": 0.0,
-   "rec_yd": 0.29,
-   "rec": 0.03
+   "rec_yd": 0.33,
+   "rush_yd": 0.48,
+   "rec": 0.04
   },
   "last_wk_pts": 0.0
  },
@@ -6430,14 +6430,9 @@
   "team": "SF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.55,
-  "proj": {
-   "rush_yd": 3.58,
-   "rush_td": 0.02,
-   "rec_yd": 0.43,
-   "rec": 0.05
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 2.2
  },
  "8114": {
   "name": "Erik Ezukanma",
@@ -6454,22 +6449,22 @@
   "pos": "RB",
   "team": "LV",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 5.11,
+  "injury": null,
+  "proj_pts": 5.54,
   "proj": {
-   "rush_yd": 28.71,
-   "rush_td": 0.18,
-   "rec_yd": 5.48,
-   "rec": 0.7
+   "rush_td": 0.2,
+   "rec_yd": 5.86,
+   "rush_yd": 30.68,
+   "rec": 0.74
   },
-  "last_wk_pts": 5.5
+  "last_wk_pts": 2.7
  },
  "12938": {
   "name": "Jackson Meeks",
   "pos": "TE",
   "team": "DET",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -6490,38 +6485,38 @@
   "team": "ATL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.12,
+  "proj_pts": 7.67,
   "proj": {
-   "xpm": 2.54,
-   "fgm": 1.83,
-   "fga": 2.09
+   "xpm": 2.41,
+   "fgm": 1.73,
+   "fga": 1.97
   },
-  "last_wk_pts": 1.0
+  "last_wk_pts": 10.0
  },
  "11762": {
   "name": "Anthony Gould",
   "pos": "WR",
   "team": "IND",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 0.12,
+  "injury": "Out",
+  "proj_pts": 0.06,
   "proj": {
+   "rec_yd": 0.44,
    "rec_td": 0.0,
-   "rec_yd": 0.79,
-   "rec": 0.08
+   "rec": 0.04
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "7602": {
   "name": "Kylen Granson",
   "pos": "TE",
   "team": "TEN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.1,
+  "injury": "Out",
+  "proj_pts": 0.11,
   "proj": {
+   "rec_yd": 0.76,
    "rec_td": 0.0,
-   "rec_yd": 0.65,
    "rec": 0.07
   },
   "last_wk_pts": null
@@ -6542,8 +6537,12 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.07,
+  "proj": {
+   "rec_yd": 0.45,
+   "rec_td": 0.0,
+   "rec": 0.04
+  },
   "last_wk_pts": 0.0
  },
  "3668": {
@@ -6562,11 +6561,11 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.12,
+  "proj_pts": 0.11,
   "proj": {
-   "rush_yd": 0.5,
    "rush_td": 0.0,
    "rec_yd": 0.44,
+   "rush_yd": 0.45,
    "rec": 0.05
   },
   "last_wk_pts": 0.0
@@ -6577,9 +6576,14 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 3.7
+  "proj_pts": 4.55,
+  "proj": {
+   "rush_td": 0.08,
+   "rec_yd": 14.52,
+   "rush_yd": 13.08,
+   "rec": 1.54
+  },
+  "last_wk_pts": null
  },
  "6803": {
   "name": "Brandon Aiyuk",
@@ -6597,9 +6601,14 @@
   "team": "JAX",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.1
+  "proj_pts": 1.52,
+  "proj": {
+   "rush_td": 0.03,
+   "rec_yd": 4.98,
+   "rush_yd": 3.63,
+   "rec": 0.63
+  },
+  "last_wk_pts": null
  },
  "8172": {
   "name": "Greg Dulcich",
@@ -6607,13 +6616,13 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.19,
+  "proj_pts": 4.89,
   "proj": {
-   "rec_td": 0.12,
-   "rec_yd": 30.28,
-   "rec": 2.89
+   "rec_yd": 29.38,
+   "rec_td": 0.08,
+   "rec": 2.94
   },
-  "last_wk_pts": null
+  "last_wk_pts": 11.1
  },
  "13870": {
   "name": "Quentin Moore",
@@ -6633,7 +6642,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "7050": {
   "name": "Josiah Deguara",
@@ -6643,7 +6652,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "4144": {
   "name": "Jonnu Smith",
@@ -6651,13 +6660,13 @@
   "team": "GB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.54,
+  "proj_pts": 1.57,
   "proj": {
-   "rec_td": 0.08,
-   "rec_yd": 14.3,
-   "rec": 1.3
+   "rec_yd": 9.01,
+   "rec_td": 0.04,
+   "rec": 0.86
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.4
  },
  "8249": {
   "name": "Lucas Krull",
@@ -6697,7 +6706,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13293": {
   "name": "Ja'Kobi Lane",
@@ -6705,27 +6714,27 @@
   "team": "BAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.16,
+  "proj_pts": 4.74,
   "proj": {
-   "rec_td": 0.15,
-   "rec_yd": 31.39,
-   "rec": 2.21
+   "rec_yd": 27.12,
+   "rec_td": 0.17,
+   "rec": 2.0
   },
-  "last_wk_pts": 6.0
+  "last_wk_pts": 4.0
  },
  "8489": {
   "name": "Drew Ogletree",
   "pos": "TE",
   "team": "IND",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 0.41,
+  "injury": null,
+  "proj_pts": 0.45,
   "proj": {
+   "rec_yd": 2.56,
    "rec_td": 0.01,
-   "rec_yd": 2.28,
-   "rec": 0.24
+   "rec": 0.26
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 2.2
  },
  "6528": {
   "name": "Joey Slye",
@@ -6733,13 +6742,13 @@
   "team": "TEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.11,
+  "proj_pts": 6.65,
   "proj": {
-   "xpm": 2.05,
-   "fgm": 1.67,
-   "fga": 1.99
+   "xpm": 1.93,
+   "fgm": 1.57,
+   "fga": 1.87
   },
-  "last_wk_pts": 18.0
+  "last_wk_pts": 6.0
  },
  "13122": {
   "name": "Carter Runyon",
@@ -6777,13 +6786,13 @@
   "team": "CHI",
   "status": null,
   "injury": null,
-  "proj_pts": 5.86,
+  "proj_pts": 5.42,
   "proj": {
-   "sack": 2.48,
-   "int": 0.73,
-   "pts_allow": 23.75
+   "int": 0.67,
+   "pts_allow": 24.75,
+   "sack": 2.3
   },
-  "last_wk_pts": 7.0
+  "last_wk_pts": 4.0
  },
  "8122": {
   "name": "Zonovan Knight",
@@ -6791,14 +6800,14 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.06,
+  "proj_pts": 6.59,
   "proj": {
-   "rush_yd": 34.23,
-   "rush_td": 0.32,
-   "rec_yd": 8.19,
-   "rec": 1.15
+   "rush_td": 0.19,
+   "rec_yd": 14.25,
+   "rush_yd": 24.82,
+   "rec": 1.73
   },
-  "last_wk_pts": 10.8
+  "last_wk_pts": 7.8
  },
  "11508": {
   "name": "Princeton Fant",
@@ -6826,9 +6835,13 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.23,
+  "proj": {
+   "rec_yd": 1.16,
+   "rec_td": 0.01,
+   "rec": 0.08
+  },
+  "last_wk_pts": null
  },
  "8127": {
   "name": "Charlie Kolar",
@@ -6836,9 +6849,13 @@
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 3.5
+  "proj_pts": 3.24,
+  "proj": {
+   "rec_yd": 16.62,
+   "rec_td": 0.12,
+   "rec": 1.71
+  },
+  "last_wk_pts": null
  },
  "12001": {
   "name": "Lawrence Keys",
@@ -6848,7 +6865,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "3200": {
   "name": "Sterling Shepard",
@@ -6876,13 +6893,8 @@
   "team": "HOU",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.96,
-  "proj": {
-   "rush_yd": 22.37,
-   "rush_td": 0.19,
-   "rec_yd": 7.85,
-   "rec": 0.91
-  },
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 0.0
  },
  "7559": {
@@ -6921,13 +6933,13 @@
   "team": "CIN",
   "status": null,
   "injury": null,
-  "proj_pts": 5.17,
+  "proj_pts": 8.86,
   "proj": {
-   "sack": 2.37,
-   "int": 0.67,
-   "pts_allow": 23.75
+   "int": 1.02,
+   "pts_allow": 18.25,
+   "sack": 3.62
   },
-  "last_wk_pts": null
+  "last_wk_pts": 10.0
  },
  "9482": {
   "name": "Michael Mayer",
@@ -6935,13 +6947,13 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.48,
+  "proj_pts": 5.93,
   "proj": {
-   "rec_td": 0.16,
-   "rec_yd": 29.04,
-   "rec": 3.23
+   "rec_yd": 30.36,
+   "rec_td": 0.2,
+   "rec": 3.39
   },
-  "last_wk_pts": 13.0
+  "last_wk_pts": 4.7
  },
  "138": {
   "name": "Ben Roethlisberger",
@@ -6959,13 +6971,13 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.16,
+  "proj_pts": 7.32,
   "proj": {
-   "xpm": 2.57,
-   "fgm": 1.86,
-   "fga": 2.18
+   "xpm": 2.31,
+   "fgm": 1.67,
+   "fga": 1.96
   },
-  "last_wk_pts": 8.0
+  "last_wk_pts": 14.0
  },
  "7042": {
   "name": "Tyler Bass",
@@ -6973,9 +6985,13 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 17.0
+  "proj_pts": 8.01,
+  "proj": {
+   "xpm": 2.72,
+   "fgm": 1.77,
+   "fga": 2.09
+  },
+  "last_wk_pts": null
  },
  "8800": {
   "name": "Malik Davis",
@@ -6992,14 +7008,14 @@
   "pos": "TE",
   "team": "LAR",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.49,
+  "injury": "Out",
+  "proj_pts": 0.07,
   "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 2.54,
-   "rec": 0.23
+   "rec_yd": 0.51,
+   "rec_td": 0.0,
+   "rec": 0.04
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12803": {
   "name": "Luke Grimm",
@@ -7009,7 +7025,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "11558": {
   "name": "Sam Hartman",
@@ -7019,7 +7035,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "10235": {
   "name": "Roschon Johnson",
@@ -7027,14 +7043,14 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.81,
+  "proj_pts": 0.95,
   "proj": {
-   "rush_yd": 33.31,
-   "rush_td": 0.46,
-   "rec_yd": 13.35,
-   "rec": 1.88
+   "rush_td": 0.04,
+   "rec_yd": 1.67,
+   "rush_yd": 3.78,
+   "rec": 0.26
   },
-  "last_wk_pts": 13.5
+  "last_wk_pts": 1.3
  },
  "3155": {
   "name": "Laquon Treadwell",
@@ -7042,13 +7058,13 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 2.96,
+  "proj_pts": 2.91,
   "proj": {
+   "rec_yd": 18.96,
    "rec_td": 0.05,
-   "rec_yd": 19.41,
-   "rec": 1.44
+   "rec": 1.43
   },
-  "last_wk_pts": 3.1
+  "last_wk_pts": 2.9
  },
  "8162": {
   "name": "Sam Howell",
@@ -7065,14 +7081,14 @@
   "pos": "TE",
   "team": "MIA",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 1.0,
+  "injury": null,
+  "proj_pts": 0.98,
   "proj": {
+   "rec_yd": 5.13,
    "rec_td": 0.03,
-   "rec_yd": 5.31,
-   "rec": 0.57
+   "rec": 0.58
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "6012": {
   "name": "Travis Homer",
@@ -7080,23 +7096,13 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.3,
+  "proj_pts": 0.29,
   "proj": {
-   "rush_yd": 0.81,
    "rush_td": 0.01,
-   "rec_yd": 0.6,
-   "rec": 0.08
+   "rec_yd": 0.54,
+   "rush_yd": 0.82,
+   "rec": 0.07
   },
-  "last_wk_pts": 0.0
- },
- "9490": {
-  "name": "Tyler Scott",
-  "pos": "WR",
-  "team": "LV",
-  "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 0.0,
-  "proj": {},
   "last_wk_pts": 0.0
  },
  "4349": {
@@ -7117,22 +7123,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
- },
- "4035": {
-  "name": "Alvin Kamara",
-  "pos": "RB",
-  "team": "NO",
-  "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 6.55,
-  "proj": {
-   "rush_yd": 24.3,
-   "rush_td": 0.22,
-   "rec_yd": 12.13,
-   "rec": 2.09
-  },
-  "last_wk_pts": 13.9
+  "last_wk_pts": 0.0
  },
  "8756": {
   "name": "Brandon Johnson",
@@ -7162,11 +7153,11 @@
   "injury": null,
   "proj_pts": 0.1,
   "proj": {
+   "rec_yd": 0.66,
    "rec_td": 0.0,
-   "rec_yd": 0.63,
-   "rec": 0.05
+   "rec": 0.04
   },
-  "last_wk_pts": -2.0
+  "last_wk_pts": 0.0
  },
  "13308": {
   "name": "Bauer Sharp",
@@ -7174,13 +7165,13 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.06,
+  "proj_pts": 0.07,
   "proj": {
+   "rec_yd": 0.45,
    "rec_td": 0.0,
-   "rec_yd": 0.44,
-   "rec": 0.04
+   "rec": 0.05
   },
-  "last_wk_pts": 2.6
+  "last_wk_pts": 0.0
  },
  "11716": {
   "name": "Tip Reiman",
@@ -7188,8 +7179,12 @@
   "team": "ARI",
   "status": "Active",
   "injury": "PUP",
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.92,
+  "proj": {
+   "rec_yd": 4.32,
+   "rec_td": 0.04,
+   "rec": 0.5
+  },
   "last_wk_pts": 0.0
  },
  "13319": {
@@ -7198,13 +7193,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.14,
-  "proj": {
-   "rec_td": 0.03,
-   "rec_yd": 5.97,
-   "rec": 0.72
-  },
-  "last_wk_pts": 2.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 0.7
  },
  "11783": {
   "name": "Ryan Flournoy",
@@ -7212,13 +7203,13 @@
   "team": "DAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.62,
+  "proj_pts": 7.24,
   "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 33.22,
-   "rec": 2.86
+   "rec_yd": 40.95,
+   "rec_td": 0.26,
+   "rec": 3.16
   },
-  "last_wk_pts": 13.5
+  "last_wk_pts": 9.0
  },
  "4683": {
   "name": "Aaron Bailey",
@@ -7236,11 +7227,11 @@
   "team": "DAL",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.89,
+  "proj_pts": 1.16,
   "proj": {
-   "rec_td": 0.02,
-   "rec_yd": 5.04,
-   "rec": 0.54
+   "rec_yd": 6.2,
+   "rec_td": 0.04,
+   "rec": 0.59
   },
   "last_wk_pts": 0.0
  },
@@ -7260,13 +7251,13 @@
   "team": "ARI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.41,
+  "proj_pts": 1.8,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 7.63,
-   "rec": 0.81
+   "rec_yd": 9.62,
+   "rec_td": 0.06,
+   "rec": 0.95
   },
-  "last_wk_pts": 4.3
+  "last_wk_pts": 3.2
  },
  "4972": {
   "name": "Mason Rudolph",
@@ -7304,23 +7295,27 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.6,
+  "proj": {
+   "rec_yd": 2.54,
+   "rec_td": 0.02,
+   "rec": 0.23
+  },
+  "last_wk_pts": null
  },
  "13075": {
   "name": "Myles Price",
   "pos": "WR",
   "team": "MIN",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 0.06,
+  "injury": "Questionable",
+  "proj_pts": 0.07,
   "proj": {
+   "rec_yd": 0.47,
    "rec_td": 0.0,
-   "rec_yd": 0.44,
    "rec": 0.04
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11433": {
   "name": "Nate Adkins",
@@ -7328,11 +7323,11 @@
   "team": "DEN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.66,
+  "proj_pts": 1.44,
   "proj": {
-   "rec_td": 0.11,
-   "rec_yd": 6.74,
-   "rec": 0.62
+   "rec_yd": 5.77,
+   "rec_td": 0.09,
+   "rec": 0.61
   },
   "last_wk_pts": 0.0
  },
@@ -7341,14 +7336,10 @@
   "pos": "WR",
   "team": "HOU",
   "status": "Active",
-  "injury": "IR",
-  "proj_pts": 2.2,
-  "proj": {
-   "rec_td": 0.1,
-   "rec_yd": 11.33,
-   "rec": 0.93
-  },
-  "last_wk_pts": 0.0
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 5.0
  },
  "2307": {
   "name": "Marcus Mariota",
@@ -7366,13 +7357,13 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.87,
+  "proj_pts": 0.8,
   "proj": {
-   "rec_td": 0.03,
-   "rec_yd": 4.83,
-   "rec": 0.42
+   "rec_yd": 4.68,
+   "rec_td": 0.02,
+   "rec": 0.43
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "8214": {
   "name": "Cole Turner",
@@ -7382,7 +7373,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "4464": {
   "name": "Nick Mullens",
@@ -7392,7 +7383,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13011": {
   "name": "Brennan Presley",
@@ -7410,11 +7401,11 @@
   "team": "LV",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.63,
+  "proj_pts": 0.36,
   "proj": {
-   "rec_td": 0.03,
-   "rec_yd": 3.14,
-   "rec": 0.27
+   "rec_yd": 1.68,
+   "rec_td": 0.02,
+   "rec": 0.15
   },
   "last_wk_pts": 0.0
  },
@@ -7436,7 +7427,7 @@
   "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 11.5
+  "last_wk_pts": 0.0
  },
  "5095": {
   "name": "Daniel Carlson",
@@ -7444,13 +7435,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.59,
-  "proj": {
-   "xpm": 2.32,
-   "fgm": 1.72,
-   "fga": 2.02
-  },
-  "last_wk_pts": 13.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 3.0
  },
  "13630": {
   "name": "Evan Svoboda",
@@ -7460,7 +7447,7 @@
   "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12510": {
   "name": "Jalen Milroe",
@@ -7470,7 +7457,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11963": {
   "name": "Chris Collier",
@@ -7487,13 +7474,9 @@
   "pos": "WR",
   "team": "ARI",
   "status": "Active",
-  "injury": null,
-  "proj_pts": 2.46,
-  "proj": {
-   "rec_td": 0.08,
-   "rec_yd": 13.98,
-   "rec": 1.17
-  },
+  "injury": "Out",
+  "proj_pts": 0.0,
+  "proj": {},
   "last_wk_pts": 4.0
  },
  "12045": {
@@ -7504,7 +7487,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "6451": {
   "name": "Stephen Carlson",
@@ -7516,22 +7499,40 @@
   "proj": {},
   "last_wk_pts": 0.0
  },
+ "8210": {
+  "name": "Chig Okonkwo",
+  "pos": "TE",
+  "team": "WAS",
+  "status": "Active",
+  "injury": null,
+  "proj_pts": 5.77,
+  "proj": {
+   "rec_yd": 27.88,
+   "rec_td": 0.25,
+   "rec": 2.97
+  },
+  "last_wk_pts": null
+ },
  "12670": {
   "name": "KeAndre Lambert-Smith",
   "pos": "WR",
   "team": "LAC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 3.7
+  "proj_pts": 1.77,
+  "proj": {
+   "rec_yd": 8.1,
+   "rec_td": 0.1,
+   "rec": 0.71
+  },
+  "last_wk_pts": null
  },
  "13306": {
   "name": "Taylen Green",
   "pos": "QB",
   "team": "CLE",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7552,11 +7553,11 @@
   "team": "GB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.24,
+  "proj_pts": 0.1,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.23,
-   "rec": 0.12
+   "rec_yd": 0.63,
+   "rec_td": 0.0,
+   "rec": 0.07
   },
   "last_wk_pts": 0.0
  },
@@ -7568,7 +7569,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11911": {
   "name": "Jeshaun Jones",
@@ -7578,7 +7579,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "1433": {
   "name": "Brandon McManus",
@@ -7586,13 +7587,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 7.75,
+  "proj_pts": 7.49,
   "proj": {
-   "xpm": 3.05,
-   "fgm": 1.66,
-   "fga": 1.99
+   "xpm": 2.95,
+   "fgm": 1.61,
+   "fga": 1.93
   },
-  "last_wk_pts": null
+  "last_wk_pts": 5.0
  },
  "4490": {
   "name": "Wyatt Houston",
@@ -7610,13 +7611,13 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.92,
+  "proj_pts": 4.38,
   "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 22.58,
-   "rec": 1.55
+   "rec_yd": 23.26,
+   "rec_td": 0.2,
+   "rec": 1.64
   },
-  "last_wk_pts": 5.5
+  "last_wk_pts": 0.0
  },
  "13435": {
   "name": "Joe Royer",
@@ -7624,8 +7625,12 @@
   "team": "CLE",
   "status": "Active",
   "injury": "PUP",
-  "proj_pts": 0.0,
-  "proj": {},
+  "proj_pts": 0.78,
+  "proj": {
+   "rec_yd": 4.05,
+   "rec_td": 0.03,
+   "rec": 0.38
+  },
   "last_wk_pts": 0.0
  },
  "7865": {
@@ -7634,53 +7639,28 @@
   "team": "PIT",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
- },
- "13580": {
-  "name": "Carsen Ryan",
-  "pos": "TE",
-  "team": "CLE",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 0.19,
+  "proj_pts": 0.42,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 0.86,
-   "rec": 0.08
+   "rec_yd": 2.1,
+   "rec_td": 0.02,
+   "rec": 0.18
   },
-  "last_wk_pts": 0.0
- },
- "5850": {
-  "name": "Josh Jacobs",
-  "pos": "RB",
-  "team": "GB",
-  "status": "Active",
-  "injury": null,
-  "proj_pts": 10.85,
-  "proj": {
-   "rush_yd": 51.28,
-   "rush_td": 0.43,
-   "rec_yd": 14.47,
-   "rec": 1.91
-  },
-  "last_wk_pts": 0.0
+  "last_wk_pts": 3.4
  },
  "9753": {
   "name": "Zach Charbonnet",
   "pos": "RB",
   "team": "SEA",
-  "status": "Inactive",
-  "injury": "PUP",
-  "proj_pts": 5.0,
+  "status": "Active",
+  "injury": "Out",
+  "proj_pts": 8.52,
   "proj": {
-   "rush_yd": 17.47,
-   "rush_td": 0.31,
-   "rec_yd": 6.75,
-   "rec": 1.07
+   "rush_td": 0.5,
+   "rec_yd": 10.25,
+   "rush_yd": 35.57,
+   "rec": 1.32
   },
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "12267": {
   "name": "Qadir Ismail",
@@ -7698,13 +7678,13 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.77,
+  "proj_pts": 0.73,
   "proj": {
+   "rec_yd": 3.59,
    "rec_td": 0.03,
-   "rec_yd": 3.8,
-   "rec": 0.41
+   "rec": 0.38
   },
-  "last_wk_pts": 0.9
+  "last_wk_pts": 0.0
  },
  "7527": {
   "name": "Mac Jones",
@@ -7744,8 +7724,8 @@
   "injury": null,
   "proj_pts": 0.09,
   "proj": {
+   "rec_yd": 0.42,
    "rec_td": 0.0,
-   "rec_yd": 0.46,
    "rec": 0.04
   },
   "last_wk_pts": 0.0
@@ -7755,7 +7735,7 @@
   "pos": "QB",
   "team": "PIT",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7768,7 +7748,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13338": {
   "name": "Kevin Coleman Jr.",
@@ -7776,13 +7756,13 @@
   "team": "MIA",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.87,
+  "proj_pts": 1.72,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 9.53,
-   "rec": 0.76
+   "rec_yd": 9.1,
+   "rec_td": 0.07,
+   "rec": 0.78
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13322": {
   "name": "Sam Roush",
@@ -7790,11 +7770,11 @@
   "team": "CHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.76,
+  "proj_pts": 1.81,
   "proj": {
-   "rec_td": 0.05,
-   "rec_yd": 9.68,
-   "rec": 0.98
+   "rec_yd": 9.34,
+   "rec_td": 0.06,
+   "rec": 1.03
   },
   "last_wk_pts": 0.0
  },
@@ -7806,21 +7786,17 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "5001": {
   "name": "Dalton Schultz",
   "pos": "TE",
   "team": "HOU",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 7.04,
-  "proj": {
-   "rec_td": 0.21,
-   "rec_yd": 39.52,
-   "rec": 3.69
-  },
-  "last_wk_pts": 5.3
+  "injury": null,
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 7.0
  },
  "11643": {
   "name": "Jaylen Wright",
@@ -7828,14 +7804,14 @@
   "team": "MIA",
   "status": "Active",
   "injury": "Questionable",
-  "proj_pts": 4.32,
+  "proj_pts": 3.76,
   "proj": {
-   "rush_yd": 20.64,
-   "rush_td": 0.11,
-   "rec_yd": 8.39,
-   "rec": 0.95
+   "rush_td": 0.16,
+   "rec_yd": 6.46,
+   "rush_yd": 16.14,
+   "rec": 0.77
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.8
  },
  "13827": {
   "name": "Tanner Arkin",
@@ -7845,7 +7821,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "12658": {
   "name": "Jackson Hawes",
@@ -7853,16 +7829,20 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.0
+  "proj_pts": 0.65,
+  "proj": {
+   "rec_yd": 3.8,
+   "rec_td": 0.02,
+   "rec": 0.3
+  },
+  "last_wk_pts": null
  },
  "13602": {
   "name": "Jack Strand",
   "pos": "QB",
   "team": "ATL",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.0,
   "proj": {},
   "last_wk_pts": null
@@ -7875,7 +7855,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "11506": {
   "name": "Jalen Cropper",
@@ -7905,7 +7885,7 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": 1.2
  },
  "4033": {
   "name": "David Njoku",
@@ -7915,7 +7895,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": 0.0
+  "last_wk_pts": null
  },
  "13621": {
   "name": "Dillon Bell",
@@ -7925,21 +7905,21 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13324": {
   "name": "Matt Hibner",
   "pos": "TE",
   "team": "BAL",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 2.16,
+  "injury": null,
+  "proj_pts": 2.48,
   "proj": {
-   "rec_td": 0.08,
-   "rec_yd": 11.73,
-   "rec": 0.97
+   "rec_yd": 13.0,
+   "rec_td": 0.1,
+   "rec": 1.12
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "5409": {
   "name": "Tanner Hudson",
@@ -7949,7 +7929,7 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13663": {
   "name": "Wesley Grimes",
@@ -7977,13 +7957,13 @@
   "team": "CIN",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.91,
+  "proj_pts": 1.17,
   "proj": {
-   "rec_td": 0.04,
-   "rec_yd": 4.53,
-   "rec": 0.43
+   "rec_yd": 6.04,
+   "rec_td": 0.05,
+   "rec": 0.54
   },
-  "last_wk_pts": null
+  "last_wk_pts": 1.2
  },
  "11575": {
   "name": "Ray Davis",
@@ -7991,9 +7971,14 @@
   "team": "BUF",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 1.4
+  "proj_pts": 0.85,
+  "proj": {
+   "rush_td": 0.03,
+   "rec_yd": 1.01,
+   "rush_yd": 4.69,
+   "rec": 0.12
+  },
+  "last_wk_pts": null
  },
  "7002": {
   "name": "Juwan Johnson",
@@ -8001,13 +7986,9 @@
   "team": "NO",
   "status": "Active",
   "injury": null,
-  "proj_pts": 8.36,
-  "proj": {
-   "rec_td": 0.33,
-   "rec_yd": 43.87,
-   "rec": 3.99
-  },
-  "last_wk_pts": 0.0
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 1.2
  },
  "12485": {
   "name": "Tez Johnson",
@@ -8015,13 +7996,13 @@
   "team": "TB",
   "status": "Active",
   "injury": null,
-  "proj_pts": 3.11,
+  "proj_pts": 3.37,
   "proj": {
-   "rec_td": 0.09,
-   "rec_yd": 19.35,
-   "rec": 1.19
+   "rec_yd": 19.88,
+   "rec_td": 0.12,
+   "rec": 1.26
   },
-  "last_wk_pts": 1.7
+  "last_wk_pts": 11.7
  },
  "13981": {
   "name": "Kolbe Katsis",
@@ -8099,9 +8080,13 @@
   "team": "WAS",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.0,
-  "proj": {},
-  "last_wk_pts": 0.9
+  "proj_pts": 1.38,
+  "proj": {
+   "rec_yd": 6.76,
+   "rec_td": 0.05,
+   "rec": 0.8
+  },
+  "last_wk_pts": null
  },
  "13333": {
   "name": "Deion Burks",
@@ -8109,13 +8094,13 @@
   "team": "IND",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.1,
+  "proj_pts": 0.49,
   "proj": {
-   "rec_td": 0.0,
-   "rec_yd": 0.72,
-   "rec": 0.06
+   "rec_yd": 3.02,
+   "rec_td": 0.01,
+   "rec": 0.26
   },
-  "last_wk_pts": 5.8
+  "last_wk_pts": 1.6
  },
  "5638": {
   "name": "Shaq Roland",
@@ -8132,14 +8117,14 @@
   "pos": "WR",
   "team": "IND",
   "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 0.36,
+  "injury": null,
+  "proj_pts": 0.74,
   "proj": {
-   "rec_td": 0.01,
-   "rec_yd": 1.88,
-   "rec": 0.13
+   "rec_yd": 4.21,
+   "rec_td": 0.02,
+   "rec": 0.31
   },
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "13312": {
   "name": "Josh Kattus",
@@ -8149,20 +8134,20 @@
   "injury": null,
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  },
  "6828": {
   "name": "AJ Dillon",
   "pos": "RB",
   "team": "CAR",
   "status": "Active",
-  "injury": null,
+  "injury": "Out",
   "proj_pts": 0.65,
   "proj": {
-   "rush_yd": 4.29,
    "rush_td": 0.02,
-   "rec_yd": 0.57,
-   "rec": 0.08
+   "rec_yd": 0.79,
+   "rush_yd": 3.32,
+   "rec": 0.12
   },
   "last_wk_pts": null
  },
@@ -8172,13 +8157,13 @@
   "team": "MIN",
   "status": null,
   "injury": null,
-  "proj_pts": 7.94,
+  "proj_pts": 5.65,
   "proj": {
-   "sack": 2.78,
-   "int": 0.82,
-   "pts_allow": 17.5
+   "int": 0.67,
+   "pts_allow": 24.75,
+   "sack": 2.27
   },
-  "last_wk_pts": null
+  "last_wk_pts": 10.0
  },
  "11599": {
   "name": "Cade Stover",
@@ -8186,13 +8171,9 @@
   "team": "HOU",
   "status": "Active",
   "injury": null,
-  "proj_pts": 0.82,
-  "proj": {
-   "rec_td": 0.03,
-   "rec_yd": 3.4,
-   "rec": 0.37
-  },
-  "last_wk_pts": 0.5
+  "proj_pts": 0.0,
+  "proj": {},
+  "last_wk_pts": 2.4
  },
  "8188": {
   "name": "Tyquan Thornton",
@@ -8230,13 +8211,13 @@
   "team": "LAR",
   "status": "Active",
   "injury": null,
-  "proj_pts": 5.43,
+  "proj_pts": 5.34,
   "proj": {
-   "rec_td": 0.24,
-   "rec_yd": 26.62,
-   "rec": 2.65
+   "rec_yd": 26.51,
+   "rec_td": 0.23,
+   "rec": 2.62
   },
-  "last_wk_pts": 11.6
+  "last_wk_pts": 7.3
  },
  "13294": {
   "name": "Makai Lemon",
@@ -8244,13 +8225,13 @@
   "team": "PHI",
   "status": "Active",
   "injury": null,
-  "proj_pts": 4.51,
+  "proj_pts": 6.06,
   "proj": {
-   "rec_td": 0.14,
-   "rec_yd": 23.31,
-   "rec": 2.59
+   "rec_yd": 31.2,
+   "rec_td": 0.2,
+   "rec": 3.41
   },
-  "last_wk_pts": 3.4
+  "last_wk_pts": 16.2
  },
  "12505": {
   "name": "Jalen Royals",
@@ -8258,27 +8239,13 @@
   "team": "KC",
   "status": "Active",
   "injury": null,
-  "proj_pts": 1.94,
+  "proj_pts": 1.61,
   "proj": {
-   "rec_td": 0.08,
-   "rec_yd": 9.23,
-   "rec": 1.01
+   "rec_yd": 7.81,
+   "rec_td": 0.07,
+   "rec": 0.78
   },
-  "last_wk_pts": 3.4
- },
- "12501": {
-  "name": "Matthew Golden",
-  "pos": "WR",
-  "team": "GB",
-  "status": "Active",
-  "injury": "Questionable",
-  "proj_pts": 12.94,
-  "proj": {
-   "rec_td": 0.43,
-   "rec_yd": 78.57,
-   "rec": 4.89
-  },
-  "last_wk_pts": 19.4
+  "last_wk_pts": 0.0
  },
  "3309": {
   "name": "Wendell Smallwood",
@@ -8298,6 +8265,6 @@
   "injury": "IR",
   "proj_pts": 0.0,
   "proj": {},
-  "last_wk_pts": null
+  "last_wk_pts": 0.0
  }
 }

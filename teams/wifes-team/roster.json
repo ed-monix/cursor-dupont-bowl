@@ -2,12 +2,12 @@
   "bench": [
     "13345",
     "11563",
-    "6819",
     "12506",
     "8155",
-    "8110"
+    "8110",
+    "13274"
   ],
-  "faab_remaining": 36,
+  "faab_remaining": 20,
   "ir": [],
   "name": "Eastern Market Ducks",
   "starters": {
@@ -19,7 +19,7 @@
     "RB2": "9224",
     "TE": "10859",
     "WR1": "9504",
-    "WR2": "11630"
+    "WR2": "13276"
   },
   "team": "wifes-team"
 }

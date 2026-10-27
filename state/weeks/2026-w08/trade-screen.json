@@ -1,0 +1,36 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "9221"
+      ],
+      "message": "Patricia, I'm doing you a favor here, file it however you want. Henry's a Hall of Famer, Ward's got real starts in him, that's two actual names for one running back. Binder says yes. Sign it, send it back before Sunday - I've already moved on either way.",
+      "out": [
+        "3198",
+        "12522"
+      ],
+      "to_team": "patricia-moyer"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "patricia-moyer": 2
+    }
+  },
+  {
+    "from": "rinna",
+    "offer": {
+      "in": [
+        "12489"
+      ],
+      "message": "Clear eyes, full heart, and a third quarterback I don't need anymore \u2014 call it a test of character, Coach. Deshaun Watson's got more name recognition than everyone on your bench combined, and all I want back is a rookie running back nobody's watching yet. Prove to me you know a gift when you see one.",
+      "out": [
+        "4017"
+      ],
+      "to_team": "coach-taylor"
+    },
+    "ok": false,
+    "reason": "coach-taylor does not hold: 12489"
+  }
+]

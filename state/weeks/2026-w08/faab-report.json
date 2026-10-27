@@ -1,0 +1,108 @@
+{
+  "claims": [
+    {
+      "add": "1479",
+      "bid": 8,
+      "drop": "5927",
+      "reason": "uncontested claim, bid $8",
+      "reasoning": "Keenan Allen's been getting open and doing his job in this league a long time now, no matter who's throwing him the ball - that's exactly the kind of professional I want on this bench. Terry's fighting through something and it's not on him, but he's not able to help us Sundays right now, so this is just making room, not a knock on his character.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "8408",
+      "bid": 9,
+      "drop": null,
+      "reason": "would leave an illegal roster: resulting roster is invalid: bench has 7 players, limit is 6",
+      "reasoning": "Nobody's bidding big on Mason because they think a committee back is beneath them - that's exactly what they want me to think. Nine bucks, not a penny more, I'm not getting burned twice in one week over a backup.",
+      "status": "skipped",
+      "team": "costanza"
+    },
+    {
+      "add": "13276",
+      "bid": 7,
+      "drop": null,
+      "reason": "outbid on 13276: wifes-team bid $10 (your bid $7)",
+      "reasoning": "Twenty points last week and he's just sitting there unclaimed - that tells me everybody already knows something and is waiting to pounce Monday. I'm not waiting around to get outbid again.",
+      "status": "lost",
+      "team": "costanza"
+    },
+    {
+      "add": "3294",
+      "bid": 6,
+      "drop": "11651",
+      "reason": "outbid on 3294: patricia-moyer bid $25 (your bid $6)",
+      "reasoning": "Purdy's on his bye and I've got NOBODY behind him, hun \u2014 Dak's slinging it in Dallas against Arizona and he's gorgeous for the price, simple. Guerendo's been dead on PUP since forever, he's not doing anything for me, out he goes.",
+      "status": "lost",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "3294",
+      "bid": 14,
+      "drop": "11834",
+      "reason": "outbid on 3294: patricia-moyer bid $25 (your bid $14)",
+      "reasoning": "SELINA: Kris wants to print that I spent thirteen of my last fourteen dollars like a visionary \u2014 fine, I'll make it true, every dollar, right now, on a name with a Super Bowl pedigree, because I don't do half-measures for the record. GARY: Devaughn Vele hasn't touched a football in our lineup all year and isn't even playing this week; Prescott projects 22.29 and gives us a name that reads well regardless of whether he ever starts. Bid is the entire remaining fourteen because she said 'all of it, Gary' and I am not the man who argues with that sentence twice.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "3294",
+      "bid": 25,
+      "drop": "8121",
+      "reason": "highest bid $25 (next best $14)",
+      "reasoning": "Three anonymous GMs told Kris Jenner my binder is 'not a binder' this week, and I checked it twice before deciding the record should show I didn't flinch. Dak Prescott projects a full six points over anyone else sitting on this wire, so I'm spending almost everything I have left on him, as a statement as much as a quarterback add.",
+      "status": "won",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "11786",
+      "bid": 0,
+      "drop": "2133",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "Fairbairn's on a bye and I've got exactly zero dollars to my name, but a girl doesn't need a budget to upgrade a storyline she's bored of \u2014 Davante Adams has been inactive and invisible for weeks, which is the one thing I can't forgive, so he's off this show and Cam Little walks on for free.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "13276",
+      "bid": 10,
+      "drop": "11630",
+      "reason": "highest bid $10 (next best $7)",
+      "reasoning": "Boutte's got a bye and Roman Wilson's been dead weight on IR for weeks now \u2014 that's not loyalty, that's just paying for parking. This Cooper kid dropped twenty on somebody last week outta nowhere, I don't know what's cooking in Jersey but I want a plate of it before somebody else does.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "13274",
+      "bid": 6,
+      "drop": "6819",
+      "reason": "uncontested claim, bid $6",
+      "reasoning": "Pittman's not walking through that door this year, I made my peace with it, I'm processing it. Bernard's a rookie up in Pittsburgh actually getting touches, that's worth more to me than a guy on my bench collecting dust and good vibes.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "8408",
+      "bid": 3,
+      "drop": "11628",
+      "reason": "outbid on 8408: costanza bid $9 (your bid $3)",
+      "reasoning": "Harrison's dead weight on a bye with nothing underneath him \u2014 Mason's getting real touches in Minnesota for the last $3 I've got. Not glamorous, it's a Tuesday.",
+      "status": "lost",
+      "team": "your-team"
+    }
+  ],
+  "remaining_budget": {
+    "coach-taylor": 46,
+    "costanza": 67,
+    "dumbledore": 22,
+    "harry-caray": 16,
+    "kardashian": 0,
+    "leon-black": 0,
+    "maura-higgins": 15,
+    "meyer-walsh": 14,
+    "patricia-moyer": 0,
+    "rinna": 0,
+    "wifes-team": 20,
+    "your-team": 3
+  }
+}
