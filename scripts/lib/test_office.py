@@ -88,6 +88,7 @@ def test_faab_is_applied_exactly_once(tmp_path):
     faab_calls = [a for a in argvs if pathlib.Path(a[1]).name == "faab.py"]
     assert len(faab_calls) == 1
     assert "--dry-run" in faab_calls[0]
+    assert "--drops" in faab_calls[0]
     assert sum(1 for a in argvs if pathlib.Path(a[1]).name == "apply_gate.py") == 1
 
 
@@ -305,8 +306,10 @@ def test_faab_inputs_step_mirrors_lib_apply_gate(tmp_path):
 
     wdir = tmp_path / "state" / "weeks" / "2026-w05"
     claims = json.loads((wdir / "claims-from-gate.json").read_text())
+    drops = json.loads((wdir / "drops-from-gate.json").read_text())
     order = json.loads((wdir / "faab-standings-order.json").read_text())
     assert claims == {"team-a": [{"add": "p1", "drop": None, "bid": 4}]}
+    assert drops == {"team-a": []}
     assert order == ["team-a", "team-b"]  # worst record first
 
 

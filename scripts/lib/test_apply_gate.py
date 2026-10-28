@@ -5,6 +5,7 @@ from pathlib import Path
 
 from lib.apply_gate import (
     collect_waiver_claims,
+    collect_waiver_drops,
     expected_decision_name,
     standings_worst_to_best,
 )
@@ -37,6 +38,29 @@ def test_collect_waiver_claims_skips_lineup_and_trade(tmp_path: Path):
     claims = collect_waiver_claims(d)
     assert list(claims) == ["kardashian"]
     assert claims["kardashian"][0]["bid"] == 7
+
+
+def test_collect_waiver_drops_ignores_lineup_and_trade_files(tmp_path: Path):
+    d = tmp_path / "decisions"
+    d.mkdir()
+    (d / "costanza.json").write_text(json.dumps({
+        "claims": [{"add": "8408", "drop": None, "bid": 9, "reasoning": "mason"}],
+        "drops": ["8142", "5892"],
+        "note_reply": "",
+    }))
+    (d / "your-team.json").write_text(json.dumps({
+        "claims": [{"add": "8408", "drop": "11628", "bid": 3, "reasoning": "low"}],
+        "drops": [],
+        "note_reply": "",
+    }))
+    (d / "costanza.lineup-main.json").write_text(json.dumps({
+        "drops": ["9999"], "starters": {}, "justification": "nope",
+    }))
+    (d / "rinna.trade.json").write_text(json.dumps({"drops": ["1"], "accept": False}))
+    (d / "broken.json").write_text("{")
+
+    drops = collect_waiver_drops(d)
+    assert drops == {"costanza": ["8142", "5892"], "your-team": []}
 
 
 def test_expected_decision_names():

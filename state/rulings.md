@@ -262,3 +262,22 @@ game day, with no game kicked off and waivers undone, the ops call runs waivers
 before the lineup window (`scripts/lib/daily_ops.py`). Week 6 waivers were lost
 that way; week 7's will not be.
 
+## Ruling 2026-11 — Standalone drops precede a team's waiver claims (2026-10-27)
+
+Week 8 waivers: costanza bid $9 on Jordan Mason (8408) and named no drop on the
+claim. The same decision listed two standalone drops, Alec Pierce (8142) and
+David Montgomery (5892), both on the bench. The engine checked roster room
+before those drops. The bench was already full, the add would have made seven,
+and the claim was skipped. your-team's $3 bid on the same player was outbid
+either way, and a winner who cannot execute does not hand the player to the
+next bidder. Mason went unclaimed.
+
+The owner has ruled: within a team's waiver decision, standalone drops — drops
+not tied to a claim — are applied before that team's claims are checked for
+roster room. Bid order, tiebreaks, budgets, and the rule that a player already
+on a roster is not awarded are unchanged. A standalone drop naming a player who
+is not on the roster is skipped and logged, as a claim drop of an absent player
+already is. One team's drops do not change another team's resolution.
+
+`scripts/faab.py` applies it. Week 8 is not reopened.
+

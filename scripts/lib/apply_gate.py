@@ -90,11 +90,10 @@ def standings_worst_to_best(standings: dict) -> list:
     return [slug for _, _, _, slug in rows]
 
 
-def collect_waiver_claims(decisions_dir: Path) -> dict:
-    """{slug: claims[]} from gate files named <slug>.json (not lineup/trade)."""
-    out = {}
+def _waiver_decisions(decisions_dir: Path):
+    """(slug, object) from gate files named <slug>.json (not lineup/trade)."""
     if not decisions_dir.is_dir():
-        return out
+        return
     for path in sorted(decisions_dir.glob("*.json")):
         name = path.name
         if ".lineup-" in name or name.endswith(".trade.json"):
@@ -103,11 +102,39 @@ def collect_waiver_claims(decisions_dir: Path) -> dict:
             obj = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError, json.JSONDecodeError):
             continue
-        if not isinstance(obj, dict):
-            continue
+        if isinstance(obj, dict):
+            yield path.stem, obj
+
+
+def collect_waiver_claims(decisions_dir: Path) -> dict:
+    """{slug: claims[]} from gate files named <slug>.json (not lineup/trade)."""
+    out = {}
+    for slug, obj in _waiver_decisions(decisions_dir):
         claims = obj.get("claims")
         if isinstance(claims, list):
-            out[path.stem] = claims
+            out[slug] = claims
+    return out
+
+
+def collect_waiver_drops(decisions_dir: Path) -> dict:
+    """{slug: [player_id, ...]} standalone drops from the same gate files.
+
+    These are the decision's ``drops`` array — releases not tied to a claim.
+    ``faab.py`` applies them before that team's claims are checked for roster
+    room (Ruling 2026-11). Lineup and trade files are skipped, same as claims.
+    """
+    out = {}
+    for slug, obj in _waiver_decisions(decisions_dir):
+        drops = obj.get("drops")
+        if not isinstance(drops, list):
+            continue
+        ids = []
+        for player_id in drops:
+            if isinstance(player_id, str) and player_id:
+                ids.append(player_id)
+            elif isinstance(player_id, int) and not isinstance(player_id, bool):
+                ids.append(str(player_id))
+        out[slug] = ids
     return out
 
 
