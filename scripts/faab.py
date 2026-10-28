@@ -14,6 +14,13 @@ free agency"):
       same drop is skipped.
     - A claim whose drop player is already gone (not on that team's roster
       to begin with) is skipped.
+    - Standalone drops (drops in the decision that are not tied to a claim)
+      are applied for that team before its claims are checked for roster
+      room. A standalone drop naming a player who is not on the roster is
+      skipped and logged with the same reason as a claim drop of an absent
+      player. Bid order, tiebreaks, budgets, and the already-rostered skip
+      are fixed before any of these drops, so one team's drops do not
+      change another team's resolution.
     - A claim for a player already on another team's roster is skipped
       (logged, not applied). It never enters the auction, so it cannot
       win, charge FAAB, or land on a second roster.
@@ -49,12 +56,21 @@ that team's roster.
 ``players``: ``{player_id: {...}, ...}`` — ``state/players.json``, used only
 to reject claims that add an unknown player id.
 
+``drops_by_team``: optional ``{team_slug: [player_id, ...]}``. The decision's
+standalone drops (``docs/schemas/saturday-decision.json`` ``drops``), not the
+drop named on a claim. Omitted or empty leaves resolution unchanged.
+
 Resolution report (``resolve_faab`` return value)
 --------------------------------------------------
 
     {"claims": [
         {"team": str, "add": id, "drop": id | None, "bid": int,
          "reasoning": str | None, "status": "won" | "lost" | "skipped",
+         "reason": str},
+        ...
+     ],
+     "drops": [
+        {"team": str, "player": id, "status": "applied" | "skipped",
          "reason": str},
         ...
      ],
@@ -68,9 +84,11 @@ Apply step
 ----------
 
 ``resolve_faab`` is pure (no disk I/O). ``apply_won_claims`` takes its report
-plus the same ``rosters``/``players`` and, for every ``"won"`` claim, calls
-``lib.rosters.apply_transaction`` (add with drop, when present) and builds
-one ``state/transactions.jsonl`` entry per applied claim::
+plus the same ``rosters``/``players`` and applies every standalone drop the
+report marked ``"applied"`` before that team's won claims, then, for every
+``"won"`` claim, calls ``lib.rosters.apply_transaction`` (add with drop, when
+present) and builds one ``state/transactions.jsonl`` entry per applied drop
+and per applied claim::
 
     {"timestamp": iso8601 str, "team": str, "action": "waiver_claim",
      "players": [add_id, drop_id?], "bid": int, "reasoning": str,
@@ -86,7 +104,7 @@ CLI
 
     python scripts/faab.py --claims claims.json --standings standings.json \\
         --players state/players.json --rosters-dir teams \\
-        [--roster-config config/roster.json] \\
+        [--roster-config config/roster.json] [--drops drops.json] \\
         [--report-out state/weeks/2026-w05/faab-report.json] \\
         [--transactions state/transactions.jsonl] [--dry-run]
 
@@ -169,13 +187,57 @@ def _pick_winner(bids: list[tuple[str, dict]], standings: list[str]) -> tuple[st
     return ranked[0]
 
 
+def _apply_standalone_drops(team, drop_ids, base_roster, players, roster_config):
+    """Apply drops that are not tied to a claim. Returns
+    ``(roster, report_rows, dropped_ids)``.
+
+    A drop naming a player who is not on the roster is skipped and logged
+    with the same reason a claim drop of an absent player already uses.
+    ``base_roster`` is not mutated. ``roster`` is ``base_roster`` itself when
+    nothing was removed.
+    """
+    roster = base_roster
+    rows = []
+    dropped = []
+    for drop_id in drop_ids or []:
+        if not _roster_has_player(roster, drop_id):
+            rows.append({
+                "team": team,
+                "player": drop_id,
+                "status": "skipped",
+                "reason": f"drop player {drop_id} not on roster (already gone)",
+            })
+            continue
+        try:
+            roster = apply_transaction(
+                roster, {"type": "drop", "player": drop_id}, players, roster_config)
+        except (ValueError, KeyError) as e:
+            rows.append({
+                "team": team,
+                "player": drop_id,
+                "status": "skipped",
+                "reason": f"would leave an illegal roster: {e}",
+            })
+            continue
+        dropped.append(drop_id)
+        rows.append({
+            "team": team,
+            "player": drop_id,
+            "status": "applied",
+            "reason": "standalone drop",
+        })
+    return roster, rows, dropped
+
+
 def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
-                 players: dict, roster_config=None) -> dict:
+                 players: dict, roster_config=None, drops_by_team=None) -> dict:
     """Pure FAAB resolution. See module docstring for all shapes. No I/O."""
 
     # --- Phase 1: bucket every claim by the player it adds, dropping
     # claims for unknown players out of the auction entirely (they can
     # never win) but still recording them as skipped in the report.
+    # Standalone drops are not applied here. Who is rostered, and therefore
+    # who may enter the auction, is the roster at the start of the run.
     bids_by_add: dict[str, list[tuple[str, dict]]] = {}
     unknown_claims: list[tuple[str, dict]] = []
     # Claims on a player another team already rosters never enter the
@@ -205,6 +267,7 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     # its own priority order, applying the sequential per-team rules
     # (drop consumption, budget) on top of the fixed winner assignment.
     report_claims = []
+    report_drops = []
     remaining_budget = {
         team: rosters.get(team, {}).get("faab_remaining", 0) for team in claims_by_team
     }
@@ -217,7 +280,24 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
     # when the claim lands — not against the roster it started the run with.
     working: dict = {}
 
+    drops_by_team = drops_by_team or {}
+    seen_teams = set()
+
+    def _take_standalone_drops(team):
+        """Ruling 2026-11: a team's own standalone drops land before its
+        claims are checked for roster room. Other teams' rosters are not
+        touched, and the auction above has already named a winner."""
+        base = working.get(team, rosters.get(team, {}))
+        roster_after, rows, dropped = _apply_standalone_drops(
+            team, drops_by_team.get(team) or [], base, players, roster_config)
+        report_drops.extend(rows)
+        if dropped:
+            working[team] = roster_after
+        return set(dropped)
+
     for team, claim_list in claims_by_team.items():
+        seen_teams.add(team)
+        pre_dropped = _take_standalone_drops(team)
         consumed_drops: set = set()
         for claim in claim_list:
             add_id = claim["add"]
@@ -273,8 +353,11 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
                     )
                     report_claims.append(entry)
                     continue
+                # Original roster, plus anyone this team's standalone drops
+                # already removed. A player who was never there, and a player
+                # those drops already released, both use the existing skip.
                 team_roster = rosters.get(team, {})
-                if not _roster_has_player(team_roster, drop_id):
+                if drop_id in pre_dropped or not _roster_has_player(team_roster, drop_id):
                     entry["status"] = "skipped"
                     entry["reason"] = f"drop player {drop_id} not on roster (already gone)"
                     report_claims.append(entry)
@@ -334,7 +417,17 @@ def resolve_faab(claims_by_team: dict, standings: list, rosters: dict,
             if drop_id is not None:
                 consumed_drops.add(drop_id)
 
-    return {"claims": report_claims, "remaining_budget": remaining_budget}
+    # A decision that only drops still releases those players. It has no
+    # claims to check, and it does not enter the auction.
+    for team in drops_by_team:
+        if team not in seen_teams:
+            _take_standalone_drops(team)
+
+    return {
+        "claims": report_claims,
+        "drops": report_drops,
+        "remaining_budget": remaining_budget,
+    }
 
 
 def claim_target(roster: dict, add_id: str, players: dict, roster_config=None, drop_id=None) -> str:
@@ -371,10 +464,40 @@ def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=N
     updated = {team: copy.deepcopy(roster) for team, roster in rosters.items()}
     entries = []
 
+    # Standalone drops first, per team, so a won claim is applied to the
+    # roster resolve_faab already judged legal. Teams with no won claim
+    # still release the players they dropped.
+    drops_for: dict = {}
+    for row in report.get("drops") or []:
+        if row.get("status") == "applied" and row.get("team") and row.get("player") is not None:
+            drops_for.setdefault(row["team"], []).append(row["player"])
+    applied_drop_teams: set = set()
+
+    def _apply_drops(team):
+        if team in applied_drop_teams:
+            return
+        applied_drop_teams.add(team)
+        if team not in updated:
+            return
+        for player_id in drops_for.get(team, []):
+            updated[team] = apply_transaction(
+                updated[team], {"type": "drop", "player": player_id},
+                players, roster_config)
+            entries.append({
+                "timestamp": ts,
+                "team": team,
+                "action": "drop",
+                "players": [player_id],
+                "bid": None,
+                "reasoning": "standalone drop",
+                "status": "applied",
+            })
+
     for claim in report["claims"]:
+        team = claim["team"]
+        _apply_drops(team)
         if claim["status"] != "won":
             continue
-        team = claim["team"]
         txn = {"type": "add", "player": claim["add"],
                "to": claim_target(updated[team], claim["add"], players, roster_config, claim.get("drop"))}
         if claim.get("drop") is not None:
@@ -403,6 +526,9 @@ def apply_won_claims(report: dict, rosters: dict, players: dict, roster_config=N
             "reasoning": claim.get("reasoning") or "",
             "status": "applied",
         })
+
+    for team in drops_for:
+        _apply_drops(team)
 
     return updated, entries
 
@@ -438,6 +564,8 @@ def main() -> int:
     ap.add_argument("--players", default=str(ROOT / "state" / "players.json"))
     ap.add_argument("--rosters-dir", default=str(ROOT / "teams"))
     ap.add_argument("--roster-config", default=None, help="path to config/roster.json (optional)")
+    ap.add_argument("--drops", default=None,
+                    help="path to standalone drops JSON: {team: [player_id, ...]}")
     ap.add_argument("--report-out", default=None, help="write the resolution report JSON here (default: stdout)")
     ap.add_argument("--transactions", default=str(ROOT / "state" / "transactions.jsonl"))
     ap.add_argument("--dry-run", action="store_true", help="resolve and write the report only; do not apply")
@@ -445,6 +573,10 @@ def main() -> int:
 
     with open(args.claims, encoding="utf-8") as f:
         claims_by_team = json.load(f)
+    drops_by_team = None
+    if args.drops:
+        with open(args.drops, encoding="utf-8") as f:
+            drops_by_team = json.load(f)
     with open(args.standings, encoding="utf-8") as f:
         standings = json.load(f)
     with open(args.players, encoding="utf-8") as f:
@@ -465,7 +597,7 @@ def main() -> int:
     rosters = _load_rosters(rosters_dir)
 
     report = resolve_faab(claims_by_team, standings, rosters, players,
-                          roster_config)
+                          roster_config, drops_by_team)
 
     if args.report_out:
         out_path = pathlib.Path(args.report_out)

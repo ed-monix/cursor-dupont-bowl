@@ -50,6 +50,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 from lib.apply_gate import (  # noqa: E402
     collect_waiver_claims,
+    collect_waiver_drops,
     faab_priority_order,
     week_dir as _apply_gate_week_dir,
 )
@@ -385,12 +386,14 @@ def _apply_trades(root: pathlib.Path, season: str, week: int) -> None:
 
 
 def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
-    """Write claims-from-gate.json + faab-standings-order.json into the week
-    folder — the same two files scripts/apply_gate.py's apply_waivers()
-    builds before it calls faab.py. Reused here (not reimplemented) so both
-    call paths agree on what "the claims" and "the tiebreak order" mean."""
+    """Write claims-from-gate.json, drops-from-gate.json, and
+    faab-standings-order.json into the week folder — the same files
+    scripts/apply_gate.py's apply_waivers() builds before it calls faab.py.
+    Reused here (not reimplemented) so both call paths agree on what "the
+    claims", "the standalone drops", and "the tiebreak order" mean."""
     wdir = _apply_gate_week_dir(root, season, week)
     claims = collect_waiver_claims(wdir / "decisions")
+    drops = collect_waiver_drops(wdir / "decisions")
     # standings.json does not exist until week 1 has been scored, and faab.py
     # raises on a contested claim whose team is missing from the order — which
     # is exactly what killed the first automated week-2 run. Ruling 2026-02
@@ -398,6 +401,7 @@ def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
     # tiebreak "takes over automatically".
     order, basis = faab_priority_order(root, season)
     _write_json(wdir / "claims-from-gate.json", claims)
+    _write_json(wdir / "drops-from-gate.json", drops)
     _write_json(wdir / "faab-standings-order.json", order)
     print(f"    FAAB tiebreak basis: {basis} ({len(order)} teams)")
 
@@ -409,6 +413,7 @@ def _build_faab_inputs(root: pathlib.Path, season: str, week: int) -> None:
 def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
     wdir = week_dir(root, season, week)
     claims_path = wdir / "claims-from-gate.json"
+    drops_path = wdir / "drops-from-gate.json"
     order_path = wdir / "faab-standings-order.json"
     faab_report = ["--report-out", str(wdir / "faab-report.json")]
 
@@ -448,12 +453,13 @@ def build_waivers_steps(root: pathlib.Path, week: int, season: str) -> list:
                   "feeds the tabloid, Quote of the Week, and next week's packs",
              action=lambda: _post_forum(root, season, week, "waivers")),
         Step("build FAAB inputs from decisions/ + standings.json",
-             note=f"writes {claims_path} and {order_path} (mirrors "
-                  "lib.apply_gate's own construction)",
+             note=f"writes {claims_path}, {drops_path}, and {order_path} "
+                  "(mirrors lib.apply_gate's own construction)",
              action=lambda: _build_faab_inputs(root, season, week)),
         Step("FAAB dry run (for commissioner review)",
              _py(root, "faab.py", "--claims", claims_path,
-                 "--standings", order_path, *faab_report, "--dry-run")),
+                 "--standings", order_path, "--drops", drops_path,
+                 *faab_report, "--dry-run")),
         Step("trades — screen offers, ask only valid targets",
              note="validates each outgoing offer against both rosters, then "
                   "runs gm_turn --run trades for the targets that survive; "

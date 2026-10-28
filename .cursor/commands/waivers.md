@@ -114,9 +114,13 @@ burned 10 extra turns on players who were not where the offerer thought.
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \
+  --drops <drops.json> \
   --report-out state/weeks/2026-w<WW>/faab-report.json --dry-run
 ```
 
+Standalone drops (the decision's `drops` array, not the drop named on a
+claim) are applied for that team before its claims are checked for roster
+room. A drop naming a player who is not on the roster is skipped and logged.
 Do not apply yet.
 
 ## 5. Trades
@@ -164,6 +168,7 @@ Blocks only illegal. Does **not** apply FAAB or mutate rosters. Then:
 
 ```bash
 python scripts/faab.py --claims <claims.json> --standings <standings.json> \
+  --drops <drops.json> \
   --report-out state/weeks/2026-w<WW>/faab-report.json
 ```
 

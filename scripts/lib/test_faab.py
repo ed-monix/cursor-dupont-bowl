@@ -614,3 +614,167 @@ def test_a_slot_freed_by_the_claims_own_drop_counts_as_empty():
     roster = _bench_full("team-a", faab=50)
     old_k = roster["starters"]["K"]
     assert faab.claim_target(roster, "fa_k", players, drop_id=old_k) == "K"
+
+
+# ---------------------------------------------------------------------------
+# Ruling 2026-11 (2026-10-27): standalone drops land before that team's
+# claims are checked for roster room.
+#
+# Week 8: costanza bid $9 on Jordan Mason with no drop on the claim, and
+# listed two bench players as standalone drops. The bench was full (six).
+# The engine checked the claim first, saw seven on the bench, and skipped
+# it. your-team's $3 bid on the same player was outbid either way.
+# ---------------------------------------------------------------------------
+
+def _claims_for(report, team):
+    return [c for c in report["claims"] if c["team"] == team]
+
+
+def test_standalone_drops_free_a_full_bench_before_the_claim():
+    """Full bench, claim with no drop, two standalone drops, top bid wins.
+
+    The resulting bench is five: six, minus the two drops, plus the add.
+    The lower bid stays lost and is not handed the player.
+    """
+    players = _players_with_full_bench()
+    rosters = {
+        "costanza": _bench_full("costanza", faab=67),
+        "your-team": _full_roster("your-team", faab=3, bench=["wr3"]),
+    }
+    claims = {
+        "costanza": [
+            {"add": "fa_rb", "drop": None, "bid": 9, "reasoning": "nine bucks, not a penny more"},
+        ],
+        "your-team": [
+            {"add": "fa_rb", "drop": "wr3", "bid": 3, "reasoning": "last three dollars"},
+        ],
+    }
+    drops = {"costanza": ["b5", "b6"]}
+    standings = ["costanza", "your-team"]
+
+    report = faab.resolve_faab(
+        claims, standings, rosters, players, drops_by_team=drops)
+
+    costanza = _claims_for(report, "costanza")[0]
+    assert costanza["status"] == "won"
+    assert costanza["reason"] == "highest bid $9 (next best $3)"
+    assert report["remaining_budget"]["costanza"] == 58
+
+    your = _claims_for(report, "your-team")[0]
+    assert your["status"] == "lost"
+    assert your["reason"] == "outbid on fa_rb: costanza bid $9 (your bid $3)"
+    assert report["remaining_budget"]["your-team"] == 3
+
+    applied = [d for d in report["drops"] if d["status"] == "applied"]
+    assert [(d["team"], d["player"]) for d in applied] == [
+        ("costanza", "b5"), ("costanza", "b6"),
+    ]
+
+    updated, entries = faab.apply_won_claims(
+        report, rosters, players, timestamp="2026-10-27T12:00:00+00:00")
+    bench = updated["costanza"]["bench"]
+    assert "b5" not in bench and "b6" not in bench
+    assert "fa_rb" in bench
+    assert len(bench) == 5
+    assert updated["costanza"]["faab_remaining"] == 58
+    assert "fa_rb" not in updated["your-team"]["bench"]
+    assert updated["your-team"]["faab_remaining"] == 3
+    ok, errors = validate_roster(updated["costanza"], players)
+    assert ok, errors
+    ok, errors = validate_roster(updated["your-team"], players)
+    assert ok, errors
+
+    from lib.decisions import load_schema, validate
+    schema = load_schema("transaction-entry")
+    assert [e["action"] for e in entries] == ["drop", "drop", "waiver_claim"]
+    assert entries[0]["players"] == ["b5"]
+    assert entries[1]["players"] == ["b6"]
+    assert entries[2]["players"] == ["fa_rb"]
+    assert entries[2]["bid"] == 9
+    for entry in entries:
+        assert validate(entry, schema) == [], (entry, validate(entry, schema))
+    # The rosters handed in are not mutated.
+    assert rosters["costanza"]["bench"] == ["wr3", "b2", "b3", "b4", "b5", "b6"]
+
+
+def test_standalone_drops_do_not_change_other_teams_resolution():
+    """One team's drops do not move another team's wins, losses, or budget.
+
+    costanza is the top bid and, with the drops, can execute. Without them
+    the claim is skipped. your-team is outbid either way and is not handed
+    the player. wifes-team's claim on a different player is identical in
+    both runs.
+    """
+    players = _players_with_full_bench()
+    rosters = {
+        "costanza": _bench_full("costanza", faab=67),
+        "your-team": _full_roster("your-team", faab=3, bench=["wr3"]),
+        "wifes-team": _full_roster("wifes-team", faab=36, bench=["b2"]),
+    }
+    claims = {
+        "costanza": [
+            {"add": "fa_rb", "drop": None, "bid": 9, "reasoning": "mason"},
+        ],
+        "your-team": [
+            {"add": "fa_rb", "drop": "wr3", "bid": 3, "reasoning": "low"},
+        ],
+        "wifes-team": [
+            {"add": "fa_wr", "drop": "b2", "bid": 10, "reasoning": "other player"},
+        ],
+    }
+    standings = ["costanza", "your-team", "wifes-team"]
+
+    with_drops = faab.resolve_faab(
+        claims, standings, rosters, players,
+        drops_by_team={"costanza": ["b5", "b6"]})
+    without = faab.resolve_faab(claims, standings, rosters, players)
+
+    assert _claims_for(with_drops, "costanza")[0]["status"] == "won"
+    assert _claims_for(without, "costanza")[0]["status"] == "skipped"
+    assert "illegal roster" in _claims_for(without, "costanza")[0]["reason"]
+
+    assert _claims_for(with_drops, "your-team") == _claims_for(without, "your-team")
+    assert _claims_for(with_drops, "your-team")[0]["status"] == "lost"
+    assert _claims_for(with_drops, "wifes-team") == _claims_for(without, "wifes-team")
+    assert _claims_for(with_drops, "wifes-team")[0]["status"] == "won"
+    assert with_drops["remaining_budget"]["your-team"] == without["remaining_budget"]["your-team"] == 3
+    assert with_drops["remaining_budget"]["wifes-team"] == without["remaining_budget"]["wifes-team"] == 26
+
+    updated_with, _ = faab.apply_won_claims(with_drops, rosters, players)
+    updated_without, _ = faab.apply_won_claims(without, rosters, players)
+    assert updated_with["your-team"] == updated_without["your-team"]
+    assert updated_with["wifes-team"] == updated_without["wifes-team"]
+    assert "fa_rb" in updated_with["costanza"]["bench"]
+    assert "fa_rb" not in updated_without["costanza"]["bench"]
+    assert "fa_rb" not in updated_with["your-team"]["bench"]
+    assert "fa_wr" in updated_with["wifes-team"]["bench"]
+
+
+def test_standalone_drop_not_on_roster_is_skipped_and_frees_no_room():
+    """A standalone drop of a player the team does not hold uses the same
+    skip a claim drop of an absent player already uses, and does not open
+    a bench spot."""
+    players = _players_with_full_bench()
+    rosters = {"costanza": _bench_full("costanza", faab=67)}
+    claims = {"costanza": [
+        {"add": "fa_rb", "drop": None, "bid": 9, "reasoning": "no room"},
+    ]}
+
+    report = faab.resolve_faab(
+        claims, ["costanza"], rosters, players,
+        drops_by_team={"costanza": ["ghost"]})
+
+    assert report["drops"] == [{
+        "team": "costanza",
+        "player": "ghost",
+        "status": "skipped",
+        "reason": "drop player ghost not on roster (already gone)",
+    }]
+    claim = report["claims"][0]
+    assert claim["status"] == "skipped"
+    assert "bench has 7 players, limit is 6" in claim["reason"]
+    assert report["remaining_budget"]["costanza"] == 67
+
+    updated, entries = faab.apply_won_claims(report, rosters, players)
+    assert entries == []
+    assert updated["costanza"]["bench"] == rosters["costanza"]["bench"]

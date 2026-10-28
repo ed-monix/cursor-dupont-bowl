@@ -277,7 +277,8 @@ validate agent output.
   signoff}`. `scripts/free_agency.py` writes rosters only on an approve; the
   move is logged to `transactions.jsonl` as action `free_agent`, bid 0, status
   applied or rejected.
-- `faab-report.json` — the FAAB resolution report for the week (from `faab.py`).
+- `faab-report.json` — the FAAB resolution report for the week (from `faab.py`): `claims`, `remaining_budget`, and `drops`. `drops` records standalone drops applied or skipped before that team's roster-room check (Ruling 2026-11).
+- `claims-from-gate.json`, `drops-from-gate.json`, `faab-standings-order.json` — harness inputs `apply_gate.py` writes before `faab.py`. `drops-from-gate.json` is `{slug: [player_id, ...]}` from each waiver decision's `drops` array (releases not tied to a claim).
 - `news-facts.json` — deterministic headline facts from `derive_news.py` (the
   media agent's input for the weekly tabloid).
 - `recap.md` — the commissioner's weekly recap column.

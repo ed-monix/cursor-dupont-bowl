@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "lib"))
 
 from lib.apply_gate import (  # noqa: E402
     collect_waiver_claims,
+    collect_waiver_drops,
     load_ops,
     faab_priority_order,
     week_dir,
@@ -41,9 +42,12 @@ def _write(path: pathlib.Path, obj) -> None:
 def apply_waivers(root: pathlib.Path, season: str, week: int, dry_run: bool) -> int:
     wdir = week_dir(root, season, week)
     claims = collect_waiver_claims(wdir / "decisions")
+    drops = collect_waiver_drops(wdir / "decisions")
     claims_path = wdir / "claims-from-gate.json"
+    drops_path = wdir / "drops-from-gate.json"
     order_path = wdir / "faab-standings-order.json"
     _write(claims_path, claims)
+    _write(drops_path, drops)
     # Ruling 2026-02: standings.json does not exist until week 1 is scored, so
     # fall back to reversed draft order. Without this, every contested claim
     # before the first scored week raises out of faab.py's tiebreak.
@@ -58,6 +62,7 @@ def apply_waivers(root: pathlib.Path, season: str, week: int, dry_run: bool) -> 
         "--players", str(root / "state" / "players.json"),
         "--rosters-dir", str(root / "teams"),
         "--roster-config", str(root / "config" / "roster.json"),
+        "--drops", str(drops_path),
         "--report-out", str(wdir / "faab-report.json"),
         "--transactions", str(root / "state" / "transactions.jsonl"),
     ]
