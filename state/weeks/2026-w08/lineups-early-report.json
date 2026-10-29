@@ -1,0 +1,102 @@
+{
+  "teams": [
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "coach-taylor",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "TE"
+      ],
+      "team": "costanza",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "dumbledore",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "harry-caray",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "K",
+        "WR2"
+      ],
+      "team": "kardashian",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX",
+        "RB1",
+        "WR2"
+      ],
+      "team": "leon-black",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "WR2"
+      ],
+      "team": "maura-higgins",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "meyer-walsh",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "WR1"
+      ],
+      "team": "patricia-moyer",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "rinna",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "wifes-team",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [],
+      "team": "your-team",
+      "validation_errors": []
+    }
+  ],
+  "window": "early"
+}
