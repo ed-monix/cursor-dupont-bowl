@@ -1,44 +1,21 @@
 {
-  "action": "lineups-early",
-  "window": "early",
-  "today": "2026-10-29",
+  "action": "idle",
+  "window": null,
+  "today": "2026-10-30",
   "first_kickoff": "2026-10-29",
-  "games_today": [
-    {
-      "date": "2026-10-29",
-      "status": "pre_game",
-      "home": "GB",
-      "away": "CAR",
-      "week": 8,
-      "window": "early"
-    }
-  ],
-  "reason": "gameday 2026-10-29 window early; pending kickoffs",
+  "games_today": [],
+  "reason": "2026-10-30: no league op",
   "week": 8,
   "season": "2026",
   "done": {
     "waivers": true,
-    "lineups-early": false,
+    "lineups-early": true,
     "lineups-main": false,
     "recap": false
   },
   "wake": {
-    "grok_bots": [
-      "coach-taylor",
-      "costanza",
-      "dumbledore",
-      "harry-caray",
-      "kardashian",
-      "leon-black",
-      "maura-higgins",
-      "meyer-walsh",
-      "patricia-moyer",
-      "rinna"
-    ],
-    "cursor": [
-      "your-team",
-      "wifes-team"
-    ],
+    "grok_bots": [],
+    "cursor": [],
     "also": []
   },
   "gate": {
