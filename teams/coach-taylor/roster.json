@@ -2,16 +2,16 @@
   "bench": [
     "11581",
     "3271",
-    "LAC",
     "12507",
     "1479",
-    "5870"
+    "5870",
+    "HOU"
   ],
   "faab_remaining": 46,
   "ir": [],
   "name": "Clear Eyes Full Hearts",
   "starters": {
-    "DEF": "HOU",
+    "DEF": "LAC",
     "FLEX": "7547",
     "K": "7839",
     "QB": "1166",

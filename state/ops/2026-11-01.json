@@ -1,0 +1,136 @@
+{
+  "action": "lineups-main",
+  "window": "main",
+  "today": "2026-11-01",
+  "first_kickoff": "2026-10-29",
+  "games_today": [
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "BUF",
+      "away": "BAL",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "CIN",
+      "away": "TEN",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "DAL",
+      "away": "ARI",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "DEN",
+      "away": "KC",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "DET",
+      "away": "MIN",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "JAX",
+      "away": "IND",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "LAR",
+      "away": "LAC",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "MIA",
+      "away": "NE",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "NYJ",
+      "away": "LV",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "PIT",
+      "away": "CLE",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "TB",
+      "away": "ATL",
+      "week": 8,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-01",
+      "status": "pre_game",
+      "home": "WAS",
+      "away": "PHI",
+      "week": 8,
+      "window": "main"
+    }
+  ],
+  "reason": "gameday 2026-11-01 window main; pending kickoffs",
+  "week": 8,
+  "season": "2026",
+  "done": {
+    "waivers": true,
+    "lineups-early": true,
+    "lineups-main": false,
+    "recap": false
+  },
+  "wake": {
+    "grok_bots": [
+      "coach-taylor",
+      "costanza",
+      "dumbledore",
+      "harry-caray",
+      "kardashian",
+      "leon-black",
+      "maura-higgins",
+      "meyer-walsh",
+      "patricia-moyer",
+      "rinna"
+    ],
+    "cursor": [
+      "your-team",
+      "wifes-team"
+    ],
+    "also": []
+  },
+  "gate": {
+    "received": {},
+    "rejected": {}
+  }
+}
