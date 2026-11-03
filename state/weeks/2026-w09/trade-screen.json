@@ -1,0 +1,37 @@
+[
+  {
+    "from": "kardashian",
+    "offer": {
+      "in": [
+        "4034"
+      ],
+      "message": "This changes everything for both of us, hun. You get a proven RB1 in Barkley plus a name that still opens doors in Kupp \u2014 I get the guy who IS the moment every time he touches the ball, Questionable tag and all. I don't do spreadsheets, I do icons. Say yes before I talk myself into offering more.",
+      "out": [
+        "4866",
+        "4039"
+      ],
+      "to_team": "maura-higgins"
+    },
+    "ok": false,
+    "reason": "kardashian's side: offer takes back 1 more than it sends and names only 0 drop(s)"
+  },
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "9221"
+      ],
+      "message": "Told you I'd be back. Ward and Wilson for Gibbs - that's LESS than what I offered last time, and I'm still doing you a favor calling it a trade instead of what it actually is. Binder says no again? Fine, file it. I'll send a third one just to watch you say it twice.",
+      "out": [
+        "12522",
+        "10232"
+      ],
+      "to_team": "patricia-moyer"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "patricia-moyer": 2
+    }
+  }
+]
