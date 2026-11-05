@@ -1,14 +1,23 @@
 {
-  "action": "waivers",
-  "window": null,
-  "today": "2026-11-03",
+  "action": "lineups-early",
+  "window": "early",
+  "today": "2026-11-05",
   "first_kickoff": "2026-11-05",
-  "games_today": [],
-  "reason": "before first kickoff 2026-11-05; waivers still open",
+  "games_today": [
+    {
+      "date": "2026-11-05",
+      "status": "pre_game",
+      "home": "BAL",
+      "away": "JAX",
+      "week": 9,
+      "window": "early"
+    }
+  ],
+  "reason": "gameday 2026-11-05 window early; pending kickoffs",
   "week": 9,
   "season": "2026",
   "done": {
-    "waivers": false,
+    "waivers": true,
     "lineups-early": false,
     "lineups-main": false,
     "recap": false
@@ -30,10 +39,7 @@
       "your-team",
       "wifes-team"
     ],
-    "also": [
-      "scout",
-      "media"
-    ]
+    "also": []
   },
   "gate": {
     "received": {},
