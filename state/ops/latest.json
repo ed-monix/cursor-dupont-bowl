@@ -1,120 +1,15 @@
 {
-  "action": "lineups-main",
-  "window": "main",
-  "today": "2026-11-08",
-  "first_kickoff": "2026-11-05",
-  "games_today": [
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "ATL",
-      "away": "CIN",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "CAR",
-      "away": "DEN",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "CHI",
-      "away": "TB",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "IND",
-      "away": "DAL",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "KC",
-      "away": "NYJ",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "LAC",
-      "away": "HOU",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "MIA",
-      "away": "DET",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "NE",
-      "away": "GB",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "NO",
-      "away": "CLE",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "PHI",
-      "away": "NYG",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "SEA",
-      "away": "ARI",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "SF",
-      "away": "LV",
-      "week": 9,
-      "window": "main"
-    },
-    {
-      "date": "2026-11-08",
-      "status": "pre_game",
-      "home": "WAS",
-      "away": "LAR",
-      "week": 9,
-      "window": "main"
-    }
-  ],
-  "reason": "gameday 2026-11-08 window main; pending kickoffs",
-  "week": 9,
+  "action": "waivers",
+  "window": null,
+  "today": "2026-11-10",
+  "first_kickoff": "2026-11-12",
+  "games_today": [],
+  "reason": "before first kickoff 2026-11-12; waivers still open",
+  "week": 10,
   "season": "2026",
   "done": {
-    "waivers": true,
-    "lineups-early": true,
+    "waivers": false,
+    "lineups-early": false,
     "lineups-main": false,
     "recap": false
   },
@@ -135,7 +30,10 @@
       "your-team",
       "wifes-team"
     ],
-    "also": []
+    "also": [
+      "scout",
+      "media"
+    ]
   },
   "gate": {
     "received": {},
