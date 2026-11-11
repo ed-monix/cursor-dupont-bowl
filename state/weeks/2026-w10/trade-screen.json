@@ -1,0 +1,21 @@
+[
+  {
+    "from": "leon-black",
+    "offer": {
+      "in": [
+        "4984"
+      ],
+      "message": "Selina, I'm doing you a favor here - Derrick Henry's a real name and Cam Ward's got a real arm, both better than what Gary's currently trotting out there, for one quarterback you're not even maximizing. Take the deal before Gary talks you out of the good part of it.",
+      "out": [
+        "3198",
+        "12522"
+      ],
+      "to_team": "meyer-walsh"
+    },
+    "ok": true,
+    "reason": "",
+    "requires_drop": {
+      "meyer-walsh": 2
+    }
+  }
+]
