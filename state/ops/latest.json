@@ -1,14 +1,23 @@
 {
-  "action": "waivers",
-  "window": null,
-  "today": "2026-11-11",
+  "action": "lineups-early",
+  "window": "early",
+  "today": "2026-11-12",
   "first_kickoff": "2026-11-12",
-  "games_today": [],
-  "reason": "before first kickoff 2026-11-12; waivers still open",
+  "games_today": [
+    {
+      "date": "2026-11-12",
+      "status": "pre_game",
+      "home": "NYG",
+      "away": "WAS",
+      "week": 10,
+      "window": "early"
+    }
+  ],
+  "reason": "gameday 2026-11-12 window early; pending kickoffs",
   "week": 10,
   "season": "2026",
   "done": {
-    "waivers": false,
+    "waivers": true,
     "lineups-early": false,
     "lineups-main": false,
     "recap": false
@@ -30,10 +39,7 @@
       "your-team",
       "wifes-team"
     ],
-    "also": [
-      "scout",
-      "media"
-    ]
+    "also": []
   },
   "gate": {
     "received": {},
