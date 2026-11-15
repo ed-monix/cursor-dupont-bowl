@@ -1,24 +1,112 @@
 {
-  "action": "lineups-early",
-  "window": "early",
-  "today": "2026-11-12",
+  "action": "lineups-main",
+  "window": "main",
+  "today": "2026-11-15",
   "first_kickoff": "2026-11-12",
   "games_today": [
     {
-      "date": "2026-11-12",
+      "date": "2026-11-15",
       "status": "pre_game",
-      "home": "NYG",
-      "away": "WAS",
+      "home": "ARI",
+      "away": "LAR",
       "week": 10,
-      "window": "early"
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "ATL",
+      "away": "KC",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "CIN",
+      "away": "PIT",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "CLE",
+      "away": "HOU",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "DAL",
+      "away": "SF",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "DET",
+      "away": "NE",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "GB",
+      "away": "MIN",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "IND",
+      "away": "MIA",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "LV",
+      "away": "SEA",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "NO",
+      "away": "CAR",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "NYJ",
+      "away": "BUF",
+      "week": 10,
+      "window": "main"
+    },
+    {
+      "date": "2026-11-15",
+      "status": "pre_game",
+      "home": "TEN",
+      "away": "JAX",
+      "week": 10,
+      "window": "main"
     }
   ],
-  "reason": "gameday 2026-11-12 window early; pending kickoffs",
+  "reason": "gameday 2026-11-15 window main; pending kickoffs",
   "week": 10,
   "season": "2026",
   "done": {
     "waivers": true,
-    "lineups-early": false,
+    "lineups-early": true,
     "lineups-main": false,
     "recap": false
   },
