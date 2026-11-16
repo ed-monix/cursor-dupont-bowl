@@ -24,7 +24,7 @@
   "game_id": "202611003"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "CIN",
   "away": "PIT",
@@ -40,7 +40,7 @@
   "game_id": "202611008"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "DAL",
   "away": "SF",
