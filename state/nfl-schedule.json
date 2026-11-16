@@ -1088,7 +1088,7 @@
   "game_id": "202610935"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "ARI",
   "away": "LAR",
@@ -1096,7 +1096,7 @@
   "game_id": "202611001"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "ATL",
   "away": "KC",
@@ -1120,7 +1120,7 @@
   "game_id": "202611007"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "CLE",
   "away": "HOU",
@@ -1128,7 +1128,7 @@
   "game_id": "202611008"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-15",
   "home": "DAL",
   "away": "SF",
@@ -1144,7 +1144,7 @@
   "game_id": "202611011"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "GB",
   "away": "MIN",
@@ -1152,7 +1152,7 @@
   "game_id": "202611012"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "IND",
   "away": "MIA",
@@ -1160,7 +1160,7 @@
   "game_id": "202611014"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "NO",
   "away": "CAR",
@@ -1176,7 +1176,7 @@
   "game_id": "202611023"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "NYJ",
   "away": "BUF",
@@ -1184,7 +1184,7 @@
   "game_id": "202611024"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "LV",
   "away": "SEA",
@@ -1192,7 +1192,7 @@
   "game_id": "202611025"
  },
  {
-  "status": "in_game",
+  "status": "complete",
   "date": "2026-11-15",
   "home": "TEN",
   "away": "JAX",
