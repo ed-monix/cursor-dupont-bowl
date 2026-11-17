@@ -7,11 +7,11 @@
     "11610",
     "4035"
   ],
-  "faab_remaining": 6,
+  "faab_remaining": 3,
   "ir": [],
   "name": "Eastern Market Ducks",
   "starters": {
-    "DEF": "SEA",
+    "DEF": "BUF",
     "FLEX": "9224",
     "K": "11539",
     "QB": "7523",

@@ -1,0 +1,163 @@
+{
+  "claims": [
+    {
+      "add": "7543",
+      "bid": 8,
+      "drop": "11581",
+      "reason": "uncontested claim, bid $8",
+      "reasoning": "Etienne's shown up and done his job in that backfield all year, and with Corum on the bye I want a back behind Dowdle I can trust if he needs a breather. That's a depth move, not a panic buy, so eight dollars is the right number. Lloyd hasn't found a role all season and we need that spot for a man doing his job.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "13337",
+      "bid": 14,
+      "drop": "5892",
+      "reason": "highest bid $14 (next best $5)",
+      "reasoning": "Monty's been 'Out' so long I forget what his legs look like, and meanwhile some kid in Kansas City drops THIRTY-TWO points on a Sunday and I'm supposed to just sit here? No. $14, and if somebody snipes him at $15 I will know exactly who to blame, and for once it won't be me.",
+      "status": "won",
+      "team": "costanza"
+    },
+    {
+      "add": "CHI",
+      "bid": 2,
+      "drop": "6768",
+      "reason": "uncontested claim, bid $2",
+      "reasoning": "Tennessee posted NEGATIVE ONE last week and I started them on purpose, like an idiot \u2014 that's a bad-luck player now, full stop, two weeks minimum, and I'm not paying real money for insurance, I'm paying two dollars out of pure spite.",
+      "status": "won",
+      "team": "costanza"
+    },
+    {
+      "add": "13337",
+      "bid": 3,
+      "drop": "9756",
+      "reason": "outbid on 13337: costanza bid $14 (your bid $3)",
+      "reasoning": "HOLY COW, thirty-two points outta nowhere for Emmett Johnson up in Kansas City?! Folks, I don't care that it's a backfield nobody circled on the calendar, that's a STAR turn and I want a piece of it! Only got three bucks left in the drawer but every dollar's goin' on the table for a performance like that! Cuttin' loose Jordan Addison to make room -- hate to do it, pal, but you haven't seen the field all year and this fella just lit up the board!",
+      "status": "lost",
+      "team": "harry-caray"
+    },
+    {
+      "add": "7042",
+      "bid": 0,
+      "drop": "12711",
+      "reason": "tied bid $0 for 7042; lost tiebreak to meyer-walsh (worse standing wins)",
+      "reasoning": "Loop's been a corpse on IR for weeks contributing exactly nothing to my scoreboard - zero dollars left or not, I'm done carrying a dead roster spot out of loyalty to a name I never liked saying anyway. Bass actually plays football this week.",
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "13281",
+      "bid": 0,
+      "drop": "13346",
+      "reason": "tied bid $0 for 13281; lost tiebreak to rinna (worse standing wins)",
+      "reasoning": "Watson and Boston both decided to vanish on bye the same week - cute coincidence, don't care. Boston never did anything for me and his name stopped meaning something a month ago. Tyson's active in New Orleans and costs zero, which is still more than Boston was worth.",
+      "status": "lost",
+      "team": "leon-black"
+    },
+    {
+      "add": "13337",
+      "bid": 5,
+      "drop": "10213",
+      "reason": "outbid on 13337: costanza bid $14 (your bid $5)",
+      "reasoning": "Emmett Johnson dropped THIRTY-TWO points on my telly last week, hun, I don't care that it's Kansas City committee nonsense, I fancy the highlight reel. Tucker's never done that for me once.",
+      "status": "lost",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "13337",
+      "bid": 0,
+      "drop": "9753",
+      "reason": "outbid on 13337: costanza bid $14 (your bid $0)",
+      "reasoning": "SELINA: Charbonnet's whole team apparently took the week off, and I will not field a zero against a man who hasn't said a word to the press in a month \u2014 get me the Chiefs kid who dropped thirty-two points, Gary, now. GARY: We're sitting on zero dollars so this costs exactly what we have, but Emmett Johnson projects 9.57 against a Charbonnet bye-week zero \u2014 free swing, no risk, probably loses to anyone with an actual budget.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "7042",
+      "bid": 0,
+      "drop": "2747",
+      "reason": "highest bid $0 (next best $0)",
+      "reasoning": "SELINA: Jason Myers plays for a franchise that isn't even bothering to play football this week \u2014 that's an insult to my lineup, replace him. GARY: Seattle's on bye, Tyler Bass projects 8.45 in Buffalo where our own quarterback already lives, filing at the only number we've got left, which is nothing.",
+      "status": "won",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "13281",
+      "bid": 0,
+      "drop": "4943",
+      "reason": "tied bid $0 for 13281; lost tiebreak to rinna (worse standing wins)",
+      "reasoning": "My FAAB sits at zero dollars, so this bid is procedural rather than persuasive \u2014 I am filing it anyway, for the record, because a claim I didn't make is a claim I can't defend later, and I checked that sentence twice before I let myself believe it was still true at this point in the season. Sam Darnold has no game on the board this week and an 'Out' tag I've been staring at longer than it deserves, which is exactly what the book means by 'release what isn't serving you' \u2014 he isn't, so he goes. Jordyn Tyson put up 13.5 last week behind a passing game nobody's fully pricing in yet, and DeVonta Smith is sitting out hurt, so the receiver depth I'm replacing him with isn't decorative, it's load-bearing.",
+      "status": "lost",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "11565",
+      "bid": 0,
+      "drop": "13287",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "My quarterback room is a GHOST TOWN this week \u2014 Maye, Watson, and Penix are all on bye in the SAME week, which is either hilarious or a crime scene and I haven't decided yet. J.J. McCarthy walks on because somebody in this house needs to be allowed to throw a football Sunday. Jeremiyah Love has been invisible on IR for weeks and invisible is the one sin I don't forgive \u2014 he's off this show.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "13281",
+      "bid": 0,
+      "drop": "13298",
+      "reason": "highest bid $0 (next best $0)",
+      "reasoning": "KC Concepcion is on a bye doing absolutely nothing, which is the single most boring thing a receiver can do to me, so he's cancelled. Jordyn Tyson dropped 13.5 on the Saints last week and shockingly has an actual GAME this Sunday \u2014 revolutionary concept around here.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "8210",
+      "bid": 0,
+      "drop": "7611",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "Bowers is Out and Rhamondre Stevenson is sitting in New England bye-week purgatory doing nothing \u2014 I'm not running two invisible men on one bench out of sentiment. Chig Okonkwo's questionable but he's getting looks in that Washington offense, and at least he's ON THE FIELD, which is more than I can say for half this roster.",
+      "status": "won",
+      "team": "rinna"
+    },
+    {
+      "add": "BUF",
+      "bid": 3,
+      "drop": "SEA",
+      "reason": "uncontested claim, bid $3",
+      "reasoning": "Seattle's got a bye, that's not a strategy, that's a hole in the lineup. Buffalo's got teeth and three bucks is the going rate for a defense, I don't overthink it.",
+      "status": "won",
+      "team": "wifes-team"
+    },
+    {
+      "add": "13337",
+      "bid": 3,
+      "drop": "12506",
+      "reason": "outbid on 13337: costanza bid $14 (your bid $3)",
+      "reasoning": "Thirty-two points outta nowhere last week, kid touched the ball and did something with it \u2014 I don't care what the sheet says he's supposed to do this week, I've built a life on that gap. Fannin's been sitting on my bench doing nothing but collecting dust, that ain't family, that's furniture.",
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "13337",
+      "bid": 3,
+      "drop": "11628",
+      "reason": "outbid on 13337: costanza bid $14 (your bid $3)",
+      "reasoning": "Emmett Johnson dropped 32.1 on Kansas City last week and still projects 9.57 with that role intact \u2014 that's not a fluke, that's a dog with juice, and juice beats a safe floor every time. Harrison's a corpse on IR snaps for a team going nowhere; he's the toll. Three straight losses means I'm not nibbling, I'm spending every dollar I've got left on the best thing standing on this wire.",
+      "status": "lost",
+      "team": "your-team"
+    }
+  ],
+  "drops": [],
+  "remaining_budget": {
+    "coach-taylor": 38,
+    "costanza": 20,
+    "dumbledore": 22,
+    "harry-caray": 3,
+    "kardashian": 0,
+    "leon-black": 0,
+    "maura-higgins": 6,
+    "meyer-walsh": 0,
+    "patricia-moyer": 0,
+    "rinna": 0,
+    "wifes-team": 3,
+    "your-team": 3
+  }
+}
