@@ -5,21 +5,21 @@
     "4046",
     "5850",
     "12517",
-    "6806"
+    "8167"
   ],
   "faab_remaining": 0,
   "ir": [],
   "name": "Gut Feeling, Zero Regrets",
   "starters": {
     "DEF": "LV",
-    "FLEX": "10229",
+    "FLEX": "6806",
     "K": "12711",
     "QB": "6770",
     "RB1": "3198",
     "RB2": "7594",
     "TE": "7600",
     "WR1": "7564",
-    "WR2": "8167"
+    "WR2": "10229"
   },
   "team": "leon-black"
 }
