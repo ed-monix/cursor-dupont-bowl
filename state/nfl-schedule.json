@@ -1200,7 +1200,7 @@
   "game_id": "202611034"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "BUF",
   "away": "MIA",
@@ -1208,7 +1208,7 @@
   "game_id": "202611104"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "CAR",
   "away": "BAL",
@@ -1216,7 +1216,7 @@
   "game_id": "202611105"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "CHI",
   "away": "NO",
@@ -1224,7 +1224,7 @@
   "game_id": "202611106"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "DAL",
   "away": "TEN",
@@ -1240,7 +1240,7 @@
   "game_id": "202611110"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "DET",
   "away": "TB",
@@ -1256,7 +1256,7 @@
   "game_id": "202611113"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-22",
   "home": "KC",
   "away": "ARI",
@@ -1272,7 +1272,7 @@
   "game_id": "202611123"
  },
  {
-  "status": "pre_game",
+  "status": "in_game",
   "date": "2026-11-22",
   "home": "PHI",
   "away": "PIT",
