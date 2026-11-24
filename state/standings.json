@@ -2,88 +2,88 @@
   "season": 2026,
   "teams": {
     "costanza": {
-      "wins": 7,
+      "wins": 8,
       "losses": 3,
       "ties": 0,
-      "points_for": 813.38,
-      "points_against": 861.9600000000002
+      "points_for": 916.72,
+      "points_against": 932.2600000000001
     },
     "maura-higgins": {
-      "wins": 7,
+      "wins": 8,
       "losses": 3,
       "ties": 0,
-      "points_for": 1143.36,
-      "points_against": 957.5800000000002
+      "points_for": 1239.76,
+      "points_against": 1016.3000000000002
     },
     "leon-black": {
       "wins": 8,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
-      "points_for": 1138.9,
-      "points_against": 958.2800000000002
+      "points_for": 1209.2,
+      "points_against": 1061.6200000000001
     },
     "dumbledore": {
       "wins": 4,
-      "losses": 6,
+      "losses": 7,
       "ties": 0,
-      "points_for": 1018.1999999999999,
-      "points_against": 1012.2999999999998
+      "points_for": 1093.5,
+      "points_against": 1117.56
     },
     "rinna": {
       "wins": 6,
-      "losses": 4,
+      "losses": 5,
       "ties": 0,
-      "points_for": 995.78,
-      "points_against": 931.6599999999999
+      "points_for": 1054.5,
+      "points_against": 1028.06
     },
     "coach-taylor": {
       "wins": 3,
-      "losses": 7,
+      "losses": 8,
       "ties": 0,
-      "points_for": 793.9199999999998,
-      "points_against": 925.24
+      "points_for": 846.0199999999999,
+      "points_against": 1003.82
     },
     "meyer-walsh": {
-      "wins": 5,
+      "wins": 6,
       "losses": 5,
       "ties": 0,
-      "points_for": 900.1800000000001,
-      "points_against": 887.8400000000001
+      "points_for": 1005.44,
+      "points_against": 963.1400000000001
     },
     "your-team": {
       "wins": 3,
-      "losses": 7,
-      "ties": 0,
-      "points_for": 873.5600000000001,
-      "points_against": 1051.62
-    },
-    "harry-caray": {
-      "wins": 6,
-      "losses": 4,
-      "ties": 0,
-      "points_for": 1019.5400000000001,
-      "points_against": 971.0
-    },
-    "patricia-moyer": {
-      "wins": 7,
-      "losses": 3,
-      "ties": 0,
-      "points_for": 1210.9600000000003,
-      "points_against": 903.74
-    },
-    "wifes-team": {
-      "wins": 2,
       "losses": 8,
       "ties": 0,
-      "points_for": 739.18,
-      "points_against": 963.7400000000001
+      "points_for": 951.1,
+      "points_against": 1158.1599999999999
+    },
+    "harry-caray": {
+      "wins": 7,
+      "losses": 4,
+      "ties": 0,
+      "points_for": 1098.1200000000001,
+      "points_against": 1023.1
+    },
+    "patricia-moyer": {
+      "wins": 8,
+      "losses": 3,
+      "ties": 0,
+      "points_for": 1315.8600000000004,
+      "points_against": 1008.4
+    },
+    "wifes-team": {
+      "wins": 3,
+      "losses": 8,
+      "ties": 0,
+      "points_for": 845.7199999999999,
+      "points_against": 1041.2800000000002
     },
     "kardashian": {
       "wins": 2,
-      "losses": 8,
+      "losses": 9,
       "ties": 0,
-      "points_for": 818.12,
-      "points_against": 1040.12
+      "points_for": 922.78,
+      "points_against": 1145.02
     }
   },
   "official_weeks": [
@@ -96,6 +96,7 @@
     7,
     8,
     9,
-    10
+    10,
+    11
   ]
 }
