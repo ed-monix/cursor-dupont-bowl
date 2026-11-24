@@ -1,0 +1,127 @@
+{
+  "claims": [
+    {
+      "add": "5045",
+      "bid": 8,
+      "drop": "5870",
+      "reason": "uncontested claim, bid $8",
+      "reasoning": "That roster spot wasn't doing anybody any good - empty jersey, zero snaps, not earning its spot. Courtland Sutton shows up for Denver every Sunday, blocks when he's not the target, never been a lick of trouble in any locker room - that's the kind of professional I want sitting behind Keenan. Eight dollars is a fair depth price, not a reach.",
+      "status": "won",
+      "team": "coach-taylor"
+    },
+    {
+      "add": "7611",
+      "bid": 6,
+      "drop": "11624",
+      "reason": "highest bid $6 (next best $3)",
+      "reasoning": "Nobody's handing me a running back out of charity, and I'm not sitting here with Emmett Johnson at 5.67 projected pretending that's a plan. Six bucks, not a penny more, on Stevenson -- Worthy hasn't done anything for me since the day I claimed him, so he's the one who goes.",
+      "status": "won",
+      "team": "costanza"
+    },
+    {
+      "add": "5892",
+      "bid": 3,
+      "drop": "9756",
+      "reason": "highest bid $3 (next best $0)",
+      "reasoning": "HOLY COW, David Montgomery poppin' up on the wire, folks -- that's a Chicago guy through and through, I don't care whose jersey he's wearin' in HOU now, once you run through the Bears backfield you're family forever! I'd love to tack on my usual five-spot for the hometown kid but the vault's down to three lonesome dollars, so he gets every last one of 'em -- all in, no regrets! Cuttin' loose Jordan Addison, hate to do it pal, but 'Out' is 'Out' and we need the at-bat.",
+      "status": "won",
+      "team": "harry-caray"
+    },
+    {
+      "add": "12469",
+      "bid": 0,
+      "drop": "6904",
+      "reason": "uncontested claim, bid $0",
+      "reasoning": "Jalen Hurts is a dead IR tag taking up a seat that could be filming something \u2014 that spot needed a new face, not a corpse. Dylan Sampson is a rookie back in a backfield that's about to get interesting, and zero dollars is the price when nobody else in this league has noticed yet. I'm not chasing him, I'm early.",
+      "status": "won",
+      "team": "kardashian"
+    },
+    {
+      "add": "13968",
+      "bid": 0,
+      "drop": "12711",
+      "reason": "highest bid $0 (next best $0)",
+      "reasoning": "Loop's been a corpse on IR since the Costanza game and I already told the whole league what I was gonna do about it - zero dollars left, zero dollars needed, Stevens actually plays on Sunday and that's the whole requirement for the job.",
+      "status": "won",
+      "team": "leon-black"
+    },
+    {
+      "add": "13298",
+      "bid": 4,
+      "drop": "10213",
+      "reason": "uncontested claim, bid $4",
+      "reasoning": "Rinna binned this fella off her own bench like he was nothing and I fancy the rookie bounce more than she ever did, hun. Tre Tucker's done nothing for me all year, he's gone, Concepcion's in for four quid and a bit of spite.",
+      "status": "won",
+      "team": "maura-higgins"
+    },
+    {
+      "add": "7611",
+      "bid": 0,
+      "drop": "12529",
+      "reason": "outbid on 7611: costanza bid $6 (your bid $0)",
+      "reasoning": "SELINA: I am not carrying a zero on IR as a bench decoration when there's a free running back averaging double digits sitting right there \u2014 take him, Gary, I don't care that we're broke. GARY: Henderson hasn't been active in weeks and projects 0.0 forever; Rhamondre Stevenson projects 12.2 and actually dresses for games. Filing at $0 because that's the whole budget \u2014 free swing, nothing to lose.",
+      "status": "lost",
+      "team": "meyer-walsh"
+    },
+    {
+      "add": "13968",
+      "bid": 0,
+      "drop": "5189",
+      "reason": "tied bid $0 for 13968; lost tiebreak to leon-black (worse standing wins)",
+      "reasoning": "I re-run the kicker research from scratch every single week \u2014 trusting last week's answer is exactly the complacency the book warns against, and I checked this twice before I let myself write it down. Drew Stevens grades out ahead of Eddy Pineiro on my sheet and put up eighteen points the week I was still defending Pineiro's number; this week's page says release what isn't serving you, and a kicker I only kept out of habit is precisely that. My FAAB sits at zero dollars, so this bid is procedural rather than persuasive \u2014 I am filing it anyway, for the record, because a claim I didn't make is a claim I can't defend later.",
+      "status": "lost",
+      "team": "patricia-moyer"
+    },
+    {
+      "add": "7611",
+      "bid": 0,
+      "drop": "11579",
+      "reason": "outbid on 7611: costanza bid $6 (your bid $0)",
+      "reasoning": "Audric Estime has been 'Out' and invisible for two weeks running and invisible is the one sin I don't forgive, so he's off this show. Rhamondre Stevenson walks on for exactly zero dollars because a girl doesn't need a budget to upgrade a storyline.",
+      "status": "lost",
+      "team": "rinna"
+    },
+    {
+      "add": "5892",
+      "bid": 0,
+      "drop": "11564",
+      "reason": "outbid on 5892: harry-caray bid $3 (your bid $0)",
+      "reasoning": "I am rostering FOUR quarterbacks and one of them, Drake Maye, is Out and has thrown exactly zero footballs for this franchise lately \u2014 cancelled. David Montgomery actually has a game Sunday, which around here is apparently a revolutionary concept, and he costs the same nothing Maye was worth.",
+      "status": "lost",
+      "team": "rinna"
+    },
+    {
+      "add": "7611",
+      "bid": 3,
+      "drop": "5849",
+      "reason": "outbid on 7611: costanza bid $6 (your bid $3)",
+      "reasoning": "Murray's been Out so long he's basically furniture, and a ghost don't eat at my table. Stevenson's getting touches in that Patriots backfield and three bucks is three bucks, I ain't thinking twice about it.",
+      "status": "lost",
+      "team": "wifes-team"
+    },
+    {
+      "add": "7611",
+      "bid": 3,
+      "drop": "11628",
+      "reason": "outbid on 7611: costanza bid $6 (your bid $3)",
+      "reasoning": "Stevenson's got a backfield to himself in New England and projects 12.2 \u2014 that's a real Sunday, not a lottery ticket. Harrison's been a ghost since October, Out again this week, and I already said it: I don't play ghosts, I replace them.",
+      "status": "lost",
+      "team": "your-team"
+    }
+  ],
+  "drops": [],
+  "remaining_budget": {
+    "coach-taylor": 30,
+    "costanza": 14,
+    "dumbledore": 22,
+    "harry-caray": 0,
+    "kardashian": 0,
+    "leon-black": 0,
+    "maura-higgins": 2,
+    "meyer-walsh": 0,
+    "patricia-moyer": 0,
+    "rinna": 0,
+    "wifes-team": 3,
+    "your-team": 3
+  }
+}

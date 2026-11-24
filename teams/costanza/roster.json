@@ -1,13 +1,13 @@
 {
   "bench": [
     "4892",
-    "11624",
     "TEN",
     "1373",
     "8150",
-    "8112"
+    "8112",
+    "7611"
   ],
-  "faab_remaining": 20,
+  "faab_remaining": 14,
   "ir": [],
   "name": "Vandelay Vengeance",
   "starters": {
