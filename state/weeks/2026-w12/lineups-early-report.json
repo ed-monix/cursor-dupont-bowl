@@ -1,0 +1,142 @@
+{
+  "teams": [
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX",
+        "WR1"
+      ],
+      "team": "coach-taylor",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "RB2",
+        "TE",
+        "WR2"
+      ],
+      "team": "costanza",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "FLEX"
+      ],
+      "team": "dumbledore",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "K",
+        "QB",
+        "RB1"
+      ],
+      "team": "harry-caray",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "K",
+        "RB1"
+      ],
+      "team": "kardashian",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "FLEX",
+        "TE",
+        "WR2"
+      ],
+      "team": "leon-black",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "K",
+        "RB1"
+      ],
+      "team": "maura-higgins",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "FLEX",
+        "K",
+        "QB",
+        "TE",
+        "WR1",
+        "WR2"
+      ],
+      "team": "meyer-walsh",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "FLEX",
+        "QB",
+        "RB2"
+      ],
+      "team": "patricia-moyer",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF"
+      ],
+      "team": "rinna",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "K",
+        "RB1",
+        "RB2",
+        "TE"
+      ],
+      "team": "wifes-team",
+      "validation_errors": []
+    },
+    {
+      "fallback": false,
+      "freeze_violations": [],
+      "locked_slots": [
+        "DEF",
+        "QB",
+        "TE",
+        "WR1",
+        "WR2"
+      ],
+      "team": "your-team",
+      "validation_errors": []
+    }
+  ],
+  "window": "early"
+}
