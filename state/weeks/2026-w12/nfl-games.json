@@ -8,7 +8,7 @@
   "game_id": "202611201"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-26",
   "home": "BUF",
   "away": "KC",
@@ -32,7 +32,7 @@
   "game_id": "202611208"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-26",
   "home": "DAL",
   "away": "PHI",
@@ -40,7 +40,7 @@
   "game_id": "202611209"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-26",
   "home": "DET",
   "away": "CHI",
@@ -112,7 +112,7 @@
   "game_id": "202611231"
  },
  {
-  "status": "pre_game",
+  "status": "complete",
   "date": "2026-11-25",
   "home": "LAR",
   "away": "GB",
